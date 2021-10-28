@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide methods
+left to right direction
+
+class Containers {
+
+}
+
+class CargoManifest {
+
+}
+
+class Ships {
+
+}
+
+class Warehouses {
+
+}
+
+
+@enduml

@@ -4,7 +4,18 @@
 hide methods
 left to right direction
 
+class Company {
+
+}
+
+class Employee {
+
+}
+
 class Containers {
+-int x
+-int y
+-int z
 
 }
 
@@ -16,9 +27,34 @@ class Ships {
 
 }
 
-class Warehouses {
+class Ports {
 
 }
+
+class MessageUSCoastGuard {
+
+}
+
+class Truck {
+
+}
+
+class Warehouse {
+
+}
+
+Containers "1..*"---"1" Ships: transport
+Containers "0..*"--"1" Ports: store
+Containers "1..*"--"1..*" CargoManifest: related to
+MessageUSCoastGuard "1..*"--"1" Ships : send
+Company "1"--"1..*" Employee : work
+Company "1"--"1..*" Ships: own
+Ships "0..*"--"1" Ports: dock
+Containers "1"---"1" Truck: transport
+Containers "0..*"--"1" Warehouse: store
+Company "1"--"1..*" Truck: own
+Truck "0..*"--"1" Warehouse: park
+
 
 
 @enduml

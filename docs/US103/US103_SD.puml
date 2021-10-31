@@ -2,7 +2,35 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
-actor "Traffic Manager" as TP
+actor "Traffic Manager" as TM
+
+participant "ShowPositionalMessagesUI" as UI
+participant "ShowPositionalMessagesController" as CTRL
+participant "Company" as COMP
+participant "ShipPosition" as SP
+participant "Ships" as S
+participant "MessageUSCoastGuard" as Message
+
+
+activate TM
+TM -> "UI" : Initiates the process to obtain the positional\n messages temporally organized of a ship
+activate "UI"
+"UI" --> TM : Requests the ship's MMSI code
+deactivate "UI"
+TM -> "UI" : Types the MMSI code
+activate "UI"
+"UI" --> TM : Requests initial date of the ship's position
+deactivate "UI"
+TM -> "UI" : Types initial date
+activate "UI"
+"UI" --> TM : Requests final date of the ship's position
+deactivate "UI"
+TM -> "UI" : Types the final date
+activate "UI"
+"UI" --> TM : Shows the ship's positional messages
+deactivate "UI"
+
+deactivate TM
 
 
 

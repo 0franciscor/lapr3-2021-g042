@@ -7,7 +7,7 @@ activate manager
 
 manager -> system ++: Import ships from a text file into a BST
 
-system --> manager --: Requests the name of the .csv file\ncontaining the data
+system --> manager --: Requests the name of the .csv file\n containing the data
 
 manager -> system ++: Inserts file name
 

@@ -3,28 +3,47 @@
 
 hide methods
 left to right direction
+skinparam classAttributeIconSize 0
 
 class Company {
 
 }
 
-class Employee {
-
+class TrafficManager {
+-name
 }
 
 class Containers {
--int x
--int y
--int z
-
+-x
+-y
+-z
+-containerNumber
+-checkDigit
+-isoCode
+-width
+-height
+-length
+-payLoad
+-tare
+-gross
 }
 
 class CargoManifest {
-
+-containerNumber
 }
 
 class Ships {
-
+-mmsiCode
+-name
+-imoCode
+-numberEnergyGenerators
+-generatorPower
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
 }
 
 class Ports {
@@ -43,17 +62,35 @@ class Warehouse {
 
 }
 
-Containers "1..*"---"1" Ships: transport
-Containers "0..*"--"1" Ports: store
-Containers "1..*"--"1..*" CargoManifest: related to
-MessageUSCoastGuard "1..*"--"1" Ships : send
-Company "1"--"1..*" Employee : work
-Company "1"--"1..*" Ships: own
-Ships "0..*"--"1" Ports: dock
-Containers "1"---"1" Truck: transport
-Containers "0..*"--"1" Warehouse: store
-Company "1"--"1..*" Truck: own
-Truck "0..*"--"1" Warehouse: park
+class ShipPosition {
+-baseDateTime
+-latitude
+-longitude
+-sog
+-cog
+-heading
+-position
+-transceiver
+}
+
+Company "1"--"1..*" Ships: own >
+Company "1"--"1..*" TrafficManager: have >
+Company "1"--"1..*" Truck: own >
+
+Containers "1..*"--"1..*" CargoManifest: related to >
+Containers "0..*"--"1" Ports: store >
+Containers "0..*"--"1" Warehouse: store >
+
+Ships "1"--"1..*" Containers : transport >
+Ships "1"--"1..*" MessageUSCoastGuard: send >
+Ships "0..*"--"1" Ports: dock >
+Ships "1" -- "1..*" ShipPosition : has >
+
+TrafficManager "1" -- "1..*" ShipPosition : controls >
+Truck "1"--"1..*" Containers : transport >
+Truck "0..*"--"1" Warehouse: park >
+
+
 
 
 

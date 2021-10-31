@@ -6,7 +6,7 @@ left to right direction
 skinparam classAttributeIconSize 0
 
 class Company {
-
+-designation
 }
 
 class TrafficManager {
@@ -50,10 +50,6 @@ class Ports {
 
 }
 
-class MessageUSCoastGuard {
-
-}
-
 class Truck {
 
 }
@@ -82,7 +78,6 @@ Containers "0..*"--"1" Ports: store >
 Containers "0..*"--"1" Warehouse: store >
 
 Ships "1"--"1..*" Containers : transport >
-Ships "1"--"1..*" MessageUSCoastGuard: send >
 Ships "0..*"--"1" Ports: dock >
 Ships "1" -- "1..*" ShipPosition : has >
 

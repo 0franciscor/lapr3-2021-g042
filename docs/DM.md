@@ -12,7 +12,6 @@
 |                                 | store            	  | Ports                        |
 |                                 | store            	  | Warehouse                    |
 | Ships                           | transport        	  | Containers                   |
-|                                 | send            	  | MessageUSCoastGuard          |
 |                                 | dock            	  | Ports                        |
 |                                 | has             	  | ShipPosition                 |
 | TrafficManager                  | controls         	  | ShipPosition                 |

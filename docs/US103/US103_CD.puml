@@ -3,7 +3,7 @@
 
 skinparam classAttributeIconSize 0
 
-class Ships {
+class Ship {
 -mmsiCode
 -name
 -imoCode
@@ -32,7 +32,7 @@ class BstShip {
 -getShipByMmsiCode(mmsiCode)
 }
 
-class BstShipPosition {
+class ShipLocationBST {
 -getPositinalMessages(initialDate, finalDate)
 }
 
@@ -45,22 +45,22 @@ class ShowPositionalMessagesController {
 
 class Company {
 -designation
--getBstShip(mmsiCode)
+-getBstShip()
 }
 
-BstShip "1" -- "1..*" Ships : owns >
-BstShipPosition "1" -- "1..*" ShipPosition : has >
+BstShip "1" -- "1..*" Ship : owns >
+ShipLocationBST "1" -- "1..*" ShipPosition : has >
 
 Company "1" -- "1" BstShip : uses >
 
-Ships "1" -- "1" BstShipPosition : uses >
+Ship "1" -- "1" ShipLocationBST : uses >
 
 ShowPositionalMessagesUI ..> ShowPositionalMessagesController
 
 ShowPositionalMessagesController ..> Company
 ShowPositionalMessagesController ..> BstShip
-ShowPositionalMessagesController ..> Ships
-ShowPositionalMessagesController ..> BstShipPosition
+ShowPositionalMessagesController ..> Ship
+ShowPositionalMessagesController ..> ShipLocationBST
 
 
 @enduml

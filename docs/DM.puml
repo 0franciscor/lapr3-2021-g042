@@ -32,7 +32,7 @@ class CargoManifest {
 -containerNumber
 }
 
-class Ships {
+class Ship {
 -mmsiCode
 -name
 -imoCode
@@ -58,7 +58,7 @@ class Warehouse {
 
 }
 
-class ShipPosition {
+class ShipLocation {
 -baseDateTime
 -latitude
 -longitude
@@ -69,7 +69,7 @@ class ShipPosition {
 -transceiver
 }
 
-Company "1"--"1..*" Ships: own >
+Company "1"--"1..*" Ship: own >
 Company "1"--"1..*" TrafficManager: have >
 Company "1"--"1..*" Truck: own >
 
@@ -77,11 +77,11 @@ Containers "1..*"--"1..*" CargoManifest: related to >
 Containers "0..*"--"1" Ports: store >
 Containers "0..*"--"1" Warehouse: store >
 
-Ships "1"--"1..*" Containers : transport >
-Ships "0..*"--"1" Ports: dock >
-Ships "1" -- "1..*" ShipPosition : has >
+Ship "1"--"1..*" Containers : transport >
+Ship "0..*"--"1" Ports: dock >
+Ship "1" -- "1..*" ShipLocation : has >
 
-TrafficManager "1" -- "1..*" ShipPosition : controls >
+TrafficManager "1" -- "1..*" ShipLocation : controls >
 Truck "1"--"1..*" Containers : transport >
 Truck "0..*"--"1" Warehouse: park >
 

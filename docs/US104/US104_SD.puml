@@ -2,22 +2,56 @@
 'https://plantuml.com/sequence-diagram
 
 actor TrafficManager as TM
-participant ": System" as SY
+participant ": movementsSummaryUI" as UI
+participant ": movementsController" as CT
+participant ": Company" as CP
+participant "store : shipStore" as ST
+participant "ship : Ship" as SP
+participant "summary : Summary" as SM
+participant ": summaryMapper" as MP
+
+
+
 
 autonumber
 activate TM
-TM -> SY: starts the creation of the Summary
-activate SY
-SY --> TM : ask the IMO code that the user wants to use for the search
-deactivate SY
-TM -> SY : type the code
-activate SY
-SY --> TM : shows the ship name and requests a confirmation
-deactivate SY
-TM -> SY: confirms the data
-activate SY
-SY --> TM : show the Summary associated with the code inserted
-deactivate SY
+TM -> UI: starts the creation of the Summary
+activate UI
+UI --> TM : ask the IMO code that the user wants to use for the search
+deactivate UI
+TM -> UI : type the code
+activate UI
+UI -> CT : ship = getShipByImo(imoCode)
+activate  CT
+CT->CP : store = getShipsStore()
+activate CP
+
+deactivate CP
+
+CT->ST : ship = getShipByImo(imoCode)
+activate ST
+deactivate ST
+
+deactivate CT
+UI --> TM : shows the ship name and requests a confirmation
+deactivate UI
+TM -> UI: confirms the data
+activate UI
+UI->CT : createSummaryForShip(ship)
+activate CT
+CT->SP : treeDynamicData = getTreeDynamicData()
+activate SP
+deactivate SP
+CT->SM : summary = createSummaryForShip(treeDynamicData)
+activate SM
+deactivate SM
+CT->MP : summaryDto = toDto(summary)
+activate MP
+deactivate MP
+
+deactivate CT
+UI --> TM : show the Summary associated with the code inserted
+deactivate UI
 
 
 

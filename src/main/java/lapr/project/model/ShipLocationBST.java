@@ -1,13 +1,11 @@
 package lapr.project.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  *
  * @author 1201239 Francisco Redol
+ * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
 
 public class ShipLocationBST<ShipLocation extends Comparable<ShipLocation>> implements ShipLocationBST_Interface<ShipLocation> {
@@ -323,6 +321,16 @@ public class ShipLocationBST<ShipLocation extends Comparable<ShipLocation>> impl
         else
             sb.append(root.getShipLocation()+"\n");
         toStringRec(root.getLeft(), level+1, sb);
+    }
+
+    /**
+     *
+     * @param initialDate
+     * @param finalDate
+     * @return
+     */
+    public List<String> getPositionalMessages(Date initialDate, Date finalDate){
+        return new ArrayList<>(); // Para alterar quando o método estiver implementado
     }
 
 } //----------- end of BST class -----------

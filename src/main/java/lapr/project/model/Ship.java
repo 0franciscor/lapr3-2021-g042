@@ -143,7 +143,7 @@ public class Ship {
         return name;
     }
 
-    public String shipID(){
+    public String getShipID(){
         return shipID;
     }
 

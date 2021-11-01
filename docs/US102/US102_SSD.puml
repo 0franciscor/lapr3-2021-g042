@@ -1,0 +1,34 @@
+@startuml
+autonumber
+
+actor "Traffic manager" as manager
+participant "System" as system
+activate manager
+
+manager -> system : Asks to search the details of a ship
+activate system
+system --> manager : Requests to insert the code to perform the search (MMSI, IMO or Call Sign).
+deactivate system
+
+
+alt ship code - MMSI
+manager -> system  : Selects MMSI
+activate system
+deactivate system
+else ship code - IMO
+manager -> system  : Selects IMO
+activate system
+deactivate system
+else ship code - Call Sign
+manager -> system : Selects Call Sign
+activate system
+deactivate system
+end
+
+
+manager -> system : Requests data
+activate system
+system --> manager : Displays the details of the ship
+deactivate system
+
+@enduml

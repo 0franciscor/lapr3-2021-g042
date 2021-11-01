@@ -1,0 +1,111 @@
+@startuml
+autonumber
+
+actor "Traffic manager" as manager
+participant "SearchDetailsUI" as sdUI
+participant "SearchDetailsController" as sdCTRL
+participant "Company" as COMP
+participant "bstShip:\nBstShip" as BstShip
+participant "Ship" as SHIP
+
+
+activate manager
+manager -> sdUI : Asks to search the details of a ship
+activate sdUI
+sdUI --> manager : Requests to insert the code to perform the search (MMSI, IMO or Call Sign).
+deactivate sdUI
+
+
+alt ship code - MMSI
+manager -> sdUI  : Selects MMSI
+activate sdUI
+sdUI-> sdCTRL: shipExist(mmsiCode)
+activate sdCTRL
+activate sdCTRL
+sdCTRL -> COMP : bstShip = getBstShip()
+activate COMP
+deactivate COMP
+sdCTRL -> BstShip : ship = getShipByMmsiCode(mmmsiCode)
+activate BstShip
+deactivate BstShip
+deactivate sdCTRL
+deactivate sdCTRL
+deactivate sdUI
+
+else ship code - IMO
+manager -> sdUI  : Selects IMO
+activate sdUI
+sdUI-> sdCTRL: shipExist(imoCode)
+activate sdCTRL
+activate sdCTRL
+sdCTRL -> COMP : bstShip = getBstShip()
+activate COMP
+deactivate COMP
+sdCTRL -> BstShip : ship = getShipByIMO(imoCode)
+activate BstShip
+deactivate BstShip
+deactivate sdCTRL
+deactivate sdCTRL
+deactivate sdUI
+deactivate sdUI
+
+else ship code - Call Sign
+manager -> sdUI : Selects Call Sign
+activate sdUI
+activate sdUI
+sdUI-> sdCTRL: shipExist(callSign)
+activate sdCTRL
+activate sdCTRL
+sdCTRL -> COMP : bstShip = getBstShip()
+activate COMP
+deactivate COMP
+sdCTRL -> BstShip : ship = getShipByallSign(callSign))
+activate BstShip
+deactivate BstShip
+deactivate sdCTRL
+deactivate sdCTRL
+deactivate sdUI
+deactivate sdUI
+end
+
+
+manager -> sdUI : Requests data
+activate sdUI
+sdUI -> sdCTRL : getShipDetails()
+activate sdCTRL
+sdCTRL -> SHIP : mmsi = getMMSI()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : name = getName()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : imo = getShipId()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : numberOfEnergyGenerators = getEnergyGenerators()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : callSign = getCallSign()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : vesselType = getVesselType()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : length = getLength()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : width = getWidth()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : capacity = getCapacity()
+activate SHIP
+deactivate SHIP
+sdCTRL -> SHIP : draft = getDraft()
+activate SHIP
+deactivate SHIP
+sdCTRL --> sdUI : result
+deactivate sdCTRL
+sdUI --> manager : Displays the details of the ship
+deactivate sdUI
+
+@enduml

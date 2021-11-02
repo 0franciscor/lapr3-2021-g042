@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -99,6 +100,11 @@ public class Summary {
      */
     private float deltaDistance;
 
+    Summary(Ship ship, ShipLocationBST shipLocationBST){
+        imoCode = ship.getShipID();
+        name = ship.getName();
+
+    }
     /**
      * Get the call sign associated with a ship
      * @return the call sign

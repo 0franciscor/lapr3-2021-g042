@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="790.2px" preserveAspectRatio="none" style="width:706px;height:790px;background:#FFFFFF;" version="1.1" viewBox="0 0 706 790" width="706.2px" zoomAndPan="magnify"><defs><filter height="300%" id="f9nut98yysyhl" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="1.2"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="2.4" dy="2.4" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[66dd6d0a484290b46f8665dfa0e5de89]
+cluster Company--><rect fill="#FFFFFF" filter="url(#f9nut98yysyhl)" height="778.8" style="stroke:#000000;stroke-width:0.8999999999999999;" width="437.4" x="261.6" y="4.2"/><text fill="#000000" font-family="sans-serif" font-size="8.4" font-weight="bold" lengthAdjust="spacing" textLength="38.4" x="461.1" y="14.1199">Company</text><ellipse cx="480.1576" cy="50.3115" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="113.8576" ry="24.2115" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="210.6" x="374.8576" y="52.5486">UC101: I which to import ships from a text file into a BST</text><ellipse cx="480.3702" cy="120.614" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="115.8702" ry="24.614" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="192.6" x="382.8702" y="117.5683">UC102: I which to search the details of a ship using</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="150.6" x="406.2702" y="128.134">any of its codes: MMSI, IMO or Call Sign</text><ellipse cx="480.4081" cy="193.7016" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="128.8081" ry="27.2016" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="221.4" x="368.5081" y="190.6559">UC103: I which to have the positional messages temporally</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="181.2" x="389.8081" y="201.2215">organized and associated with each of the ships</text><ellipse cx="480.3357" cy="267.4871" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="118.2357" ry="25.0871" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="219.6" x="370.5357" y="269.7242">UC104: I which to make a Summary of a ship's movements</text><ellipse cx="480.2577" cy="346.6715" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="157.1577" ry="32.8715" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="285" x="337.7577" y="343.6258">UC105: I which to list for all ships the MMSI, the total number of movements,</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="147.6" x="407.6577" y="354.1915">Travelled Distance and Delta Distance.</text><ellipse cx="480.1952" cy="439.779" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="186.1952" ry="38.679" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="263.4" x="348.4952" y="431.4505">UC108: I want the team to develop the data model required to support</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="261" x="350.8952" y="442.0161">all the functionality and to fulfill the purpose of the system to develop.</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="321" x="319.6952" y="452.5818">This data model is to be designed following a systematic data modeling methodology.</text><ellipse cx="480.3791" cy="534.7358" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="167.4791" ry="34.9358" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="281.4" x="338.4791" y="526.4073">UC109: I want the team to draft an SQL script to test whether the database</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="240.6" x="360.0791" y="536.9729">verifies all the data integrity restrictions that are required to fulfil</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="252" x="355.5791" y="547.5386">the purpose of the system and the business constraints of the UoD</text><ellipse cx="480.1678" cy="633.6336" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="208.9678" ry="43.2336" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="225" x="366.4678" y="620.0222">UC110: I want the team to define the naming conventions to</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="235.2" x="363.7678" y="630.5879">apply when defining identifiers or writing SQL or PL/SQL code.</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="346.8" x="307.9678" y="641.1535">The naming conventions may evolve as new database and programming objects are known.</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="333.6" x="314.5678" y="651.7191">The naming conventions guide should be organized in a way to facilitate its maintenance</text><ellipse cx="480.4036" cy="735.6207" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="180.4036" ry="37.5207" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="253.2" x="353.8036" y="722.0094">UC111: I want the team to create a SQL script to load the database</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="276" x="342.4036" y="732.575">with a minimum set of data sufficient to carry out data integrity verification</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="249" x="355.9036" y="743.1406">and functional testing. This script shall produce a bootstrap report</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="216.6" x="373.3036" y="753.7063">providing the number of tuples/rows in each relation/table</text><!--MD5=[c6ddddda358f072e4f19aa798de5fbe9]
+entity TM--><ellipse cx="33.6" cy="174.6" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="4.8" ry="4.8" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><path d="M33.6,179.4 L33.6,195.6 M25.8,184.2 L41.4,184.2 M33.6,195.6 L25.8,204.6 M33.6,195.6 L41.4,204.6 " fill="none" filter="url(#f9nut98yysyhl)" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="60" x="3.6" y="216.6199">Traffic Manager</text><!--MD5=[1035515eb14b5228f153ae78bdf69e99]
+entity PM--><ellipse cx="130.8" cy="589.2" fill="#FEFECE" filter="url(#f9nut98yysyhl)" rx="4.8" ry="4.8" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><path d="M130.8,594 L130.8,610.2 M123,598.8 L138.6,598.8 M130.8,610.2 L123,619.2 M130.8,610.2 L138.6,619.2 " fill="none" filter="url(#f9nut98yysyhl)" style="stroke:#A80036;stroke-width:0.8999999999999999;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="62.4" x="99.6" y="631.2199">Project Manager</text><!--MD5=[d03b202df837bb057990a68b7e248274]
+link TM to UC101--><path d="M63.714,176.616 C74.856,170.31 87.708,163.236 99.6,157.2 C168.12,122.406 183.21,107.334 256.8,85.2 C295.152,73.662 338.424,65.79 376.572,60.498 " fill="none" id="TM-UC101" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[10404e7d984a6722cbb666ea09424efb]
+link TM to UC102--><path d="M63.714,186.204 C74.904,183.474 87.798,180.498 99.6,178.2 C194.592,159.708 303.918,143.682 380.868,133.266 " fill="none" id="TM-UC102" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[9ec55ecbef54a9cebc5aac220d4a7982]
+link TM to UC103--><path d="M63.6,193.8 C121.158,193.8 251.778,193.8 351.426,193.8 " fill="none" id="TM-UC103" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[174a9ab969c8655637013b9197109f2c]
+link TM to UC104--><path d="M63.714,198.888 C106.326,206.22 187.578,220.134 256.8,231.6 C298.95,238.584 345.618,246.144 385.314,252.528 " fill="none" id="TM-UC104" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[7795c586a91290bc698f7c0626771e67]
+link TM to UC105--><path d="M63.732,211.422 C105.384,235.536 184.398,278.598 256.8,303 C287.07,313.2 320.502,321.33 352.062,327.684 " fill="none" id="TM-UC105" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[0f093145a1b8a585812821a43ce6216d]
+link PM to UC108--><path d="M150.462,583.446 C172.86,555.948 212.616,512.514 256.8,489 C278.49,477.456 302.748,468.618 327.06,461.856 " fill="none" id="PM-UC108" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[9952b1e5b74ead5516ccb7f457a5ff9e]
+link PM to UC109--><path d="M162.012,601.128 C187.374,595.164 224.376,586.596 256.8,579.6 C289.698,572.502 325.404,565.14 358.398,558.48 " fill="none" id="PM-UC109" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[7a4910e5c368514edf98368ef81e6411]
+link PM to UC110--><path d="M162.006,610.614 C190.47,612.672 235.512,615.93 282.834,619.356 " fill="none" id="PM-UC110" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[3152ab15639bc859965924b65042400e]
+link PM to UC111--><path d="M162.228,631.98 C186.654,649.584 222.306,672.93 256.8,687 C282.378,697.434 310.566,705.792 338.046,712.428 " fill="none" id="PM-UC111" style="stroke:#A80036;stroke-width:0.6;"/><!--MD5=[4e37d355f67983253e9ef3afa11cc78c]
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+actor "Traffic Manager" as TM
+actor "Project Manager" as PM
+
+rectangle Company{
+
+usecase "UC101: I which to import ships from a text file into a BST" as UC101
+usecase "UC102: I which to search the details of a ship using \n any of its codes: MMSI, IMO or Call Sign" as UC102
+usecase "UC103: I which to have the positional messages temporally \n organized and associated with each of the ships " as UC103
+usecase "UC104: I which to make a Summary of a ship's movements" as UC104
+usecase "UC105: I which to list for all ships the MMSI, the total number of movements,\n Travelled Distance and Delta Distance." as UC105
+usecase "UC108: I want the team to develop the data model required to support\n all the functionality and to fulfill the purpose of the system to develop.\n This data model is to be designed following a systematic data modeling methodology. " as UC108
+usecase "UC109: I want the team to draft an SQL script to test whether the database \n verifies all the data integrity restrictions that are required to fulfil \n the purpose of the system and the business constraints of the UoD" as UC109
+usecase "UC110: I want the team to define the naming conventions to \n apply when defining identifiers or writing SQL or PL/SQL code.\n The naming conventions may evolve as new database and programming objects are known.\n The naming conventions guide should be organized in a way to facilitate its maintenance" as UC110
+usecase "UC111: I want the team to create a SQL script to load the database\n with a minimum set of data sufficient to carry out data integrity verification \n and functional testing. This script shall produce a bootstrap report \n providing the number of tuples/rows in each relation/table" as UC111
+
+}
+
+TM- - - - -UC101
+TM- - - -UC102
+TM- - - -UC103
+TM- - - -UC104
+TM- - - -UC105
+PM- - - -UC108
+PM- - - -UC109
+PM- - - -UC110
+PM- - - -UC111
+
+
+
+@enduml
+
+@startuml
+left to right direction
+actor "Traffic Manager" as TM
+actor "Project Manager" as PM
+
+rectangle Company{
+
+usecase "UC101: I which to import ships from a text file into a BST" as UC101
+usecase "UC102: I which to search the details of a ship using \n any of its codes: MMSI, IMO or Call Sign" as UC102
+usecase "UC103: I which to have the positional messages temporally \n organized and associated with each of the ships " as UC103
+usecase "UC104: I which to make a Summary of a ship's movements" as UC104
+usecase "UC105: I which to list for all ships the MMSI, the total number of movements,\n Travelled Distance and Delta Distance." as UC105
+usecase "UC108: I want the team to develop the data model required to support\n all the functionality and to fulfill the purpose of the system to develop.\n This data model is to be designed following a systematic data modeling methodology. " as UC108
+usecase "UC109: I want the team to draft an SQL script to test whether the database \n verifies all the data integrity restrictions that are required to fulfil \n the purpose of the system and the business constraints of the UoD" as UC109
+usecase "UC110: I want the team to define the naming conventions to \n apply when defining identifiers or writing SQL or PL/SQL code.\n The naming conventions may evolve as new database and programming objects are known.\n The naming conventions guide should be organized in a way to facilitate its maintenance" as UC110
+usecase "UC111: I want the team to create a SQL script to load the database\n with a minimum set of data sufficient to carry out data integrity verification \n and functional testing. This script shall produce a bootstrap report \n providing the number of tuples/rows in each relation/table" as UC111
+
+}
+
+TM- - - - -UC101
+TM- - - -UC102
+TM- - - -UC103
+TM- - - -UC104
+TM- - - -UC105
+PM- - - -UC108
+PM- - - -UC109
+PM- - - -UC110
+PM- - - -UC111
+
+
+
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+actor "Traffic Manager" as TM
+actor "Project Manager" as PM
+
+rectangle Company{
+
+usecase "UC101: I which to import ships from a text file into a BST" as UC101
+usecase "UC102: I which to search the details of a ship using \n any of its codes: MMSI, IMO or Call Sign" as UC102
+usecase "UC103: I which to have the positional messages temporally \n organized and associated with each of the ships " as UC103
+usecase "UC104: I which to make a Summary of a ship's movements" as UC104
+usecase "UC105: I which to list for all ships the MMSI, the total number of movements,\n Travelled Distance and Delta Distance." as UC105
+usecase "UC108: I want the team to develop the data model required to support\n all the functionality and to fulfill the purpose of the system to develop.\n This data model is to be designed following a systematic data modeling methodology. " as UC108
+usecase "UC109: I want the team to draft an SQL script to test whether the database \n verifies all the data integrity restrictions that are required to fulfil \n the purpose of the system and the business constraints of the UoD" as UC109
+usecase "UC110: I want the team to define the naming conventions to \n apply when defining identifiers or writing SQL or PL/SQL code.\n The naming conventions may evolve as new database and programming objects are known.\n The naming conventions guide should be organized in a way to facilitate its maintenance" as UC110
+usecase "UC111: I want the team to create a SQL script to load the database\n with a minimum set of data sufficient to carry out data integrity verification \n and functional testing. This script shall produce a bootstrap report \n providing the number of tuples/rows in each relation/table" as UC111
+
+}
+
+TM-----UC101
+TM----UC102
+TM----UC103
+TM----UC104
+TM----UC105
+PM----UC108
+PM----UC109
+PM----UC110
+PM----UC111
+
+
+
+@enduml

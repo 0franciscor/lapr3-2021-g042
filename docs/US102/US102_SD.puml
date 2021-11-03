@@ -6,18 +6,25 @@ participant "SearchDetailsUI" as sdUI
 participant "SearchDetailsController" as sdCTRL
 participant "Company" as COMP
 participant "bstShip:\nBstShip" as BstShip
+participant "SearchDetailsMapper" as sdMAPPER
 participant "Ship" as SHIP
+participant "Ship" as SHIP
+participant "shipDetailsDto" as SHIPDETDTO
 
 
 activate manager
 manager -> sdUI : Asks to search the details of a ship
 activate sdUI
-sdUI --> manager : Requests to insert the code to perform the search (MMSI, IMO or Call Sign).
+sdUI --> manager : Requests to choose the code to perform the search (MMSI, IMO or Call Sign).
 deactivate sdUI
 
+manager -> sdUI : Chooses the code
+activate sdUI
+sdUI --> manager : Asks to type code
+deactivate sdUI
 
 alt ship code - MMSI
-manager -> sdUI  : Selects MMSI
+manager -> sdUI  : Search by MMSI
 activate sdUI
 sdUI-> sdCTRL: shipExist(mmsiCode)
 activate sdCTRL
@@ -33,7 +40,7 @@ deactivate sdCTRL
 deactivate sdUI
 
 else ship code - IMO
-manager -> sdUI  : Selects IMO
+manager -> sdUI  : Search by IMO
 activate sdUI
 sdUI-> sdCTRL: shipExist(imoCode)
 activate sdCTRL
@@ -50,7 +57,7 @@ deactivate sdUI
 deactivate sdUI
 
 else ship code - Call Sign
-manager -> sdUI : Selects Call Sign
+manager -> sdUI : Search by Call Sign
 activate sdUI
 activate sdUI
 sdUI-> sdCTRL: shipExist(callSign)
@@ -59,7 +66,7 @@ activate sdCTRL
 sdCTRL -> COMP : bstShip = getBstShip()
 activate COMP
 deactivate COMP
-sdCTRL -> BstShip : ship = getShipByallSign(callSign))
+sdCTRL -> BstShip : ship = getShipByCallSign(callSign))
 activate BstShip
 deactivate BstShip
 deactivate sdCTRL
@@ -73,38 +80,42 @@ manager -> sdUI : Requests data
 activate sdUI
 sdUI -> sdCTRL : getShipDetails()
 activate sdCTRL
-sdCTRL -> SHIP : mmsi = getMMSI()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : name = getName()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : imo = getShipId()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : numberOfEnergyGenerators = getEnergyGenerators()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : callSign = getCallSign()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : vesselType = getVesselType()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : length = getLength()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : width = getWidth()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : capacity = getCapacity()
-activate SHIP
-deactivate SHIP
-sdCTRL -> SHIP : draft = getDraft()
-activate SHIP
-deactivate SHIP
-sdCTRL --> sdUI : result
+sdCTRL-> sdMAPPER** : shipDetailsToDto()
 deactivate sdCTRL
+activate sdMAPPER
+sdMAPPER -> SHIP : mmsi = getMMSI()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : name = getName()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : imo = getShipId()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : numberOfEnergyGenerators = getEnergyGenerators()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : callSign = getCallSign()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : vesselType = getVesselType()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : length = getLength()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : width = getWidth()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : capacity = getCapacity()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIP : draft = getDraft()
+activate SHIP
+deactivate SHIP
+sdMAPPER -> SHIPDETDTO** : create(mmsi, name, imo, numberOfEnergyGenerators,\n callSign, vesselType, length, width, capacity, draft)
+sdMAPPER --> sdUI : shipDetailsDto
+deactivate sdMAPPER
 sdUI --> manager : Displays the details of the ship
 deactivate sdUI
 

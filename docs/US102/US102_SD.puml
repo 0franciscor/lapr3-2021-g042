@@ -6,10 +6,10 @@ participant "SearchDetailsUI" as sdUI
 participant "SearchDetailsController" as sdCTRL
 participant "Company" as COMP
 participant "bstShip:\nBstShip" as BstShip
-participant "SearchDetailsMapper" as sdMAPPER
+participant "ShipMapper" as SMAPPER
 participant "Ship" as SHIP
 participant "Ship" as SHIP
-participant "shipDetailsDto" as SHIPDETDTO
+participant "shipDto" as SHIPDTO
 
 
 activate manager
@@ -26,7 +26,7 @@ deactivate sdUI
 alt ship code - MMSI
 manager -> sdUI  : Search by MMSI
 activate sdUI
-sdUI-> sdCTRL: shipExist(mmsiCode)
+sdUI-> sdCTRL: shipExistByMMSI(mmsiCode)
 activate sdCTRL
 activate sdCTRL
 sdCTRL -> COMP : bstShip = getBstShip()
@@ -42,7 +42,7 @@ deactivate sdUI
 else ship code - IMO
 manager -> sdUI  : Search by IMO
 activate sdUI
-sdUI-> sdCTRL: shipExist(imoCode)
+sdUI-> sdCTRL: shipExistByIMO(imoCode)
 activate sdCTRL
 activate sdCTRL
 sdCTRL -> COMP : bstShip = getBstShip()
@@ -60,7 +60,7 @@ else ship code - Call Sign
 manager -> sdUI : Search by Call Sign
 activate sdUI
 activate sdUI
-sdUI-> sdCTRL: shipExist(callSign)
+sdUI-> sdCTRL: shipExistByCallSign(callSign)
 activate sdCTRL
 activate sdCTRL
 sdCTRL -> COMP : bstShip = getBstShip()
@@ -80,42 +80,42 @@ manager -> sdUI : Requests data
 activate sdUI
 sdUI -> sdCTRL : getShipDetails()
 activate sdCTRL
-sdCTRL-> sdMAPPER** : shipDetailsToDto()
+sdCTRL-> SMAPPER** : shipDetailsToDto()
 deactivate sdCTRL
-activate sdMAPPER
-sdMAPPER -> SHIP : mmsi = getMMSI()
+activate SMAPPER
+SMAPPER -> SHIP : mmsi = getMMSI()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : name = getName()
+SMAPPER -> SHIP : name = getName()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : imo = getShipId()
+SMAPPER -> SHIP : imo = getShipId()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : numberOfEnergyGenerators = getEnergyGenerators()
+SMAPPER -> SHIP : numberOfEnergyGenerators = getEnergyGenerators()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : callSign = getCallSign()
+SMAPPER -> SHIP : callSign = getCallSign()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : vesselType = getVesselType()
+SMAPPER -> SHIP : vesselType = getVesselType()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : length = getLength()
+SMAPPER -> SHIP : length = getLength()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : width = getWidth()
+SMAPPER -> SHIP : width = getWidth()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : capacity = getCapacity()
+SMAPPER -> SHIP : capacity = getCapacity()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIP : draft = getDraft()
+SMAPPER -> SHIP : draft = getDraft()
 activate SHIP
 deactivate SHIP
-sdMAPPER -> SHIPDETDTO** : create(mmsi, name, imo, numberOfEnergyGenerators,\n callSign, vesselType, length, width, capacity, draft)
-sdMAPPER --> sdUI : shipDetailsDto
-deactivate sdMAPPER
+SMAPPER -> SHIPDTO** : create(mmsi, name, imo, numberOfEnergyGenerators,\n callSign, vesselType, length, width, capacity, draft)
+SMAPPER --> sdUI : shipDetailsDto
+deactivate SMAPPER
 sdUI --> manager : Displays the details of the ship
 deactivate sdUI
 

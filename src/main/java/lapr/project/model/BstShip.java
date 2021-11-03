@@ -23,7 +23,25 @@ public class BstShip {
      * @return
      */
     public Ship getShipByMmsiCode(String mmsiCode){
-        return new Ship(); // Para alterar quando o método estiver implementado
+        return new Ship();
     }
 
+
+    /**
+     *
+     * @param imoCode
+     * @return
+     */
+    public Ship getShipByIMO(String imoCode){
+        return new Ship();
+    }
+
+    /**
+     *
+     * @param callSign
+     * @return
+     */
+    public Ship getShipByCallSign(String callSign){
+        return new Ship();
+    }
 }

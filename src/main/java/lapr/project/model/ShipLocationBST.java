@@ -277,40 +277,6 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         posOrderSubtree(node.getRight(), snapshot);
         snapshot.add(node.getShipLocation());
     }
-    /*
-
-
-    /**
-     * Return a Queue of nodes of type ShipLocation organized in level order
-     * @return the queue of tree's elements reported in level order
-     */
-    /*
-    public Queue<Node<ShipLocation>> inLevelOrder(){
-        Queue<Node<ShipLocation>> queue = new LinkedList<Node<ShipLocation>>();
-        if (root != null)
-            inLevelOrder(queue);
-
-        return queue;
-    }*/
-
-    /**
-     * Organize the tree's elements in level order
-     * @param snapshot the queue for adding the organized objects
-     */
-    /*
-    private void inLevelOrder(Queue<Node<ShipLocation>> snapshot){
-        snapshot.add(root);
-        while(!snapshot.isEmpty())
-        {
-            Node<ShipLocation> tempNode = snapshot.poll();
-            if(tempNode.left!=null)
-                snapshot.add(tempNode.getLeft());
-            if(tempNode.right!=null)
-                snapshot.add(tempNode.getRight());
-        }
-    }
-    */
-
 
     /*
      * Returns a map with a list of nodes by each tree level.
@@ -345,21 +311,6 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     public List<String> getPositionalMessages(Date initialDate, Date finalDate){
         return new ArrayList<>(); // Para alterar quando o método estiver implementado
     }
-
-<<<<<<< HEAD
-=======
-}
->>>>>>> 96c381cf9d3fd5205b4d19f500886ec38c3a4e3a
-
-
-    //método para achar o COG e SOC máximo e médio
-
-    /*public Map<Date, ShipLocation> positionsByDay(){
-        ShipLocation a = root.getShipLocation();
-        //ver com o francisco o pq de não conseguir get a date
-        //percorrer a arvore e agrupar as posições por dias
-        return null;
-    }*/
 
 
 } //----------- end of BST class -----------

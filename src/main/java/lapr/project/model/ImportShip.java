@@ -1,22 +1,40 @@
 package lapr.project.model;
 
 import lapr.project.controller.App;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * The ImportShip class, which allows the user to import ships and its locations from a .csv file
+ *
+ * @author Francisco Redol <1201239@isep.ipp.pt>
+ */
 public class ImportShip {
 
+    /**
+     * The file to be imported
+     */
     File file;
+
+    /**
+     * The Scanner which reads the file
+     */
     Scanner readFile;
 
-
+    /**
+     * The class constructor
+     */
     public ImportShip(){}
 
+    /**
+     * @param fileName The file name
+     *
+     * Allows the class to fetch the file desired by the user
+     *
+     * @return the success of the operation
+     */
     public boolean getFile(String fileName) {
         file = new File(fileName);
         if(file.exists()) {
@@ -30,6 +48,11 @@ public class ImportShip {
         return false;
     }
 
+    /**
+     * Manages the lines which are sent to getLineArray and createShip.
+     *
+     * @return The number of ships which were not imported
+     */
     public int convertShips(){
         int shipsNotConverted = 0;
         readFile.next();
@@ -42,11 +65,22 @@ public class ImportShip {
         return shipsNotConverted;
     }
 
+    /**
+     * @param shipLine Each line of the .csv file
+     * @return the line splitted as an array
+     */
     public String [] getLineArray(String shipLine){
         String[] dataArray = shipLine.split(",");
         return dataArray;
     }
 
+    /**
+     * @param shipArray containing all the line data
+     *
+     * Creates and adds ships to the BstShip
+     *
+     * @return 1 if the ship was not added or 0 if it was
+     */
     public int createShip(String [] shipArray) {
         String MMSI = shipArray[0];
 
@@ -55,7 +89,7 @@ public class ImportShip {
         try {
             messageTime = dateFormatter.parse(shipArray[1]);
         }catch (Exception e) {
-            System.out.println("Erro");
+            return 1;
         }
 
         float latitude = Float.parseFloat(shipArray[2]);
@@ -80,11 +114,16 @@ public class ImportShip {
         String transcieverClass = shipArray[15];
 
 
-
         ShipLocation shipLocation = new ShipLocation(messageTime, latitude, longitude, SOG, COG, heading, transcieverClass);
+        BstShip shipBST = App.getApp().getCompany().getBstShip();
+        Ship newShip = shipBST.getShipByMmsiCode(MMSI);
 
-        BstShip shipBST = new App().getCompany().getBstShip();
-        //shipBST.ins
+        if (newShip == null){
+            newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, lenght, width, cargo, draft, shipLocation);
+            shipBST.insert(newShip);
+        } else
+            newShip.getShipLocationBST().insert(shipLocation);
+
         return 0;
     }
 }

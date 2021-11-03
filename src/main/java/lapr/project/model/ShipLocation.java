@@ -24,6 +24,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
 
     private String transceiverClass;
 
+
     public ShipLocation(){}
 
     public ShipLocation(Date messageTime, float latitude, float longitude, float SOG, float COG, int heading, String position, String transceiverClass){
@@ -73,9 +74,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
             this.heading = heading;
     }
 
-    public Date getMessageTime(){
-        return messageTime;
-    }
+    public Date getMessageTime() {return messageTime;}
 
     public float getLatitude(){
         return latitude;

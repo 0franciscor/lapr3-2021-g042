@@ -161,10 +161,7 @@ public class BstShip<E> implements BSTInterface<Ship>{
         return 1 + size(node.getLeft()) + size(node.getRight());
     }
 
-    /*
-     * Returns the height of the tree
-     * @return height
-     */
+
     public int height(){
         return height(root);
     }
@@ -298,7 +295,6 @@ public class BstShip<E> implements BSTInterface<Ship>{
         processBstByLevel(node.getRight(), result, level + 1);
     }
 
-//#############################################
 
     /**
      * This method allows the user to search a certain ship on the BST through its MMSI code (unique code).
@@ -312,6 +308,24 @@ public class BstShip<E> implements BSTInterface<Ship>{
         return find(root, shipToFind).getShip();
     }
 
+
+    /**
+     *
+     * @param imoCode
+     * @return
+     */
+    public Ship getShipByIMO(String imoCode){
+        return new Ship();
+    }
+
+    /**
+     *
+     * @param callSign
+     * @return
+     */
+    public Ship getShipByCallSign(String callSign){
+        return new Ship();
+    }
 }
 
 

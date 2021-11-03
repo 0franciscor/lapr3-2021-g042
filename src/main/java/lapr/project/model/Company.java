@@ -1,6 +1,5 @@
 package lapr.project.model;
 
-
 /**
  * Class that represents a company.
  *
@@ -14,10 +13,16 @@ public class Company {
     private BstShip bstShip;
 
     /**
+     * Represents an instance of the importShip Class
+     */
+    private ImportShip importShip;
+
+    /**
      * Creates an instance of Company
      */
     public Company(){
         bstShip = new BstShip();
+        importShip = new ImportShip();
     }
 
     /**
@@ -26,6 +31,14 @@ public class Company {
      */
     public BstShip getBstShip() {
         return bstShip;
+    }
+
+    /**
+     * Get the instance of ImportShip
+     * @return the ImportShip
+     */
+    public ImportShip getImportShip (){
+        return importShip;
     }
 
 }

@@ -1,14 +1,17 @@
 package lapr.project.model;
 
+import lapr.project.utils.BSTInterface;
+
 import java.util.*;
 
 /**
+ * Class that represents a ShipLocationBST
  *
- * @author 1201239 Francisco Redol
+ * @author 1201239 Francisco Redol <1201239@isep.ipp.pt>
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
 
-public class ShipLocationBST<ShipLocation extends Comparable<ShipLocation>> implements ShipLocationBST_Interface<ShipLocation> {
+public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
 
 
     /** Nested static class for a binary search tree node. */
@@ -44,7 +47,7 @@ public class ShipLocationBST<ShipLocation extends Comparable<ShipLocation>> impl
 
     //----------- end of nested Node class -----------
 
-    protected Node<ShipLocation> root = null;     // root of the tree
+    protected Node<ShipLocation> root;     // root of the tree
 
 
     /* Constructs an empty binary search tree. */
@@ -297,31 +300,7 @@ public class ShipLocationBST<ShipLocation extends Comparable<ShipLocation>> impl
         processBstByLevel(node.getRight(), result, level + 1);
     }
 
-//#########################################################################
-
-    /**
-     * Returns a string representation of the tree.
-     * Draw the tree horizontally
-     */
-    public String toString(){
-        StringBuilder sb = new StringBuilder();
-        toStringRec(root, 0, sb);
-        return sb.toString();
-    }
-
-    private void toStringRec(Node<ShipLocation> root, int level, StringBuilder sb){
-        if(root==null)
-            return;
-        toStringRec(root.getRight(), level+1, sb);
-        if (level!=0){
-            for(int i=0;i<level-1;i++)
-                sb.append("|\t");
-            sb.append("|-------"+root.getShipLocation()+"\n");
-        }
-        else
-            sb.append(root.getShipLocation()+"\n");
-        toStringRec(root.getLeft(), level+1, sb);
-    }
+//#############################################
 
     /**
      *
@@ -333,5 +312,5 @@ public class ShipLocationBST<ShipLocation extends Comparable<ShipLocation>> impl
         return new ArrayList<>(); // Para alterar quando o método estiver implementado
     }
 
-} //----------- end of BST class -----------
+}
 

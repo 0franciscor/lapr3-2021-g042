@@ -103,6 +103,10 @@ public class Summary {
     Summary(Ship ship, ShipLocationBST shipLocationBST){
         imoCode = ship.getShipID();
         name = ship.getName();
+        //como saber se a viagem terminou
+        // total de movimentos = número de nodes
+        // total de tempo = soma da diferença do tempo de inicio e fim de cada percurso
+        //
 
     }
     /**

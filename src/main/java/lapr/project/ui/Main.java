@@ -1,5 +1,6 @@
 package lapr.project.ui;
 
+import lapr.project.controller.App;
 import lapr.project.model.CalculatorExample;
 
 import java.io.IOException;
@@ -36,6 +37,8 @@ class Main {
         if (LOGGER.isLoggable(Level.INFO)) {
             LOGGER.log(Level.INFO, String.valueOf(value));
         }
+
+        App app = App.getApp();
     }
 }
 

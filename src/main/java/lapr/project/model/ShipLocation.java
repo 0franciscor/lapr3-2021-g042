@@ -22,11 +22,12 @@ public class ShipLocation implements Comparable<ShipLocation>{
 
     private String position;
 
-    private String transceiverClass;
+    private String transcieverClass;
+
 
     public ShipLocation(){}
 
-    public ShipLocation(Date messageTime, float latitude, float longitude, float SOG, float COG, int heading, String position, String transceiverClass){
+    public ShipLocation(Date messageTime, float latitude, float longitude, float SOG, float COG, float heading, String position, String transcieverClass){
         this.messageTime = messageTime;
         setLatitude(latitude);
         setLongitude(longitude);
@@ -34,7 +35,19 @@ public class ShipLocation implements Comparable<ShipLocation>{
         setCOG(COG);
         setHeading(heading);
         this.position = position;
-        this.transceiverClass = transceiverClass;
+        this.transcieverClass = transcieverClass;
+
+    }
+
+    public ShipLocation(Date messageTime, float latitude, float longitude, float SOG, float COG, float heading, String transcieverClass){
+        this.messageTime = messageTime;
+        setLatitude(latitude);
+        setLongitude(longitude);
+        setSOG(SOG);
+        setCOG(COG);
+        setHeading(heading);
+        this.position = "not defined";
+        this.transcieverClass = transcieverClass;
 
     }
 
@@ -73,9 +86,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
             this.heading = heading;
     }
 
-    public Date getMessageTime(){
-        return messageTime;
-    }
+    public Date getMessageTime() {return messageTime;}
 
     public float getLatitude(){
         return latitude;
@@ -101,12 +112,12 @@ public class ShipLocation implements Comparable<ShipLocation>{
         return position;
     }
 
-    public String getTransceiverClass(){
-        return transceiverClass;
+    public String getTranscieverClass(){
+        return transcieverClass;
     }
 
     @Override
     public int compareTo(ShipLocation o) {
-        return 0;
+        return this.messageTime.compareTo(o.getMessageTime());
     }
 }

@@ -122,7 +122,7 @@ public class ImportShip {
             newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, lenght, width, cargo, draft, shipLocation);
             shipBST.insert(newShip);
         } else
-            newShip.getShipLocationBST().insert(shipLocation);
+            newShip.getShipPosition().insert(shipLocation);
 
         return 0;
     }

@@ -301,10 +301,8 @@ public class BstShip<E> implements BSTInterface<Ship>{
 //#############################################
 
     /**
-     * @param MMSI that identifies the desired ship.
-     *
      * This method allows the user to search a certain ship on the BST through its MMSI code (unique code).
-     *
+     * @param MMSI that identifies the desired ship.
      * @return the identified Ship
      */
     public Ship getShipByMmsiCode(String MMSI){

@@ -303,13 +303,25 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
 //#############################################
 
     /**
-     *
-     * @param initialDate
-     * @param finalDate
-     * @return
+     * This method allows to obtain the list of the ship's positional messages over a period of time
+     * @param initialDate initial date of positional messages
+     * @param finalDate final date of positional messages
+     * @return list with the respective positional messages
      */
     public List<String> getPositionalMessages(Date initialDate, Date finalDate){
-        return new ArrayList<>(); // Para alterar quando o método estiver implementado
+        
+        Iterable<ShipLocation> bstInOrder = inOrder();
+        Iterator<ShipLocation> iterator = bstInOrder.iterator();
+
+        List<String> positionalMessages = new ArrayList<>();
+
+        while(iterator.hasNext()) {
+            if(iterator.next().getMessageTime().compareTo(initialDate)>=0 && iterator.next().getMessageTime().compareTo(finalDate)<=0){
+                positionalMessages.add(iterator.next().toString());
+            }
+        }
+
+        return positionalMessages;
     }
 
 

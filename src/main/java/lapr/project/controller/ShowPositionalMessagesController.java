@@ -59,7 +59,7 @@ public class ShowPositionalMessagesController {
      * @return
      */
     public List<String> showPositionalMessages(Date initialDate, Date finalDate){
-        this.shipLocationBst=ship.getShipLocationBST();
+        this.shipLocationBst=ship.getShipPosition();
         return shipLocationBst.getPositionalMessages(initialDate,finalDate);
     }
 }

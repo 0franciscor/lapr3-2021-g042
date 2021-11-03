@@ -3,6 +3,7 @@ package lapr.project.model;
 /**
  *
  * @author 1201239 Francisco Redol
+ * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
 public class Ship implements Comparable<Ship> {
 
@@ -179,7 +180,11 @@ public class Ship implements Comparable<Ship> {
         return draft;
     }
 
-    public ShipLocationBST getShipLocationBST(){
+    /**
+     * This method allows to obtain the BST of the different locations of the boat over time
+     * @return BST with the various locations of the ship
+     */
+    public ShipLocationBST getShipPosition(){
         return shipLocationBST;
     }
 
@@ -187,4 +192,6 @@ public class Ship implements Comparable<Ship> {
     public int compareTo(Ship o) {
         return this.MMSI.compareTo(o.getMMSI());
     }
+
+
 }

@@ -37,7 +37,7 @@ class BstShip {
 }
 
 
-class ShowPositionalMessagesUI {}
+class SearchDetailsUI {}
 
 class SearchDetailsController {
 -shipExist(mmsiCode)
@@ -49,14 +49,40 @@ class Company {
 -getBstShip()
 }
 
+class SearchDetailsMapper{
+-shipDetailsToDto()
+}
+
+class ShipDetailsDto{
+-mmsiCode
+-name
+-imoCode
+-numberEnergyGenerators
+-generatorPower
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+}
+
+
 
 Company "1" -- "1" BstShip : uses >
 
-ShowPositionalMessagesUI ..> SearchDetailsController
+SearchDetailsUI ..> SearchDetailsController
+SearchDetailsUI ..> ShipDetailsDto
 
 SearchDetailsController ..> Company
 SearchDetailsController ..> BstShip
 SearchDetailsController ..> Ship
+SearchDetailsController ..> SearchDetailsMapper
+SearchDetailsController ..> ShipDetailsDto
+
+
+SearchDetailsMapper ..> Ship
+
 
 
 @enduml

@@ -10,7 +10,7 @@ participant "Company" as COMP
 participant "bstShip:\nBstShip" as BstShip
 participant "ship:\Ship" as S
 participant "shipLocationBst:\nShipLocationBST" as ShipLocationBST
-participant "ShipPosition" as SP
+participant "ShipLocation" as SL
 
 
 activate TM

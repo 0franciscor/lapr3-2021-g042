@@ -309,16 +309,23 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return list with the respective positional messages
      */
     public List<String> getPositionalMessages(Date initialDate, Date finalDate){
-        
+
         Iterable<ShipLocation> bstInOrder = inOrder();
         Iterator<ShipLocation> iterator = bstInOrder.iterator();
 
         List<String> positionalMessages = new ArrayList<>();
 
-        while(iterator.hasNext()) {
-            if(iterator.next().getMessageTime().compareTo(initialDate)>=0 && iterator.next().getMessageTime().compareTo(finalDate)<=0){
-                positionalMessages.add(iterator.next().toString());
+        ShipLocation aux = null;
+
+        if(iterator.hasNext()){
+            aux = iterator.next();
+        }
+
+        while(iterator.hasNext() && !(aux.getMessageTime().after(finalDate))) {
+            if(aux.getMessageTime().after(initialDate) && aux.getMessageTime().before(finalDate) || aux.getMessageTime().equals(initialDate) || aux.getMessageTime().equals(finalDate)){
+                positionalMessages.add(aux.toString());
             }
+            aux = iterator.next();
         }
 
         return positionalMessages;

@@ -120,4 +120,13 @@ public class ShipLocation implements Comparable<ShipLocation>{
     public int compareTo(ShipLocation o) {
         return this.messageTime.compareTo(o.getMessageTime());
     }
+
+    /**
+     * Textual description of the ship's location
+     * @return a string representation of the ship location
+     */
+    @Override
+    public String toString(){
+        return String.format("Date: %s\n\nLatitude: %f\nLongitude: %f\n\nSOG: %f\nCOG: %f\nHeading: %f",messageTime,latitude,longitude,SOG,COG,heading);
+    }
 }

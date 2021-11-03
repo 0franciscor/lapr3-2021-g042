@@ -14,4 +14,20 @@ public class App {
      */
     private Company company;
 
+    private App(){
+        company = new Company();
+    }
+
+    /**
+     * Allows the user to get the instance of the running App.
+     * @return the instance of the running App
+     */
+    public static App getApp(){
+        return new App();
+    }
+
+    public Company getCompany(){
+        return company;
+    }
+
 }

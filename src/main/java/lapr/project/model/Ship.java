@@ -4,7 +4,7 @@ package lapr.project.model;
  *
  * @author 1201239 Francisco Redol
  */
-public class Ship {
+public class Ship implements Comparable<Ship> {
 
     private String MMSI;
 
@@ -24,12 +24,12 @@ public class Ship {
 
     private float width;
 
-    private float capacity; //in m^3
+    private float capacity;
 
     private float draft;
 
-    private ShipLocationBST shipLocationBST;
-    //Dynamical fields according to the location of the ship, are stored in a dedicated class, called ShipLocation
+    private ShipLocationBST shipLocationBST; //Dynamical fields according to the location of the ship, are stored in a dedicated class, called ShipLocation
+
 
     public Ship(){}
 
@@ -47,7 +47,7 @@ public class Ship {
         setCapacity(capacity);
         setDraft(draft);
         shipLocationBST = new ShipLocationBST();
-        shipLocationBST.insert(shipLocation); //Linha que vai permitir adicionar as localizações na arvore
+        shipLocationBST.insert(shipLocation);
 
     }
 
@@ -181,5 +181,10 @@ public class Ship {
 
     public ShipLocationBST getShipLocationBST(){
         return shipLocationBST;
+    }
+
+    @Override
+    public int compareTo(Ship o) {
+        return this.MMSI.compareTo(o.getMMSI());
     }
 }

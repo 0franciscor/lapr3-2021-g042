@@ -304,8 +304,12 @@ public class BstShip<E> implements BSTInterface<Ship>{
     public Ship getShipByMmsiCode(String MMSI){
         Ship shipToFind = new Ship();
         shipToFind.setMMSI(MMSI);
-
-        return find(root, shipToFind).getShip();
+        Node<Ship> aux = find(root, shipToFind);
+        if(aux==null){
+            return null;
+        } else {
+            return find(root, shipToFind).getShip();
+        }
     }
 
 

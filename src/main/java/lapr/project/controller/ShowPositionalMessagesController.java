@@ -43,20 +43,26 @@ public class ShowPositionalMessagesController {
         this.bstShip=company.getBstShip();
     }
 
-    /**
-     *
-     * @param mmsiCode
-     * @return
-     */
-    public boolean shipExist(String mmsiCode){
-        return (this.ship = bstShip.getShipByMmsiCode(mmsiCode)) != null;
+    //apagar depois da classe company estar implementada
+    public void setBstShip(BstShip bstShip) {
+        this.bstShip = bstShip;
     }
 
     /**
-     *
-     * @param initialDate
-     * @param finalDate
-     * @return
+     * Verification if a ship exists in the system through the MMSI code
+     * @param mmsiCode Code of the ship that we want to know if it exists in the system
+     * @return true if the ship exists, otherwise return false
+     */
+    public boolean shipExist(String mmsiCode){
+        this.ship=bstShip.getShipByMmsiCode(mmsiCode);
+        return ship != null;
+    }
+
+    /**
+     * Obtain the positional messages of the intended ship within the indicated period of time
+     * @param initialDate initial date of the intended period
+     * @param finalDate final date of the intended period
+     * @return List with requested positional messages
      */
     public List<String> showPositionalMessages(Date initialDate, Date finalDate){
         this.shipLocationBst=ship.getShipPosition();

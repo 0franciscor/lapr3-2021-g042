@@ -5,6 +5,7 @@ import java.util.Date;
 /**
  *
  * @author 1201239 Francisco Redol
+ * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
 public class ShipLocation implements Comparable<ShipLocation>{
 

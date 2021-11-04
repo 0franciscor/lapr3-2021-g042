@@ -328,6 +328,11 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
             aux = iterator.next();
         }
 
+        if(aux.getMessageTime().after(initialDate) && aux.getMessageTime().before(finalDate) || aux.getMessageTime().equals(initialDate) || aux.getMessageTime().equals(finalDate)){
+            positionalMessages.add(aux.toString());
+        }
+
+
         return positionalMessages;
     }
 

@@ -21,10 +21,17 @@ public class ShipLocationBSTTest {
 
     ShipLocationBST<ShipLocation> tree;
 
+    ShipLocation location1;
+    ShipLocation location2;
+    ShipLocation location3;
+
     public ShipLocationBSTTest() throws ParseException {
-        arr.add(new ShipLocation(dateFormatter.parse(auxDatas[0]),36,-122,19,145,147,"B"));
-        arr.add(new ShipLocation(dateFormatter.parse(auxDatas[1]),36,-122,19,145,147,"B"));
-        arr.add(new ShipLocation(dateFormatter.parse(auxDatas[2]),36,-122,19,145,147,"B"));
+        location1 = new ShipLocation(dateFormatter.parse(auxDatas[0]),36,-122,19,145,147,"B");
+        location2 = new ShipLocation(dateFormatter.parse(auxDatas[1]),36,-122,19,145,147,"B");
+        location3 = new ShipLocation(dateFormatter.parse(auxDatas[2]),36,-122,19,145,147,"B");
+        arr.add(location1);
+        arr.add(location2);
+        arr.add(location3);
     }
 
     @Before
@@ -36,11 +43,45 @@ public class ShipLocationBSTTest {
     }
 
     @Test
-    public void getPositionalMessagesNotExist() throws ParseException {
+    public void getPositionalMessagesNotExist01() throws ParseException {
         String[] datas = {"30-12-2020 01:25","30-12-2020 17:02"};
-        List<String> result = new ArrayList<>();
         List<String> expected = new ArrayList<>();
-        result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
+        List<String> result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
+        assertEquals(expected,result);
+    }
+
+    @Test
+    public void getPositionalMessagesNotExist02() throws ParseException {
+        String[] datas = {"31-12-2020 18:25","31-12-2020 20:02"};
+        List<String> expected = new ArrayList<>();
+        List<String> result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
+        assertEquals(expected,result);
+    }
+
+    @Test
+    public void getPositionalMessagesExist01() throws ParseException {
+        String[] datas = {"31-12-2020 01:25","31-12-2020 02:02"};
+        List<String> expected = new ArrayList<>();
+        expected.add(location1.toString());
+        List<String>result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
+        assertEquals(expected,result);
+    }
+
+    @Test
+    public void getPositionalMessagesExist02() throws ParseException {
+        String[] datas = {"31-12-2020 17:00","31-12-2020 17:02"};
+        List<String> expected = new ArrayList<>();
+        expected.add(location3.toString());
+        List<String>result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
+        assertEquals(expected,result);
+    }
+
+    @Test
+    public void getPositionalMessagesExist03() throws ParseException {
+        String[] datas = {"31-12-2020 16:00","31-12-2020 16:30"};
+        List<String> expected = new ArrayList<>();
+        expected.add(location2.toString());
+        List<String>result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
         assertEquals(expected,result);
     }
 }

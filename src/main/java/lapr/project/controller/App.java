@@ -22,12 +22,22 @@ public class App {
      * Allows the user to get the instance of the running App.
      * @return the instance of the running App
      */
-    public static App getApp(){
-        return new App();
-    }
 
     public Company getCompany(){
         return company;
     }
 
+
+    //############# Singleton #############
+    private static App singleton = null;
+
+    public static App getInstance() {
+        if (singleton == null) {
+            synchronized (App.class) {
+                singleton = new App();
+            }
+        }
+
+        return singleton;
+    }
 }

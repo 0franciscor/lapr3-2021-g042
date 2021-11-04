@@ -12,13 +12,9 @@ activate ":System"
 deactivate ":System"
 TM -> ":System" : Types the MMSI code
 activate ":System"
-":System" --> TM : Requests initial date of the ship's position
+":System" --> TM : Requests the necessary data \n (initial date and final date)
 deactivate ":System"
-TM -> ":System" : Types initial date
-activate ":System"
-":System" --> TM : Requests final date of the ship's position
-deactivate ":System"
-TM -> ":System" : Types the final date
+TM -> ":System" : Introduce the requested data
 activate ":System"
 ":System" --> TM : Shows the ship's positional messages
 deactivate ":System"

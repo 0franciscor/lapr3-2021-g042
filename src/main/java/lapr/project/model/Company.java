@@ -26,7 +26,7 @@ public class Company {
     }
 
     /**
-     *  Get the instance of BstShip
+     * Get the instance of BstShip
      * @return the bstShip
      */
     public BstShip getBstShip() {

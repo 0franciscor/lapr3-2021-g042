@@ -26,7 +26,7 @@ public class ImportShip {
     /**
      * The class constructor
      */
-    public ImportShip(){}
+    public ImportShip() {}
 
     /**
      * @param fileName The file name
@@ -55,11 +55,14 @@ public class ImportShip {
      */
     public int convertShips(){
         int shipsNotConverted = 0;
-        readFile.next();
+        readFile.nextLine();
         while(readFile.hasNext()){
-            String line = readFile.next();
+            String line = readFile.nextLine();
             String[] shipArray = getLineArray(line);
-            shipsNotConverted += createShip(shipArray);
+            if(shipArray.length == 16)
+                shipsNotConverted += createShip(shipArray);
+            else
+                shipsNotConverted += 1;
         }
         readFile.close();
         return shipsNotConverted;
@@ -77,52 +80,50 @@ public class ImportShip {
     /**
      * @param shipArray containing all the line data
      *
-     * Creates and adds ships to the BstShip
+     * Creates and adds ships to the BstShip. If the ship already exists, its location is added
      *
      * @return 1 if the ship was not added or 0 if it was
      */
     public int createShip(String [] shipArray) {
-        String MMSI = shipArray[0];
 
-        Date messageTime = null;
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         try {
-            messageTime = dateFormatter.parse(shipArray[1]);
+            //#################### Ship Location Conversion and Creation ####################
+            String MMSI = shipArray[0];
+            Date messageTime = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(shipArray[1]);
+            float latitude = Float.parseFloat(shipArray[2]);
+            float longitude = Float.parseFloat(shipArray[3]);
+            float SOG = Float.parseFloat(shipArray[4]);
+            float COG = Float.parseFloat(shipArray[5]);
+            float heading = Float.parseFloat(shipArray[6]);
+            String transcieverClass = shipArray[15];
+            ShipLocation shipLocation = new ShipLocation(messageTime, latitude, longitude, SOG, COG, heading, transcieverClass);
+
+            //#################### Ship Conversion and Creation ####################
+            BstShip shipBST = App.getInstance().getCompany().getBstShip();
+            Ship newShip = shipBST.getShipByMmsiCode(MMSI);
+
+            if (newShip == null) {
+                String name = shipArray[7];
+                String shipID = shipArray[8];
+                String callSign = shipArray[9];
+                int vesselType = Integer.parseInt(shipArray[10]);
+                float lenght = Float.parseFloat(shipArray[11]);
+                float width = Float.parseFloat(shipArray[12]);
+                float draft = Float.parseFloat(shipArray[13]);
+                float cargo;
+                if (shipArray[14].equals("NA"))
+                    cargo = 0;
+                else
+                    cargo = Float.parseFloat(shipArray[14]);
+
+                newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, lenght, width, cargo, draft, shipLocation);
+                shipBST.insert(newShip);
+            } else
+                newShip.getShipPosition().insert(shipLocation);
+
         }catch (Exception e) {
             return 1;
         }
-
-        float latitude = Float.parseFloat(shipArray[2]);
-        float longitude = Float.parseFloat(shipArray[3]);
-        float SOG = Float.parseFloat(shipArray[4]);
-        float COG = Float.parseFloat(shipArray[5]);
-        float heading = Float.parseFloat(shipArray[6]);
-        String name = shipArray[7];
-        String shipID = shipArray[8];
-        String callSign = shipArray[9];
-        int vesselType = Integer.parseInt(shipArray[10]);
-        float lenght = Float.parseFloat(shipArray[11]);
-        float width = Float.parseFloat(shipArray[12]);
-        float draft = Float.parseFloat(shipArray[13]);
-
-        float cargo;
-        if(shipArray[14].equals("NA"))
-            cargo = 0;
-        else
-            cargo = Float.parseFloat(shipArray[14]);
-
-        String transcieverClass = shipArray[15];
-
-
-        ShipLocation shipLocation = new ShipLocation(messageTime, latitude, longitude, SOG, COG, heading, transcieverClass);
-        BstShip shipBST = App.getApp().getCompany().getBstShip();
-        Ship newShip = shipBST.getShipByMmsiCode(MMSI);
-
-        if (newShip == null){
-            newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, lenght, width, cargo, draft, shipLocation);
-            shipBST.insert(newShip);
-        } else
-            newShip.getShipLocationBST().insert(shipLocation);
 
         return 0;
     }

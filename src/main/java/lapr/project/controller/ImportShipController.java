@@ -18,8 +18,7 @@ public class ImportShipController {
      * The class constructor
      */
     public ImportShipController(){
-        //importShip = new App.getCompany().getImportShip(); //mudar para Company
-        importShip = new ImportShip();
+        importShip = App.getInstance().getCompany().getImportShip(); //mudar para Company
     }
 
     /**

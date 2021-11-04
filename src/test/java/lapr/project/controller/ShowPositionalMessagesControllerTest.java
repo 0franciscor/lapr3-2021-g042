@@ -1,9 +1,6 @@
 package lapr.project.controller;
 
-import lapr.project.model.BstShip;
-import lapr.project.model.Ship;
-import lapr.project.model.ShipLocation;
-import lapr.project.model.ShipLocationBST;
+import lapr.project.model.*;
 import org.junit.Before;
 
 import java.text.ParseException;
@@ -23,32 +20,32 @@ public class ShowPositionalMessagesControllerTest {
 
     ShipLocationBST<ShipLocation> tree;
 
-    BstShip<Ship> shipTree;
-
     ShipLocation location1;
     ShipLocation location2;
     ShipLocation location3;
 
-    ShowPositionalMessagesController controller = new ShowPositionalMessagesController();
+    Company company;
+
+    ShowPositionalMessagesController controller;
 
     public ShowPositionalMessagesControllerTest() throws ParseException {
-            location1 = new ShipLocation(dateFormatter.parse(auxDatas[0]), 36, -122, 19, 145, 147, "B");
-            location2 = new ShipLocation(dateFormatter.parse(auxDatas[1]), 36, -122, 19, 145, 147, "B");
-            location3 = new ShipLocation(dateFormatter.parse(auxDatas[2]), 36, -122, 19, 145, 147, "B");
-            arr.add(location1);
-            arr.add(location2);
-            arr.add(location3);
+        location1 = new ShipLocation(dateFormatter.parse(auxDatas[0]), 36, -122, 19, 145, 147, "B");
+        location2 = new ShipLocation(dateFormatter.parse(auxDatas[1]), 36, -122, 19, 145, 147, "B");
+        location3 = new ShipLocation(dateFormatter.parse(auxDatas[2]), 36, -122, 19, 145, 147, "B");
+        arr.add(location1);
+        arr.add(location2);
+        arr.add(location3);
     }
 
     @Before
     public void setUp(){
+        company=new Company();
+        controller = new ShowPositionalMessagesController(company);
         tree = new ShipLocationBST();
-        shipTree = new BstShip<>();
         for(ShipLocation i :arr)
             tree.insert(i);
-        Ship ship = new Ship("211331640",",SEOUL EXPRESS","2113432",1,280,"DHBN",70,294,32,79,13,tree);
-        shipTree.insert(ship);
-        controller.setBstShip(shipTree);
+        Ship ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13,tree);
+        company.getBstShip().insert(ship);
     }
 
     @org.junit.Test

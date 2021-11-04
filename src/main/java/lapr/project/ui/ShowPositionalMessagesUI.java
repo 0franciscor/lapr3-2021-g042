@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
-public class ShowPositionalMessagesUI {
+public class ShowPositionalMessagesUI implements Runnable{
 
     /**
      * Represents a instance of Show Positional Messages Controller.
@@ -32,6 +32,7 @@ public class ShowPositionalMessagesUI {
     /**
      *
      */
+    @Override
     public void run() {
 
         System.out.printf("%nViewing a Ship's Positional Messages in a given period%n");

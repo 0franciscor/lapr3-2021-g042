@@ -39,13 +39,16 @@ public class ShowPositionalMessagesController {
      * Initialize the controller
      */
     public ShowPositionalMessagesController(){
-        this.company= new Company(); // Para alterar quando a App instanciar a company
+        this.company= App.getInstance().getCompany();
         this.bstShip=company.getBstShip();
     }
 
-    //apagar depois da classe company estar implementada
-    public void setBstShip(BstShip bstShip) {
-        this.bstShip = bstShip;
+    /**
+     * Initialize the controller. Testing purposes
+     */
+    public ShowPositionalMessagesController(Company company){
+        this.company= company;
+        this.bstShip=company.getBstShip();
     }
 
     /**

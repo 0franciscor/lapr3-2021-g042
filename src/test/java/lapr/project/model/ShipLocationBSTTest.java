@@ -39,7 +39,7 @@ public class ShipLocationBSTTest {
         tree = new ShipLocationBST();
         for(ShipLocation i :arr)
             tree.insert(i);
-        Ship ship = new Ship("211331640",",SEOUL EXPRESS","2113432",1,280,"DHBN",70,294,32,79,13,tree);
+        Ship ship = new Ship("211331640",",SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13,tree);
     }
 
     @Test

@@ -87,7 +87,7 @@ public class ImportShip {
     public int createShip(String [] shipArray) {
 
         try {
-            //#################### Ship Location Conversion ####################
+            //#################### Ship Location Conversion and Creation ####################
             String MMSI = shipArray[0];
             Date messageTime = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(shipArray[1]);
             float latitude = Float.parseFloat(shipArray[2]);
@@ -99,7 +99,7 @@ public class ImportShip {
             ShipLocation shipLocation = new ShipLocation(messageTime, latitude, longitude, SOG, COG, heading, transcieverClass);
 
             //#################### Ship Conversion and Creation ####################
-            BstShip shipBST = App.getApp().getCompany().getBstShip();
+            BstShip shipBST = App.getInstance().getCompany().getBstShip();
             Ship newShip = shipBST.getShipByMmsiCode(MMSI);
 
             if (newShip == null) {

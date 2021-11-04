@@ -485,7 +485,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return
      */
     public float getLatitudeDeparture() {
-        return startShipLocation().getLatitude();
+        return Float.parseFloat(startShipLocation().getLatitude());
     }
 
     /**
@@ -493,7 +493,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return
      */
     public float getLongitudeDeparture() {
-        return  startShipLocation().getLongitude();
+        return  Float.parseFloat(startShipLocation().getLongitude());
     }
 
     /**
@@ -501,7 +501,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return
      */
     public float getArrivalLatitude() {
-        return endShipLocation().getLatitude();
+        return Float.parseFloat(endShipLocation().getLatitude());
     }
 
     /**
@@ -509,7 +509,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return
      */
     public float getArrivalLongitude() {
-        return endShipLocation().getLongitude();
+        return Float.parseFloat(endShipLocation().getLongitude());
     }
 
     /**
@@ -523,7 +523,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         while (shipLocationIterator.hasNext()){
             ShipLocation secondLocation = shipLocationIterator.next();
 
-            sum += calculateDistance(firstLocation.getLatitude(), firstLocation.getLongitude(), secondLocation.getLatitude(),secondLocation.getLongitude());
+            sum += calculateDistance(Float.parseFloat(firstLocation.getLatitude()), Float.parseFloat(firstLocation.getLongitude()), Float.parseFloat(secondLocation.getLatitude()),Float.parseFloat(secondLocation.getLongitude()));
             firstLocation = secondLocation;
         }
         return sum;

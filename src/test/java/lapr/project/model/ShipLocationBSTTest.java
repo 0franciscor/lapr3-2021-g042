@@ -26,9 +26,9 @@ public class ShipLocationBSTTest {
     ShipLocation location3;
 
     public ShipLocationBSTTest() throws ParseException {
-        location1 = new ShipLocation(dateFormatter.parse(auxDatas[0]),36,-122,19,145,147,"B");
-        location2 = new ShipLocation(dateFormatter.parse(auxDatas[1]),36,-122,19,145,147,"B");
-        location3 = new ShipLocation(dateFormatter.parse(auxDatas[2]),36,-122,19,145,147,"B");
+        location1 = new ShipLocation(dateFormatter.parse(auxDatas[0]),"36","-122",19,145,"147","B");
+        location2 = new ShipLocation(dateFormatter.parse(auxDatas[1]),"36","-122",19,145,"147","B");
+        location3 = new ShipLocation(dateFormatter.parse(auxDatas[2]),"36","-122",19,145,"147","B");
         arr.add(location1);
         arr.add(location2);
         arr.add(location3);

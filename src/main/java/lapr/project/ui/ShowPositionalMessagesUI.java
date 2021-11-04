@@ -39,7 +39,7 @@ public class ShowPositionalMessagesUI implements Runnable{
 
         System.out.printf("%nViewing a Ship's Positional Messages in a given period%n");
 
-        String mmsiCode = Utils.readLineFromConsole("Enter the MMSI code of the vessel you wish to obtain information from.");
+        String mmsiCode = Utils.readLineFromConsole("Enter the MMSI code of the vessel you wish to obtain information from:");
         if( mmsiCode == null ||mmsiCode.length() != 9) {
             System.out.println("The ship MMSI code must be 9-digit long.");
         } else{

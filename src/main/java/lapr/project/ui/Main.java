@@ -38,6 +38,9 @@ class Main {
         importShip.getFile("sships.csv");
         System.out.println("Number of ships not imported: " + importShip.convertShips());
 
+        ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();
+        ui.run();
+
         System.out.println(App.getInstance().getCompany().getBstShip().size());
         /*
         CalculatorExample calculatorExample = new CalculatorExample();

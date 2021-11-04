@@ -18,8 +18,10 @@ activate sdUI
 sdUI --> manager : Requests to choose the code to perform the search (MMSI, IMO or Call Sign).
 deactivate sdUI
 
+
 manager -> sdUI : Chooses the code
 activate sdUI
+
 sdUI --> manager : Asks to type code
 deactivate sdUI
 

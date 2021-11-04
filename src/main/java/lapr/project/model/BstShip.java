@@ -54,7 +54,7 @@ public class BstShip<E> implements BSTInterface<Ship>{
 
 
     /*
-     * @return root Node of the tree (or null if tree is empty)
+     * @return root Node of the tree (or null if tree is empsty)
      */
     protected Node<Ship> root() {
         return root;
@@ -310,24 +310,29 @@ public class BstShip<E> implements BSTInterface<Ship>{
         return find(root, shipToFind).getShip();
     }
 
-
     /**
+     * This method allows the user to search a certain ship on the BST through its IMO Code.
      *
      * @param imoCode
      * @return
      */
-    public Ship getShipByIMO(String imoCode){
-        return new Ship();
-    }
+    /*public Ship getShipByIMO(String imoCode){
+        Ship shipToFind = new Ship();
+        shipToFind.setShipID(imoCode);
+        return find(root, shipToFind).getShip();
+    }*/
 
     /**
+     * This method allows the user to search a certain ship on the BST through its Call Sign.
      *
      * @param callSign
      * @return
      */
-    public Ship getShipByCallSign(String callSign){
-        return new Ship();
-    }
+    /*public Ship getShipByCallSign(String callSign){
+        Ship shipToFind = new Ship();
+        shipToFind.setCallSign(callSign);
+        return find(root, shipToFind).getShip();
+    }*/
 }
 
 

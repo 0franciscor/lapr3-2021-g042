@@ -187,4 +187,6 @@ public class Ship implements Comparable<Ship> {
     public int compareTo(Ship o) {
         return this.MMSI.compareTo(o.getMMSI());
     }
+
+
 }

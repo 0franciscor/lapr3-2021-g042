@@ -2,7 +2,11 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
-actor "Traffic Manager" as TP
+actor "Traffic Manager" as TM
 
+activate TM
+TM -> ":System" : Requests the pairs of ships with close departure/arrival coordinates
+activate ":System"
+":System" --> TM : Shows the information
 
 @enduml

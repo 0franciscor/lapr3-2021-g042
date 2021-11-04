@@ -5,29 +5,30 @@ import java.util.Date;
 /**
  *
  * @author 1201239 Francisco Redol
+ * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
 public class ShipLocation implements Comparable<ShipLocation>{
 
     private Date messageTime;
 
-    private float latitude;
+    private String latitude;
 
-    private float longitude;
+    private String longitude;
 
     private float SOG;
 
     private float COG;
 
-    private float heading;
+    private String heading;
 
     private String position;
 
-    private String transcieverClass;
+    private String transceiverClass;
 
 
     public ShipLocation(){}
 
-    public ShipLocation(Date messageTime, float latitude, float longitude, float SOG, float COG, float heading, String position, String transcieverClass){
+    public ShipLocation(Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String position, String transceiverClass){
         this.messageTime = messageTime;
         setLatitude(latitude);
         setLongitude(longitude);
@@ -35,11 +36,11 @@ public class ShipLocation implements Comparable<ShipLocation>{
         setCOG(COG);
         setHeading(heading);
         this.position = position;
-        this.transcieverClass = transcieverClass;
+        this.transceiverClass = transceiverClass;
 
     }
 
-    public ShipLocation(Date messageTime, float latitude, float longitude, float SOG, float COG, float heading, String transcieverClass){
+    public ShipLocation(Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String transceiverClass){
         this.messageTime = messageTime;
         setLatitude(latitude);
         setLongitude(longitude);
@@ -47,52 +48,69 @@ public class ShipLocation implements Comparable<ShipLocation>{
         setCOG(COG);
         setHeading(heading);
         this.position = "not defined";
-        this.transcieverClass = transcieverClass;
+        this.transceiverClass = transceiverClass;
 
     }
 
-    public void setLatitude(float latitude){
-        if(latitude<-90 || latitude > 90)
+    public void setLatitude(String latitude){
+        if(latitude == null || latitude.isEmpty())
+            throw new IllegalArgumentException("Invalid Latitude.");
+
+        if(latitude.equals("91"))
+            this.latitude = "not available";
+        else if(Float.parseFloat(latitude) < -90 || Float.parseFloat(latitude)  > 90)
             throw new IllegalArgumentException("Invalid Latitude.");
         else
             this.latitude = latitude;
     }
 
-    public void setLongitude(float longitude){
-        if(longitude < -180 || longitude > 180)
+    public void setLongitude(String longitude){
+        if(longitude == null || longitude.isEmpty())
+            throw new IllegalArgumentException("Invalid Longitude.");
+
+        if(longitude.equals("181"))
+            this.longitude = "not available";
+        else if(Float.parseFloat(longitude) < -180 || Float.parseFloat(longitude)  > 180)
             throw new IllegalArgumentException("Invalid Longitude.");
         else
             this.longitude = longitude;
     }
 
     public void setSOG(float SOG){
-        if(SOG <= 0)
+        if(SOG < 0)
             throw new IllegalArgumentException("Invalid SOG.");
         else
             this.SOG = SOG;
     }
 
     public void setCOG(float COG){
-        if(COG < 0 || COG > 359)
-            throw new IllegalArgumentException("Invalid COG.");
+        if(COG < 0)
+            this.COG = 360 + COG;
+        else if (COG > 360)
+            this.COG = 360 - COG;
         else
             this.COG = COG;
     }
 
-    public void setHeading(float heading){
-        if(heading < 0 || heading > 359)
-            throw new IllegalArgumentException("Invalid heading.");
+    public void setHeading(String heading){
+        if(heading == null || heading.isEmpty())
+            throw new IllegalArgumentException("Invalid Heading.");
+
+        if(heading.equals("511"))
+            this.heading = "not available";
+        else if(Integer.parseInt(heading) < 0 || Integer.parseInt(heading) > 359)
+            throw new IllegalArgumentException("Invalid Heading.");
         else
             this.heading = heading;
     }
 
     public Date getMessageTime() {return messageTime;}
 
-    public float getLatitude(){
+    public String getLatitude(){
         return latitude;
     }
 
-    public float getLongitude(){
+    public String getLongitude(){
         return longitude;
     }
 
@@ -104,7 +122,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
         return COG;
     }
 
-    public float getHeading (){
+    public String getHeading (){
         return heading;
     }
 
@@ -112,12 +130,21 @@ public class ShipLocation implements Comparable<ShipLocation>{
         return position;
     }
 
-    public String getTranscieverClass(){
-        return transcieverClass;
+    public String getTransceiverClass(){
+        return transceiverClass;
     }
 
     @Override
     public int compareTo(ShipLocation o) {
         return this.messageTime.compareTo(o.getMessageTime());
+    }
+
+    /**
+     * Textual description of the ship's location
+     * @return a string representation of the ship location
+     */
+    @Override
+    public String toString(){
+        return String.format("Date: %s\nLatitude: %s\nLongitude: %s\n\nSOG: %f\nCOG: %f\nHeading: %s",messageTime,latitude,longitude,SOG,COG,heading);
     }
 }

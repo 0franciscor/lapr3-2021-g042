@@ -54,7 +54,7 @@ public class BstShip<E> implements BSTInterface<Ship>{
 
 
     /*
-     * @return root Node of the tree (or null if tree is empty)
+     * @return root Node of the tree (or null if tree is empsty)
      */
     protected Node<Ship> root() {
         return root;
@@ -161,10 +161,7 @@ public class BstShip<E> implements BSTInterface<Ship>{
         return 1 + size(node.getLeft()) + size(node.getRight());
     }
 
-    /*
-     * Returns the height of the tree
-     * @return height
-     */
+
     public int height(){
         return height(root);
     }
@@ -298,22 +295,46 @@ public class BstShip<E> implements BSTInterface<Ship>{
         processBstByLevel(node.getRight(), result, level + 1);
     }
 
-//#############################################
 
     /**
-     * @param MMSI that identifies the desired ship.
-     *
      * This method allows the user to search a certain ship on the BST through its MMSI code (unique code).
-     *
+     * @param MMSI that identifies the desired ship.
      * @return the identified Ship
      */
     public Ship getShipByMmsiCode(String MMSI){
         Ship shipToFind = new Ship();
         shipToFind.setMMSI(MMSI);
-
-        return find(root, shipToFind).getShip();
+        Node<Ship> aux = find(root, shipToFind);
+        if(aux==null){
+            return null;
+        } else {
+            return find(root, shipToFind).getShip();
+        }
     }
 
+    /**
+     * This method allows the user to search a certain ship on the BST through its IMO Code.
+     *
+     * @param imoCode
+     * @return
+     */
+    /*public Ship getShipByIMO(String imoCode){
+        Ship shipToFind = new Ship();
+        shipToFind.setShipID(imoCode);
+        return find(root, shipToFind).getShip();
+    }*/
+
+    /**
+     * This method allows the user to search a certain ship on the BST through its Call Sign.
+     *
+     * @param callSign
+     * @return
+     */
+    /*public Ship getShipByCallSign(String callSign){
+        Ship shipToFind = new Ship();
+        shipToFind.setCallSign(callSign);
+        return find(root, shipToFind).getShip();
+    }*/
 }
 
 

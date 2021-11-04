@@ -55,8 +55,7 @@ public class ImportShip {
      */
     public int convertShips(){
         int shipsNotConverted = 0;
-        String inicial = readFile.nextLine();
-        System.out.println(inicial);
+        readFile.nextLine();
         while(readFile.hasNext()){
             String line = readFile.nextLine();
             String[] shipArray = getLineArray(line);
@@ -123,12 +122,7 @@ public class ImportShip {
                 newShip.getShipPosition().insert(shipLocation);
 
         }catch (Exception e) {
-
-            for(int i = 0; i<shipArray.length; i++)
-                System.out.print(shipArray[i] + " ");
-            e.printStackTrace();
-            throw new IllegalArgumentException("");
-
+            return 1;
         }
 
         return 0;

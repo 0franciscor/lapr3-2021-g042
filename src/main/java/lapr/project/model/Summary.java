@@ -93,7 +93,7 @@ public class Summary {
     Summary(Ship ship){
         mmsiCode = ship.getMMSI();
         name = ship.getName();
-        ShipLocationBST treeOfPositions = ship.getShipLocationBST();
+        ShipLocationBST treeOfPositions = ship.getShipPosition();
         startBaseDate = treeOfPositions.getStartBase();
         endBaseDate = treeOfPositions.getEndBase();
         totalMovements = treeOfPositions.getTotalMovements();

@@ -36,7 +36,7 @@ TM -> UI : Introduce the requested data
 activate UI
 UI -> CTRL: showPositionalMessages(initialDate, finalDate)
 activate CTRL
-CTRL -> S : shipLocationBst = getShipLocation()
+CTRL -> S : shipLocationBst = getShipPosition()
 activate S
 deactivate S
 CTRL -> ShipLocationBST : listPositionalMessages = getPositionalMessages(initialDate, finalDate)

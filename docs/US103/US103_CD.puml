@@ -15,9 +15,10 @@ class Ship {
 -width
 -capacity
 -draft
+-getShipPosition()
 }
 
-class ShipPosition {
+class ShipLocation {
 -baseDateTime
 -latitude
 -longitude
@@ -49,7 +50,7 @@ class Company {
 }
 
 BstShip "1" -- "1..*" Ship : owns >
-ShipLocationBST "1" -- "1..*" ShipPosition : has >
+ShipLocationBST "1" -- "1..*" ShipLocation : has >
 
 Company "1" -- "1" BstShip : uses >
 

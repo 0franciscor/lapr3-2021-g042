@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,7 +42,7 @@ public class ShowPositionalMessagesUI implements Runnable{
         if (showPositionalMessagesctrl.shipExist(mmsiCode)){
             Date initialDate = readDateFromConsole("Enter the initial date of the information you want to obtain");
             Date finalDate = readDateFromConsole("Enter the final date of the information you want to obtain");
-            showPositionalMessagesctrl.showPositionalMessages(initialDate,finalDate);
+            List mesages = showPositionalMessagesctrl.showPositionalMessages(initialDate,finalDate);
         } else {
             System.out.printf("%nThere is no ship in the system with this MMSI code%n");
         }

@@ -84,4 +84,14 @@ public class ShipLocationBSTTest {
         List<String>result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
         assertEquals(expected,result);
     }
+
+    @Test
+    public void getPositionalMessagesExist04() throws ParseException {
+        String[] datas = {"31-12-2020 12:00","31-12-2020 18:30"};
+        List<String> expected = new ArrayList<>();
+        expected.add(location2.toString());
+        expected.add(location3.toString());
+        List<String>result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
+        assertEquals(expected,result);
+    }
 }

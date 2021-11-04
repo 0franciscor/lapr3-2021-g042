@@ -145,6 +145,6 @@ public class ShipLocation implements Comparable<ShipLocation>{
      */
     @Override
     public String toString(){
-        return String.format("Date: %s\nLatitude: %s\nLongitude: %s\n\nSOG: %f\nCOG: %f\nHeading: %s",messageTime,latitude,longitude,SOG,COG,heading);
+        return String.format("\nDate: %s\nLatitude: %s\nLongitude: %s\n\nSOG: %f\nCOG: %f\nHeading: %s\n",messageTime,latitude,longitude,SOG,COG,heading);
     }
 }

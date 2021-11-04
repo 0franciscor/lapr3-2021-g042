@@ -16,19 +16,19 @@ import java.util.List;
 public class ShowPositionalMessagesController {
 
     /**
-     * Represents a instance of Company
+     * Represents an instance of app.
      */
-    private Company company;
+    private final App app;
 
     /**
-     * Represents a instance of ShipLocationBST
+     * Represents a instance of Company
      */
-    private ShipLocationBST shipLocationBst;
+    private final Company company;
 
     /**
      * Represents a instance of BstShip
      */
-    private BstShip bstShip;
+    private final BstShip bstShip;
 
     /**
      * Represents a instance of ship
@@ -39,15 +39,17 @@ public class ShowPositionalMessagesController {
      * Initialize the controller
      */
     public ShowPositionalMessagesController(){
-        this.company= App.getInstance().getCompany();
+        this.app=App.getInstance();
+        this.company=app.getCompany();
         this.bstShip=company.getBstShip();
     }
 
     /**
-     * Initialize the controller. Testing purposes
+     * Initialize the controller receiving a company
      */
     public ShowPositionalMessagesController(Company company){
-        this.company= company;
+        this.app=App.getInstance();
+        this.company=company;
         this.bstShip=company.getBstShip();
     }
 
@@ -67,8 +69,8 @@ public class ShowPositionalMessagesController {
      * @param finalDate final date of the intended period
      * @return List with requested positional messages
      */
-    public List<String> showPositionalMessages(Date initialDate, Date finalDate){
-        this.shipLocationBst=ship.getShipPosition();
+    public List showPositionalMessages(Date initialDate, Date finalDate){
+        ShipLocationBST shipLocationBst = ship.getShipPosition();
         return shipLocationBst.getPositionalMessages(initialDate,finalDate);
     }
 }

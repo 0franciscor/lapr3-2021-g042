@@ -11,11 +11,6 @@ import java.util.Date;
 public class Summary {
 
     /**
-     * The call sign of a ship
-     */
-    private String callSign;
-
-    /**
      * The MMSI code of a ship
      */
     private String mmsiCode;
@@ -24,11 +19,6 @@ public class Summary {
      * The ships name
      */
     private String name;
-
-    /**
-     * The IMO code of a ship
-     */
-    private String imoCode;
 
     /**
      * The date and time of starting of journey
@@ -73,48 +63,52 @@ public class Summary {
     /**
      * The departure latitude of the journey
      */
-    private int departureLatitude;
+    private float departureLatitude;
 
     /**
      * The departure longitude of the journey
      */
-    private int departureLongitude;
+    private float departureLongitude;
 
     /**
      * The arrival latitude of the journey
      */
-    private int arrivalLatitude;
+    private float arrivalLatitude;
 
     /**
      * The arrival longitude of the journey
      */
-    private int arrivalLongitude;
+    private float arrivalLongitude;
 
     /**
      * The total distance travelled
      */
-    private float travelledDistance;
+    private double travelledDistance;
 
     /**
      * The delta distance of the journey
      */
-    private float deltaDistance;
+    private double deltaDistance;
 
-    Summary(Ship ship, ShipLocationBST shipLocationBST){
-        imoCode = ship.getShipID();
+    Summary(Ship ship){
+        mmsiCode = ship.getMMSI();
         name = ship.getName();
-        //como saber se a viagem terminou
-        // total de movimentos = número de nodes
-        // total de tempo = soma da diferença do tempo de inicio e fim de cada percurso
-        //
+        ShipLocationBST treeOfPositions = ship.getShipLocationBST();
+        startBaseDate = treeOfPositions.getStartBase();
+        endBaseDate = treeOfPositions.getEndBase();
+        totalMovements = treeOfPositions.getTotalMovements();
+        totalMovementTime = treeOfPositions.getTotalMovementsTime();
+        maximumSog = treeOfPositions.getMaximumSog();
+        meanSog = treeOfPositions.getMeanSog();
+        maximumCog = treeOfPositions.getMaximumCog();
+        meanCog = treeOfPositions.getMeanCog();
+        departureLatitude = treeOfPositions.getLatitudeDeparture();
+        departureLongitude = treeOfPositions.getLongitudeDeparture();
+        arrivalLatitude = treeOfPositions.getArrivalLatitude();
+        arrivalLongitude = treeOfPositions.getArrivalLongitude();
+        travelledDistance = treeOfPositions.getTravelledDistance();
+        deltaDistance = treeOfPositions.getDeltaDistance();
 
-    }
-    /**
-     * Get the call sign associated with a ship
-     * @return the call sign
-     */
-    public String getCallSign() {
-        return callSign;
     }
 
     /**
@@ -131,14 +125,6 @@ public class Summary {
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * Get the IMO code associated with a ship
-     * @return the IMO code
-     */
-    public String getImoCode() {
-        return imoCode;
     }
 
     /**
@@ -209,7 +195,7 @@ public class Summary {
      * Get the latitude of the departure of a ship
      * @return the departure latitude
      */
-    public int getDepartureLatitude() {
+    public double getDepartureLatitude() {
         return departureLatitude;
     }
 
@@ -217,7 +203,7 @@ public class Summary {
      * Get the longitude of the departure of a ship
      * @return the departure longitude
      */
-    public int getDepartureLongitude() {
+    public float getDepartureLongitude() {
         return departureLongitude;
     }
 
@@ -225,7 +211,7 @@ public class Summary {
      * Get the latitude of the arrival of a ship
      * @return the arrival latitude
      */
-    public int getArrivalLatitude() {
+    public float getArrivalLatitude() {
         return arrivalLatitude;
     }
 
@@ -233,7 +219,7 @@ public class Summary {
      * Get the longitude of the arrival of a ship
      * @return the arrival longitude
      */
-    public int getArrivalLongitude() {
+    public float getArrivalLongitude() {
         return arrivalLongitude;
     }
 
@@ -241,7 +227,7 @@ public class Summary {
      * Get the travelled distance of a ship
      * @return the traveled distance
      */
-    public float getTravelledDistance() {
+    public double getTravelledDistance() {
         return travelledDistance;
     }
 
@@ -249,7 +235,7 @@ public class Summary {
      * Get the delta distance traveled by a ship
      * @return the delta distance
      */
-    public float getDeltaDistance() {
+    public double getDeltaDistance() {
         return deltaDistance;
     }
 

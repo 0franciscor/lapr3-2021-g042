@@ -1,5 +1,8 @@
 package lapr.project.controller;
 
+<<<<<<< HEAD
+import org.junit.jupiter.api.Test;
+=======
 import lapr.project.model.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+>>>>>>> 4ea2de256a34ac66072a21f7db71c5b482feadb3
 
 public class ShowPositionalMessagesControllerTest {
 

@@ -1,4 +1,7 @@
-import static org.junit.Assert.*;
+package lapr.project.controller;
+
+import org.junit.jupiter.api.Test;
+
 public class ShowPositionalMessagesControllerTest {
   
 }

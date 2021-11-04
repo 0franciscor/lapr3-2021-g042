@@ -2,13 +2,12 @@
 'https://plantuml.com/sequence-diagram
 
 actor TrafficManager as TM
-participant ": movementsSummaryUI" as UI
-participant ": movementsController" as CT
+participant ": MovementsSummaryUI" as UI
+participant ": MovementsSummaryController" as CT
 participant ": Company" as CP
-participant "store : shipStore" as ST
+participant "shipsTree : BstShip" as ST
 participant "ship : Ship" as SP
-participant "summary : Summary" as SM
-participant ": summaryMapper" as MP
+participant ": SummaryMapper" as MP
 
 
 
@@ -21,14 +20,14 @@ UI --> TM : ask the IMO code that the user wants to use for the search
 deactivate UI
 TM -> UI : type the code
 activate UI
-UI -> CT : ship = getShipByImo(imoCode)
+UI -> CT : ship = getShipByMMSI(mmsiCode)
 activate  CT
-CT->CP : store = getShipsStore()
+CT->CP : store = getShipsBTS()
 activate CP
 
 deactivate CP
 
-CT->ST : ship = getShipByImo(imoCode)
+CT->ST : ship = getShipByMMSI(mmsiCode)
 activate ST
 deactivate ST
 
@@ -39,12 +38,7 @@ TM -> UI: confirms the data
 activate UI
 UI->CT : createSummaryForShip(ship)
 activate CT
-CT->SP : treeDynamicData = getTreeDynamicData()
-activate SP
-deactivate SP
-CT->SM : summary = createSummaryForShip(treeDynamicData)
-activate SM
-deactivate SM
+CT->"summary : Summary"**: summary = createSummaryForShip(ship)
 CT->MP : summaryDto = toDto(summary)
 activate MP
 deactivate MP

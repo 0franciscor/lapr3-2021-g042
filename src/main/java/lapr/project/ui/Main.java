@@ -1,7 +1,8 @@
 package lapr.project.ui;
 
-import lapr.project.controller.App;
 import lapr.project.model.CalculatorExample;
+import lapr.project.model.Company;
+import lapr.project.model.ImportShip;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,6 +32,13 @@ class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, SQLException {
+
+        ImportShip importShip = new Company().getImportShip();
+
+        if(importShip.getFile("sships.csv"))
+            System.out.println(importShip.convertShips());
+
+
         CalculatorExample calculatorExample = new CalculatorExample();
         int value = calculatorExample.sum(3, 5);
 
@@ -38,7 +46,7 @@ class Main {
             LOGGER.log(Level.INFO, String.valueOf(value));
         }
 
-        App app = App.getApp();
+
     }
 }
 

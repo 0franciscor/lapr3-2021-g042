@@ -17,16 +17,9 @@ public class SearchDetailsUI implements Runnable {
      */
     private SearchDetailsController searchDetailsController;
 
-    /**
-     * Initializes the controller.
-     */
-    public SearchDetailsUI(){
-        searchDetailsController = new SearchDetailsController();
-    }
-
-
     @Override
     public void run() {
+        searchDetailsController = new SearchDetailsController();
         viewDetails();
     }
 
@@ -37,30 +30,26 @@ public class SearchDetailsUI implements Runnable {
             System.out.println("( 1 ) - MMSI");
             System.out.println("( 2 ) - IMO");
             System.out.println("( 3 ) - Call Sign");
-            System.out.printf("Digite uma opcão: ");
+            System.out.printf("Select the desired option: ");
             option = Integer.parseInt(sc.nextLine());
-            System.out.println("Choosed option: "+ option);
             if(option == 1) {
-                System.out.println("Insert the MMSI code: ");
-                String mmsicode = sc.next();
-                searchDetailsController.shipExistByMMSI(mmsicode);
-                searchDetailsController.getShipDetails();
+                 System.out.println("Insert the MMSI code: ");
+                 String mmsicode = sc.next();
+                 searchDetailsController.shipExistByMMSI(mmsicode);
+                 System.out.println(searchDetailsController.getShipDetails());
             } else if(option == 2) {
-                /*System.out.println("Insert the IMO code: ");
-                String imocode = sc.next();
-                searchDetailsController.shipExistByIMO(imocode);
-                searchDetailsController.getShipDetails();*/
+                 System.out.println("Insert the IMO code: ");
+                 String imocode = sc.next();
+                 searchDetailsController.shipExistByIMO(imocode);
+                 System.out.println(searchDetailsController.getShipDetails());
+            } else if(option == 3) {
+                 System.out.println("Insert the Call Sign:");
+                 String callsign = sc.next();
+                 searchDetailsController.shipExistByCallSign(callsign);
+                System.out.println(searchDetailsController.getShipDetails());;
             }
-            else if(option == 3) {
-                /*System.out.println("Insert the Call Sign:");
-                String callsign = sc.next();
-                searchDetailsController.shipExistByCallSign(callsign);
-                searchDetailsController.getShipDetails();*/
-            }
-
         }catch(IllegalArgumentException e){
             System.out.printf("%nMessage: %s%n", e.getMessage());
         }
     }
-
 }

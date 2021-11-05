@@ -46,7 +46,6 @@ class Main {
             LOGGER.log(Level.INFO, String.valueOf(value));
         }
 
-
     }
 }
 

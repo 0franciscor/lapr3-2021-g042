@@ -11,7 +11,7 @@ public class ShipMapper {
     /**
      * Transforms an object of type Ship into an object of type ShipDto
      * @param ship
-     * @return a summary dto
+     * @return a ship dto
      */
     public ShipDto toDto(Ship ship){
         return new ShipDto(ship);

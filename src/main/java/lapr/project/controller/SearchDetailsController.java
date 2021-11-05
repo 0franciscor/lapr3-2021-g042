@@ -1,10 +1,10 @@
 package lapr.project.controller;
 
 import lapr.project.mapper.ShipMapper;
-import lapr.project.mapper.dto.ShipDto;
 import lapr.project.model.BstShip;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
+import java.util.Objects;
 
 /**
  * Class responsible for making the connection between the UI and the system when searching for ship details
@@ -13,17 +13,17 @@ import lapr.project.model.Ship;
 public class SearchDetailsController {
 
     /**
-     * Represents a instance of Company
+     * Represents an instance of Company
      */
     private Company company;
 
     /**
-     * Represents a instance of BstShip
+     * Represents an instance of BstShip
      */
     private BstShip bstShip;
 
     /**
-     * Represents a instance of ship
+     * Represents an instance of ship
      */
     private Ship ship;
 
@@ -31,20 +31,20 @@ public class SearchDetailsController {
      * Initialize the controller
      */
     public SearchDetailsController(){
-        //this.company= new Company();
-        this.bstShip=company.getBstShip();
+        this.company = App.getInstance().getCompany();
+        this.bstShip = company.getBstShip();
         shipMapper = new ShipMapper();
     }
 
     /**
-     * Represents an instance of the ship mapper
+     * Represents an instance of the ship mapper.
      */
     private ShipMapper shipMapper;
 
 
 
     /**
-     *
+     * This method allows the user to search a certain ship on the BST through its MMSI code.
      * @param mmsiCode
      * @return
      */
@@ -53,29 +53,40 @@ public class SearchDetailsController {
     }
 
     /**
-     *
+     * This method allows the user to search a certain ship using the IMO Code.
      * @param imoCode
-     * @return
+     * @return The ship with de respective IMO Code
      */
-    /*public boolean shipExistByIMO(String imoCode){
-        return (this.ship = bstShip.getShipByIMO(imoCode)) != null;
-    }*/
+    public Ship shipExistByIMO(String imoCode){
+        Iterable<Ship> ships = bstShip.inOrder();
+        for (Ship s : ships){
+            if (Objects.equals(s.getShipID(), imoCode)){
+                this.ship = s;
+                return  s;
+            }
+        } return null;
+    }
 
     /**
-     *
+     * This method allows the user to search a certain ship using the Call Sign
      * @param callsign
-     * @return
+     * @return The ship with the respective Call Sign
      */
-    /*public boolean shipExistByCallSign(String callsign){
-        return (this.ship = bstShip.getShipByCallSign(callsign)) != null;
-    }*/
-
+    public Ship shipExistByCallSign(String callsign){
+        Iterable<Ship> ships = bstShip.inOrder();
+        for (Ship s : ships){
+            if (s.getCallSign().equals(callsign)){
+                this.ship = s;
+                return  s;
+            }
+        } return null;
+    }
     /**
-     *
+     *  This method allows the user to search a certain ship on the BST through its MMSI code (unique code).
+     * @return The details of the ship
      */
     public String getShipDetails(){
-        Ship requestedShip = this.ship;
-        return shipMapper.toDto(requestedShip).toString();
+        return shipMapper.toDto(this.ship).toString();
     }
 
 

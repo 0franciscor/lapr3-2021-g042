@@ -82,7 +82,7 @@ manager -> sdUI : Requests data
 activate sdUI
 sdUI -> sdCTRL : getShipDetails()
 activate sdCTRL
-sdCTRL-> SMAPPER** : shipDetailsToDto()
+sdCTRL-> SMAPPER** : toDto(ship)
 deactivate sdCTRL
 activate SMAPPER
 SMAPPER -> SHIP : mmsi = getMMSI()

@@ -31,18 +31,18 @@ public class ShipDto {
     private float draft;
 
 
-    public ShipDto(String MMSI, String name, String shipID, int energyGenerators, float generatorOutput, String callSign,
-                int vesselType, float length, float width, float capacity, float draft){
+    public ShipDto(String MMSI, String name, String shipID, String callSign,
+                int vesselType, float length, float width, float draft){
         setMMSI(MMSI);
         setName(name);
         setShipID(shipID);
-        setNumberGenerators(energyGenerators);
-        setGeneratorOutput(generatorOutput);
+        //setNumberGenerators(energyGenerators);
+        //setGeneratorOutput(generatorOutput);
         setCallSign(callSign);
         this.vesselType = vesselType;
         setLength(length);
         setWidth(width);
-        setCapacity(capacity);
+        //setCapacity(capacity);
         setDraft(draft);
 
     }
@@ -51,13 +51,13 @@ public class ShipDto {
         setMMSI(ship.getMMSI());
         setName(ship.getName());
         setShipID(ship.getShipID());
-        setNumberGenerators(ship.getEnergyGenerators());
-        setGeneratorOutput(ship.getGeneratorOutput());
+        //setNumberGenerators(ship.getEnergyGenerators());
+        //setGeneratorOutput(ship.getGeneratorOutput());
         setCallSign(ship.getCallSign());
         this.vesselType = ship.getVesselType();
         setLength(ship.getLength());
         setWidth(ship.getWidth());
-        setCapacity(ship.getCapacity());
+        //setCapacity(ship.getCapacity());
         setDraft(ship.getDraft());
     }
 
@@ -76,13 +76,13 @@ public class ShipDto {
     }
 
     public void setShipID(String shipID){
-        if(shipID == null || shipID.length() != 7)
+        if(shipID == null || shipID.length() != 10)
             throw new IllegalArgumentException("The shipID code must be 7-digit long.");
         else
             this.shipID = shipID;
     }
 
-    public void setNumberGenerators(int energyGenerators){
+    /*public void setNumberGenerators(int energyGenerators){
         if(energyGenerators <= 0)
             throw new IllegalArgumentException("The ship cannot have 0 or less generators.");
         else this.energyGenerators = energyGenerators;
@@ -92,7 +92,7 @@ public class ShipDto {
         if(generatorOutput <= 0)
             throw new IllegalArgumentException("The ship cannot have a power output lower or equal to 0");
         else this.generatorOutput = generatorOutput;
-    }
+    }*/
 
     public void setCallSign (String callSign){
         if(callSign == null || callSign.isEmpty())
@@ -115,12 +115,12 @@ public class ShipDto {
 
     }
 
-    public void setCapacity (float capacity){
+    /*public void setCapacity (float capacity){
         if(capacity <= 0)
             throw new IllegalArgumentException("A Ship must have a capacity bigger than 0.");
         else
             this.capacity = capacity;
-    }
+    }*/
 
     public void setDraft(float draft){
         if(draft <= 0)
@@ -176,18 +176,13 @@ public class ShipDto {
 
     @Override
     public String toString() {
-        return "ShipDto{" +
-                "MMSI='" + MMSI + '\'' +
-                ", name='" + name + '\'' +
-                ", shipID='" + shipID + '\'' +
-                ", energyGenerators=" + energyGenerators +
-                ", generatorOutput=" + generatorOutput +
-                ", callSign='" + callSign + '\'' +
-                ", vesselType=" + vesselType +
-                ", length=" + length +
-                ", width=" + width +
-                ", capacity=" + capacity +
-                ", draft=" + draft +
-                '}';
+        return  "MMSI: " + MMSI +
+                " \nName: " + name +
+                " \nIMO: " + shipID +
+                " \nCall Sign: " + callSign +
+                " \nVessel Type: " + vesselType +
+                " \nLength: " + length +
+                " \nWidth: " + width +
+                " \nDraft: " + draft;
     }
 }

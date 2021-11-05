@@ -3,10 +3,6 @@ package lapr.project.ui;
 import lapr.project.controller.ShowPositionalMessagesController;
 import lapr.project.utils.Utils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -30,12 +26,10 @@ public class ShowPositionalMessagesUI implements Runnable{
     }
 
     /**
-     *
+     * Invokes the necessary methods for the interface to function.
      */
     @Override
     public void run() {
-
-        boolean flag;
 
         System.out.printf("%nViewing a Ship's Positional Messages in a given period%n");
 
@@ -58,8 +52,6 @@ public class ShowPositionalMessagesUI implements Runnable{
                 System.out.printf("%nThere is no ship in the system with this MMSI code%n");
             }
         }
-
-
 
     }
 

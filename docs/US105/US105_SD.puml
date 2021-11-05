@@ -2,8 +2,8 @@
 'https://plantuml.com/sequence-diagram
 
 actor TrafficManager as TM
-participant ": listSomeShipDataUi" as UI
-participant ": listSomeShipDataController" as CTR
+participant ": ListSomeShipDataUi" as UI
+participant ": ListSomeShipDataController" as CTR
 participant ": Company" as COMP
 participant ": BstShip" as BST
 participant "shipLocation : BstShipLocation" as BSTL
@@ -30,16 +30,16 @@ deactivate CTR
 CTR -> SHIP : mmsiCode = getMmsiCode()
 activate SHIP
 deactivate SHIP
-CTR -> CTR : shipLocation = ship.getShipPosition()
-activate CTR
-deactivate CTR
-CTR -> BSTL : totalNumberOfMovements = shipLocation.getTotalNumberOfMovements()
+CTR -> SHIP : shipLocation = getShipPosition()
+activate SHIP
+deactivate SHIP
+CTR -> BSTL : totalNumberOfMovements = getTotalNumberOfMovements()
 activate BSTL
 deactivate BSTL
-CTR -> BSTL : travelledDistance = shipLocation.getTravelledDistance()
+CTR -> BSTL : travelledDistance = getTravelledDistance()
 activate BSTL
 deactivate BSTL
-CTR -> BSTL : deltaDistance = shipLocation.getDeltaDistance()
+CTR -> BSTL : deltaDistance = getDeltaDistance()
 activate BSTL
 deactivate BSTL
 

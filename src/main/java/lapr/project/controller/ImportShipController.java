@@ -1,9 +1,10 @@
 package lapr.project.controller;
 
+import lapr.project.model.Company;
 import lapr.project.model.ImportShip;
 
 /**
- * The ImportShip Controller
+ * The ImportShip Controller, controller responsible for managing the Import Ship class, which allows the Traffic manager to import ships from a .csv file
  *
  * @author Francisco Redol <1201239@isep.ipp.pt>
  */
@@ -18,14 +19,21 @@ public class ImportShipController {
      * The class constructor
      */
     public ImportShipController(){
-        importShip = App.getInstance().getCompany().getImportShip(); //mudar para Company
+        this.importShip = App.getInstance().getCompany().getImportShip();
+    }
+
+    /**
+     * Initialize the controller receiving a company
+     */
+    public ImportShipController(Company company){
+        this.importShip = company.getImportShip();
     }
 
     /**
      * @param fileName The name of the file
      *
      * Allows importing of the file
-     *         .
+     *
      * @return the success of the operation
      */
     public boolean importFile(String fileName){

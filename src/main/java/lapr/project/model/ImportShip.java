@@ -111,6 +111,7 @@ public class ImportShip {
                 float width = Float.parseFloat(shipArray[12]);
                 float draft = Float.parseFloat(shipArray[13]);
                 float cargo;
+
                 if (shipArray[14].equals("NA"))
                     cargo = 0;
                 else
@@ -124,7 +125,6 @@ public class ImportShip {
         }catch (Exception e) {
             return 1;
         }
-
         return 0;
     }
 }

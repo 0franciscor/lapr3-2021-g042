@@ -28,11 +28,17 @@ public class BstShipTest {
     ShipLocation location1;
     ShipLocation location2;
     ShipLocation location3;
+    ShipLocation location4;
+    ShipLocation location5;
+    ShipLocation location6;
 
     public BstShipTest() throws ParseException {
         location1 = new ShipLocation(dateFormatter.parse(auxDatas[0]),"36","-122",19,145,"147","B");
         location2 = new ShipLocation(dateFormatter.parse(auxDatas[1]),"36","-122",19,145,"147","B");
         location3 = new ShipLocation(dateFormatter.parse(auxDatas[2]),"36","-122",19,145,"147","B");
+        location4 = new ShipLocation(dateFormatter.parse(auxDatas[0]),"35","-122",19,145,"147","B");
+        location5 = new ShipLocation(dateFormatter.parse(auxDatas[1]),"37","-122",19,145,"147","B");
+        location6 = new ShipLocation(dateFormatter.parse(auxDatas[2]),"38","-122",19,145,"147","B");
         arr.add(location1);
         arr.add(location2);
         arr.add(location3);
@@ -56,5 +62,19 @@ public class BstShipTest {
     @Test
     public void getShipByMmsiCodeNotExist() {
         assertNull(ships.getShipByMmsiCode("211331643"));
+    }
+
+    @Test
+    public void insertLocations(){
+        Ship ship = new Ship("212951640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13, location4);
+        assertEquals(1, ship.getShipPosition().size());
+    }
+
+    @Test
+    public void insertLocations2(){
+        Ship ship = new Ship("211331641","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13, location3);
+        ship.getShipPosition().insert(location4);
+        ship.getShipPosition().insert(location5);
+        assertEquals(3, ship.getShipPosition().size());
     }
 }

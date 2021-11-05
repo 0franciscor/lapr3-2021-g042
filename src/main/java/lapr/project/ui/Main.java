@@ -1,12 +1,12 @@
 package lapr.project.ui;
 
-import lapr.project.model.CalculatorExample;
-import lapr.project.model.Company;
+import lapr.project.controller.App;
 import lapr.project.model.ImportShip;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -33,18 +33,27 @@ class Main {
      */
     public static void main(String[] args) throws IOException, SQLException {
 
-        ImportShip importShip = new Company().getImportShip();
 
-        if(importShip.getFile("sships.csv"))
-            System.out.println(importShip.convertShips());
+        ImportShip importShip = new ImportShip();
+        importShip.getFile("sships.csv");
+        System.out.println("Number of ships not imported: " + importShip.convertShips());
 
+        ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();
+        ui.run();
 
+        System.out.println(App.getInstance().getCompany().getBstShip().size());
+        /*
         CalculatorExample calculatorExample = new CalculatorExample();
         int value = calculatorExample.sum(3, 5);
 
         if (LOGGER.isLoggable(Level.INFO)) {
             LOGGER.log(Level.INFO, String.valueOf(value));
         }
+        */
+
+        List<String> options = new ArrayList<>();
+
+
 
     }
 }

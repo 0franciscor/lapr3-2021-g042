@@ -12,11 +12,6 @@ import java.util.Date;
 public class SummaryDto {
 
     /**
-     * The call sign of a ship
-     */
-    private String callSign;
-
-    /**
      * The MMSI code of a ship
      */
     private String mmsiCode;
@@ -25,11 +20,6 @@ public class SummaryDto {
      * The ships name
      */
     private String name;
-
-    /**
-     * The IMO code of a ship
-     */
-    private String imoCode;
 
     /**
      * The date and time of starting of journey
@@ -74,39 +64,37 @@ public class SummaryDto {
     /**
      * The departure latitude of the journey
      */
-    private int departureLatitude;
+    private double departureLatitude;
 
     /**
      * The departure longitude of the journey
      */
-    private int departureLongitude;
+    private double departureLongitude;
 
     /**
      * The arrival latitude of the journey
      */
-    private int arrivalLatitude;
+    private double arrivalLatitude;
 
     /**
      * The arrival longitude of the journey
      */
-    private int arrivalLongitude;
+    private double arrivalLongitude;
 
     /**
      * The total distance travelled
      */
-    private float travelledDistance;
+    private double travelledDistance;
 
     /**
      * The delta distance of the journey
      */
-    private float deltaDistance;
+    private double deltaDistance;
 
     /**
      * Creates a new instance of SummaryDto
-     * @param callSign call sign associated with the ship
      * @param mmsiCode MMSI code associated with a ship
      * @param name ships name
-     * @param imoCode IMO code associated with a ship
      * @param startBaseDate the start base of journey
      * @param endBaseDate the end base of journey
      * @param totalMovementTime the time spend in journey
@@ -122,11 +110,9 @@ public class SummaryDto {
      * @param travelledDistance the travelled distance made in a journey
      * @param deltaDistance the delta distance made in a journey
      */
-    public SummaryDto(String callSign, String mmsiCode, String name, String imoCode, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, int departureLatitude, int departureLongitude, int arrivalLatitude, int arrivalLongitude, float travelledDistance, float deltaDistance) {
-        this.callSign = callSign;
+    public SummaryDto(String mmsiCode, String name, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, int departureLatitude, int departureLongitude, int arrivalLatitude, int arrivalLongitude, float travelledDistance, float deltaDistance) {
         this.mmsiCode = mmsiCode;
         this.name = name;
-        this.imoCode = imoCode;
         this.startBaseDate = startBaseDate;
         this.endBaseDate = endBaseDate;
         this.totalMovementTime = totalMovementTime;
@@ -148,10 +134,8 @@ public class SummaryDto {
      * @param summary the summary
      */
     public SummaryDto(Summary summary){
-        this.callSign = summary.getCallSign();
         this.mmsiCode = summary.getMmsiCode();
         this.name = summary.getName();
-        this.imoCode = summary.getImoCode();
         this.startBaseDate = summary.getStartBaseDate();
         this.endBaseDate = summary.getEndBaseDate();
         this.totalMovementTime = summary.getTotalMovementTime();
@@ -166,13 +150,6 @@ public class SummaryDto {
         this.arrivalLongitude = summary.getArrivalLongitude();
         this.travelledDistance = summary.getTravelledDistance();
         this.deltaDistance = summary.getDeltaDistance();
-    }
-    /**
-     * Get the call sign associated with a ship
-     * @return the call sign
-     */
-    public String getCallSign() {
-        return callSign;
     }
 
     /**
@@ -191,13 +168,6 @@ public class SummaryDto {
         return name;
     }
 
-    /**
-     * Get the IMO code associated with a ship
-     * @return the IMO code
-     */
-    public String getImoCode() {
-        return imoCode;
-    }
 
     /**
      * Get the date and time the ship leaves the port where the voyage began
@@ -267,7 +237,7 @@ public class SummaryDto {
      * Get the latitude of the departure of a ship
      * @return the departure latitude
      */
-    public int getDepartureLatitude() {
+    public double getDepartureLatitude() {
         return departureLatitude;
     }
 
@@ -275,7 +245,7 @@ public class SummaryDto {
      * Get the longitude of the departure of a ship
      * @return the departure longitude
      */
-    public int getDepartureLongitude() {
+    public double getDepartureLongitude() {
         return departureLongitude;
     }
 
@@ -283,7 +253,7 @@ public class SummaryDto {
      * Get the latitude of the arrival of a ship
      * @return the arrival latitude
      */
-    public int getArrivalLatitude() {
+    public double getArrivalLatitude() {
         return arrivalLatitude;
     }
 
@@ -291,7 +261,7 @@ public class SummaryDto {
      * Get the longitude of the arrival of a ship
      * @return the arrival longitude
      */
-    public int getArrivalLongitude() {
+    public double getArrivalLongitude() {
         return arrivalLongitude;
     }
 
@@ -299,7 +269,7 @@ public class SummaryDto {
      * Get the travelled distance of a ship
      * @return the traveled distance
      */
-    public float getTravelledDistance() {
+    public double getTravelledDistance() {
         return travelledDistance;
     }
 
@@ -307,7 +277,7 @@ public class SummaryDto {
      * Get the delta distance traveled by a ship
      * @return the delta distance
      */
-    public float getDeltaDistance() {
+    public double getDeltaDistance() {
         return deltaDistance;
     }
 
@@ -318,10 +288,8 @@ public class SummaryDto {
     @Override
     public String toString() {
         return "SummaryDto{" +
-                "callSign='" + callSign + '\'' +
                 ", mmsiCode='" + mmsiCode + '\'' +
                 ", name='" + name + '\'' +
-                ", imoCode='" + imoCode + '\'' +
                 ", startBaseDate=" + startBaseDate +
                 ", endBaseDate=" + endBaseDate +
                 ", totalMovementTime='" + totalMovementTime + '\'' +

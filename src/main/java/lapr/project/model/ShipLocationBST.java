@@ -13,7 +13,6 @@ import java.util.*;
 
 public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
 
-
     /** Nested static class for a binary search tree node. */
 
     protected static class Node<ShipLocation> {
@@ -335,6 +334,271 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
 
         return positionalMessages;
     }
+
+    /**
+     *
+     * @return
+     */
+    private ShipLocation startShipLocation(){
+        Iterator<ShipLocation> shipLocations = inOrder().iterator();
+        return shipLocations.next();
+    }
+
+    /**
+     *
+     * @return
+     */
+    private ShipLocation endShipLocation(){
+        Iterator<ShipLocation> shipLocations = inOrder().iterator();
+        ShipLocation shipLocation = null;
+        while (shipLocations.hasNext()){
+            shipLocation = shipLocations.next();
+        }
+        return shipLocation;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Date getStartBase() {
+        return startShipLocation().getMessageTime();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Date getEndBase() {
+        return endShipLocation().getMessageTime();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getTotalMovements() {
+        return this.size();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getTotalMovementsTime() {
+        Iterator<ShipLocation> shipLocationIterator = inOrder().iterator();
+        double sum = 0, date1 = 0, date2 = 0;
+        ShipLocation firstLocation = shipLocationIterator.next();
+        while (shipLocationIterator.hasNext()){
+            ShipLocation secondLocation = shipLocationIterator.next();
+            date1 = transformInMinutes(firstLocation.getMessageTime().getHours(), firstLocation.getMessageTime().getMinutes(), firstLocation.getMessageTime().getSeconds());
+            date2 = transformInMinutes(secondLocation.getMessageTime().getHours(), secondLocation.getMessageTime().getMinutes(), secondLocation.getMessageTime().getSeconds());
+            if (date1 > date2) sum += date1-date2;
+            else sum += date2 - date1;
+            firstLocation = secondLocation;
+        }
+        return transformInHours(sum);
+    }
+
+    /**
+     *
+     * @param hour
+     * @param minutes
+     * @param seconds
+     * @return
+     */
+    private double transformInMinutes(int hour, int minutes, int seconds){
+        return hour*3600+minutes*60+seconds;
+    }
+
+    /**
+     *
+     * @param totalTime
+     * @return
+     */
+    private String transformInHours(double totalTime){
+        int hour = (int)totalTime/3600;
+        totalTime%=3600;
+        int minutes = (int) totalTime/60;
+        totalTime%=60;
+        int seconds = (int) totalTime;
+
+        return hour + "h, " + minutes + "min, " + seconds + "sec";
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getMaximumSog() {
+        Iterable<ShipLocation> shipLocations = inOrder();
+        double maxSog = 0;
+        for (ShipLocation s : shipLocations){
+            if (s.getSOG() > maxSog) maxSog = s.getSOG();
+        }
+        return maxSog;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getMeanSog() {
+        Iterable<ShipLocation> shipLocations = inOrder();
+        double meanSog = 0, size=0;
+        for (ShipLocation s : shipLocations){
+            meanSog+=s.getSOG();
+            size++;
+        }
+        return meanSog/size;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getMaximumCog() {
+        Iterable<ShipLocation> shipLocations = inOrder();
+        double maxCog = 0;
+        for (ShipLocation s : shipLocations){
+            if (s.getCOG() > maxCog) maxCog = s.getCOG();
+        }
+        return maxCog;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getMeanCog() {
+        Iterable<ShipLocation> shipLocations = inOrder();
+        double meanCog = 0, size=0;
+        for (ShipLocation s : shipLocations){
+            meanCog+=s.getCOG();
+            size++;
+        }
+        return meanCog/size;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public float getLatitudeDeparture() {
+        return Float.parseFloat(startShipLocation().getLatitude());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public float getLongitudeDeparture() {
+        return  Float.parseFloat(startShipLocation().getLongitude());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public float getArrivalLatitude() {
+        return Float.parseFloat(endShipLocation().getLatitude());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public float getArrivalLongitude() {
+        return Float.parseFloat(endShipLocation().getLongitude());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getTravelledDistance() {
+        Iterator<ShipLocation> shipLocationIterator = inOrder().iterator();
+        double sum = 0;
+        ShipLocation firstLocation = shipLocationIterator.next();
+        while (shipLocationIterator.hasNext()){
+            ShipLocation secondLocation = shipLocationIterator.next();
+
+            sum += calculateDistance(Float.parseFloat(firstLocation.getLatitude()), Float.parseFloat(firstLocation.getLongitude()), Float.parseFloat(secondLocation.getLatitude()),Float.parseFloat(secondLocation.getLongitude()));
+            firstLocation = secondLocation;
+        }
+        return sum;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getDeltaDistance() {
+       return calculateDistance(getLatitudeDeparture(), getLongitudeDeparture(), getArrivalLatitude(), getArrivalLongitude());
+    }
+
+    /**
+     *
+     * @param departureLatitude
+     * @param departureLongitude
+     * @param arrivalLatitude
+     * @param arrivalLongitude
+     * @return
+     */
+    private double calculateDistance(float departureLatitude, float departureLongitude,float arrivalLatitude, float arrivalLongitude){
+
+        int earthRadius = 6371000;
+
+        double initialLatitude= toRadian(departureLatitude);
+        double initialLongitude= toRadian(departureLongitude);
+        double endLatitude= toRadian(arrivalLatitude);
+        double endLongitude= toRadian(arrivalLongitude);
+
+        double variationOfLatitude = endLatitude-initialLatitude;
+
+        double variationOfLongitude = endLongitude-initialLongitude;
+
+        double a = Math.sin(variationOfLatitude/2) * Math.sin(variationOfLatitude/2) + Math.cos(initialLatitude)* Math.cos(endLatitude) * Math.sin(variationOfLongitude/2) * Math.sin(variationOfLongitude/2);
+
+        double b = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+
+        return earthRadius*b;
+    }
+
+    /**
+     *
+     * @param degree
+     * @return
+     */
+    private double toRadian(float degree){
+        return (degree*Math.PI)/180;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    private HashMap<Date, Set<ShipLocation>> organizeTrips(){
+        HashMap<Date, Set<ShipLocation>> locations = new HashMap<>();
+        Set <ShipLocation> shipLocations = new TreeSet<>();
+        Iterable<ShipLocation> shipLocationIterator = inOrder();
+        Date date = shipLocationIterator.iterator().next().getMessageTime();
+        for (ShipLocation sl : shipLocationIterator){
+            if (sl.getSOG() != 0){
+               shipLocations.add(sl);
+            }
+            else{
+                locations.put(date, shipLocations);
+                date = sl.getMessageTime();
+                shipLocations.clear();
+            }
+        }
+        return locations;
+    }
+
+
+
 
 
 } //----------- end of BST class -----------

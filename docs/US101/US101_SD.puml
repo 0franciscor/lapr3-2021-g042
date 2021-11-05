@@ -60,6 +60,15 @@ importShip -> importShip ++: shipsNotConverted = createShip(shipArray)
 create shipLocation
 importShip --> shipLocation: create(messageTime, latitude, longitude, SOG, COG,\n heading, position, transceiverClass)
 
+importShip -> company : shipBST = getBstShip()
+activate company
+deactivate company
+
+importShip -> shipBST : newShip = getShipByMmsiCode(MMSI)
+activate shipBST
+deactivate shipBST
+
+alt newShip does not exist in the Company Ship Tree (shipBST)
 
 create ship
 importShip --> ship: create(MMSI, name, shipID, energyGenerators, generatorOutput,\n callSign, vesselType, length, width, capacity, draft, shipLocation)
@@ -69,23 +78,34 @@ participant ":Company" as company
 participant "shipBST:ShipBST" as shipBST
 
 
-importShip -> company : shipBST = getShipTree()
-activate company
-deactivate company
-
-
 importShip -> shipBST : insert(ship)
 activate shipBST
 deactivate shipBST
 
+else Ship exists in the Company Ship Tree
+
+participant "shipLocationBST : ShipLocationBST" as shipLocationBST
+
+importShip -> ship : shipLocationBST = getShipPosition()
+activate ship
+deactivate ship
+
+importShip -> shipLocationBST : insert(shipLocation)
+activate shipLocationBST
+deactivate shipLocationBST
 
 deactivate importShip
 end
+
+
+importShip --> controller : shipsNotConverted
 deactivate importShip
 
+controller --> ui : shipsNotConverted
+deactivate controller
 
 ui -> manager : Displays the number of ships which have not been imported
-deactivate controller
+
 
 @enduml
 

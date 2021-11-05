@@ -1,87 +1,42 @@
 @startuml
 'https://plantuml.com/use-case-diagram
 
-class MovementsSummaryUI{
+class ListSomeShipDataUi{
 
 }
-class MovementsSummaryController{
-+ getShipByMMSI(mmsiCode : String)
-+ createSummaryForShip(ship : Ship)
+class ListSomeShipDataController{
++ getShipByList()
 }
 class Company{
-+ getShipBTS()
++ getBstShip()
+
 }
 class BstShip{
-+ getShipByMMSI(mmsiCode : String)
++ inOrder()
 }
 class Ship{
-- shipLocationBST : ShipLocationBST
-+ getShipBTS()
++ getMmsiCode()
++ getShipPosition()
 }
-class SummaryMapper{
-+ toDto(summary : Summary)
-}
-class Summary{
-- mmsiCode : String
-- name : String
-- startBaseDate : Date
-- endBaseDate : Date
-- totalMovementTime : String
-- totalMovements : int
-- maximumSog : double
-- meanSog : double
-- maximumCog : double
-- meanCog : double
-- departureLatitude : int
-- departureLongitude : int
-- arrivalLatitude : int
-- arrivalLongitude : int
-- travelledDistance : double
-- deltaDistance : double
-}
-class SummaryDto{
-- mmsiCode : String
-- name : String
-- startBaseDate : Date
-- endBaseDate : Date
-- totalMovementTime : String
-- totalMovements : int
-- maximumSog : double
-- meanSog : double
-- maximumCog : double
-- meanCog : double
-- departureLatitude : int
-- departureLongitude : int
-- arrivalLatitude : int
-- arrivalLongitude : int
-- travelledDistance : double
-- deltaDistance : double
+class BstShipLocation{
++ getTotalNumberOfMovements()
++ getTravelledDistance()
++ getDeltaDistance()
 }
 
-class ShipLocationBST{
-+getStartBase()
-+getEndBase()
-+getTotalMovements()
-+getTotalMovementsTime()
-+getMaximumSog()
-+getMeanSog()
-+getMaximumCog()
-+getMeanCog()
-+getLatitudeDeparture()
-+getLongitudeDeparture()
-+getArrivalLatitude()
-+getArrivalLongitude()
-+getTravelledDistance()
-+getDeltaDistance()
-
+class BriefSummary{
+- mmsiCode : String
+- totalNumberOfMovements : int
+- deltaDistance : float
+- travelledDistance : float
 }
-MovementsSummaryController..>Company
-MovementsSummaryUI ..> MovementsSummaryController
-MovementsSummaryController ..> SummaryMapper
-SummaryMapper ..> SummaryDto
+
+
+ListSomeShipDataUi ..> ListSomeShipDataController
+ListSomeShipDataController ..> Company
 Company --> Ship : owns
 Company --> BstShip : uses
-Ship --> ShipLocationBST : has
-ShipLocationBST --> Summary : generate
+Ship --> BstShipLocation : has
+BstShipLocation --> BriefSummary : generate
 
 @enduml

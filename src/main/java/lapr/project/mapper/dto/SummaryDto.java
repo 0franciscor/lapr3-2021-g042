@@ -287,8 +287,9 @@ public class SummaryDto {
      */
     @Override
     public String toString() {
+
         return "SummaryDto{" +
-                ", mmsiCode='" + mmsiCode + '\'' +
+                " mmsiCode='" + mmsiCode + '\'' +
                 ", name='" + name + '\'' +
                 ", startBaseDate=" + startBaseDate +
                 ", endBaseDate=" + endBaseDate +

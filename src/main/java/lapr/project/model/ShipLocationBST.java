@@ -336,8 +336,8 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @return
+     * returns to first ship location
+     * @return returns to first ship location
      */
     private ShipLocation startShipLocation(){
         Iterator<ShipLocation> shipLocations = inOrder().iterator();
@@ -345,8 +345,8 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @return
+     * returns to last ship location
+     * @return returns to last ship location
      */
     private ShipLocation endShipLocation(){
         Iterator<ShipLocation> shipLocations = inOrder().iterator();
@@ -358,32 +358,32 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @return
+     * returns date of first ship location
+     * @return returns date of first ship location
      */
     public Date getStartBase() {
         return startShipLocation().getMessageTime();
     }
 
     /**
-     *
-     * @return
+     * returns date of last ship location
+     * @return returns date of last ship location
      */
     public Date getEndBase() {
         return endShipLocation().getMessageTime();
     }
 
     /**
-     *
-     * @return
+     * returns the total number of moves made by a ship in a voyage
+     * @return returns the total number of moves made by a ship in a voyage
      */
     public int getTotalMovements() {
         return this.size();
     }
 
     /**
-     *
-     * @return
+     * returns the total time spent on a voyage taken by a ship
+     * @return returns the total time spent on a voyage taken by a ship
      */
     public String getTotalMovementsTime() {
         Iterator<ShipLocation> shipLocationIterator = inOrder().iterator();
@@ -391,8 +391,8 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         ShipLocation firstLocation = shipLocationIterator.next();
         while (shipLocationIterator.hasNext()){
             ShipLocation secondLocation = shipLocationIterator.next();
-            date1 = transformInMinutes(firstLocation.getMessageTime().getHours(), firstLocation.getMessageTime().getMinutes(), firstLocation.getMessageTime().getSeconds());
-            date2 = transformInMinutes(secondLocation.getMessageTime().getHours(), secondLocation.getMessageTime().getMinutes(), secondLocation.getMessageTime().getSeconds());
+            date1 = transformInSeconds(firstLocation.getMessageTime().getHours(), firstLocation.getMessageTime().getMinutes(), firstLocation.getMessageTime().getSeconds());
+            date2 = transformInSeconds(secondLocation.getMessageTime().getHours(), secondLocation.getMessageTime().getMinutes(), secondLocation.getMessageTime().getSeconds());
             if (date1 > date2) sum += date1-date2;
             else sum += date2 - date1;
             firstLocation = secondLocation;
@@ -401,20 +401,20 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @param hour
-     * @param minutes
-     * @param seconds
-     * @return
+     * turn the time into seconds
+     * @param hour the hours
+     * @param minutes the minutes
+     * @param seconds the seconds
+     * @return the time in seconds
      */
-    private double transformInMinutes(int hour, int minutes, int seconds){
+    private double transformInSeconds(int hour, int minutes, int seconds){
         return hour*3600+minutes*60+seconds;
     }
 
     /**
-     *
-     * @param totalTime
-     * @return
+     * turns time in seconds into hours, minutes and seconds
+     * @param totalTime the total time in seconds
+     * @return a String with the following format: HH:MM:SS
      */
     private String transformInHours(double totalTime){
         int hour = (int)totalTime/3600;
@@ -423,12 +423,12 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         totalTime%=60;
         int seconds = (int) totalTime;
 
-        return hour + "h, " + minutes + "min, " + seconds + "sec";
+        return hour + ":" + minutes + ":" + seconds;
     }
 
     /**
-     *
-     * @return
+     * returns to the highest ground speed reached by ship
+     * @return the highest ground speed reached by ship
      */
     public double getMaximumSog() {
         Iterable<ShipLocation> shipLocations = inOrder();
@@ -440,8 +440,8 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @return
+     * returns to the average speed over ground reached by ship
+     * @return the average speed over ground reached by ship
      */
     public double getMeanSog() {
         Iterable<ShipLocation> shipLocations = inOrder();
@@ -454,8 +454,8 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @return
+     * returns the longest course on the ground hit by a ship
+     * @return the longest course on the ground hit by a ship
      */
     public double getMaximumCog() {
         Iterable<ShipLocation> shipLocations = inOrder();
@@ -467,8 +467,8 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @return
+     * returns the middle course over the ground hit by a ship
+     * @return the middle course over the ground hit by a ship
      */
     public double getMeanCog() {
         Iterable<ShipLocation> shipLocations = inOrder();
@@ -481,40 +481,40 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @return
+     returns the latitude of the departure port of the voyage made by the ship
+     * @return the latitude of the departure port of the voyage made by the ship
      */
     public float getLatitudeDeparture() {
         return Float.parseFloat(startShipLocation().getLatitude());
     }
 
     /**
-     *
-     * @return
+     * returns the longitude of the departure port of the voyage made by the ship
+     * @return the longitude of the departure port of the voyage made by the ship
      */
     public float getLongitudeDeparture() {
         return  Float.parseFloat(startShipLocation().getLongitude());
     }
 
     /**
-     *
-     * @return
+     * returns the latitude of the port of arrival of the voyage made by the ship
+     * @return the latitude of the port of arrival of the voyage made by the ship
      */
     public float getArrivalLatitude() {
         return Float.parseFloat(endShipLocation().getLatitude());
     }
 
     /**
-     *
-     * @return
+     * returns the longitude of the port of arrival of the voyage made by the ship
+     * @return the longitude of the port of arrival of the voyage made by the ship
      */
     public float getArrivalLongitude() {
         return Float.parseFloat(endShipLocation().getLongitude());
     }
 
     /**
-     *
-     * @return
+     * returns the total distance traveled by a ship on a voyage
+     * @return the total distance traveled by a ship on a voyage
      */
     public double getTravelledDistance() {
         Iterator<ShipLocation> shipLocationIterator = inOrder().iterator();
@@ -530,20 +530,20 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @return
+     * returns the delta distance traveled by ship, that is, the distance between the departure point and the arrival point of the voyage
+     * @return the delta distance traveled by ship
      */
     public double getDeltaDistance() {
        return calculateDistance(getLatitudeDeparture(), getLongitudeDeparture(), getArrivalLatitude(), getArrivalLongitude());
     }
 
     /**
-     *
-     * @param departureLatitude
-     * @param departureLongitude
-     * @param arrivalLatitude
-     * @param arrivalLongitude
-     * @return
+     * calculates the distance between two points, given their geographic coordinates
+     * @param departureLatitude the departure latitude
+     * @param departureLongitude the departure longitude
+     * @param arrivalLatitude the arrival latitude
+     * @param arrivalLongitude the arrival longitude
+     * @return the distance between the two coordinates
      */
     private double calculateDistance(float departureLatitude, float departureLongitude,float arrivalLatitude, float arrivalLongitude){
 
@@ -567,35 +567,14 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
-     *
-     * @param degree
-     * @return
+     * converts an angle in degrees to radian
+     * @param degree the angle in degrees
+     * @return the angle in radian
      */
     private double toRadian(float degree){
         return (degree*Math.PI)/180;
     }
 
-    /**
-     * 
-     * @return
-     */
-    private HashMap<Date, Set<ShipLocation>> organizeTrips(){
-        HashMap<Date, Set<ShipLocation>> locations = new HashMap<>();
-        Set <ShipLocation> shipLocations = new TreeSet<>();
-        Iterable<ShipLocation> shipLocationIterator = inOrder();
-        Date date = shipLocationIterator.iterator().next().getMessageTime();
-        for (ShipLocation sl : shipLocationIterator){
-            if (sl.getSOG() != 0){
-               shipLocations.add(sl);
-            }
-            else{
-                locations.put(date, shipLocations);
-                date = sl.getMessageTime();
-                shipLocations.clear();
-            }
-        }
-        return locations;
-    }
 
 
 

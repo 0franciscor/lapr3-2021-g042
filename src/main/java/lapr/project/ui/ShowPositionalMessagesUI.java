@@ -14,7 +14,7 @@ import java.util.List;
 public class ShowPositionalMessagesUI implements Runnable{
 
     /**
-     * Represents a instance of Show Positional Messages Controller.
+     * Represents an instance of Show Positional Messages Controller.
      */
     private ShowPositionalMessagesController showPositionalMessagesctrl;
 

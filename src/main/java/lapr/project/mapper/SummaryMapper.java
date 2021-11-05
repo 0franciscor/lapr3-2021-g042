@@ -16,7 +16,6 @@ public class SummaryMapper {
      * @return a summary dto
      */
     public SummaryDto toDto(Summary summary){
-
         return new SummaryDto(summary);
     }
 

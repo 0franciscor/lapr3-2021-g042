@@ -90,7 +90,7 @@ public class Summary {
      */
     private double deltaDistance;
 
-    Summary(Ship ship){
+    public Summary(Ship ship){
         mmsiCode = ship.getMMSI();
         name = ship.getName();
         ShipLocationBST treeOfPositions = ship.getShipPosition();
@@ -238,5 +238,32 @@ public class Summary {
     public double getDeltaDistance() {
         return deltaDistance;
     }
+
+    /**
+     * Textual information about a ship summary
+     * @return the textual information about a summary
+     */
+    @Override
+    public String toString() {
+        return "Summary{" +
+                "mmsiCode='" + mmsiCode + '\'' +
+                ", name='" + name + '\'' +
+                ", startBaseDate=" + startBaseDate +
+                ", endBaseDate=" + endBaseDate +
+                ", totalMovementTime='" + totalMovementTime + '\'' +
+                ", totalMovements=" + totalMovements +
+                ", maximumSog=" + maximumSog +
+                ", meanSog=" + meanSog +
+                ", maximumCog=" + maximumCog +
+                ", meanCog=" + meanCog +
+                ", departureLatitude=" + departureLatitude +
+                ", departureLongitude=" + departureLongitude +
+                ", arrivalLatitude=" + arrivalLatitude +
+                ", arrivalLongitude=" + arrivalLongitude +
+                ", travelledDistance=" + travelledDistance +
+                ", deltaDistance=" + deltaDistance +
+                '}';
+    }
+
 
 }

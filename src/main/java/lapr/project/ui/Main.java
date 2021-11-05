@@ -41,6 +41,9 @@ class Main {
         ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();
         ui.run();
 
+        //MovementsSummaryUI msUi = new MovementsSummaryUI();
+        //msUi.run();
+
         System.out.println(App.getInstance().getCompany().getBstShip().size());
         /*
         CalculatorExample calculatorExample = new CalculatorExample();

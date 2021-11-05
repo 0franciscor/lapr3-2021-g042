@@ -40,8 +40,6 @@ public class ImportShipUI implements Runnable{
 
         importShipController.importFile(fileName);
 
-        
-
     }
 
 }

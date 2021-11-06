@@ -50,7 +50,7 @@ public class BstShipTest {
         ships = new BstShip<>();
         for(ShipLocation i :arr)
             tree.insert(i);
-        ship = new Ship("211331640",",SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13,tree);
+        ship = new Ship("211331640",",SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
         ships.insert(ship);
     }
 
@@ -66,13 +66,13 @@ public class BstShipTest {
 
     @Test
     public void insertLocations(){
-        Ship ship = new Ship("212951640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13, location4);
+        Ship ship = new Ship("212951640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13, location4);
         assertEquals(1, ship.getShipPosition().size());
     }
 
     @Test
     public void insertLocations2(){
-        Ship ship = new Ship("211331641","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13, location3);
+        Ship ship = new Ship("211331641","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13, location3);
         ship.getShipPosition().insert(location4);
         ship.getShipPosition().insert(location5);
         assertEquals(3, ship.getShipPosition().size());

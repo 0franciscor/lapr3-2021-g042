@@ -85,7 +85,6 @@ public class ImportShip {
      * @return 1 if the ship was not added or 0 if it was
      */
     public int createShip(String [] shipArray) {
-
         try {
             //#################### Ship Location Conversion and Creation ####################
             String MMSI = shipArray[0];
@@ -107,17 +106,13 @@ public class ImportShip {
                 String shipID = shipArray[8];
                 String callSign = shipArray[9];
                 int vesselType = Integer.parseInt(shipArray[10]);
-                float lenght = Float.parseFloat(shipArray[11]);
+                float length = Float.parseFloat(shipArray[11]);
                 float width = Float.parseFloat(shipArray[12]);
                 float draft = Float.parseFloat(shipArray[13]);
-                float cargo;
+                String cargo = shipArray[14];
 
-                if (shipArray[14].equals("NA"))
-                    cargo = 0;
-                else
-                    cargo = Float.parseFloat(shipArray[14]);
 
-                newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, lenght, width, cargo, draft, shipLocation);
+                newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, length, width, cargo, draft, shipLocation);
                 shipBST.insert(newShip);
             } else
                 newShip.getShipPosition().insert(shipLocation);

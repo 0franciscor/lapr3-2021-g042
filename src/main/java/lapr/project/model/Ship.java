@@ -2,7 +2,7 @@ package lapr.project.model;
 
 /**
  *
- * @author 1201239 Francisco Redol
+ * @author Francisco Redol <1201239@isep.ipp.pt>
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
 public class Ship implements Comparable<Ship> {
@@ -38,6 +38,11 @@ public class Ship implements Comparable<Ship> {
     private String callSign;
 
     /**
+     * The ship's capacity
+     */
+    private String capacity;
+
+    /**
      * The ship's Vessel Type
      */
     private VesselType vesselType;
@@ -54,54 +59,68 @@ public class Ship implements Comparable<Ship> {
     public Ship(){}
 
     /**
-     * Ship's Constructor
+     * Ship Constructor
      *
-     * @param MMSI
-     * @param name
-     * @param shipID
-     * @param energyGenerators
-     * @param generatorOutput
-     * @param callSign
-     * @param shipLocation
+     * @param MMSI The ship's MMSI
+     * @param name The ship's name
+     * @param shipID The ship's ID (IMO code)
+     * @param energyGenerators The ship's number of Energy Generators
+     * @param generatorOutput The ship's Power Output
+     * @param callSign The ship's Call sign
+     * @param vesselType The ship's Vessel Type
+     * @param length The ship's length
+     * @param width The ship's width
+     * @param cargo The ship's capacity
+     * @param draft The ship's draft
+     * @param shipLocation The Ship's Locations tree
      */
-    public Ship(String MMSI, String name, String shipID, int energyGenerators,
-                float generatorOutput, String callSign, ShipLocation shipLocation){
+    public Ship(String MMSI, String name, String shipID, int energyGenerators, float generatorOutput, String callSign,
+                int vesselType, float length, float width, String cargo , float draft, ShipLocation shipLocation){
         setMMSI(MMSI);
         setName(name);
         setShipID(shipID);
         setNumberGenerators(energyGenerators);
         setGeneratorOutput(generatorOutput);
         setCallSign(callSign);
+        setCapacity(cargo);
+        this.vesselType = new VesselType(vesselType, length, width, draft);
         shipLocationBST = new ShipLocationBST();
         shipLocationBST.insert(shipLocation);
     }
 
     /**
-     * Ship's Constructor
+     * Ship constructor
      *
-     * @param MMSI
-     * @param name
-     * @param shipID
-     * @param energyGenerators
-     * @param generatorOutput
-     * @param callSign
-     * @param shipLocationBST
+     * @param MMSI The ship's MMSI
+     * @param name The ship's name
+     * @param shipID The ship's ID (IMO code)
+     * @param energyGenerators The ship's number of Energy Generators
+     * @param generatorOutput The ship's Power Output
+     * @param callSign The ship's Call sign
+     * @param vesselType The ship's Vessel Type
+     * @param length The ship's length
+     * @param width The ship's width
+     * @param cargo The ship's capacity
+     * @param draft The ship's draft
+     * @param shipLocationBST The Ship's Locations tree
      */
-    public Ship(String MMSI, String name, String shipID, int energyGenerators,
-                float generatorOutput, String callSign, ShipLocationBST shipLocationBST){
+    public Ship(String MMSI, String name, String shipID, int energyGenerators, float generatorOutput, String callSign,
+                int vesselType, float length, float width, String cargo , float draft, ShipLocationBST shipLocationBST){
         setMMSI(MMSI);
         setName(name);
         setShipID(shipID);
         setNumberGenerators(energyGenerators);
         setGeneratorOutput(generatorOutput);
         setCallSign(callSign);
+        setCapacity(cargo);
+        this.vesselType = new VesselType(vesselType, length, width, draft);
         this.shipLocationBST = shipLocationBST;
     }
 
     /**
      * Sets the Ship's MMSI according to the defined rules
      *
-     * @param MMSI
+     * @param MMSI The ship's MMSI
      */
     public void setMMSI(String MMSI){
         if(MMSI == null || MMSI.length() != 9)
@@ -113,7 +132,7 @@ public class Ship implements Comparable<Ship> {
     /**
      * Sets the Ship's name according to the defined rules
      *
-     * @param name
+     * @param name The ship's name
      */
     public void setName(String name){
         if(name == null || name.isEmpty())
@@ -125,7 +144,7 @@ public class Ship implements Comparable<Ship> {
     /**
      * Sets the Ship's shipID according to the defined rules
      *
-     * @param shipID
+     * @param shipID The ship's ID (IMO code)
      */
     public void setShipID(String shipID){
         if(shipID == null || shipID.length() != 10 || !shipID.startsWith("IMO"))
@@ -137,7 +156,7 @@ public class Ship implements Comparable<Ship> {
     /**
      * Sets the Ship's number of Energy Generators according to the defined rules
      *
-     * @param energyGenerators
+     * @param energyGenerators The ship's number of Energy Generators
      */
     public void setNumberGenerators(int energyGenerators){
         if(energyGenerators < 0)
@@ -148,7 +167,7 @@ public class Ship implements Comparable<Ship> {
     /**
      * Sets the Ship's generator output according to the defined rules
      *
-     * @param generatorOutput
+     * @param generatorOutput The ship's Power Output
      */
     public void setGeneratorOutput(float generatorOutput){
         if(generatorOutput < 0)
@@ -159,13 +178,32 @@ public class Ship implements Comparable<Ship> {
     /**
      * Sets the Ship's Call Sign according to the defined rules
      *
-     * @param callSign
+     * @param callSign The ship's Call sign
      */
     public void setCallSign (String callSign){
         if(callSign == null || callSign.isEmpty())
             throw new IllegalArgumentException("The Ship call sign cannot be empty.");
         else
             this.callSign = callSign;
+    }
+
+    /**
+     * Sets the Ship's capacity according to the defined rules
+     *
+     * @param capacity ship's capacity
+     */
+    public void setCapacity (String capacity){
+        if(capacity == null || capacity.isEmpty())
+            throw new IllegalArgumentException("The Ship's capacity shall not be empty.");
+
+        if(capacity.equals("NA"))
+            this.capacity = capacity;
+
+        else if(Float.parseFloat(capacity) < 0)
+            throw new IllegalArgumentException("The Ship's capacity shall not be empty.");
+
+        else
+            this.capacity = capacity;
     }
 
     /**
@@ -234,8 +272,8 @@ public class Ship implements Comparable<Ship> {
     /**
      * @return the ship's capacity
      */
-    public float getCapacity(){
-        return vesselType.getCapacity();
+    public String getCapacity(){
+        return capacity;
     }
 
     /**
@@ -271,7 +309,7 @@ public class Ship implements Comparable<Ship> {
     @Override
     public String toString(){
         return String.format("MMSI: %s\nName: %s\nshipID: %s\nEnergy Generators: %d\nGenerator Output: %.2f\nCall Sign: %s\nVessel Type: %d\nLength: %.2f\n" +
-                "Width: %.2f\nCapacity: %.2f\nDraft: %.2f\n", MMSI, name, shipID, energyGenerators, generatorOutput, callSign, getVesselType(), getLength(), getWidth(), getCapacity(), getDraft());
+                "Width: %.2f\nCapacity: %s\nDraft: %.2f\n", MMSI, name, shipID, energyGenerators, generatorOutput, callSign, getVesselType(), getLength(), getWidth(), getCapacity(), getDraft());
     }
 
 }

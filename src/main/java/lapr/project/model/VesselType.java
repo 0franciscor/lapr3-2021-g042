@@ -21,11 +21,6 @@ public class VesselType {
     private float width;
 
     /**
-     * The ship's capacity
-     */
-    private float capacity;
-
-    /**
      * The ship's draft
      */
     private float draft;
@@ -38,24 +33,22 @@ public class VesselType {
     /**
      * VesselType Constructor
      *
-     * @param vesselType
-     * @param length
-     * @param width
-     * @param capacity
-     * @param draft
+     * @param vesselType The ship's Vessel Type
+     * @param length The ship's length
+     * @param width The ship's width
+     * @param draft The ship's draft
      */
-    public VesselType(int vesselType, float length, float width, float capacity, float draft){
+    public VesselType(int vesselType, float length, float width, float draft){
         this.vesselType = vesselType;
         setLength(length);
         setWidth(width);
-        setCapacity(capacity);
         setDraft(draft);
     }
 
     /**
      * Sets the Ship's length according to the defined rules
      *
-     * @param length
+     * @param length Ship's length
      */
     public void setLength (float length){
         if(length <= 0)
@@ -67,31 +60,19 @@ public class VesselType {
     /**
      * Sets the Ship's width according to the defined rules
      *
-     * @param width
+     * @param width ship's width
      */
     public void setWidth(float width){
         if(width <= 0)
             throw new IllegalArgumentException("A Ship must have a width bigger than 0.");
-        this.width = width;
-
-    }
-
-    /**
-     * Sets the Ship's capacity according to the defined rules
-     *
-     * @param capacity
-     */
-    public void setCapacity (float capacity){
-        if(capacity < 0)
-            throw new IllegalArgumentException("A Ship must have a capacity lower than 0.");
         else
-            this.capacity = capacity;
+            this.width = width;
     }
 
     /**
      * Sets the Ship's draft according to the defined rules
      *
-     * @param draft
+     * @param draft ship's draft
      */
     public void setDraft(float draft){
         if(draft < 0)
@@ -99,8 +80,6 @@ public class VesselType {
         else
             this.draft = draft;
     }
-
-
     /**
      * @return the ship's Vessel Type
      */
@@ -120,13 +99,6 @@ public class VesselType {
      */
     public float getWidth(){
         return width;
-    }
-
-    /**
-     * @return the ship's capacity
-     */
-    public float getCapacity(){
-        return capacity;
     }
 
     /**

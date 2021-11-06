@@ -63,22 +63,22 @@ public class Summary {
     /**
      * The departure latitude of the journey
      */
-    private float departureLatitude;
+    private String departureLatitude;
 
     /**
      * The departure longitude of the journey
      */
-    private float departureLongitude;
+    private String departureLongitude;
 
     /**
      * The arrival latitude of the journey
      */
-    private float arrivalLatitude;
+    private String arrivalLatitude;
 
     /**
      * The arrival longitude of the journey
      */
-    private float arrivalLongitude;
+    private String arrivalLongitude;
 
     /**
      * The total distance travelled
@@ -195,7 +195,7 @@ public class Summary {
      * Get the latitude of the departure of a ship
      * @return the departure latitude
      */
-    public double getDepartureLatitude() {
+    public String getDepartureLatitude() {
         return departureLatitude;
     }
 
@@ -203,7 +203,7 @@ public class Summary {
      * Get the longitude of the departure of a ship
      * @return the departure longitude
      */
-    public float getDepartureLongitude() {
+    public String getDepartureLongitude() {
         return departureLongitude;
     }
 
@@ -211,7 +211,7 @@ public class Summary {
      * Get the latitude of the arrival of a ship
      * @return the arrival latitude
      */
-    public float getArrivalLatitude() {
+    public String getArrivalLatitude() {
         return arrivalLatitude;
     }
 
@@ -219,7 +219,7 @@ public class Summary {
      * Get the longitude of the arrival of a ship
      * @return the arrival longitude
      */
-    public float getArrivalLongitude() {
+    public String getArrivalLongitude() {
         return arrivalLongitude;
     }
 

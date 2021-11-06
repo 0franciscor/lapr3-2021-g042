@@ -64,22 +64,22 @@ public class SummaryDto {
     /**
      * The departure latitude of the journey
      */
-    private double departureLatitude;
+    private String departureLatitude;
 
     /**
      * The departure longitude of the journey
      */
-    private double departureLongitude;
+    private String departureLongitude;
 
     /**
      * The arrival latitude of the journey
      */
-    private double arrivalLatitude;
+    private String arrivalLatitude;
 
     /**
      * The arrival longitude of the journey
      */
-    private double arrivalLongitude;
+    private String arrivalLongitude;
 
     /**
      * The total distance travelled
@@ -110,7 +110,7 @@ public class SummaryDto {
      * @param travelledDistance the travelled distance made in a journey
      * @param deltaDistance the delta distance made in a journey
      */
-    public SummaryDto(String mmsiCode, String name, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, int departureLatitude, int departureLongitude, int arrivalLatitude, int arrivalLongitude, float travelledDistance, float deltaDistance) {
+    public SummaryDto(String mmsiCode, String name, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, String departureLatitude, String departureLongitude, String arrivalLatitude, String arrivalLongitude, float travelledDistance, float deltaDistance) {
         this.mmsiCode = mmsiCode;
         this.name = name;
         this.startBaseDate = startBaseDate;
@@ -237,7 +237,7 @@ public class SummaryDto {
      * Get the latitude of the departure of a ship
      * @return the departure latitude
      */
-    public double getDepartureLatitude() {
+    public String getDepartureLatitude() {
         return departureLatitude;
     }
 
@@ -245,7 +245,7 @@ public class SummaryDto {
      * Get the longitude of the departure of a ship
      * @return the departure longitude
      */
-    public double getDepartureLongitude() {
+    public String getDepartureLongitude() {
         return departureLongitude;
     }
 
@@ -253,7 +253,7 @@ public class SummaryDto {
      * Get the latitude of the arrival of a ship
      * @return the arrival latitude
      */
-    public double getArrivalLatitude() {
+    public String getArrivalLatitude() {
         return arrivalLatitude;
     }
 
@@ -261,7 +261,7 @@ public class SummaryDto {
      * Get the longitude of the arrival of a ship
      * @return the arrival longitude
      */
-    public double getArrivalLongitude() {
+    public String getArrivalLongitude() {
         return arrivalLongitude;
     }
 

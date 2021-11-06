@@ -38,11 +38,14 @@ class Main {
         importShip.getFile("sships.csv");
         System.out.println("Number of ships not imported: " + importShip.convertShips());
 
-        ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();
-        ui.run();
+        //ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();
+        //ui.run();
 
-        //MovementsSummaryUI msUi = new MovementsSummaryUI();
-        //msUi.run();
+        MovementsSummaryUI msUi = new MovementsSummaryUI();
+        msUi.run();
+
+        //ListSomeShipDataUi listSomeShipDataUi = new ListSomeShipDataUi();
+        //listSomeShipDataUi.run();
 
         System.out.println(App.getInstance().getCompany().getBstShip().size());
         /*

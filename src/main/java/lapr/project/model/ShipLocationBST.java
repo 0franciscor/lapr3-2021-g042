@@ -378,7 +378,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return returns the total number of moves made by a ship in a voyage
      */
     public int getTotalMovements() {
-        return this.size();
+        return this.size()-1;
     }
 
     /**
@@ -472,44 +472,45 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      */
     public double getMeanCog() {
         Iterable<ShipLocation> shipLocations = inOrder();
-        double meanCog = 0, size=0;
+        double meanCog = 0;
         for (ShipLocation s : shipLocations){
             meanCog+=s.getCOG();
-            size++;
         }
-        return meanCog/size;
+        return meanCog/size();
     }
 
     /**
      returns the latitude of the departure port of the voyage made by the ship
      * @return the latitude of the departure port of the voyage made by the ship
      */
-    public float getLatitudeDeparture() {
-        return Float.parseFloat(startShipLocation().getLatitude());
+    public String getLatitudeDeparture() {
+
+        return startShipLocation().getLatitude();
     }
 
     /**
      * returns the longitude of the departure port of the voyage made by the ship
      * @return the longitude of the departure port of the voyage made by the ship
      */
-    public float getLongitudeDeparture() {
-        return  Float.parseFloat(startShipLocation().getLongitude());
+    public String getLongitudeDeparture() {
+
+        return startShipLocation().getLongitude();
     }
 
     /**
      * returns the latitude of the port of arrival of the voyage made by the ship
      * @return the latitude of the port of arrival of the voyage made by the ship
      */
-    public float getArrivalLatitude() {
-        return Float.parseFloat(endShipLocation().getLatitude());
+    public String getArrivalLatitude() {
+        return endShipLocation().getLatitude();
     }
 
     /**
      * returns the longitude of the port of arrival of the voyage made by the ship
      * @return the longitude of the port of arrival of the voyage made by the ship
      */
-    public float getArrivalLongitude() {
-        return Float.parseFloat(endShipLocation().getLongitude());
+    public String getArrivalLongitude() {
+        return endShipLocation().getLongitude();
     }
 
     /**
@@ -523,7 +524,14 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         while (shipLocationIterator.hasNext()){
             ShipLocation secondLocation = shipLocationIterator.next();
 
-            sum += calculateDistance(Float.parseFloat(firstLocation.getLatitude()), Float.parseFloat(firstLocation.getLongitude()), Float.parseFloat(secondLocation.getLatitude()),Float.parseFloat(secondLocation.getLongitude()));
+            if (firstLocation.getLatitude().equals("not defined") || firstLocation.getLongitude().equals("not defined") || secondLocation.getLatitude().equals("not defined") || secondLocation.getLongitude().equals("not defined")){
+                sum += 0;
+            }
+            else
+            {
+                sum += calculateDistance(Double.parseDouble(firstLocation.getLatitude()), Double.parseDouble(firstLocation.getLongitude()), Double.parseDouble(secondLocation.getLatitude()), Double.parseDouble(secondLocation.getLongitude()));
+            }
+
             firstLocation = secondLocation;
         }
         return sum;
@@ -534,7 +542,10 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return the delta distance traveled by ship
      */
     public double getDeltaDistance() {
-       return calculateDistance(getLatitudeDeparture(), getLongitudeDeparture(), getArrivalLatitude(), getArrivalLongitude());
+        if (getArrivalLongitude().equals("not defined") || getArrivalLatitude().equals("not defined") || getLongitudeDeparture().equals("not defined") || getLatitudeDeparture().equals("not defined")){
+            return 0;
+        }
+       else return calculateDistance(Double.parseDouble(getLatitudeDeparture()), Double.parseDouble(getLongitudeDeparture()), Double.parseDouble(getArrivalLatitude()), Double.parseDouble(getArrivalLongitude()));
     }
 
     /**
@@ -545,7 +556,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @param arrivalLongitude the arrival longitude
      * @return the distance between the two coordinates
      */
-    private double calculateDistance(float departureLatitude, float departureLongitude,float arrivalLatitude, float arrivalLongitude){
+    private double calculateDistance(double departureLatitude, double departureLongitude, double arrivalLatitude, double arrivalLongitude){
 
         int earthRadius = 6371000;
 
@@ -554,9 +565,9 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         double endLatitude= toRadian(arrivalLatitude);
         double endLongitude= toRadian(arrivalLongitude);
 
-        double variationOfLatitude = endLatitude-initialLatitude;
+        double variationOfLatitude = Math.abs(endLatitude-initialLatitude);
 
-        double variationOfLongitude = endLongitude-initialLongitude;
+        double variationOfLongitude = Math.abs(endLongitude-initialLongitude);
 
         double a = Math.sin(variationOfLatitude/2) * Math.sin(variationOfLatitude/2) + Math.cos(initialLatitude)* Math.cos(endLatitude) * Math.sin(variationOfLongitude/2) * Math.sin(variationOfLongitude/2);
 
@@ -571,7 +582,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @param degree the angle in degrees
      * @return the angle in radian
      */
-    private double toRadian(float degree){
+    private double toRadian(double degree){
         return (degree*Math.PI)/180;
     }
 

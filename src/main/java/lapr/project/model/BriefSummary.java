@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-public class BriefSummary {
+public class BriefSummary implements Comparable{
     /**
      *
      */
@@ -14,12 +14,12 @@ public class BriefSummary {
     /**
      *
      */
-    private float deltaDistance;
+    private double deltaDistance;
 
     /**
      *
      */
-    private float travelledDistance;
+    private double travelledDistance;
 
     /**
      *
@@ -28,7 +28,7 @@ public class BriefSummary {
      * @param deltaDistance
      * @param travelledDistance
      */
-    public BriefSummary(String mmsiCode, int totalNumberOfMovements, float deltaDistance, float travelledDistance) {
+    public BriefSummary(String mmsiCode, int totalNumberOfMovements, double deltaDistance, double travelledDistance) {
         this.mmsiCode = mmsiCode;
         this.totalNumberOfMovements = totalNumberOfMovements;
         this.deltaDistance = deltaDistance;
@@ -55,7 +55,7 @@ public class BriefSummary {
      *
      * @return
      */
-    public float getDeltaDistance() {
+    public double getDeltaDistance() {
         return deltaDistance;
     }
 
@@ -63,7 +63,24 @@ public class BriefSummary {
      *
      * @return
      */
-    public float getTravelledDistance() {
+    public double getTravelledDistance() {
         return travelledDistance;
     }
+
+
+    @Override
+    public int compareTo(Object o) {
+        return 1;
+    }
+
+    @Override
+    public String toString() {
+        return "BriefSummary{" +
+                "mmsiCode='" + mmsiCode + '\'' +
+                ", totalNumberOfMovements=" + totalNumberOfMovements +
+                ", deltaDistance=" + deltaDistance +
+                ", travelledDistance=" + travelledDistance +
+                '}';
+    }
+
 }

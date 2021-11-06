@@ -265,5 +265,21 @@ public class Summary {
                 '}';
     }
 
+    /**
+     * @param object That is o objective of comparasion
+     * @return the result of the comparasion
+     */
+    @Override
+    public boolean equals(Object object){
+        if(this == object)
+            return true;
+
+        if(object == null || getClass() != object.getClass())
+            return false;
+
+        else
+            return this.mmsiCode.equals(((Summary) object).getMmsiCode());
+    }
+
 
 }

@@ -18,7 +18,7 @@ public class Ship implements Comparable<Ship> {
     private String name;
 
     /**
-     * The ship's ID
+     * The ship's ID (IMO code)
      */
     private String shipID;
 
@@ -352,6 +352,15 @@ public class Ship implements Comparable<Ship> {
     @Override
     public int compareTo(Ship o) {
         return this.MMSI.compareTo(o.getMMSI());
+    }
+
+    /**
+     * @return information about a certain ship
+     */
+    @Override
+    public String toString(){
+        return String.format("MMSI: %s\nName: %s\nshipID: %s\nEnergy Generators: %d\nGenerator Output: %.2f\nCall Sign: %s\nVessel Type: %d\nLength: %.2f\n" +
+                "Width: %.2f\nCapacity: %.2f\nDraft: %.2f\n", MMSI, name, shipID, energyGenerators, generatorOutput, callSign, vesselType, length, width, capacity, draft);
     }
 
 }

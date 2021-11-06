@@ -73,8 +73,7 @@ public class ImportShip {
      * @return the line splitted as an array
      */
     public String [] getLineArray(String shipLine){
-        String[] dataArray = shipLine.split(",");
-        return dataArray;
+        return shipLine.split(",");
     }
 
     /**
@@ -95,7 +94,7 @@ public class ImportShip {
             float COG = Float.parseFloat(shipArray[5]);
             String heading = shipArray[6];
             String transceiverClass = shipArray[15];
-            ShipLocation shipLocation = new ShipLocation(messageTime, latitude, longitude, SOG, COG, heading, transceiverClass);
+            ShipLocation shipLocation = new ShipLocation(MMSI, messageTime, latitude, longitude, SOG, COG, heading, transceiverClass);
 
             //#################### Ship Conversion and Creation ####################
             BstShip shipBST = App.getInstance().getCompany().getBstShip();
@@ -105,12 +104,12 @@ public class ImportShip {
                 String name = shipArray[7];
                 String shipID = shipArray[8];
                 String callSign = shipArray[9];
+                String cargo = shipArray[14];
+
                 int vesselType = Integer.parseInt(shipArray[10]);
                 float length = Float.parseFloat(shipArray[11]);
                 float width = Float.parseFloat(shipArray[12]);
                 float draft = Float.parseFloat(shipArray[13]);
-                String cargo = shipArray[14];
-
 
                 newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, length, width, cargo, draft, shipLocation);
                 shipBST.insert(newShip);

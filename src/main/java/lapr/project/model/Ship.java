@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import lapr.project.controller.App;
+
 /**
  *
  * @author Francisco Redol <1201239@isep.ipp.pt>
@@ -67,10 +69,10 @@ public class Ship implements Comparable<Ship> {
      * @param energyGenerators The ship's number of Energy Generators
      * @param generatorOutput The ship's Power Output
      * @param callSign The ship's Call sign
+     * @param cargo The ship's capacity
      * @param vesselType The ship's Vessel Type
      * @param length The ship's length
      * @param width The ship's width
-     * @param cargo The ship's capacity
      * @param draft The ship's draft
      * @param shipLocation The Ship's Locations tree
      */
@@ -84,6 +86,7 @@ public class Ship implements Comparable<Ship> {
         setCallSign(callSign);
         setCapacity(cargo);
         this.vesselType = new VesselType(vesselType, length, width, draft);
+        setVesselType(vesselType, length, width, draft);
         shipLocationBST = new ShipLocationBST();
         shipLocationBST.insert(shipLocation);
     }
@@ -97,10 +100,10 @@ public class Ship implements Comparable<Ship> {
      * @param energyGenerators The ship's number of Energy Generators
      * @param generatorOutput The ship's Power Output
      * @param callSign The ship's Call sign
+     * @param cargo The ship's capacity
      * @param vesselType The ship's Vessel Type
      * @param length The ship's length
      * @param width The ship's width
-     * @param cargo The ship's capacity
      * @param draft The ship's draft
      * @param shipLocationBST The Ship's Locations tree
      */
@@ -204,6 +207,25 @@ public class Ship implements Comparable<Ship> {
 
         else
             this.capacity = capacity;
+    }
+
+    /**
+     * Method that defines a ship's Vessel Type according to the defined rules
+     *
+     * @param vesselType The ship's Vessel Type
+     * @param length The ship's length
+     * @param width The ship's width
+     * @param draft The ship's draft
+     */
+    public void setVesselType(int vesselType, float length, float width, float draft){
+        if(length < 0 || width < 0 || draft < 0)
+            throw new IllegalArgumentException("The ship's dimensions or draft are invalid.");
+        else{
+            VesselType vesselTypeAux = new VesselType(vesselType, length, width, draft);
+            if(!App.getInstance().getCompany().getVesselTypeList().contains(vesselTypeAux))
+                App.getInstance().getCompany().getVesselTypeList().add(vesselTypeAux);
+            this.vesselType = vesselTypeAux;
+        }
     }
 
     /**
@@ -311,5 +333,4 @@ public class Ship implements Comparable<Ship> {
         return String.format("MMSI: %s\nName: %s\nshipID: %s\nEnergy Generators: %d\nGenerator Output: %.2f\nCall Sign: %s\nVessel Type: %d\nLength: %.2f\n" +
                 "Width: %.2f\nCapacity: %s\nDraft: %.2f\n", MMSI, name, shipID, energyGenerators, generatorOutput, callSign, getVesselType(), getLength(), getWidth(), getCapacity(), getDraft());
     }
-
 }

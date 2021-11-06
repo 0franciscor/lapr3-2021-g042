@@ -11,6 +11,11 @@ import java.util.Date;
 public class ShipLocation implements Comparable<ShipLocation>{
 
     /**
+     * Ship's MMSI. It allows the ShipLocation object to be tied with a Ship Object
+     */
+    private String MMSI;
+
+    /**
      * Message Date and Time
      */
     private Date messageTime;
@@ -50,7 +55,6 @@ public class ShipLocation implements Comparable<ShipLocation>{
      */
     private String transceiverClass;
 
-
     /**
      * ShipLocation Constructor
      */
@@ -59,16 +63,18 @@ public class ShipLocation implements Comparable<ShipLocation>{
     /**
      * ShipLocation Constructor
      *
-     * @param messageTime
-     * @param latitude
-     * @param longitude
-     * @param SOG
-     * @param COG
-     * @param heading
-     * @param position
-     * @param transceiverClass
+     * @param MMSI Ship's MMSI. It allows the ShipLocation object to be tied with a Ship Object
+     * @param messageTime Message Date and Time
+     * @param latitude Location latitude
+     * @param longitude Location Longitude
+     * @param SOG Location SOG
+     * @param COG Location COG
+     * @param heading Location Heading
+     * @param position Location Position
+     * @param transceiverClass Location transceiver Class
      */
-    public ShipLocation(Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String position, String transceiverClass){
+    public ShipLocation(String MMSI, Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String mmsi, String position, String transceiverClass){
+        setMMSI(MMSI);
         this.messageTime = messageTime;
         setLatitude(latitude);
         setLongitude(longitude);
@@ -83,15 +89,17 @@ public class ShipLocation implements Comparable<ShipLocation>{
     /**
      * ShipLocation Constructor
      *
-     * @param messageTime
-     * @param latitude
-     * @param longitude
-     * @param SOG
-     * @param COG
-     * @param heading
-     * @param transceiverClass
+     * @param MMSI Ship's MMSI. It allows the ShipLocation object to be tied with a Ship Object
+     * @param messageTime Message Date and Time
+     * @param latitude Location latitude
+     * @param longitude Location Longitude
+     * @param SOG Location SOG
+     * @param COG Location COG
+     * @param heading Location Heading
+     * @param transceiverClass Location transceiver Class
      */
-    public ShipLocation(Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String transceiverClass){
+    public ShipLocation(String MMSI, Date messageTime,String latitude, String longitude, float SOG, float COG, String heading, String transceiverClass){
+        setMMSI(MMSI);
         this.messageTime = messageTime;
         setLatitude(latitude);
         setLongitude(longitude);
@@ -100,7 +108,18 @@ public class ShipLocation implements Comparable<ShipLocation>{
         setHeading(heading);
         this.position = "not defined";
         this.transceiverClass = transceiverClass;
+    }
 
+    /**
+     * Sets the Ship's MMSI according to the defined rules
+     *
+     * @param MMSI The ship's MMSI
+     */
+    public void setMMSI(String MMSI){
+        if(MMSI == null || MMSI.length() != 9)
+            throw new IllegalArgumentException("The ship MMSI code must be 9-digit long.");
+        else
+            this.MMSI = MMSI;
     }
 
     /**
@@ -181,6 +200,13 @@ public class ShipLocation implements Comparable<ShipLocation>{
     }
 
     /**
+     * @return ship's MMSI
+     */
+    public String getMMSI(){
+        return MMSI;
+    }
+
+    /**
      * @return the Date of the Location sent
      */
     public Date getMessageTime() {return messageTime;}
@@ -251,6 +277,6 @@ public class ShipLocation implements Comparable<ShipLocation>{
      */
     @Override
     public String toString(){
-        return String.format("\nDate: %s\nLatitude: %s\nLongitude: %s\n\nSOG: %f\nCOG: %f\nHeading: %s\n",messageTime,latitude,longitude,SOG,COG,heading);
+        return String.format("\nDate: %s\nLatitude: %s\nLongitude: %s\n\nSOG: %f\nCOG: %f\nHeading: %s\n", messageTime,latitude,longitude,SOG,COG,heading);
     }
 }

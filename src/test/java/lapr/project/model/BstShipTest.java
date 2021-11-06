@@ -33,12 +33,12 @@ public class BstShipTest {
     ShipLocation location6;
 
     public BstShipTest() throws ParseException {
-        location1 = new ShipLocation(dateFormatter.parse(auxDatas[0]),"36","-122",19,145,"147","B");
-        location2 = new ShipLocation(dateFormatter.parse(auxDatas[1]),"36","-122",19,145,"147","B");
-        location3 = new ShipLocation(dateFormatter.parse(auxDatas[2]),"36","-122",19,145,"147","B");
-        location4 = new ShipLocation(dateFormatter.parse(auxDatas[0]),"35","-122",19,145,"147","B");
-        location5 = new ShipLocation(dateFormatter.parse(auxDatas[1]),"37","-122",19,145,"147","B");
-        location6 = new ShipLocation(dateFormatter.parse(auxDatas[2]),"38","-122",19,145,"147","B");
+        location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"36","-122",19,145,"147","B");
+        location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]),"36","-122",19,145,"147","B");
+        location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]),"36","-122",19,145,"147","B");
+        location4 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"35","-122",19,145,"147","B");
+        location5 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]),"37","-122",19,145,"147","B");
+        location6 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]),"38","-122",19,145,"147","B");
         arr.add(location1);
         arr.add(location2);
         arr.add(location3);

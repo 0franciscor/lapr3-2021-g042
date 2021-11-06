@@ -107,4 +107,35 @@ public class VesselType {
     public float getDraft(){
         return draft;
     }
+
+    /**
+     * Allows the comparasion of this object with other object
+     *
+     * @param obj that is to be compared
+     * @return true if the objects are equal and false if they are not
+     */
+    public boolean equals(Object obj){
+        if(this == obj)
+            return true;
+
+        if(obj == null || getClass() != obj.getClass())
+            return false;
+
+        VesselType vesselType2 = ((VesselType) obj);
+
+        return vesselType == vesselType2.getVesselType() && length == vesselType2.getLength() &&
+                width == vesselType2.getWidth() && draft == vesselType2.getDraft();
+    }
+
+    /**
+     * @return A string describing the Vessel Type Object
+     */
+    @Override
+    public String toString(){
+        return String.format("" +
+                "Vessel Type: %d\n" +
+                "Length: %.2f\n" +
+                "Width: %.2f\n" +
+                "Draft: %.2f\n");
+    }
 }

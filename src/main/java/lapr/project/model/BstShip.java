@@ -379,6 +379,47 @@ public class BstShip<E> implements BSTInterface<Ship>{
         }
         return listPairsOfShips;
     }
+
+    /**
+     * Method that returns the top-N ships contained in a MAP
+     *
+     * @param numberShips Number of top N ships
+     * @param initialDate The initial Time, in order to define the time window
+     * @param finalDate The final Time, in order to define the time window
+     * @return a Map organizing ships by vessel
+     */
+    public Map<Integer, List<Summary>> getTopNShips(int numberShips, Date initialDate, Date finalDate){
+        Iterator<Ship> shipList = preOrder().iterator();
+        Map<Integer, List<Summary>> summaryMap = new HashMap<>();
+
+        while(shipList.hasNext()) {
+            Ship toBeAdded = shipList.next();
+            Summary summary = new Summary(toBeAdded);
+            if(summary.getStartBaseDate().after(initialDate) || summary.getEndBaseDate().before(finalDate))
+                if(summaryMap.get(toBeAdded.getVesselType()).isEmpty())
+                    summaryMap.put(toBeAdded.getVesselType(), new ArrayList<>());
+            summaryMap.get(toBeAdded.getVesselType()).add(summary);
+
+        }
+
+        for(Integer key : summaryMap.keySet()) {
+            summaryMap.get(key).sort(new Comparator<Summary>() {
+                @Override
+                public int compare(Summary o1, Summary o2) {
+                    if (o1.getTravelledDistance() > o2.getTravelledDistance())
+                        return 1;
+                    else if (o1.getTravelledDistance() < o2.getTravelledDistance())
+                        return -1;
+                    else
+                        return 0;
+                }
+            });
+            List<Summary> keyList = summaryMap.get(key);
+            summaryMap.put(key, keyList.subList((keyList.size()-1-numberShips),  (keyList.size()-1-numberShips)));
+        }
+
+        return summaryMap;
+    }
 }
 
 

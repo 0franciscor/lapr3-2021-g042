@@ -311,6 +311,74 @@ public class BstShip<E> implements BSTInterface<Ship>{
             return find(root, shipToFind).getShip();
         }
     }
+
+    public List<TreeMap<Double,String>> getIntendedPairsOfShips(){
+        List<TreeMap<Double,String>> listPairsOfShips = new ArrayList<>();
+        Iterable<Ship> bstInOrder = inOrder();
+        Iterator<Ship> iterator1 = bstInOrder.iterator();
+
+
+        for (int i=0; i<size()-1;i++){
+            TreeMap<Double,String> infoPair = new TreeMap<>();
+            Ship ship1 = iterator1.next();
+            ShipLocationBST shipLocationBST = ship1.getShipPosition();
+            Double travelledDistance = shipLocationBST.getTravelledDistance();
+
+            if(travelledDistance>10){
+                Iterator<Ship> iterator2 = bstInOrder.iterator();
+
+                Ship ship2=null;
+                if(iterator2.hasNext()){
+                    ship2=iterator2.next();
+                }
+                while (iterator2.hasNext() && ship2 != ship1){
+                    ship2=iterator2.next();
+                }
+
+                do {
+                    ship2=iterator2.next();
+                    ShipLocationBST shipLocationBST2 = ship2.getShipPosition();
+                    Double travelledDistance2 = shipLocationBST2.getTravelledDistance();
+
+                    if (travelledDistance2 > 10 && travelledDistance != travelledDistance2) {
+                        String arrivalLat = shipLocationBST.getArrivalLatitude();
+                        String arrivalLog = shipLocationBST.getArrivalLongitude();
+                        String arrivalLat2 = shipLocationBST2.getArrivalLatitude();
+                        String arrivalLog2 = shipLocationBST2.getArrivalLongitude();
+                        if (arrivalLat.equals("not defined") || arrivalLog.equals("not defined") || arrivalLat2.equals("not defined") || arrivalLog2.equals("not defined")) {
+
+                        } else {
+                            Double arrivalDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
+                            if (arrivalDistance < 5) {
+                                String depLat = shipLocationBST.getLatitudeDeparture();
+                                String depLog = shipLocationBST.getLongitudeDeparture();
+                                String depLat2 = shipLocationBST2.getLatitudeDeparture();
+                                String depLog2 = shipLocationBST2.getLongitudeDeparture();
+                                if (depLat.equals("not defined") || depLog.equals("not defined") || depLat2.equals("not defined") || depLog2.equals("not defined")) {
+
+                                } else {
+                                    Double depDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
+                                    if (depDistance < 5) {
+                                        Double travelDistanceDifference = Math.abs(travelledDistance2 - travelledDistance);
+                                        String stringWithAllInfo = String.format("%s %s", ship1.getMMSI(), ship2.getMMSI());
+                                        infoPair.put(travelDistanceDifference, stringWithAllInfo);
+                                    }
+                                }
+
+                            }
+                        }
+
+
+                    }
+
+                } while (iterator2.hasNext());
+
+            }
+
+            listPairsOfShips.add(infoPair);
+        }
+        return listPairsOfShips;
+    }
 }
 
 

@@ -556,7 +556,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @param arrivalLongitude the arrival longitude
      * @return the distance between the two coordinates
      */
-    private double calculateDistance(double departureLatitude, double departureLongitude, double arrivalLatitude, double arrivalLongitude){
+    public double calculateDistance(double departureLatitude, double departureLongitude, double arrivalLatitude, double arrivalLongitude){
 
         int earthRadius = 6371000;
 

@@ -30,7 +30,7 @@ public class Company {
      * Creates an instance of Company
      */
     public Company(){
-        bstShip = new BstShip();
+        bstShip = new AvlShip();
         importShip = new ImportShip();
         vesselTypeList = new ArrayList<>();
     }

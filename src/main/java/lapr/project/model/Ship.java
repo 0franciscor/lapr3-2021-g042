@@ -87,7 +87,7 @@ public class Ship implements Comparable<Ship> {
         setCapacity(cargo);
         this.vesselType = new VesselType(vesselType, length, width, draft);
         setVesselType(vesselType, length, width, draft);
-        shipLocationBST = new ShipLocationBST();
+        shipLocationBST = new ShipLocationAVL();
         shipLocationBST.insert(shipLocation);
     }
 
@@ -105,10 +105,10 @@ public class Ship implements Comparable<Ship> {
      * @param length The ship's length
      * @param width The ship's width
      * @param draft The ship's draft
-     * @param shipLocationBST The Ship's Locations tree
+     * @param shipLocationAVL The Ship's Locations tree
      */
     public Ship(String MMSI, String name, String shipID, int energyGenerators, float generatorOutput, String callSign,
-                int vesselType, float length, float width, String cargo , float draft, ShipLocationBST shipLocationBST){
+                int vesselType, float length, float width, String cargo , float draft, ShipLocationBST shipLocationAVL){
         setMMSI(MMSI);
         setName(name);
         setShipID(shipID);
@@ -117,7 +117,7 @@ public class Ship implements Comparable<Ship> {
         setCallSign(callSign);
         setCapacity(cargo);
         this.vesselType = new VesselType(vesselType, length, width, draft);
-        this.shipLocationBST = shipLocationBST;
+        this.shipLocationBST = shipLocationAVL;
     }
 
     /**

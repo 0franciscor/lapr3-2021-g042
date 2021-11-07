@@ -28,11 +28,14 @@ class Ship {
 -numberEnergyGenerators
 -generatorPower
 -callSign
--vesselType
+-draft
+}
+
+class VesselType {
+-vesselTypeId
 -length
 -width
 -capacity
--draft
 }
 
 class Company {
@@ -43,6 +46,7 @@ Company "1"--"1..*" Ship: own >
 Company "1"--"1..*" Employee: have >
 
 Ship "1" -- "1..*" ShipLocation : has >
+Ship "*" -- "1" VesselType : is of >
 
 Employee "1" -- "1..*" ShipLocation : controls >
 

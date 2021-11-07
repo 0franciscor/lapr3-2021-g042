@@ -1,28 +1,29 @@
 package lapr.project.model;
 
 public class BriefSummary implements Comparable{
+
     /**
-     *
+     * The ship's MMSI
      */
     private String mmsiCode;
 
     /**
-     *
+     * Represent the total number of movements
      */
     private int totalNumberOfMovements;
 
     /**
-     *
+     * Represents the delta distance
      */
     private double deltaDistance;
 
     /**
-     *
+     * Represents the travelled distance
      */
     private double travelledDistance;
 
     /**
-     *
+     * Brief's Summary constructor
      * @param mmsiCode
      * @param totalNumberOfMovements
      * @param deltaDistance
@@ -36,43 +37,45 @@ public class BriefSummary implements Comparable{
     }
 
     /**
-     *
-     * @return
+     * @return ship's MMSI
      */
     public String getMmsiCode() {
         return mmsiCode;
     }
 
     /**
-     *
-     * @return
+     * @return ship's total of movements
      */
     public int getTotalNumberOfMovements() {
         return totalNumberOfMovements;
     }
 
     /**
-     *
-     * @return
+     * @return ship's delta distance
      */
     public double getDeltaDistance() {
         return deltaDistance;
     }
 
     /**
-     *
-     * @return
+     * @return ship's travelled distance
      */
     public double getTravelledDistance() {
         return travelledDistance;
     }
 
 
+    /**
+     *
+     */
     @Override
     public int compareTo(Object o) {
         return 1;
     }
 
+    /**
+     * @return information about a certain ship
+     */
     @Override
     public String toString() {
         return "BriefSummary{" +

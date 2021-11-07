@@ -41,8 +41,11 @@ class Main {
         //ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();
         //ui.run();
 
-        MovementsSummaryUI msUi = new MovementsSummaryUI();
-        msUi.run();
+        //MovementsSummaryUI msUi = new MovementsSummaryUI();
+        //msUi.run();
+
+        //SearchDetailsUI sdu = new SearchDetailsUI();
+        //sdu.run();
 
         //ListSomeShipDataUi listSomeShipDataUi = new ListSomeShipDataUi();
         //listSomeShipDataUi.run();

@@ -1,6 +1,6 @@
 package lapr.project.controller;
 
-import lapr.project.mapper.ShipMapper;
+import lapr.project.mapper.ShipDetailsMapper;
 import lapr.project.model.BstShip;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
@@ -33,13 +33,21 @@ public class SearchDetailsController {
     public SearchDetailsController(){
         this.company = App.getInstance().getCompany();
         this.bstShip = company.getBstShip();
-        shipMapper = new ShipMapper();
+        shipDetailsMapper = new ShipDetailsMapper();
     }
 
     /**
+     * Initialize the controller
+     */
+    public SearchDetailsController(Company company){
+        this.company = company;
+        this.bstShip = company.getBstShip();
+        shipDetailsMapper = new ShipDetailsMapper();
+    }
+    /**
      * Represents an instance of the ship mapper.
      */
-    private ShipMapper shipMapper;
+    private ShipDetailsMapper shipDetailsMapper;
 
 
 
@@ -86,7 +94,7 @@ public class SearchDetailsController {
      * @return The details of the ship
      */
     public String getShipDetails(){
-        return shipMapper.toDto(this.ship).toString();
+        return shipDetailsMapper.toDto(this.ship).toString();
     }
 
 

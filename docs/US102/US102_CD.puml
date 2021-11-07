@@ -4,17 +4,17 @@
 skinparam classAttributeIconSize 0
 
 class Ship {
--mmsiCode
--name
--imoCode
--numberEnergyGenerators
--generatorPower
--callSign
--vesselType
--length
--width
--capacity
--draft
+-mmsiCode : String
+-name : String
+-imoCode : String
+-numberEnergyGenerators : int
+-generatorPower : float
+-callSign : String
+-vesselType : int
+-length : float
+-width : float
+-capacity : float
+-draft : float
 --
 -getMMSI()
 -getName()
@@ -31,8 +31,7 @@ class Ship {
 
 class BstShip {
 -getShipByMmsiCode(mmsiCode)
--getShipByIMO(imoCode)
--getShipByCallSign(callSign)
+-inOrder()
 
 }
 
@@ -40,7 +39,9 @@ class BstShip {
 class SearchDetailsUI {}
 
 class SearchDetailsController {
--shipExist(mmsiCode)
+-shipExistByMMSI(String mmsiCode)
+-shipExistByIMO(String imoCode)
+-shipExistByCallSign(String callsign)
 -getShipDetails()
 }
 
@@ -54,17 +55,28 @@ class SearchDetailsMapper{
 }
 
 class ShipDetailsDto{
--mmsiCode
--name
--imoCode
--numberEnergyGenerators
--generatorPower
--callSign
--vesselType
--length
--width
--capacity
--draft
+-mmsiCode : String
+-name : String
+-imoCode : String
+-numberEnergyGenerators : int
+-generatorPower : float
+-callSign : String
+-vesselType : int
+-length : float
+-width : float
+-capacity : float
+-draft : float
+--
+-getMMSI()
+-getName()
+-getShipId()
+-getEnergyGenerators()
+-getCallSign()
+-getVesselType()
+-getLength()
+-getWidth()
+-getCapacity()
+-getDraft()
 }
 
 

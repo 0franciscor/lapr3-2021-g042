@@ -9,7 +9,7 @@ participant "bstShip:\nBstShip" as BstShip
 participant "ShipMapper" as SMAPPER
 participant "Ship" as SHIP
 participant "Ship" as SHIP
-participant "shipDto" as SHIPDTO
+participant "shipDetailsDto" as SHIPDTO
 
 
 activate manager
@@ -50,7 +50,7 @@ activate sdCTRL
 sdCTRL -> COMP : bstShip = getBstShip()
 activate COMP
 deactivate COMP
-sdCTRL -> BstShip : ship = getShipByIMO(imoCode)
+sdCTRL -> BstShip : ships = inOrder()
 activate BstShip
 deactivate BstShip
 deactivate sdCTRL
@@ -68,7 +68,7 @@ activate sdCTRL
 sdCTRL -> COMP : bstShip = getBstShip()
 activate COMP
 deactivate COMP
-sdCTRL -> BstShip : ship = getShipByCallSign(callSign))
+sdCTRL -> BstShip : ships = inOrder()
 activate BstShip
 deactivate BstShip
 deactivate sdCTRL

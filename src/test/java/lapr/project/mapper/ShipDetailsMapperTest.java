@@ -31,7 +31,7 @@ public class ShipDetailsMapperTest {
 
     }
 
-    @Test
+    /*@Test
     public void toModel() {
         mapper = new ShipDetailsMapper();
         ShipDetailsDto ship1 = new ShipDetailsDto("211331640","SEOUL EXPRESS","IMO2113432","DHBN",70,294,32,13);
@@ -54,5 +54,5 @@ public class ShipDetailsMapperTest {
         Assert.assertEquals(ship1.getWidth(),ship2.getWidth(),0.0);
         Assert.assertEquals(ship.getDraft(), ship2.getDraft(),0.0);
 
-    }
+    }*/
 }

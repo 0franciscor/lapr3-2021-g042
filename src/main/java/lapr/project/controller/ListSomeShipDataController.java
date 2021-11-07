@@ -18,7 +18,7 @@ public class ListSomeShipDataController {
     /**
      * Represents an instance of Company
      */
-    private Company company;
+    private final Company company;
 
     /**
      * Represents a list of the Ships

@@ -326,10 +326,76 @@ public class ShipLocationBSTTest {
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
-        System.out.println(shipLocationBST.getTravelledDistance());
+       Assert.assertEquals(shipLocationBST.getTravelledDistance(), 14203.35, 0.01);
     }
 
     @org.junit.jupiter.api.Test
-    void getDeltaDistance() {
+    void getTravelledDistanceWithAllPointsCorrect() throws ParseException {
+        String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02", "12-12-2020 17:02"};
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        ShipLocation location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"36","132",19,145,"147","B");
+        ShipLocation location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]),"90","98",11,122,"147","B");
+        ShipLocation location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]),"36","-70",23,98,"147","B");
+        ShipLocation location4 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[3]),"-56","-122",35,200,"147","B");
+        List<ShipLocation> arr = new ArrayList<>();
+        arr.add(location1);
+        arr.add(location2);
+        arr.add(location3);
+        arr.add(location4);
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        for(ShipLocation i :arr)
+            shipLocationBST.insert(i);
+
+        Assert.assertEquals(shipLocationBST.getTravelledDistance(), 26212.41, 0.01);
     }
+
+    @org.junit.jupiter.api.Test
+    void getDeltaDistanceOfDepartureCoordinateNotAvailable(){
+        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        for(ShipLocation i : arr)
+            tree.insert(i);
+
+        Assert.assertEquals(tree.getDeltaDistance(), 0, 0.0);
+    }
+
+    @org.junit.jupiter.api.Test
+    void getDeltaDistanceOfArrivalCoordinateNotAvailable() throws ParseException {
+        String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02", "12-12-2020 17:02"};
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        ShipLocation location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"36","132",19,145,"147","B");
+        ShipLocation location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]),"90","98",11,122,"147","B");
+        ShipLocation location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]),"36","181",23,98,"147","B");
+        ShipLocation location4 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[3]),"-56","-122",35,200,"147","B");
+        List<ShipLocation> arr = new ArrayList<>();
+        arr.add(location1);
+        arr.add(location2);
+        arr.add(location3);
+        arr.add(location4);
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        for(ShipLocation i :arr)
+            shipLocationBST.insert(i);
+
+        Assert.assertEquals(shipLocationBST.getDeltaDistance(), 0, 0.0);
+    }
+
+    @org.junit.jupiter.api.Test
+    void getDeltaDistance() throws ParseException {
+        String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02", "12-12-2020 17:02"};
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        ShipLocation location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"36","132",19,145,"147","B");
+        ShipLocation location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]),"90","98",11,122,"147","B");
+        ShipLocation location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]),"36","170",23,98,"147","B");
+        ShipLocation location4 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[3]),"-56","-122",35,200,"147","B");
+        List<ShipLocation> arr = new ArrayList<>();
+        arr.add(location1);
+        arr.add(location2);
+        arr.add(location3);
+        arr.add(location4);
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        for(ShipLocation i :arr)
+            shipLocationBST.insert(i);
+
+        Assert.assertEquals(shipLocationBST.getDeltaDistance(), 12068.15, 0.2);
+    }
+
 }

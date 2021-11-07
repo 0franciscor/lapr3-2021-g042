@@ -28,10 +28,6 @@ class Ship {
 -numberEnergyGenerators
 -generatorPower
 -callSign
--vesselType
--length
--width
--capacity
 -draft
 }
 

@@ -33,9 +33,9 @@ public class ShowPositionalMessagesControllerTest {
     ShowPositionalMessagesController controller;
 
     public ShowPositionalMessagesControllerTest() throws ParseException {
-        location1 = new ShipLocation(dateFormatter.parse(auxDatas[0]), "36", "-122", 19, 145, "147", "B");
-        location2 = new ShipLocation(dateFormatter.parse(auxDatas[1]), "36", "-122", 19, 145, "147", "B");
-        location3 = new ShipLocation(dateFormatter.parse(auxDatas[2]), "36", "-122", 19, 145, "147", "B");
+        location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]), "36", "-122", 19, 145, "147", "B");
+        location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]), "36", "-122", 19, 145, "147", "B");
+        location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]), "36", "-122", 19, 145, "147", "B");
         arr.add(location1);
         arr.add(location2);
         arr.add(location3);
@@ -48,7 +48,7 @@ public class ShowPositionalMessagesControllerTest {
         tree = new ShipLocationBST();
         for(ShipLocation i :arr)
             tree.insert(i);
-        Ship ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13,tree);
+        Ship ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
         company.getBstShip().insert(ship);
     }
 

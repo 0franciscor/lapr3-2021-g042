@@ -69,7 +69,7 @@ public class ShowPositionalMessagesController {
      * @param finalDate final date of the intended period
      * @return List with requested positional messages
      */
-    public List showPositionalMessages(Date initialDate, Date finalDate){
+    public List<String> showPositionalMessages(Date initialDate, Date finalDate){
         ShipLocationBST shipLocationBst = ship.getShipPosition();
         return shipLocationBst.getPositionalMessages(initialDate,finalDate);
     }

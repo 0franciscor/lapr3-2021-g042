@@ -16,13 +16,13 @@ public class ShowPositionalMessagesUI implements Runnable{
     /**
      * Represents an instance of Show Positional Messages Controller.
      */
-    private ShowPositionalMessagesController showPositionalMessagesctrl;
+    private final ShowPositionalMessagesController showPositionalMessagesCtrl;
 
     /**
      * Initializes the controller.
      */
     public ShowPositionalMessagesUI(){
-        showPositionalMessagesctrl = new ShowPositionalMessagesController();
+        showPositionalMessagesCtrl = new ShowPositionalMessagesController();
     }
 
     /**
@@ -37,13 +37,13 @@ public class ShowPositionalMessagesUI implements Runnable{
         if( mmsiCode == null ||mmsiCode.length() != 9) {
             System.out.println("The ship MMSI code must be 9-digit long.");
         } else{
-            if (showPositionalMessagesctrl.shipExist(mmsiCode)){
+            if (showPositionalMessagesCtrl.shipExist(mmsiCode)){
                 Date initialDate = Utils.readDateFromConsole("Enter the initial date of the information you want to obtain");
                 Date finalDate = Utils.readDateFromConsole("Enter the final date of the information you want to obtain");
-                if (finalDate.before(initialDate)){
+                if (finalDate != null && finalDate.before(initialDate)){
                     System.out.println("The end date must be later than the start date.");
                 } else {
-                    List<String> mesages = showPositionalMessagesctrl.showPositionalMessages(initialDate,finalDate);
+                    List<String> mesages = showPositionalMessagesCtrl.showPositionalMessages(initialDate,finalDate);
                     for (String message: mesages){
                         System.out.println(message);
                     }

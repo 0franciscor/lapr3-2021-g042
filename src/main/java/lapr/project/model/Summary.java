@@ -90,6 +90,11 @@ public class Summary {
      */
     private double deltaDistance;
 
+
+    /**
+     * Summary Constructor
+     * @param ship the ship
+     */
     public Summary(Ship ship){
         mmsiCode = ship.getMMSI();
         name = ship.getName();
@@ -109,6 +114,44 @@ public class Summary {
         travelledDistance = treeOfPositions.getTravelledDistance();
         deltaDistance = treeOfPositions.getDeltaDistance();
 
+    }
+
+    /**
+     * Summary Constructor
+     * @param mmsiCode the MMSI code of a ship
+     * @param name the name of a ship
+     * @param startBaseDate the start base date of a journey
+     * @param endBaseDate the end base date of a journey
+     * @param totalMovementTime the total movements time of a journey
+     * @param totalMovements the total movements made in a journey
+     * @param maximumSog the maximum speed over ground of a ship in a journey
+     * @param meanSog the mean speed over ground of a ship in a journey
+     * @param maximumCog the maximum course over ground of a ship in a journey
+     * @param meanCog the mean course over ground of a ship in a journey
+     * @param departureLatitude the departure latitude of the ship in a journey
+     * @param departureLongitude the departure longitude of the ship in a journey
+     * @param arrivalLatitude the arrival latitude of the ship in a journey
+     * @param arrivalLongitude the arrival longitude of the ship in a journey
+     * @param travelledDistance the travelled distance of a ship in a journey
+     * @param deltaDistance the delta distance of a ship in a journey
+     */
+    public Summary(String mmsiCode, String name, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, String departureLatitude, String departureLongitude, String arrivalLatitude, String arrivalLongitude, double travelledDistance, double deltaDistance) {
+        this.mmsiCode = mmsiCode;
+        this.name = name;
+        this.startBaseDate = startBaseDate;
+        this.endBaseDate = endBaseDate;
+        this.totalMovementTime = totalMovementTime;
+        this.totalMovements = totalMovements;
+        this.maximumSog = maximumSog;
+        this.meanSog = meanSog;
+        this.maximumCog = maximumCog;
+        this.meanCog = meanCog;
+        this.departureLatitude = departureLatitude;
+        this.departureLongitude = departureLongitude;
+        this.arrivalLatitude = arrivalLatitude;
+        this.arrivalLongitude = arrivalLongitude;
+        this.travelledDistance = travelledDistance;
+        this.deltaDistance = deltaDistance;
     }
 
     /**
@@ -245,6 +288,7 @@ public class Summary {
      */
     @Override
     public String toString() {
+
         return "Summary{" +
                 "mmsiCode='" + mmsiCode + '\'' +
                 ", name='" + name + '\'' +
@@ -266,8 +310,8 @@ public class Summary {
     }
 
     /**
-     * @param object That is o objective of comparasion
-     * @return the result of the comparasion
+     * @param object That is o objective of comparison
+     * @return the result of the comparison
      */
     @Override
     public boolean equals(Object object){

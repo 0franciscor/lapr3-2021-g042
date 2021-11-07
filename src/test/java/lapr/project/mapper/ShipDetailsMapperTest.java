@@ -27,7 +27,7 @@ public class ShipDetailsMapperTest {
 
     @Before
     public void setUp() throws ParseException {
-        ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13,tree);
+        //ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,79,13,tree);
 
     }
 

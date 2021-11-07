@@ -110,7 +110,7 @@ public class SummaryDto {
      * @param travelledDistance the travelled distance made in a journey
      * @param deltaDistance the delta distance made in a journey
      */
-    public SummaryDto(String mmsiCode, String name, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, String departureLatitude, String departureLongitude, String arrivalLatitude, String arrivalLongitude, float travelledDistance, float deltaDistance) {
+    public SummaryDto(String mmsiCode, String name, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, String departureLatitude, String departureLongitude, String arrivalLatitude, String arrivalLongitude, double travelledDistance, double deltaDistance) {
         this.mmsiCode = mmsiCode;
         this.name = name;
         this.startBaseDate = startBaseDate;
@@ -133,7 +133,7 @@ public class SummaryDto {
      * Creates a new instance of SummaryDto receiving a Summary as parameter
      * @param summary the summary
      */
-    public SummaryDto(Summary summary){
+    public SummaryDto(lapr.project.model.Summary summary){
         this.mmsiCode = summary.getMmsiCode();
         this.name = summary.getName();
         this.startBaseDate = summary.getStartBaseDate();
@@ -287,24 +287,27 @@ public class SummaryDto {
      */
     @Override
     public String toString() {
+        return String.format("----------* Summary *----------\n " +
+                "MMSI Code: %s \n" +
+                "Ship name: %s \n" +
+                "Start Base Date: %s \n" +
+                "End Base Date: %s \n" +
+                "Total Movements Time: %s \n" +
+                "Total Movements: %d \n" +
+                "Maximum Speed Over Ground: %.2f \n" +
+                "Mean Speed Over Ground: %.2f \n" +
+                "Maximum Course Over Ground: %.2f \n" +
+                "Mean Course Over Ground: %.2f \n" +
+                "Departure Latitude: %s \n" +
+                "Departure Longitude: %s \n" +
+                "Arrival Latitude: %s \n" +
+                "Arrival Longitude: %s \n" +
+                "Travelled Distance: %.2f \n" +
+                "Delta Distance: %.2f \n"
+                , mmsiCode, name, startBaseDate, endBaseDate, totalMovementTime, totalMovements, maximumSog, meanSog, maximumCog, meanCog, departureLatitude, departureLongitude, arrivalLatitude, arrivalLongitude, travelledDistance, deltaDistance
 
-        return "SummaryDto{" +
-                " mmsiCode='" + mmsiCode + '\'' +
-                ", name='" + name + '\'' +
-                ", startBaseDate=" + startBaseDate +
-                ", endBaseDate=" + endBaseDate +
-                ", totalMovementTime='" + totalMovementTime + '\'' +
-                ", totalMovements=" + totalMovements +
-                ", maximumSog=" + maximumSog +
-                ", meanSog=" + meanSog +
-                ", maximumCog=" + maximumCog +
-                ", meanCog=" + meanCog +
-                ", departureLatitude=" + departureLatitude +
-                ", departureLongitude=" + departureLongitude +
-                ", arrivalLatitude=" + arrivalLatitude +
-                ", arrivalLongitude=" + arrivalLongitude +
-                ", travelledDistance=" + travelledDistance +
-                ", deltaDistance=" + deltaDistance +
-                '}';
+        );
+
+
     }
 }

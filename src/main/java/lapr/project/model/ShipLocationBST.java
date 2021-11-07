@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import lapr.project.utils.BSTInterface;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -387,28 +388,19 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      */
     public String getTotalMovementsTime() {
         Iterator<ShipLocation> shipLocationIterator = inOrder().iterator();
-        double sum = 0, date1 = 0, date2 = 0;
+        double sum = 0;
+        long date1 = 0, date2 = 0;
         ShipLocation firstLocation = shipLocationIterator.next();
         while (shipLocationIterator.hasNext()){
             ShipLocation secondLocation = shipLocationIterator.next();
-            date1 = transformInSeconds(firstLocation.getMessageTime().getHours(), firstLocation.getMessageTime().getMinutes(), firstLocation.getMessageTime().getSeconds());
-            date2 = transformInSeconds(secondLocation.getMessageTime().getHours(), secondLocation.getMessageTime().getMinutes(), secondLocation.getMessageTime().getSeconds());
-            if (date1 > date2) sum += date1-date2;
-            else sum += date2 - date1;
+            date1 = firstLocation.getMessageTime().getTime();
+            date2 = secondLocation.getMessageTime().getTime();
+
+            sum += Math.abs(date1-date2);
+
             firstLocation = secondLocation;
         }
         return transformInHours(sum);
-    }
-
-    /**
-     * turn the time into seconds
-     * @param hour the hours
-     * @param minutes the minutes
-     * @param seconds the seconds
-     * @return the time in seconds
-     */
-    private double transformInSeconds(int hour, int minutes, int seconds){
-        return hour*3600+minutes*60+seconds;
     }
 
     /**
@@ -417,13 +409,14 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return a String with the following format: HH:MM:SS
      */
     private String transformInHours(double totalTime){
-        int hour = (int)totalTime/3600;
+        DecimalFormat decimalFormat = new DecimalFormat("00");
+        int hour = (int)totalTime/3600000;
         totalTime%=3600;
         int minutes = (int) totalTime/60;
         totalTime%=60;
         int seconds = (int) totalTime;
 
-        return hour + ":" + minutes + ":" + seconds;
+        return decimalFormat.format(hour) + ":" + decimalFormat.format(minutes) + ":" + decimalFormat.format(seconds);
     }
 
     /**
@@ -524,7 +517,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         while (shipLocationIterator.hasNext()){
             ShipLocation secondLocation = shipLocationIterator.next();
 
-            if (firstLocation.getLatitude().equals("not defined") || firstLocation.getLongitude().equals("not defined") || secondLocation.getLatitude().equals("not defined") || secondLocation.getLongitude().equals("not defined")){
+            if (firstLocation.getLatitude().equals("not available") || firstLocation.getLongitude().equals("not available") || secondLocation.getLatitude().equals("not available") || secondLocation.getLongitude().equals("not available") || size() < 2){
                 sum += 0;
             }
             else
@@ -542,7 +535,7 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return the delta distance traveled by ship
      */
     public double getDeltaDistance() {
-        if (getArrivalLongitude().equals("not defined") || getArrivalLatitude().equals("not defined") || getLongitudeDeparture().equals("not defined") || getLatitudeDeparture().equals("not defined")){
+        if (getArrivalLongitude().equals("not available") || getArrivalLatitude().equals("not available") || getLongitudeDeparture().equals("not available") || getLatitudeDeparture().equals("not available") || size() < 2){
             return 0;
         }
        else return calculateDistance(Double.parseDouble(getLatitudeDeparture()), Double.parseDouble(getLongitudeDeparture()), Double.parseDouble(getArrivalLatitude()), Double.parseDouble(getArrivalLongitude()));

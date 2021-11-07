@@ -3,7 +3,6 @@ package lapr.project.ui;
 import lapr.project.controller.MovementsSummaryController;
 import lapr.project.mapper.dto.SummaryDto;
 import lapr.project.model.Ship;
-import lapr.project.model.Summary;
 import lapr.project.utils.Utils;
 
 /**
@@ -40,7 +39,7 @@ public class MovementsSummaryUI implements Runnable{
         } else{
             if (movementsSummaryController.shipExist(mmsiCode)){
                 Ship ship = movementsSummaryController.getShipByMmsiCode(mmsiCode);
-                Summary summary = movementsSummaryController.createSummaryForShip(ship);
+                lapr.project.model.Summary summary = movementsSummaryController.createSummaryForShip(ship);
                 SummaryDto summaryDto = movementsSummaryController.createSummaryDto(summary);
                 System.out.println(summaryDto);
             } else {

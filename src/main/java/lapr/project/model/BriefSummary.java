@@ -1,6 +1,7 @@
 package lapr.project.model;
 
-public class BriefSummary implements Comparable{
+
+public class BriefSummary {
 
     /**
      * The ship's MMSI
@@ -66,24 +67,17 @@ public class BriefSummary implements Comparable{
 
 
     /**
-     *
-     */
-    @Override
-    public int compareTo(Object o) {
-        return 1;
-    }
-
-    /**
      * @return information about a certain ship
      */
     @Override
     public String toString() {
-        return "BriefSummary{" +
-                "mmsiCode='" + mmsiCode + '\'' +
-                ", totalNumberOfMovements=" + totalNumberOfMovements +
-                ", deltaDistance=" + deltaDistance +
-                ", travelledDistance=" + travelledDistance +
-                '}';
+        return String.format("----------* Brief Summary *-----------\n" +
+                "MMSI Code: %s \n" +
+                "Travelled Distance: %.2f \n" +
+                "Total Number of Movements: %d \n" +
+                "Delta distance: %.2f \n"
+                , mmsiCode, travelledDistance, totalNumberOfMovements, deltaDistance);
     }
+
 
 }

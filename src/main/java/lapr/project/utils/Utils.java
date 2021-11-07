@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,6 +50,29 @@ public class Utils {
             } catch (ParseException e){
                 e.printStackTrace();
                 return null;
+            }
+        } while (true);
+    }
+
+    /**
+     *
+     * @param prompt
+     * @return
+     */
+    static public int readIntegerFromConsole(String prompt)
+    {
+        do
+        {
+            try
+            {
+                String input = readLineFromConsole(prompt);
+
+                int value = Integer.parseInt(input);
+
+                return value;
+            } catch (NumberFormatException ex)
+            {
+                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
             }
         } while (true);
     }

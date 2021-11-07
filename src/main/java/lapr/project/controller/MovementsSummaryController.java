@@ -5,7 +5,6 @@ import lapr.project.mapper.dto.SummaryDto;
 import lapr.project.model.BstShip;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
-import lapr.project.model.Summary;
 
 /**
  * The MovementsSummary Controller, the controller responsible for managing the Summary class, which allows the Traffic manager to create a summary of movements of a ship
@@ -51,8 +50,8 @@ public class MovementsSummaryController {
      * @param ship the ship we want to create a summary
      * @return the summary
      */
-    public Summary createSummaryForShip(Ship ship){
-        return new Summary(ship);
+    public lapr.project.model.Summary createSummaryForShip(Ship ship){
+        return new lapr.project.model.Summary(ship);
     }
 
     /**
@@ -60,7 +59,7 @@ public class MovementsSummaryController {
      * @param summary the summary we intend to transform in a data transfer
      * @return the data transfer object
      */
-    public SummaryDto createSummaryDto(Summary summary){
+    public SummaryDto createSummaryDto(lapr.project.model.Summary summary){
         return summaryMapper.toDto(summary);
     }
 

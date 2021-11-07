@@ -1,7 +1,6 @@
 package lapr.project.mapper;
 
 import lapr.project.mapper.dto.SummaryDto;
-import lapr.project.model.Summary;
 
 /**
  * Transform objects of type Summary into objects of type SummaryDto
@@ -15,7 +14,7 @@ public class SummaryMapper {
      * @param summary a summary
      * @return a summary dto
      */
-    public SummaryDto toDto(Summary summary){
+    public SummaryDto toDto(lapr.project.model.Summary summary){
         return new SummaryDto(summary);
     }
 

@@ -44,6 +44,19 @@ public class ListSomeShipDataController {
     }
 
     /**
+     * Initialize the controller
+     */
+    public ListSomeShipDataController(Company company){
+        this.company = company;
+        inOrder = company.getBstShip().inOrder();
+        briefSummaries = new ArrayList<>();
+        for (Ship s : inOrder){
+            BriefSummary briefSummary = new BriefSummary(s.getMMSI(), s.getShipPosition().getTotalMovements(), s.getShipPosition().getDeltaDistance(), s.getShipPosition().getTravelledDistance());
+            briefSummaries.add(briefSummary);
+        }
+    }
+
+    /**
      * Organize the list of brief summaries by ascending order of travelled distance
      * @return the ordered list
      */
@@ -74,6 +87,8 @@ public class ListSomeShipDataController {
         });
         return briefSummaries;
     }
+
+    public List<BriefSummary> getBriefSummary() { return briefSummaries;}
 
 
 }

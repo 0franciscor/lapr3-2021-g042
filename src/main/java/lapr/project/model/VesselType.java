@@ -2,8 +2,10 @@ package lapr.project.model;
 
 /**
  * VesselType, a class which identify physical characteristics of several ships
+ *
+ * @author Francisco Redol <1201239@isep.ipp.pt>
  */
-public class VesselType {
+public class VesselType implements Comparable<VesselType>{
 
     /**
      * The ship's Vessel Type
@@ -137,5 +139,19 @@ public class VesselType {
                 "Length: %.2f\n" +
                 "Width: %.2f\n" +
                 "Draft: %.2f\n");
+    }
+
+    /**
+     * @param o The object of comparasion
+     * @return >0 if bigger, =0 if equal and <0 if smaller
+     */
+    @Override
+    public int compareTo(VesselType o) {
+        if(this.vesselType > o.getVesselType())
+            return 1;
+        if(this.vesselType < o.getVesselType())
+            return -1;
+        else
+            return 0;
     }
 }

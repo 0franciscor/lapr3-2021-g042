@@ -40,18 +40,18 @@ public class ListSomeShipDataUi implements Runnable{
 
         System.out.println("Select how you want to sort the list of summaries");
 
-        System.out.println("1 - Order by ascending order of travelled distance");
-        System.out.println("2 - Order by descending order of total number of movements");
+        System.out.println("1 - Order by descending order of travelled distance");
+        System.out.println("2 - Order by ascending order of total number of movements");
         System.out.printf("%nList of Summaries%n");
 
         int option = Utils.readIntegerFromConsole("Type your option: ");
         System.out.println(option);
 
        if (option == 1) {
-            briefSummaries = listSomeShipDataController.OrganizeByAscendingOrder();
+            briefSummaries = listSomeShipDataController.OrganizeByDescendingOrder();
        }
         else {
-            briefSummaries = listSomeShipDataController.OrganizeByDescendingOrder();
+            briefSummaries = listSomeShipDataController.OrganizeByAscendingOrder();
         }
         for (BriefSummary bs : briefSummaries){
             System.out.println(bs);

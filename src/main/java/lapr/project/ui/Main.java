@@ -47,8 +47,11 @@ class Main {
         //SearchDetailsUI sdu = new SearchDetailsUI();
         //sdu.run();
 
-        ListSomeShipDataUi listSomeShipDataUi = new ListSomeShipDataUi();
-        listSomeShipDataUi.run();
+        //ListSomeShipDataUi listSomeShipDataUi = new ListSomeShipDataUi();
+        //listSomeShipDataUi.run();
+
+        ShowPairsOfShipsUI ui = new ShowPairsOfShipsUI();
+        ui.run();
 
         System.out.println(App.getInstance().getCompany().getBstShip().size());
         /*

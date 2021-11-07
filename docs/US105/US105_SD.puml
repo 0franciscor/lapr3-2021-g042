@@ -48,14 +48,32 @@ CTR -> LIST : add(briefSummary)
 activate LIST
 deactivate LIST
 end
+deactivate CTR
 
-CTR-> LIST : orderedList = orderedList()
+UI --> TM : Asks the desired order
+deactivate UI
+
+
+TM -> UI : Types the desired Data
+activate UI
+
+UI -> CTR : desiredOrder(order)
+activate CTR
+
+alt order = ascending
+CTR-> LIST : orderedList = orderTheListAscending()
 activate LIST
 deactivate LIST
 
-deactivate CTR
+else order = descending
+CTR-> LIST : orderedList = orderTheListDescending()
+activate LIST
+deactivate LIST
+end
 
 UI --> TM : displays the ordered list
+deactivate CTR
+
 deactivate UI
 
 @enduml

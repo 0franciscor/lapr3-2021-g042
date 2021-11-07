@@ -13,8 +13,8 @@ participant "ship2\nShip" as S2
 participant "ShipLocation" as SP
 participant "shipLocationBST:\nShipLocationBST" as BstPosition
 participant "shipLocationBST2:\nShipLocationBST" as BstPosition2
-participant "infoPair:\nTreeMap<<Integer, String>>" as TREEMAP
-participant "listPairsOfShips:\nList<TreeMap<Integer, String>>" as LIST
+participant "infoPair:\nTreeMap<<Double, String>>" as TREEMAP
+participant "listPairsOfShips:\nList<TreeMap<Double, String>>" as LIST
 
 
 activate TM
@@ -45,7 +45,7 @@ BstShip -> S2 : shipLocationBST2 = getShipPosition()
 activate S2
 deactivate S2
 BstShip -> BstPosition2 : travelledDistance2 = getTravelledDistance()
-alt travelledDistance != travelledDistance2
+alt travelledDistance2 > 10 && travelledDistance != travelledDistance2
 BstShip -> BstPosition : arrivalLat = getArrivalLatitude()
 activate BstPosition
 deactivate BstPosition
@@ -74,7 +74,7 @@ deactivate BstPosition2
 BstShip -> BstPosition2 : depLog2 = getLongitudeDeparture()
 activate BstPosition2
 deactivate BstPosition2
-BstShip -> BstPosition : calculateDistance(depLat, depLog, depLat2, depLog2)
+BstShip -> BstPosition : depDistance = calculateDistance(depLat, depLog, depLat2, depLog2)
 activate BstPosition
 deactivate BstPosition
 alt depDistance < 5
@@ -84,6 +84,7 @@ deactivate BstShip
 BstShip -> TREEMAP : put(travelDistanceDifference, stringWithAllInfo)
 activate TREEMAP
 deactivate TREEMAP
+end
 end
 end
 end

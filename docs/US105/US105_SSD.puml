@@ -5,9 +5,14 @@ participant ": System" as SY
 
 autonumber
 activate TM
-TM -> SY: initiates the listing of ship information ordered by \n travelled distance, total number of movements
+TM -> SY: Initiates the listing of ship information ordered by \n travelled distance, total number of movements
 activate SY
-SY --> TM : displays the ordered list
+SY --> TM : Asks the desired order
+deactivate SY
+
+TM -> SY: Types the desired order
+activate SY
+SY --> TM : Displays the ordered list
 deactivate SY
 
 

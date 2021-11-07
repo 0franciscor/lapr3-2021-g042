@@ -22,11 +22,6 @@ public class ListSomeShipDataControllerTest {
 
     Company company;
 
-    ImportShip importShip = new ImportShip();
-
-
-    Iterable<Ship> inOrder;
-
     List<BriefSummary> bslist = new ArrayList<>();
 
     List<BriefSummary> briefSummariesA = new ArrayList<>();
@@ -42,13 +37,14 @@ public class ListSomeShipDataControllerTest {
         System.out.println(impShipCTR.importShips());
         ListSomeShipDataController controller = new ListSomeShipDataController();
         System.out.println(controller.getBriefSummary());
-        inOrder = company.getBstShip().inOrder();
         briefSummariesA = controller.OrganizeByAscendingOrder();
         briefSummariesD = controller.OrganizeByDescendingOrder();
     }
 
     /*@Test
     public void OrganizeByAscendingOrder(){ // ascending travelled distance
+
+        // working one
 
         BriefSummary bs17 = new BriefSummary("305373000", 1, 138594.84512822493, 138594.84512822493); bslist.add(bs17);
         BriefSummary bs4 = new BriefSummary("228339600", 18, 85222.07283417792, 85261.64759566834); bslist.add(bs4);

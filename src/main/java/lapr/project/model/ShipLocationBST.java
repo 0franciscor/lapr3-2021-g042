@@ -551,33 +551,24 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      */
     public double calculateDistance(double departureLatitude, double departureLongitude, double arrivalLatitude, double arrivalLongitude){
 
-        int earthRadius = 6371000;
+        int earthRadius = 6371;
 
-        double initialLatitude= toRadian(departureLatitude);
-        double initialLongitude= toRadian(departureLongitude);
-        double endLatitude= toRadian(arrivalLatitude);
-        double endLongitude= toRadian(arrivalLongitude);
+        double initialLatitude= departureLatitude * Math.PI/180;
+        double initialLongitude= arrivalLatitude * Math.PI/180;
 
-        double variationOfLatitude = Math.abs(endLatitude-initialLatitude);
 
-        double variationOfLongitude = Math.abs(endLongitude-initialLongitude);
+        double variationOfLatitude = Math.abs(arrivalLatitude - departureLatitude) * Math.PI/180;
 
-        double a = Math.sin(variationOfLatitude/2) * Math.sin(variationOfLatitude/2) + Math.cos(initialLatitude)* Math.cos(endLatitude) * Math.sin(variationOfLongitude/2) * Math.sin(variationOfLongitude/2);
+        double variationOfLongitude = Math.abs(arrivalLongitude - departureLongitude) * Math.PI/180;
+
+        double a = Math.sin(variationOfLatitude/2) * Math.sin(variationOfLatitude/2) + Math.cos(initialLatitude)* Math.cos(initialLongitude) * Math.sin(variationOfLongitude/2) * Math.sin(variationOfLongitude/2);
 
         double b = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
 
-        return earthRadius*b;
+        return (earthRadius*b);
     }
 
-    /**
-     * converts an angle in degrees to radian
-     * @param degree the angle in degrees
-     * @return the angle in radian
-     */
-    private double toRadian(double degree){
-        return (degree*Math.PI)/180;
-    }
 
 
 

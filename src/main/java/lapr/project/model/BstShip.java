@@ -319,7 +319,7 @@ public class BstShip<E> implements BSTInterface<Ship>{
 
 
         for (int i=0; i<size()-1;i++){
-            TreeMap<Double,String> infoPair = new TreeMap<>();
+            TreeMap<Double,String> infoPair = new TreeMap<>(Collections.reverseOrder());
             Ship ship1 = iterator1.next();
             ShipLocationBST shipLocationBST = ship1.getShipPosition();
             Double travelledDistance = shipLocationBST.getTravelledDistance();
@@ -349,7 +349,7 @@ public class BstShip<E> implements BSTInterface<Ship>{
 
                         } else {
                             Double arrivalDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
-                            if (arrivalDistance < 5) {
+                            if (arrivalDistance < 50000000) {
                                 String depLat = shipLocationBST.getLatitudeDeparture();
                                 String depLog = shipLocationBST.getLongitudeDeparture();
                                 String depLat2 = shipLocationBST2.getLatitudeDeparture();
@@ -358,7 +358,7 @@ public class BstShip<E> implements BSTInterface<Ship>{
 
                                 } else {
                                     Double depDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
-                                    if (depDistance < 5) {
+                                    if (depDistance < 50000000) {
                                         Double travelDistanceDifference = Math.abs(travelledDistance2 - travelledDistance);
                                         String stringWithAllInfo = String.format("%s %s", ship1.getMMSI(), ship2.getMMSI());
                                         infoPair.put(travelDistanceDifference, stringWithAllInfo);

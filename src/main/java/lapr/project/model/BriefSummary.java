@@ -73,9 +73,9 @@ public class BriefSummary {
     public String toString() {
         return String.format("----------* Brief Summary *-----------\n" +
                 "MMSI Code: %s \n" +
-                "Travelled Distance: %.2f \n" +
+                "Travelled Distance: %.2f km\n" +
                 "Total Number of Movements: %d \n" +
-                "Delta distance: %.2f \n"
+                "Delta distance: %.2f km\n"
                 , mmsiCode, travelledDistance, totalNumberOfMovements, deltaDistance);
     }
 

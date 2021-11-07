@@ -50,6 +50,9 @@ class Main {
         ListSomeShipDataUi listSomeShipDataUi = new ListSomeShipDataUi();
         listSomeShipDataUi.run();
 
+        //ShowPairsOfShipsUI ui = new ShowPairsOfShipsUI();
+        //ui.run();
+
         System.out.println(App.getInstance().getCompany().getBstShip().size());
         /*
         CalculatorExample calculatorExample = new CalculatorExample();

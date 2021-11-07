@@ -302,8 +302,8 @@ public class SummaryDto {
                 "Departure Longitude: %s \n" +
                 "Arrival Latitude: %s \n" +
                 "Arrival Longitude: %s \n" +
-                "Travelled Distance: %.2f \n" +
-                "Delta Distance: %.2f \n"
+                "Travelled Distance: %.2f km\n" +
+                "Delta Distance: %.2f km\n"
                 , mmsiCode, name, startBaseDate, endBaseDate, totalMovementTime, totalMovements, maximumSog, meanSog, maximumCog, meanCog, departureLatitude, departureLongitude, arrivalLatitude, arrivalLongitude, travelledDistance, deltaDistance
 
         );

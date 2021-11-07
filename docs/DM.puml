@@ -39,11 +39,14 @@ class Ship {
 -numberEnergyGenerators
 -generatorPower
 -callSign
--vesselType
+-draft
+}
+
+class VesselType {
+-vesselTypeId
 -length
 -width
 -capacity
--draft
 }
 
 class Ports {
@@ -85,6 +88,7 @@ CargoManifest "*" -- "1..*" Ports : delivered at >
 CargoManifest "*" -- "1..*" Warehouse : delivered at >
 
 Company "1"--"1..*" Ship: own >
+Company "1" -- "1..*" System : has >
 Company "1"--"1..*" Employee: have >
 Company "1"--"1..*" Truck: own >
 
@@ -96,14 +100,18 @@ PlaceLocation "*" -- "1" Country : in a >
 
 Ports "1" -- "1" PlaceLocation : located at >
 
-Ship "1"--"1..*" Containers : transport >
+Ship "1"---"1..*" Containers : transport >
 Ship "0..*"--"1" Ports: dock >
 Ship "1" -- "1..*" ShipLocation : has >
+Ship "*" -- "1" VesselType : is of >
 
-Employee "1" -- "1..*" ShipLocation : controls >
+Employee "1" --- "1..*" ShipLocation : controls >
+Employee "1" -- "1" User : relates to >
 
 Truck "1"--"1..*" Containers : transport >
 Truck "0..*"--"1" Warehouse: park >
+
+User "1..*" -- "1" System : uses >
 
 Warehouse "1" -- "1" PlaceLocation : located at >
 

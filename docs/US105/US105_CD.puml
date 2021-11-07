@@ -6,6 +6,10 @@ class ListSomeShipDataUi{
 }
 class ListSomeShipDataController{
 + getShipByList()
++ desiredOrder(order)
+--
++ orderTheListAscending()
++ orderTheListDescending()
 }
 class Company{
 + getBstShip()
@@ -29,6 +33,7 @@ class BriefSummary{
 - totalNumberOfMovements : int
 - deltaDistance : float
 - travelledDistance : float
+--
 }
 
 

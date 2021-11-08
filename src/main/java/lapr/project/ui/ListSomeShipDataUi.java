@@ -4,7 +4,9 @@ import lapr.project.controller.ListSomeShipDataController;
 import lapr.project.model.BriefSummary;
 import lapr.project.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Represents an interface with the Traffic Manager to view for all ships the MMSI, the total number of movements,
@@ -18,18 +20,24 @@ public class ListSomeShipDataUi implements Runnable{
     /**
      * Represents an instance of List Some Ship Data Controller
      */
-    private ListSomeShipDataController listSomeShipDataController;
+    private final ListSomeShipDataController listSomeShipDataController;
 
     /**
      *
      */
     private List<BriefSummary> briefSummaries;
+    /**
+     *
+     */
+    private final Scanner scanner;
 
     /**
      * Initializes the controller
      */
     public ListSomeShipDataUi(){
         listSomeShipDataController = new ListSomeShipDataController();
+        briefSummaries = new ArrayList<>();
+        scanner = new Scanner(System.in);
     }
 
     /**
@@ -37,29 +45,24 @@ public class ListSomeShipDataUi implements Runnable{
      */
     @Override
     public void run() {
+        System.out.println("Select how do you want to ordered th list of ships:");
+        System.out.println("1- Order by descending travelled distance");
+        System.out.println("2- Order by ascending travelled distance");
 
-        System.out.println("Select how you want to sort the list of summaries");
+        int option = scanner.nextInt();
 
-        System.out.println("1 - Order by descending order of travelled distance");
-        System.out.println("2 - Order by ascending order of total number of movements");
+
         System.out.printf("%nList of Summaries%n");
-
-        int option = Utils.readIntegerFromConsole("Type your option: ");
-        System.out.println(option);
-
-       if (option == 1) {
-            briefSummaries = listSomeShipDataController.OrganizeByDescendingOrder();
-       }
-        else {
-            briefSummaries = listSomeShipDataController.OrganizeByAscendingOrder();
+        if (option == 1) {
+            briefSummaries = listSomeShipDataController.organizeByDescendingOrder();
         }
+        if (option == 2){
+            briefSummaries = listSomeShipDataController.organizeByAscendingOrder();
+        }
+
         for (BriefSummary bs : briefSummaries){
             System.out.println(bs);
         }
-
-
-
-
 
     }
 }

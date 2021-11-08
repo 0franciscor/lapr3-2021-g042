@@ -35,7 +35,7 @@ public class ListSomeShipDataController {
      */
     public ListSomeShipDataController(){
         company = App.getInstance().getCompany();
-        inOrder = company.getBstShip().inOrder();
+        inOrder = this.company.getBstShip().inOrder();
         briefSummaries = new ArrayList<>();
         for (Ship s : inOrder){
             BriefSummary briefSummary = new BriefSummary(s.getMMSI(), s.getShipPosition().getTotalMovements(), s.getShipPosition().getDeltaDistance(), s.getShipPosition().getTravelledDistance());
@@ -56,27 +56,36 @@ public class ListSomeShipDataController {
         }
     }
 
+    public List<BriefSummary> organizeByAscendingOrder(){
+       organizeByAscendingOrder1();
+       return briefSummaries;
+    }
+
+    public List<BriefSummary> organizeByDescendingOrder(){
+        organizeByDescendingOrder1();
+        return briefSummaries;
+    }
+
     /**
      * Organize the list of brief summaries by ascending order of travelled distance
      * @return the ordered list
      */
-    public List<BriefSummary> OrganizeByDescendingOrder(){
+    private void organizeByDescendingOrder1() {
         Collections.sort(briefSummaries, new Comparator<BriefSummary>() {
             @Override
             public int compare(BriefSummary o1, BriefSummary o2) {
                 if (o1.getTravelledDistance() < o2.getTravelledDistance()) return 1;
                 if (o1.getTravelledDistance() > o2.getTravelledDistance()) return -1;
-                else  return 0;
+                else return 0;
             }
         });
-        return briefSummaries;
     }
 
     /**
      * Organize the list of brief summaries by descending order of number of movements
      * @return the ordered list
      */
-    public List<BriefSummary> OrganizeByAscendingOrder(){
+    private void organizeByAscendingOrder1(){
         Collections.sort(briefSummaries, new Comparator<BriefSummary>() {
             @Override
             public int compare(BriefSummary o1, BriefSummary o2) {
@@ -85,10 +94,8 @@ public class ListSomeShipDataController {
                 else  return 0;
             }
         });
-        return briefSummaries;
     }
 
-    public List<BriefSummary> getBriefSummary() { return briefSummaries;}
 
 
 }

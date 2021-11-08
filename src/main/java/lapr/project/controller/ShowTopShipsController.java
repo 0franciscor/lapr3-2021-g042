@@ -1,6 +1,5 @@
 package lapr.project.controller;
 
-import lapr.project.model.Ship;
 import lapr.project.model.Summary;
 
 import java.util.*;

@@ -35,7 +35,7 @@ class Main {
 
 
         ImportShip importShip = new ImportShip();
-        importShip.getFile("sships.csv");
+        importShip.getFile("bships.csv");
         System.out.println("Number of ships not imported: " + importShip.convertShips());
 
         //ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();

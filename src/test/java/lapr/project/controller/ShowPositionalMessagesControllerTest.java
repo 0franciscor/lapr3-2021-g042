@@ -66,11 +66,6 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessages0()  {
-        controller = new ShowPositionalMessagesController();
-    }
-
-    @Test
     public void showPositionalMessages01() throws ParseException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");

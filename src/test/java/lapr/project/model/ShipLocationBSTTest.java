@@ -4,13 +4,14 @@ import lapr.project.controller.App;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ShipLocationBSTTest {
 
@@ -51,11 +52,46 @@ public class ShipLocationBSTTest {
     }
 
     @Test
+    public void isNotEmpty() throws ParseException {
+        Assertions.assertFalse(tree.isEmpty());
+    }
+
+    @Test
+    public void isEmpty() throws ParseException {
+        ShipLocationBST bstTree = new ShipLocationBST();
+        Assertions.assertTrue(bstTree.isEmpty());
+    }
+
+    @Test
+    public void find() throws ParseException {
+        ShipLocationBST bstTree = new ShipLocationBST();
+        Assertions.assertNull(bstTree.find(null,null));
+    }
+
+    @Test
+    public void find01() throws ParseException {
+        ShipLocationBST.Node<ShipLocation> test = tree.find(tree.root,location3);
+        Assertions.assertEquals(location3, test.getShipLocation());
+    }
+
+    @Test
+    public void find02() throws ParseException {
+        ShipLocationBST.Node<ShipLocation> test = tree.find(tree.root,location2);
+        Assertions.assertEquals(location2, test.getShipLocation());
+    }
+
+    @Test
+    public void find03() throws ParseException {
+        ShipLocationBST.Node<ShipLocation> test = tree.find(tree.root,location1);
+        Assertions.assertEquals(location1, test.getShipLocation());
+    }
+
+    @Test
     public void getPositionalMessagesNotExist01() throws ParseException {
         String[] datas = {"30-12-2020 01:25","30-12-2020 17:02"};
         List<String> expected = new ArrayList<>();
         List<String> result=tree.getPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
-        assertEquals(expected,result);
+        Assertions.assertEquals(expected,result);
     }
 
     @Test
@@ -393,6 +429,20 @@ public class ShipLocationBSTTest {
             shipLocationBST.insert(i);
 
         Assert.assertEquals(shipLocationBST.getDeltaDistance(), 12068.15, 0.2);
+    }
+
+    @Test
+    public void getSpecificDatePeriod() throws ParseException {
+        List<ShipLocation> list = new ArrayList<>();
+        tree.getSpecificDatePeriod(null,dateFormatter.parse("26-11-2021 13:00"),dateFormatter.parse("26-11-2021 14:00"),list);
+        assertEquals(0,list.size());
+    }
+
+    @Test
+    public void getSpecificDatePeriod01() throws ParseException {
+        List<ShipLocation> list = new ArrayList<>();
+        tree.getSpecificDatePeriod(tree.root, dateFormatter.parse("31-12-2020 01:15"),dateFormatter.parse("31-12-2020 01:35"),list);
+        assertEquals(1,list.size());
     }
 
 }

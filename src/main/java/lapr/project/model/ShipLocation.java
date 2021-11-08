@@ -279,4 +279,24 @@ public class ShipLocation implements Comparable<ShipLocation>{
     public String toString(){
         return String.format("\nDate: %s\nLatitude: %s\nLongitude: %s\n\nSOG: %f\nCOG: %f\nHeading: %s\n", messageTime,latitude,longitude,SOG,COG,heading);
     }
+
+    /**
+     * Compare the parameter category with the other object provided.
+     * @param o Object we want to compare with the parameter category.
+     * @return true if the received object represents another parameter category equivalent to the parameter category. Otherwise, it returns false.
+     */
+    @Override
+    public boolean equals(Object o){
+        if(this == o){
+            return true;
+        }
+
+        if(o == null || this.getClass() != o.getClass()){
+            return false;
+        }
+
+        ShipLocation otherParameterCategory = (ShipLocation) o;
+
+        return this.getMMSI().equals(otherParameterCategory.getMMSI()) || this.getMessageTime().equals(otherParameterCategory.getMessageTime()) || this.getLatitude().equals(otherParameterCategory.getLatitude()) || this.getLongitude().equals(otherParameterCategory.getLongitude()) || this.getSOG() == otherParameterCategory.getSOG() || this.getCOG() == otherParameterCategory.getCOG() || this.getHeading().equals(otherParameterCategory.getHeading()) || this.getTransceiverClass().equals(otherParameterCategory.getTransceiverClass());
+    }
 }

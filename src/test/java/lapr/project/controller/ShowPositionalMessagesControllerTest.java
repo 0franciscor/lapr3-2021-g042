@@ -51,6 +51,12 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
+    public void ctrlr() {
+        ShowPositionalMessagesController ctrlr = new ShowPositionalMessagesController();
+        assertEquals(App.getInstance().getCompany(),ctrlr.getCompany());
+    }
+
+    @Test
     public void shipExist() {
         controller = new ShowPositionalMessagesController(company);
         boolean result = controller.shipExist("211331640");

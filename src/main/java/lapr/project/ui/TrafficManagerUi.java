@@ -18,6 +18,7 @@ public class TrafficManagerUi implements Runnable{
         options.add(new MenuItem("See the positional messages", new ShowPositionalMessagesUI()));
         options.add(new MenuItem("Make a summary of a ship's movements", new MovementsSummaryUI()));
         options.add(new MenuItem("List all ships", new ListSomeShipDataUi()));
+        options.add(new MenuItem("Pairs of Ships", new ShowPairsOfShipsUI()));
 
         int option = 0;
         do {

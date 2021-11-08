@@ -54,6 +54,14 @@ public class ShowPositionalMessagesController {
     }
 
     /**
+     * Get the company associated with the controller
+     * @return company associated with the controller
+     */
+    public Company getCompany(){
+        return company;
+    }
+
+    /**
      * Verification if a ship exists in the system through the MMSI code
      * @param mmsiCode Code of the ship that we want to know if it exists in the system
      * @return true if the ship exists, otherwise return false

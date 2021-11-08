@@ -3,7 +3,7 @@ package lapr.project.ui;
 import auth.domain.mapper.dto.UserRoleDTO;
 import lapr.project.controller.AuthController;
 import lapr.project.shared.Constants;
-import lapr.project.utils.Utils;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

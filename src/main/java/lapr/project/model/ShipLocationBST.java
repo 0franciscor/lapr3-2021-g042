@@ -49,7 +49,6 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
 
     protected Node<ShipLocation> root;     // root of the tree
 
-
     /* Constructs an empty binary search tree. */
     public ShipLocationBST() {
         root = null;
@@ -309,31 +308,33 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      * @return list with the respective positional messages
      */
     public List<String> getPositionalMessages(Date initialDate, Date finalDate){
-
-        Iterable<ShipLocation> bstInOrder = inOrder();
-        Iterator<ShipLocation> iterator = bstInOrder.iterator();
-
+        List<ShipLocation> listDates= new ArrayList<>();
         List<String> positionalMessages = new ArrayList<>();
 
-        ShipLocation aux = null;
+        getSpecificDatePeriod(root,initialDate,finalDate,listDates);
 
-        if(iterator.hasNext()){
-            aux = iterator.next();
-        }
-
-        while(iterator.hasNext() && !(aux.getMessageTime().after(finalDate))) {
-            if(aux.getMessageTime().after(initialDate) && aux.getMessageTime().before(finalDate) || aux.getMessageTime().equals(initialDate) || aux.getMessageTime().equals(finalDate)){
-                positionalMessages.add(aux.toString());
-            }
-            aux = iterator.next();
-        }
-
-        if(aux.getMessageTime().after(initialDate) && aux.getMessageTime().before(finalDate) || aux.getMessageTime().equals(initialDate) || aux.getMessageTime().equals(finalDate)){
+        for (ShipLocation aux : listDates){
             positionalMessages.add(aux.toString());
         }
 
-
         return positionalMessages;
+    }
+
+    public void getSpecificDatePeriod(Node<ShipLocation> node, Date initialDate, Date finalDate, List<ShipLocation> listDates) {
+
+        if(node == null){
+            return ;
+        }
+        if(node.getShipLocation().getMessageTime().compareTo(initialDate)>0){
+            getSpecificDatePeriod(node.getLeft(),initialDate,finalDate,listDates);
+        }
+
+        if(node.getShipLocation().getMessageTime().compareTo(initialDate)>=0 && node.getShipLocation().getMessageTime().compareTo(finalDate)<=0){
+           listDates.add(node.getShipLocation());
+        }
+
+        getSpecificDatePeriod(node.getRight(),initialDate,finalDate,listDates);
+
     }
 
     /**
@@ -570,9 +571,6 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
 
-
-
-
-
-
 } //----------- end of BST class -----------
+
+

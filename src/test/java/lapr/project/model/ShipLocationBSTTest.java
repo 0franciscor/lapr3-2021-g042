@@ -1,29 +1,16 @@
 package lapr.project.model;
 
 import lapr.project.controller.App;
-<<<<<<< HEAD
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-=======
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
->>>>>>> e1f815d140cf1475c24d053af8d80902b4cf6f0d
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
+
 import java.util.concurrent.ConcurrentMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-=======
-
-import static org.junit.Assert.*;
->>>>>>> e1f815d140cf1475c24d053af8d80902b4cf6f0d
-
 public class ShipLocationBSTTest {
 
 

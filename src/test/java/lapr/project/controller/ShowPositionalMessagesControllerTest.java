@@ -44,7 +44,6 @@ public class ShowPositionalMessagesControllerTest {
     @Before
     public void setUp(){
         company=new Company();
-        controller = new ShowPositionalMessagesController(company);
         tree = new ShipLocationBST();
         for(ShipLocation i :arr)
             tree.insert(i);
@@ -54,18 +53,21 @@ public class ShowPositionalMessagesControllerTest {
 
     @Test
     public void shipExist() {
+        controller = new ShowPositionalMessagesController(company);
         boolean result = controller.shipExist("211331640");
         assertTrue(result);
     }
 
     @Test
     public void shipNotExist() {
+        controller = new ShowPositionalMessagesController(company);
         boolean result = controller.shipExist("211331650");
         assertFalse(result);
     }
 
     @Test
     public void showPositionalMessages01() throws ParseException {
+        controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 01:25","31-12-2020 02:02"};
         List<String> expected = new ArrayList<>();
@@ -76,6 +78,7 @@ public class ShowPositionalMessagesControllerTest {
 
     @Test
     public void showPositionalMessages02() throws ParseException {
+        controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 17:00","31-12-2020 17:02"};
         List<String> expected = new ArrayList<>();
@@ -86,6 +89,7 @@ public class ShowPositionalMessagesControllerTest {
 
     @Test
     public void showPositionalMessages03() throws ParseException {
+        controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 16:00","31-12-2020 16:30"};
         List<String> expected = new ArrayList<>();
@@ -96,6 +100,7 @@ public class ShowPositionalMessagesControllerTest {
 
     @Test
     public void showPositionalMessages04() throws ParseException {
+        controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 12:00","31-12-2020 18:30"};
         List<String> expected = new ArrayList<>();
@@ -107,6 +112,7 @@ public class ShowPositionalMessagesControllerTest {
 
     @Test
     public void showPositionalMessagesNotExist01() throws ParseException {
+        controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"30-12-2020 01:25","30-12-2020 17:02"};
         List<String> expected = new ArrayList<>();
@@ -116,6 +122,7 @@ public class ShowPositionalMessagesControllerTest {
 
     @Test
     public void showPositionalMessagesNotExist02() throws ParseException {
+        controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 18:25","31-12-2020 20:02"};
         List<String> expected = new ArrayList<>();

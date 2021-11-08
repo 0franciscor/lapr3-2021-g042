@@ -46,7 +46,7 @@ class ShipLocation{
 -SOG
 -COG
 -heading
--positio>n
+-position
 -transceiverClass
 }
 
@@ -69,7 +69,7 @@ Company "1" -- "1" BstShip : owns >
 
 Company "1" -- "1" ImportShip : uses >
 
-BstShip "1" -- "1..*" Ship : owns >
+BstShip "1" -- "1..*" Ship : has >
 
 Ship "1" -- "1" ShipLocationBST : uses >
 

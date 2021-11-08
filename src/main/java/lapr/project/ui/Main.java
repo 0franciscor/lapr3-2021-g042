@@ -1,13 +1,7 @@
 package lapr.project.ui;
-
-import lapr.project.controller.App;
-import lapr.project.model.ImportShip;
 import lapr.project.utils.Utils;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**

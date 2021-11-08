@@ -5,6 +5,8 @@ import lapr.project.mapper.dto.SummaryDto;
 import lapr.project.model.Ship;
 import lapr.project.utils.Utils;
 
+import java.io.IOException;
+
 /**
  * Represents an interface with the Traffic Manager to view the summary associated with a ship
  *
@@ -41,7 +43,16 @@ public class MovementsSummaryUI implements Runnable{
                 Ship ship = movementsSummaryController.getShipByMmsiCode(mmsiCode);
                 lapr.project.model.Summary summary = movementsSummaryController.createSummaryForShip(ship);
                 SummaryDto summaryDto = movementsSummaryController.createSummaryDto(summary);
+
+
                 System.out.println(summaryDto);
+                System.out.println();
+                try {
+                    if (movementsSummaryController.writeForAFile(summaryDto.toString(), summary.getMmsiCode()))
+                        System.out.println("Your summary was saved in the file named: Summary_" + summaryDto.getMmsiCodeDto() + ".txt");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else {
                 System.out.printf("%nThere is no ship in the system with this MMSI code%n");
             }

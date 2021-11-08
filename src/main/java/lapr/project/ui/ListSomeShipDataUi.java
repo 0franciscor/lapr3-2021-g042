@@ -45,6 +45,7 @@ public class ListSomeShipDataUi implements Runnable{
      */
     @Override
     public void run() {
+        System.out.println();
         System.out.println("Select how do you want to ordered th list of ships:");
         System.out.println("1- Order by descending travelled distance");
         System.out.println("2- Order by ascending travelled distance");

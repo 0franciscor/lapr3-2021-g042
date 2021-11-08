@@ -1,15 +1,16 @@
 package lapr.project.model;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 
 public class BstShipTest {
 
@@ -44,7 +45,7 @@ public class BstShipTest {
         arr.add(location3);
     }
 
-    @Before
+    @BeforeEach
     public void setUp(){
         tree = new ShipLocationBST();
         ships = new BstShip<>();

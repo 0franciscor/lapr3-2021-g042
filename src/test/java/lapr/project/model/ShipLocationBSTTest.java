@@ -1,9 +1,9 @@
 package lapr.project.model;
 
 import lapr.project.controller.App;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,8 +12,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ConcurrentMap;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShipLocationBSTTest {
 
@@ -45,7 +44,7 @@ public class ShipLocationBSTTest {
         company = App.getInstance().getCompany();
     }
 
-    @Before
+    @BeforeEach
     public void setUp(){
         tree = new ShipLocationBST();
         for(ShipLocation i :arr)
@@ -326,7 +325,7 @@ public class ShipLocationBSTTest {
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
-       Assert.assertEquals(shipLocationBST.getTravelledDistance(), 14203.35, 0.01);
+       assertEquals(shipLocationBST.getTravelledDistance(), 14203.35, 0.01);
     }
 
     @org.junit.jupiter.api.Test
@@ -346,7 +345,7 @@ public class ShipLocationBSTTest {
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
-        Assert.assertEquals(shipLocationBST.getTravelledDistance(), 26212.41, 0.01);
+        assertEquals(shipLocationBST.getTravelledDistance(), 26212.41, 0.01);
     }
 
     @org.junit.jupiter.api.Test
@@ -355,7 +354,7 @@ public class ShipLocationBSTTest {
         for(ShipLocation i : arr)
             tree.insert(i);
 
-        Assert.assertEquals(tree.getDeltaDistance(), 0, 0.0);
+        assertEquals(tree.getDeltaDistance(), 0, 0.0);
     }
 
     @org.junit.jupiter.api.Test
@@ -375,7 +374,7 @@ public class ShipLocationBSTTest {
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
-        Assert.assertEquals(shipLocationBST.getDeltaDistance(), 0, 0.0);
+        assertEquals(shipLocationBST.getDeltaDistance(), 0, 0.0);
     }
 
     @org.junit.jupiter.api.Test
@@ -395,7 +394,7 @@ public class ShipLocationBSTTest {
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
-        Assert.assertEquals(shipLocationBST.getDeltaDistance(), 12068.15, 0.2);
+        assertEquals(shipLocationBST.getDeltaDistance(), 12068.15, 0.2);
     }
 
 }

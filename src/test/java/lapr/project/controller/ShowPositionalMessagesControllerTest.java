@@ -1,17 +1,16 @@
 package lapr.project.controller;
 
-
-
 import lapr.project.model.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ShowPositionalMessagesControllerTest {
@@ -41,7 +40,7 @@ public class ShowPositionalMessagesControllerTest {
         arr.add(location3);
     }
 
-    @Before
+    @BeforeEach
     public void setUp(){
         company=new Company();
         controller = new ShowPositionalMessagesController(company);

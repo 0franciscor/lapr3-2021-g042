@@ -15,10 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ListSomeShipDataControllerTest {
 
-    //possiveis soluções:
-    //importar o ficheiro dentro de cada teste
-    //ou ir buscar os SHIPS à company
-
 
     Company company;
 
@@ -33,49 +29,43 @@ public class ListSomeShipDataControllerTest {
 
     @Before
     public void setup(){
-        company = App.getInstance().getCompany();
+        company = new Company();
         ImportShipController impShipCTR = new ImportShipController();
         impShipCTR.importFile("sships.csv");
-        System.out.println(impShipCTR.importShips());
         ListSomeShipDataController controller = new ListSomeShipDataController();
-        System.out.println(controller.getBriefSummary());
-        briefSummariesA = controller.OrganizeByAscendingOrder();
-        briefSummariesD = controller.OrganizeByDescendingOrder();
+        briefSummariesA = controller.organizeByAscendingOrder();
+        briefSummariesD = controller.organizeByDescendingOrder();
     }
 
     /*
     @Test
     public void OrganizeByDescendingOrder(){ // descending travelled distance
 
-        BriefSummary bs17 = new BriefSummary("305373000", 1, 138594.84, 138594.84); bslist.add(bs17);
-        BriefSummary bs4 = new BriefSummary("228339600", 18, 85222.07, 85261.64); bslist.add(bs4);
-        BriefSummary bs12 = new BriefSummary("257881000", 5, 78953.21, 78959.10); bslist.add(bs12);
-        BriefSummary bs5 = new BriefSummary("229767000", 3, 75787.37, 75787.44); bslist.add(bs5);
-        BriefSummary bs1 = new BriefSummary("210950000",24,58868.74,58875.17); bslist.add(bs1);
-        BriefSummary bs2 = new BriefSummary("212180000",4,54033.18,54077.11); bslist.add(bs2);
-        BriefSummary bs13 = new BriefSummary("258692000", 13, 33252.32, 33255.79); bslist.add(bs13);
-        BriefSummary bs11 = new BriefSummary("256888000", 6, 13522.85, 13524.96); bslist.add(bs11);
-        BriefSummary bs20 = new BriefSummary("636019825", 25, 12156.40, 12157.97); bslist.add(bs20);
-        BriefSummary bs18 = new BriefSummary("305776000", 3, 6542.34, 6542.63); bslist.add(bs18);
-        BriefSummary bs6 = new BriefSummary("229857000", 4, 2468.98, 2555.31); bslist.add(bs6);
-        BriefSummary bs16 = new BriefSummary("305176000", 3, 1526.62, 1526.64); bslist.add(bs16);
+        BriefSummary bs17 = new BriefSummary("305373000", 1, 138.59, 138.59); bslist.add(bs17);
         BriefSummary bs9 = new BriefSummary("249047000", 7, 17.86, 92.76); bslist.add(bs9);
+        BriefSummary bs4 = new BriefSummary("228339600", 18, 85.22, 85.26); bslist.add(bs4);
+        BriefSummary bs12 = new BriefSummary("257881000", 5, 78.95, 78.96); bslist.add(bs12);
+        BriefSummary bs5 = new BriefSummary("229767000", 3, 75.79, 75.79); bslist.add(bs5);
         BriefSummary bs19 = new BriefSummary("309416000", 1, 71.55, 71.55); bslist.add(bs19);
+        BriefSummary bs1 = new BriefSummary("210950000",24,58.87,58.88); bslist.add(bs1);
         BriefSummary bs14 = new BriefSummary("303221000", 18, 1.71, 54.26); bslist.add(bs14);
+        BriefSummary bs2 = new BriefSummary("212180000",4,54.03,54.07); bslist.add(bs2);
+        BriefSummary bs13 = new BriefSummary("258692000", 13, 33.25, 33.26); bslist.add(bs13);
         BriefSummary bs7 = new BriefSummary("229961000", 1, 23.17, 23.17); bslist.add(bs7);
         BriefSummary bs22 = new BriefSummary("636092932", 4, 7.44, 19.99); bslist.add(bs22);
+        BriefSummary bs11 = new BriefSummary("256888000", 6, 13.52, 13.52); bslist.add(bs11);
+        BriefSummary bs20 = new BriefSummary("636019825", 25, 12.16, 12.16); bslist.add(bs20);
+        BriefSummary bs18 = new BriefSummary("305776000", 3, 6.54, 6.54); bslist.add(bs18);
+        BriefSummary bs6 = new BriefSummary("229857000", 4, 2.47, 2.56); bslist.add(bs6);
         BriefSummary bs15 = new BriefSummary("303267000", 19, 1.24, 2.35); bslist.add(bs15);
+        BriefSummary bs16 = new BriefSummary("305176000", 3, 1.53, 1.53); bslist.add(bs16);
         BriefSummary bs3 = new BriefSummary("212351000",0,0.0,0.0); bslist.add(bs3);
         BriefSummary bs8 = new BriefSummary("235092459", 0, 0.0, 0.0); bslist.add(bs8);
-
         BriefSummary bs10 = new BriefSummary("256304000", 0, 0.0, 0.0); bslist.add(bs10);
         BriefSummary bs21 = new BriefSummary("636091400", 0, 0.0, 0.0); bslist.add(bs21);
 
-        System.out.print(bslist);
-        System.out.println("\n \n \n");
-        System.out.println(briefSummariesD);
 
-        Assert.assertEquals(bslist,briefSummariesD);
+        Assert.assertEquals(bslist.toString(),briefSummariesD.toString());
     }
 
     @Test
@@ -102,11 +92,7 @@ public class ListSomeShipDataControllerTest {
         BriefSummary bs1 = new BriefSummary("210950000",24,58868.74,58875.17); BSlist.add(bs1);
         BriefSummary bs20 = new BriefSummary("636019825", 25, 12156.40, 12157.97); BSlist.add(bs20);
 
-        System.out.print(BSlist);
-        System.out.println("\n \n \n");
-        System.out.println(briefSummariesA);
-
-        Assert.assertEquals(BSlist,briefSummariesA);
+        Assert.assertEquals(BSlist.toString(),briefSummariesA.toString());
 
     }*/
 

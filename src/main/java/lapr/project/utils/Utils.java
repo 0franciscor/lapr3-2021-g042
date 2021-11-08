@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -75,5 +76,61 @@ public class Utils {
                 Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
             }
         } while (true);
+    }
+    static public void showList(List list, String header)
+    {
+        System.out.println(header);
+
+        int index = 0;
+        for (Object o : list)
+        {
+            index++;
+
+            System.out.println(index + ". " + o.toString());
+        }
+        System.out.println("");
+        System.out.println("0 - Cancel");
+    }
+    static public Object selectsObject(List list)
+    {
+        String input;
+        Integer value;
+        do
+        {
+            input = Utils.readLineFromConsole("Type your option: ");
+            value =  Integer.valueOf(input);
+        } while (value < 0 || value > list.size());
+
+        if (value == 0)
+        {
+            return null;
+        } else
+        {
+            return list.get(value - 1);
+        }
+    }
+    static public Object showAndSelectOne(List list, String header)
+    {
+        showList(list,header);
+        return selectsObject(list);
+    }
+
+    static public int selectsIndex(List list)
+    {
+        String input;
+        Integer value;
+        do
+        {
+            input = Utils.readLineFromConsole("Type your option: ");
+            value =  Integer.valueOf(input);
+        } while (value < 0 || value > list.size());
+
+        return value - 1;
+    }
+
+    static public int showAndSelectIndex(List list, String header)
+    {
+        showList(list,header);
+        return selectsIndex(list);
     }
 }

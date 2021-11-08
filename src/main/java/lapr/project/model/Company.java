@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import auth.AuthFacade;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,11 @@ public class Company {
      * Stores a list of vessels from imported ships which could be later used and more
      */
     private List<VesselType> vesselTypeList;
+    /**
+     *
+     */
+    private AuthFacade authFacade;
+
 
     /**
      * Creates an instance of Company
@@ -33,6 +40,7 @@ public class Company {
         bstShip = new AvlShip();
         importShip = new ImportShip();
         vesselTypeList = new ArrayList<>();
+        authFacade = new AuthFacade();
     }
 
     /**
@@ -59,4 +67,11 @@ public class Company {
         return vesselTypeList;
     }
 
+    /**
+     *
+     * @return
+     */
+    public AuthFacade getAuthFacade() {
+        return authFacade;
+    }
 }

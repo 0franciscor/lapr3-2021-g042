@@ -2,6 +2,7 @@ package lapr.project.ui;
 
 import lapr.project.controller.App;
 import lapr.project.model.ImportShip;
+import lapr.project.utils.Utils;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,11 +33,25 @@ class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, SQLException {
+        int option = 0;
+
+        do {
+            System.out.println("Main Menu");
+            System.out.println("1- Do login");
+            System.out.println("0- Exit");
+            option = Utils.readIntegerFromConsole("Type your option:");
+            if (option == 1)  new AuthUI().run();
+            if (option == 0) System.exit(0);
+
+        }while (option != 1 || option != 0);
 
 
-        ImportShip importShip = new ImportShip();
-        importShip.getFile("bships.csv");
-        System.out.println("Number of ships not imported: " + importShip.convertShips());
+
+
+
+        //ImportShip importShip = new ImportShip();
+        //importShip.getFile("sships.csv");
+        //System.out.println("Number of ships not imported: " + importShip.convertShips());
 
         //ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();
         //ui.run();
@@ -47,13 +62,13 @@ class Main {
         //SearchDetailsUI sdu = new SearchDetailsUI();
         //sdu.run();
 
-        ListSomeShipDataUi listSomeShipDataUi = new ListSomeShipDataUi();
-        listSomeShipDataUi.run();
+        //ListSomeShipDataUi listSomeShipDataUi = new ListSomeShipDataUi();
+        //listSomeShipDataUi.run();
 
         //ShowPairsOfShipsUI ui = new ShowPairsOfShipsUI();
         //ui.run();
 
-        System.out.println(App.getInstance().getCompany().getBstShip().size());
+        //System.out.println(App.getInstance().getCompany().getBstShip().size());
         /*
         CalculatorExample calculatorExample = new CalculatorExample();
         int value = calculatorExample.sum(3, 5);
@@ -63,7 +78,7 @@ class Main {
         }
         */
 
-        List<String> options = new ArrayList<>();
+        //List<String> options = new ArrayList<>();
 
 
 

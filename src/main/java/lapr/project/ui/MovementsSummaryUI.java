@@ -3,7 +3,6 @@ package lapr.project.ui;
 import lapr.project.controller.MovementsSummaryController;
 import lapr.project.mapper.dto.SummaryDto;
 import lapr.project.model.Ship;
-import lapr.project.utils.Utils;
 
 import java.io.IOException;
 

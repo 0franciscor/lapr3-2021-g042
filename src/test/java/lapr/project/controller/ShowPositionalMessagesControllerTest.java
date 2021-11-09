@@ -51,6 +51,12 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
+    public void ctrlr() {
+        ShowPositionalMessagesController ctrlr = new ShowPositionalMessagesController();
+        assertEquals(App.getInstance().getCompany(),ctrlr.getCompany());
+    }
+
+    @Test
     public void shipExist() {
         controller = new ShowPositionalMessagesController(company);
         boolean result = controller.shipExist("211331640");
@@ -126,6 +132,24 @@ public class ShowPositionalMessagesControllerTest {
         String[] datas = {"31-12-2020 18:25","31-12-2020 20:02"};
         List<String> expected = new ArrayList<>();
         List result=controller.showPositionalMessages(dateFormatter.parse(datas[0]),dateFormatter.parse(datas[1]));
+        assertEquals(expected,result);
+    }
+
+    @Test
+    public void showPositionalMessages10() throws ParseException {
+        controller = new ShowPositionalMessagesController(company);
+        controller.shipExist("211331640");
+        String expected =location1.toString();
+        String result=controller.showPositionalMessages(dateFormatter.parse("31-12-2020 01:25"));
+        assertEquals(expected,result);
+    }
+
+    @Test
+    public void showPositionalMessagesNotExist10() throws ParseException {
+        controller = new ShowPositionalMessagesController(company);
+        controller.shipExist("211331640");
+        String expected =null;
+        String result=controller.showPositionalMessages(dateFormatter.parse("30-12-2020 01:25"));
         assertEquals(expected,result);
     }
 }

@@ -2,7 +2,6 @@ package lapr.project.ui;
 
 import lapr.project.controller.ListSomeShipDataController;
 import lapr.project.model.BriefSummary;
-import lapr.project.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

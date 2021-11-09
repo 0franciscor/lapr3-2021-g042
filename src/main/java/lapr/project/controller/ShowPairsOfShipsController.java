@@ -46,6 +46,18 @@ public class ShowPairsOfShipsController {
         this.bstShip=company.getBstShip();
     }
 
+    /**
+     * Get the company associated with the controller
+     * @return company associated with the controller
+     */
+    public Company getCompany(){
+        return company;
+    }
+
+    /**
+     * Get the List with pairs of ships  with routes with close departure/arrival coordinates  and with different Travelled Distance
+     * @return List with pairs of ships  with routes with close departure/arrival coordinates  and with different Travelled Distance
+     */
     public List<TreeMap<Double,String>> getPairsOfShip() {
         return bstShip.getIntendedPairsOfShips();
     }

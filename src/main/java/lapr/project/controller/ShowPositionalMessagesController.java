@@ -54,6 +54,14 @@ public class ShowPositionalMessagesController {
     }
 
     /**
+     * Get the company associated with the controller
+     * @return company associated with the controller
+     */
+    public Company getCompany(){
+        return company;
+    }
+
+    /**
      * Verification if a ship exists in the system through the MMSI code
      * @param mmsiCode Code of the ship that we want to know if it exists in the system
      * @return true if the ship exists, otherwise return false
@@ -72,5 +80,16 @@ public class ShowPositionalMessagesController {
     public List<String> showPositionalMessages(Date initialDate, Date finalDate){
         ShipLocationBST shipLocationBst = ship.getShipPosition();
         return shipLocationBst.getPositionalMessages(initialDate,finalDate);
+    }
+
+    /**
+     * Obtain the positional messages of the intended ship within the indicated period of time
+     * @param initialDate initial date of the intended period
+     * @param finalDate final date of the intended period
+     * @return List with requested positional messages
+     */
+    public String showPositionalMessages(Date date){
+        ShipLocationBST shipLocationBst = ship.getShipPosition();
+        return shipLocationBst.getPositionalMessages(date);
     }
 }

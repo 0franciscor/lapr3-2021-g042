@@ -1,7 +1,6 @@
 package lapr.project.ui;
 
 import lapr.project.controller.ShowPositionalMessagesController;
-import lapr.project.utils.Utils;
 
 import java.util.Date;
 import java.util.List;

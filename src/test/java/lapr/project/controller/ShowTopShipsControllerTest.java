@@ -14,7 +14,7 @@ class ShowTopShipsControllerTest {
     SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
     String[] auxDatas = {"28-12-2020 01:25","01-01-2021 16:15"};
-    
+
     @Test
     void getTopNShips() throws ParseException {
         Company company = new Company();
@@ -32,5 +32,12 @@ class ShowTopShipsControllerTest {
     void getTopNShipsNoShips() {
         ShowTopShipsController controller = new ShowTopShipsController(new Company());
         assertEquals("There was no ship to demonstrate",controller.getTopNShips(5, new Date(), new Date()));
+    }
+
+    @Test
+    void getTopNShipsNull() {
+        BstShip<Ship> bstShip = new AvlShip();
+        boolean nullTree = (bstShip.getTopNShips(5, new Date(), new Date()) != null);
+        assertTrue(nullTree);
     }
 }

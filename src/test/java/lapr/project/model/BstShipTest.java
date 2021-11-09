@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -77,5 +78,29 @@ public class BstShipTest {
         ship.getShipPosition().insert(location4);
         ship.getShipPosition().insert(location5);
         assertEquals(3, ship.getShipPosition().size());
+    }
+
+    @Test
+    public void isNotEmpty() throws ParseException {
+        Assertions.assertFalse(ships.isEmpty());
+    }
+
+    @Test
+    public void isEmpty() throws ParseException {
+        BstShip bstTree = new BstShip();
+        Assertions.assertTrue(bstTree.isEmpty());
+    }
+
+    @Test
+    public void smallestElement() throws ParseException {
+        BstShip bstTree = new BstShip();
+        Ship result = bstTree.smallestElement();
+        assertNull(result);
+    }
+
+    @Test
+    public void smallestElement02() throws ParseException {
+        Ship result = ships.smallestElement();
+        assertEquals(ship,result);
     }
 }

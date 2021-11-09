@@ -415,7 +415,10 @@ public class BstShip<E> implements BSTInterface<Ship>{
                 }
             });
             List<Summary> keyList = summaryMap.get(key);
-            summaryMap.put(key, keyList.subList((keyList.size()-1-numberShips),  (keyList.size()-1-numberShips)));
+            if(numberShips < keyList.size())
+                summaryMap.put(key, keyList.subList((keyList.size()-1-numberShips),  (keyList.size()-1-numberShips)));
+            else
+                summaryMap.put(key, keyList);
         }
 
         return summaryMap;

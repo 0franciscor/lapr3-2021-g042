@@ -73,6 +73,15 @@ alt newShip does not exist in the Company Ship Tree (shipBST)
 create ship
 importShip --> ship: create(MMSI, name, shipID, energyGenerators, generatorOutput,\n callSign, vesselType, length, width, capacity, draft, shipLocation)
 
+participant ":VesselType" as vesselType
+
+create vesselType
+
+activate ship
+ship -> vesselType : create(vesselType, length, width, draft)
+deactivate ship
+
+
 
 participant ":Company" as company
 participant "shipBST:ShipBST" as shipBST

@@ -59,6 +59,13 @@ class BstShip{
 -insert(ship)
 }
 
+class VesselType {
+-vesselTypeId
+-length
+-width
+-capacity
+}
+
 ImportShipUI ..> ImportShipController
 
 ImportShipController ..> Company
@@ -67,11 +74,15 @@ ImportShip "1" -- "1" BstShip : uses >
 
 Company "1" -- "1" BstShip : owns >
 
+Company "1" -- "1..*" VesselType : owns >
+
 Company "1" -- "1" ImportShip : uses >
 
 BstShip "1" -- "1..*" Ship : has >
 
 Ship "1" -- "1" ShipLocationBST : uses >
+
+Ship "1" -- "1" VesselType : has >
 
 ShipLocationBST "1" -- "1..*" ShipLocation : has >
 

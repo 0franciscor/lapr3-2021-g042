@@ -84,8 +84,7 @@ public class ShowPositionalMessagesController {
 
     /**
      * Obtain the positional messages of the intended ship within the indicated period of time
-     * @param initialDate initial date of the intended period
-     * @param finalDate final date of the intended period
+     * @param date initial date of the intended period
      * @return List with requested positional messages
      */
     public String showPositionalMessages(Date date){

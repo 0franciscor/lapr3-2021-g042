@@ -11,6 +11,8 @@ import java.util.List;
 
 import java.util.concurrent.ConcurrentMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 public class ShipLocationBSTTest {
 
 
@@ -441,6 +443,19 @@ public class ShipLocationBSTTest {
         List<ShipLocation> list = new ArrayList<>();
         tree.getSpecificDatePeriod(tree.root, dateFormatter.parse("31-12-2020 01:15"),dateFormatter.parse("31-12-2020 01:35"),list);
         assertEquals(1,list.size());
+    }
+
+    @Test
+    public void smallestElement() throws ParseException {
+        ShipLocationBST bstTree = new ShipLocationBST();
+        ShipLocation result = bstTree.smallestElement();
+        assertNull(result);
+    }
+
+    @Test
+    public void smallestElement02() throws ParseException {
+        ShipLocation bstTree = tree.smallestElement();
+        assertEquals(location4,bstTree);
     }
 
 }

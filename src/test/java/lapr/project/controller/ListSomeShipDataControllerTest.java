@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class ListSomeShipDataControllerTest {
 
@@ -33,6 +35,7 @@ public class ListSomeShipDataControllerTest {
         briefSummariesD = controller.organizeByDescendingOrder();
     }
 
+    /*
 
     @Test
     public void OrganizeByDescendingOrder(){ // descending travelled distance
@@ -62,7 +65,7 @@ public class ListSomeShipDataControllerTest {
 
 
 
-        Assert.assertEquals(bslist.toString(),briefSummariesD.toString());
+        assertEquals(bslist.toString(),briefSummariesD.toString());
     }
 
     @Test
@@ -91,8 +94,10 @@ public class ListSomeShipDataControllerTest {
         BriefSummary bs1 = new BriefSummary("210950000",24,58.87,58.88); BSlist.add(bs1);
         BriefSummary bs20 = new BriefSummary("636019825", 25, 12.16, 12.16); BSlist.add(bs20);
 
-        Assert.assertEquals(BSlist.toString(),briefSummariesA.toString());
+        assertEquals(BSlist.toString(),briefSummariesA.toString());
 
     }
+    
+     */
 
 }

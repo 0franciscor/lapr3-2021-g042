@@ -1,5 +1,6 @@
 package lapr.project.controller;
 
+import lapr.project.model.Company;
 import lapr.project.model.Summary;
 
 import java.util.*;
@@ -11,9 +12,23 @@ import java.util.*;
 public class ShowTopShipsController {
 
     /**
+     * The controller's company
+     */
+    private Company company;
+
+    /**
      * ShowTopShipsController Constructor
      */
-    public ShowTopShipsController(){}
+    public ShowTopShipsController(){
+        this.company = App.getInstance().getCompany();
+    }
+
+    /**
+     * ShowTopShipsController Constructor
+     */
+    public ShowTopShipsController(Company company){
+        this.company = company;
+    }
 
     /**
      * Method that gets the top-N ships by distance.
@@ -24,7 +39,7 @@ public class ShowTopShipsController {
      * @return a String with the organized info
      */
     public String getTopNShips(int numberShips, Date initialDate, Date finalDate){
-        Map<Integer, List<Summary>> topShips = App.getInstance().getCompany().getBstShip().getTopNShips(numberShips, initialDate, finalDate);
+        Map<Integer, List<Summary>> topShips = company.getBstShip().getTopNShips(numberShips, initialDate, finalDate);
 
         if(topShips != null && !topShips.isEmpty()) {
             StringBuilder shipString = new StringBuilder();

@@ -71,15 +71,75 @@
 
 ## <span style="color:LightCyan"> Requirements Engineering
 #### <span style="color:skyblue"> System Sequence Diagram (SSD) for each user story
-
+###### <span style="color:steelblue">   US101 - SSD
+![SSD_US101](docs/US101/US101_SSD.svg)
+###### <span style="color:steelblue">   US102 - SSD
+![SSD_US102](docs/US102/US102_SSD.svG)
+###### <span style="color:steelblue">   US103 - SSD
+![SSD_US103](docs/US103/US103_SSD.svg)
+###### <span style="color:steelblue">   US104 - SSD
+![SSD_US104](docs/US104/US104_SSD.svg)
+###### <span style="color:steelblue">   US105 - SSD
+![SSD_US105](docs/US105/US105_SSD.svg)
+###### <span style="color:steelblue">   US106 - SSD
+![SSD_US106](docs/US106/US106_SSD.svg)
+###### <span style="color:steelblue">   US107 - SSD
+![SSD_US107](docs/US107/US107_SSD.svg)
 ## <span style="color:LightCyan"> Engineering Analysis:
 #### <span style="color:skyblue">  Domain Model (whole project)
+![DM_Global](docs/DM.svg)
 ###### <span style="color:steelblue">   Excerpts of each User Story
+###### <span style="color:steelblue">   US101 - DM
+![DM_US101](docs/US101/US101_DM.svg)
+###### <span style="color:steelblue">   US102 - DM
+![DM_US102](docs/US102/US102_DM.svg)
+###### <span style="color:steelblue">   US103 - DM
+![DM_US103](docs/US103/US103_DM.svg)
+###### <span style="color:steelblue">   US104 - DM
+![DM_US104](docs/US104/US104-MD.svg)
+###### <span style="color:steelblue">   US105 - DM
+![DM_US105](docs/US105/US105_DM.svg)
+###### <span style="color:steelblue">   US106 - DM
+![DM_US106](docs/US106/US106_DM.svg)
+###### <span style="color:steelblue">   US107 - DM
+![DM_US107](docs/US107/US107_DM.svg)
 
 ## <span style="color:LightCyan"> Engineering Design
 #### <span style="color:skyblue"> Class Diagram (CD) for the whole project.
+![CD_Global](docs/CD.svg)
 ###### <span style="color:steelblue">   Excerpts of each user story
+###### <span style="color:steelblue">   US101 - CD
+![CD_US101](docs/US101/US101_CD.svg)
+###### <span style="color:steelblue">   US102 - CD
+![CD_US102](docs/US102/US102_CD.svg)
+###### <span style="color:steelblue">   US103 - CD
+![CD_US103](docs/US103/US103_CD.svg)
+###### <span style="color:steelblue">   US104 - CD
+![CD_US104](docs/US104/US104_CD.svg)
+###### <span style="color:steelblue">   US105 - CD
+![CD_US105](docs/US105/US105_CD.svg)
+###### <span style="color:steelblue">   US106 - CD
+![CD_US106](docs/US106/US106_CD.svg)
+###### <span style="color:steelblue">   US107 - CD
+![CD_US106](docs/US107/US107_CD.svg)
+
 #### <span style="color:skyblue"> Sequence Diagram (SD) for each user story
+###### <span style="color:steelblue">   US101 - SD
+![SD_US101](docs/US101/US101_SD.svg)
+###### <span style="color:steelblue">   US102 - SD
+![SD_US102](docs/US102/US102_SD.svg)
+###### <span style="color:steelblue">   US103 - SD
+![SD_US103](docs/US103/US103_SD.svg)
+###### <span style="color:steelblue">   US104 - SD
+![SD_US104](docs/US104/US104_SD.svg)
+###### <span style="color:steelblue">   US105 - SD
+![SD_US105](docs/US105/US105_SD.svg)
+###### <span style="color:steelblue">   US106 - SD
+![SD_US106](docs/US106/US106_SD.svg)
+###### <span style="color:steelblue">   US107 - SD
+![SD_US107](docs/US107/US107_SD.svg)
+
+
 #### <span style="color:skyblue"> Relational Model (Normalised) for the whole project
 
 ## <span style="color:LightCyan"> Project Coverage

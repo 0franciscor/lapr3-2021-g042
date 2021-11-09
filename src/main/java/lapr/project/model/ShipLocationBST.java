@@ -444,7 +444,8 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
             meanSog+=s.getSOG();
             size++;
         }
-        return meanSog/size;
+        if (size == 0) return 0;
+        else return meanSog/size();
     }
 
     /**
@@ -470,7 +471,9 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         for (ShipLocation s : shipLocations){
             meanCog+=s.getCOG();
         }
-        return meanCog/size();
+        if (size() == 0) return 0;
+        else return meanCog/size();
+
     }
 
     /**

@@ -2,6 +2,7 @@ package lapr.project.controller;
 
 import lapr.project.model.BriefSummary;
 import lapr.project.model.Company;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -22,8 +23,8 @@ public class ListSomeShipDataControllerTest {
     List<BriefSummary> briefSummariesD = new ArrayList<>();
 
 
-
-    public ListSomeShipDataControllerTest(){
+    @BeforeEach
+    public void SetUp(){
         ImportShipController impShipCTR = new ImportShipController();
         impShipCTR.importFile("sships.csv");
         impShipCTR.importShips();

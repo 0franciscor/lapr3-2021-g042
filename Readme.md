@@ -43,8 +43,10 @@
   Structures (ESINF) and Databases (BDDAD), and Laboratory/Project III (LAPR3). An iterative and incremental process applies.
 * An agile methodology based on Scrum must be applied to manage each team’s work during each three-week sprint.
 
-* The main goal was to create a product that will be use to manage the logistics of a shipping company that operates across diferent continentes through land and sea and the own several warehouses.
+* The main goal was to create a product that will be use to manage the logistics of a shipping company that operates across different continents through land and sea and the own several warehouses.
   It should allow the Traffic Manager to import ships, see Ships's different data and create summary's.
+
+* The software is developed in Java, and  some other software used for quick notifications should be developed in C/Assembly.
 
 * This report is divided in different categories, being them:
     1. Problem Statement
@@ -56,14 +58,35 @@
            1. Excerpts of each User Story.
     5. Engineering Design
        1. Class Diagram (CD) for the whole project.
-          1. Excerpts for each user story
+          1. Excerpts of each user story
        2. Sequence Diagram (SD) for each user story
        3. Relational Model (Normalised) for the whole project
     6. Project Coverage
     7. Pit Test Coverage Report
     8. Team Performance
 
+## <span style="color:LightCyan"> Problem Statement
 
+## <span style="color:LightCyan"> Projet Division Organization
+
+## <span style="color:LightCyan"> Requirements Engineering
+#### <span style="color:skyblue"> System Sequence Diagram (SSD) for each user story
+
+## <span style="color:LightCyan"> Engineering Analysis:
+#### <span style="color:skyblue">  Domain Model (whole project)
+###### <span style="color:steelblue">   Excerpts of each User Story
+
+## <span style="color:LightCyan"> Engineering Design
+#### <span style="color:skyblue"> Class Diagram (CD) for the whole project.
+###### <span style="color:steelblue">   Excerpts of each user story
+#### <span style="color:skyblue"> Sequence Diagram (SD) for each user story
+#### <span style="color:skyblue"> Relational Model (Normalised) for the whole project
+
+## <span style="color:LightCyan"> Project Coverage
+
+## <span style="color:LightCyan"> Pit Test Coverage Report
+
+## <span style="color:LightCyan"> Team Performance
 
 # README
 

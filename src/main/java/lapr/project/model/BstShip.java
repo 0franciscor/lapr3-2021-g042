@@ -225,75 +225,75 @@ public class BstShip<E> implements BSTInterface<Ship>{
         snapshot.add(node.getShip());
         inOrderSubtree(node.getRight(), snapshot);
     }
-    /**
-     * Returns an iterable collection of elements of the tree, reported in pre-order.
-     * @return iterable collection of the tree's elements reported in pre-order
-     */
-    public Iterable<Ship> preOrder(){
-        List<Ship> snapshot = new ArrayList<>();
-        if (root!=null)
-            preOrderSubtree(root, snapshot);   // fill the snapshot recursively
-        return snapshot;
-    }
-    /**
-     * Adds elements of the subtree rooted at Node node to the given
-     * snapshot using an pre-order traversal
-     * @param node       Node serving as the root of a subtree
-     * @param snapshot  a list to which results are appended
-     */
-    private void preOrderSubtree(Node<Ship> node, List<Ship> snapshot) {
-        if(node == null)
-            return;
-
-        snapshot.add(node.getShip());
-        preOrderSubtree(node.getLeft(), snapshot);
-        preOrderSubtree(node.getRight(), snapshot);
-    }
-    /**
-     * Returns an iterable collection of elements of the tree, reported in post-order.
-     * @return iterable collection of the tree's elements reported in post-order
-     */
-    public Iterable<Ship> posOrder(){
-        List<Ship> snapshot = new ArrayList<>();
-        if (root!=null)
-            posOrderSubtree(root, snapshot);
-        return snapshot;
-    }
-    /**
-     * Adds positions of the subtree rooted at Node node to the given
-     * snapshot using an post-order traversal
-     * @param node       Node serving as the root of a subtree
-     * @param snapshot  a list to which results are appended
-     */
-    private void posOrderSubtree(Node<Ship> node, List<Ship> snapshot) {
-        if(node == null)
-            return;
-        posOrderSubtree(node.getLeft(), snapshot);
-        posOrderSubtree(node.getRight(), snapshot);
-        snapshot.add(node.getShip());
-    }
-
-    /*
-     * Returns a map with a list of nodes by each tree level.
-     * @return a map with a list of nodes by each tree level
-     */
-    public Map<Integer,List<Ship>> nodesByLevel(){
-        Map<Integer, List<Ship>> nodesBylevel = new HashMap<>();
-        processBstByLevel(root, nodesBylevel, 0);
-        return nodesBylevel;
-    }
-
-    private void processBstByLevel(Node<Ship> node, Map<Integer,List<Ship>> result, int level){
-        if(node == null)
-            return;
-
-        if(result.get(level) == null)
-            result.put(level, new ArrayList<>());
-
-        result.get(level).add(node.getShip());
-        processBstByLevel(node.getLeft(), result, level + 1);
-        processBstByLevel(node.getRight(), result, level + 1);
-    }
+//    /**
+//     * Returns an iterable collection of elements of the tree, reported in pre-order.
+//     * @return iterable collection of the tree's elements reported in pre-order
+//     */
+//    public Iterable<Ship> preOrder(){
+//        List<Ship> snapshot = new ArrayList<>();
+//        if (root!=null)
+//            preOrderSubtree(root, snapshot);   // fill the snapshot recursively
+//        return snapshot;
+//    }
+//    /**
+//     * Adds elements of the subtree rooted at Node node to the given
+//     * snapshot using an pre-order traversal
+//     * @param node       Node serving as the root of a subtree
+//     * @param snapshot  a list to which results are appended
+//     */
+//    private void preOrderSubtree(Node<Ship> node, List<Ship> snapshot) {
+//        if(node == null)
+//            return;
+//
+//        snapshot.add(node.getShip());
+//        preOrderSubtree(node.getLeft(), snapshot);
+//        preOrderSubtree(node.getRight(), snapshot);
+//    }
+//    /**
+//     * Returns an iterable collection of elements of the tree, reported in post-order.
+//     * @return iterable collection of the tree's elements reported in post-order
+//     */
+//    public Iterable<Ship> posOrder(){
+//        List<Ship> snapshot = new ArrayList<>();
+//        if (root!=null)
+//            posOrderSubtree(root, snapshot);
+//        return snapshot;
+//    }
+//    /**
+//     * Adds positions of the subtree rooted at Node node to the given
+//     * snapshot using an post-order traversal
+//     * @param node       Node serving as the root of a subtree
+//     * @param snapshot  a list to which results are appended
+//     */
+//    private void posOrderSubtree(Node<Ship> node, List<Ship> snapshot) {
+//        if(node == null)
+//            return;
+//        posOrderSubtree(node.getLeft(), snapshot);
+//        posOrderSubtree(node.getRight(), snapshot);
+//        snapshot.add(node.getShip());
+//    }
+//
+//    /*
+//     * Returns a map with a list of nodes by each tree level.
+//     * @return a map with a list of nodes by each tree level
+//     */
+//    public Map<Integer,List<Ship>> nodesByLevel(){
+//        Map<Integer, List<Ship>> nodesBylevel = new HashMap<>();
+//        processBstByLevel(root, nodesBylevel, 0);
+//        return nodesBylevel;
+//    }
+//
+//    private void processBstByLevel(Node<Ship> node, Map<Integer,List<Ship>> result, int level){
+//        if(node == null)
+//            return;
+//
+//        if(result.get(level) == null)
+//            result.put(level, new ArrayList<>());
+//
+//        result.get(level).add(node.getShip());
+//        processBstByLevel(node.getLeft(), result, level + 1);
+//        processBstByLevel(node.getRight(), result, level + 1);
+//    }
 
 
     /**
@@ -389,14 +389,14 @@ public class BstShip<E> implements BSTInterface<Ship>{
      * @return a Map organizing ships by vessel
      */
     public Map<Integer, List<Summary>> getTopNShips(int numberShips, Date initialDate, Date finalDate){
-        Iterator<Ship> shipList = preOrder().iterator();
+        Iterator<Ship> shipList = inOrder().iterator();
         Map<Integer, List<Summary>> summaryMap = new HashMap<>();
 
         while(shipList.hasNext()) {
             Ship toBeAdded = shipList.next();
             Summary summary = new Summary(toBeAdded);
-            if(summary.getStartBaseDate().after(initialDate) || summary.getEndBaseDate().before(finalDate))
-                if(summaryMap.get(toBeAdded.getVesselType()).isEmpty())
+            if(summary.getStartBaseDate().after(initialDate) && summary.getEndBaseDate().before(finalDate))
+                if(summaryMap.get(toBeAdded.getVesselType()) == null)
                     summaryMap.put(toBeAdded.getVesselType(), new ArrayList<>());
             summaryMap.get(toBeAdded.getVesselType()).add(summary);
 
@@ -415,10 +415,10 @@ public class BstShip<E> implements BSTInterface<Ship>{
                 }
             });
             List<Summary> keyList = summaryMap.get(key);
-            if(numberShips < keyList.size())
-                summaryMap.put(key, keyList.subList((keyList.size()-1-numberShips),  (keyList.size()-1-numberShips)));
+             if(numberShips < keyList.size())
+                summaryMap.replace(key, keyList.subList((keyList.size()-numberShips), keyList.size()));
             else
-                summaryMap.put(key, keyList);
+                summaryMap.replace(key, keyList);
         }
 
         return summaryMap;

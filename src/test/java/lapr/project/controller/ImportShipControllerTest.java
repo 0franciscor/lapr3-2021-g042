@@ -83,14 +83,13 @@ public class ImportShipControllerTest {
         assertEquals(0, controller.importShips());
     }
 
-    /**
-    //@Test
+
+    @Test
     public void importShips2() { //First line's IMO is wrong
         String fileName = "Test1.csv";
         controller.importFile(fileName);
         assertEquals(1, controller.importShips());
     }
-     */
 
     @Test
     public void importShips3() { //3 lines have their IMO Wrong

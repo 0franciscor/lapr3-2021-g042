@@ -20,9 +20,9 @@ public interface BSTInterface<E> {
 
     E smallestElement();
     Iterable<E> inOrder();
-    Iterable<E> preOrder();
-    Iterable<E> posOrder();
-    Map<Integer, List<E>> nodesByLevel();
+//    Iterable<E> preOrder();
+//    Iterable<E> posOrder();
+//    Map<Integer, List<E>> nodesByLevel();
 
 }
 

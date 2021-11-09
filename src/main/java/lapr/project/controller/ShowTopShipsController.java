@@ -26,13 +26,17 @@ public class ShowTopShipsController {
     public String getTopNShips(int numberShips, Date initialDate, Date finalDate){
         Map<Integer, List<Summary>> topShips = App.getInstance().getCompany().getBstShip().getTopNShips(numberShips, initialDate, finalDate);
 
-        if(topShips != null || !topShips.isEmpty()) {
+        if(topShips != null && !topShips.isEmpty()) {
             StringBuilder shipString = new StringBuilder();
             for (Integer key : topShips.keySet()) {
-                shipString.append("For the Vessel Type: " + key + ", this is the data of the Ship");
-                for (Summary summary : topShips.get(key))
-                    shipString.append("\nThe ship with the " + summary.getMmsiCode() + " MMSI Code, traveled " + summary.getTravelledDistance() + " Kilometers at a Mean SOG of: " + summary.getMeanSog());
+                if(topShips.get(key) != null && !topShips.get(key).isEmpty()) {
+                    shipString.append("\n\nFor the Vessel Type: " + key + ", this is the data of the Ship:\n");
+                    for (Summary summary : topShips.get(key))
+                        shipString.append("\nThe ship with the " + summary.getMmsiCode() + " MMSI Code, traveled " + summary.getTravelledDistance() + " Kilometers at a Mean SOG of: " + summary.getMeanSog());
+                }
             }
+
+            shipString.append("\n\n");
 
             return String.valueOf(shipString);
         }

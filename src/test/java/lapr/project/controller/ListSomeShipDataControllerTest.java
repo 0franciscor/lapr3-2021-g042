@@ -2,10 +2,11 @@ package lapr.project.controller;
 
 import lapr.project.model.BriefSummary;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class ListSomeShipDataControllerTest {
@@ -29,7 +30,7 @@ public class ListSomeShipDataControllerTest {
 
         boolean flag = true;
         BriefSummary anterior = briefSummariesD.get(0);
-        for( int i=1; i<briefSummariesD.size(); i++) {
+        for(int i=1; i<briefSummariesD.size(); i++) {
             BriefSummary atual = briefSummariesD.get(i);
             if (atual.getTravelledDistance()>anterior.getTravelledDistance()) {
                 flag = false;
@@ -37,7 +38,7 @@ public class ListSomeShipDataControllerTest {
             }
             atual = anterior;
         }
-        Assert.assertTrue(flag);
+        assertTrue(flag);
     }
 
     @Test
@@ -53,7 +54,7 @@ public class ListSomeShipDataControllerTest {
             }
             atual = anterior;
         }
-        Assert.assertTrue(flag);
+        assertTrue(flag);
     }
 
 

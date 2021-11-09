@@ -25,14 +25,6 @@ public class ShipDetailsDtoTest {
         assertEquals(ship1.getShipID(), "IMO2113432");
     }
 
-    /*@Test
-    public void getEnergyGenerators() {
-    }
-
-    @Test
-    public void getGeneratorOutput() {
-    }*/
-
     @Test
     public void getCallSign() {
         ShipDetailsDto ship1 = new ShipDetailsDto("211331640","SEOUL EXPRESS","IMO2113432","DHBN",70,294,32,13);
@@ -56,12 +48,7 @@ public class ShipDetailsDtoTest {
     public void getWidth() {
         ShipDetailsDto ship1 = new ShipDetailsDto("211331640","SEOUL EXPRESS","IMO2113432","DHBN",70,294,32,13);
         assertEquals(ship1.getWidth(), 32,0.0);
-
     }
-
-    /*@Test
-    public void getCapacity() {
-    }*/
 
     @Test
     public void getDraft() {

@@ -1,3 +1,93 @@
+# <span style="color:darkcyan"> REPORT
+
+# <span style="color:LightCyan"> Project Report LAPR3
+
+
+![Macchiatto js](report/Logo.png)
+
+
+
+#### <span style="color:skyblue"> Team Macchiato js _ Class DE:
+
+* 1200720 _ Manuela Leite
+* 1201239 _ Francisco Redol
+* 1201382 _ Pedro Rocha
+* 1201386 _ Rita Ariana Sobral
+
+#### <span style="color:skyblue"> Teachers/Advisors:
+
+* Nuno Bettencourt (NMB)
+* José Marinho (JSM)
+* António Silva Pereira (AMP)
+* Orlando Sousa (OMS)
+* Carlos Augusto Ramos (CAR)
+
+#### <span style="color:skyblue"> Client:
+
+* Nuno Bettencourt (NMB)
+
+#### <span style="color:skyblue"> Course Unit:
+
+* Laboratório/Projeto LAPR3
+
+## <span style="color:LightCyan"> Abstract
+
+* This project portraits everything the students learned during the semester and the results reflect the performance by each member of the team.
+* The project assignment presents the development of a software product for cargo shipping company to handle their logistics. This company operates through land and sea, across different
+  continents and has several warehouses spread along the world.
+* It was divided in 4 sprints to help us organize everything and each sprint had its own use cases.
+
+## <span style="color:LightCyan"> Introduction
+
+* This project has the goal to put into practice the good pratices learned on the differents course units: Applied Physics (FSIAP), Computer Architecture (ARQCP), Data
+  Structures (ESINF) and Databases (BDDAD), and Laboratory/Project III (LAPR3). An iterative and incremental process applies.
+* An agile methodology based on Scrum must be applied to manage each team’s work during each three-week sprint.
+
+* The main goal was to create a product that will be use to manage the logistics of a shipping company that operates across different continents through land and sea and the own several warehouses.
+  It should allow the Traffic Manager to import ships, see Ships's different data and create summary's.
+
+* The software is developed in Java, and  some other software used for quick notifications should be developed in C/Assembly.
+
+* This report is divided in different categories, being them:
+    1. Problem Statement
+    2. Project Division Organization
+    3. Requirements Engineering:
+       1. System Sequence Diagram (SSD) for each user story.
+    4. Engineering Analysis:
+        1. Domain Model (whole project)
+           1. Excerpts of each User Story.
+    5. Engineering Design
+       1. Class Diagram (CD) for the whole project.
+          1. Excerpts of each user story
+       2. Sequence Diagram (SD) for each user story
+       3. Relational Model (Normalised) for the whole project
+    6. Project Coverage
+    7. Pit Test Coverage Report
+    8. Team Performance
+
+## <span style="color:LightCyan"> Problem Statement
+
+## <span style="color:LightCyan"> Projet Division Organization
+
+## <span style="color:LightCyan"> Requirements Engineering
+#### <span style="color:skyblue"> System Sequence Diagram (SSD) for each user story
+
+## <span style="color:LightCyan"> Engineering Analysis:
+#### <span style="color:skyblue">  Domain Model (whole project)
+###### <span style="color:steelblue">   Excerpts of each User Story
+
+## <span style="color:LightCyan"> Engineering Design
+#### <span style="color:skyblue"> Class Diagram (CD) for the whole project.
+###### <span style="color:steelblue">   Excerpts of each user story
+#### <span style="color:skyblue"> Sequence Diagram (SD) for each user story
+#### <span style="color:skyblue"> Relational Model (Normalised) for the whole project
+
+## <span style="color:LightCyan"> Project Coverage
+
+## <span style="color:LightCyan"> Pit Test Coverage Report
+
+## <span style="color:LightCyan"> Team Performance
+
 # README
 
 This is the repository template used for student repositories in LAPR Projets.

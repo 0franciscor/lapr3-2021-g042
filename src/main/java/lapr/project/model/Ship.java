@@ -2,6 +2,8 @@ package lapr.project.model;
 
 import lapr.project.controller.App;
 
+import java.util.Objects;
+
 /**
  *
  * @author Francisco Redol <1201239@isep.ipp.pt>
@@ -312,6 +314,15 @@ public class Ship implements Comparable<Ship> {
     public ShipLocationBST getShipPosition(){
         return shipLocationBST;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ship)) return false;
+        Ship ship = (Ship) o;
+        return getEnergyGenerators() == ship.getEnergyGenerators() && Float.compare(ship.getGeneratorOutput(), getGeneratorOutput()) == 0 && getMMSI().equals(ship.getMMSI()) && getName().equals(ship.getName()) && getShipID().equals(ship.getShipID()) && getCallSign().equals(ship.getCallSign()) && getCapacity().equals(ship.getCapacity()) && getVesselType()==ship.getVesselType() && shipLocationBST.equals(ship.shipLocationBST);
+    }
+
 
     /**
      * @param o Other ship to compare

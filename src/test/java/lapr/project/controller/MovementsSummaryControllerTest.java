@@ -1,12 +1,14 @@
 package lapr.project.controller;
 
-import lapr.project.model.Company;
+import lapr.project.mapper.dto.SummaryDto;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipLocation;
 import lapr.project.model.ShipLocationBST;
+import lapr.project.model.Summary;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ class MovementsSummaryControllerTest {
 
     List<ShipLocation> arr = new ArrayList<>();
 
-    String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02"};
+    String[] auxDates = {"31-12-2020 23:31","31-12-2020 23:28"};
 
     SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
@@ -29,17 +31,15 @@ class MovementsSummaryControllerTest {
 
     ShipLocation location1;
     ShipLocation location2;
-    ShipLocation location3;
+
 
     ShowPositionalMessagesController controller;
 
     public MovementsSummaryControllerTest() throws ParseException {
-        location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]), "36", "-122", 19, 145, "147", "B");
-        location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]), "36", "-122", 19, 145, "147", "B");
-        location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]), "36", "-122", 19, 145, "147", "B");
+        location1 = new ShipLocation("229961000", dateFormatter.parse(auxDates[0]), "54.23188", "-130.33667", 0.1f, 82.8f, "0", "A");
+        location2 = new ShipLocation("229961000", dateFormatter.parse(auxDates[1]), "54.23184", "-130.33702", 0.1f, 34.6f, "0", "A");
         arr.add(location1);
         arr.add(location2);
-        arr.add(location3);
     }
 
     @BeforeEach
@@ -50,28 +50,65 @@ class MovementsSummaryControllerTest {
         movementsSummaryController = new MovementsSummaryController();
     }
 
-    /*@Test
+    @Test
     void getShipByMmsiCode() {
         tree = new ShipLocationBST();
         for(ShipLocation i :arr)
             tree.insert(i);
-        Ship ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
-        assertEquals(ship, movementsSummaryController.getShipByMmsiCode("211331640"));
-    }*/
+        Ship ship = new Ship("229961000","ARABELLA","IMO9700122",0,0,"9HA3752",70,199,32,"NA",13.3f, tree);
+        assertEquals(ship.toString(), movementsSummaryController.getShipByMmsiCode("229961000").toString());
+    }
 
     @Test
     void createSummaryForShip() {
+        tree = new ShipLocationBST();
+        for(ShipLocation i :arr)
+            tree.insert(i);
+        Ship ship = movementsSummaryController.getShipByMmsiCode("229961000");
+        Summary summary = new Summary(ship);
+
+        assertEquals(summary, movementsSummaryController.createSummaryForShip(ship));
     }
 
     @Test
     void createSummaryDto() {
+        tree = new ShipLocationBST();
+        for(ShipLocation i :arr)
+            tree.insert(i);
+        Ship ship = movementsSummaryController.getShipByMmsiCode("229961000");
+        Summary summary = new Summary(ship);
+        SummaryDto summaryDto = new SummaryDto(summary);
+
+        assertEquals(summaryDto.toString(), movementsSummaryController.createSummaryDto(summary).toString());
     }
 
     @Test
     void shipExist() {
+        assertTrue(movementsSummaryController.shipExist("229961000"));
     }
 
     @Test
-    void writeForAFile() {
+    void shipNotExist(){
+        assertFalse(movementsSummaryController.shipExist("211331640"));
+    }
+
+    @Test
+    void shipNotExistPassingANullReferenceByParameter(){
+        assertFalse(movementsSummaryController.shipExist(null));
+    }
+
+    @Test
+    void writeForAFile() throws IOException {
+        assertTrue(movementsSummaryController.writeForAFile("testing\n", "211331640"));
+    }
+
+    @Test
+    void WriteForAFileTestingAppending() throws IOException {
+        assertTrue(movementsSummaryController.writeForAFile("testing\n", "211331640"));
+    }
+
+    @Test
+    void WriteForAFilePassingANullStringByReference() throws IOException {
+        assertFalse(movementsSummaryController.writeForAFile(null, "211331640"));
     }
 }

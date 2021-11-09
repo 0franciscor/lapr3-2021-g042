@@ -35,14 +35,18 @@ public class ListSomeShipDataController {
      */
     public ListSomeShipDataController(){
         company = App.getInstance().getCompany();
-        inOrder = this.company.getBstShip().inOrder();
+
+    }
+
+    private void initialize(){
         briefSummaries = new ArrayList<>();
+        inOrder = this.company.getBstShip().inOrder();
+
         for (Ship s : inOrder){
             BriefSummary briefSummary = new BriefSummary(s.getMMSI(), s.getShipPosition().getTotalMovements(), s.getShipPosition().getDeltaDistance(), s.getShipPosition().getTravelledDistance());
             briefSummaries.add(briefSummary);
         }
     }
-
     /**
      * Initialize the controller
      */
@@ -56,21 +60,12 @@ public class ListSomeShipDataController {
         }
     }
 
-    public List<BriefSummary> organizeByAscendingOrder(){
-       organizeByAscendingOrder1();
-       return briefSummaries;
-    }
-
-    public List<BriefSummary> organizeByDescendingOrder(){
-        organizeByDescendingOrder1();
-        return briefSummaries;
-    }
-
     /**
      * Organize the list of brief summaries by ascending order of travelled distance
      * @return the ordered list
      */
-    private void organizeByDescendingOrder1() {
+    public List<BriefSummary> organizeByDescendingOrder(){
+        initialize();
         Collections.sort(briefSummaries, new Comparator<BriefSummary>() {
             @Override
             public int compare(BriefSummary o1, BriefSummary o2) {
@@ -79,13 +74,15 @@ public class ListSomeShipDataController {
                 else return 0;
             }
         });
+        return briefSummaries;
     }
 
     /**
      * Organize the list of brief summaries by descending order of number of movements
      * @return the ordered list
      */
-    private void organizeByAscendingOrder1(){
+    public List<BriefSummary> organizeByAscendingOrder(){
+        initialize();
         Collections.sort(briefSummaries, new Comparator<BriefSummary>() {
             @Override
             public int compare(BriefSummary o1, BriefSummary o2) {
@@ -94,6 +91,7 @@ public class ListSomeShipDataController {
                 else  return 0;
             }
         });
+        return briefSummaries;
     }
 
 

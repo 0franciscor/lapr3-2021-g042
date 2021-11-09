@@ -1,15 +1,12 @@
 package lapr.project.controller;
 
-import lapr.project.mapper.ShipDetailsMapper;
-import lapr.project.mapper.dto.ShipDetailsDto;
 import lapr.project.model.*;
-import org.junit.Before;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class SearchDetailsControllerTest {
 
@@ -21,7 +18,7 @@ public class SearchDetailsControllerTest {
 
     SearchDetailsController controller;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         company = App.getInstance().getCompany();
         ImportShipController impShipCTR = new ImportShipController();
@@ -53,14 +50,14 @@ public class SearchDetailsControllerTest {
        comp.getBstShip().insert(ship);
         boolean result = ctr.shipExistByMMSI("211331640");
         System.out.println(result);
-        assertTrue(result);
+        Assertions.assertTrue(result);
     }
 
 
     @Test
     public void shipNotExistByMMSI() {
         boolean result = controller.shipExistByMMSI("210951111");
-        assertFalse(result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -82,7 +79,7 @@ public class SearchDetailsControllerTest {
         boolean flag;
         if (result == null) flag = true;
         else flag = false;
-        assertFalse(flag);
+        Assertions.assertFalse(flag);
     }
 
     @Test
@@ -91,7 +88,7 @@ public class SearchDetailsControllerTest {
         boolean flag;
         if (result != null) flag = false;
         else flag = true;
-        assertTrue(flag);
+        Assertions.assertTrue(flag);
     }
 
     @Test
@@ -113,7 +110,7 @@ public class SearchDetailsControllerTest {
         boolean flag;
         if (result == null) flag = true;
         else flag = false;
-        assertFalse(flag);
+        Assertions.assertFalse(flag);
     }
 
     @Test
@@ -122,7 +119,7 @@ public class SearchDetailsControllerTest {
         boolean flag;
         if (result != null) flag = false;
         else flag = true;
-        assertTrue(flag);
+        Assertions.assertTrue(flag);
     }
 
 
@@ -149,6 +146,6 @@ public class SearchDetailsControllerTest {
                  "Width: 32.0 \n" +
                  "Draft: 13.0";
         ctr.shipExistByIMO("IMO2113432");
-        assertEquals(expected, ctr.getShipDetails());
+        Assertions.assertEquals(expected, ctr.getShipDetails());
     }
 }

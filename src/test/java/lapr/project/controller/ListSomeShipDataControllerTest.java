@@ -2,16 +2,11 @@ package lapr.project.controller;
 
 import lapr.project.model.BriefSummary;
 import lapr.project.model.Company;
-import lapr.project.model.ImportShip;
-import lapr.project.model.Ship;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ListSomeShipDataControllerTest {
 
@@ -27,18 +22,19 @@ public class ListSomeShipDataControllerTest {
     List<BriefSummary> briefSummariesD = new ArrayList<>();
 
 
-    @Before
-    public void setup(){
-        company = new Company();
+
+    public ListSomeShipDataControllerTest(){
         ImportShipController impShipCTR = new ImportShipController();
         impShipCTR.importFile("sships.csv");
+        impShipCTR.importShips();
         ListSomeShipDataController controller = new ListSomeShipDataController();
         briefSummariesA = controller.organizeByAscendingOrder();
         briefSummariesD = controller.organizeByDescendingOrder();
+        System.out.println(briefSummariesA);
     }
 
-    /*
-    @Test
+
+    /*@Test
     public void OrganizeByDescendingOrder(){ // descending travelled distance
 
         BriefSummary bs17 = new BriefSummary("305373000", 1, 138.59, 138.59); bslist.add(bs17);

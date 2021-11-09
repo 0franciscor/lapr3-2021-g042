@@ -5,6 +5,11 @@ import lapr.project.mapper.dto.SummaryDto;
 import lapr.project.model.BstShip;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
+import lapr.project.model.Summary;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * The MovementsSummary Controller, the controller responsible for managing the Summary class, which allows the Traffic manager to create a summary of movements of a ship
@@ -50,7 +55,7 @@ public class MovementsSummaryController {
      * @param ship the ship we want to create a summary
      * @return the summary
      */
-    public lapr.project.model.Summary createSummaryForShip(Ship ship){
+    public Summary createSummaryForShip(Ship ship){
         return new lapr.project.model.Summary(ship);
     }
 
@@ -71,6 +76,36 @@ public class MovementsSummaryController {
     public boolean shipExist(String mmsiCode){
         Ship ship = bstShip.getShipByMmsiCode(mmsiCode);
         return ship != null;
+    }
+
+    /**
+     * Write the summary of a ship's movement in a file
+     * @param string the text that will be written in the file
+     * @param mmsiCode the mmsi code of the ship to identify the summary
+     * @return false if the operation fail, true otherwise
+     * @throws IOException if some exception occur
+     */
+    public boolean writeForAFile(String string, String mmsiCode) throws IOException {
+        boolean flag = true;
+        File archive = new File(".\\Summaries");
+
+        if (!archive.exists()) {
+            archive.mkdirs();
+        }
+        File arch = new File(".\\Summaries\\Summary_" + mmsiCode +".txt");
+
+        FileWriter fw = new FileWriter(arch, true);
+
+        try {
+            if (arch.exists()) arch.delete();
+            fw.write(string);
+        } catch (IOException e){
+            flag = false;
+            e.printStackTrace();
+        } finally {
+            fw.close();
+        }
+        return flag;
     }
 
 }

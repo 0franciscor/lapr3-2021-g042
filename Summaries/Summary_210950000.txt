@@ -1,0 +1,17 @@
+----------* Summary *----------
+ MMSI Code: 210950000 
+Ship name: VARAMO 
+Start Base Date: Thu Dec 31 16:00:00 WET 2020 
+End Base Date: Thu Dec 31 18:31:00 WET 2020 
+Total Movements Time: 02:40:00 
+Total Movements: 24 
+Maximum Speed Over Ground: 13,70 
+Mean Speed Over Ground: 13,02 
+Maximum Course Over Ground: 310,30 
+Mean Course Over Ground: 113,99 
+Departure Latitude: 42.69577 
+Departure Longitude: -66.97808 
+Arrival Latitude: 43.22513 
+Arrival Longitude: -66.96725 
+Travelled Distance: 58,88 km
+Delta Distance: 58,87 km

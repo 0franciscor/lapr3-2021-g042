@@ -1,7 +1,5 @@
 package lapr.project.mapper.dto;
 
-import lapr.project.model.Summary;
-
 import java.util.Date;
 
 /**
@@ -14,87 +12,87 @@ public class SummaryDto {
     /**
      * The MMSI code of a ship
      */
-    private String mmsiCode;
+    private String mmsiCodeDto;
 
     /**
      * The ships name
      */
-    private String name;
+    private String nameDto;
 
     /**
      * The date and time of starting of journey
      */
-    private Date startBaseDate;
+    private Date startBaseDateDto;
 
     /**
      * The date and time of end of journey
      */
-    private Date endBaseDate;
+    private Date endBaseDateDto;
 
     /**
      * The total time spend in the journey
      */
-    private String totalMovementTime;
+    private String totalMovementTimeDto;
 
     /**
      * The total movements made in the journey
      */
-    private int totalMovements;
+    private int totalMovementsDto;
 
     /**
      * The maximum speed over ground of a ship
      */
-    private double maximumSog;
+    private double maximumSogDto;
 
     /**
      * The mean speed over ground of a ship
      */
-    private double meanSog;
+    private double meanSogDto;
 
     /**
      * The maximum course over ground of a ship
      */
-    private double maximumCog;
+    private double maximumCogDto;
 
     /**
      * The mean course over ground of a ship
      */
-    private double meanCog;
+    private double meanCogDto;
 
     /**
      * The departure latitude of the journey
      */
-    private String departureLatitude;
+    private String departureLatitudeDto;
 
     /**
      * The departure longitude of the journey
      */
-    private String departureLongitude;
+    private String departureLongitudeDto;
 
     /**
      * The arrival latitude of the journey
      */
-    private String arrivalLatitude;
+    private String arrivalLatitudeDto;
 
     /**
      * The arrival longitude of the journey
      */
-    private String arrivalLongitude;
+    private String arrivalLongitudeDto;
 
     /**
      * The total distance travelled
      */
-    private double travelledDistance;
+    private double travelledDistanceDto;
 
     /**
      * The delta distance of the journey
      */
-    private double deltaDistance;
+    private double deltaDistanceDto;
 
     /**
      * Creates a new instance of SummaryDto
-     * @param mmsiCode MMSI code associated with a ship
-     * @param name ships name
+     * @param mmsiCodedto MMSI code associated with a ship
+     * @param nameDto ships name
      * @param startBaseDate the start base of journey
      * @param endBaseDate the end base of journey
      * @param totalMovementTime the time spend in journey
@@ -110,23 +108,23 @@ public class SummaryDto {
      * @param travelledDistance the travelled distance made in a journey
      * @param deltaDistance the delta distance made in a journey
      */
-    public SummaryDto(String mmsiCode, String name, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, String departureLatitude, String departureLongitude, String arrivalLatitude, String arrivalLongitude, double travelledDistance, double deltaDistance) {
-        this.mmsiCode = mmsiCode;
-        this.name = name;
-        this.startBaseDate = startBaseDate;
-        this.endBaseDate = endBaseDate;
-        this.totalMovementTime = totalMovementTime;
-        this.totalMovements = totalMovements;
-        this.maximumSog = maximumSog;
-        this.meanSog = meanSog;
-        this.maximumCog = maximumCog;
-        this.meanCog = meanCog;
-        this.departureLatitude = departureLatitude;
-        this.departureLongitude = departureLongitude;
-        this.arrivalLatitude = arrivalLatitude;
-        this.arrivalLongitude = arrivalLongitude;
-        this.travelledDistance = travelledDistance;
-        this.deltaDistance = deltaDistance;
+    public SummaryDto(String mmsiCodedto, String nameDto, Date startBaseDate, Date endBaseDate, String totalMovementTime, int totalMovements, double maximumSog, double meanSog, double maximumCog, double meanCog, String departureLatitude, String departureLongitude, String arrivalLatitude, String arrivalLongitude, double travelledDistance, double deltaDistance) {
+        this.mmsiCodeDto = mmsiCodedto;
+        this.nameDto = nameDto;
+        this.startBaseDateDto = startBaseDate;
+        this.endBaseDateDto = endBaseDate;
+        this.totalMovementTimeDto = totalMovementTime;
+        this.totalMovementsDto = totalMovements;
+        this.maximumSogDto = maximumSog;
+        this.meanSogDto = meanSog;
+        this.maximumCogDto = maximumCog;
+        this.meanCogDto = meanCog;
+        this.departureLatitudeDto = departureLatitude;
+        this.departureLongitudeDto = departureLongitude;
+        this.arrivalLatitudeDto = arrivalLatitude;
+        this.arrivalLongitudeDto = arrivalLongitude;
+        this.travelledDistanceDto = travelledDistance;
+        this.deltaDistanceDto = deltaDistance;
     }
 
     /**
@@ -134,38 +132,38 @@ public class SummaryDto {
      * @param summary the summary
      */
     public SummaryDto(lapr.project.model.Summary summary){
-        this.mmsiCode = summary.getMmsiCode();
-        this.name = summary.getName();
-        this.startBaseDate = summary.getStartBaseDate();
-        this.endBaseDate = summary.getEndBaseDate();
-        this.totalMovementTime = summary.getTotalMovementTime();
-        this.totalMovements = summary.getTotalMovements();
-        this.maximumSog = summary.getMaximumSog();
-        this.meanSog = summary.getMeanSog();
-        this.maximumCog = summary.getMaximumCog();
-        this.meanCog = summary.getMeanCog();
-        this.departureLatitude = summary.getDepartureLatitude();
-        this.departureLongitude = summary.getDepartureLongitude();
-        this.arrivalLatitude = summary.getArrivalLatitude();
-        this.arrivalLongitude = summary.getArrivalLongitude();
-        this.travelledDistance = summary.getTravelledDistance();
-        this.deltaDistance = summary.getDeltaDistance();
+        this.mmsiCodeDto = summary.getMmsiCode();
+        this.nameDto = summary.getName();
+        this.startBaseDateDto = summary.getStartBaseDate();
+        this.endBaseDateDto = summary.getEndBaseDate();
+        this.totalMovementTimeDto = summary.getTotalMovementTime();
+        this.totalMovementsDto = summary.getTotalMovements();
+        this.maximumSogDto = summary.getMaximumSog();
+        this.meanSogDto = summary.getMeanSog();
+        this.maximumCogDto = summary.getMaximumCog();
+        this.meanCogDto = summary.getMeanCog();
+        this.departureLatitudeDto = summary.getDepartureLatitude();
+        this.departureLongitudeDto = summary.getDepartureLongitude();
+        this.arrivalLatitudeDto = summary.getArrivalLatitude();
+        this.arrivalLongitudeDto = summary.getArrivalLongitude();
+        this.travelledDistanceDto = summary.getTravelledDistance();
+        this.deltaDistanceDto = summary.getDeltaDistance();
     }
 
     /**
      * Get the MMSI code associated with a ship
      * @return the MMSI code
      */
-    public String getMmsiCode() {
-        return mmsiCode;
+    public String getMmsiCodeDto() {
+        return mmsiCodeDto;
     }
 
     /**
      * Get the ships name
      * @return the ship name
      */
-    public String getName() {
-        return name;
+    public String getNameDto() {
+        return nameDto;
     }
 
 
@@ -173,24 +171,24 @@ public class SummaryDto {
      * Get the date and time the ship leaves the port where the voyage began
      * @return the date of start of a journey
      */
-    public Date getStartBaseDate() {
-        return startBaseDate;
+    public Date getStartBaseDateDto() {
+        return startBaseDateDto;
     }
 
     /**
      * Get the date and time the ship arrives at its port of destination
      * @return the date of arrival in port
      */
-    public Date getEndBaseDate() {
-        return endBaseDate;
+    public Date getEndBaseDateDto() {
+        return endBaseDateDto;
     }
 
     /**
      * Get the total time of movements made by a ship in the travel
      * @return the total time of movements
      */
-    public String getTotalMovementTime() {
-        return totalMovementTime;
+    public String getTotalMovementTimeDto() {
+        return totalMovementTimeDto;
     }
 
     /**
@@ -198,87 +196,87 @@ public class SummaryDto {
      * @return the total number of movements
      */
     public int getTotalMovements() {
-        return totalMovements;
+        return totalMovementsDto;
     }
 
     /**
      * Get the maximum speed over ground of a ship
      * @return the maximum speed over ground
      */
-    public double getMaximumSog() {
-        return maximumSog;
+    public double getMaximumSogDto() {
+        return maximumSogDto;
     }
 
     /**
      * Get the mean speed over ground of a ship
      * @return the mean speed over ground
      */
-    public double getMeanSog() {
-        return meanSog;
+    public double getMeanSogDto() {
+        return meanSogDto;
     }
 
     /**
      * Get the maximum course over ground of a ship
      * @return the maximum course over ground
      */
-    public double getMaximumCog() {
-        return maximumCog;
+    public double getMaximumCogDto() {
+        return maximumCogDto;
     }
 
     /**
      * Get the mean course over ground of a ship
      * @return the mean course over ground
      */
-    public double getMeanCog() {
-        return meanCog;
+    public double getMeanCogDto() {
+        return meanCogDto;
     }
 
     /**
      * Get the latitude of the departure of a ship
      * @return the departure latitude
      */
-    public String getDepartureLatitude() {
-        return departureLatitude;
+    public String getDepartureLatitudeDto() {
+        return departureLatitudeDto;
     }
 
     /**
      * Get the longitude of the departure of a ship
      * @return the departure longitude
      */
-    public String getDepartureLongitude() {
-        return departureLongitude;
+    public String getDepartureLongitudeDto() {
+        return departureLongitudeDto;
     }
 
     /**
      * Get the latitude of the arrival of a ship
      * @return the arrival latitude
      */
-    public String getArrivalLatitude() {
-        return arrivalLatitude;
+    public String getArrivalLatitudeDto() {
+        return arrivalLatitudeDto;
     }
 
     /**
      * Get the longitude of the arrival of a ship
      * @return the arrival longitude
      */
-    public String getArrivalLongitude() {
-        return arrivalLongitude;
+    public String getArrivalLongitudeDto() {
+        return arrivalLongitudeDto;
     }
 
     /**
      * Get the travelled distance of a ship
      * @return the traveled distance
      */
-    public double getTravelledDistance() {
-        return travelledDistance;
+    public double getTravelledDistanceDto() {
+        return travelledDistanceDto;
     }
 
     /**
      * Get the delta distance traveled by a ship
      * @return the delta distance
      */
-    public double getDeltaDistance() {
-        return deltaDistance;
+    public double getDeltaDistanceDto() {
+        return deltaDistanceDto;
     }
 
     /**
@@ -304,7 +302,7 @@ public class SummaryDto {
                 "Arrival Longitude: %s \n" +
                 "Travelled Distance: %.2f km\n" +
                 "Delta Distance: %.2f km\n"
-                , mmsiCode, name, startBaseDate, endBaseDate, totalMovementTime, totalMovements, maximumSog, meanSog, maximumCog, meanCog, departureLatitude, departureLongitude, arrivalLatitude, arrivalLongitude, travelledDistance, deltaDistance
+                , mmsiCodeDto, nameDto, startBaseDateDto, endBaseDateDto, totalMovementTimeDto, totalMovementsDto, maximumSogDto, meanSogDto, maximumCogDto, meanCogDto, departureLatitudeDto, departureLongitudeDto, arrivalLatitudeDto, arrivalLongitudeDto, travelledDistanceDto, deltaDistanceDto
 
         );
 

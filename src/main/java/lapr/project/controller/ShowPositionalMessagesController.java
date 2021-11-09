@@ -81,4 +81,15 @@ public class ShowPositionalMessagesController {
         ShipLocationBST shipLocationBst = ship.getShipPosition();
         return shipLocationBst.getPositionalMessages(initialDate,finalDate);
     }
+
+    /**
+     * Obtain the positional messages of the intended ship within the indicated period of time
+     * @param initialDate initial date of the intended period
+     * @param finalDate final date of the intended period
+     * @return List with requested positional messages
+     */
+    public String showPositionalMessages(Date date){
+        ShipLocationBST shipLocationBst = ship.getShipPosition();
+        return shipLocationBst.getPositionalMessages(date);
+    }
 }

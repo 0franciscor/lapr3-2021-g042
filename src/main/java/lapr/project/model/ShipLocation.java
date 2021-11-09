@@ -123,6 +123,15 @@ public class ShipLocation implements Comparable<ShipLocation>{
     }
 
     /**
+     *
+     * @param date
+     */
+    public void setMessageTime(Date date){
+        this.messageTime = date;
+    }
+
+
+    /**
      * Sets the Latitude according to the defined rules
      *
      * @param latitude of the Location

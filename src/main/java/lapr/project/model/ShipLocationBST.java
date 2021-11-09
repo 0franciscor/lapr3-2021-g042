@@ -302,6 +302,22 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
 //#############################################
 
     /**
+     * This method allows the user to search a certain ship location on the BST through its date
+     * @param date that identifies the desired shipLocation
+     * @return the identified ShipLocation
+     */
+    public ShipLocation getShipLocationByDate(Date date){
+        ShipLocation shipLocationToFind = new ShipLocation();
+        shipLocationToFind.setMessageTime(date);
+        Node<ShipLocation> aux = find(root, shipLocationToFind);
+        if(aux==null){
+            return null;
+        } else {
+            return find(root, shipLocationToFind).getShipLocation();
+        }
+    }
+
+    /**
      * This method allows to obtain the list of the ship's positional messages over a period of time
      * @param initialDate initial date of positional messages
      * @param finalDate final date of positional messages
@@ -318,6 +334,20 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         }
 
         return positionalMessages;
+    }
+
+    /**
+     * This method allows to obtain the ship's positional message over a date
+     * @param date date of positional message
+     * @return respective positional message
+     */
+    public String getPositionalMessages(Date date){
+        ShipLocation location=getShipLocationByDate(date);
+        if(location!=null){
+            return location.toString();
+        } else {
+            return null;
+        }
     }
 
     public void getSpecificDatePeriod(Node<ShipLocation> node, Date initialDate, Date finalDate, List<ShipLocation> listDates) {

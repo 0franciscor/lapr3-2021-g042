@@ -20,12 +20,10 @@ class Containers {
 -containerNumber
 -checkDigit
 -isoCode
--width
--height
--length
 -payLoad
 -tare
 -gross
+-weight
 }
 
 class CargoManifest {
@@ -34,20 +32,19 @@ class CargoManifest {
 
 class Ship {
 -mmsiCode
--name
 -imoCode
 -numberEnergyGenerators
 -generatorPower
 -callSign
 -draft
-}
-
-class VesselType {
+-name
 -vesselTypeId
 -length
 -width
 -capacity
 }
+
+
 
 class Ports {
 -identification
@@ -84,11 +81,11 @@ class ShipLocation {
 -transceiver
 }
 
-CargoManifest "*" -- "1..*" Ports : delivered at >
-CargoManifest "*" -- "1..*" Warehouse : delivered at >
+CargoManifest "*" -- "1" Ports : delivered at >
+CargoManifest "*" -- "1" Warehouse : delivered at >
 
 Company "1"--"1..*" Ship: own >
-Company "1" -- "1..*" System : has >
+Company "1" - "1..*" System : has >
 Company "1"--"1..*" Employee: have >
 Company "1"--"1..*" Truck: own >
 
@@ -96,14 +93,13 @@ Containers "1..*"--"1..*" CargoManifest: related to >
 Containers "0..*"--"1" Ports: store >
 Containers "0..*"--"1" Warehouse: store >
 
-PlaceLocation "*" -- "1" Country : in a >
+PlaceLocation "*" -- "1" Country : placed in >
 
 Ports "1" -- "1" PlaceLocation : located at >
 
 Ship "1"---"1..*" Containers : transport >
 Ship "0..*"--"1" Ports: dock >
 Ship "1" -- "1..*" ShipLocation : has >
-Ship "*" -- "1" VesselType : is of >
 
 Employee "1" --- "1..*" ShipLocation : controls >
 Employee "1" -- "1" User : relates to >

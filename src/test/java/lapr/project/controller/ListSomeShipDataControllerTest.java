@@ -98,7 +98,7 @@ public class ListSomeShipDataControllerTest {
         assertEquals(BSlist.toString(),briefSummariesA.toString());
 
     }
-    
+
      */
 
 }

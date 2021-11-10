@@ -1,9 +1,5 @@
 package lapr.project.model;
 
-import lapr.project.controller.App;
-
-import java.util.Objects;
-
 /**
  *
  * @author Francisco Redol <1201239@isep.ipp.pt>
@@ -44,12 +40,32 @@ public class Ship implements Comparable<Ship> {
     /**
      * The ship's capacity
      */
-    private String capacity;
+    private String cargo;
 
     /**
      * The ship's Vessel Type
      */
-    private VesselType vesselType;
+    private int vesselType;
+
+    /**
+     * The ship's length
+     */
+    private float length;
+
+    /**
+     * The ship's width
+     */
+    private float width;
+
+    /**
+     * The ship's draft
+     */
+    private float draft;
+
+    /**
+     * The ship's cargo
+     */
+    private float capacity;
 
     /**
      * The Ship's Locations tree
@@ -86,9 +102,11 @@ public class Ship implements Comparable<Ship> {
         setNumberGenerators(energyGenerators);
         setGeneratorOutput(generatorOutput);
         setCallSign(callSign);
-        setCapacity(cargo);
-        this.vesselType = new VesselType(vesselType, length, width, draft);
-        setVesselType(vesselType, length, width, draft);
+        setCargo(cargo);
+        this.vesselType = vesselType;
+        setLength(length);
+        setWidth(width);
+        setDraft(draft);
         shipLocationBST = new ShipLocationAVL();
         shipLocationBST.insert(shipLocation);
     }
@@ -117,8 +135,11 @@ public class Ship implements Comparable<Ship> {
         setNumberGenerators(energyGenerators);
         setGeneratorOutput(generatorOutput);
         setCallSign(callSign);
-        setCapacity(cargo);
-        this.vesselType = new VesselType(vesselType, length, width, draft);
+        setCargo(cargo);
+        this.vesselType = vesselType;
+        setLength(length);
+        setWidth(width);
+        setDraft(draft);
         this.shipLocationBST = shipLocationAVL;
     }
 
@@ -195,39 +216,56 @@ public class Ship implements Comparable<Ship> {
     /**
      * Sets the Ship's capacity according to the defined rules
      *
-     * @param capacity ship's capacity
+     * @param cargo ship's capacity
      */
-    public void setCapacity (String capacity){
-        if(capacity == null || capacity.isEmpty())
-            throw new IllegalArgumentException("The Ship's capacity shall not be empty.");
+    public void setCargo(String cargo){
+        if(cargo == null || cargo.isEmpty())
+            throw new IllegalArgumentException("The Ship's cargo shall not be empty.");
 
-        if(capacity.equals("NA"))
-            this.capacity = capacity;
+        if(cargo.equals("NA"))
+            this.cargo = cargo;
 
-        else if(Float.parseFloat(capacity) < 0)
-            throw new IllegalArgumentException("The Ship's capacity shall not be empty.");
+        else if(Float.parseFloat(cargo) < 0)
+            throw new IllegalArgumentException("The Ship's cargo shall not be inferior than 0.");
 
         else
-            this.capacity = capacity;
+            this.cargo = cargo;
     }
 
     /**
-     * Method that defines a ship's Vessel Type according to the defined rules
+     * Sets the Ship's length according to the defined rules
      *
-     * @param vesselType The ship's Vessel Type
-     * @param length The ship's length
-     * @param width The ship's width
-     * @param draft The ship's draft
+     * @param length Ship's length
      */
-    public void setVesselType(int vesselType, float length, float width, float draft){
-        if(length < 0 || width < 0 || draft < 0)
-            throw new IllegalArgumentException("The ship's dimensions or draft are invalid.");
-        else{
-            VesselType vesselTypeAux = new VesselType(vesselType, length, width, draft);
-            if(!App.getInstance().getCompany().getVesselTypeList().contains(vesselTypeAux))
-                App.getInstance().getCompany().getVesselTypeList().add(vesselTypeAux);
-            this.vesselType = vesselTypeAux;
-        }
+    public void setLength (float length){
+        if(length <= 0)
+            throw new IllegalArgumentException("A Ship must have a length bigger than 0.");
+        else
+            this.length = length;
+    }
+
+    /**
+     * Sets the Ship's width according to the defined rules
+     *
+     * @param width ship's width
+     */
+    public void setWidth(float width){
+        if(width <= 0)
+            throw new IllegalArgumentException("A Ship must have a width bigger than 0.");
+        else
+            this.width = width;
+    }
+
+    /**
+     * Sets the Ship's draft according to the defined rules
+     *
+     * @param draft ship's draft
+     */
+    public void setDraft(float draft){
+        if(draft < 0)
+            throw new IllegalArgumentException("A ship cannot have a draft lower than 0. Otherwise, you will end up with a submarine.\n:)");
+        else
+            this.draft = draft;
     }
 
     /**
@@ -276,35 +314,35 @@ public class Ship implements Comparable<Ship> {
      * @return the ship's Vessel Type
      */
     public int getVesselType(){
-        return vesselType.getVesselType();
+        return vesselType;
     }
 
     /**
      * @return the ship's length
      */
     public float getLength(){
-        return vesselType.getLength();
+        return length;
     }
 
     /**
      * @return the ship's width
      */
     public float getWidth(){
-        return vesselType.getWidth();
+        return width;
     }
 
     /**
      * @return the ship's capacity
      */
-    public String getCapacity(){
-        return capacity;
+    public String getCargo(){
+        return cargo;
     }
 
     /**
      * @return the ship's draft
      */
     public float getDraft(){
-        return vesselType.getDraft();
+        return draft;
     }
 
     /**
@@ -320,7 +358,7 @@ public class Ship implements Comparable<Ship> {
         if (this == o) return true;
         if (!(o instanceof Ship)) return false;
         Ship ship = (Ship) o;
-        return getEnergyGenerators() == ship.getEnergyGenerators() && Float.compare(ship.getGeneratorOutput(), getGeneratorOutput()) == 0 && getMMSI().equals(ship.getMMSI()) && getName().equals(ship.getName()) && getShipID().equals(ship.getShipID()) && getCallSign().equals(ship.getCallSign()) && getCapacity().equals(ship.getCapacity()) && getVesselType()==ship.getVesselType() && shipLocationBST.equals(ship.shipLocationBST);
+        return getEnergyGenerators() == ship.getEnergyGenerators() && Float.compare(ship.getGeneratorOutput(), getGeneratorOutput()) == 0 && getMMSI().equals(ship.getMMSI()) && getName().equals(ship.getName()) && getShipID().equals(ship.getShipID()) && getCallSign().equals(ship.getCallSign()) && getCargo().equals(ship.getCargo()) && getVesselType()==ship.getVesselType() && shipLocationBST.equals(ship.shipLocationBST);
     }
 
 
@@ -342,6 +380,6 @@ public class Ship implements Comparable<Ship> {
     @Override
     public String toString(){
         return String.format("MMSI: %s\nName: %s\nshipID: %s\nEnergy Generators: %d\nGenerator Output: %.2f\nCall Sign: %s\nVessel Type: %d\nLength: %.2f\n" +
-                "Width: %.2f\nCapacity: %s\nDraft: %.2f\n", MMSI, name, shipID, energyGenerators, generatorOutput, callSign, getVesselType(), getLength(), getWidth(), getCapacity(), getDraft());
+                "Width: %.2f\nCapacity: %s\nDraft: %.2f\n", MMSI, name, shipID, energyGenerators, generatorOutput, callSign, getVesselType(), getLength(), getWidth(), getCargo(), getDraft());
     }
 }

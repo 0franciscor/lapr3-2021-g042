@@ -141,7 +141,7 @@ public class ShipLocationBSTTest {
 
     @Test
     public void verifyTreeSizeIsEmpty(){
-        assertEquals(0, new BstShip<>().size());
+        assertEquals(0, new AvlShip().size());
     }
 
     @Test

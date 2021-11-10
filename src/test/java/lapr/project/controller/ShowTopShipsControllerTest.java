@@ -40,4 +40,15 @@ class ShowTopShipsControllerTest {
         boolean nullTree = (bstShip.getTopNShips(5, new Date(), new Date()) != null);
         assertTrue(nullTree);
     }
+
+    @Test
+    void getTopNShipsNullFromCompany(){
+        Company company = new Company();
+//        company.getBstShip().insert(new Ship("366998510","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B")));
+//        company.getBstShip().insert(new Ship("366998511","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B")));
+//        company.getBstShip().remove(new Ship("366998510","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B")));
+//        company.getBstShip().remove(new Ship("366998511","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B")));
+
+        //company.get
+    }
 }

@@ -11,7 +11,6 @@ class ShipTest {
     void setMMSI() {
         Ship ship = new Ship();
         ship.setMMSI("123456789");
-
         assertEquals("123456789", ship.getMMSI());
     }
 
@@ -28,6 +27,18 @@ class ShipTest {
     }
 
     @Test
+    void setMMSINull() {
+        boolean exception = false;
+        Ship ship = new Ship();
+        try{
+            ship.setMMSI(null);
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
     void setName() {
         Ship ship = new Ship();
         ship.setName("NavioBom");
@@ -35,7 +46,7 @@ class ShipTest {
     }
 
     @Test
-    void setNameWrong(){
+    void setNameEmpty(){
         boolean exception = false;
         Ship ship = new Ship();
         try{
@@ -44,7 +55,18 @@ class ShipTest {
             exception = true;
         }
         assertTrue(exception);
+    }
 
+    @Test
+    void setNameWrong(){
+        boolean exception = false;
+        Ship ship = new Ship();
+        try{
+            ship.setName(null);
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
     }
 
     @Test
@@ -55,11 +77,37 @@ class ShipTest {
     }
 
     @Test
-    void setShipIDWrong(){
+    void setShipIDNoIMO(){
+        boolean exception = false;
+        Ship ship = new Ship();
+        try{
+            ship.setShipID("INO1234567");
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+
+    }
+
+    @Test
+    void setShipIDWrongLength(){
         boolean exception = false;
         Ship ship = new Ship();
         try{
             ship.setShipID("IMO123456");
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+
+    }
+
+    @Test
+    void setShipIDNull(){
+        boolean exception = false;
+        Ship ship = new Ship();
+        try{
+            ship.setShipID(null);
         } catch (Exception e){
             exception = true;
         }
@@ -114,7 +162,7 @@ class ShipTest {
     }
 
     @Test
-    void setCallSignWrong(){
+    void setCallSignEmpty(){
         boolean exception = false;
         Ship ship = new Ship();
 
@@ -127,26 +175,12 @@ class ShipTest {
     }
 
     @Test
-    void setCapacityNA() {
-        Ship ship = new Ship();
-        ship.setCapacity("NA");
-        assertEquals("NA", ship.getCapacity());
-    }
-
-    @Test
-    void setCapacity(){
-        Ship ship = new Ship();
-        ship.setCapacity("18");
-        assertEquals("18", ship.getCapacity());
-    }
-
-    @Test
-    void setCapacityWrong(){
+    void setCallSignNull(){
         boolean exception = false;
         Ship ship = new Ship();
 
         try{
-            ship.setCapacity("Autocarro");
+            ship.setCallSign(null);
         } catch (Exception e){
             exception = true;
         }
@@ -154,76 +188,140 @@ class ShipTest {
     }
 
     @Test
-    void setVesselType() {
+    void setCargoNull(){
+        boolean exception = false;
         Ship ship = new Ship();
-        ship.setVesselType(63, 9f, 5f, 6f);
 
-        assertEquals(63, ship.getVesselType(), 0);
+        try{
+            ship.setCargo(null);
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    void setCargoEmpty() {
+        boolean exception = false;
+        Ship ship = new Ship();
+
+        try{
+            ship.setCargo("");
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    void setCargoLower0(){
+        boolean exception = false;
+        Ship ship = new Ship();
+
+        try{
+            ship.setCargo("-3");
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    void setCargo(){
+        Ship ship = new Ship();
+        ship.setCargo("3");
+        assertEquals("3", ship.getCargo());
+    }
+
+
+    @Test
+    void setLength(){
+        Ship ship = new Ship();
+
+        ship.setLength(9f);
+
         assertEquals(9f, ship.getLength(), 0);
-        assertEquals(5f, ship.getWidth(), 0);
-        assertEquals(6f, ship.getDraft(), 0);
     }
 
     @Test
-    void setVesselTypeWrong(){
+    void setLengthWrong(){
         boolean exception = false;
         Ship ship = new Ship();
 
         try{
-            ship.setVesselType(53, -29f, -55f, -5f);
+            ship.setLength(-4f);
         } catch (Exception e){
             exception = true;
         }
         assertTrue(exception);
     }
 
-//    @Test
-//    void getMMSI() {
-//    }
-//
-//    @Test
-//    void getName() {
-//    }
-//
-//    @Test
-//    void getShipID() {
-//    }
-//
-//    @Test
-//    void getEnergyGenerators() {
-//    }
-//
-//    @Test
-//    void getGeneratorOutput() {
-//    }
-//
-//    @Test
-//    void getCallSign() {
-//    }
-//
-//    @Test
-//    void getVesselType() {
-//    }
-//
-//    @Test
-//    void getLength() {
-//    }
-//
-//    @Test
-//    void getWidth() {
-//    }
-//
-//    @Test
-//    void getCapacity() {
-//    }
-//
-//    @Test
-//    void getDraft() {
-//    }
-//
-//    @Test
-//    void getShipPosition() {
-//    }
+    @Test
+    void setLength0(){
+        boolean exception = false;
+        Ship ship = new Ship();
+
+        try{
+            ship.setLength(0f);
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    void setWidth(){
+        Ship ship = new Ship();
+        ship.setWidth(9f);
+        assertEquals(9f, ship.getWidth(), 0);
+    }
+
+    @Test
+    void setWidthWrong(){
+        boolean exception = false;
+        Ship ship = new Ship();
+
+        try{
+            ship.setWidth(-2f);
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    void setWidth0(){
+        boolean exception = false;
+        Ship ship = new Ship();
+
+        try{
+            ship.setWidth(0f);
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    void setDraft(){
+        Ship ship = new Ship();
+        ship.setDraft(24f);
+        assertEquals(24f, ship.getDraft(), 0);
+    }
+
+    @Test
+    void setDraftWrong(){
+        boolean exception = false;
+        Ship ship = new Ship();
+
+        try{
+            ship.setDraft(-2f);
+        } catch (Exception e){
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
 
     @Test
     void compareToEquals() {
@@ -248,11 +346,4 @@ class ShipTest {
 
         assertEquals(-1, ship.compareTo(ship2));
     }
-
-//    @Test
-//    void testToString() {
-//        Ship ship = new Ship("123456789", "Navio", "IMO1234567", 3, 5f, "CHAMAMENTO", 583, 18f, 9f, "23", 9f, new ShipLocation());
-//        assertEquals("MMSI: 123456789\nName: Navio\nshipID: IMO1234567\nEnergy Generators: 3\nGenerator Output: 5,00\nCall Sign: CHAMAMENTO\nVessel Type: 583\nLength: 18,00\nWidth: 9,00\nCapacity: 23\nDraft: 9,00\n", ship.toString());
-//    }
-
 }

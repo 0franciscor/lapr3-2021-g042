@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessages01() throws ParseException {
+    public void showPositionalMessages01() throws ParseException, IOException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 01:25","31-12-2020 02:02"};
@@ -82,7 +83,7 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessages02() throws ParseException {
+    public void showPositionalMessages02() throws ParseException, IOException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 17:00","31-12-2020 17:02"};
@@ -93,7 +94,7 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessages03() throws ParseException {
+    public void showPositionalMessages03() throws ParseException, IOException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 16:00","31-12-2020 16:30"};
@@ -104,7 +105,7 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessages04() throws ParseException {
+    public void showPositionalMessages04() throws ParseException, IOException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 12:00","31-12-2020 18:30"};
@@ -116,7 +117,7 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessagesNotExist01() throws ParseException {
+    public void showPositionalMessagesNotExist01() throws ParseException, IOException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"30-12-2020 01:25","30-12-2020 17:02"};
@@ -126,7 +127,7 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessagesNotExist02() throws ParseException {
+    public void showPositionalMessagesNotExist02() throws ParseException, IOException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String[] datas = {"31-12-2020 18:25","31-12-2020 20:02"};
@@ -136,7 +137,7 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessages10() throws ParseException {
+    public void showPositionalMessages10() throws ParseException, IOException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String expected =location1.toString();
@@ -145,7 +146,7 @@ public class ShowPositionalMessagesControllerTest {
     }
 
     @Test
-    public void showPositionalMessagesNotExist10() throws ParseException {
+    public void showPositionalMessagesNotExist10() throws ParseException, IOException {
         controller = new ShowPositionalMessagesController(company);
         controller.shipExist("211331640");
         String expected =null;

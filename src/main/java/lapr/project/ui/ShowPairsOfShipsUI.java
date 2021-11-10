@@ -2,6 +2,7 @@ package lapr.project.ui;
 
 import lapr.project.controller.ShowPairsOfShipsController;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,12 @@ public class ShowPairsOfShipsUI implements Runnable{
     @Override
     public void run() {
         System.out.printf("%nPairs of Ships with routes with close departure/arrival coordinates  and with different Travelled Distance%n");
-        List<TreeMap<Double,String>> listPairsOfShips = showPairsOfShipsCtrl.getPairsOfShip();
+        List<TreeMap<Double,String>> listPairsOfShips = null;
+        try {
+            listPairsOfShips = showPairsOfShipsCtrl.getPairsOfShip();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         for (TreeMap<Double,String> list : listPairsOfShips){
             if (list != null){
                 Iterator iterator = list.entrySet().iterator();

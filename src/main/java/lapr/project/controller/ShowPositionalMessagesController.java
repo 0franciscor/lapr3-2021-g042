@@ -5,7 +5,10 @@ import lapr.project.model.BstShip;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipLocationBST;
+import lapr.project.utils.WriteForAFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -21,19 +24,25 @@ public class ShowPositionalMessagesController {
     private final App app;
 
     /**
-     * Represents a instance of Company
+     * Represents an instance of Company
      */
     private final Company company;
 
     /**
-     * Represents a instance of BstShip
+     * Represents an instance of BstShip
      */
     private final BstShip bstShip;
 
     /**
-     * Represents a instance of ship
+     * Represents an instance of ship
      */
     private Ship ship;
+
+    /**
+     * Represents an instance of WriteForFile
+     */
+    private WriteForAFile writeForAFile;
+
 
     /**
      * Initialize the controller
@@ -42,6 +51,7 @@ public class ShowPositionalMessagesController {
         this.app=App.getInstance();
         this.company=app.getCompany();
         this.bstShip=company.getBstShip();
+        this.writeForAFile = new WriteForAFile();
     }
 
     /**
@@ -51,6 +61,7 @@ public class ShowPositionalMessagesController {
         this.app=App.getInstance();
         this.company=company;
         this.bstShip=company.getBstShip();
+        this.writeForAFile = new WriteForAFile();
     }
 
     /**
@@ -77,9 +88,13 @@ public class ShowPositionalMessagesController {
      * @param finalDate final date of the intended period
      * @return List with requested positional messages
      */
-    public List<String> showPositionalMessages(Date initialDate, Date finalDate){
+    public List<String> showPositionalMessages(Date initialDate, Date finalDate) throws IOException {
         ShipLocationBST shipLocationBst = ship.getShipPosition();
-        return shipLocationBst.getPositionalMessages(initialDate,finalDate);
+        File file = new File("Positional_Messages");
+        List<String> positionalMessages = shipLocationBst.getPositionalMessages(initialDate,finalDate);
+        writeForAFile.writeForAFile(positionalMessages.toString(), ship.getMMSI(), file);
+        return positionalMessages;
+
     }
 
     /**
@@ -87,8 +102,12 @@ public class ShowPositionalMessagesController {
      * @param date initial date of the intended period
      * @return List with requested positional messages
      */
-    public String showPositionalMessages(Date date){
+    public String showPositionalMessages(Date date) throws IOException {
         ShipLocationBST shipLocationBst = ship.getShipPosition();
-        return shipLocationBst.getPositionalMessages(date);
+        File file = new File("Positional_Messages");
+        String positionalMessage = shipLocationBst.getPositionalMessages(date);
+        writeForAFile.writeForAFile(positionalMessage, ship.getMMSI(), file);
+
+        return positionalMessage;
     }
 }

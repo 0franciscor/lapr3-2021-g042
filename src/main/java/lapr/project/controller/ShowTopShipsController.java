@@ -2,6 +2,7 @@ package lapr.project.controller;
 
 import lapr.project.model.Company;
 import lapr.project.model.Summary;
+import lapr.project.utils.WriteForAFile;
 
 import java.util.*;
 
@@ -17,10 +18,16 @@ public class ShowTopShipsController {
     private Company company;
 
     /**
+     *
+     */
+    private WriteForAFile writeForAFile;
+
+    /**
      * ShowTopShipsController Constructor
      */
     public ShowTopShipsController(){
         this.company = App.getInstance().getCompany();
+        this.writeForAFile = new WriteForAFile();
     }
 
     /**

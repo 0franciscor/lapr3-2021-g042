@@ -2,7 +2,11 @@ package lapr.project.controller;
 
 import lapr.project.model.BstShip;
 import lapr.project.model.Company;
+import lapr.project.utils.WriteForAFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -29,12 +33,19 @@ public class ShowPairsOfShipsController {
     private final BstShip bstShip;
 
     /**
+     * Represents an instance of Write for a file
+     */
+    private WriteForAFile writeForAFile;
+
+    /**
      * Initialize the controller
      */
     public ShowPairsOfShipsController() {
         this.app = App.getInstance();
         this.company = app.getCompany();
         this.bstShip=company.getBstShip();
+        this.writeForAFile = new WriteForAFile();
+
     }
 
     /**
@@ -44,6 +55,7 @@ public class ShowPairsOfShipsController {
         this.app = App.getInstance();
         this.company = company;
         this.bstShip=company.getBstShip();
+        this.writeForAFile = new WriteForAFile();
     }
 
     /**
@@ -58,7 +70,10 @@ public class ShowPairsOfShipsController {
      * Get the List with pairs of ships  with routes with close departure/arrival coordinates  and with different Travelled Distance
      * @return List with pairs of ships  with routes with close departure/arrival coordinates  and with different Travelled Distance
      */
-    public List<TreeMap<Double,String>> getPairsOfShip() {
-        return bstShip.getIntendedPairsOfShips();
+    public List<TreeMap<Double,String>> getPairsOfShip() throws IOException {
+        List<TreeMap<Double,String>> list = bstShip.getIntendedPairsOfShips();
+        File file = new File("Pair_Of_Ships");
+        writeForAFile.writeForAFile(list.toString(), "pairs_of_ships", file);
+        return  list;
     }
 }

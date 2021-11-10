@@ -97,18 +97,5 @@ class MovementsSummaryControllerTest {
         assertFalse(movementsSummaryController.shipExist(null));
     }
 
-    @Test
-    void writeForAFile() throws IOException {
-        assertTrue(movementsSummaryController.writeForAFile("testing\n", "211331640"));
-    }
 
-    @Test
-    void WriteForAFileTestingAppending() throws IOException {
-        assertTrue(movementsSummaryController.writeForAFile("testing\n", "211331640"));
-    }
-
-    @Test
-    void WriteForAFilePassingANullStringByReference() throws IOException {
-        assertFalse(movementsSummaryController.writeForAFile(null, "211331640"));
-    }
 }

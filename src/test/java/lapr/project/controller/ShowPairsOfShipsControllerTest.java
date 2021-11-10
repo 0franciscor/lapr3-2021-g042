@@ -4,6 +4,7 @@ import lapr.project.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class ShowPairsOfShipsControllerTest {
     }
 
     @Test
-    public void getPairsOfShips01(){
+    public void getPairsOfShips01() throws IOException {
         List<TreeMap<Double,String>> result = controller.getPairsOfShip();
         List<TreeMap<Double,String>> esperado = new ArrayList<>();
         TreeMap<Double,String> infoPair = new TreeMap<>(Collections.reverseOrder());

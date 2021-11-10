@@ -47,7 +47,7 @@ public class ListSomeShipDataController {
             briefSummaries.add(briefSummary);
         }
     }
-    
+
     /**
      * Organize the list of brief summaries by ascending order of travelled distance
      * @return the ordered list

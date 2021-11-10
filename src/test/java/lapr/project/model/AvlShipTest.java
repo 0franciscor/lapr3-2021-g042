@@ -1,6 +1,5 @@
 package lapr.project.model;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,11 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class BstShipTest {
+class AvlShipTest {
 
     List<ShipLocation> arr = new ArrayList<>();
 
@@ -34,7 +31,7 @@ public class BstShipTest {
     ShipLocation location5;
     ShipLocation location6;
 
-    public BstShipTest() throws ParseException {
+    public AvlShipTest() throws ParseException {
         location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"36","-122",19,145,"147","B");
         location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]),"36","-122",19,145,"147","B");
         location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]),"36","-122",19,145,"147","B");
@@ -56,51 +53,21 @@ public class BstShipTest {
         ships.insert(ship);
     }
 
+
     @Test
-    public void getShipByMmsiCodeExist() {
-        assertEquals(ship,ships.getShipByMmsiCode("211331640"));
+    void insertNull() {
+        //ships.insert(null);
     }
 
     @Test
-    public void getShipByMmsiCodeNotExist() {
-        assertNull(ships.getShipByMmsiCode("211331643"));
+    void remove() {
     }
 
     @Test
-    public void insertLocations(){
-        Ship ship = new Ship("212951640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13, location4);
-        assertEquals(1, ship.getShipPosition().size());
+    void testEquals() {
     }
 
     @Test
-    public void insertLocations2(){
-        Ship ship = new Ship("211331641","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13, location3);
-        ship.getShipPosition().insert(location4);
-        ship.getShipPosition().insert(location5);
-        assertEquals(3, ship.getShipPosition().size());
-    }
-
-    @Test
-    public void isNotEmpty() throws ParseException {
-        Assertions.assertFalse(ships.isEmpty());
-    }
-
-    @Test
-    public void isEmpty() throws ParseException {
-        BstShip bstTree = new AvlShip();
-        Assertions.assertTrue(bstTree.isEmpty());
-    }
-
-    @Test
-    public void smallestElement() throws ParseException {
-        BstShip bstTree = new AvlShip();
-        Ship result = bstTree.smallestElement();
-        assertNull(result);
-    }
-
-    @Test
-    public void smallestElement02() throws ParseException {
-        Ship result = ships.smallestElement();
-        assertEquals(ship,result);
+    void testEquals1() {
     }
 }

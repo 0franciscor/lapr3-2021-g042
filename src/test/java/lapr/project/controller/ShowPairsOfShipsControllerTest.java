@@ -23,8 +23,8 @@ public class ShowPairsOfShipsControllerTest {
 
     Ship ship1;
     Ship ship2;
-    ShipLocationBST<ShipLocation> positions1 = new ShipLocationBST<>();
-    ShipLocationBST<ShipLocation> positions2 = new ShipLocationBST<>();
+    ShipLocationBST<ShipLocation> positions1 = new ShipLocationAVL();
+    ShipLocationBST<ShipLocation> positions2 = new ShipLocationAVL();
 
     ShipLocation location1;
     ShipLocation location2;

@@ -1,6 +1,5 @@
 package lapr.project.model;
 
-
 /**
  * Represents a role in organization
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
@@ -26,6 +25,21 @@ public class OrganizationRole {
      */
     public String getDesignation() {
         return designation;
+    }
+
+    /**
+     * @param obj of comparasion
+     * @return the result of the comparasion
+     */
+    public boolean equals(Object obj){
+        if(this == obj)
+            return true;
+
+        if(obj == null || getClass() != obj.getClass())
+            return false;
+
+        OrganizationRole orgRole = (OrganizationRole) obj;
+        return designation.equals(orgRole.getDesignation());
     }
 
 

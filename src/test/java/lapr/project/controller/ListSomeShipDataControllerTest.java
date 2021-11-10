@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -26,7 +27,7 @@ public class ListSomeShipDataControllerTest {
     }
 
     @Test
-    public void OrganizeByDescendingOrder(){ // descending travelled distance
+    public void OrganizeByDescendingOrder(){
 
         boolean flag = true;
         BriefSummary anterior = briefSummariesD.get(0);
@@ -42,7 +43,23 @@ public class ListSomeShipDataControllerTest {
     }
 
     @Test
-    public void OrganizeByAscendingOrder(){ // total number of movements ascending
+    public void OrganizeByDescendingOrder1(){
+
+        boolean flag = true;
+        BriefSummary anterior = briefSummariesD.get(0);
+        for(int i=1; i<briefSummariesD.size(); i++) {
+            BriefSummary atual = briefSummariesD.get(i);
+            if (atual.getTravelledDistance()>=anterior.getTravelledDistance()) {
+                flag = false;
+                break;
+            }
+            atual = anterior;
+        }
+        assertTrue(flag);
+    }
+
+    @Test
+    public void OrganizeByAscendingOrder(){
 
         boolean flag = true;
         BriefSummary anterior = briefSummariesA.get(0);
@@ -57,7 +74,21 @@ public class ListSomeShipDataControllerTest {
         assertTrue(flag);
     }
 
+    @Test
+    public void OrganizeByAscendingOrder1(){
 
+        boolean flag = true;
+        BriefSummary anterior = briefSummariesA.get(0);
+        for( int i=1; i<briefSummariesA.size(); i++) {
+            BriefSummary atual = briefSummariesA.get(i);
+            if (atual.getTotalNumberOfMovements() <= anterior.getTotalNumberOfMovements()) {
+                flag = false;
+                break;
+            }
+            atual = anterior;
+        }
+        assertFalse(flag);
+    }
 
 
 }

@@ -57,4 +57,11 @@ public class ShowTopShipsController {
         }
         return "There was no ship to demonstrate";
     }
+
+    /**
+     * @return the Controller's Company
+     */
+    public Company getCompany(){
+        return this.company;
+    }
 }

@@ -1,7 +1,5 @@
 package lapr.project.model;
 
-import auth.AuthFacade;
-
 /**
  * Class that represents a company.
  *
@@ -20,11 +18,6 @@ public class Company {
      */
     private ImportShip importShip;
 
-    /**
-     *
-     */
-    private AuthFacade authFacade;
-
 
     /**
      * Creates an instance of Company
@@ -32,7 +25,6 @@ public class Company {
     public Company(){
         bstShip = new AvlShip();
         importShip = new ImportShip();
-        authFacade = new AuthFacade();
     }
 
     /**
@@ -49,13 +41,5 @@ public class Company {
      */
     public ImportShip getImportShip (){
         return importShip;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public AuthFacade getAuthFacade() {
-        return authFacade;
     }
 }

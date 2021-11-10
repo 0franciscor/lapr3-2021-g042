@@ -74,6 +74,7 @@ public class MovementsSummaryController {
      * @return true if the ship exists, otherwise return false
      */
     public boolean shipExist(String mmsiCode){
+        if (mmsiCode == null) return false;
         Ship ship = bstShip.getShipByMmsiCode(mmsiCode);
         return ship != null;
     }
@@ -92,19 +93,25 @@ public class MovementsSummaryController {
         if (!archive.exists()) {
             archive.mkdirs();
         }
-        File arch = new File(".\\Summaries\\Summary_" + mmsiCode +".txt");
 
-        FileWriter fw = new FileWriter(arch, true);
+        if (string != null){
+            File arch = new File(".\\Summaries\\Summary_" + mmsiCode +".txt");
+            if (arch.exists()) arch.setWritable(true);
+            FileWriter fw = new FileWriter(arch, true);
 
-        try {
-            if (arch.exists()) arch.delete();
-            fw.write(string);
-        } catch (IOException e){
+            try {
+                if (arch.exists()) arch.delete();
+                fw.write(string);
+            } catch (IOException e){
+                flag = false;
+                e.printStackTrace();
+            } finally {
+                fw.close();
+                arch.setReadOnly();
+            }
+        }else
             flag = false;
-            e.printStackTrace();
-        } finally {
-            fw.close();
-        }
+
         return flag;
     }
 

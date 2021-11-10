@@ -1,4 +1,5 @@
 package lapr.project.ui;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -39,13 +40,6 @@ class Main {
         }while (option != 1 || option != 0);
 
 
-
-
-
-        //ImportShip importShip = new ImportShip();
-        //importShip.getFile("sships.csv");
-        //System.out.println("Number of ships not imported: " + importShip.convertShips());
-
         //ShowPositionalMessagesUI ui = new ShowPositionalMessagesUI();
         //ui.run();
 
@@ -72,8 +66,6 @@ class Main {
         */
 
         //List<String> options = new ArrayList<>();
-
-
 
     }
 }

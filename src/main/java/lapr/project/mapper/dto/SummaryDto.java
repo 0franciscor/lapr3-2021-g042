@@ -285,7 +285,7 @@ public class SummaryDto {
      */
     @Override
     public String toString() {
-        return String.format("----------* Summary *----------\n " +
+        return String.format("\n----------* Summary *----------\n" +
                 "MMSI Code: %s \n" +
                 "Ship name: %s \n" +
                 "Start Base Date: %s \n" +

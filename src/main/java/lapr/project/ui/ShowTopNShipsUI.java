@@ -42,7 +42,7 @@ public class ShowTopNShipsUI implements Runnable{
 
         do{
             initialDate = Utils.readDateFromConsole("\nPlease insert the initial date:\n");
-            finalDate = Utils.readDateFromConsole("\nPlease insert the initial date:\n");
+            finalDate = Utils.readDateFromConsole("\nPlease insert the final date:\n");
         } while(initialDate.after(finalDate));
 
         System.out.println(showTopShipsController.getTopNShips(numShips, initialDate, finalDate));

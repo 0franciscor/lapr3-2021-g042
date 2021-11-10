@@ -1,8 +1,6 @@
 package lapr.project.controller;
 
 import lapr.project.model.Company;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -82,15 +80,6 @@ public class ImportShipControllerTest {
         controller.importFile(fileName);
         assertEquals(0, controller.importShips());
     }
-
-    /**
-    //@Test
-    public void importShips2() { //First line's IMO is wrong
-        String fileName = "Test1.csv";
-        controller.importFile(fileName);
-        assertEquals(1, controller.importShips());
-    }
-     */
 
     @Test
     public void importShips3() { //3 lines have their IMO Wrong

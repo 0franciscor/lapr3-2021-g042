@@ -73,7 +73,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
      * @param position Location Position
      * @param transceiverClass Location transceiver Class
      */
-    public ShipLocation(String MMSI, Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String mmsi, String position, String transceiverClass){
+    public ShipLocation(String MMSI, Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String position, String transceiverClass){
         setMMSI(MMSI);
         this.messageTime = messageTime;
         setLatitude(latitude);
@@ -98,7 +98,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
      * @param heading Location Heading
      * @param transceiverClass Location transceiver Class
      */
-    public ShipLocation(String MMSI, Date messageTime,String latitude, String longitude, float SOG, float COG, String heading, String transceiverClass){
+    public ShipLocation(String MMSI, Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String transceiverClass){
         setMMSI(MMSI);
         this.messageTime = messageTime;
         setLatitude(latitude);
@@ -129,7 +129,6 @@ public class ShipLocation implements Comparable<ShipLocation>{
     public void setMessageTime(Date date){
         this.messageTime = date;
     }
-
 
     /**
      * Sets the Latitude according to the defined rules
@@ -186,7 +185,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
         if(COG < 0)
             this.COG = 360 + COG;
         else if (COG > 360)
-            this.COG = 360 - COG;
+            this.COG = COG - 360;
         else
             this.COG = COG;
     }

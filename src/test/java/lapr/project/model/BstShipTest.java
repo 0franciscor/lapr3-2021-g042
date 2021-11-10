@@ -48,7 +48,7 @@ public class BstShipTest {
 
     @BeforeEach
     public void setUp(){
-        tree = new ShipLocationBST<>();
+        tree = new ShipLocationAVL();
         ships = new AvlShip();
         for(ShipLocation i :arr)
             tree.insert(i);

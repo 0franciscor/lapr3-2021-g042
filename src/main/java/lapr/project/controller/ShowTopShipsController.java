@@ -44,11 +44,9 @@ public class ShowTopShipsController {
         if(!topShips.isEmpty()) {
             StringBuilder shipString = new StringBuilder();
             for (Integer key : topShips.keySet()) {
-                if(!topShips.get(key).isEmpty()) {
-                    shipString.append("\n\nFor the Vessel Type: " + key + ", this is the data of the Ship:\n");
-                    for (Summary summary : topShips.get(key))
-                        shipString.append("\nThe ship with the " + summary.getMmsiCode() + " MMSI Code, traveled " + summary.getTravelledDistance() + " Kilometers at a Mean SOG of: " + summary.getMeanSog());
-                }
+                shipString.append("\n\nFor the Vessel Type: " + key + ", this is the data of the Ship:\n");
+                for (Summary summary : topShips.get(key))
+                    shipString.append("\nThe ship with the " + summary.getMmsiCode() + " MMSI Code, traveled " + summary.getTravelledDistance() + " Kilometers at a Mean SOG of: " + summary.getMeanSog());
             }
 
             shipString.append("\n\n");

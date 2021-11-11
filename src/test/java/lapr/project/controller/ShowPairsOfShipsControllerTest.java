@@ -4,6 +4,7 @@ import lapr.project.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,8 +23,8 @@ public class ShowPairsOfShipsControllerTest {
 
     Ship ship1;
     Ship ship2;
-    ShipLocationBST<ShipLocation> positions1 = new ShipLocationBST<>();
-    ShipLocationBST<ShipLocation> positions2 = new ShipLocationBST<>();
+    ShipLocationBST<ShipLocation> positions1 = new ShipLocationAVL();
+    ShipLocationBST<ShipLocation> positions2 = new ShipLocationAVL();
 
     ShipLocation location1;
     ShipLocation location2;
@@ -66,7 +67,7 @@ public class ShowPairsOfShipsControllerTest {
     }
 
     @Test
-    public void getPairsOfShips01(){
+    public void getPairsOfShips01() throws IOException {
         List<TreeMap<Double,String>> result = controller.getPairsOfShip();
         List<TreeMap<Double,String>> esperado = new ArrayList<>();
         TreeMap<Double,String> infoPair = new TreeMap<>(Collections.reverseOrder());
@@ -75,7 +76,15 @@ public class ShowPairsOfShipsControllerTest {
         infoPair.put(travelDistanceDifference, stringWithAllInfo);
         esperado.add(infoPair);
         assertEquals(esperado,result);
+    }
 
+    @Test
+    public void getPairsOfShips02() throws IOException {
+        Company company = new Company();
+        ShowPairsOfShipsController ctrlrAux = new ShowPairsOfShipsController(company);
+        List<TreeMap<Double,String>> result = ctrlrAux.getPairsOfShip();
+        List<TreeMap<Double,String>> esperado = new ArrayList<>();
+        assertEquals(esperado,result);
     }
 
 

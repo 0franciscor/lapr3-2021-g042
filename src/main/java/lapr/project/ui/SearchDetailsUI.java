@@ -1,6 +1,7 @@
 package lapr.project.ui;
 
 import lapr.project.controller.SearchDetailsController;
+
 import java.util.Scanner;
 
 /**

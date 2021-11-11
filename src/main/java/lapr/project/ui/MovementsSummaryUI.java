@@ -3,7 +3,9 @@ package lapr.project.ui;
 import lapr.project.controller.MovementsSummaryController;
 import lapr.project.mapper.dto.SummaryDto;
 import lapr.project.model.Ship;
+import lapr.project.utils.WriteForAFile;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -19,11 +21,14 @@ public class MovementsSummaryUI implements Runnable{
      */
     private MovementsSummaryController movementsSummaryController;
 
+    private WriteForAFile writeForAFile;
+
     /**
      * Initializes the controller
      */
     public MovementsSummaryUI(){
         movementsSummaryController = new MovementsSummaryController();
+        writeForAFile = new WriteForAFile();
     }
 
     /**
@@ -47,7 +52,8 @@ public class MovementsSummaryUI implements Runnable{
                 System.out.println(summaryDto);
                 System.out.println();
                 try {
-                    if (movementsSummaryController.writeForAFile(summaryDto.toString(), summary.getMmsiCode()))
+                    File file = new File("Summaries");
+                    if (writeForAFile.writeForAFile(summaryDto.toString(), "Summary_" + summaryDto.getMmsiCodeDto(),file))
                         System.out.println("Your summary was saved in the file named: Summary_" + summaryDto.getMmsiCodeDto() + ".txt");
                 } catch (IOException e) {
                     e.printStackTrace();

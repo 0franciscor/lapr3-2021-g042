@@ -2,6 +2,7 @@ package lapr.project.ui;
 
 import lapr.project.controller.ShowPositionalMessagesController;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,12 @@ public class ShowPositionalMessagesUI implements Runnable{
                 if (finalDate != null && finalDate.before(initialDate)){
                     System.out.println("The end date must be later than the start date.");
                 } else {
-                    List<String> mesages = showPositionalMessagesCtrl.showPositionalMessages(initialDate,finalDate);
+                    List<String> mesages = null;
+                    try {
+                        mesages = showPositionalMessagesCtrl.showPositionalMessages(initialDate,finalDate);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     for (String message: mesages){
                         System.out.println(message);
                     }

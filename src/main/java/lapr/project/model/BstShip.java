@@ -10,7 +10,7 @@ import java.util.*;
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  * @author Francisco Redol <1201239@isep.ipp.pt>
  */
-public class BstShip<E> implements BSTInterface<Ship>{
+public abstract class BstShip<E> implements BSTInterface<Ship>{
 
     /** Nested static class for a binary search tree node. */
 
@@ -93,58 +93,13 @@ public class BstShip<E> implements BSTInterface<Ship>{
     /*
      * Inserts an element in the tree.
      */
-    public void insert(Ship ship){
-        root = insert(ship, root);
-    }
-
-    private Node<Ship> insert(Ship ship, Node<Ship> node){
-        if(node == null)
-            return new Node(ship, null, null);
-
-        if(node.getShip().compareTo(ship) > 0)
-            node.setLeft(insert(ship, node.getLeft()));
-
-        else
-        if(node.getShip().compareTo(ship) < 0)
-            node.setRight(insert(ship, node.getRight()));
-
-        return node;
-    }
+    public abstract void insert(Ship ship);
 
     /**
      * Removes an element from the tree maintaining its consistency as a Binary Search Tree.
      */
-    public void remove(Ship ship){
-        root = remove(ship, root());
-    }
+    public abstract void remove(Ship ship);
 
-    private Node<Ship> remove(Ship ship, Node<Ship> node) {
-
-        if (node == null) {
-            return null;    //throw new IllegalArgumentException("Element does not exist");
-        }
-        if (ship.compareTo(node.getShip())==0) {
-            // node is the Node to be removed
-            if (node.getLeft() == null && node.getRight() == null) { //node is a leaf (has no childs)
-                return null;
-            }
-            if (node.getLeft() == null) {   //has only right child
-                return node.getRight();
-            }
-            if (node.getRight() == null) {  //has only left child
-                return node.getLeft();
-            }
-            Ship min = smallestElement(node.getRight());
-            node.setElement(min);
-            node.setRight(remove(min, node.getRight()));
-        }
-        else if (ship.compareTo(node.getShip()) < 0)
-            node.setLeft( remove(ship, node.getLeft()) );
-        else
-            node.setRight( remove(ship, node.getRight()) );
-
-        return node;
-    }
 
     /*
      * Returns the number of nodes in the tree.
@@ -225,6 +180,8 @@ public class BstShip<E> implements BSTInterface<Ship>{
         snapshot.add(node.getShip());
         inOrderSubtree(node.getRight(), snapshot);
     }
+
+   //############ Methods Implemented ###################
 
     /**
      * This method allows the user to search a certain ship on the BST through its MMSI code (unique code).

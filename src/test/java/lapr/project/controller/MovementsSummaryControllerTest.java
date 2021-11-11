@@ -1,10 +1,7 @@
 package lapr.project.controller;
 
 import lapr.project.mapper.dto.SummaryDto;
-import lapr.project.model.Ship;
-import lapr.project.model.ShipLocation;
-import lapr.project.model.ShipLocationBST;
-import lapr.project.model.Summary;
+import lapr.project.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -52,7 +49,7 @@ class MovementsSummaryControllerTest {
 
     @Test
     void getShipByMmsiCode() {
-        tree = new ShipLocationBST();
+        tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
         Ship ship = new Ship("229961000","ARABELLA","IMO9700122",0,0,"9HA3752",70,199,32,"NA",13.3f, tree);
@@ -61,7 +58,7 @@ class MovementsSummaryControllerTest {
 
     @Test
     void createSummaryForShip() {
-        tree = new ShipLocationBST();
+        tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
         Ship ship = movementsSummaryController.getShipByMmsiCode("229961000");
@@ -72,7 +69,7 @@ class MovementsSummaryControllerTest {
 
     @Test
     void createSummaryDto() {
-        tree = new ShipLocationBST();
+        tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
         Ship ship = movementsSummaryController.getShipByMmsiCode("229961000");
@@ -97,18 +94,5 @@ class MovementsSummaryControllerTest {
         assertFalse(movementsSummaryController.shipExist(null));
     }
 
-    @Test
-    void writeForAFile() throws IOException {
-        assertTrue(movementsSummaryController.writeForAFile("testing\n", "211331640"));
-    }
 
-    @Test
-    void WriteForAFileTestingAppending() throws IOException {
-        assertTrue(movementsSummaryController.writeForAFile("testing\n", "211331640"));
-    }
-
-    @Test
-    void WriteForAFilePassingANullStringByReference() throws IOException {
-        assertFalse(movementsSummaryController.writeForAFile(null, "211331640"));
-    }
 }

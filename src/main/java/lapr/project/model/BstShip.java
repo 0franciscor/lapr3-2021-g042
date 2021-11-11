@@ -270,11 +270,11 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
         while(shipList.hasNext()) {
             Ship toBeAdded = shipList.next();
             Summary summary = new Summary(toBeAdded);
-            if(summary.getStartBaseDate().after(initialDate) && summary.getEndBaseDate().before(finalDate))
-                if(summaryMap.get(toBeAdded.getVesselType()) == null)
+            if(summary.getStartBaseDate().after(initialDate) && summary.getEndBaseDate().before(finalDate)) {
+                if (summaryMap.get(toBeAdded.getVesselType()) == null)
                     summaryMap.put(toBeAdded.getVesselType(), new ArrayList<>());
-            summaryMap.get(toBeAdded.getVesselType()).add(summary);
-
+                summaryMap.get(toBeAdded.getVesselType()).add(summary);
+            }
         }
 
         for(Integer key : summaryMap.keySet()) {

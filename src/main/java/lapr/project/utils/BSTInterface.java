@@ -10,7 +10,7 @@ public interface BSTInterface<E> {
 
     boolean isEmpty();
     void insert(E element);
-    void remove(E element);
+//  void remove(E element);
 
     int size();
     int height();

@@ -152,24 +152,6 @@ public class ShipLocationBSTTest {
         assertEquals(1, company.getBstShip().size());
     }
 
-    @Test
-    public void verifyTreeRemove(){
-        Ship ship = new Ship("211331647",",SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
-        Company company = new Company();
-        company.getBstShip().insert(ship);
-        company.getBstShip().remove(ship);
-        assertEquals(0, company.getBstShip().size());
-    }
-
-    @Test
-    public void verifyTreeRemove2(){
-        Ship ship = new Ship("211331649",",SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
-        Company company = new Company();
-        company.getBstShip().insert(ship);
-        company.getBstShip().remove(ship);
-        assertEquals(0, company.getBstShip().size());
-    }
-
     @org.junit.jupiter.api.Test
     void getStartBase() throws ParseException {
         ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
@@ -486,5 +468,4 @@ public class ShipLocationBSTTest {
         ShipLocation bstTree = tree.smallestElement();
         assertEquals(location4,bstTree);
     }
-
 }

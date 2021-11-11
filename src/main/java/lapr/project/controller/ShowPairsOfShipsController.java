@@ -74,8 +74,11 @@ public class ShowPairsOfShipsController {
     public List<TreeMap<Double,String>> getPairsOfShip() throws IOException {
         List<TreeMap<Double,String>> list = bstShip.getIntendedPairsOfShips();
         File file = new File("Pair_Of_Ships");
+        writeForAFile.writeForAFile("Ship1 MMSI  Ship2 MMSI   TravelDistance difference\n" , "pairs_of_ships", file);
+
         for(TreeMap<Double,String> lista : list){
             if(lista.size()!=0){
+                writeForAFile.writeForAFile("             \n" , "pairs_of_ships", file);
                 Iterator iterator = lista.entrySet().iterator();
 
                 while (iterator.hasNext()) {
@@ -84,6 +87,7 @@ public class ShowPairsOfShipsController {
                 }
             }
         }
+        writeForAFile.writeForAFile("             \n" , "pairs_of_ships", file);
         return  list;
     }
 }

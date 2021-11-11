@@ -43,19 +43,18 @@ public class ListSomeShipDataControllerTest {
     }
 
     @Test
-    public void OrganizeByDescendingOrder1(){
-
-        boolean flag = true;
-        BriefSummary anterior = briefSummariesD.get(0);
-        for(int i=1; i<briefSummariesD.size(); i++) {
-            BriefSummary atual = briefSummariesD.get(i);
-            if (atual.getTravelledDistance()>=anterior.getTravelledDistance()) {
-                flag = false;
-                break;
-            }
-            atual = anterior;
+    public void CompareOrderDTD(){
+        BriefSummary ant = briefSummariesD.get(0);
+        BriefSummary atual = briefSummariesD.get(1);
+        boolean fl1 = false, fl2 = false;
+        if (atual.getTravelledDistance() < ant.getTravelledDistance()) {
+            fl1 = true;
         }
-        assertTrue(flag);
+        if (ant.getTravelledDistance() > atual.getTravelledDistance()) {
+            fl2 = true;
+        }
+        assertTrue(fl1);
+        assertTrue(fl2);
     }
 
     @Test
@@ -75,20 +74,18 @@ public class ListSomeShipDataControllerTest {
     }
 
     @Test
-    public void OrganizeByAscendingOrder1(){
-
-        boolean flag = true;
-        BriefSummary anterior = briefSummariesA.get(0);
-        for( int i=1; i<briefSummariesA.size(); i++) {
-            BriefSummary atual = briefSummariesA.get(i);
-            if (atual.getTotalNumberOfMovements() <= anterior.getTotalNumberOfMovements()) {
-                flag = false;
-                break;
-            }
-            atual = anterior;
+    public void CompareOrderATNM(){
+        BriefSummary ant = briefSummariesD.get(0);
+        BriefSummary atual = briefSummariesD.get(1);
+        boolean fl1 = false, fl2 = false;
+        if (ant.getTotalNumberOfMovements() < atual.getTotalNumberOfMovements()) {
+            fl1 = true;
         }
-        assertFalse(flag);
+        if (atual.getTotalNumberOfMovements() > ant.getTotalNumberOfMovements()) {
+            fl2 = true;
+        }
+        assertTrue(fl1);
+        assertTrue(fl2);
     }
-
 
 }

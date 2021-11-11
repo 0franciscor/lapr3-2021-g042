@@ -75,7 +75,7 @@ public class ShowPairsOfShipsController {
         List<TreeMap<Double,String>> list = bstShip.getIntendedPairsOfShips();
         File file = new File("Pair_Of_Ships");
         for(TreeMap<Double,String> lista : list){
-            if(lista!=null){
+            if(lista.size()!=0){
                 Iterator iterator = lista.entrySet().iterator();
 
                 while (iterator.hasNext()) {

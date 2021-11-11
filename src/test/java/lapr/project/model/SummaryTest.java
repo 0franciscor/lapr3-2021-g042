@@ -3,7 +3,7 @@ package lapr.project.model;
 import org.junit.jupiter.api.Test;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SummaryTest {
 
@@ -103,4 +103,38 @@ class SummaryTest {
         Summary summary = new Summary("210950000", "VARAMO", new Date(2020, 12, 31, 17, 19), new Date(2020, 12, 24, 14, 30), "02:30:12", 23, 156, 124, 16, 12, "42.97875", "-66.97001", "42.92236", "-66.97243" , 120, 50);
         assertEquals(summary.getDeltaDistance(), 50, 0.0);
     }
+
+    @Test
+    void testEquals() {
+        Summary summary = new Summary("210950000", "VARAMO", new Date(2020, 12, 31, 17, 19), new Date(2020, 12, 24, 14, 30), "02:30:12", 23, 156, 124, 16, 12, "42.97875", "-66.97001", "42.92236", "-66.97243" , 120, 50);
+        Summary summary2 = new Summary("210950000", "VARAMO", new Date(2020, 12, 31, 17, 19), new Date(2020, 12, 24, 14, 30), "02:30:12", 23, 156, 124, 16, 12, "42.97875", "-66.97001", "42.92236", "-66.97243" , 120, 50);
+
+        assertTrue(summary.equals(summary2));
+    }
+
+    @Test
+    void testEqualsReferences() {
+        Summary summary = new Summary("210950000", "VARAMO", new Date(2020, 12, 31, 17, 19), new Date(2020, 12, 24, 14, 30), "02:30:12", 23, 156, 124, 16, 12, "42.97875", "-66.97001", "42.92236", "-66.97243" , 120, 50);
+        Summary summary2 = summary;
+
+        assertTrue(summary.equals(summary2));
+    }
+
+    @Test
+    void testEqualsNull() {
+        Summary summary = new Summary("210950000", "VARAMO", new Date(2020, 12, 31, 17, 19), new Date(2020, 12, 24, 14, 30), "02:30:12", 23, 156, 124, 16, 12, "42.97875", "-66.97001", "42.92236", "-66.97243" , 120, 50);
+        Summary summary2 = null;
+
+        assertFalse(summary.equals(summary2));
+    }
+
+    @Test
+    void testEqualsObjectOfOtherClass() {
+        Summary summary = new Summary("210950000", "VARAMO", new Date(2020, 12, 31, 17, 19), new Date(2020, 12, 24, 14, 30), "02:30:12", 23, 156, 124, 16, 12, "42.97875", "-66.97001", "42.92236", "-66.97243" , 120, 50);
+        Object summary2 = "Summary";
+
+        assertFalse(summary.equals(summary2));
+    }
+
+
 }

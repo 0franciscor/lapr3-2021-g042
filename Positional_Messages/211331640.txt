@@ -238,4 +238,100 @@ Longitude: -122
 SOG: 19,000000
 COG: 145,000000
 Heading: 147
+[][][
+Date: Thu Dec 31 01:25:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+][
+Date: Thu Dec 31 17:02:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+][
+Date: Thu Dec 31 16:15:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+][
+Date: Thu Dec 31 16:15:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+, 
+Date: Thu Dec 31 17:02:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+]
+Date: Thu Dec 31 01:25:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+[][][
+Date: Thu Dec 31 01:25:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+][
+Date: Thu Dec 31 17:02:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+][
+Date: Thu Dec 31 16:15:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+][
+Date: Thu Dec 31 16:15:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+, 
+Date: Thu Dec 31 17:02:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
+]
+Date: Thu Dec 31 01:25:00 WET 2020
+Latitude: 36
+Longitude: -122
+
+SOG: 19,000000
+COG: 145,000000
+Heading: 147
 [][]

@@ -35,8 +35,6 @@ class Main {
             System.out.println("2- Traffic Manager");
             System.out.println("0- Exit");
             option = Utils.readIntegerFromConsole("Type your option:");
-            if (option == 1)  new HumanResourcesUi();
-            if (option == 2) new TrafficManagerUi();
             if (option == 0) System.exit(0);
 
         }while (option != 1 || option != 0);

@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.util.concurrent.ConcurrentMap;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ShipLocationBSTTest {
 
@@ -255,6 +255,33 @@ public class ShipLocationBSTTest {
         assertEquals(tree.getLatitudeDeparture(), "not available");
     }
 
+   /* @Test
+    void latitudeDepartureNotInIntervalDefined() throws ParseException {
+        boolean flag = true;
+        String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02", "12-12-2020 17:02"};
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        ShipLocation location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"36","-122",19,145,"147","B");
+        ShipLocation location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]),"36","-122",11,122,"147","B");
+        ShipLocation location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]),"36","-122",23,98,"147","B");
+        ShipLocation location4 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[3]),"-99","-122",35,200,"147","B");
+        List<ShipLocation> arr = new ArrayList<>();
+        arr.add(location1);
+        arr.add(location2);
+        arr.add(location3);
+        arr.add(location4);
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        for(ShipLocation i :arr)
+            shipLocationBST.insert(i);
+
+        try {
+            shipLocationBST.getLatitudeDeparture();
+        }catch (Exception e){
+            flag = false;
+        }
+
+        assertFalse(false);
+
+    }*/
     @org.junit.jupiter.api.Test
     void getLatitudeDeparture() throws ParseException {
         String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02", "12-12-2020 17:02"};
@@ -274,6 +301,7 @@ public class ShipLocationBSTTest {
 
         assertEquals(shipLocationBST.getLatitudeDeparture(), "-56");
     }
+
     @org.junit.jupiter.api.Test
     void longitudeDepartureEqualsNotAvailable() {
         ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
@@ -282,6 +310,7 @@ public class ShipLocationBSTTest {
 
         assertEquals(tree.getLongitudeDeparture(), "not available");
     }
+
     @org.junit.jupiter.api.Test
     void getLongitudeDeparture() throws ParseException {
         String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02", "12-12-2020 17:02"};

@@ -69,6 +69,16 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
     }
 
     /**
+     * @param ship That is being searched
+     * @return null if the ship was not found. Otherwise, the node containing the ship.
+     */
+    public Node<Ship> find(Ship ship) {
+        if (ship == null)
+            return null;
+        return find(root, ship);
+    }
+
+    /**
      * Returns the Node containing a specific Element, or null otherwise.
      *
      * @param ship    the element to find

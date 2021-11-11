@@ -282,33 +282,6 @@ public class Summary {
     }
 
     /**
-     * Textual information about a ship summary
-     * @return the textual information about a summary
-     */
-    @Override
-    public String toString() {
-
-        return "Summary{" +
-                "mmsiCode='" + mmsiCode + '\'' +
-                ", name='" + name + '\'' +
-                ", startBaseDate=" + startBaseDate +
-                ", endBaseDate=" + endBaseDate +
-                ", totalMovementTime='" + totalMovementTime + '\'' +
-                ", totalMovements=" + totalMovements +
-                ", maximumSog=" + maximumSog +
-                ", meanSog=" + meanSog +
-                ", maximumCog=" + maximumCog +
-                ", meanCog=" + meanCog +
-                ", departureLatitude=" + departureLatitude +
-                ", departureLongitude=" + departureLongitude +
-                ", arrivalLatitude=" + arrivalLatitude +
-                ", arrivalLongitude=" + arrivalLongitude +
-                ", travelledDistance=" + travelledDistance +
-                ", deltaDistance=" + deltaDistance +
-                '}';
-    }
-
-    /**
      * @param object That is o objective of comparison
      * @return the result of the comparison
      */

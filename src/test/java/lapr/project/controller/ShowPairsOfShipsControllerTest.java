@@ -76,7 +76,14 @@ public class ShowPairsOfShipsControllerTest {
         infoPair.put(travelDistanceDifference, stringWithAllInfo);
         esperado.add(infoPair);
         assertEquals(esperado,result);
+    }
 
+    @Test
+    public void getPairsOfShips02() throws IOException {
+        ShowPairsOfShipsController ctrlr = new ShowPairsOfShipsController();
+        List<TreeMap<Double,String>> result = ctrlr.getPairsOfShip();
+        List<TreeMap<Double,String>> esperado=new ArrayList<>();
+        assertEquals(esperado,result);
     }
 
 

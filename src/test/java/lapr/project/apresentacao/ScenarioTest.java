@@ -30,6 +30,7 @@ public class ScenarioTest {
     @Test
     public void apresentacao() throws ParseException, IOException {
 
+        /*
         importShipController.importFile("sships.csv");
         importShipController.importShips();
         String[] auxDatas = {"31-12-2020 17:00","31-12-2020 17:30","31-12-2020 23:00"};
@@ -44,6 +45,8 @@ public class ScenarioTest {
         importShipController.importFile("bships.csv");
         importShipController.importShips();
         showPairsOfShipsController.getPairsOfShip();
+
+         */
     }
 
 

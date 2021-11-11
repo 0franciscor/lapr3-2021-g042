@@ -112,7 +112,6 @@ public class BstShipTest {
         ShipLocationBST<ShipLocation> positions2 = new ShipLocationAVL();
 
         ShipLocation location1 = new ShipLocation("366998510", dateFormatter.parse("31-12-2020 00:00"),"52.97875","-122.41981",8f,-58.4f,"340", "B");
-        ShipLocation location2 = new ShipLocation("366998510", dateFormatter.parse("31-12-2020 23:10"),"26.52603","-122.31122",0,-115.4f,"104","B");
 
         ShipLocation location3 = new ShipLocation("367122220", dateFormatter.parse("31-12-2020 00:00"),"52.97874","-122.42079",3.6f,3.7f,"357", "B");
         ShipLocation location4 = new ShipLocation("367122220", dateFormatter.parse("31-12-2020 22:59"),"37.82189","-122.31172",0,179.1f,"288","B");
@@ -142,7 +141,6 @@ public class BstShipTest {
         ShipLocation location2 = new ShipLocation("366998510", dateFormatter.parse("31-12-2020 23:10"),"26.52603","-122.31122",0,-115.4f,"104","B");
 
         ShipLocation location3 = new ShipLocation("367122220", dateFormatter.parse("31-12-2020 00:00"),"52.97874","-122.42079",3.6f,3.7f,"357", "B");
-        ShipLocation location4 = new ShipLocation("367122220", dateFormatter.parse("31-12-2020 22:59"),"37.82189","-122.31172",0,179.1f,"288","B");
 
         positions1.insert(location1);
         positions1.insert(location2);
@@ -160,5 +158,11 @@ public class BstShipTest {
         TreeMap<Double,String> infoPair = new TreeMap<>(Collections.reverseOrder());
         esperado.add(infoPair);
         assertEquals(esperado,result);
+    }
+
+    @Test
+    public void find() throws ParseException {
+        BstShip bstTree = new AvlShip();
+        Assertions.assertNull(bstTree.find(null,null));
     }
 }

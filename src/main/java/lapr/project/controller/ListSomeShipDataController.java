@@ -4,7 +4,10 @@ import lapr.project.model.BriefSummary;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Class responsible for making the connection between the UI and the system when the user

@@ -5,7 +5,9 @@ import lapr.project.model.Summary;
 import lapr.project.utils.WriteForAFile;
 
 import java.io.File;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Class that allows the traffic manager to view the TOP-N Ships with most traveled distance.

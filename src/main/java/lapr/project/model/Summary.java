@@ -12,82 +12,82 @@ public class Summary {
     /**
      * The MMSI code of a ship
      */
-    private String mmsiCode;
+    private final String mmsiCode;
 
     /**
      * The ships name
      */
-    private String name;
+    private final String name;
 
     /**
      * The date and time of starting of journey
      */
-    private Date startBaseDate;
+    private final Date startBaseDate;
 
     /**
      * The date and time of end of journey
      */
-    private Date endBaseDate;
+    private final Date endBaseDate;
 
     /**
      * The total time spend in the journey
      */
-    private String totalMovementTime;
+    private final String totalMovementTime;
 
     /**
      * The total movements made in the journey
      */
-    private int totalMovements;
+    private final int totalMovements;
 
     /**
      * The maximum speed over ground of a ship
      */
-    private double maximumSog;
+    private final double maximumSog;
 
     /**
      * The mean speed over ground of a ship
      */
-    private double meanSog;
+    private final double meanSog;
 
     /**
      * The maximum course over ground of a ship
      */
-    private double maximumCog;
+    private final double maximumCog;
 
     /**
      * The mean course over ground of a ship
      */
-    private double meanCog;
+    private final double meanCog;
 
     /**
      * The departure latitude of the journey
      */
-    private String departureLatitude;
+    private final String departureLatitude;
 
     /**
      * The departure longitude of the journey
      */
-    private String departureLongitude;
+    private final String departureLongitude;
 
     /**
      * The arrival latitude of the journey
      */
-    private String arrivalLatitude;
+    private final String arrivalLatitude;
 
     /**
      * The arrival longitude of the journey
      */
-    private String arrivalLongitude;
+    private final String arrivalLongitude;
 
     /**
      * The total distance travelled
      */
-    private double travelledDistance;
+    private final double travelledDistance;
 
     /**
      * The delta distance of the journey
      */
-    private double deltaDistance;
+    private final double deltaDistance;
 
 
     /**

@@ -13,7 +13,7 @@ public class ImportShipController {
     /**
      * The ImportShip class
      */
-    private ImportShip importShip;
+    private final ImportShip importShip;
 
     /**
      * The class constructor
@@ -46,7 +46,6 @@ public class ImportShipController {
      * @return A number of ships which were not imported
      */
     public int importShips(){
-        int shipsNotConverted = importShip.convertShips();
-        return shipsNotConverted;
+        return importShip.convertShips();
     }
 }

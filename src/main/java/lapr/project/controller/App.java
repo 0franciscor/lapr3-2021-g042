@@ -12,7 +12,7 @@ public class App {
     /**
      * Represents a instance of company.
      */
-    private Company company;
+    private final Company company;
 
     private App(){
         company = new Company();

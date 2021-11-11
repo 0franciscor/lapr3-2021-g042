@@ -15,7 +15,7 @@ public class ShowTopShipsController {
     /**
      * The controller's company
      */
-    private Company company;
+    private final Company company;
 
     /**
      *

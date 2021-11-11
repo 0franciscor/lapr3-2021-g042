@@ -211,24 +211,19 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
 
     public List<TreeMap<Double,String>> getIntendedPairsOfShips(){
         List<TreeMap<Double,String>> listPairsOfShips = new ArrayList<>();
-        Iterable<Ship> bstInOrder = inOrder();
-        Iterator<Ship> iterator1 = bstInOrder.iterator();
-
-        List<Ship> listaConvertidaDoIterator = new ArrayList<>();
-
-        iterator1.forEachRemaining(n -> listaConvertidaDoIterator.add(n));
+        List<Ship> bstInOrder = (List<Ship>) inOrder();
 
 
         for (int i=0; i<size()-1;i++){
             TreeMap<Double,String> infoPair = new TreeMap<>(Collections.reverseOrder());
-            Ship ship1 = listaConvertidaDoIterator.get(i);
+            Ship ship1 = bstInOrder.get(i);
             ShipLocationBST shipLocationBST = ship1.getShipPosition();
             Double travelledDistance = shipLocationBST.getTravelledDistance();
 
             if(travelledDistance>10){
 
                 for (int j=i+1;j<size();j++){
-                    ShipLocationBST shipLocationBST2 = listaConvertidaDoIterator.get(j).getShipPosition();
+                    ShipLocationBST shipLocationBST2 = bstInOrder.get(j).getShipPosition();
                     Double travelledDistance2 = shipLocationBST2.getTravelledDistance();
 
                     if (travelledDistance2 > 10 && travelledDistance != travelledDistance2) {
@@ -251,7 +246,7 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
                                     Double depDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
                                     if (depDistance < 5) {
                                         Double travelDistanceDifference = Math.abs(travelledDistance2 - travelledDistance);
-                                        String stringWithAllInfo = String.format("%s %s", ship1.getMMSI(), listaConvertidaDoIterator.get(j).getMMSI());
+                                        String stringWithAllInfo = String.format("%s %s", ship1.getMMSI(), bstInOrder.get(j).getMMSI());
                                         infoPair.put(travelDistanceDifference, stringWithAllInfo);
                                     }
                                 }

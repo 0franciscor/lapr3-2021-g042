@@ -6,11 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -164,5 +162,77 @@ public class BstShipTest {
     public void find() throws ParseException {
         BstShip bstTree = new AvlShip();
         Assertions.assertNull(bstTree.find(null,null));
+    }
+
+    @Test
+    void heightTest(){
+        Ship ship1 = new Ship();
+        Ship ship2 = new Ship();
+        Ship ship3 = new Ship();
+        Ship ship4 = new Ship();
+        Ship ship5 = new Ship();
+        Ship ship6 = new Ship();
+        Ship ship7 = new Ship();
+
+        ship1.setMMSI("123456781");
+        ship2.setMMSI("123456782");
+        ship3.setMMSI("123456783");
+        ship4.setMMSI("123456784");
+        ship5.setMMSI("123456785");
+        ship6.setMMSI("123456786");
+        ship7.setMMSI("123456787");
+
+        BstShip<Ship> bstShip = new AvlShip();
+        bstShip.insert(ship1);
+        bstShip.insert(ship2);
+        bstShip.insert(ship3);
+        bstShip.insert(ship4);
+        bstShip.insert(ship5);
+        bstShip.insert(ship6);
+        bstShip.insert(ship7);
+
+        assertEquals(2, bstShip.height());
+    }
+
+    @Test
+    void inOrderTest(){
+        Ship ship1 = new Ship();
+        Ship ship2 = new Ship();
+        Ship ship3 = new Ship();
+        Ship ship4 = new Ship();
+        Ship ship5 = new Ship();
+        Ship ship6 = new Ship();
+        Ship ship7 = new Ship();
+
+        ship1.setMMSI("123456781");
+        ship2.setMMSI("123456782");
+        ship3.setMMSI("123456783");
+        ship4.setMMSI("123456784");
+        ship5.setMMSI("123456785");
+        ship6.setMMSI("123456786");
+        ship7.setMMSI("123456787");
+
+        BstShip<Ship> bstShip = new AvlShip();
+        bstShip.insert(ship1);
+        bstShip.insert(ship2);
+        bstShip.insert(ship3);
+        bstShip.insert(ship4);
+        bstShip.insert(ship5);
+        bstShip.insert(ship6);
+        bstShip.insert(ship7);
+
+        Iterator iterator = bstShip.inOrder().iterator();
+
+        boolean correctSequence = true;
+
+        String shipMMSI1 = ((Ship) iterator.next()).getMMSI();
+        while(iterator.hasNext() && correctSequence) {
+            String shipMMSI2 = ((Ship) iterator.next()).getMMSI();
+            if(shipMMSI1.compareTo(shipMMSI2) > 0)
+                correctSequence = false;
+            shipMMSI1 = shipMMSI2;
+        }
+
+        assertTrue(correctSequence);
     }
 }

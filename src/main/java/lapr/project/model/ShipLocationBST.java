@@ -73,6 +73,16 @@ public abstract class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
+     * @param shipLocation that the user wants to search
+     * @return null if the location is null. Otherwise, it will return the found ShipLocation.
+     */
+    public Node<ShipLocation> find(ShipLocation shipLocation){
+        if(shipLocation == null)
+            return null;
+        return find(root, shipLocation);
+    }
+
+    /**
      * Returns the Node containing a specific Element, or null otherwise.
      *
      * @param shipLocation    the element to find

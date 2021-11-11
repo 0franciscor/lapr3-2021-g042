@@ -1,7 +1,11 @@
 package lapr.project.apresentacao;
-
 import lapr.project.controller.*;
 import org.junit.jupiter.api.Test;
+
+
+import lapr.project.controller.ImportShipController;
+import lapr.project.controller.ShowPairsOfShipsController;
+import lapr.project.controller.ShowPositionalMessagesController;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -40,6 +44,7 @@ public class ScenarioTest {
         importShipController.importShips();
         importShipController.importFile("bships.csv");
         importShipController.importShips();
+
         searchDetailsController.shipExistByIMO("IMO9395044");
         searchDetailsController.getShipDetails();
         searchDetailsController.shipExistByCallSign("C4SQ2");

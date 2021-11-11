@@ -60,9 +60,9 @@ public class ShowTopShipsController {
             shipString.append("\n\n");
 
             try {
-                new WriteForAFile().writeForAFile(shipString.toString(), String.format("Show Top %d ships", numberShips), new File("TopShips.txt"));
+                new WriteForAFile().writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), new File("TopShips"));
             } catch (Exception e){
-                
+
             }
             return String.valueOf(shipString);
         }

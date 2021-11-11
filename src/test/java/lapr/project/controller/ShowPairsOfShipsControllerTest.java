@@ -80,8 +80,8 @@ public class ShowPairsOfShipsControllerTest {
 
     @Test
     public void getPairsOfShips02() throws IOException {
-        ShowPairsOfShipsController ctrlr = new ShowPairsOfShipsController();
-        List<TreeMap<Double,String>> result = ctrlr.getPairsOfShip();
+        ShowPairsOfShipsController ctrlr2 = new ShowPairsOfShipsController();
+        List<TreeMap<Double,String>> result = ctrlr2.getPairsOfShip();
         List<TreeMap<Double,String>> esperado=new ArrayList<>();
         assertEquals(esperado,result);
     }

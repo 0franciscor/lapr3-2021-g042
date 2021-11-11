@@ -4,6 +4,7 @@ import lapr.project.model.Company;
 import lapr.project.model.Summary;
 import lapr.project.utils.WriteForAFile;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -58,6 +59,11 @@ public class ShowTopShipsController {
 
             shipString.append("\n\n");
 
+            try {
+                new WriteForAFile().writeForAFile(shipString.toString(), String.format("Show Top %d ships", numberShips), new File("TopShips.txt"));
+            } catch (Exception e){
+                
+            }
             return String.valueOf(shipString);
         }
         return "There was no ship to demonstrate";

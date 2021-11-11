@@ -42,11 +42,13 @@ public class ScenarioTest {
             SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
             showPositionalMessagesController.showPositionalMessages(dateFormatter.parse(auxDatas[2]));
         }
+
+         */
         importShipController.importFile("bships.csv");
         importShipController.importShips();
         showPairsOfShipsController.getPairsOfShip();
 
-         */
+
     }
 
 

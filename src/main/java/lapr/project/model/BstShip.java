@@ -214,11 +214,8 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
             if(travelledDistance>10){
                 Iterator<Ship> iterator2 = bstInOrder.iterator();
 
-                Ship ship2=null;
-                if(iterator2.hasNext()){
-                    ship2=iterator2.next();
-                }
-                while (iterator2.hasNext() && ship2 != ship1){
+                Ship ship2=iterator2.next();
+                while ( ship2 != ship1){
                     ship2=iterator2.next();
                 }
 
@@ -259,10 +256,9 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
                     }
 
                 } while (iterator2.hasNext());
-
+                listPairsOfShips.add(infoPair);
             }
 
-            listPairsOfShips.add(infoPair);
         }
         return listPairsOfShips;
     }

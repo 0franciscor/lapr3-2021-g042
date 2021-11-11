@@ -240,7 +240,7 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
                                     Double depDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
                                     if (depDistance < 5) {
                                         Double travelDistanceDifference = Math.abs(travelledDistance2 - travelledDistance);
-                                        String stringWithAllInfo = String.format("%s %s", ship1.getMMSI(), bstInOrder.get(j).getMMSI());
+                                        String stringWithAllInfo = String.format(" %s  %s", ship1.getMMSI(), bstInOrder.get(j).getMMSI());
                                         infoPair.put(travelDistanceDifference, stringWithAllInfo);
                                     }
                                 }

@@ -1,10 +1,13 @@
 package lapr.project.controller;
 
 import lapr.project.mapper.ShipDetailsMapper;
-import lapr.project.model.BstShip;
-import lapr.project.model.Company;
-import lapr.project.model.Ship;
+import lapr.project.model.*;
+import lapr.project.utils.WriteForAFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -29,12 +32,18 @@ public class SearchDetailsController {
     private Ship ship;
 
     /**
+     * Represents an instance of Write a file
+     */
+    private WriteForAFile writeForAFile;
+
+    /**
      * Initialize the controller
      */
     public SearchDetailsController(){
         this.company = App.getInstance().getCompany();
         this.bstShip = company.getBstShip();
         shipDetailsMapper = new ShipDetailsMapper();
+        writeForAFile= new WriteForAFile();
     }
 
     /**
@@ -96,6 +105,31 @@ public class SearchDetailsController {
      */
     public String getShipDetails(){
         return shipDetailsMapper.toDto(this.ship).toString();
+    }
+
+    /**
+     *  This method writes the file with the details searched by mmsi
+     */
+    public void getShipDetailsByMMSI() throws IOException {
+        File file = new File("ShipDetails");
+        writeForAFile.writeForAFile(getShipDetails(),"211331640",file);
+
+    }
+
+    /**
+     *  This method writes the file with the details searched by imo code
+     */
+    public void writeDataSearchedByIMO() throws IOException {
+        File file = new File("ShipDetails");
+        writeForAFile.writeForAFile(getShipDetails(),"IMO2113432",file);
+    }
+
+    /**
+     *  This method writes the file with the details searched by Callsign
+     */
+    public void writeDataSearchedByCallsign() throws IOException {
+            File file = new File("ShipDetails");
+            writeForAFile.writeForAFile(getShipDetails(),"DHBN",file);
     }
 
 

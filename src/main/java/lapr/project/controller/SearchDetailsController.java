@@ -4,6 +4,7 @@ import lapr.project.mapper.ShipDetailsMapper;
 import lapr.project.model.BstShip;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
+
 import java.util.Objects;
 
 /**

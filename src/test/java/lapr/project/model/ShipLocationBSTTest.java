@@ -45,7 +45,7 @@ public class ShipLocationBSTTest {
 
     @BeforeEach
     public void setUp(){
-        tree = new ShipLocationBST();
+        tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
         Ship ship = new Ship("211331640",",SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
@@ -58,13 +58,13 @@ public class ShipLocationBSTTest {
 
     @Test
     public void isEmpty() throws ParseException {
-        ShipLocationBST bstTree = new ShipLocationBST();
+        ShipLocationBST bstTree = new ShipLocationAVL();
         Assertions.assertTrue(bstTree.isEmpty());
     }
 
     @Test
     public void find() throws ParseException {
-        ShipLocationBST bstTree = new ShipLocationBST();
+        ShipLocationBST bstTree = new ShipLocationAVL();
         Assertions.assertNull(bstTree.find(null,null));
     }
 
@@ -141,7 +141,7 @@ public class ShipLocationBSTTest {
 
     @Test
     public void verifyTreeSizeIsEmpty(){
-        assertEquals(0, new BstShip<>().size());
+        assertEquals(0, new AvlShip().size());
     }
 
     @Test
@@ -172,7 +172,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getStartBase() throws ParseException {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -181,7 +181,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getEndBase() throws ParseException {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -190,7 +190,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getTotalMovements() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -200,7 +200,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getTotalMovementsTime() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -210,7 +210,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getMaximumSog() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -219,7 +219,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getMeanSog() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -229,7 +229,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getMaximumCog() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -239,7 +239,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getMeanCog() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -248,7 +248,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void latitudeDepartureEqualsNotAvailable() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -295,7 +295,7 @@ public class ShipLocationBSTTest {
         arr.add(location2);
         arr.add(location3);
         arr.add(location4);
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
@@ -304,7 +304,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void longitudeDepartureEqualsNotAvailable() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -324,7 +324,7 @@ public class ShipLocationBSTTest {
         arr.add(location2);
         arr.add(location3);
         arr.add(location4);
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
@@ -333,7 +333,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getArrivalLatitude() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -342,7 +342,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getArrivalLongitude() {
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
 
@@ -363,7 +363,7 @@ public class ShipLocationBSTTest {
         arr.add(location2);
         arr.add(location3);
         arr.add(location4);
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
@@ -384,7 +384,7 @@ public class ShipLocationBSTTest {
         arr.add(location2);
         arr.add(location3);
         arr.add(location4);
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
@@ -404,7 +404,7 @@ public class ShipLocationBSTTest {
         arr.add(location2);
         arr.add(location3);
         arr.add(location4);
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
@@ -413,7 +413,7 @@ public class ShipLocationBSTTest {
 
     @org.junit.jupiter.api.Test
     void getDeltaDistanceOfDepartureCoordinateNotAvailable(){
-        ShipLocationBST<ShipLocation> tree = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
         for(ShipLocation i : arr)
             tree.insert(i);
 
@@ -433,7 +433,7 @@ public class ShipLocationBSTTest {
         arr.add(location2);
         arr.add(location3);
         arr.add(location4);
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
@@ -453,7 +453,7 @@ public class ShipLocationBSTTest {
         arr.add(location2);
         arr.add(location3);
         arr.add(location4);
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
+        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
         for(ShipLocation i :arr)
             shipLocationBST.insert(i);
 
@@ -476,7 +476,7 @@ public class ShipLocationBSTTest {
 
     @Test
     public void smallestElement() throws ParseException {
-        ShipLocationBST bstTree = new ShipLocationBST();
+        ShipLocationBST bstTree = new ShipLocationAVL();
         ShipLocation result = bstTree.smallestElement();
         assertNull(result);
     }

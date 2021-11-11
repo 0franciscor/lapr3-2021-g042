@@ -55,6 +55,8 @@ public class AvlShip extends BstShip<Ship>{
 
     @Override
     public void insert(Ship element){
+        if(element == null)
+            return;
         root = insert(element, root);
     }
 
@@ -78,6 +80,8 @@ public class AvlShip extends BstShip<Ship>{
 
     @Override
     public void remove(Ship element){
+        if(element == null)
+            return;
         root = remove(element, root());
     }
 

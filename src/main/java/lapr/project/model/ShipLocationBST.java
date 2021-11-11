@@ -3,7 +3,10 @@ package lapr.project.model;
 import lapr.project.utils.BSTInterface;
 
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Class that represents a ShipLocationBST
@@ -12,7 +15,7 @@ import java.util.*;
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
 
-public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
+public abstract class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
 
     /** Nested static class for a binary search tree node. */
 
@@ -70,6 +73,16 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     }
 
     /**
+     * @param shipLocation that the user wants to search
+     * @return null if the location is null. Otherwise, it will return the found ShipLocation.
+     */
+    public Node<ShipLocation> find(ShipLocation shipLocation){
+        if(shipLocation == null)
+            return null;
+        return find(root, shipLocation);
+    }
+
+    /**
      * Returns the Node containing a specific Element, or null otherwise.
      *
      * @param shipLocation    the element to find
@@ -94,58 +107,12 @@ public class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
     /*
      * Inserts an element in the tree.
      */
-    public void insert(ShipLocation shipLocation){
-        root = insert(shipLocation, root);
-    }
-
-    private Node<ShipLocation> insert(ShipLocation shipLocation, Node<ShipLocation> node){
-        if(node == null)
-            return new Node(shipLocation, null, null);
-
-        if(node.getShipLocation().compareTo(shipLocation) > 0)
-            node.setLeft(insert(shipLocation, node.getLeft()));
-
-        else
-        if(node.getShipLocation().compareTo(shipLocation) < 0)
-            node.setRight(insert(shipLocation, node.getRight()));
-
-        return node;
-    }
+    public abstract void insert(ShipLocation shipLocation);
 
     /**
      * Removes an element from the tree maintaining its consistency as a Binary Search Tree.
      */
-    public void remove(ShipLocation shipLocation){
-        root = remove(shipLocation, root());
-    }
-
-    private Node<ShipLocation> remove(ShipLocation shipLocation, Node<ShipLocation> node) {
-
-        if (node == null) {
-            return null;    //throw new IllegalArgumentException("Element does not exist");
-        }
-        if (shipLocation.compareTo(node.getShipLocation())==0) {
-            // node is the Node to be removed
-            if (node.getLeft() == null && node.getRight() == null) { //node is a leaf (has no childs)
-                return null;
-            }
-            if (node.getLeft() == null) {   //has only right child
-                return node.getRight();
-            }
-            if (node.getRight() == null) {  //has only left child
-                return node.getLeft();
-            }
-            ShipLocation min = smallestElement(node.getRight());
-            node.setElement(min);
-            node.setRight(remove(min, node.getRight()));
-        }
-        else if (shipLocation.compareTo(node.getShipLocation()) < 0)
-            node.setLeft( remove(shipLocation, node.getLeft()) );
-        else
-            node.setRight( remove(shipLocation, node.getRight()) );
-
-        return node;
-    }
+    public abstract void remove(ShipLocation shipLocation);
 
     /*
      * Returns the number of nodes in the tree.

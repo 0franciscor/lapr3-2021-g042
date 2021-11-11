@@ -23,8 +23,8 @@ public class ShowPairsOfShipsControllerTest {
 
     Ship ship1;
     Ship ship2;
-    ShipLocationBST<ShipLocation> positions1 = new ShipLocationBST<>();
-    ShipLocationBST<ShipLocation> positions2 = new ShipLocationBST<>();
+    ShipLocationBST<ShipLocation> positions1 = new ShipLocationAVL();
+    ShipLocationBST<ShipLocation> positions2 = new ShipLocationAVL();
 
     ShipLocation location1;
     ShipLocation location2;
@@ -76,7 +76,15 @@ public class ShowPairsOfShipsControllerTest {
         infoPair.put(travelDistanceDifference, stringWithAllInfo);
         esperado.add(infoPair);
         assertEquals(esperado,result);
+    }
 
+    @Test
+    public void getPairsOfShips02() throws IOException {
+        Company company = new Company();
+        ShowPairsOfShipsController ctrlrAux = new ShowPairsOfShipsController(company);
+        List<TreeMap<Double,String>> result = ctrlrAux.getPairsOfShip();
+        List<TreeMap<Double,String>> esperado = new ArrayList<>();
+        assertEquals(esperado,result);
     }
 
 

@@ -1,8 +1,5 @@
 package lapr.project.utils;
 
-import java.util.List;
-import java.util.Map;
-
 /**
  *
  * @author 1201239 Francisco Redol

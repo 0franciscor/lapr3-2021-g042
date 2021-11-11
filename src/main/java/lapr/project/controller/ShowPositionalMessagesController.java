@@ -41,7 +41,7 @@ public class ShowPositionalMessagesController {
     /**
      * Represents an instance of WriteForFile
      */
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
 
     /**

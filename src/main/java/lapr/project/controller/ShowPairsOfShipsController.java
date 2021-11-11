@@ -6,8 +6,9 @@ import lapr.project.utils.WriteForAFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 
@@ -35,7 +36,7 @@ public class ShowPairsOfShipsController {
     /**
      * Represents an instance of Write for a file
      */
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     /**
      * Initialize the controller
@@ -73,7 +74,16 @@ public class ShowPairsOfShipsController {
     public List<TreeMap<Double,String>> getPairsOfShip() throws IOException {
         List<TreeMap<Double,String>> list = bstShip.getIntendedPairsOfShips();
         File file = new File("Pair_Of_Ships");
-        writeForAFile.writeForAFile(list.toString(), "pairs_of_ships", file);
+        for(TreeMap<Double,String> lista : list){
+            if(lista.size()!=0){
+                Iterator iterator = lista.entrySet().iterator();
+
+                while (iterator.hasNext()) {
+                    Map.Entry entry = (Map.Entry) iterator.next();
+                    writeForAFile.writeForAFile(entry.getValue() + "      " + entry.getKey() +"\n" , "pairs_of_ships", file);
+                }
+            }
+        }
         return  list;
     }
 }

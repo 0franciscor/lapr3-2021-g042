@@ -33,4 +33,13 @@ class WriteForAFileTest {
         assertFalse(writeForAFile.writeForAFile(null, "Summary_211331640", file));
     }
 
+    @Test
+    void WriteForAFileThatExist() throws IOException {
+        writeForAFile = new WriteForAFile();
+        File file = new File("Summaries");
+        writeForAFile.writeForAFile(null, "Summary_211331640", file);
+        assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640",file));
+    }
+
+
 }

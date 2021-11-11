@@ -43,7 +43,7 @@ public class SearchDetailsControllerTest {
        ShipLocationBST<ShipLocation> tree;
        List<ShipLocation> arr = new ArrayList<>();
 
-       tree = new ShipLocationBST();
+       tree = new ShipLocationAVL();
        for(ShipLocation i :arr)
            tree.insert(i);
        Ship ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
@@ -69,7 +69,7 @@ public class SearchDetailsControllerTest {
         ShipLocationBST<ShipLocation> tree;
         List<ShipLocation> arr = new ArrayList<>();
 
-        tree = new ShipLocationBST();
+        tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
         Ship ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
@@ -100,7 +100,7 @@ public class SearchDetailsControllerTest {
         ShipLocationBST<ShipLocation> tree;
         List<ShipLocation> arr = new ArrayList<>();
 
-        tree = new ShipLocationBST();
+        tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
         Ship ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
@@ -132,7 +132,7 @@ public class SearchDetailsControllerTest {
         ShipLocationBST<ShipLocation> tree;
         List<ShipLocation> arr = new ArrayList<>();
 
-        tree = new ShipLocationBST();
+        tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);
         Ship ship = new Ship("211331640","SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);

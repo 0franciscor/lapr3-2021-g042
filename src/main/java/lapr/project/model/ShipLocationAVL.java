@@ -57,6 +57,8 @@ public class ShipLocationAVL extends ShipLocationBST<ShipLocation>{
 
     @Override
     public void insert(ShipLocation element){
+        if(element == null)
+            return;
         root = insert(element, root);
     }
 
@@ -81,6 +83,8 @@ public class ShipLocationAVL extends ShipLocationBST<ShipLocation>{
 
     @Override
     public void remove(ShipLocation element){
+        if(element == null)
+            return;
         root = remove(element, root());
     }
 

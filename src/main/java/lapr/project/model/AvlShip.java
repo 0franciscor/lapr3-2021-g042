@@ -78,6 +78,7 @@ public class AvlShip extends BstShip<Ship>{
         return node;
     }
 
+    @Override
     public boolean equals(Object otherObj) {
 
         if (this == otherObj)

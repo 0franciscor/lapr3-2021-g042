@@ -38,7 +38,7 @@ public class ShipLocationAVL extends ShipLocationBST<ShipLocation>{
 
     }
 
-    private Node<ShipLocation> balanceNode(Node<ShipLocation> node) {
+    private Node<ShipLocation> balanceNodeShipLocation(Node<ShipLocation> node) {
         if(balanceFactor(node) < -1) {
             if (balanceFactor(node.getLeft()) <= 0)
                 node = rightRotation(node);
@@ -71,16 +71,17 @@ public class ShipLocationAVL extends ShipLocationBST<ShipLocation>{
         } else {
             if(node.getShipLocation().compareTo(element) > 0) {
                 node.setLeft(insert(element, node.getLeft()));
-                node = balanceNode(node);
+                node = balanceNodeShipLocation(node);
             } else {
                 node.setRight(insert(element, node.getRight()));
-                node = balanceNode(node);
+                node = balanceNodeShipLocation(node);
             }
         }
         return node;
 
     }
 
+    @Override
     public boolean equals(Object otherObj) {
         if (this == otherObj)
             return true;

@@ -12,54 +12,54 @@ public class ShipDetailsDto {
     /**
      * The ship's MMSI
      */
-    private String MMSI;
+    private final String MMSI;
 
     /**
      * The ship's name
      */
-    private String name;
+    private final String name;
 
     /**
      * The ship's ID (IMO code)
      */
-    private String shipID;
+    private final String shipID;
 
     /**
      * The ship's Call sign
      */
-    private String callSign;
+    private final String callSign;
 
     /**
      * The ship's Vessel Type
      */
-    private int vesselType;
+    private final int vesselType;
 
     /**
      * The ship's length
      */
-    private float length;
+    private final float length;
 
     /**
      * The ship's width
      */
-    private float width;
+    private final float width;
 
     /**
      * The ship's draft
      */
-    private float draft;
+    private final float draft;
 
     /**
      * Ship's Details Dto constructor
      *
-     * @param mmsi
-     * @param name
-     * @param shipID
-     * @param callSign
-     * @param vesselType
-     * @param length
-     * @param width
-     * @param draft
+     * @param mmsi The ship's MMSI
+     * @param name The ship's name
+     * @param shipID The ship's ID (IMO code)
+     * @param callSign The ship's Call sign
+     * @param vesselType The ship's Vessel Type
+     * @param length The ship's length
+     * @param width The ship's width
+     * @param draft The ship's draft
      */
     public ShipDetailsDto(String mmsi, String name, String shipID, String callSign, int vesselType, float length, float width, float draft){
         this.MMSI = mmsi;
@@ -75,7 +75,7 @@ public class ShipDetailsDto {
     /**
      * Ship's Details Dto Constructor
      *
-     * @param ship
+     * @param ship to convert to data transfer object
      */
     public ShipDetailsDto(Ship ship) {
         this.MMSI = ship.getMMSI();

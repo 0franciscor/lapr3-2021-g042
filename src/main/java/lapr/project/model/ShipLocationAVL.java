@@ -81,38 +81,6 @@ public class ShipLocationAVL extends ShipLocationBST<ShipLocation>{
 
     }
 
-    @Override
-    public void remove(ShipLocation element){
-        if(element == null)
-            return;
-        root = remove(element, root());
-    }
-
-    private Node<ShipLocation> remove(ShipLocation element, ShipLocationBST.Node<ShipLocation> node) {
-        if(node == null)
-            return null;
-
-        if(node.getShipLocation() == element) {
-            if(node.getLeft() == null && node.getRight() == null)
-                return null;
-            if(node.getLeft() == null)
-                return node.getRight();
-            if(node.getRight() == null)
-                return node.getLeft();
-            ShipLocation smallElem = smallestElement(node.getRight());
-            node.setElement(smallElem);
-            node.setRight(remove(smallElem, node.getRight()));
-            node = balanceNode(node);
-        } else if(node.getShipLocation().compareTo(element) > 0) {
-            node.setLeft(remove(element, node.getLeft()));
-            node = balanceNode(node);
-        } else {
-            node.setRight(remove(element, node.getRight()));
-            node = balanceNode(node);
-        }
-        return node;
-    }
-
     public boolean equals(Object otherObj) {
         if (this == otherObj)
             return true;

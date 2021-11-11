@@ -114,37 +114,6 @@ class ShipLocationAVLTest {
     }
 
     @Test
-    void removeEqual() throws ParseException {
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
-        ShipLocation shipLocation = new ShipLocation();
-        ShipLocation shipLocation3 = new ShipLocation();
-        shipLocation.setMessageTime(dateFormatter.parse("26-12-2020 15:15"));
-        shipLocation3.setMessageTime(dateFormatter.parse("27-12-2020 15:15"));
-        ShipLocation shipLocation2 = shipLocation;
-
-        shipLocationBST.insert(shipLocation);
-        shipLocationBST.insert(shipLocation3);
-
-        shipLocationBST.remove(shipLocation2);
-
-        boolean result = shipLocationBST.find(shipLocation2) == null;
-
-        assertTrue(result);
-    }
-
-    @Test
-    void removeNull() throws ParseException {
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
-        ShipLocation shipLocation = new ShipLocation();
-        shipLocation.setMessageTime(dateFormatter.parse("28-12-2020 15:15"));
-
-        shipLocationBST.insert(shipLocation);
-        shipLocationBST.remove(null);
-
-        assertEquals(1, shipLocationBST.size());
-    }
-
-    @Test
     void testEqualsObject() throws ParseException {
         ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationAVL();
         ShipLocationBST<ShipLocation> shipLocationBST2;

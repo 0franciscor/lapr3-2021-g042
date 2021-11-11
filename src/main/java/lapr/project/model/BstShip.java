@@ -105,12 +105,6 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
      */
     public abstract void insert(Ship ship);
 
-    /**
-     * Removes an element from the tree maintaining its consistency as a Binary Search Tree.
-     */
-    public abstract void remove(Ship ship);
-
-
     /*
      * Returns the number of nodes in the tree.
      * @return number of nodes in the tree
@@ -305,5 +299,3 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
         return summaryMap;
     }
 }
-
-

@@ -78,38 +78,6 @@ public class AvlShip extends BstShip<Ship>{
         return node;
     }
 
-    @Override
-    public void remove(Ship element){
-        if(element == null)
-            return;
-        root = remove(element, root());
-    }
-
-    private Node<Ship> remove(Ship element, BstShip.Node<Ship> node) {
-        if(node == null)
-            return null;
-
-        if(node.getShip() == element) {
-            if(node.getLeft() == null && node.getRight() == null)
-                return null;
-            if(node.getLeft() == null)
-                return node.getRight();
-            if(node.getRight() == null)
-                return node.getLeft();
-            Ship smallElem = smallestElement(node.getRight());
-            node.setElement(smallElem);
-            node.setRight(remove(smallElem, node.getRight()));
-            node = balanceNode(node);
-        } else if(node.getShip().compareTo(element) > 0) {
-            node.setLeft(remove(element, node.getLeft()));
-            node = balanceNode(node);
-        } else {
-            node.setRight(remove(element, node.getRight()));
-            node = balanceNode(node);
-        }
-        return node;
-    }
-
     public boolean equals(Object otherObj) {
 
         if (this == otherObj)

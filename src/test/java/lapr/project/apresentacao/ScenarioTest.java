@@ -47,8 +47,10 @@ public class ScenarioTest {
 
         searchDetailsController.shipExistByIMO("IMO9395044");
         searchDetailsController.getShipDetails();
+        searchDetailsController.writeDataSearchedByIMO();
         searchDetailsController.shipExistByCallSign("C4SQ2");
         searchDetailsController.getShipDetails();
+        searchDetailsController.writeDataSearchedByCallsign();
         String[] auxDatas = {"31-12-2020 17:00","31-12-2020 17:30","31-12-2020 23:00"};
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         if(showPositionalMessagesController.shipExist("210950000")){

@@ -5,6 +5,7 @@ import lapr.project.model.Summary;
 import lapr.project.utils.WriteForAFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -48,9 +49,9 @@ public class ShowTopShipsController {
      * @param finalDate The final Time, in order to define the time window
      * @return a String with the organized info
      */
-    public String getTopNShips(int numberShips, Date initialDate, Date finalDate){
+    public String getTopNShips(int numberShips, Date initialDate, Date finalDate) throws IOException {
         Map<Integer, List<Summary>> topShips = company.getBstShip().getTopNShips(numberShips, initialDate, finalDate);
-
+        File file = new File("TopShips");
         if(!topShips.isEmpty()) {
             StringBuilder shipString = new StringBuilder();
             for (Integer key : topShips.keySet()) {
@@ -60,12 +61,7 @@ public class ShowTopShipsController {
             }
 
             shipString.append("\n\n");
-
-            try {
-                new WriteForAFile().writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), new File("TopShips"));
-            } catch (Exception e){
-
-            }
+            writeForAFile.writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), file);
             return String.valueOf(shipString);
         }
         return "There was no ship to demonstrate";

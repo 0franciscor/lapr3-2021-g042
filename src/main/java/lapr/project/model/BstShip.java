@@ -105,12 +105,6 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
      */
     public abstract void insert(Ship ship);
 
-    /**
-     * Removes an element from the tree maintaining its consistency as a Binary Search Tree.
-     */
-    public abstract void remove(Ship ship);
-
-
     /*
      * Returns the number of nodes in the tree.
      * @return number of nodes in the tree
@@ -246,7 +240,7 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
                                     Double depDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
                                     if (depDistance < 5) {
                                         Double travelDistanceDifference = Math.abs(travelledDistance2 - travelledDistance);
-                                        String stringWithAllInfo = String.format("%s %s", ship1.getMMSI(), bstInOrder.get(j).getMMSI());
+                                        String stringWithAllInfo = String.format(" %s  %s", ship1.getMMSI(), bstInOrder.get(j).getMMSI());
                                         infoPair.put(travelDistanceDifference, stringWithAllInfo);
                                     }
                                 }
@@ -276,11 +270,11 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
         while(shipList.hasNext()) {
             Ship toBeAdded = shipList.next();
             Summary summary = new Summary(toBeAdded);
-            if(summary.getStartBaseDate().after(initialDate) && summary.getEndBaseDate().before(finalDate))
-                if(summaryMap.get(toBeAdded.getVesselType()) == null)
+            if(summary.getStartBaseDate().after(initialDate) && summary.getEndBaseDate().before(finalDate)) {
+                if (summaryMap.get(toBeAdded.getVesselType()) == null)
                     summaryMap.put(toBeAdded.getVesselType(), new ArrayList<>());
-            summaryMap.get(toBeAdded.getVesselType()).add(summary);
-
+                summaryMap.get(toBeAdded.getVesselType()).add(summary);
+            }
         }
 
         for(Integer key : summaryMap.keySet()) {
@@ -305,5 +299,3 @@ public abstract class BstShip<E> implements BSTInterface<Ship>{
         return summaryMap;
     }
 }
-
-

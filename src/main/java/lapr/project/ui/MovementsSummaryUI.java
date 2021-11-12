@@ -19,9 +19,9 @@ public class MovementsSummaryUI implements Runnable{
     /**
      * Represents an instance of Movements Summary Controller
      */
-    private MovementsSummaryController movementsSummaryController;
+    private final MovementsSummaryController movementsSummaryController;
 
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     /**
      * Initializes the controller

@@ -7,10 +7,13 @@ import org.junit.jupiter.api.Assertions;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import java.util.concurrent.ConcurrentMap;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShipLocationBSTTest {
@@ -152,24 +155,6 @@ public class ShipLocationBSTTest {
         assertEquals(1, company.getBstShip().size());
     }
 
-    @Test
-    public void verifyTreeRemove(){
-        Ship ship = new Ship("211331647",",SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
-        Company company = new Company();
-        company.getBstShip().insert(ship);
-        company.getBstShip().remove(ship);
-        assertEquals(0, company.getBstShip().size());
-    }
-
-    @Test
-    public void verifyTreeRemove2(){
-        Ship ship = new Ship("211331649",",SEOUL EXPRESS","IMO2113432",1,280,"DHBN",70,294,32,"79",13,tree);
-        Company company = new Company();
-        company.getBstShip().insert(ship);
-        company.getBstShip().remove(ship);
-        assertEquals(0, company.getBstShip().size());
-    }
-
     @org.junit.jupiter.api.Test
     void getStartBase() throws ParseException {
         ShipLocationBST<ShipLocation> tree = new ShipLocationAVL();
@@ -255,33 +240,6 @@ public class ShipLocationBSTTest {
         assertEquals(tree.getLatitudeDeparture(), "not available");
     }
 
-   /* @Test
-    void latitudeDepartureNotInIntervalDefined() throws ParseException {
-        boolean flag = true;
-        String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02", "12-12-2020 17:02"};
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        ShipLocation location1 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"36","-122",19,145,"147","B");
-        ShipLocation location2 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[1]),"36","-122",11,122,"147","B");
-        ShipLocation location3 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[2]),"36","-122",23,98,"147","B");
-        ShipLocation location4 = new ShipLocation("211331640", dateFormatter.parse(auxDatas[3]),"-99","-122",35,200,"147","B");
-        List<ShipLocation> arr = new ArrayList<>();
-        arr.add(location1);
-        arr.add(location2);
-        arr.add(location3);
-        arr.add(location4);
-        ShipLocationBST<ShipLocation> shipLocationBST = new ShipLocationBST();
-        for(ShipLocation i :arr)
-            shipLocationBST.insert(i);
-
-        try {
-            shipLocationBST.getLatitudeDeparture();
-        }catch (Exception e){
-            flag = false;
-        }
-
-        assertFalse(false);
-
-    }*/
     @org.junit.jupiter.api.Test
     void getLatitudeDeparture() throws ParseException {
         String[] auxDatas = {"31-12-2020 01:25","31-12-2020 16:15","31-12-2020 17:02", "12-12-2020 17:02"};
@@ -485,6 +443,81 @@ public class ShipLocationBSTTest {
     public void smallestElement02() throws ParseException {
         ShipLocation bstTree = tree.smallestElement();
         assertEquals(location4,bstTree);
+    }
+
+    @Test
+    void heightTest() throws ParseException {
+        ShipLocation shipLocation1 = new ShipLocation();
+        ShipLocation shipLocation2 = new ShipLocation();
+        ShipLocation shipLocation3 = new ShipLocation();
+        ShipLocation shipLocation4 = new ShipLocation();
+        ShipLocation shipLocation5 = new ShipLocation();
+        ShipLocation shipLocation6 = new ShipLocation();
+        ShipLocation shipLocation7 = new ShipLocation();
+
+        shipLocation1.setMessageTime(dateFormatter.parse("21-12-2020 10:00"));
+        shipLocation2.setMessageTime(dateFormatter.parse("22-12-2020 10:00"));
+        shipLocation3.setMessageTime(dateFormatter.parse("23-12-2020 10:00"));
+        shipLocation4.setMessageTime(dateFormatter.parse("24-12-2020 10:00"));
+        shipLocation5.setMessageTime(dateFormatter.parse("25-12-2020 10:00"));
+        shipLocation6.setMessageTime(dateFormatter.parse("26-12-2020 10:00"));
+        shipLocation7.setMessageTime(dateFormatter.parse("27-12-2020 10:00"));
+
+        ShipLocationBST<ShipLocation> shipLocationAVL = new ShipLocationAVL();
+
+        shipLocationAVL.insert(shipLocation1);
+        shipLocationAVL.insert(shipLocation2);
+        shipLocationAVL.insert(shipLocation3);
+        shipLocationAVL.insert(shipLocation4);
+        shipLocationAVL.insert(shipLocation5);
+        shipLocationAVL.insert(shipLocation6);
+        shipLocationAVL.insert(shipLocation7);
+
+
+        assertEquals(2, shipLocationAVL.height());
+    }
+
+    @Test
+    void inOrderTest() throws ParseException {
+        ShipLocation shipLocation1 = new ShipLocation();
+        ShipLocation shipLocation2 = new ShipLocation();
+        ShipLocation shipLocation3 = new ShipLocation();
+        ShipLocation shipLocation4 = new ShipLocation();
+        ShipLocation shipLocation5 = new ShipLocation();
+        ShipLocation shipLocation6 = new ShipLocation();
+        ShipLocation shipLocation7 = new ShipLocation();
+
+        shipLocation1.setMessageTime(dateFormatter.parse("21-12-2020 10:00"));
+        shipLocation2.setMessageTime(dateFormatter.parse("22-12-2020 10:00"));
+        shipLocation3.setMessageTime(dateFormatter.parse("23-12-2020 10:00"));
+        shipLocation4.setMessageTime(dateFormatter.parse("24-12-2020 10:00"));
+        shipLocation5.setMessageTime(dateFormatter.parse("25-12-2020 10:00"));
+        shipLocation6.setMessageTime(dateFormatter.parse("26-12-2020 10:00"));
+        shipLocation7.setMessageTime(dateFormatter.parse("27-12-2020 10:00"));
+
+        ShipLocationBST<ShipLocation> shipLocationAVL = new ShipLocationAVL();
+
+        shipLocationAVL.insert(shipLocation1);
+        shipLocationAVL.insert(shipLocation2);
+        shipLocationAVL.insert(shipLocation3);
+        shipLocationAVL.insert(shipLocation4);
+        shipLocationAVL.insert(shipLocation5);
+        shipLocationAVL.insert(shipLocation6);
+        shipLocationAVL.insert(shipLocation7);
+
+        Iterator iterator = shipLocationAVL.inOrder().iterator();
+
+        boolean correctSequence = true;
+
+        Date shipLocationDate1 = ((ShipLocation) iterator.next()).getMessageTime();
+        while(iterator.hasNext() && correctSequence) {
+            Date shipLocationDate2 = ((ShipLocation) iterator.next()).getMessageTime();
+            if(shipLocationDate1.compareTo(shipLocationDate2) > 0)
+                correctSequence = false;
+            shipLocationDate1 = shipLocationDate2;
+        }
+
+        assertTrue(correctSequence);
     }
 
 }

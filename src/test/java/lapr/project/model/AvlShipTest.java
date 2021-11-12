@@ -119,37 +119,6 @@ class AvlShipTest {
     }
 
     @Test
-    void removeEqual(){
-        BstShip<Ship> bstShip = new AvlShip();
-        Ship ship = new Ship();
-        Ship ship3 = new Ship();
-        ship.setMMSI("123456789");
-        ship3.setMMSI("123456790");
-        Ship ship2 = ship;
-
-        bstShip.insert(ship);
-        bstShip.insert(ship3);
-
-        bstShip.remove(ship2);
-
-        boolean result = bstShip.find(ship2) == null;
-
-        assertTrue(result);
-    }
-
-    @Test
-    void removeNull() {
-        BstShip<Ship> bstShip = new AvlShip();
-        Ship ship = new Ship();
-        ship.setMMSI("123456789");
-
-        bstShip.insert(ship);
-        bstShip.remove(null);
-
-        assertEquals(1, bstShip.size());
-    }
-
-    @Test
     void testEqualsObject() {
         BstShip<Ship> bstShip = new AvlShip();
         BstShip<Ship> bstShip2;

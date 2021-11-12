@@ -9,12 +9,12 @@ public class Employee {
     /**
      *The name of an employee in the organization
      */
-    private String name;
+    private final String name;
 
     /**
      *The organization role of an employee in the organization
      */
-    private OrganizationRole organizationRole;
+    private final OrganizationRole organizationRole;
 
     /**
      * Constructs an instance of {@code Employee} receiving the name and organization role

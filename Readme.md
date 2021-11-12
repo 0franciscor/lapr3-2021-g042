@@ -41,23 +41,26 @@ This document is divided in different categories, being them:
    3. Engineering Analysis:
       1. Domain Model (whole project)
       2. Excerpts of each User Story.
-   4. Engineering Design 
-      1. Class Diagram (CD) for the whole project. 
-         1. Excerpts of each user story 
-      2. Sequence Diagram (SD) for each user story 
+   4. Engineering Design
+      1. Class Diagram (CD) for the whole project.
+         1. Excerpts of each user story
+      2. Sequence Diagram (SD) for each user story
       3. Relational Model (Normalised) for the whole project
 3. Report
-    1. Problem Statement
-    2. Project Division Organization
-    3. Solution
-    4. Project Coverage
-    5. Pit Test Coverage Report
-    6. Team Performance
+   1. Problem Statement
+   2. Project Division Organization
+   3. Solution
+   4. Project Coverage
+   5. Pit Test Coverage Report
+   6. Team Performance
 4. README
 
 -------------
 
 # Software Engineering
+
+## Use case Diagram
+![UC_Diagram](docs/CD.svg)
 
 ## Requirements Engineering
 ####  System Sequence Diagram (SSD) for each user story
@@ -180,15 +183,23 @@ It should allow the Traffic Manager to import ships, see Ships's different data 
 
 ## Solution
 
-For LAPR3, the goal of the ride-sharing system was to develop a software solution capable of managing users, as well as allowing administrators to control all of its vehicles (bicycles and Scooters) and vehicle parks, including the pickup and return processes.
+For LAPR3, the goal is to develop a software for a cargo shipping company to handle their logistics.
 
-To reach this goal, we were instructed to adopt a Test-Driven-Development during the project, use Java, and follow an agile Scrum Methodology aswell as Jira. We we're also required to apply the knowledge acquired in Information Structures and Database unit courses, in order to fully develop all of the requested functionalities.
+To reach this goal, we were instructed to adopt a Test-Driven-Development during the project, use Java, and follow an agile Scrum Methodology aswell as Jira.
+We we're also required to apply the knowledge acquired in Information Structures and Database unit courses, in order to fully develop all the requested functionalities.
 
 Jira was used to create issues and tasks, aswell as dividing them and planning each Sprint. Each user story was created and assigned to a team member(s), with focus on:
-Analysis, where it was developed the Use Case Diagram and the System Sequence Diagram.
-Design, where it was developed the Class Diagram, Sequence Diagram.
-Implementation, where code and test code were implemented.
-Review, where it was possible to review the entire implementation.
+* Analysis, where it was developed the Use Case Diagram and the System Sequence Diagram.
+* Design, where it was developed the Class Diagram, Sequence Diagram.
+* Implementation, where code and test code were implemented.
+* Review, where it was possible to review the entire implementation.
+
+####Traffic manager
+* Import ships
+* Access ship's information
+
+#### Project Manager
+*
 
 ## Project Coverage
 
@@ -235,11 +246,11 @@ The following folder is solely used by Intellij Idea IDE :
 # How was the .gitignore file generated?
 .gitignore file was generated based on https://www.gitignore.io/ with the following keywords:
 
-  - Java
-  - Maven
-  - Eclipse
-  - NetBeans
-  - Intellij
+- Java
+- Maven
+- Eclipse
+- NetBeans
+- Intellij
 
 # Who do I talk to?
 In case you have any problem, please email Nuno Bettencourt (nmb@isep.ipp.pt).

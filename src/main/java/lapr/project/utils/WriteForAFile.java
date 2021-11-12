@@ -25,6 +25,10 @@ public class WriteForAFile {
             FileWriter fw = new FileWriter(arch, true);
 
             try {
+<<<<<<< HEAD
+=======
+                arch.delete();
+>>>>>>> 96ac8b7314eb7971cbda5616d38254c5d8bc2a9f
                 fw.write(string);
             } catch (IOException e){
                 flag = false;

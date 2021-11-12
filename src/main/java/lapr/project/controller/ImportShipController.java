@@ -2,6 +2,9 @@ package lapr.project.controller;
 
 import lapr.project.model.Company;
 import lapr.project.model.ImportShip;
+import lapr.project.utils.WriteForAFile;
+
+import java.io.File;
 
 /**
  * The ImportShip Controller, controller responsible for managing the Import Ship class, which allows the Traffic manager to import ships from a .csv file
@@ -13,7 +16,7 @@ public class ImportShipController {
     /**
      * The ImportShip class
      */
-    private ImportShip importShip;
+    private final ImportShip importShip;
 
     /**
      * The class constructor
@@ -46,7 +49,13 @@ public class ImportShipController {
      * @return A number of ships which were not imported
      */
     public int importShips(){
-        int shipsNotConverted = importShip.convertShips();
-        return shipsNotConverted;
+        int numNavios = importShip.convertShips();
+
+        try {
+            new WriteForAFile().writeForAFile(String.format("Ships not imported: %d.%n", numNavios), String.format("Show_Not_Imported_Ships"), new File("Ship Importing"));
+        } catch (Exception e){
+
+        }
+        return numNavios;
     }
 }

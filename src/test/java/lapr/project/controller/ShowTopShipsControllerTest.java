@@ -3,6 +3,7 @@ package lapr.project.controller;
 import lapr.project.model.*;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +17,7 @@ class ShowTopShipsControllerTest {
     String[] auxDatas = {"28-12-2020 01:25","01-01-2021 16:15"};
 
     @Test
-    void getTopNShips() throws ParseException {
+    void getTopNShips() throws ParseException, IOException {
         Company company = new Company();
         company.getBstShip().insert(new Ship("366998510","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B")));
         company.getBstShip().insert(new Ship("366998511","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B")));
@@ -29,7 +30,7 @@ class ShowTopShipsControllerTest {
     }
 
     @Test
-    void getTopNShipsNoShips() {
+    void getTopNShipsNoShips() throws IOException {
         ShowTopShipsController controller = new ShowTopShipsController(new Company());
         assertEquals("There was no ship to demonstrate",controller.getTopNShips(5, new Date(), new Date()));
     }
@@ -39,15 +40,6 @@ class ShowTopShipsControllerTest {
         BstShip<Ship> bstShip = new AvlShip();
         boolean nullTree = (bstShip.getTopNShips(5, new Date(), new Date()) != null);
         assertTrue(nullTree);
-    }
-
-    @Test
-    void getTopNShipsEmptyTree() throws ParseException {
-        BstShip<Ship> bstShip = new AvlShip();
-        Ship ship = new Ship("366998510","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B"));
-        bstShip.insert(ship);
-        bstShip.remove(ship);
-        assertEquals(0, bstShip.getTopNShips(5, dateFormatter.parse("25-12-2020 01:25"),dateFormatter.parse("06-01-2021 16:15")).size());
     }
 
     @Test

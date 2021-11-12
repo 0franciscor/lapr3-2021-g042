@@ -71,7 +71,7 @@ public class ShowPairsOfShipsControllerTest {
         List<TreeMap<Double,String>> result = controller.getPairsOfShip();
         List<TreeMap<Double,String>> esperado = new ArrayList<>();
         TreeMap<Double,String> infoPair = new TreeMap<>(Collections.reverseOrder());
-        String stringWithAllInfo = String.format("%s %s", ship1.getMMSI(), ship2.getMMSI());
+        String stringWithAllInfo = String.format(" %s  %s", ship1.getMMSI(), ship2.getMMSI());
         Double travelDistanceDifference = Math.abs(positions1.getTravelledDistance() - positions2.getTravelledDistance());
         infoPair.put(travelDistanceDifference, stringWithAllInfo);
         esperado.add(infoPair);

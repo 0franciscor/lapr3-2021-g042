@@ -5,9 +5,16 @@ import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.utils.WriteForAFile;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+=======
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+>>>>>>> 96ac8b7314eb7971cbda5616d38254c5d8bc2a9f
 
 /**
  * Class responsible for making the connection between the UI and the system when the user

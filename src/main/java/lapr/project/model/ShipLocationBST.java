@@ -109,11 +109,6 @@ public abstract class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
      */
     public abstract void insert(ShipLocation shipLocation);
 
-    /**
-     * Removes an element from the tree maintaining its consistency as a Binary Search Tree.
-     */
-    public abstract void remove(ShipLocation shipLocation);
-
     /*
      * Returns the number of nodes in the tree.
      * @return number of nodes in the tree

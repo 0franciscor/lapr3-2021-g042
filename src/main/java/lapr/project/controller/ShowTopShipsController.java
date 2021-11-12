@@ -4,7 +4,11 @@ import lapr.project.model.Company;
 import lapr.project.model.Summary;
 import lapr.project.utils.WriteForAFile;
 
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Class that allows the traffic manager to view the TOP-N Ships with most traveled distance.
@@ -15,7 +19,7 @@ public class ShowTopShipsController {
     /**
      * The controller's company
      */
-    private Company company;
+    private final Company company;
 
     /**
      *
@@ -45,9 +49,9 @@ public class ShowTopShipsController {
      * @param finalDate The final Time, in order to define the time window
      * @return a String with the organized info
      */
-    public String getTopNShips(int numberShips, Date initialDate, Date finalDate){
+    public String getTopNShips(int numberShips, Date initialDate, Date finalDate) throws IOException {
         Map<Integer, List<Summary>> topShips = company.getBstShip().getTopNShips(numberShips, initialDate, finalDate);
-
+        File file = new File("TopShips");
         if(!topShips.isEmpty()) {
             StringBuilder shipString = new StringBuilder();
             for (Integer key : topShips.keySet()) {
@@ -57,7 +61,7 @@ public class ShowTopShipsController {
             }
 
             shipString.append("\n\n");
-
+            //writeForAFile.writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), file);
             return String.valueOf(shipString);
         }
         return "There was no ship to demonstrate";

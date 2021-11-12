@@ -12,82 +12,82 @@ public class SummaryDto {
     /**
      * The MMSI code of a ship
      */
-    private String mmsiCodeDto;
+    private final String mmsiCodeDto;
 
     /**
      * The ships name
      */
-    private String nameDto;
+    private final String nameDto;
 
     /**
      * The date and time of starting of journey
      */
-    private Date startBaseDateDto;
+    private final Date startBaseDateDto;
 
     /**
      * The date and time of end of journey
      */
-    private Date endBaseDateDto;
+    private final Date endBaseDateDto;
 
     /**
      * The total time spend in the journey
      */
-    private String totalMovementTimeDto;
+    private final String totalMovementTimeDto;
 
     /**
      * The total movements made in the journey
      */
-    private int totalMovementsDto;
+    private final int totalMovementsDto;
 
     /**
      * The maximum speed over ground of a ship
      */
-    private double maximumSogDto;
+    private final double maximumSogDto;
 
     /**
      * The mean speed over ground of a ship
      */
-    private double meanSogDto;
+    private final double meanSogDto;
 
     /**
      * The maximum course over ground of a ship
      */
-    private double maximumCogDto;
+    private final double maximumCogDto;
 
     /**
      * The mean course over ground of a ship
      */
-    private double meanCogDto;
+    private final double meanCogDto;
 
     /**
      * The departure latitude of the journey
      */
-    private String departureLatitudeDto;
+    private final String departureLatitudeDto;
 
     /**
      * The departure longitude of the journey
      */
-    private String departureLongitudeDto;
+    private final String departureLongitudeDto;
 
     /**
      * The arrival latitude of the journey
      */
-    private String arrivalLatitudeDto;
+    private final String arrivalLatitudeDto;
 
     /**
      * The arrival longitude of the journey
      */
-    private String arrivalLongitudeDto;
+    private final String arrivalLongitudeDto;
 
     /**
      * The total distance travelled
      */
-    private double travelledDistanceDto;
+    private final double travelledDistanceDto;
 
     /**
      * The delta distance of the journey
      */
-    private double deltaDistanceDto;
+    private final double deltaDistanceDto;
 
     /**
      * Creates a new instance of SummaryDto

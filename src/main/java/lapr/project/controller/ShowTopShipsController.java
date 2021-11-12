@@ -61,7 +61,7 @@ public class ShowTopShipsController {
             }
 
             shipString.append("\n\n");
-            writeForAFile.writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), file);
+            //writeForAFile.writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), file);
             return String.valueOf(shipString);
         }
         return "There was no ship to demonstrate";

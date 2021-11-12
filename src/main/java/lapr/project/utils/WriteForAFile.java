@@ -21,13 +21,10 @@ public class WriteForAFile {
 
         if (string != null){
             File arch = new File(".\\" + file + "\\" + fileName +".txt");
-            //if (arch.exists())
             arch.setWritable(true);
             FileWriter fw = new FileWriter(arch, true);
 
             try {
-                //if (arch.exists())
-                arch.delete();
                 fw.write(string);
             } catch (IOException e){
                 flag = false;

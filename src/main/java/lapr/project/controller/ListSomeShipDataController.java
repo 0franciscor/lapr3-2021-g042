@@ -3,7 +3,10 @@ package lapr.project.controller;
 import lapr.project.model.BriefSummary;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
+import lapr.project.utils.WriteForAFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -31,11 +34,22 @@ public class ListSomeShipDataController {
     private List<BriefSummary> briefSummaries;
 
     /**
+     * Represents an instance of Write for a file
+     */
+    private WriteForAFile writeForAFile;
+
+    /**
+     * Represents an instance of file
+     */
+    private File file;
+
+    /**
      * Initialize the controller
      */
     public ListSomeShipDataController(){
         company = App.getInstance().getCompany();
-
+        writeForAFile = new WriteForAFile();
+        file = new File("SomeShipData");
     }
 
     private void initialize(){
@@ -46,13 +60,14 @@ public class ListSomeShipDataController {
             BriefSummary briefSummary = new BriefSummary(s.getMMSI(), s.getShipPosition().getTotalMovements(), s.getShipPosition().getDeltaDistance(), s.getShipPosition().getTravelledDistance());
             briefSummaries.add(briefSummary);
         }
+
     }
 
     /**
      * Organize the list of brief summaries by ascending order of travelled distance
      * @return the ordered list
      */
-    public List<BriefSummary> organizeByDescendingOrder(){
+    public List<BriefSummary> organizeByDescendingOrder() throws IOException {
         initialize();
         Collections.sort(briefSummaries, new Comparator<BriefSummary>() {
             @Override
@@ -62,6 +77,7 @@ public class ListSomeShipDataController {
                 else return 0;
             }
         });
+        writeForAFile.writeForAFile(briefSummaries.toString(), "OrderedByDescendingOrder_" + new Date().toString(), file);
         return briefSummaries;
     }
 
@@ -69,7 +85,7 @@ public class ListSomeShipDataController {
      * Organize the list of brief summaries by descending order of number of movements
      * @return the ordered list
      */
-    public List<BriefSummary> organizeByAscendingOrder(){
+    public List<BriefSummary> organizeByAscendingOrder() throws IOException {
         initialize();
         Collections.sort(briefSummaries, new Comparator<BriefSummary>() {
             @Override
@@ -79,6 +95,7 @@ public class ListSomeShipDataController {
                 else  return 0;
             }
         });
+        writeForAFile.writeForAFile(briefSummaries.toString(), "OrderedByAscendingOrder_" + new Date().toString(), file);
         return briefSummaries;
     }
 

@@ -68,7 +68,7 @@ class MovementsSummaryControllerTest {
     }
 
     @Test
-    void createSummaryDto() {
+    void createSummaryDto() throws IOException {
         tree = new ShipLocationAVL();
         for(ShipLocation i :arr)
             tree.insert(i);

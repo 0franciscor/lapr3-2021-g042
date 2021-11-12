@@ -46,7 +46,12 @@ public class MovementsSummaryUI implements Runnable{
             if (movementsSummaryController.shipExist(mmsiCode)){
                 Ship ship = movementsSummaryController.getShipByMmsiCode(mmsiCode);
                 lapr.project.model.Summary summary = movementsSummaryController.createSummaryForShip(ship);
-                SummaryDto summaryDto = movementsSummaryController.createSummaryDto(summary);
+                SummaryDto summaryDto = null;
+                try {
+                    summaryDto = movementsSummaryController.createSummaryDto(summary);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
                 System.out.println(summaryDto);

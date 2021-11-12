@@ -6,6 +6,7 @@ import lapr.project.model.BstShip;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.model.Summary;
+import lapr.project.utils.WriteForAFile;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -47,7 +48,8 @@ public class MovementsSummaryController {
      * @return the ship that matched the MMSI code
      */
     public Ship getShipByMmsiCode(String mmsiCode){
-        return bstShip.getShipByMmsiCode(mmsiCode);
+        if (shipExist(mmsiCode)) return bstShip.getShipByMmsiCode(mmsiCode);
+        return null;
     }
 
     /**
@@ -55,8 +57,7 @@ public class MovementsSummaryController {
      * @param ship the ship we want to create a summary
      * @return the summary
      */
-    public Summary createSummaryForShip(Ship ship){
-        return new lapr.project.model.Summary(ship);
+    public Summary createSummaryForShip(Ship ship){return new Summary(ship);
     }
 
     /**
@@ -64,8 +65,12 @@ public class MovementsSummaryController {
      * @param summary the summary we intend to transform in a data transfer
      * @return the data transfer object
      */
-    public SummaryDto createSummaryDto(lapr.project.model.Summary summary){
-        return summaryMapper.toDto(summary);
+    public SummaryDto createSummaryDto(Summary summary) throws IOException {
+        SummaryDto summaryDto = summaryMapper.toDto(summary);
+        WriteForAFile writeForAFile = new WriteForAFile();
+        File file = new File("Summaries");
+        writeForAFile.writeForAFile(summary.toString(), "MovementsSummary_" + summary.getMmsiCode(),file);
+        return summaryDto;
     }
 
     /**

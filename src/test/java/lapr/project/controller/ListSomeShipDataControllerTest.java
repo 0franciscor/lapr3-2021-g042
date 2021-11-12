@@ -3,6 +3,8 @@ package lapr.project.controller;
 import lapr.project.model.BriefSummary;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class ListSomeShipDataControllerTest {
     List<BriefSummary> briefSummariesD = new ArrayList<>();
 
     @BeforeEach
-    public void SetUp(){
+    public void SetUp() throws IOException {
         ImportShipController impShipCTR = new ImportShipController();
         impShipCTR.importFile("sships.csv");
         impShipCTR.importShips();

@@ -3,6 +3,7 @@ package lapr.project.ui;
 import lapr.project.controller.ListSomeShipDataController;
 import lapr.project.model.BriefSummary;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -54,10 +55,18 @@ public class ListSomeShipDataUi implements Runnable{
 
         System.out.printf("%nList of Summaries%n");
         if (option == 1) {
-            briefSummaries = listSomeShipDataController.organizeByDescendingOrder();
+            try {
+                briefSummaries = listSomeShipDataController.organizeByDescendingOrder();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         if (option == 2){
-            briefSummaries = listSomeShipDataController.organizeByAscendingOrder();
+            try {
+                briefSummaries = listSomeShipDataController.organizeByAscendingOrder();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         for (BriefSummary bs : briefSummaries){

@@ -84,15 +84,14 @@ class MovementsSummaryControllerTest {
         assertTrue(movementsSummaryController.shipExist("229961000"));
     }
 
+
     @Test
     void shipNotExist(){
-        assertFalse(movementsSummaryController.shipExist("211331640"));
+        assertFalse(movementsSummaryController.shipExist("111111111"));
     }
 
     @Test
     void shipNotExistPassingANullReferenceByParameter(){
         assertFalse(movementsSummaryController.shipExist(null));
     }
-
-
 }

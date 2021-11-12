@@ -249,6 +249,7 @@ Para cada primeiro barco organiza-se a informação num treeMap pois tinhamos de
 
 
 ## Pit Test Coverage Report
+![PitTestCoverage](report/pitTestCoverage.png)
 
 ## Team Performance
 

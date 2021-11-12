@@ -8,6 +8,9 @@ import lapr.project.model.Ship;
 import lapr.project.model.Summary;
 import lapr.project.utils.WriteForAFile;
 
+import java.io.File;
+import java.io.IOException;
+
 /**
  * The MovementsSummary Controller, the controller responsible for managing the Summary class, which allows the Traffic manager to create a summary of movements of a ship
  * @author Manuela Leite <1200720@isep.ipp.pt>

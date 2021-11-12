@@ -22,10 +22,9 @@ class ShowTopShipsControllerTest {
         company.getBstShip().insert(new Ship("366998510","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B")));
         company.getBstShip().insert(new Ship("366998511","LIBERTY","IMO7717626",1,12,"WDC2845",31,29,29,"31",3.9f, new ShipLocation("211331640", dateFormatter.parse(auxDatas[0]),"-45","-122",19,145,"147","B")));
         ShowTopShipsController showTopShipsController = new ShowTopShipsController(company);
-        assertEquals("\n\nFor the Vessel Type: 31, this is the data of the Ship:\n\n" +
-                "The ship with the 366998510 MMSI Code, traveled 0.0 Kilometers at a Mean SOG of: 19.0\n" +
-                "The ship with the 366998511 MMSI Code, traveled 0.0 Kilometers at a Mean SOG of: 19.0\n" +
-                "\n"
+        assertEquals("For the Vessel Type: 31, this is the data of the Ships:\n\n" +
+                        "The ship with the 366998510 MMSI Code, traveled 0,00 Kilometers at a Mean SOG of: 19,00\n" +
+                        "The ship with the 366998511 MMSI Code, traveled 0,00 Kilometers at a Mean SOG of: 19,00\n" + "\n\n\n"
                 , showTopShipsController.getTopNShips(3, dateFormatter.parse("27-12-2020 01:25"), dateFormatter.parse("02-01-2021 16:15")));
     }
 

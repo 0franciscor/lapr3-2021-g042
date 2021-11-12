@@ -5,7 +5,6 @@ import lapr.project.model.Summary;
 import lapr.project.utils.WriteForAFile;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public class ShowTopShipsController {
     private final Company company;
 
     /**
-     *
+     * The controller's writeForAFile Object
      */
     private WriteForAFile writeForAFile;
 
@@ -49,19 +48,24 @@ public class ShowTopShipsController {
      * @param finalDate The final Time, in order to define the time window
      * @return a String with the organized info
      */
-    public String getTopNShips(int numberShips, Date initialDate, Date finalDate) throws IOException {
+        public String getTopNShips(int numberShips, Date initialDate, Date finalDate){
         Map<Integer, List<Summary>> topShips = company.getBstShip().getTopNShips(numberShips, initialDate, finalDate);
-        File file = new File("TopShips");
+
         if(!topShips.isEmpty()) {
             StringBuilder shipString = new StringBuilder();
             for (Integer key : topShips.keySet()) {
-                shipString.append("\n\nFor the Vessel Type: " + key + ", this is the data of the Ship:\n");
+                shipString.append("For the Vessel Type: " + key + ", this is the data of the Ships:\n");
                 for (Summary summary : topShips.get(key))
-                    shipString.append("\nThe ship with the " + summary.getMmsiCode() + " MMSI Code, traveled " + summary.getTravelledDistance() + " Kilometers at a Mean SOG of: " + summary.getMeanSog());
+                    shipString.append("\nThe ship with the " + summary.getMmsiCode() + String.format(" MMSI Code, traveled %.2f", summary.getTravelledDistance()) + String.format(" Kilometers at a Mean SOG of: %.2f", + summary.getMeanSog()));
+                shipString.append("\n\n");
             }
-
             shipString.append("\n\n");
-            //writeForAFile.writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), file);
+
+            try {
+                new WriteForAFile().writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), new File("TopShips"));
+            } catch (Exception e){
+
+            }
             return String.valueOf(shipString);
         }
         return "There was no ship to demonstrate";

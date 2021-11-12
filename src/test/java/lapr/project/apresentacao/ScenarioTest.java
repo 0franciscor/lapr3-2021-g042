@@ -51,7 +51,7 @@ public class ScenarioTest {
         searchDetailsController.shipExistByCallSign("C4SQ2");
         searchDetailsController.getShipDetails();
         searchDetailsController.writeDataSearchedByCallsign();
-        String[] auxDatas = {"31-12-2020 17:00","31-12-2020 17:30","31-12-2020 23:00"};
+        String[] auxDatas = {"25-12-2020 17:00","05-03-2021 17:30","31-12-2020 23:00"};
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         if(showPositionalMessagesController.shipExist("210950000")){
             showPositionalMessagesController.showPositionalMessages(dateFormatter.parse(auxDatas[0]),dateFormatter.parse(auxDatas[1]));

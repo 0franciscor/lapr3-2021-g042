@@ -60,7 +60,7 @@ This document is divided in different categories, being them:
 # Software Engineering
 
 ## Use case Diagram
-![UC_Diagram](docs/CD.svg)
+![UC_Diagram](docs/UCD.svg)
 
 ## Requirements Engineering
 ####  System Sequence Diagram (SSD) for each user story
@@ -194,14 +194,59 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 * Implementation, where code and test code were implemented.
 * Review, where it was possible to review the entire implementation.
 
-####Traffic manager
-* Import ships
-* Access ship's information
+#### Decision Making
+*US101* - 
 
-#### Project Manager
-*
+*US102* - We didn't develop the three trees in order not to be tripling the system information, despite the search for the imo and the callsign not being efficient as if it existed in the trees. 
+We do the efficient search by mmsi and then we choose to do it by inOrder() to run the whole tree looking for the ship.
+
+*US103* - As the search is required to be made between a period or between dates, there are 2 identical methods that do the same thing, but for both situations. The date, latitude, longitude, SOG, COG and Heading will be printed in a file.
+The name of the file to which the information is output is the boat's mmsi.
+
+*US104* - 
+
+*US105* - 
+
+*US106* - 
+
+*US107* - We opted for a list, where the information of each object is a treemap where the first element is a double and the second a string.
+The Double is the difference between travelDistance and the string is a string formatted with the mmsi of the two boats. inOrder() is requested and converted to a list of ships.
+Each boat will be compared with the next boats up to the penultimate boat, as the last boat has already been compared with all subsequent boats.
+For each first boat, the information is organized in a treeMap because we had to organize it in ascending order of travelDistance, an easy way to do this was to create the treemap that organizes by key and using collection.reverseorder we were able to get it already sorted by descending order.
+º
+----
+*US101* -
+
+*US102* - Não fizemos as três árvores para não estar a trilicar a informação do sistema, apesar da procura pelo imo e o callsign não ser eficiente como se existisse nas árvores,
+fazemos a procura eficiente pelo mmsi e depois optamos por fazer pelo inOrder() para correr a árvore toda em busca do ship.
+
+*US103* - Como é solicitado para a procura ser feita entre um período ou entre datas, existem 2 metodos iguais que fazem a mesma coisa, mas para as duas situações. Será impresso a data, latitude, longitude, o SOG, o COG e o Heading.
+O nome do ficheiro para o qual sai o informação é o mmsi do barco
+
+*US104* -
+
+*US105* -
+
+*US106* -
+
+*US107* - Optou-se por uma lista, onde a informação de cada objeto é um treemap onde o primeiro elemento é um double e o segundo uma string.
+O Double é a diferença entre as travelDistance e a string é uma string formatada com o mmsi dos dois barcos. O inOrder() é solicitado e convertido numa lista de ships.
+Cada barco será comparado com o barcos seguintes até ao penúltimo barco, uma vez que o último já foi comparado com todos os posteriores.
+Para cada primeiro barco organiza-se a informação num treeMap pois tinhamos de organizar por ordem ascendente de travelDistance, uma forma fácil de fazer isso é criar o treemap que organiza pela key e usando a collection.reverseorder conseguimos obter já ordenado pela forma descendente.
+
+---
+
 
 ## Project Coverage
+![Coverage1](report/coverage1.png)
+![Coverage2](report/coverage2.png)
+![Coverage3](report/coverage3.png)
+![Coverage4](report/coverage4.png)
+![Coverage5](report/coverage5.png)
+![Coverage6](report/coverage6.png)
+![Coverage7](report/coverage7.png)
+![Coverage8](report/coverage8.png)
+
 
 ## Pit Test Coverage Report
 

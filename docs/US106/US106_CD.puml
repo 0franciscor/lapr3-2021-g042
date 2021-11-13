@@ -46,7 +46,7 @@ ShowTopShipsController ..> Company
 
 Company "1" -- "1" BstShip : owns >
 
-ShowTopShipsController "1" -- "1" BstShip : uses >
+ShowTopShipsController  ..>  BstShip
 
 BstShip "1" -- "1..*" Ship : has >
 

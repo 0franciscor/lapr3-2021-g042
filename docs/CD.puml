@@ -207,19 +207,6 @@ class ListSomeShipDataController{
 }
 
 
-class BstShipLocation{
-+ getTotalNumberOfMovements()
-+ getTravelledDistance()
-+ getDeltaDistance()
-}
-
-class BriefSummary{
-- mmsiCode : String
-- totalNumberOfMovements : int
-- deltaDistance : float
-- travelledDistance : float
---
-}
 
 class ShowTopShipsUI{}
 
@@ -274,11 +261,9 @@ SummaryMapper ..> SummaryDto
 ListSomeShipDataUi ..> ListSomeShipDataController
 ListSomeShipDataController ..> Company
 
-BstShipLocation --> BriefSummary : generate
-
 ShowTopShipsUI ..> ShowTopShipsController
 ShowTopShipsController ..> Company
-ShowTopShipsController "1" -- "1" BstShip : uses >
+ShowTopShipsController ..> BstShip
 
 
 ShowPairsOfShipsUI .> ShowPairsOfShipsController

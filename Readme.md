@@ -194,47 +194,45 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 * Implementation, where code and test code were implemented.
 * Review, where it was possible to review the entire implementation.
 
-#### Decision Making
-*US101* - 
+#### Ship
 
-*US102* - We didn't develop the three trees in order not to be tripling the system information, despite the search for the imo and the callsign not being efficient as if it existed in the trees. 
-We do the efficient search by mmsi and then we choose to do it by inOrder() to run the whole tree looking for the ship.
+* *MMSI:* According to the given Project Description, a Ship's MMSI code is characterized as a unique 9-digit ship identification code.
+So, to verify if the inserted MMSI complies with the defined regulations, it is checked first if the given code's string is null or if its length is different than 9.
+If so, an exception is thrown, and the object is not created since it does not meet the required criteria.
 
-*US103* - As the search is required to be made between a period or between dates, there are 2 identical methods that do the same thing, but for both situations. The date, latitude, longitude, SOG, COG and Heading will be printed in a file.
-The name of the file to which the information is output is the boat's mmsi.
+* *Name:* According to the given Project Description, a Ship's name does not have any length restriction.
+However, to verify if the inserted name does meet the specified regulations, it firstly checked if the string containing is neither null nor empty.
+If so, an exception is thrown, and the object is not created since it does not meet the criteria.
 
-*US104* - 
+* *ShipID:* According to the given Project Description, a Ship's ID is a unique 7-digit international code.
+To verify the inserted the code, the setShipID method verifies if either the string is null, has a length different than 10 (since it includes the IMO characters) and if the first 3 chars equal "IMO".
+If so, an exception is thrown, and the object is not created since it does not meet the required criteria.
 
-*US105* - 
+* *NumberGenerators* and *GeneratorOutput: * As a group, we thought that a ship could have 0 or more generators. However, we also agreed that we should not allow an object to be created with a generators number inferior to 0.
 
-*US106* - 
+* *CallSign:* We verified if the string which possesses a ship's call sign was null or empty. If so, an exception is thrown so that the object is not created.
 
-*US107* - We opted for a list, where the information of each object is a treemap where the first element is a double and the second a string.
-The Double is the difference between travelDistance and the string is a string formatted with the mmsi of the two boats. inOrder() is requested and converted to a list of ships.
-Each boat will be compared with the next boats up to the penultimate boat, as the last boat has already been compared with all subsequent boats.
-For each first boat, the information is organized in a treeMap because we had to organize it in ascending order of travelDistance, an easy way to do this was to create the treemap that organizes by key and using collection.reverseorder we were able to get it already sorted by descending order.
-º
-----
-*US101* -
+* *Cargo:* It is verified if the cargo string is null or empty. Then, if the string equals "NA", which means not available, the object's cargo is assigned as "NA". Otherwise, it is parsed and then, assigned to the object.
 
-*US102* - Não fizemos as três árvores para não estar a trilicar a informação do sistema, apesar da procura pelo imo e o callsign não ser eficiente como se existisse nas árvores,
-fazemos a procura eficiente pelo mmsi e depois optamos por fazer pelo inOrder() para correr a árvore toda em busca do ship.
+* *Length* and *Width:* Since a ship's dimensions are always bigger than 0, it is verified if both measurements comply with the specified criteria (dimensions>=0). If not, an IllegalArgumentException is thrown, and the objects creation shall not continue.
 
-*US103* - Como é solicitado para a procura ser feita entre um período ou entre datas, existem 2 metodos iguais que fazem a mesma coisa, mas para as duas situações. Será impresso a data, latitude, longitude, o SOG, o COG e o Heading.
-O nome do ficheiro para o qual sai o informação é o mmsi do barco
+* *Draft:* Draft represents the distance between a ship's hull and the waterline. If it is lower than 0, it means the ship is out of water. So, if the received float which represents the draft is lower than 0, an exception is thrown.
 
-*US104* -
+#### ShipLocation
 
-*US105* -
+* *Latitude* and *Longitude:* According to the given Project Description, a ship's latitude and longitude should not be null nor empty. If the latitude equals 91 or longitude equals 181, respectively, those coordinates are set as "not available". Otherwise, if it exceeds the defined limits, an exception is thrown.
 
-*US106* -
+* *SOG:* If the shipLocation SOG is lower than 0, according to the project description rules, an exception is thrown.
 
-*US107* - Optou-se por uma lista, onde a informação de cada objeto é um treemap onde o primeiro elemento é um double e o segundo uma string.
-O Double é a diferença entre as travelDistance e a string é uma string formatada com o mmsi dos dois barcos. O inOrder() é solicitado e convertido numa lista de ships.
-Cada barco será comparado com o barcos seguintes até ao penúltimo barco, uma vez que o último já foi comparado com todos os posteriores.
-Para cada primeiro barco organiza-se a informação num treeMap pois tinhamos de organizar por ordem ascendente de travelDistance, uma forma fácil de fazer isso é criar o treemap que organiza pela key e usando a collection.reverseorder conseguimos obter já ordenado pela forma descendente.
+* *COG:* If a COG is bigger or lower than 360 or 0, respectively, it is converted to the respective quadrant. If the inserted value is not valid, an exception is thrown.
 
----
+* *Heading:* The Ship's heading could not be null nor empty. According to these rules and if it does not fit the [0,359] interval, an exception is thrown since the parameter does not comply with the rules.
+If the value equals "511", it is set as "not available" and if the passes all conditions, it is set as the ShipLocation object heading.
+
+* *StartBaseDate:* Its assumed that the starting position of a trip will be the first element of the Iterable returned by the InOrder() method of BSTShipPositions, since the tree will be organized by the ShipLocation date
+
+* *EndBaseDate:* Its assumed that the final position of a trip will be the last element of the Iterable returned by the InOrder() method of BSTShipPositions because the tree will be organized by the date of the ShipLocation
+
 
 
 ## Project Coverage
@@ -252,6 +250,7 @@ Para cada primeiro barco organiza-se a informação num treeMap pois tinhamos de
 ![PitTestCoverage](report/pitTestCoverage.png)
 
 ## Team Performance
+The group agrees that all members of the group contributed equally to the project, althought some focused more on other parts given the division of the project.
 
 -----------------
 # README

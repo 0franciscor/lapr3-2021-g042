@@ -1,5 +1,7 @@
 package lapr.project.mapper.dto;
 
+import lapr.project.model.Summary;
+
 import java.util.Date;
 
 /**
@@ -131,7 +133,7 @@ public class SummaryDto {
      * Creates a new instance of SummaryDto receiving a Summary as parameter
      * @param summary the summary
      */
-    public SummaryDto(lapr.project.model.Summary summary){
+    public SummaryDto(Summary summary){
         this.mmsiCodeDto = summary.getMmsiCode();
         this.nameDto = summary.getName();
         this.startBaseDateDto = summary.getStartBaseDate();

@@ -68,7 +68,7 @@ public class MovementsSummaryController {
         SummaryDto summaryDto = summaryMapper.toDto(summary);
         WriteForAFile writeForAFile = new WriteForAFile();
         File file = new File("Summaries");
-        writeForAFile.writeForAFile(summary.toString(), "MovementsSummary_" + summary.getMmsiCode(),file);
+        writeForAFile.writeForAFile(summaryDto.toString(), "MovementsSummary_" + summary.getMmsiCode(),file);
         return summaryDto;
     }
 

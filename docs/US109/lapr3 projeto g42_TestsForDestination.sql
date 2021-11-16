@@ -14,13 +14,13 @@ values('50', '120', 'Portugal');
 
 --expected: pass, because Country Portugal it's already inserted in the database 
 
-INSERT INTO Destination(id, destinationName, placeLocationLatitude, placeLocationLongitude, placeLocationCountryName)
-values(5, 'Spain', '55', '110', 'Netherland');
+INSERT INTO Destination(id, destinationName, placeLocationLatitude, placeLocationLongitude)
+values(5, 'Spain', '55', '110');
 
 --expected: fail, because Place Location Netherland don't exist in the database
 
-INSERT INTO Destination(id, destinationName, placeLocationLatitude, placeLocationLongitude, placeLocationCountryName)
-values(5, 'Spain', '50', '120', 'Portugal');
+INSERT INTO Destination(id, destinationName, placeLocationLatitude, placeLocationLongitude)
+values(5, 'Spain', '50', '120');
 
 --expected: pass, because Place Location Portugal exist in the database 
 

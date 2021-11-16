@@ -13,7 +13,7 @@ public class DatabaseConnection {
     private Connection connection;
     private SQLException error;
 
-    public DatabaseConnection(String url, String username, String password) {
+    /*public DatabaseConnection(String url, String username, String password) {
         try {
             oracleDataSource = new OracleDataSource();
 
@@ -47,5 +47,5 @@ public class DatabaseConnection {
         return lastError;
     }
 
-
+*/
 }

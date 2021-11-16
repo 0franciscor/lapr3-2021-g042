@@ -1,0 +1,8 @@
+
+Date: Thu Dec 31 23:00:00 WET 2020
+Latitude: 53.87876
+Longitude: -166.55202
+
+SOG: 0,000000
+COG: 171,199997
+Heading: not available

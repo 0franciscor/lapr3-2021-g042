@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-public class ConnectionFactory {
+//public class ConnectionFactory {
     /*
      * To change this license header, choose License Headers in Project Properties.
      * To change this template file, choose Tools | Templates
@@ -104,4 +104,4 @@ public class ConnectionFactory {
         return System.getProperty("database.password");
     }*/
 
-}
+//}

@@ -1,4 +1,4 @@
-package lapr.project.data;
+//package lapr.project.data;
 
 import oracle.jdbc.pool.OracleDataSource;
 
@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DatabaseConnection {
+//public class DatabaseConnection {
 
-    private OracleDataSource oracleDataSource;
-    private Connection connection;
-    private SQLException error;
+    //private OracleDataSource oracleDataSource;
+    //private Connection connection;
+    //private SQLException error;
 
     /*public DatabaseConnection(String url, String username, String password) {
         try {
@@ -48,4 +48,4 @@ public class DatabaseConnection {
     }
 
 */
-}
+//}

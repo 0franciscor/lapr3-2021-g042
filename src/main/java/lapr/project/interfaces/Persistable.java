@@ -1,8 +1,8 @@
 package lapr.project.interfaces;
 
-import lapr.project.data.DatabaseConnection;
+//import lapr.project.data.DatabaseConnection;
 
-public interface Persistable {
+//public interface Persistable {
     /**
      * Save an objet to the database.
      *
@@ -10,7 +10,7 @@ public interface Persistable {
      * @param object
      * @return Operation success.
      */
-    boolean save(DatabaseConnection databaseConnection, Object object);
+    //boolean save(DatabaseConnection databaseConnection, Object object);
 
     /**
      * Delete an object from the database.
@@ -19,7 +19,7 @@ public interface Persistable {
      * @param object
      * @return Operation success.
      */
-    boolean delete(DatabaseConnection databaseConnection, Object object);
+    //boolean delete(DatabaseConnection databaseConnection, Object object);
 
     /**
      * Select an object from the database
@@ -27,5 +27,5 @@ public interface Persistable {
      * @param object
      * @return Operation success.
      */
-    boolean select(DatabaseConnection dataBaseConnection, Object object);
-}
+    //boolean select(DatabaseConnection dataBaseConnection, Object object);
+//}

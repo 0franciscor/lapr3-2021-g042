@@ -1,0 +1,62 @@
+@startuml
+
+autonumber
+actor "Port Manager" as PM
+
+participant ":ImportPortUI" as ui
+participant ":ImportPortController" as controller
+participant ":ImportPort" as importPort
+participant ":Company" as company
+participant ":CountryStr" as str
+participant "country:Country" as country
+participant "placeLocation:PlaceLocation" as PL
+participant "port:Ports" as Port
+participant ":Ports2DTree" as tree
+
+activate PM
+PM -> ui : import ports from a text file into a 2DTree
+activate ui
+ui --> PM : requests the name of the .csv file containing the data
+deactivate ui
+PM -> ui : inserts file name
+activate ui
+ui -> controller : importFile(fileName)
+activate controller
+controller -> importPort : loadFile(nameOfTheFileToBeImported)
+activate importPort
+deactivate importPort
+deactivate controller
+ui -> controller : importPorts()
+activate controller
+controller -> importPort : convertPorts()
+activate importPort
+loop for each line on the file
+importPort -> company: getCountryStr()
+activate company
+deactivate company
+importPort -> str: country = getCountryByName(portArray[1])
+activate str
+deactivate str
+alt country == null
+importPort->str : createCountry(portArray[1],portArray[0])
+activate str
+deactivate str
+end
+importPort--> PL** : create(portArray[4],portArray[5])
+importPort --> Port** : create(country,portArray[2],portArray[3],placeLocation)
+importPort -> tree: insert(port,portArray[4],portArray[5])
+activate tree
+deactivate tree
+end
+
+
+
+importPort --> controller : Informs the operation success
+deactivate importPort
+controller --> ui : Informs the operation success
+deactivate controller
+
+ui -> PM : Informs the operation success
+
+
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/class-diagram
+actor "Ship Captain" as SC
+participant "System" as SY
+
+SC -> SY : starts the requisition of mean container \n per cargo manifest and the total number \nof cargo manifest per year
+SY --> SC : asks the year
+SC -> SY : type the year
+SY --> SC : show the result
+
+@enduml

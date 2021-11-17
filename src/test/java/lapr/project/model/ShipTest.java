@@ -213,7 +213,7 @@ class ShipTest {
         assertTrue(exception);
     }
 
-    @Test
+    /*@Test
     void setCargoLower0(){
         boolean exception = false;
         Ship ship = new Ship();
@@ -224,7 +224,7 @@ class ShipTest {
             exception = true;
         }
         assertTrue(exception);
-    }
+    }*/
 
     @Test
     void setCargo(){

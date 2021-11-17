@@ -1,0 +1,13 @@
+@startuml
+autonumber
+
+actor "Port manager" as M
+
+activate M
+M -> ":System": Import ports from a text file into a BST
+":System" --> M --: Requests the name of the .csv file containing the data
+M -> ":System": Inserts file name
+":System" --> M --: Informs the operation success
+
+
+@enduml

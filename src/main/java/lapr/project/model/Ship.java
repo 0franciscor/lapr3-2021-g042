@@ -214,20 +214,13 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     * Sets the Ship's capacity according to the defined rules
+     * Sets the Ship's cargo according to the defined rules
      *
-     * @param cargo ship's capacity
+     * @param cargo ship's cargo
      */
     public void setCargo(String cargo){
         if(cargo == null || cargo.isEmpty())
             throw new IllegalArgumentException("The Ship's cargo shall not be empty.");
-
-        if(cargo.equals("NA"))
-            this.cargo = cargo;
-
-        else if(Float.parseFloat(cargo) < 0)
-            throw new IllegalArgumentException("The Ship's cargo shall not be inferior than 0.");
-
         else
             this.cargo = cargo;
     }

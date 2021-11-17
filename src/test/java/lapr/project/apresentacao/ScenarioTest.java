@@ -59,7 +59,7 @@ public class ScenarioTest {
         if(showPositionalMessagesController.shipExist("303221000")){
             showPositionalMessagesController.showPositionalMessages(dateFormatter.parse(auxDatas[2]));
         }
-        movementsSummaryController.createSummaryForShip(movementsSummaryController.getShipByMmsiCode("210950000"));
+        movementsSummaryController.createSummaryDto(movementsSummaryController.createSummaryForShip(movementsSummaryController.getShipByMmsiCode("210950000")));
         listSomeShipDataController.organizeByDescendingOrder();
         showTopShipsController.getTopNShips(5,dateFormatter.parse(auxDatas[0]),dateFormatter.parse(auxDatas[1]));
         showPairsOfShipsController.getPairsOfShip();

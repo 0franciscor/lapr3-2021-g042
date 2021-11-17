@@ -10,17 +10,17 @@ values('210950000', 'IMO9395044', 2, 'A', 'C4SQ2', 9.5, 'VARAMO', 70, 166, 25, 4
 
 --expected: fail, Already exist a ship with this MMSI Code in the system, this means, how IMO Code it's a primary key of Ship need to be unique for each ship 
 
-INSERT INTO ShipPosition(shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, cargo)
+INSERT INTO ShipPosition(shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver)
 values ('210950000', '2004-11-03 18:44:33', '90', '180', 110, 4, '355', 3, 'NA');
 
 --expected: pass, Exist a ship in the system with this MMSI Code to be associated with this Ship Location, otherwise, the test would fail because MMSI Code it's a Foreign Key in Ship Position that's associated with the MMSI Code of a Ship
 
-INSERT INTO ShipPosition(shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, cargo)
+INSERT INTO ShipPosition(shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver)
 values ('210950001', '2004-11-03 18:44:33', '90', '180', 110, 4, '355', 3, 'NA');
 
 --expected: fail, Do not exist a ship in the system with this MMSI Code to be associated with this Ship Location, because who MMSI Code in Ship Position it's a Foreign Key that's associated with the MMSI Code of a Ship, and this ship does not exist in the system the test will fail
 
-INSERT INTO ShipPosition(shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, cargo)
+INSERT INTO ShipPosition(shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver)
 values ('210950000', '2004-11-03 18:44:33', '90', '180', 110, 4, '355', 3, 'NA');
 
 --expected: fail, How in Ship Position the Primary key it's composed by the base DateTime and the MMSI code, the test will fail because already exist an instance of ship location with these attributes in the system

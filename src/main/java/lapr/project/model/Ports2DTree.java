@@ -7,9 +7,9 @@ import java.util.Comparator;
  * Class that represents a Ports2DTree
  *
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
- * @param <E> Generic Class E
+ * @param <Ports> Generic Class E
  */
-public class Ports2DTree<E> {
+public class Ports2DTree<Ports> {
 
     /* Nested static class for a 2D tree node. */
 
@@ -44,6 +44,9 @@ public class Ports2DTree<E> {
         public void setElement(Ports port) { this.port = port; }
         public void setLeft(Node<Ports> leftChild) { left = leftChild; }
         public void setRight(Node<Ports> rightChild) { right = rightChild; }
+        public void setCoords(Double latitude, Double longitude){
+            this.coords =new Point2D.Double(latitude,longitude);
+        }
     }
 
     //----------- end of nested Node class -----------
@@ -127,6 +130,9 @@ public class Ports2DTree<E> {
 
         if (closestDist > d) {
             closestNode.setElement(node.getPort());
+            closestNode.setLeft(node.getLeft());
+            closestNode.setRight(node.getRight());
+            closestNode.setCoords(node.getX(),node.getY());
         }
 
         double delta = divX ? x - node.coords.x : y - node.coords.y;

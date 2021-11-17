@@ -1,6 +1,11 @@
 package lapr.project.model;
 
 
+/**
+ * Represents a BriefSummary
+ * @author Manuela Leite <1200720@isep.ipp.pt>
+ * @author Pedro Rocha <1201382@isep.ipp.pt>
+ */
 public class BriefSummary {
 
     /**

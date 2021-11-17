@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author Francisco Redol <1201239@isep.ipp.pt>
  */
-public class ImportShip {
+public class ImportShip{
 
     /**
      * The file to be imported
@@ -84,6 +84,8 @@ public class ImportShip {
      *
      * @return 1 if the ship was not added or 0 if it was
      */
+    //ver com o francisco se esse método pode retornar um Ship pra adicionar na base de dados
+
     public int createShip(String [] shipArray) {
         try {
             //#################### Ship Location Conversion and Creation ####################
@@ -113,6 +115,7 @@ public class ImportShip {
                 float draft = Float.parseFloat(shipArray[13]);
 
                 newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, length, width, cargo, draft, shipLocation);
+
                 shipBST.insert(newShip);
             } else
                 newShip.getShipPosition().insert(shipLocation);
@@ -122,4 +125,7 @@ public class ImportShip {
         }
         return 0;
     }
+
+
+
 }

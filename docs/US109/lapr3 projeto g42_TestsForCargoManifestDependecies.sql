@@ -1,7 +1,7 @@
 -- TEST FOR RELATIONSHIPS BETWEEN CONTAINER AND CARGO MANIFEST
 
-INSERT INTO Ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorType, callSign, draft, shipName, vesselTypeId, shipLength, width, shipCapacity)
-values('210950000', 'IMO9395044', 2, 'A', 'C4SQ2', 9.5, 'VARAMO', 70, 166, 25, 400);
+INSERT INTO Ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo)
+values('210950000', 'IMO9395044', 2, 4, 'C4SQ2', 9.5, 'VARAMO', 70, 166, 25, '5AN');
 
 INSERT INTO container (numberId, checkDigit, isoCode, maxWeight, payload, tare, weight, maxWeightPacked, maxVolumePacked, repairRecommendation, certificate)
 values(3, 4, '20G0', 400, 200, 300, 100, 450, 350, 'necessary', 'certificate');

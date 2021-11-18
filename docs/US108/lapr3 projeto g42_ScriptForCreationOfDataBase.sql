@@ -9,17 +9,17 @@ DROP TABLE Country CASCADE CONSTRAINTS PURGE;
 
 
 CREATE TABLE Ship(
-mmsiCode VARCHAR(9), 
+mmsiCode VARCHAR(9),
 imoCode VARCHAR(10) NOT NULL UNIQUE,
 numberOfEnergyGenerators INTEGER,
-generatorType VARCHAR(255),
+generatorOutput float(10),
 callSign VARCHAR(255) NOT NULL UNIQUE,
 draft FLOAT NOT NULL,
 shipName VARCHAR(255) UNIQUE NOT NULL,
 vesselTypeId INTEGER NOT NULL,
 shipLength FLOAT NOT NULL,
 width FLOAT NOT NULL,
-shipCapacity FLOAT,
+cargo VARCHAR(255),
 
 CONSTRAINT pk_Ship PRIMARY KEY(mmsiCode)
 );
@@ -30,7 +30,7 @@ baseDateTime TIMESTAMP NOT NULL,
 latitude VARCHAR(255) NOT NULL,
 longitude VARCHAR(255) NOT NULL,
 sog FLOAT NOT NULL,
-cog FLOAT NOT NULL, 
+cog FLOAT NOT NULL,
 heading VARCHAR(255) NOT NULL,
 position INTEGER NOT NULL,
 transceiver VARCHAR(255) NOT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE CargoManifestContainer(
 containerNumberId INTEGER,
 cargoManifestId VARCHAR(255),
 xContainer INTEGER NOT NULL,
-yContainer INTEGER NOT NULL, 
-zContainer INTEGER NOT NULL, 
+yContainer INTEGER NOT NULL,
+zContainer INTEGER NOT NULL,
 grossContainer FLOAT NOT NULL,
 
 CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestId),

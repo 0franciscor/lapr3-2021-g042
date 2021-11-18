@@ -1,12 +1,12 @@
 --TESTS FOR SHIP AND THEIR RELATION WITH SHIP POSITION
 
-INSERT INTO Ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorType, callSign, draft, shipName, vesselTypeId, shipLength, width, shipCapacity)
-values('210950000', 'IMO9395044', 2, 'A', 'C4SQ2', 9.5, 'VARAMO', 70, 166, 25, 400);
+INSERT INTO Ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo)
+values('210950000', 'IMO9395044', 2, 4, 'C4SQ2', 9.5, 'VARAMO', 70, 166, 25, 'NA');
 
 --expected: pass, Do not exist any ship in the system with this atributtes
 
-INSERT INTO Ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorType, callSign, draft, shipName, vesselTypeId, shipLength, width, shipCapacity)
-values('210950000', 'IMO9395044', 2, 'A', 'C4SQ2', 9.5, 'VARAMO', 70, 166, 25, 400);
+INSERT INTO Ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo)
+values('210950000', 'IMO9395044', 2, 4, 'C4SQ2', 9.5, 'VARAMO', 70, 166, 25, 'NA');
 
 --expected: fail, Already exist a ship with this MMSI Code in the system, this means, how IMO Code it's a primary key of Ship need to be unique for each ship 
 

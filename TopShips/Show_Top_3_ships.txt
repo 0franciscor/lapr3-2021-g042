@@ -1,7 +1,0 @@
-For the Vessel Type: 31, this is the data of the Ships:
-
-The ship with the 366998510 MMSI Code, traveled 0,00 Kilometers at a Mean SOG of: 19,00
-The ship with the 366998511 MMSI Code, traveled 0,00 Kilometers at a Mean SOG of: 19,00
-
-
-

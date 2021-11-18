@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="356px" preserveAspectRatio="none" style="width:627px;height:356px;background:#FFFFFF;" version="1.1" viewBox="0 0 627 356" width="627px" zoomAndPan="magnify"><defs><filter height="300%" id="f1kw7y2otxbppm" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[87e3da244db8eade259da682573a171a]
+class CargoManifestPerYearUI--><rect codeLine="3" fill="#FEFECE" filter="url(#f1kw7y2otxbppm)" height="48" id="CargoManifestPerYearUI" style="stroke:#A80036;stroke-width:1.5;" width="168" x="81.5" y="7"/><ellipse cx="96.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M98.5,19.5 Q98.7031,19 98.9375,18.75 Q99.1719,18.5 99.4375,18.5 Q99.9063,18.5 100.2031,18.7813 Q100.5,19.0625 100.5,19.7188 L100.5,21.2813 Q100.5,21.9375 100.2188,22.2188 Q99.9375,22.5 99.5,22.5 Q99.1094,22.5 98.8594,22.3281 Q98.6094,22.1563 98.5,21.7031 Q98.4531,21.3906 98.2813,21.2188 Q97.9688,20.8906 97.4063,20.7031 Q96.8438,20.5 96.2813,20.5 Q95.5781,20.5 94.9844,20.7813 Q94.4063,21.0625 93.9531,21.6875 Q93.5,22.3125 93.5,23.1719 L93.5,24.0938 Q93.5,25.125 94.3438,25.8125 Q95.1875,26.5 96.6875,26.5 Q97.5781,26.5 98.2031,26.2969 Q98.5625,26.1875 98.9688,25.8281 Q99.2344,25.625 99.375,25.5625 Q99.5156,25.5 99.6875,25.5 Q100.0156,25.5 100.25,25.7656 Q100.5,26.0156 100.5,26.375 Q100.5,26.7188 100.1563,27.125 Q99.6563,27.7188 98.8594,28.0469 Q97.8125,28.5 96.5313,28.5 Q95.0313,28.5 93.8281,27.9063 Q92.8594,27.4375 92.1719,26.4219 Q91.5,25.4063 91.5,24.2031 L91.5,23.1094 Q91.5,21.8594 92.0938,20.7656 Q92.7031,19.6719 93.75,19.0938 Q94.8125,18.5 96,18.5 Q96.7188,18.5 97.3438,18.75 Q97.9688,19 98.5,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="136" x="110.5" y="27.9102">CargoManifestPerYearUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="82.5" x2="248.5" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="82.5" x2="248.5" y1="47" y2="47"/><!--MD5=[e4700ca012c676064232e4f97ac67d5f]
+class CargoManifestPerYearController--><rect codeLine="7" fill="#FEFECE" filter="url(#f1kw7y2otxbppm)" height="89.5078" id="CargoManifestPerYearController" style="stroke:#A80036;stroke-width:1.5;" width="317" x="7" y="116"/><ellipse cx="72.25" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M74.25,128.5 Q74.4531,128 74.6875,127.75 Q74.9219,127.5 75.1875,127.5 Q75.6563,127.5 75.9531,127.7813 Q76.25,128.0625 76.25,128.7188 L76.25,130.2813 Q76.25,130.9375 75.9688,131.2188 Q75.6875,131.5 75.25,131.5 Q74.8594,131.5 74.6094,131.3281 Q74.3594,131.1563 74.25,130.7031 Q74.2031,130.3906 74.0313,130.2188 Q73.7188,129.8906 73.1563,129.7031 Q72.5938,129.5 72.0313,129.5 Q71.3281,129.5 70.7344,129.7813 Q70.1563,130.0625 69.7031,130.6875 Q69.25,131.3125 69.25,132.1719 L69.25,133.0938 Q69.25,134.125 70.0938,134.8125 Q70.9375,135.5 72.4375,135.5 Q73.3281,135.5 73.9531,135.2969 Q74.3125,135.1875 74.7188,134.8281 Q74.9844,134.625 75.125,134.5625 Q75.2656,134.5 75.4375,134.5 Q75.7656,134.5 76,134.7656 Q76.25,135.0156 76.25,135.375 Q76.25,135.7188 75.9063,136.125 Q75.4063,136.7188 74.6094,137.0469 Q73.5625,137.5 72.2813,137.5 Q70.7813,137.5 69.5781,136.9063 Q68.6094,136.4375 67.9219,135.4219 Q67.25,134.4063 67.25,133.2031 L67.25,132.1094 Q67.25,130.8594 67.8438,129.7656 Q68.4531,128.6719 69.5,128.0938 Q70.5625,127.5 71.75,127.5 Q72.4688,127.5 73.0938,127.75 Q73.7188,128 74.25,128.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="178" x="92.75" y="136.9102">CargoManifestPerYearController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="323" y1="148" y2="148"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="323" y1="156" y2="156"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="164"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="190" x="27" y="171.4189">shipExists(mmsiCode : String) : boolean</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="177.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="291" x="27" y="185.2549">getNumberOfContainerPerManifest(mmsiCode : String) : float</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="191.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="257" x="27" y="199.0908">getTheCargoManifestPerYear(mmsiCode : String) : int</text><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><rect codeLine="13" fill="#FEFECE" filter="url(#f1kw7y2otxbppm)" height="61.8359" id="Company" style="stroke:#A80036;stroke-width:1.5;" width="132" x="99.5" y="274"/><ellipse cx="135.65" cy="290" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M137.65,286.5 Q137.8531,286 138.0875,285.75 Q138.3219,285.5 138.5875,285.5 Q139.0563,285.5 139.3531,285.7813 Q139.65,286.0625 139.65,286.7188 L139.65,288.2813 Q139.65,288.9375 139.3688,289.2188 Q139.0875,289.5 138.65,289.5 Q138.2594,289.5 138.0094,289.3281 Q137.7594,289.1563 137.65,288.7031 Q137.6031,288.3906 137.4313,288.2188 Q137.1188,287.8906 136.5563,287.7031 Q135.9938,287.5 135.4313,287.5 Q134.7281,287.5 134.1344,287.7813 Q133.5563,288.0625 133.1031,288.6875 Q132.65,289.3125 132.65,290.1719 L132.65,291.0938 Q132.65,292.125 133.4938,292.8125 Q134.3375,293.5 135.8375,293.5 Q136.7281,293.5 137.3531,293.2969 Q137.7125,293.1875 138.1188,292.8281 Q138.3844,292.625 138.525,292.5625 Q138.6656,292.5 138.8375,292.5 Q139.1656,292.5 139.4,292.7656 Q139.65,293.0156 139.65,293.375 Q139.65,293.7188 139.3063,294.125 Q138.8063,294.7188 138.0094,295.0469 Q136.9625,295.5 135.6813,295.5 Q134.1813,295.5 132.9781,294.9063 Q132.0094,294.4375 131.3219,293.4219 Q130.65,292.4063 130.65,291.2031 L130.65,290.1094 Q130.65,288.8594 131.2438,287.7656 Q131.8531,286.6719 132.9,286.0938 Q133.9625,285.5 135.15,285.5 Q135.8688,285.5 136.4938,285.75 Q137.1188,286 137.65,286.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="154.35" y="294.9102">Company</text><line style="stroke:#A80036;stroke-width:1.5;" x1="100.5" x2="230.5" y1="306" y2="306"/><line style="stroke:#A80036;stroke-width:1.5;" x1="100.5" x2="230.5" y1="314" y2="314"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="107.5" y="322"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="106" x="119.5" y="329.4189">getBstShip() : BstShip</text><!--MD5=[4ebfed50a2843d6810d5f28a3ed1348c]
+class CargoManifestStore--><rect codeLine="17" fill="#FEFECE" filter="url(#f1kw7y2otxbppm)" height="75.6719" id="CargoManifestStore" style="stroke:#A80036;stroke-width:1.5;" width="317" x="296" y="267"/><ellipse cx="395.75" cy="283" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M397.75,279.5 Q397.9531,279 398.1875,278.75 Q398.4219,278.5 398.6875,278.5 Q399.1563,278.5 399.4531,278.7813 Q399.75,279.0625 399.75,279.7188 L399.75,281.2813 Q399.75,281.9375 399.4688,282.2188 Q399.1875,282.5 398.75,282.5 Q398.3594,282.5 398.1094,282.3281 Q397.8594,282.1563 397.75,281.7031 Q397.7031,281.3906 397.5313,281.2188 Q397.2188,280.8906 396.6563,280.7031 Q396.0938,280.5 395.5313,280.5 Q394.8281,280.5 394.2344,280.7813 Q393.6563,281.0625 393.2031,281.6875 Q392.75,282.3125 392.75,283.1719 L392.75,284.0938 Q392.75,285.125 393.5938,285.8125 Q394.4375,286.5 395.9375,286.5 Q396.8281,286.5 397.4531,286.2969 Q397.8125,286.1875 398.2188,285.8281 Q398.4844,285.625 398.625,285.5625 Q398.7656,285.5 398.9375,285.5 Q399.2656,285.5 399.5,285.7656 Q399.75,286.0156 399.75,286.375 Q399.75,286.7188 399.4063,287.125 Q398.9063,287.7188 398.1094,288.0469 Q397.0625,288.5 395.7813,288.5 Q394.2813,288.5 393.0781,287.9063 Q392.1094,287.4375 391.4219,286.4219 Q390.75,285.4063 390.75,284.2031 L390.75,283.1094 Q390.75,281.8594 391.3438,280.7656 Q391.9531,279.6719 393,279.0938 Q394.0625,278.5 395.25,278.5 Q395.9688,278.5 396.5938,278.75 Q397.2188,279 397.75,279.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="109" x="416.25" y="287.9102">CargoManifestStore</text><line style="stroke:#A80036;stroke-width:1.5;" x1="297" x2="612" y1="299" y2="299"/><line style="stroke:#A80036;stroke-width:1.5;" x1="297" x2="612" y1="307" y2="307"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="304" y="315"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="291" x="316" y="322.4189">getNumberOfContainerPerManifest(mmsiCode : String) : float</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="304" y="328.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="257" x="316" y="336.2549">getTheCargoManifestPerYear(mmsiCode : String) : int</text><!--MD5=[b2004ed1fc7d0974be5b538f0aa6b0c6]
+link CargoManifestPerYearUI to CargoManifestPerYearController--><path codeLine="24" d="M165.5,55.18 C165.5,70.59 165.5,91.42 165.5,110.45 " fill="none" id="CargoManifestPerYearUI-to-CargoManifestPerYearController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="165.5,115.76,169.5,106.76,165.5,110.76,161.5,106.76,165.5,115.76" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[033dac9a5b137d898cbb78e9d9ce4a9f]
+link CargoManifestPerYearController to Company--><path codeLine="25" d="M165.5,206.15 C165.5,226.24 165.5,249.7 165.5,268.61 " fill="none" id="CargoManifestPerYearController-to-Company" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="165.5,273.82,169.5,264.82,165.5,268.82,161.5,264.82,165.5,273.82" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[091e7e5555d20c2e87a993879722993a]
+link Company to CargoManifestStore--><path codeLine="26" d="M231.8,305 C249.78,305 270.06,305 290.88,305 " fill="none" id="Company-to-CargoManifestStore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="295.9,305,286.9,301,290.9,305,286.9,309,295.9,305" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="28" x="249.75" y="298.4951">uses</text><!--MD5=[b9c9113b27070ded7b3494be4c24e48e]
+@startuml
+'https://plantuml.com/class-diagram
+
+class CargoManifestPerYearUI{
+
+}
+
+class CargoManifestPerYearController{
+- shipExists(mmsiCode : String) : boolean
+- getNumberOfContainerPerManifest(mmsiCode : String) : float
+- getTheCargoManifestPerYear(mmsiCode : String) : int
+}
+
+class Company {
+-getBstShip() : BstShip
+}
+
+class CargoManifestStore{
+- getNumberOfContainerPerManifest(mmsiCode : String) : float
+- getTheCargoManifestPerYear(mmsiCode : String) : int
+
+}
+
+
+CargoManifestPerYearUI ..> CargoManifestPerYearController
+CargoManifestPerYearController ..> Company
+Company -> CargoManifestStore : uses 
+@enduml
+
+@startuml
+
+class CargoManifestPerYearUI{
+
+}
+
+class CargoManifestPerYearController{
+- shipExists(mmsiCode : String) : boolean
+- getNumberOfContainerPerManifest(mmsiCode : String) : float
+- getTheCargoManifestPerYear(mmsiCode : String) : int
+}
+
+class Company {
+-getBstShip() : BstShip
+}
+
+class CargoManifestStore{
+- getNumberOfContainerPerManifest(mmsiCode : String) : float
+- getTheCargoManifestPerYear(mmsiCode : String) : int
+
+}
+
+
+CargoManifestPerYearUI ..> CargoManifestPerYearController
+CargoManifestPerYearController ..> Company
+Company -> CargoManifestStore : uses 
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

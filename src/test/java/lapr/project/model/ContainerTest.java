@@ -11,22 +11,7 @@ class ContainerTest {
 
     @BeforeEach
     void setUp() {
-        container = new Container(3, 2, 1, "CT342", 5, "ISO234", 200f, 100f, 30f, 356f, 123f, 35f, "Recommended", "Sustainable certificate");
-    }
-
-    @Test
-    void getCoordinateX() {
-        assertEquals(container.getCoordinateX(), 3);
-    }
-
-    @Test
-    void getCoordinateY() {
-        assertEquals(container.getCoordinateY(), 2);
-    }
-
-    @Test
-    void getCoordinateZ() {
-        assertEquals(container.getCoordinateZ(), 1);
+        container = new Container("CT342", 5, "ISO234", 200f, 100f, 30f, 356f, 123f, 35f, "Recommended", "Sustainable certificate");
     }
 
     @Test

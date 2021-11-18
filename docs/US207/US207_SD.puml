@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+actor "Ship Captain" as SC
+participant ":CargoManifestPerYearUI" as UI
+participant ":CargoManifestPerYearController" as CT
+participant ":Company" as CP
+participant "bstShip : BstShip" as BST
+participant "store : CargoManifestStore" as ST
+
+
+activate SC
+SC -> UI : starts the requisition of mean container \n per cargo manifest and the total number \nof cargo manifest per year
+activate UI
+UI --> SC : asks the mmsi code of the ship
+deactivate UI
+SC -> UI : type the mmsi code
+activate UI
+UI -> CT : shipExists(mmsiCode)
+activate CT
+CT -> CP : bstShip = getBstShip()
+activate CP
+deactivate CP
+
+CT -> CT: shipExist(mmsiCode)
+activate CT
+deactivate CT
+deactivate CT
+
+UI --> SC : ask the year of the cargo manifest
+deactivate UI
+SC->UI : type the year
+activate UI
+UI -> CT : getNumberOfContainerPerManifest(mmsiCode)
+activate CT
+CT -> ST : numberOfContainerPerManifest = getNumberOfContainerPerManifest(mmsiCode)
+activate ST
+deactivate ST
+deactivate CT
+UI -> CT : getTheCargoManifestPerYear(mmsiCode)
+activate CT
+CT -> ST : cargoManifestPerYear = getTheCargoManifestPerYear(mmsiCode)
+activate ST
+deactivate ST
+deactivate CT
+
+
+UI-->SC : show the result
+deactivate UI
+deactivate SC
+@enduml

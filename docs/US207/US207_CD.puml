@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class CargoManifestPerYearUI{
+
+}
+
+class CargoManifestPerYearController{
+- shipExists(mmsiCode : String) : boolean
+- getNumberOfContainerPerManifest(mmsiCode : String) : float
+- getTheCargoManifestPerYear(mmsiCode : String) : int
+}
+
+class Company {
+-getBstShip() : BstShip
+}
+
+class CargoManifestStore{
+- getNumberOfContainerPerManifest(mmsiCode : String) : float
+- getTheCargoManifestPerYear(mmsiCode : String) : int
+
+}
+
+
+CargoManifestPerYearUI ..> CargoManifestPerYearController
+CargoManifestPerYearController ..> Company
+Company -> CargoManifestStore : uses
+@enduml

@@ -7,21 +7,6 @@ package lapr.project.model;
 public class Container {
 
     /**
-     * Represents the X coordinate where the container is placed in the ship
-     */
-    private int coordinateX;
-
-    /**
-     * Represents the Y coordinate where the container is placed in the ship
-     */
-    private int coordinateY;
-
-    /**
-     * Represents the Z coordinate where the container is placed in the ship
-     */
-    private int coordinateZ;
-
-    /**
      * The number that identify the container
      */
     private String number;
@@ -78,9 +63,6 @@ public class Container {
 
     /**
      * Creates an instance of Container
-     * @param coordinateX
-     * @param coordinateY
-     * @param coordinateZ
      * @param number
      * @param checkDigit
      * @param isoCode
@@ -93,10 +75,7 @@ public class Container {
      * @param repairRecommendation
      * @param certificate
      */
-    public Container(int coordinateX, int coordinateY, int coordinateZ, String number, int checkDigit, String isoCode, float maximumWeight, float payload, float tare, float weight, float maxWeightPacked, float maxVolumePacked, String repairRecommendation, String certificate) {
-        this.coordinateX = coordinateX;
-        this.coordinateY = coordinateY;
-        this.coordinateZ = coordinateZ;
+    public Container(String number, int checkDigit, String isoCode, float maximumWeight, float payload, float tare, float weight, float maxWeightPacked, float maxVolumePacked, String repairRecommendation, String certificate) {
         this.number = number;
         this.checkDigit = checkDigit;
         this.isoCode = isoCode;
@@ -115,9 +94,6 @@ public class Container {
      * @param container
      */
     public Container(Container container) {
-        this.coordinateX = container.getCoordinateX();
-        this.coordinateY = container.getCoordinateY();
-        this.coordinateZ = container.getCoordinateZ();
         this.number = container.getNumber();
         this.checkDigit = container.getCheckDigit();
         this.isoCode = container.getIsoCode();
@@ -129,30 +105,6 @@ public class Container {
         this.maxVolumePacked = container.getMaxVolumePacked();
         this.repairRecommendation = container.getRepairRecommendation();
         this.certificate = container.getCertificate();
-    }
-
-    /**
-     * get the x coordinate of a container
-     * @return the x coordinate
-     */
-    public int getCoordinateX() {
-        return coordinateX;
-    }
-
-    /**
-     * get the y coordinate of a container
-     * @return the y coordinate
-     */
-    public int getCoordinateY() {
-        return coordinateY;
-    }
-
-    /**
-     * get the z coordinate  of a container
-     * @return the z coordinate
-     */
-    public int getCoordinateZ() {
-        return coordinateZ;
     }
 
     /**

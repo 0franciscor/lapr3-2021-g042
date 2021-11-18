@@ -3,9 +3,18 @@
 actor "Ship Captain" as SC
 participant "System" as SY
 
+activate SC
 SC -> SY : starts the requisition of mean container \n per cargo manifest and the total number \nof cargo manifest per year
-SY --> SC : asks the year
-SC -> SY : type the year
-SY --> SC : show the result
-
+activate SY
+SY --> SC : asks the mmsi code of the ship
+deactivate SY
+SC -> SY : type the mmsi code
+activate SY
+SY --> SC : ask the year of the cargo manifest
+deactivate SY
+SC->SY : type the year
+activate SY
+SY-->SC : show the result
+deactivate SY
+deactivate SC
 @enduml

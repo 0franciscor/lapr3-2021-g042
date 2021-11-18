@@ -1,17 +1,15 @@
-package lapr.project.apresentacao;
+package lapr.project.presentation;
+
 import lapr.project.controller.*;
 import org.junit.jupiter.api.Test;
-
-
-import lapr.project.controller.ImportShipController;
-import lapr.project.controller.ShowPairsOfShipsController;
-import lapr.project.controller.ShowPositionalMessagesController;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class ScenarioTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class ScenarioTestTest {
 
     private ImportShipController importShipController;
 
@@ -27,7 +25,7 @@ public class ScenarioTest {
 
     private ShowTopShipsController showTopShipsController;
 
-    public ScenarioTest(){
+    public ScenarioTestTest(){
         importShipController=new ImportShipController();
         showPositionalMessagesController=new ShowPositionalMessagesController();
         showPairsOfShipsController=new ShowPairsOfShipsController();

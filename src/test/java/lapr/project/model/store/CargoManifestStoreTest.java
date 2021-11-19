@@ -25,9 +25,8 @@ class CargoManifestStoreTest {
 
     @Test
     void createCargoManifest() {
-        CargoManifest cargoManifest = new CargoManifest(new Date(), 30, "210950000", CargoManifest.Destination.PORT);
-        CargoManifest cargoManifest1 = cargoManifestStore.createCargoManifest(new Date(), 30, "210950000", CargoManifest.Destination.PORT);
-        assertEquals(cargoManifest, cargoManifest1);
+        CargoManifest cargoManifest = new CargoManifest(new Date(2021, 11, 19), 30, "210950000", CargoManifest.Destination.PORT);
+        assertEquals(cargoManifest, cargoManifestStore.createCargoManifest(new Date(2021, 11,19), 30, "210950000", CargoManifest.Destination.PORT));
     }
 
     @Test

@@ -13,12 +13,12 @@ import java.util.List;
 public class CountryStore {
 
     /**
-     * List containing all categories of parameters existing in the Company.
+     * List containing all Countries in the company
      */
     private List<Country> countryLst;
 
     /**
-     * Instantiates a new ParameterCategoryStore.
+     * Instantiates a new Country Store
      */
     public CountryStore(){
         countryLst=new ArrayList();

@@ -1,6 +1,7 @@
 package lapr.project.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Represents a Cargo Manifest
@@ -79,4 +80,18 @@ public class CargoManifest {
     public Destination getDestination() {
         return destination;
     }
+
+    /**
+     *
+     * @param object That is o objective of comparison
+     * @return the result of the comparison
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        CargoManifest that = (CargoManifest) object;
+        return totalNumberOfContainers == that.totalNumberOfContainers && date.equals(that.date) && mmsiCodeShip.equals(that.mmsiCodeShip) && destination == that.destination;
+    }
+
 }

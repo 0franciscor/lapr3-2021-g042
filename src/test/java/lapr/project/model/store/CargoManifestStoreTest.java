@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +26,8 @@ class CargoManifestStoreTest {
 
     @Test
     void createCargoManifest() {
-        CargoManifest cargoManifest = new CargoManifest(new Date(2021, 11, 19), 30, "210950000", CargoManifest.Destination.PORT);
-        assertEquals(cargoManifest, cargoManifestStore.createCargoManifest(new Date(2021, 11,19), 30, "210950000", CargoManifest.Destination.PORT));
+        CargoManifest cargoManifest = new CargoManifest(new Date(2020, Calendar.NOVEMBER, 19), 30, "210950000", CargoManifest.Destination.PORT);
+        assertEquals(cargoManifest, cargoManifestStore.createCargoManifest(new Date(2020, Calendar.NOVEMBER,19), 30, "210950000", CargoManifest.Destination.PORT));
     }
 
     @Test

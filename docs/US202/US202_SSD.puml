@@ -1,0 +1,13 @@
+@startuml
+autonumber
+
+actor "Traffic Manager" as M
+
+activate M
+M -> ":System": Initiates the process to get the closest port \n to a certain ship in a certain time.
+":System" --> M --: Request the ship's CallSign and the date
+M -> ":System": IIntroduce the requested data
+":System" --> M --: Informs the operation success
+
+
+@enduml

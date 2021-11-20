@@ -23,14 +23,14 @@ public class App {
      */
     private final Company company;
 
-    /**
-     * Represents the App's connection to the database
-     */
-    private final DatabaseConnection databaseConnection;
+//    /**
+//     * Represents the App's connection to the database
+//     */
+    //private final DatabaseConnection databaseConnection;
 
     private App(){
         company = new Company();
-        this.databaseConnection = initializeConnection();
+        //this.databaseConnection = initializeConnection();
     }
 
     /**
@@ -43,13 +43,13 @@ public class App {
     }
 
 
-    /**
-     * Allows the user to get the instance of the running App's database connection.
-     * @return the App's database connection
-     */
-    public DatabaseConnection getDataBaseConnection(){
-        return databaseConnection;
-    }
+//    /**
+//     * Allows the user to get the instance of the running App's database connection.
+//     * @return the App's database connection
+//     */
+//    public DatabaseConnection getDataBaseConnection(){
+//        return databaseConnection;
+//    }
 
     //############# Singleton #############
     private static App singleton = null;
@@ -64,20 +64,20 @@ public class App {
         return singleton;
     }
 
-    /**
-     * Method responsible for initializing the database connection.
-     * @return the database connection
-     */
-    public DatabaseConnection initializeConnection(){
-        DatabaseConnection databaseConnection = null;
-        try {
-            databaseConnection = ConnectionFactory.getInstance()
-                    .getDatabaseConnection();
-        } catch (IOException exception) {
-            Logger.getLogger(ImportShip.class.getName())
-                    .log(Level.SEVERE, null, exception);
-        }
-
-        return databaseConnection;
-    }
+//    /**
+//     * Method responsible for initializing the database connection.
+//     * @return the database connection
+//     */
+//    public DatabaseConnection initializeConnection(){
+//        DatabaseConnection databaseConnection = null;
+//        try {
+//            databaseConnection = ConnectionFactory.getInstance()
+//                    .getDatabaseConnection();
+//        } catch (IOException exception) {
+//            Logger.getLogger(ImportShip.class.getName())
+//                    .log(Level.SEVERE, null, exception);
+//        }
+//
+//        return databaseConnection;
+//    }
 }

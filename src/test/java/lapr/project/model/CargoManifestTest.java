@@ -11,14 +11,17 @@ class CargoManifestTest {
 
     private CargoManifest cargoManifest;
 
+    private Date date;
+
     @BeforeEach
     void setUp() {
-        cargoManifest = new CargoManifest(new Date(), 5, "211331640",CargoManifest.Destination.PORT);
+        date = new Date();
+        cargoManifest = new CargoManifest(date, 5, "211331640",CargoManifest.Destination.PORT);
     }
 
     @Test
     void getDate() {
-        assertEquals(new Date(), cargoManifest.getDate());
+        assertEquals(date, cargoManifest.getDate());
     }
 
     @Test

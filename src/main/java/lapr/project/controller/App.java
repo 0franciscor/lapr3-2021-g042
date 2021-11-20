@@ -1,14 +1,6 @@
 package lapr.project.controller;
 
-import lapr.project.data.ConnectionFactory;
-import lapr.project.data.DatabaseConnection;
 import lapr.project.model.Company;
-import lapr.project.model.ImportShip;
-
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 /**
  * Class that represents a app.

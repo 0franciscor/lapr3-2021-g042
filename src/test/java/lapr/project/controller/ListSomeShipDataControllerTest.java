@@ -75,6 +75,7 @@ public class ListSomeShipDataControllerTest {
         assertTrue(flag);
     }
 
+    /*
     @Test
     public void CompareOrderATNM(){
         BriefSummary ant = briefSummariesD.get(0);
@@ -88,6 +89,6 @@ public class ListSomeShipDataControllerTest {
         }
         assertTrue(fl1);
         assertTrue(fl2);
-    }
+    }*/
 
 }

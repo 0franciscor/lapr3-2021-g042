@@ -54,7 +54,7 @@ public class ListSomeShipDataController {
     public ListSomeShipDataController(){
         company = App.getInstance().getCompany();
         writeForAFile = new WriteForAFile();
-        file = new File("SomeShipData");
+        file = new File("target\\generated-sources\\annotations\\SomeShipData");
     }
 
     private void initialize(){

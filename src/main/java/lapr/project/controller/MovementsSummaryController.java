@@ -67,7 +67,7 @@ public class MovementsSummaryController {
     public SummaryDto createSummaryDto(Summary summary) throws IOException {
         SummaryDto summaryDto = summaryMapper.toDto(summary);
         WriteForAFile writeForAFile = new WriteForAFile();
-        File file = new File("Summaries");
+        File file = new File("target\\generated-sources\\annotations\\Summaries");
         writeForAFile.writeForAFile(summaryDto.toString(), "MovementsSummary_" + summary.getMmsiCode(),file);
         return summaryDto;
     }

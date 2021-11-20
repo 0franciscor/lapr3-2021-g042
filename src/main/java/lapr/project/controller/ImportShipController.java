@@ -52,7 +52,7 @@ public class ImportShipController {
         int numNavios = importShip.convertShips();
 
         try {
-            new WriteForAFile().writeForAFile(String.format("Ships not imported: %d.%n", numNavios), String.format("Show_Not_Imported_Ships"), new File("Ship Importing"));
+            new WriteForAFile().writeForAFile(String.format("Ships not imported: %d.%n", numNavios), String.format("Show_Not_Imported_Ships"), new File("target\\generated-sources\\annotations\\Ship Importing"));
         } catch (Exception e){
 
         }

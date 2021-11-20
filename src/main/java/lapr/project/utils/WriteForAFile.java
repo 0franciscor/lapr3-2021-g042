@@ -20,7 +20,7 @@ public class WriteForAFile {
         }
 
         if (string != null){
-            File arch = new File(".\\" + file + "\\" + fileName +".txt");
+            File arch = new File(file + "\\" + fileName +".csv");
             arch.setWritable(true);
             FileWriter fw = new FileWriter(arch, true);
 

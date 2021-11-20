@@ -111,7 +111,7 @@ public class SearchDetailsController {
      *  This method writes the file with the details searched by mmsi
      */
     public void getShipDetailsByMMSI() throws IOException {
-        File file = new File("ShipDetails");
+        File file = new File("target\\generated-sources\\annotations\\ShipDetails");
         writeForAFile.writeForAFile(getShipDetails(),"211331640",file);
 
     }
@@ -120,7 +120,7 @@ public class SearchDetailsController {
      *  This method writes the file with the details searched by imo code
      */
     public void writeDataSearchedByIMO() throws IOException {
-        File file = new File("ShipDetails");
+        File file = new File("target\\generated-sources\\annotations\\ShipDetails");
         writeForAFile.writeForAFile(getShipDetails(),"IMO2113432",file);
     }
 
@@ -128,7 +128,7 @@ public class SearchDetailsController {
      *  This method writes the file with the details searched by Callsign
      */
     public void writeDataSearchedByCallsign() throws IOException {
-            File file = new File("ShipDetails");
+            File file = new File("target\\generated-sources\\annotations\\ShipDetails");
             writeForAFile.writeForAFile(getShipDetails(),"DHBN",file);
     }
 

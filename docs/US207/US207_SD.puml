@@ -33,13 +33,16 @@ SC->UI : type the year
 activate UI
 UI -> CT : getNumberOfContainerPerManifest(mmsiCode)
 activate CT
+CT ->CP : store = getCargoManifestStore()
+activate CP
+deactivate CP
 CT -> ST : numberOfContainerPerManifest = getNumberOfContainerPerManifest(mmsiCode)
 activate ST
 deactivate ST
 deactivate CT
-UI -> CT : getTheCargoManifestPerYear(mmsiCode)
+UI -> CT : getTheCargoManifestPerYear(mmsiCode, year)
 activate CT
-CT -> ST : cargoManifestPerYear = getTheCargoManifestPerYear(mmsiCode)
+CT -> ST : cargoManifestPerYear = getTheCargoManifestPerYear(mmsiCode, year)
 activate ST
 deactivate ST
 deactivate CT

@@ -66,7 +66,7 @@ public class ShipLocationAVL extends ShipLocationBST<ShipLocation>{
         if(node == null)
             return new Node(element, null, null);
 
-        if(element == node.getShipLocation()) {
+        if(element.compareTo(node.getShipLocation()) == 0) {
             node.setElement(element);
         } else {
             if(node.getShipLocation().compareTo(element) > 0) {

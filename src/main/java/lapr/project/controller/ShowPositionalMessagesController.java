@@ -90,7 +90,7 @@ public class ShowPositionalMessagesController {
      */
     public List<String> showPositionalMessages(Date initialDate, Date finalDate) throws IOException {
         ShipLocationBST shipLocationBst = ship.getShipPosition();
-        File file = new File("Positional_Messages");
+        File file = new File("target\\generated-sources\\annotations\\Positional Messages");
         List<String> positionalMessages = shipLocationBst.getPositionalMessages(initialDate,finalDate);
         for(String lista : positionalMessages){
             writeForAFile.writeForAFile(lista.toString(), ship.getMMSI(), file);
@@ -106,7 +106,7 @@ public class ShowPositionalMessagesController {
      */
     public String showPositionalMessages(Date date) throws IOException {
         ShipLocationBST shipLocationBst = ship.getShipPosition();
-        File file = new File("Positional_Messages");
+        File file = new File("target\\generated-sources\\annotations\\Positional Messages");
         String positionalMessage = shipLocationBst.getPositionalMessages(date);
         writeForAFile.writeForAFile(positionalMessage, ship.getMMSI(), file);
 

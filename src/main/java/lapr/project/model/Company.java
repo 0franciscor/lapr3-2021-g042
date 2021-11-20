@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import lapr.project.model.store.CargoManifestStore;
 import lapr.project.model.store.CountryStore;
 
 import java.util.ArrayList;
@@ -34,6 +35,10 @@ public class Company {
      */
     private final Ports2DTree ports2DTree;
 
+    /**
+     * Represents an instance of Cargo Manifest Store
+     */
+    private final CargoManifestStore cargoManifestStore;
 
     /**
      * Creates an instance of Company
@@ -43,6 +48,15 @@ public class Company {
         importShip = new ImportShip();
         countryStr = new CountryStore();
         ports2DTree = new Ports2DTree();
+        cargoManifestStore = new CargoManifestStore();
+    }
+
+    /**
+     * Get the instance of Cargo Manifest store
+     * @return the cargo manifest store
+     */
+    public CargoManifestStore getCargoManifestStore() {
+        return cargoManifestStore;
     }
 
     /**

@@ -287,24 +287,9 @@ public class SummaryDto {
      */
     @Override
     public String toString() {
-        return String.format("\n----------* Summary *----------\n" +
-                "MMSI Code: %s \n" +
-                "Ship name: %s \n" +
-                "Start Base Date: %s \n" +
-                "End Base Date: %s \n" +
-                "Total Movements Time: %s \n" +
-                "Total Movements: %d \n" +
-                "Maximum Speed Over Ground: %.2f \n" +
-                "Mean Speed Over Ground: %.2f \n" +
-                "Maximum Course Over Ground: %.2f \n" +
-                "Mean Course Over Ground: %.2f \n" +
-                "Departure Latitude: %s \n" +
-                "Departure Longitude: %s \n" +
-                "Arrival Latitude: %s \n" +
-                "Arrival Longitude: %s \n" +
-                "Travelled Distance: %.2f km\n" +
-                "Delta Distance: %.2f km\n"
-                , mmsiCodeDto, nameDto, startBaseDateDto, endBaseDateDto, totalMovementTimeDto, totalMovementsDto, maximumSogDto, meanSogDto, maximumCogDto, meanCogDto, departureLatitudeDto, departureLongitudeDto, arrivalLatitudeDto, arrivalLongitudeDto, travelledDistanceDto, deltaDistanceDto
+        return String.format(
+                "MMSI Code, Ship name, Start Base Date, End Base Date, Total Movements Time, Total Movements, Maximum Speed Over Ground, Mean Speed Over Ground, Maximum Course Over Ground, Mean Course Over Ground, Departure Latitude, Departure Longitude, Arrival Latitude, Arrival Longitude, Travelled Distance, Delta Distance\n" +
+                "%s, %s, %s, %s, %s, %d, %.2f, %.2f, %.2f, %.2f, %s, %s, %s, %s, %.2f, %.2f \n", mmsiCodeDto, nameDto, startBaseDateDto, endBaseDateDto, totalMovementTimeDto, totalMovementsDto, maximumSogDto, meanSogDto, maximumCogDto, meanCogDto, departureLatitudeDto, departureLongitudeDto, arrivalLatitudeDto, arrivalLongitudeDto, travelledDistanceDto, deltaDistanceDto
 
         );
 

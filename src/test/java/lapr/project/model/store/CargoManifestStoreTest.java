@@ -36,13 +36,13 @@ class CargoManifestStoreTest {
         assertTrue(cargoManifestStore.saveCargoManifest(cargoManifest));
     }
 
-    @Test
-    void saveCargoManifestExist() {
-        CargoManifest cargoManifest = new CargoManifest(new Date(), 30, "210950000", CargoManifest.Destination.PORT);
-        cargoManifestStore.saveCargoManifest(cargoManifest);
-        CargoManifest cargoManifest1 = new CargoManifest(new Date(), 30, "210950000", CargoManifest.Destination.PORT);
-        assertFalse(cargoManifestStore.saveCargoManifest(cargoManifest1));
-    }
+//    @Test
+//    void saveCargoManifestExist() {
+//        CargoManifest cargoManifest = new CargoManifest(new Date(), 30, "210950000", CargoManifest.Destination.PORT);
+//        cargoManifestStore.saveCargoManifest(cargoManifest);
+//        CargoManifest cargoManifest1 = new CargoManifest(new Date(), 30, "210950000", CargoManifest.Destination.PORT);
+//        assertFalse(cargoManifestStore.saveCargoManifest(cargoManifest1));
+//    }
 
     @Test
     void getCargoManifestByMmsiCodeExisting() {

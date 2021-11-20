@@ -64,7 +64,7 @@ public class AvlShip extends BstShip<Ship>{
         if(node == null)
             return new Node(element, null, null);
 
-        if(element == node.getShip()) {
+        if(element.compareTo(node.getShip()) == 0) {
             node.setElement(element);
         } else {
             if(node.getShip().compareTo(element) > 0) {

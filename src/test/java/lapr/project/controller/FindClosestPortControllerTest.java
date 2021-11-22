@@ -37,13 +37,6 @@ class FindClosestPortControllerTest {
      */
 
 
-
-    @Test
-    public void ctrlr() {
-        Company company = new Company();
-        new FindClosestPortController(company);
-    }
-
     @Test
     void findClosestPortNotExist() throws ParseException {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");

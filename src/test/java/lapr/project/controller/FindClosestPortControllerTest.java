@@ -37,11 +37,14 @@ class FindClosestPortControllerTest {
      */
 
 
+    /*
     @Test
     void findClosestPortNotExist() throws ParseException {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Ports port = ctrlr.findClosestPort("00002",dateFormatter.parse("31-12-2020 17:19"));
         Assert.assertNull(port);
     }
+
+     */
 
 }

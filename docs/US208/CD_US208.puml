@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class CargoManifestPerYearUI{}
+
+class CargoManifestPerYearController{
+-getTheRatioOfCargoManifest(id)
+}
+
+class Company{
+-getCargoManifestStore()
+}
+
+class CargoManifestStore{
+-getRatioOfACargoManifestById(id)
+}
+
+class CargoManifest{
+-getRatio()
+}
+
+CargoManifestPerYearUI ..> CargoManifestPerYearController
+
+CargoManifestPerYearController ..> Company
+
+Company -> CargoManifestStore : uses
+
+CargoManifestStore --* CargoManifest 
+@enduml

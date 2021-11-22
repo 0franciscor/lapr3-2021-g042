@@ -1,6 +1,7 @@
 package lapr.project.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -34,6 +35,11 @@ public class CargoManifest {
      * The destination of the cargo manifest
      */
     private Destination destination;
+
+    /**
+     * The list of container in a cargo manifest
+     */
+    private List<Container> containers;
 
     /**
      * Construct an instance of Cargo Manifest

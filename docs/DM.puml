@@ -94,6 +94,7 @@ Company "1"--"1..*" Ship: own >
 Company "1" - "1..*" System : has >
 Company "1"--"1..*" Employee: have >
 Company "1"--"1..*" Truck: own >
+Company "1"--"1..*" Ports: have >
 
 Containers "1..*"--"1..*" CargoManifest: related to >
 Containers "0..*"--"1" Ports: store >
@@ -109,6 +110,7 @@ Ship "1" -- "1..*" ShipLocation : has >
 
 Employee "1" --- "1..*" ShipLocation : controls >
 Employee "1" -- "1" User : relates to >
+Employee "1" --- "1..*" Ports : controls >
 
 Truck "1"--"1..*" Containers : transport >
 Truck "0..*"--"1" Warehouse: park >

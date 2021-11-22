@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+actor "Ship Captain" as SC
+participant "System" as SY
+
+activate SC
+SC -> SY : starts the requisition of the list \n of containers to be loaded in the next port
+activate SY
+SY --> SC : asks the ship
+deactivate SY
+SC -> SY : type the ship
+
+activate SY
+SY-->SC : shows the list of containers
+deactivate SY
+deactivate SC
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor "Ship Captain" as SC
+participant ": RatioOfCargoManifestDateUI" as UI
+participant ": RatioOfCargoManifestDateController" as CT
+participant ": Company" as CP
+participant "store : CargoManifestStore" as ST
+participant "cargoManifest : CargoManifest" as CM
+participant "cargoManifestList : List<CargoManifest>" as CML
+
+
+activate SC
+SC->UI : starts the requisition of the ratio between\n number of container and the capacity of a ship
+activate UI
+
+UI --> SC : asks the mmsi code of the ship
+deactivate UI
+SC -> UI : type the mmsi code of the ship
+activate UI
+UI -> CT : getCargoManifestByMMSI(mmsiCode)
+activate CT
+CT -> CP : store = getCargoManifestStore()
+activate CP
+deactivate CP
+CT-> ST : cargoManifestList = getCargoManifestByMMSI(mmsiCode)
+activate ST
+deactivate ST
+
+deactivate CT
+UI-->SC : ask the date
+deactivate UI
+
+SC -> UI : type the date
+activate UI
+UI-> CT : getCargoManifestClosestOfDate(date)
+activate CT
+CT -> ST : cargoManifest = getCargoManifestClosestOfDate(date, cargoManifestList)
+activate ST
+deactivate ST
+
+deactivate CT
+UI -->SC : show the ratio in the date typed
+deactivate UI
+
+deactivate SC
+@enduml

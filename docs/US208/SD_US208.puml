@@ -2,8 +2,8 @@
 'https://plantuml.com/sequence-diagram
 
 actor "Ship Captain" as SC
-participant ": CargoManifestPerYearUI" as UI
-participant ": CargoManifestPerYearController" as CT
+participant ": RatioOfCargoManifestUI" as UI
+participant ": RatioOfCargoManifestController" as CT
 participant ": Company" as CP
 participant "store : CargoManifestStore" as ST
 participant "cargoManifest : CargoManifest" as CM

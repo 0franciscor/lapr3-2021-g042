@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+class RatioOfCargoManifestDateUI {}
+
+class RatioOfCargoManifestDateController {
+-getCargoManifestByMMSI(mmsiCode)
+-getCargoManifestClosestOfDate(date)
+}
+
+class Company {
+-getCargoManifestStore()
+}
+
+class CargoManifestStore {
+- getCargoManifestByMMSI(mmsiCode)
+- getCargoManifestClosestOfDate(date, cargoManifestList)
+}
+
+RatioOfCargoManifestDateUI ..> RatioOfCargoManifestDateController
+RatioOfCargoManifestDateController ..> Company
+Company -> CargoManifestStore : uses
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

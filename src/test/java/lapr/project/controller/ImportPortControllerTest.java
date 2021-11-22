@@ -1,7 +1,8 @@
 package lapr.project.controller;
 
-import lapr.project.model.Company;
-import lapr.project.model.ImportPort;
+import lapr.project.model.*;
+import lapr.project.model.store.PortStore;
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,5 +39,10 @@ class ImportPortControllerTest {
         String fileName = "bports.csv";
         controller.importFile(fileName);
         controller.importPorts();
+        PortStore portStore =controller.getImportPort().getPortStore();
+        Country country1=new Country("Europe","Denmark");
+        PlaceLocation placeLocation1= new PlaceLocation(56.15,10.21666667);
+        Ports port = new Ports(country1,10358,"Aarhus",placeLocation1);
+        Assert.assertFalse(portStore.savePort(port));
     }
 }

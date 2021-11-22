@@ -65,6 +65,10 @@ public class ImportPort {
         lst = new ArrayList<>();
     }
 
+    public PortStore getPortStore(){
+        return portStore;
+    }
+
     /**
      * @param nameOfTheFileToBeImported The file name
      *

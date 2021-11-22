@@ -4,8 +4,6 @@ package lapr.project.controller;
 import lapr.project.model.Company;
 import lapr.project.model.ImportPort;
 
-import java.util.Calendar;
-
 /**
  * The ImportPortController, controller responsible for managing the Import Port class, which allows the Port Manager to import ports from a .csv file
  *
@@ -24,6 +22,10 @@ public class ImportPortController {
 
     public ImportPortController(Company company){
         importPort = new ImportPort(company);
+    }
+
+    public ImportPort getImportPort(){
+        return importPort;
     }
 
     /**

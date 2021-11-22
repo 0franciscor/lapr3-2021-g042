@@ -21,12 +21,6 @@ public class Company {
     private final BstShip bstShip;
 
     /**
-     * Represents an instance of the importShip Class
-     */
-    private final ImportShip importShip;
-
-
-    /**
      * List containing all countries existing in the Company.
      */
     private final CountryStore countryStr;
@@ -46,7 +40,6 @@ public class Company {
      */
     public Company(){
         bstShip = new AvlShip();
-        importShip = new ImportShip();
         countryStr = new CountryStore();
         portStr = new PortStore();
         cargoManifestStore = new CargoManifestStore();
@@ -66,14 +59,6 @@ public class Company {
      */
     public BstShip getBstShip() {
         return bstShip;
-    }
-
-    /**
-     * Get the instance of ImportShip
-     * @return the ImportShip
-     */
-    public ImportShip getImportShip (){
-        return importShip;
     }
 
     /**

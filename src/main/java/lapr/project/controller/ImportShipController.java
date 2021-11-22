@@ -1,6 +1,5 @@
 package lapr.project.controller;
 
-import lapr.project.model.Company;
 import lapr.project.model.ImportShip;
 import lapr.project.utils.WriteForAFile;
 
@@ -19,17 +18,15 @@ public class ImportShipController {
     private final ImportShip importShip;
 
     /**
+     * The file (which is being imported) name
+     */
+    private String fileName;
+
+    /**
      * The class constructor
      */
     public ImportShipController(){
-        this.importShip = App.getInstance().getCompany().getImportShip();
-    }
-
-    /**
-     * Initialize the controller receiving a company
-     */
-    public ImportShipController(Company company){
-        this.importShip = company.getImportShip();
+        this.importShip = new ImportShip();
     }
 
     /**
@@ -40,6 +37,7 @@ public class ImportShipController {
      * @return the success of the operation
      */
     public boolean importFile(String fileName){
+        this.fileName = fileName;
        return importShip.getFile(fileName);
     }
 
@@ -52,9 +50,9 @@ public class ImportShipController {
         int numNavios = importShip.convertShips();
 
         try {
-            new WriteForAFile().writeForAFile(String.format("Ships not imported: %d.%n", numNavios), String.format("Show_Not_Imported_Ships"), new File("target\\generated-sources\\annotations\\Ship Importing"));
+            new WriteForAFile().writeForAFile(String.format("%s : Ships not imported: %d.%n", fileName, numNavios), "Show_Not_Imported_Ships", new File("Ship Importing"));
         } catch (Exception e){
-
+            System.out.println("There was an error when writing for a file the number of not imported ships.");
         }
         return numNavios;
     }

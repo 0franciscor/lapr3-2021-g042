@@ -4,8 +4,9 @@ import lapr.project.controller.App;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.Date;
-import java.util.Scanner;
+
 
 /**
  * The ImportShip class, which allows the user to import ships and its locations from a .csv file
@@ -38,7 +39,7 @@ public class ImportShip{
      */
     public boolean getFile(String fileName) {
         file = new File(fileName);
-        if(file.exists()) {
+        if (file.exists()) {
             try {
                 readFile = new Scanner(file);
                 return true;
@@ -54,13 +55,13 @@ public class ImportShip{
      *
      * @return The number of ships which were not imported
      */
-    public int convertShips(){
+    public int convertShips() {
         int shipsNotConverted = 0;
         readFile.nextLine();
-        while(readFile.hasNext()){
+        while (readFile.hasNext()) {
             String line = readFile.nextLine();
             String[] shipArray = getLineArray(line);
-            if(shipArray.length == 16)
+            if (shipArray.length == 16)
                 shipsNotConverted += createShip(shipArray);
             else
                 shipsNotConverted += 1;
@@ -71,9 +72,9 @@ public class ImportShip{
 
     /**
      * @param shipLine Each line of the .csv file
-     * @return the line splitted as an array
+     * @return the line split as an array
      */
-    public String [] getLineArray(String shipLine){
+    public String[] getLineArray(String shipLine) {
         return shipLine.split(",");
     }
 
@@ -85,8 +86,7 @@ public class ImportShip{
      * @return 1 if the ship was not added or 0 if it was
      */
     //ver com o francisco se esse método pode retornar um Ship pra adicionar na base de dados
-
-    public int createShip(String [] shipArray) {
+    public int createShip(String[] shipArray) {
         try {
             //#################### Ship Location Conversion and Creation ####################
             String MMSI = shipArray[0];
@@ -100,6 +100,7 @@ public class ImportShip{
             ShipLocation shipLocation = new ShipLocation(MMSI, messageTime, latitude, longitude, SOG, COG, heading, transceiverClass);
 
             //#################### Ship Conversion and Creation ####################
+
             BstShip shipBST = App.getInstance().getCompany().getBstShip();
             Ship newShip = shipBST.getShipByMmsiCode(MMSI);
 
@@ -115,17 +116,13 @@ public class ImportShip{
                 float draft = Float.parseFloat(shipArray[13]);
 
                 newShip = new Ship(MMSI, name, shipID, 0, 0, callSign, vesselType, length, width, cargo, draft, shipLocation);
-
                 shipBST.insert(newShip);
             } else
                 newShip.getShipPosition().insert(shipLocation);
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             return 1;
         }
         return 0;
     }
-
-
-
 }

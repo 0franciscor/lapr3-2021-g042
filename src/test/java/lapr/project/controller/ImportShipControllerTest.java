@@ -15,7 +15,7 @@ public class ImportShipControllerTest {
     @BeforeEach
     public void setUp(){
         company = new Company();
-        controller = new ImportShipController(company);
+        controller = new ImportShipController();
     }
 
     @Test

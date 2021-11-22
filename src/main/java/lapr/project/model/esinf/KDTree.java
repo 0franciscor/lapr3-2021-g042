@@ -156,6 +156,9 @@ public class KDTree<T> {
 
     
     public void balanceTree(List<Node<T>> nodes) {
+        Collections.sort(nodes, compareX );
+        int median = nodes.size() >> 1;
+        root = new Node<>(nodes.get(median).getElement(), nodes.get(median).getX(), nodes.get(median).getY());
         balanceTree(true, nodes);
     }
 

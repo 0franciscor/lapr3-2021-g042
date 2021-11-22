@@ -1,7 +1,9 @@
 package lapr.project.model.esinf;
 
 import java.awt.geom.Point2D;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Class that represents a 2DTree
@@ -13,7 +15,7 @@ public class KDTree<T> {
 
     /* Nested static class for a 2D tree node. */
 
-    protected static class Node<T> {
+    public static class Node<T> {
 
         protected Point2D.Double coords;
         protected Node<T> left;
@@ -33,7 +35,7 @@ public class KDTree<T> {
         }
 
         // accessor methods
-        public T getPort() { return object; }
+        public T getElement() { return object; }
         public Point2D.Double getCoords() { return coords; }
         public Double getX() { return coords.x; }
         public Double getY() { return coords.y; }
@@ -127,7 +129,7 @@ public class KDTree<T> {
         double closestDist = Point2D.distanceSq(closestNode.coords.x, closestNode.coords.y, x, y);
 
         if (closestDist > d) {
-            closestNode.setElement(node.getPort());
+            closestNode.setElement(node.getElement());
             closestNode.setLeft(node.getLeft());
             closestNode.setRight(node.getRight());
             closestNode.setCoords(node.getX(),node.getY());
@@ -145,6 +147,28 @@ public class KDTree<T> {
             findNearestNeighbour(node2, x,y,closestNode,!divX);
         }
 
-        return closestNode.getPort();
+        return closestNode.getElement();
+    }
+
+    public KDTree(List<Node<T>> nodes) {
+        balanceTree(nodes);
+    }
+
+    
+    public void balanceTree(List<Node<T>> nodes) {
+        balanceTree(true, nodes);
+    }
+
+
+    private void balanceTree(boolean divX, List<Node<T>> nodes) {
+        if (nodes == null || nodes.isEmpty())
+            return;
+        Collections.sort(nodes, divX ? compareX : compareY);
+        int median = nodes.size() >> 1;
+        Node<T> node = new Node<>(nodes.get(median).getElement(), nodes.get(median).getX(), nodes.get(median).getY());
+        balanceTree(!divX, nodes.subList(0, median));
+        if (median + 1 < nodes.size() - 1)
+            balanceTree(!divX, nodes.subList(median+1, nodes.size()));
+        this.insert(node.getElement(), node.getX(), node.getY());
     }
 }

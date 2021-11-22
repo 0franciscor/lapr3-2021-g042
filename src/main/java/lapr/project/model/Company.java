@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import lapr.project.model.store.CargoManifestStore;
 import lapr.project.model.store.CountryStore;
+import lapr.project.model.store.PortStore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +32,9 @@ public class Company {
     private final CountryStore countryStr;
 
     /**
-     * Represents an instance of the Ports2DTree
+     * List containing all ports existing in the Company.
      */
-    private final Ports2DTree ports2DTree;
+    private final PortStore portStr;
 
     /**
      * Represents an instance of Cargo Manifest Store
@@ -47,7 +48,7 @@ public class Company {
         bstShip = new AvlShip();
         importShip = new ImportShip();
         countryStr = new CountryStore();
-        ports2DTree = new Ports2DTree();
+        portStr = new PortStore();
         cargoManifestStore = new CargoManifestStore();
     }
 
@@ -82,8 +83,9 @@ public class Company {
     public CountryStore getCountryStr() { return countryStr; }
 
     /**
-     * Get the instance of Ports2DTree
-     * @return The Ports2DTree
+     * Get the store containing all ports existing in the Company.
+     * @return The store containing all ports existing in the Company.
      */
-    public Ports2DTree getPorts2DTree() { return ports2DTree; }
+    public PortStore getPortStr() { return portStr; }
+
 }

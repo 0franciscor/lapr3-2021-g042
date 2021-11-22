@@ -61,6 +61,36 @@ class Ports2DTreeTest {
     }
 
     @Test
+    void insert04() {
+        Country country=new Country("Europe","Denmark");
+        PlaceLocation placeLocation= new PlaceLocation(0,0);
+        Ports obj1 = new Ports(country, 12345,"Piran",placeLocation);
+        ports.insert(obj1,obj1.getLatitude(),obj1.getLongitude());
+        Ports result1 = (Ports) ports.findNearestNeighbour(0, 0);
+        assertEquals(obj1, result1);
+        PlaceLocation placeLocation1= new PlaceLocation(10,10);
+        Ports obj2 = new Ports(country,23456,"Aspropyrgos",placeLocation1);
+        ports.insert(obj2,obj2.getLatitude(),obj2.getLongitude());
+        Ports result2 = (Ports) ports.findNearestNeighbour(10, 10);
+        assertEquals(obj2, result2);
+        PlaceLocation placeLocation2= new PlaceLocation(0,10);
+        Ports obj3 = new Ports(country,34567,"San Vicente",placeLocation2);
+        ports.insert(obj3,obj3.getLatitude(),obj3.getLongitude());
+        Ports result3 = (Ports) ports.findNearestNeighbour(0, 10);
+        assertEquals(obj3, result3);
+        PlaceLocation placeLocation3= new PlaceLocation(10,0);
+        Ports obj4 = new Ports(country,45678,"Cartagena",placeLocation3);
+        ports.insert(obj4,obj4.getLatitude(),obj4.getLongitude());
+        Ports result4 = (Ports) ports.findNearestNeighbour(10, 0);
+        assertEquals(obj4, result4);
+        PlaceLocation placeLocation4= new PlaceLocation(20,20);
+        Ports obj5 = new Ports(country,56789,"Santos",placeLocation4);
+        ports.insert(obj5,obj5.getLatitude(),obj5.getLongitude());
+        Ports result5 = (Ports) ports.findNearestNeighbour(20, 20);
+        assertEquals(obj5, result5);
+    }
+
+    @Test
     void findNearestNeighbour() {
     }
 }

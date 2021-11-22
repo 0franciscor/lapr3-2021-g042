@@ -2,6 +2,8 @@ package lapr.project.model;
 
 import lapr.project.model.esinf.KDTree;
 
+import java.util.List;
+
 /**
  * Class that represents a Ports2DTree
  *
@@ -9,5 +11,6 @@ import lapr.project.model.esinf.KDTree;
  * @param <Ports> Generic Class
  */
 public class Ports2DTree<Ports> extends KDTree<Ports> {
+
 
 }

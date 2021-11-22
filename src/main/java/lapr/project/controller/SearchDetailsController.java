@@ -91,13 +91,7 @@ public class SearchDetailsController {
      * @return The ship with the respective Call Sign
      */
     public Ship shipExistByCallSign(String callsign){
-        Iterable<Ship> ships = bstShip.inOrder();
-        for (Ship s : ships){
-            if (s.getCallSign().equals(callsign)){
-                this.ship = s;
-                return  s;
-            }
-        } return null;
+        return (this.ship = bstShip.getShipByCallSign(callsign));
     }
     /**
      *  This method allows the user to search a certain ship on the BST through its MMSI code (unique code).

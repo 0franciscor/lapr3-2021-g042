@@ -2,9 +2,13 @@ package lapr.project.model;
 
 
 import lapr.project.controller.App;
+import lapr.project.model.esinf.KDTree;
 import lapr.project.model.store.CountryStore;
+import lapr.project.model.store.PortStore;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -17,6 +21,8 @@ public class ImportPort {
      * Represents an instance of Company
      */
     private final Company company;
+
+    private final PortStore portStore;
 
     /**
      * The file to be imported
@@ -32,6 +38,8 @@ public class ImportPort {
 
     Ports2DTree ports2DTree;
 
+    List<KDTree.Node<Ports>> lst;
+
 
     /**
      * The class constructor
@@ -39,7 +47,10 @@ public class ImportPort {
     public ImportPort() {
         this.company=App.getInstance().getCompany();
         this.str=company.getCountryStr();
-        this.ports2DTree=company.getPorts2DTree();
+        this.portStore=company.getPortStr();
+        portStore.setPorts2DTree(new Ports2DTree());
+        this.ports2DTree=portStore.getPorts2DTree();
+        lst = new ArrayList<>();
     }
 
     /**
@@ -48,7 +59,10 @@ public class ImportPort {
     public ImportPort(Company company) {
         this.company=company;
         this.str=company.getCountryStr();
-        this.ports2DTree=company.getPorts2DTree();
+        this.portStore=company.getPortStr();
+        portStore.setPorts2DTree(new Ports2DTree());
+        this.ports2DTree=portStore.getPorts2DTree();
+        lst = new ArrayList<>();
     }
 
     /**
@@ -82,9 +96,12 @@ public class ImportPort {
                 str.saveCountry(country);
             }
             PlaceLocation placeLocation = new PlaceLocation(Double.parseDouble(portArray[4]),Double.parseDouble(portArray[5]));
-            Ports port = new Ports(country,Integer.parseInt(portArray[2]),portArray[3],placeLocation);
-            ports2DTree.insert(port,Double.parseDouble(portArray[4]),Double.parseDouble(portArray[5]));
+            Ports port = portStore.createPort(country,Integer.parseInt(portArray[2]),portArray[3],placeLocation);
+            if (portStore.savePort(port)){
+                lst.add(new Ports2DTree.Node(port,port.getLatitude(),port.getLongitude()));
+            }
         }
+        ports2DTree.balanceTree(lst);
         read.close();
     }
 

@@ -88,4 +88,14 @@ public class Ports {
         return country.getContinent();
     }
 
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (!(o instanceof Ports)) return false;
+        Ports ports = (Ports) o;
+        return ports.getCode() == this.getCode() && ports.getLatitude() == this.getLatitude() && ports.getLongitude() == this.getLongitude();
+    }
+
+
+
 }

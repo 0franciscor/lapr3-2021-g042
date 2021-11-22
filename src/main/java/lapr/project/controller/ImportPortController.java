@@ -18,8 +18,6 @@ public class ImportPortController {
      */
     private final ImportPort importPort;
 
-    private Company company;
-
     public ImportPortController(){
         importPort = new ImportPort();
     }

@@ -49,4 +49,31 @@ class PortsTest {
         String expected = "Europe";
         assertEquals(expected,port.getContinent());
     }
+
+    @Test
+    void equals01(){
+        assertEquals(port,port);
+    }
+
+    @Test
+    void equalsNotEquals01(){
+        Country country2 =new Country("Europe","Denmark");
+        PlaceLocation placeLocation2 = new PlaceLocation(56.10,10.21666667);
+        Ports port2 = new Ports(country2,10358,"Aarhus",placeLocation2);
+        assertNotEquals(port,port2);
+    }
+
+    @Test
+    void equalsNotEquals02(){
+        ShipLocation shipLocation = new ShipLocation();
+        assertNotEquals(port,shipLocation);
+    }
+
+    @Test
+    void equalsNotEquals03(){
+        Country country3 =new Country("Europe","Denmark");
+        PlaceLocation placeLocation3 = new PlaceLocation(56.15,10.21666667);
+        Ports port3 = new Ports(country3,10355,"Aarhus",placeLocation3);
+        assertNotEquals(port,port3);
+    }
 }

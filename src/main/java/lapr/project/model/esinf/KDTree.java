@@ -1,5 +1,7 @@
 package lapr.project.model.esinf;
 
+import lapr.project.model.Ports;
+
 import java.awt.geom.Point2D;
 import java.util.Collections;
 import java.util.Comparator;
@@ -116,8 +118,9 @@ public class KDTree<T> {
             insert(node, currentNode.right, !divX);
     }
 
-    public T findNearestNeighbour(double latitude, double longitude) {
-        return findNearestNeighbour(root, latitude, longitude,root, true);
+    public T findNearestNeighbour(double x, double y) {
+        Node<T> closestsNode = new Node(null,Double.MAX_VALUE,Double.MAX_VALUE);
+        return findNearestNeighbour(root, x, y,closestsNode, true);
     }
 
     private T findNearestNeighbour(Node<T> node, double x, double y, Node<T> closestNode , boolean divX) {
@@ -154,24 +157,21 @@ public class KDTree<T> {
         balanceTree(nodes);
     }
 
-    
+
     public void balanceTree(List<Node<T>> nodes) {
-        Collections.sort(nodes, compareX );
-        int median = nodes.size() >> 1;
-        root = new Node<>(nodes.get(median).getElement(), nodes.get(median).getX(), nodes.get(median).getY());
-        balanceTree(true, nodes);
+        root = balanceTree(true, nodes);
     }
 
-
-    private void balanceTree(boolean divX, List<Node<T>> nodes) {
+    private Node<T> balanceTree(boolean divX, List<Node<T>> nodes) {
         if (nodes == null || nodes.isEmpty())
-            return;
-        Collections.sort(nodes, divX ? compareX : compareY);
-        int median = nodes.size() >> 1;
-        Node<T> node = new Node<>(nodes.get(median).getElement(), nodes.get(median).getX(), nodes.get(median).getY());
-        balanceTree(!divX, nodes.subList(0, median));
-        if (median + 1 < nodes.size() - 1)
-            balanceTree(!divX, nodes.subList(median+1, nodes.size()));
-        this.insert(node.getElement(), node.getX(), node.getY());
+            return null;
+        nodes.sort(divX ? compareX : compareY);
+        int med = nodes.size() / 2;
+        Node<T> node = new Node<>(nodes.get(med).getElement(), nodes.get(med).getX(), nodes.get(med).getY());
+        node.left = balanceTree(!divX, nodes.subList(0, med));
+        if (med + 1 <= nodes.size() - 1)
+            node.right = balanceTree(!divX, nodes.subList(med+1, nodes.size()));
+        insert(node.getElement(),node.getX(),node.getY());
+        return node;
     }
 }

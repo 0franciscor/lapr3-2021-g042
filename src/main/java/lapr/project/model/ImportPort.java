@@ -90,23 +90,27 @@ public class ImportPort {
     }
 
     public void convertPorts(){
-        read.nextLine();
-        while(read.hasNext()){
-            String line = read.nextLine();
-            String[] portArray = line.split(",");
-            Country country = str.getCountryByName(portArray[1]);
-            if(country == null){
-                country = str.createCountry(portArray[1],portArray[0]);
-                str.saveCountry(country);
+        try {
+            read.nextLine();
+            while(read.hasNext()){
+                String line = read.nextLine();
+                String[] portArray = line.split(",");
+                Country country = str.getCountryByName(portArray[1]);
+                if(country == null){
+                    country = str.createCountry(portArray[1],portArray[0]);
+                    str.saveCountry(country);
+                }
+                PlaceLocation placeLocation = new PlaceLocation(Double.parseDouble(portArray[4]),Double.parseDouble(portArray[5]));
+                Ports port = portStore.createPort(country,Integer.parseInt(portArray[2]),portArray[3],placeLocation);
+                if (portStore.savePort(port)){
+                    lst.add(new Ports2DTree.Node(port,port.getLatitude(),port.getLongitude()));
+                }
             }
-            PlaceLocation placeLocation = new PlaceLocation(Double.parseDouble(portArray[4]),Double.parseDouble(portArray[5]));
-            Ports port = portStore.createPort(country,Integer.parseInt(portArray[2]),portArray[3],placeLocation);
-            if (portStore.savePort(port)){
-                lst.add(new Ports2DTree.Node(port,port.getLatitude(),port.getLongitude()));
-            }
+            ports2DTree.balanceTree(lst);
+            read.close();
+        } catch (Exception e) {
+            return ;
         }
-        ports2DTree.balanceTree(lst);
-        read.close();
     }
 
 }

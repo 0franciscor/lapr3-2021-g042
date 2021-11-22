@@ -9,12 +9,12 @@ public class PlaceLocation {
     /**
      * The latitude of the place
      */
-    private final double latitude;
+    private double latitude;
 
     /**
      * The longitude of the place
      */
-    private final double longitude;
+    private double longitude;
 
     /**
      * Build an instance of {@code PlaceLocation} by receiving the latitude and the longitude
@@ -22,8 +22,32 @@ public class PlaceLocation {
      * @param longitude The longitude of the place
      */
     public PlaceLocation(double latitude, double longitude){
-        this.latitude=latitude;
-        this.longitude=longitude;
+        setLatitude(latitude);
+        setLongitude(longitude);
+    }
+
+    /**
+     * Sets the Latitude according to the defined rules
+     *
+     * @param latitude of the Location
+     */
+    public void setLatitude(double latitude){
+        if(latitude < -90 || latitude > 90)
+            throw new IllegalArgumentException("Invalid Latitude.");
+        else
+            this.latitude = latitude;
+    }
+
+    /**
+     * Sets the Longitude according to the defined rules
+     *
+     * @param longitude of the Location
+     */
+    public void setLongitude(double longitude){
+        if(longitude < -180 || longitude > 180)
+            throw new IllegalArgumentException("Invalid Longitude.");
+        else
+            this.longitude = longitude;
     }
 
     /**

@@ -16,7 +16,7 @@ participant ":Ports2DTree" as tree
 participant "lst:List<Nodes<Port>>" as lst
 
 activate PM
-PM -> ui : import ports from a text file into a 2DTree
+PM -> ui : import ports from a text file
 activate ui
 ui --> PM : requests the name of the .csv file containing the data
 deactivate ui

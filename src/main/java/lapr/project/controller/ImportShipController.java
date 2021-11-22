@@ -50,7 +50,7 @@ public class ImportShipController {
         int numNavios = importShip.convertShips();
 
         try {
-            new WriteForAFile().writeForAFile(String.format("%s : Ships not imported: %d.%n", fileName, numNavios), "Show_Not_Imported_Ships", new File("Ship Importing"));
+            new WriteForAFile().writeForAFile(String.format("%s : Ships not imported: %d.%n", fileName, numNavios), "Show_Not_Imported_Ships", new File("target\\generated-sources\\annotations\\Ship Importing"));
         } catch (Exception e){
             System.out.println("There was an error when writing for a file the number of not imported ships.");
         }

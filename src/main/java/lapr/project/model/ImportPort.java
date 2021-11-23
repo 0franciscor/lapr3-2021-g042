@@ -22,23 +22,27 @@ public class ImportPort {
      */
     private final Company company;
 
+    /**
+     * Represents an instance of PortStore
+     */
     private final PortStore portStore;
 
     /**
      * The file to be imported
      */
-    File file;
+    private File file;
 
     /**
      * The Scanner which reads the file
      */
-    Scanner read;
+    private Scanner read;
 
-    CountryStore str;
+    /**
+     * Represents an instance of CountryStore
+     */
+    private final CountryStore str;
 
-    Ports2DTree ports2DTree;
-
-    List<KDTree.Node<Ports>> lst;
+    private List<KDTree.Node<Ports>> lst;
 
 
     /**
@@ -48,8 +52,6 @@ public class ImportPort {
         this.company=App.getInstance().getCompany();
         this.str=company.getCountryStr();
         this.portStore=company.getPortStr();
-        portStore.setPorts2DTree(new Ports2DTree());
-        this.ports2DTree=portStore.getPorts2DTree();
         lst = new ArrayList<>();
     }
 
@@ -60,8 +62,6 @@ public class ImportPort {
         this.company=company;
         this.str=company.getCountryStr();
         this.portStore=company.getPortStr();
-        portStore.setPorts2DTree(new Ports2DTree());
-        this.ports2DTree=portStore.getPorts2DTree();
         lst = new ArrayList<>();
     }
 
@@ -106,7 +106,8 @@ public class ImportPort {
                     lst.add(new Ports2DTree.Node(port,port.getLatitude(),port.getLongitude()));
                 }
             }
-            ports2DTree.balanceTree(lst);
+            Ports2DTree ports2DTree = (Ports2DTree) new KDTree<>(lst);
+            portStore.setPorts2DTree(ports2DTree);
             read.close();
         } catch (Exception e) {
             return ;

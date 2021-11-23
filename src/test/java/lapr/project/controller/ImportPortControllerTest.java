@@ -45,4 +45,9 @@ class ImportPortControllerTest {
         Ports port = new Ports(country1,10358,"Aarhus",placeLocation1);
         Assert.assertFalse(portStore.savePort(port));
     }
+
+    @Test
+    public void ctrlr() {
+        ImportPortController ctrlr = new ImportPortController();
+    }
 }

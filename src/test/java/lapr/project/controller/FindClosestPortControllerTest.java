@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 
 class FindClosestPortControllerTest {
 
-    ImportPortController controller = new ImportPortController();
+    ImportPortController controller = new ImportPortController(App.getInstance().getCompany());
     FindClosestPortController ctrlr = new FindClosestPortController();
     ImportShipController importShipController = new ImportShipController();
 
@@ -24,6 +24,7 @@ class FindClosestPortControllerTest {
         controller.importPorts();
     }
 
+
     /*
     @Test
     void findClosestPort() throws ParseException {
@@ -34,10 +35,10 @@ class FindClosestPortControllerTest {
         Ports port = ctrlr.findClosestPort("C4SQ2",dateFormatter.parse("31-12-2020 17:19"));
         Assert.assertEquals(expected,port);
     }
-     */
 
 
-    /*
+
+
     @Test
     void findClosestPortNotExist() throws ParseException {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
@@ -46,5 +47,7 @@ class FindClosestPortControllerTest {
     }
 
      */
+
+
 
 }

@@ -2,7 +2,7 @@
 'https://plantuml.com/class-diagram
 
 hide methods
-left to right direction
+
 skinparam classAttributeIconSize 0
 
 class Employee {
@@ -14,6 +14,16 @@ class Ports {
 -name
 }
 
+class PlaceLocation {
+-latitude
+-longitude
+}
+
+class Country {
+-name
+-continent
+}
+
 class Company {
 -designation
 }
@@ -22,4 +32,7 @@ Company "1"--"1..*" Employee: have >
 Company "1"--"1..*" Ports: have >
 Employee "1" --- "1..*" Ports : controls >
 
+
+Ports "1" -- "1" PlaceLocation : located at >
+PlaceLocation "*" -- "1" Country : placed in >
 @enduml

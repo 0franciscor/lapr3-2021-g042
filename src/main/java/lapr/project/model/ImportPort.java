@@ -106,7 +106,7 @@ public class ImportPort {
                     lst.add(new Ports2DTree.Node(port,port.getLatitude(),port.getLongitude()));
                 }
             }
-            Ports2DTree ports2DTree = (Ports2DTree) new KDTree<>(lst);
+            Ports2DTree ports2DTree = new Ports2DTree(lst);
             portStore.setPorts2DTree(ports2DTree);
             read.close();
         } catch (Exception e) {

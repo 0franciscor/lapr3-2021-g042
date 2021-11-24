@@ -124,7 +124,6 @@ public class KDTree<T> {
     }
 
     private T findNearestNeighbour(Node<T> node, double x, double y, Node<T> closestNode , boolean divX) {
-
         if (node == null)
             return null;
 
@@ -154,7 +153,9 @@ public class KDTree<T> {
     }
 
     public KDTree(List<Node<T>> nodes) {
+        root = null;
         balanceTree(nodes);
+
     }
 
 

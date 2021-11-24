@@ -38,7 +38,7 @@ public class PortStore {
     }
 
     public void setPorts2DTree(Ports2DTree tree){
-        ports2DTree = tree;
+        this.ports2DTree = tree;
     }
 
 

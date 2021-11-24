@@ -1,5 +1,6 @@
 package lapr.project.controller;
 
+import lapr.project.model.Company;
 import lapr.project.model.ImportShip;
 import lapr.project.utils.WriteForAFile;
 
@@ -27,6 +28,13 @@ public class ImportShipController {
      */
     public ImportShipController(){
         this.importShip = new ImportShip();
+    }
+
+    /**
+     * The class constructor
+     */
+    public ImportShipController(Company company){
+        this.importShip = new ImportShip(company);
     }
 
     /**

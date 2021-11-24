@@ -68,7 +68,7 @@ public class FindClosestPortController {
         if(ship!=null){
             ShipLocationBST shipLocationBST=ship.getShipPosition();
             ShipLocation shipLocation=shipLocationBST.getShipLocationByDate(date);
-            return (Ports) ports2DTree.findNearestNeighbour(Double.parseDouble(shipLocation.getLatitude()),Double.parseDouble(shipLocation.getLongitude()));
+            return portStore.getPorts2DTree().findNearestNeighbour(Double.parseDouble(shipLocation.getLatitude()),Double.parseDouble(shipLocation.getLongitude()));
         }
         return null;
     }

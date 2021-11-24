@@ -26,9 +26,20 @@ public class ImportShip{
     Scanner readFile;
 
     /**
+     * Represents an instance of Company
+     */
+    private final Company company;
+
+    /**
      * The class constructor
      */
-    public ImportShip() {}
+    public ImportShip() {
+        this.company=App.getInstance().getCompany();
+    }
+
+    public ImportShip(Company company){
+        this.company=company;
+    }
 
     /**
      * @param fileName The file name
@@ -101,7 +112,7 @@ public class ImportShip{
 
             //#################### Ship Conversion and Creation ####################
 
-            BstShip shipBST = App.getInstance().getCompany().getBstShip();
+            BstShip shipBST = company.getBstShip();
             Ship newShip = shipBST.getShipByMmsiCode(MMSI);
 
             if (newShip == null) {

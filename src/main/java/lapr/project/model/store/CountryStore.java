@@ -24,6 +24,9 @@ public class CountryStore {
         countryLst=new ArrayList();
     }
 
+    public List<Country> getCountryLst(){
+        return countryLst;
+    }
     /**
      * New country.
      * @param countryName The name of the country

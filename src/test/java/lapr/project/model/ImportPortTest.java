@@ -3,6 +3,7 @@ package lapr.project.model;
 import lapr.project.controller.App;
 import lapr.project.controller.ImportShipController;
 import lapr.project.controller.ShowPositionalMessagesController;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -45,4 +46,21 @@ class ImportPortTest {
     public void ctrlr() {
         ImportPort importPort1 = new ImportPort();
     }
+
+    @Test
+    void convertPortsTest() {
+        String fileName = "portsTest.csv";
+        importPort.loadFile(fileName);
+        importPort.convertPorts();
+        Assertions.assertEquals(4,importPort.getCountryStore().getCountryLst().size());
+    }
+
+    @Test
+    void convertRepeatedPortsTest() {
+        String fileName = "repeatedPorts.csv";
+        importPort.loadFile(fileName);
+        importPort.convertPorts();
+        Assertions.assertEquals(5,importPort.getLst().size());
+    }
+
 }

@@ -69,6 +69,10 @@ public class ImportPort {
         return portStore;
     }
 
+        public CountryStore getCountryStore(){
+        return str;
+    }
+
     /**
      * @param nameOfTheFileToBeImported The file name
      *
@@ -91,7 +95,6 @@ public class ImportPort {
 
     public void convertPorts(){
         try {
-            read.nextLine();
             while(read.hasNext()){
                 String line = read.nextLine();
                 String[] portArray = line.split(",");
@@ -114,4 +117,7 @@ public class ImportPort {
         }
     }
 
+    public List<Ports2DTree.Node<Ports>> getLst(){
+        return lst;
+    }
 }

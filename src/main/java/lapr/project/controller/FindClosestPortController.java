@@ -32,11 +32,6 @@ public class FindClosestPortController {
     private final PortStore portStore;
 
     /**
-     * Represents an instance Ports2DTree
-     */
-    private final Ports2DTree ports2DTree;
-
-    /**
      * Initialize the controller
      */
     public FindClosestPortController(){
@@ -44,7 +39,6 @@ public class FindClosestPortController {
         this.company=app.getCompany();
         this.bstShip=company.getBstShip();
         this.portStore=company.getPortStr();
-        this.ports2DTree= portStore.getPorts2DTree();
     }
 
     /**
@@ -55,7 +49,6 @@ public class FindClosestPortController {
         this.company=company;
         this.bstShip=company.getBstShip();
         this.portStore=company.getPortStr();
-        this.ports2DTree= portStore.getPorts2DTree();
     }
 
     /**

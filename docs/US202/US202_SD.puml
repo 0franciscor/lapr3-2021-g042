@@ -12,6 +12,9 @@ participant "shipLocationBst:\nShipLocationBST" as ShipLocationBST
 participant "location:\nShipLocation" as SL
 participant "portStr:\nPortStore" as str
 participant "portsTree:\nPorts2DTree" as tree
+participant "port: Ports" as port
+participant "PortsMapper" as mapper
+participant "dto: PortsDto" as dto
 
 activate M
 M -> ui: Initiates the process to get the closest port \n to a certain ship in a certain time.
@@ -42,10 +45,15 @@ activate str
 deactivate str
 controller -> tree : findNearestNeighbour(latitude, longitude)
 activate tree
+tree --> controller : port
 deactivate tree
-controller --> ui: result
+controller -> mapper : toDto(port)
+activate mapper
+mapper --> controller : dto
+deactivate mapper
+controller --> ui: dto
 deactivate controller
-ui --> M --: Informs the operation success
+ui --> M --: Informs the operation success \n and shows the closest port
 deactivate ui
 
 @enduml

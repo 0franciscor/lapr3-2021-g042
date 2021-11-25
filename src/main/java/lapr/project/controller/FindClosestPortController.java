@@ -1,5 +1,7 @@
 package lapr.project.controller;
 
+import lapr.project.mapper.PortsMapper;
+import lapr.project.mapper.dto.PortsDto;
 import lapr.project.model.*;
 import lapr.project.model.store.PortStore;
 
@@ -32,6 +34,11 @@ public class FindClosestPortController {
     private final PortStore portStore;
 
     /**
+     * Represents an instance of the ports mapper.
+     */
+    private final PortsMapper portsMapper;
+
+    /**
      * Initialize the controller
      */
     public FindClosestPortController(){
@@ -39,6 +46,7 @@ public class FindClosestPortController {
         this.company=app.getCompany();
         this.bstShip=company.getBstShip();
         this.portStore=company.getPortStr();
+        this.portsMapper= new PortsMapper();
     }
 
     /**
@@ -49,6 +57,7 @@ public class FindClosestPortController {
         this.company=company;
         this.bstShip=company.getBstShip();
         this.portStore=company.getPortStr();
+        this.portsMapper= new PortsMapper();
     }
 
     /**
@@ -56,12 +65,13 @@ public class FindClosestPortController {
      * @param callSign The ship's Call sign
      * @param date the date for search
      */
-    public Ports findClosestPort(String callSign, Date date){
+    public PortsDto findClosestPort(String callSign, Date date){
         Ship ship= bstShip.getShipByCallSign(callSign);
         if(ship!=null){
             ShipLocationBST shipLocationBST=ship.getShipPosition();
             ShipLocation shipLocation=shipLocationBST.getShipLocationByDate(date);
-            return portStore.getPorts2DTree().findNearestNeighbour(Double.parseDouble(shipLocation.getLatitude()),Double.parseDouble(shipLocation.getLongitude()));
+            Ports port = portStore.getPorts2DTree().findNearestNeighbour(Double.parseDouble(shipLocation.getLatitude()),Double.parseDouble(shipLocation.getLongitude()));
+            return portsMapper.toDto(port);
         }
         return null;
     }

@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class FindClosestPortUI {}
+
+class FindClosestPortController {
+
+}
+
+class Company {
+-designation
+}
+
+class BstShip {
+
+}
+
+class Ship {
+
+}
+
+class ShipLocationBST {
+
+}
+
+class ShipLocation {
+
+}
+
+class Ports {
+-identification
+-name
+}
+
+
+class PortStore {
+}
+
+class Ports2DTree {
+
+}
+
+class PortsMapper {
+}
+
+class PortsDto {
+}
+
+Company "1"--"1..*" Ports: have >
+Company "1"--"1..*" Ship: own >
+
+Ship "0..*"--"1" Ports: dock >
+Ship "1" -- "1..*" ShipLocation : has >
+
+Ports "1" -- "1" PlaceLocation : located at >
+
+FindClosestPortUI ..> FindClosestPortController
+FindClosestPortController ..> Company
+FindClosestPortController ..> BstShip
+FindClosestPortController ..> Ship
+FindClosestPortController ..> ShipLocationBST
+FindClosestPortController ..> PortStore
+FindClosestPortController ..> Ports2DTree
+FindClosestPortController ..> PortsMapper
+PortsMapper ..> PortsDto
+PortStore "1"--> "*" Ports : adopts
+
+
+@enduml

@@ -12,7 +12,7 @@ public class SendToDatabase implements Persistable {
     DatabaseConnection databaseConnection;
 
     public SendToDatabase(){
-        this.databaseConnection = App.getInstance().getDatabaseConnection();
+        this.databaseConnection = App.getInstance().initializeConnection();
     }
 
 

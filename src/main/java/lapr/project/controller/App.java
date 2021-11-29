@@ -67,7 +67,7 @@ public class App {
      * Method responsible for initializing the database connection.
      * @return the database connection
      */
-    public DatabaseConnection initializeConnection(){
+    private DatabaseConnection initializeConnection(){
         DatabaseConnection databaseConnection = null;
         try {
             databaseConnection = ConnectionFactory.getInstance()
@@ -77,6 +77,15 @@ public class App {
                     .log(Level.SEVERE, null, exception);
         }
 
+        return databaseConnection;
+    }
+
+    /**
+     * Method responsible for returning the database connection
+     *
+     * @return the Database connection
+     */
+    public DatabaseConnection getDatabaseConnection(){
         return databaseConnection;
     }
 }

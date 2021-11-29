@@ -9,21 +9,18 @@ public interface Persistable {
      *
      * @param databaseConnection the database connection
      * @param object the object that is going to be saved
-     * @return the success of the operation
      */
-    boolean saveShip(DatabaseConnection databaseConnection, Object object);
+    void saveShip(DatabaseConnection databaseConnection, Object object);
 
     /**
      * @param databaseConnection the database connection
      * @param object the object that is going to be saved
-     * @return the success of the operation
      */
-    boolean savePosition(DatabaseConnection databaseConnection, Object object);
+    void savePosition(DatabaseConnection databaseConnection, Object object);
 
     /**
      * @param databaseConnection the database connection
      * @param object the object that is going to be saved
-     * @return the success of the operation
      */
-    boolean savePort(DatabaseConnection databaseConnection, Object object);
+    void savePort(DatabaseConnection databaseConnection, Object object);
 }

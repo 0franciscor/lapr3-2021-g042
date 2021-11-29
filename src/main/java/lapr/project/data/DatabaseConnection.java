@@ -11,13 +11,12 @@ import java.util.logging.Logger;
  * @author nunotcastro
  */
 public class DatabaseConnection {
-    private OracleDataSource oracleDataSource;
     private Connection connection;
     private SQLException error;
 
     public DatabaseConnection(String url, String username, String password) {
         try {
-            oracleDataSource = new OracleDataSource();
+            OracleDataSource oracleDataSource = new OracleDataSource();
 
             oracleDataSource.setURL(url);
 
@@ -42,10 +41,4 @@ public class DatabaseConnection {
         this.error = error;
     }
 
-    public SQLException getLastError() {
-        SQLException lastError = this.error;
-        //Clear after reading.
-        registerError(null);
-        return lastError;
-    }
 }

@@ -5,23 +5,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 /**
  * @author nunotcastro
  */
 public class ConnectionFactory {
-    /**
-     * Logger class.
-     */
-    private static final Logger LOGGER = Logger.getLogger("MainLog");
 
     private static ConnectionFactory instance = null;
-
-    /**
-     * This is the size of the connection pool.
-     */
-    private final Integer connectionPoolCount = 1;
 
     private final List<DatabaseConnection> databaseConnectionList =
             new ArrayList<>();
@@ -60,6 +50,7 @@ public class ConnectionFactory {
 
     public DatabaseConnection getDatabaseConnection() {
         DatabaseConnection databaseConnection;
+        Integer connectionPoolCount = 1;
         if (++connectionPoolRequest > connectionPoolCount) {
             connectionPoolRequest = 1;
         }

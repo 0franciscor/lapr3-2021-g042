@@ -4,19 +4,16 @@ import lapr.project.controller.App;
 import lapr.project.model.*;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SendToDatabase implements Persistable {
 
     DatabaseConnection databaseConnection;
 
     public SendToDatabase(){
-        this.databaseConnection = App.getInstance().initializeConnection();
+        this.databaseConnection = App.getInstance().getDataBaseConnection();
     }
 
-
-    //################################# DATABASE RELATED #####################################
+    //################################# Object fetching RELATED #####################################
 
     /**
      * Method responsible for sending the Ship and its locations to the database
@@ -50,23 +47,18 @@ public class SendToDatabase implements Persistable {
      *
      * @param databaseConnection to the database
      * @param object that is going to be saved
-     * @return success of the operation
      */
     @Override
-    public boolean saveShip(DatabaseConnection databaseConnection, Object object){
+    public void saveShip(DatabaseConnection databaseConnection, Object object){
         Ship ship = (Ship) object;
-        boolean returnValue;
 
         try {
             saveShipToDatabase(databaseConnection, ship);
-            returnValue = true;
 
         } catch (SQLException ex) {
             System.out.println("There was an error when importing a ship to the database.");
             databaseConnection.registerError(ex);
-            returnValue = false;
         }
-        return returnValue;
     }
 
     /**
@@ -190,23 +182,18 @@ public class SendToDatabase implements Persistable {
      *
      * @param databaseConnection to the database
      * @param object that is going to be saved
-     * @return success of the operation
      */
     @Override
-    public boolean savePosition(DatabaseConnection databaseConnection, Object object){
+    public void savePosition(DatabaseConnection databaseConnection, Object object){
         ShipLocation shipLocation = (ShipLocation) object;
-        boolean returnValue;
 
         try {
             savePositionToDatabase(databaseConnection, shipLocation);
-            returnValue = true;
 
         } catch (SQLException e) {
-            returnValue = false;
             System.out.println("There was an error when importing a Ship Location to the database.");
             databaseConnection.registerError(e);
         }
-        return returnValue;
     }
 
     /**
@@ -340,23 +327,18 @@ public class SendToDatabase implements Persistable {
      *
      * @param databaseConnection to the database
      * @param object that is going to be saved
-     * @return success of the operation
      */
     @Override
-    public boolean savePort(DatabaseConnection databaseConnection, Object object){
+    public void savePort(DatabaseConnection databaseConnection, Object object){
         Ports port = (Ports) object;
-        boolean returnValue;
 
         try {
             savePortToDatabase(databaseConnection, port);
-            returnValue = true;
 
         } catch (SQLException ex) {
             System.out.println("There was an error when importing a port to the database.");
             databaseConnection.registerError(ex);
-            returnValue = false;
         }
-        return returnValue;
     }
 
     /**

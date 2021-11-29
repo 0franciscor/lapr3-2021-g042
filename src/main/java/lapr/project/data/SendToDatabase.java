@@ -5,10 +5,19 @@ import lapr.project.model.*;
 
 import java.sql.*;
 
+/**
+ * Francisco Redol <1201239@isep.ipp.pt>
+ */
 public class SendToDatabase implements Persistable {
 
+    /**
+     * The database Connection
+     */
     DatabaseConnection databaseConnection;
 
+    /**
+     * Send to Database Connection
+     */
     public SendToDatabase(){
         this.databaseConnection = App.getInstance().getDataBaseConnection();
     }
@@ -38,6 +47,12 @@ public class SendToDatabase implements Persistable {
         //for(Object objectPort : App.getInstance().getCompany().getPortStr().getPorts2DTree().)
         Ports port = new Ports(new Country("Europa","Portugal"), 325, "Porto de leixoes", new PlaceLocation(41.18322878077638, -8.703141533061505));
         savePort(databaseConnection, port);
+    }
+
+    public void sendContainersToDatabase(){
+        Container container = new Container("748323899", 5033407, "justo", 2.4f, 1.5f, 181.7f, 118.5f, 89.9f, 1.1f, "#REPAIRRECOMMENDATION", "CERTIFICATE");
+        saveContainer(databaseConnection, container);
+        //saveContainer(databaseConnection, new Container());
     }
 
     //################################# SHIP RELATED #####################################
@@ -455,7 +470,7 @@ public class SendToDatabase implements Persistable {
         }
     }
 
-    //################################# Place Location Related ###########################################
+    //################################# Place Location Related ##################################
 
     /**
      * Method that serves the purpose of verifying if a certain Place Location exists on the database.
@@ -596,4 +611,273 @@ public class SendToDatabase implements Persistable {
             saveCountryPreparedStatement.close();
         }
     }
+
+    //####################################### Container Related #################################
+
+    /**
+     * Method responsible for invoking the methods which will verify if a certain Container exists, update it or insert it.
+     *
+     * @param databaseConnection the database connection
+     * @param object the object that is going to be saved
+     */
+    @Override
+    public void saveContainer(DatabaseConnection databaseConnection, Object object) {
+        Container container = (Container) object;
+
+        try {
+            saveContainerToDatabase(databaseConnection, container);
+
+        } catch (SQLException ex) {
+            System.out.println("There was an error when importing a container to the database.");
+            databaseConnection.registerError(ex);
+        }
+    }
+
+    /**
+     * Method responsible for verifying if a certain container exists, updates it or inserts it.
+     *
+     * @param databaseConnection to the database
+     * @param container that is related to the database
+     * @throws SQLException in case an error with the database occurs
+     */
+    private void saveContainerToDatabase(DatabaseConnection databaseConnection, Container container)
+            throws SQLException {
+
+        if (isContainerOnDatabase(databaseConnection, container))
+            updateContainerOnDatabase(databaseConnection, container);
+        else
+            insertContainerOnDatabase(databaseConnection, container);
+    }
+
+    /**
+     * Checks if a container is registered on the Database by its container.
+     *
+     * @param databaseConnection to the database
+     * @param container that is related to the database
+     * @return True if the ship is registered, False if otherwise.
+     * @throws SQLException in case an error with the database occurs
+     */
+    private boolean isContainerOnDatabase(DatabaseConnection databaseConnection, Container container)
+            throws SQLException {
+
+        Connection connection = databaseConnection.getConnection();
+
+        boolean isContainerOnDatabase;
+
+        String sqlCommand = "select * from Container where numberId = ?";
+
+        PreparedStatement getContainerPreparedStatement =
+                connection.prepareStatement(sqlCommand);
+
+        getContainerPreparedStatement.setInt(1, Integer.parseInt(container.getNumber()));
+
+        try (ResultSet containerResultSet = getContainerPreparedStatement.executeQuery()) {
+
+            isContainerOnDatabase = containerResultSet.next();
+            containerResultSet.close();
+
+        } finally {
+            getContainerPreparedStatement.close();
+        }
+        return isContainerOnDatabase;
+    }
+
+    /**
+     * Updates an existing container record on the database.
+     *
+     * @param databaseConnection to the database
+     * @param container that is related to the database
+     * @throws SQLException in case an error with the database occurs
+     */
+    private void updateContainerOnDatabase(DatabaseConnection databaseConnection, Container container)
+            throws SQLException {
+        String sqlCommand =
+                "update container set checkDigit = ?, isoCode = ?, maxWeight = ?, payload = ?, tare = ?, weight = ?, maxWeightPacked = ?, maxVolumePacked = ?, repairRecommendation = ?, certificate = ? where numberId = '" + container.getNumber() +"'";
+
+        executeContainerStatementOnDatabase(databaseConnection, container, sqlCommand);
+    }
+
+    /**
+     * Adds a new container record to the database.
+     *
+     * @param databaseConnection to the database
+     * @param container that is related to the database
+     * @throws SQLException in case an error with the database occurs
+     */
+    private void insertContainerOnDatabase(DatabaseConnection databaseConnection, Container container)
+            throws SQLException {
+        String sqlCommand =
+                "insert into container(numberId, checkDigit, isoCode, maxWeight, payload, tare, weight, maxWeightPacked, maxVolumePacked, repairRecommendation, certificate) values ('" + container.getNumber() +"', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        executeContainerStatementOnDatabase(databaseConnection, container, sqlCommand);
+    }
+
+    /**
+     * Executes the save Container Statement.
+     *
+     * @param databaseConnection to the database
+     * @param container that is related to the database
+     * @throws SQLException in case an error with the database occurs
+     */
+    private void executeContainerStatementOnDatabase(DatabaseConnection databaseConnection, Container container, String sqlCommand)
+            throws SQLException {
+
+        Connection connection = databaseConnection.getConnection();
+
+        PreparedStatement saveContainerPreparedStatement = connection.prepareStatement(sqlCommand);
+
+        saveContainerPreparedStatement.setInt(1,container.getCheckDigit());
+        saveContainerPreparedStatement.setString(2, container.getIsoCode());
+        saveContainerPreparedStatement.setFloat(3, container.getMaximumWeight());
+        saveContainerPreparedStatement.setFloat(4, container.getPayload());
+        saveContainerPreparedStatement.setFloat(5, container.getTare());
+        saveContainerPreparedStatement.setFloat(6,container.getWeight());
+        saveContainerPreparedStatement.setFloat(7,container.getMaxWeightPacked());
+        saveContainerPreparedStatement.setFloat(8, container.getMaxVolumePacked());
+        saveContainerPreparedStatement.setString(9, container.getRepairRecommendation());
+        saveContainerPreparedStatement.setString(10,container.getCertificate());
+
+        try{
+            saveContainerPreparedStatement.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("There was an error related to the container with the " + container.getNumber() + " code.");
+            databaseConnection.registerError(e);
+        } finally {
+            saveContainerPreparedStatement.close();
+        }
+    }
+
+    //####################################### Cargo Manifest Related #################################
+
+    /**
+     * Method responsible for invoking the methods which will verify if a certain Cargo Manifest exists, update it or insert it.
+     *
+     * @param databaseConnection the database connection
+     * @param object the object that is going to be saved
+     */
+    public void saveCargoManifest(DatabaseConnection databaseConnection, Object object){
+//        CargoManifest cargoManifest = (CargoManifest) object;
+//
+//        try {
+//            saveCargoManifestToDatabase(databaseConnection, cargoManifest);
+//
+//        } catch (SQLException ex) {
+//            System.out.println("There was an error when importing a Cargo Manifest to the database.");
+//            databaseConnection.registerError(ex);
+//        }
+    }
+//
+//    /**
+//     * Method responsible for verifying if a certain Cargo Manifest exists, updates it or inserts it.
+//     *
+//     * @param databaseConnection to the database
+//     * @param cargoManifest that is related to the database
+//     * @throws SQLException in case an error with the database occurs
+//     */
+//    private void saveCargoManifestToDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest)
+//            throws SQLException {
+//
+//        if (isCargoManifestOnDatabase(databaseConnection, cargoManifest))
+//            updateCargoManifestOnDatabase(databaseConnection, cargoManifest);
+//        else
+//            insertCargoManifestOnDatabase(databaseConnection, cargoManifest);
+//    }
+//
+//    /**
+//     * Checks if a Cargo Manifest is registered on the Database by its MMSI.
+//     *
+//     * @param databaseConnection to the database
+//     * @param cargoManifest that is related to the database
+//     * @return True if the Cargo Manifest is registered, False if otherwise.
+//     * @throws SQLException in case an error with the database occurs
+//     */
+//    private boolean isCargoManifestOnDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest)
+//            throws SQLException {
+//
+//        Connection connection = databaseConnection.getConnection();
+//
+//        boolean isContainerOnDatabase;
+//
+//        String sqlCommand = "select * from Container where numberId = ?";
+//
+//        PreparedStatement getContainerPreparedStatement =
+//                connection.prepareStatement(sqlCommand);
+//
+//        getContainerPreparedStatement.setInt(1, Integer.parseInt(container.getNumber()));
+//
+//        try (ResultSet containerResultSet = getContainerPreparedStatement.executeQuery()) {
+//
+//            isContainerOnDatabase = containerResultSet.next();
+//            containerResultSet.close();
+//
+//        } finally {
+//            getContainerPreparedStatement.close();
+//        }
+//        return isContainerOnDatabase;
+//    }
+//
+//    /**
+//     * Updates an existing container record on the database.
+//     *
+//     * @param databaseConnection to the database
+//     * @param cargoManifest that is related to the database
+//     * @throws SQLException in case an error with the database occurs
+//     */
+//    private void updateCargoManifestOnDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest)
+//            throws SQLException {
+//        String sqlCommand =
+//                "update container set checkDigit = ?, isoCode = ?, maxWeight = ?, payload = ?, tare = ?, weight = ?, maxWeightPacked = ?, maxVolumePacked = ?, repairRecommendation = ?, certificate = ? where numberId = '" + container.getNumber() +"'";
+//
+//        executeContainerStatementOnDatabase(databaseConnection, container, sqlCommand);
+//    }
+//
+//    /**
+//     * Adds a new Cargo Manifest record to the database.
+//     *
+//     * @param databaseConnection to the database
+//     * @param cargoManifest that is related to the database
+//     * @throws SQLException in case an error with the database occurs
+//     */
+//    private void insertCargoManifestOnDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest)
+//            throws SQLException {
+//        String sqlCommand =
+//                "insert into container(numberId, checkDigit, isoCode, maxWeight, payload, tare, weight, maxWeightPacked, maxVolumePacked, repairRecommendation, certificate) values ('" + container.getNumber() +"', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//
+//        executeContainerStatementOnDatabase(databaseConnection, container, sqlCommand);
+//    }
+//
+//    /**
+//     * Executes the save Cargo Manifest Statement.
+//     *
+//     * @param databaseConnection to the database
+//     * @param cargoManifest that is related to the database
+//     * @throws SQLException in case an error with the database occurs
+//     */
+//    private void executeCargoManifestStatementOnDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest, String sqlCommand)
+//            throws SQLException {
+//
+//        Connection connection = databaseConnection.getConnection();
+//
+//        PreparedStatement saveContainerPreparedStatement = connection.prepareStatement(sqlCommand);
+//
+//        saveContainerPreparedStatement.setInt(1,container.getCheckDigit());
+//        saveContainerPreparedStatement.setString(2, container.getIsoCode());
+//        saveContainerPreparedStatement.setFloat(3, container.getMaximumWeight());
+//        saveContainerPreparedStatement.setFloat(4, container.getPayload());
+//        saveContainerPreparedStatement.setFloat(5, container.getTare());
+//        saveContainerPreparedStatement.setFloat(6,container.getWeight());
+//        saveContainerPreparedStatement.setFloat(7,container.getMaxWeightPacked());
+//        saveContainerPreparedStatement.setFloat(8, container.getMaxVolumePacked());
+//        saveContainerPreparedStatement.setString(9, container.getRepairRecommendation());
+//        saveContainerPreparedStatement.setString(10,container.getCertificate());
+//
+//        try{
+//            saveContainerPreparedStatement.executeUpdate();
+//        } catch (SQLException e){
+//            System.out.println("There was an error related to the container with the " + container.getNumber() + " code.");
+//            databaseConnection.registerError(e);
+//        } finally {
+//            saveContainerPreparedStatement.close();
+//        }
+//    }
 }

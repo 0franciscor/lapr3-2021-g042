@@ -96,7 +96,6 @@ public class ImportShip{
      *
      * @return 1 if the ship was not added or 0 if it was
      */
-    //ver com o francisco se esse método pode retornar um Ship pra adicionar na base de dados
     public int createShip(String[] shipArray) {
         try {
             //#################### Ship Location Conversion and Creation ####################

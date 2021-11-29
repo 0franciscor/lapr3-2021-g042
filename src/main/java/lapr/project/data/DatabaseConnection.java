@@ -41,4 +41,10 @@ public class DatabaseConnection {
         this.error = error;
     }
 
+    /**
+     * @return the last error message
+     */
+    public String getLastError(){
+        return error.getMessage();
+    }
 }

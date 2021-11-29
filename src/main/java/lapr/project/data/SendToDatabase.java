@@ -4,6 +4,7 @@ import lapr.project.controller.App;
 import lapr.project.model.*;
 
 import java.sql.*;
+import java.util.logging.Logger;
 
 /**
  * Francisco Redol <1201239@isep.ipp.pt>

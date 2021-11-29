@@ -1,6 +1,5 @@
-Create or Replace procedure us207CargoManifest(ano in Integer, mmsiCode in Varchar, totalCargoManifest out Integer, medContainer out Integer) as
-Begin
-Declare
+CREATE OR REPLACE PROCEDURE US207 (anoVer in Varchar, mmsiCode in Varchar, contadorReal out Integer, somaTotalContainer out Float)
+IS
     shipscode Ship.mmsicode%type;
     cargoscode Cargomanifestload.id%type;
     cmunload Integer;
@@ -11,22 +10,21 @@ Declare
     maximo Integer;
     ano Integer;
     contadorContainer Integer;
-    somaTotalContainer Integer :=0;
-    contadorReal Integer :=0;
 
 
     Cursor cargos IS
         Select id
         from cargomanifestload
-        Right outer join Ship
-        on(cargomanifestload.shipmmsicode= Ship.mmsicode)
-        where shipmmsicode=mmsicode;
+        where shipmmsicode=mmsiCode;
+BEGIN
+    contadorReal :=0;
+    somaTotalContainer:=0;
 
-    open cargos;
+   open cargos;
     LOOP
         fetch cargos INTO cargoscode;
         Exit When cargos%notfound;
-
+        dbms_output.put_line('cargo id: ' ||cargoscode);
         SELECT Count(CARGOMANIFESTUNLOAD.PHASESCARGOMANIFESTLOADID) INTO cmunload
                 FROM CARGOMANIFESTUNLOAD
                 inner join CARGOMANIFESTLOAD
@@ -35,24 +33,24 @@ Declare
 
                 dbms_output.put_line(cmunload);
 
-                SELECT COUNT(Etapa.cargomanifestloadid) INTO cmload
-                FROM Etapa
+                SELECT COUNT(Phases.cargomanifestloadid) INTO cmload
+                FROM Phases
                 inner join CARGOMANIFESTLOAD
-                on(CARGOMANIFESTLOAD.ID=Etapa.cargomanifestloadid)
-                Where Etapa.cargomanifestloadid = cargoscode;
+                on(CARGOMANIFESTLOAD.ID=Phases.cargomanifestloadid)
+                Where Phases.cargomanifestloadid = cargoscode;
 
                 dbms_output.put_line(cmload);
 
                 IF cmload= cmunload THEN
                     dbms_output.put_line('Cargo manifest terminado');
-                    Select MAX(etapa.id) INTO maximo
-                    from etapa
-                    where etapa.cargomanifestloadid= cargoscode;
+                    Select MAX(phases.id) INTO maximo
+                    from phases
+                    where phases.cargomanifestloadid= cargoscode;
 
                     dbms_output.put_line(maximo);
 
                     select realarrivaldate into realDate
-                    from etapa
+                    from phases
                     where id = maximo
                     AND cargomanifestloadid= cargoscode;
 
@@ -60,10 +58,10 @@ Declare
                     FROM DUAL;
 
                     select COunt(*) into summ
-                    from etapa
+                    from phases
                     where id= maximo
                     AND cargomanifestloadid=cargoscode
-                    AND ano = ano;
+                    AND ano = anoVer;
 
                     contadorReal := contadorReal + summ;
                     IF summ >0 THEN
@@ -82,7 +80,4 @@ Declare
         END LOOP;
         dbms_output.put_line('Cargo terminados: ' || contadorReal);
         dbms_output.put_line('Total contentores: ' || somaTotalContainer);
-        dbms_output.put_line('Media: '|| somaTotalContainer/contadorReal);
-
-
-End;
+END;

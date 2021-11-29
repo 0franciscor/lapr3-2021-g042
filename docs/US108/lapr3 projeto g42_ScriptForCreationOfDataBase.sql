@@ -32,7 +32,7 @@ longitude VARCHAR(255) NOT NULL,
 sog FLOAT NOT NULL,
 cog FLOAT NOT NULL, 
 heading VARCHAR(255) NOT NULL,
-position INTEGER NOT NULL,
+position VARCHAR(255) NOT NULL,
 transceiver VARCHAR(255) NOT NULL,
 
 CONSTRAINT pk_timeMessage PRIMARY KEY(baseDateTime,shipMmsiCode),

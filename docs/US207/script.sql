@@ -77,7 +77,7 @@ BEGIN
                     dbms_output.put_line('Cargo manifest nao terminado');
 
                 END IF;
-        END LOOP;
+    END LOOP;
         dbms_output.put_line('Cargo terminados: ' || contadorReal);
         dbms_output.put_line('Total contentores: ' || somaTotalContainer);
 END;

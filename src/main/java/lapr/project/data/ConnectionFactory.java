@@ -13,8 +13,7 @@ public class ConnectionFactory {
 
     private static ConnectionFactory instance = null;
 
-    private final List<DatabaseConnection> databaseConnectionList =
-            new ArrayList<>();
+    private final List<DatabaseConnection> databaseConnectionList = new ArrayList<>();
 
     private Integer connectionPoolRequest = 0;
 
@@ -55,12 +54,10 @@ public class ConnectionFactory {
             connectionPoolRequest = 1;
         }
         if (connectionPoolRequest > databaseConnectionList.size()) {
-            databaseConnection =
-                    new DatabaseConnection(url(), user(), password());
+            databaseConnection = new DatabaseConnection(url(), user(), password());
             databaseConnectionList.add(databaseConnection);
         } else {
-            databaseConnection =
-                    databaseConnectionList.get(connectionPoolRequest - 1);
+            databaseConnection = databaseConnectionList.get(connectionPoolRequest - 1);
         }
         return databaseConnection;
     }

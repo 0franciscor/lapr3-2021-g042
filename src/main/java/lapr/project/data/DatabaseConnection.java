@@ -4,16 +4,28 @@ import oracle.jdbc.pool.OracleDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
- * @author nunotcastro
+ * @author Francisco Redol <1201239@isep.ipp.pt>
  */
 public class DatabaseConnection {
+
+    /**
+     * The connection
+     */
     private Connection connection;
+
+    /**
+     * The last error registered
+     */
     private SQLException error;
 
+    /**
+     * @param url of the database
+     * @param username of the user
+     * @param password of the user
+     */
     public DatabaseConnection(String url, String username, String password) {
         try {
             OracleDataSource oracleDataSource = new OracleDataSource();
@@ -23,28 +35,32 @@ public class DatabaseConnection {
             connection = oracleDataSource.getConnection(username, password);
 
         } catch (SQLException e) {
-            Logger.getLogger(DatabaseConnection.class.getName())
-                    .log(Level.SEVERE, null, e);
-            System.err.format("SQL State: %s\n%s", e.getSQLState(),
-                    e.getMessage());
+            error = e;
+            System.out.println("Error when logging in the database.");
         }
     }
 
+    /**
+     * @return the connection
+     */
     public Connection getConnection() {
         if (connection == null) {
-            throw new RuntimeException("Connection does not exist");
+            System.out.println("Error when retrieving the database connection");
         }
         return connection;
     }
 
+    /**
+     * @param error that has been caught
+     */
     public void registerError(SQLException error) {
         this.error = error;
     }
 
     /**
-     * @return the last error message
+     * @return if the connection is null
      */
-    public String getLastError(){
-        return error.getMessage();
+    public boolean connectionWorking(){
+        return error == null;
     }
 }

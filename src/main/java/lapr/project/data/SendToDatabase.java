@@ -18,8 +18,8 @@ public class SendToDatabase implements Persistable {
     /**
      * Send to Database Connection
      */
-    public SendToDatabase(){
-        this.databaseConnection = App.getInstance().getDataBaseConnection();
+    public SendToDatabase() {
+        this.databaseConnection = App.getInstance().getDatabaseConnection();
     }
 
     //################################# Object fetching RELATED #####################################
@@ -28,31 +28,40 @@ public class SendToDatabase implements Persistable {
      * Method responsible for sending the Ship and its locations to the database
      */
     public void sendShipsAndLocationsToDatabase() {
+        if (databaseConnection.connectionWorking()) {
+            for (Object objectShip : App.getInstance().getCompany().getBstShip().inOrder()) {
+                Ship ship = (Ship) objectShip;
+                saveShip(databaseConnection, ship);
 
-        for (Object objectShip : App.getInstance().getCompany().getBstShip().inOrder()) {
-            Ship ship = (Ship) objectShip;
-            saveShip(databaseConnection, ship);
-
-            for (Object objectLocation : ship.getShipPosition().inOrder()) {
-                ShipLocation shipLocation = (ShipLocation) objectLocation;
-                savePosition(databaseConnection, shipLocation);
+                for (Object objectLocation : ship.getShipPosition().inOrder()) {
+                    ShipLocation shipLocation = (ShipLocation) objectLocation;
+                    savePosition(databaseConnection, shipLocation);
+                }
             }
-        }
+        } else
+            System.out.println("The connection is not operational. Ships and its locations' were not imported.");
     }
 
     /**
      * Method responsible for saving Ports, PlaceLocations and Countries to the database
      */
-    public void sendPortsToDatabase(){
-        //for(Object objectPort : App.getInstance().getCompany().getPortStr().getPorts2DTree().)
-        Ports port = new Ports(new Country("Europa","Portugal"), 325, "Porto de leixoes", new PlaceLocation(41.18322878077638, -8.703141533061505));
-        savePort(databaseConnection, port);
+    public void sendPortsToDatabase() {
+        if (databaseConnection.connectionWorking()) {
+            //for(Object objectPort : App.getInstance().getCompany().getPortStr().getPorts2DTree().)
+            Ports port = new Ports(new Country("Europa", "Portugal"), 325, "Porto de leixoes", new PlaceLocation(41.18322878077638, -8.703141533061505));
+            savePort(databaseConnection, port);
+
+        } else
+            System.out.println("The connection is not operational. Ports were not imported.");
     }
 
-    public void sendContainersToDatabase(){
-        Container container = new Container("748323899", 5033407, "justo", 2.4f, 1.5f, 181.7f, 118.5f, 89.9f, 1.1f, "#REPAIRRECOMMENDATION", "CERTIFICATE");
-        saveContainer(databaseConnection, container);
-        //saveContainer(databaseConnection, new Container());
+    public void sendContainersToDatabase() {
+        if(databaseConnection.connectionWorking()) {
+            Container container = new Container("748323899", 5033407, "justo", 2.4f, 1.5f, 181.7f, 118.5f, 89.9f, 1.1f, "#REPAIRRECOMMENDATION", "CERTIFICATE");
+            saveContainer(databaseConnection, container);
+
+        } else
+            System.out.println("The connection is not operational. Containers were not imported.");
     }
 
     //################################# SHIP RELATED #####################################

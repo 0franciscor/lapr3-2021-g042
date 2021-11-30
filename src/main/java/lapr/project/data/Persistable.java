@@ -35,12 +35,4 @@ public interface Persistable {
      * @param object the object that is going to be saved
      */
     void saveContainer(DatabaseConnection databaseConnection, Object object);
-
-    /**
-     * Save a Cargo Manifest to the database
-     *
-     * @param databaseConnection the database connection
-     * @param object the object that is going to be saved
-     */
-    void saveCargoManifest(DatabaseConnection databaseConnection, Object object);
 }

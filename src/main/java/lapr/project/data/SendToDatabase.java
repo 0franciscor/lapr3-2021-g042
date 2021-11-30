@@ -4,9 +4,10 @@ import lapr.project.controller.App;
 import lapr.project.model.*;
 
 import java.sql.*;
-import java.util.logging.Logger;
 
 /**
+ * Class Responsible for extracting the objects' data and sending it to the database. US111
+ *
  * Francisco Redol <1201239@isep.ipp.pt>
  */
 public class SendToDatabase implements Persistable {
@@ -56,8 +57,11 @@ public class SendToDatabase implements Persistable {
             System.out.println("The connection is not operational. Ports were not imported.");
     }
 
+    /**
+     * Method responsible for saving Containers to the database
+     */
     public void sendContainersToDatabase() {
-        if(databaseConnection.connectionWorking()) {
+        if (databaseConnection.connectionWorking()) {
             Container container = new Container("748323899", 5033407, "justo", 2.4f, 1.5f, 181.7f, 118.5f, 89.9f, 1.1f, "#REPAIRRECOMMENDATION", "CERTIFICATE");
             saveContainer(databaseConnection, container);
 
@@ -71,10 +75,10 @@ public class SendToDatabase implements Persistable {
      * Method responsible for saving an object to the database.
      *
      * @param databaseConnection to the database
-     * @param object that is going to be saved
+     * @param object             that is going to be saved
      */
     @Override
-    public void saveShip(DatabaseConnection databaseConnection, Object object){
+    public void saveShip(DatabaseConnection databaseConnection, Object object) {
         Ship ship = (Ship) object;
 
         try {
@@ -91,7 +95,7 @@ public class SendToDatabase implements Persistable {
      * is registered, it updates it. If it is not, it inserts a new one.
      *
      * @param databaseConnection to the database
-     * @param ship that is related to the database
+     * @param ship               that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void saveShipToDatabase(DatabaseConnection databaseConnection, Ship ship)
@@ -106,7 +110,7 @@ public class SendToDatabase implements Persistable {
      * Checks if a ship is registered on the Database by its ID.
      *
      * @param databaseConnection to the database
-     * @param ship that is related to the database
+     * @param ship               that is related to the database
      * @return True if the ship is registered, False if otherwise.
      * @throws SQLException in case an error with the database occurs
      */
@@ -139,7 +143,7 @@ public class SendToDatabase implements Persistable {
      * Updates an existing ship record on the database.
      *
      * @param databaseConnection to the database
-     * @param ship that is related to the database
+     * @param ship               that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void updateShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
@@ -154,13 +158,13 @@ public class SendToDatabase implements Persistable {
      * Adds a new ship record to the database.
      *
      * @param databaseConnection to the database
-     * @param ship that is related to the database
+     * @param ship               that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void insertShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
             throws SQLException {
         String sqlCommand =
-                "insert into ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo) values (" + ship.getMMSI() +", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "insert into ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo) values (" + ship.getMMSI() + ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         executeShipStatementOnDatabase(databaseConnection, ship, sqlCommand);
     }
@@ -169,7 +173,7 @@ public class SendToDatabase implements Persistable {
      * Executes the save Ship Statement.
      *
      * @param databaseConnection to the database
-     * @param ship that is related to the database
+     * @param ship               that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void executeShipStatementOnDatabase(DatabaseConnection databaseConnection, Ship ship, String sqlCommand)
@@ -190,9 +194,9 @@ public class SendToDatabase implements Persistable {
         saveShipPreparedStatement.setFloat(9, ship.getWidth());
         saveShipPreparedStatement.setString(10, ship.getCargo());
 
-        try{
+        try {
             saveShipPreparedStatement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There was an error when importing the Ship with the " + ship.getMMSI() + " MMSI code.");
             databaseConnection.registerError(e);
         } finally {
@@ -206,10 +210,10 @@ public class SendToDatabase implements Persistable {
      * Method responsible for saving an object to the database.
      *
      * @param databaseConnection to the database
-     * @param object that is going to be saved
+     * @param object             that is going to be saved
      */
     @Override
-    public void savePosition(DatabaseConnection databaseConnection, Object object){
+    public void savePosition(DatabaseConnection databaseConnection, Object object) {
         ShipLocation shipLocation = (ShipLocation) object;
 
         try {
@@ -226,7 +230,7 @@ public class SendToDatabase implements Persistable {
      * is registered, it updates it. If it is not, it inserts a new one.
      *
      * @param databaseConnection to the database
-     * @param shipLocation that contains the location of a ship
+     * @param shipLocation       that contains the location of a ship
      * @throws SQLException in case an error with the database occurs
      */
     private void savePositionToDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
@@ -241,7 +245,7 @@ public class SendToDatabase implements Persistable {
      * Method responsible for verifying if a certain Location exists on the database
      *
      * @param databaseConnection to the database
-     * @param shipLocation that is related to the database
+     * @param shipLocation       that is related to the database
      * @return if a location exists on the database
      * @throws SQLException in case an error with the database occurs
      */
@@ -274,7 +278,7 @@ public class SendToDatabase implements Persistable {
      * Updates an existing Position record on the database.
      *
      * @param databaseConnection to the database
-     * @param shipLocation that is related to the database
+     * @param shipLocation       that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void updatePositionOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
@@ -289,7 +293,7 @@ public class SendToDatabase implements Persistable {
      * Adds a new shipLocation record to the database.
      *
      * @param databaseConnection to the database
-     * @param shipLocation that is related to the database
+     * @param shipLocation       that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void insertPositionOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
@@ -302,9 +306,10 @@ public class SendToDatabase implements Persistable {
 
     /**
      * Executes the save ShipLocation Statement.
+     *
      * @param databaseConnection connection to the database
-     * @param shipLocation that is related to the database
-     * @param type of insert that is being made
+     * @param shipLocation       that is related to the database
+     * @param type               of insert that is being made
      * @throws SQLException in case an error with the database occurs
      */
     private void executeShipPositionStatementOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation, String sqlCommand, boolean type)
@@ -313,7 +318,7 @@ public class SendToDatabase implements Persistable {
         Connection connection = databaseConnection.getConnection();
         PreparedStatement getShipLocationPreparedStatement = connection.prepareStatement(sqlCommand);
 
-        if(type) {
+        if (type) {
             getShipLocationPreparedStatement.setString(1, shipLocation.getMMSI());
             getShipLocationPreparedStatement.setTimestamp(2, new Timestamp(shipLocation.getMessageTime().getTime()));
             getShipLocationPreparedStatement.setString(3, shipLocation.getLatitude());
@@ -337,10 +342,10 @@ public class SendToDatabase implements Persistable {
 
         try {
             getShipLocationPreparedStatement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There was an error related to the ShipLocation with the " + shipLocation.getMMSI() + " MMSI code.");
             databaseConnection.registerError(e);
-        }finally {
+        } finally {
             getShipLocationPreparedStatement.close();
         }
     }
@@ -351,10 +356,10 @@ public class SendToDatabase implements Persistable {
      * Method responsible for saving an object to the database.
      *
      * @param databaseConnection to the database
-     * @param object that is going to be saved
+     * @param object             that is going to be saved
      */
     @Override
-    public void savePort(DatabaseConnection databaseConnection, Object object){
+    public void savePort(DatabaseConnection databaseConnection, Object object) {
         Ports port = (Ports) object;
 
         try {
@@ -371,16 +376,16 @@ public class SendToDatabase implements Persistable {
      * is registered, it updates it. If it is not, it inserts a new one.
      *
      * @param databaseConnection to the database
-     * @param port that is related to the database
+     * @param port               that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void savePortToDatabase(DatabaseConnection databaseConnection, Ports port)
             throws SQLException {
 
-        if(!isCountryOnDatabase(databaseConnection, port))
+        if (!isCountryOnDatabase(databaseConnection, port))
             insertCountryOnDatabase(databaseConnection, port);
 
-        if(!isPlaceLocationOnDatabase(databaseConnection, port))
+        if (!isPlaceLocationOnDatabase(databaseConnection, port))
             insertPlaceLocationOnDatabase(databaseConnection, port);
 
         if (isPortOnDatabase(databaseConnection, port))
@@ -393,7 +398,7 @@ public class SendToDatabase implements Persistable {
      * Checks if a port is registered on the Database by its ID.
      *
      * @param databaseConnection to the database
-     * @param port that is related to the database
+     * @param port               that is related to the database
      * @return True if the ship is registered, False if otherwise.
      * @throws SQLException in case an error with the database occurs
      */
@@ -426,7 +431,7 @@ public class SendToDatabase implements Persistable {
      * Updates an existing port record on the database.
      *
      * @param databaseConnection to the database
-     * @param port that is related to the database
+     * @param port               that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void updatePortOnDatabase(DatabaseConnection databaseConnection, Ports port)
@@ -441,7 +446,7 @@ public class SendToDatabase implements Persistable {
      * Adds a new port record to the database.
      *
      * @param databaseConnection to the database
-     * @param port that is related to the database
+     * @param port               that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void insertPortOnDatabase(DatabaseConnection databaseConnection, Ports port)
@@ -456,7 +461,7 @@ public class SendToDatabase implements Persistable {
      * Executes the save Port Statement.
      *
      * @param databaseConnection to the database
-     * @param port that is related to the database
+     * @param port               that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void executePortStatementOnDatabase(DatabaseConnection databaseConnection, Ports port, String sqlCommand)
@@ -470,9 +475,9 @@ public class SendToDatabase implements Persistable {
         savePortPreparedStatement.setString(2, String.format("%.2f", port.getLatitude()));
         savePortPreparedStatement.setString(3, String.format("%.2f", port.getLongitude()));
 
-        try{
+        try {
             savePortPreparedStatement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There was an error when importing the Port with the " + port.getCode() + " code.");
             databaseConnection.registerError(e);
         } finally {
@@ -486,13 +491,12 @@ public class SendToDatabase implements Persistable {
      * Method that serves the purpose of verifying if a certain Place Location exists on the database.
      *
      * @param databaseConnection to the database
-     * @param port that contains the Place Location Data
+     * @param port               that contains the Place Location Data
      * @return if the Place Location is on the database
-     *
      * @throws SQLException in case an error with the database occurs
      */
     private boolean isPlaceLocationOnDatabase(DatabaseConnection databaseConnection, Ports port)
-            throws SQLException{
+            throws SQLException {
 
         Connection connection = databaseConnection.getConnection();
 
@@ -521,7 +525,7 @@ public class SendToDatabase implements Persistable {
      * Method responsible for inserting a certain Place Location on the database.
      *
      * @param databaseConnection to the database
-     * @param port that contains the Place Location Data
+     * @param port               that contains the Place Location Data
      * @throws SQLException in case an error with the database occurs
      */
     private void insertPlaceLocationOnDatabase(DatabaseConnection databaseConnection, Ports port)
@@ -536,8 +540,8 @@ public class SendToDatabase implements Persistable {
      * Method responsible for executing the PlaceLocationPreparedStatement
      *
      * @param databaseConnection to the database
-     * @param port that contains the Place Location Data
-     * @param sqlCommand that is going to be executed on the database
+     * @param port               that contains the Place Location Data
+     * @param sqlCommand         that is going to be executed on the database
      */
     private void executePlaceLocationStatementOnDatabase(DatabaseConnection databaseConnection, Ports port, String sqlCommand)
             throws SQLException {
@@ -550,9 +554,9 @@ public class SendToDatabase implements Persistable {
         savePlaceLocationPreparedStatement.setString(2, String.format("%.2f", port.getLatitude()));
         savePlaceLocationPreparedStatement.setString(3, String.format("%.2f", port.getLongitude()));
 
-        try{
+        try {
             savePlaceLocationPreparedStatement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There was an error when importing the PlaceLocation with " + port.getLatitude() + " latitude and " + port.getLongitude() + " longitude.");
             databaseConnection.registerError(e);
         } finally {
@@ -566,12 +570,12 @@ public class SendToDatabase implements Persistable {
      * Method that verifies if a certain country is on the database.
      *
      * @param databaseConnection to the database
-     * @param port that contains the Place Location Data
+     * @param port               that contains the Place Location Data
      * @return if the selected Country is on the database
      * @throws SQLException in case an error with the database occurs
      */
     private boolean isCountryOnDatabase(DatabaseConnection databaseConnection, Ports port)
-            throws SQLException{
+            throws SQLException {
 
         Connection connection = databaseConnection.getConnection();
 
@@ -598,24 +602,25 @@ public class SendToDatabase implements Persistable {
      * Method that inserts a certain Country on the database.
      *
      * @param databaseConnection to the database
-     * @param port that contains the Place Location Data
+     * @param port               that contains the Place Location Data
      * @throws SQLException in case an error with the database occurs
      */
     private void insertCountryOnDatabase(DatabaseConnection databaseConnection, Ports port)
-            throws SQLException{
+            throws SQLException {
 
         Connection connection = databaseConnection.getConnection();
 
-        String sqlCommand = "insert into Country (countryName) values (?)";
+        String sqlCommand = "insert into Country (countryName, continet) values (?, ?)";
 
         PreparedStatement saveCountryPreparedStatement = connection.prepareStatement(sqlCommand);
 
         saveCountryPreparedStatement.setString(1, port.getCountryName());
+        saveCountryPreparedStatement.setString(2, port.getContinent());
 
-        try{
+        try {
             saveCountryPreparedStatement.executeUpdate();
-        } catch (SQLException e){
-            System.out.println("There was an error when importing the Country with the " + port.getCountryName() + ".");
+        } catch (SQLException e) {
+            System.out.println("There was an error when importing the Country named" + port.getCountryName() + ".");
             databaseConnection.registerError(e);
         } finally {
             saveCountryPreparedStatement.close();
@@ -628,7 +633,7 @@ public class SendToDatabase implements Persistable {
      * Method responsible for invoking the methods which will verify if a certain Container exists, update it or insert it.
      *
      * @param databaseConnection the database connection
-     * @param object the object that is going to be saved
+     * @param object             the object that is going to be saved
      */
     @Override
     public void saveContainer(DatabaseConnection databaseConnection, Object object) {
@@ -647,7 +652,7 @@ public class SendToDatabase implements Persistable {
      * Method responsible for verifying if a certain container exists, updates it or inserts it.
      *
      * @param databaseConnection to the database
-     * @param container that is related to the database
+     * @param container          that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void saveContainerToDatabase(DatabaseConnection databaseConnection, Container container)
@@ -663,7 +668,7 @@ public class SendToDatabase implements Persistable {
      * Checks if a container is registered on the Database by its container.
      *
      * @param databaseConnection to the database
-     * @param container that is related to the database
+     * @param container          that is related to the database
      * @return True if the ship is registered, False if otherwise.
      * @throws SQLException in case an error with the database occurs
      */
@@ -696,13 +701,13 @@ public class SendToDatabase implements Persistable {
      * Updates an existing container record on the database.
      *
      * @param databaseConnection to the database
-     * @param container that is related to the database
+     * @param container          that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void updateContainerOnDatabase(DatabaseConnection databaseConnection, Container container)
             throws SQLException {
         String sqlCommand =
-                "update container set checkDigit = ?, isoCode = ?, maxWeight = ?, payload = ?, tare = ?, weight = ?, maxWeightPacked = ?, maxVolumePacked = ?, repairRecommendation = ?, certificate = ? where numberId = '" + container.getNumber() +"'";
+                "update container set checkDigit = ?, isoCode = ?, maxWeight = ?, payload = ?, tare = ?, weight = ?, maxWeightPacked = ?, maxVolumePacked = ?, repairRecommendation = ?, certificate = ? where numberId = '" + container.getNumber() + "'";
 
         executeContainerStatementOnDatabase(databaseConnection, container, sqlCommand);
     }
@@ -711,13 +716,13 @@ public class SendToDatabase implements Persistable {
      * Adds a new container record to the database.
      *
      * @param databaseConnection to the database
-     * @param container that is related to the database
+     * @param container          that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void insertContainerOnDatabase(DatabaseConnection databaseConnection, Container container)
             throws SQLException {
         String sqlCommand =
-                "insert into container(numberId, checkDigit, isoCode, maxWeight, payload, tare, weight, maxWeightPacked, maxVolumePacked, repairRecommendation, certificate) values ('" + container.getNumber() +"', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "insert into container(numberId, checkDigit, isoCode, maxWeight, payload, tare, weight, maxWeightPacked, maxVolumePacked, repairRecommendation, certificate) values ('" + container.getNumber() + "', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         executeContainerStatementOnDatabase(databaseConnection, container, sqlCommand);
     }
@@ -726,7 +731,7 @@ public class SendToDatabase implements Persistable {
      * Executes the save Container Statement.
      *
      * @param databaseConnection to the database
-     * @param container that is related to the database
+     * @param container          that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
     private void executeContainerStatementOnDatabase(DatabaseConnection databaseConnection, Container container, String sqlCommand)
@@ -736,20 +741,20 @@ public class SendToDatabase implements Persistable {
 
         PreparedStatement saveContainerPreparedStatement = connection.prepareStatement(sqlCommand);
 
-        saveContainerPreparedStatement.setInt(1,container.getCheckDigit());
+        saveContainerPreparedStatement.setInt(1, container.getCheckDigit());
         saveContainerPreparedStatement.setString(2, container.getIsoCode());
         saveContainerPreparedStatement.setFloat(3, container.getMaximumWeight());
         saveContainerPreparedStatement.setFloat(4, container.getPayload());
         saveContainerPreparedStatement.setFloat(5, container.getTare());
-        saveContainerPreparedStatement.setFloat(6,container.getWeight());
-        saveContainerPreparedStatement.setFloat(7,container.getMaxWeightPacked());
+        saveContainerPreparedStatement.setFloat(6, container.getWeight());
+        saveContainerPreparedStatement.setFloat(7, container.getMaxWeightPacked());
         saveContainerPreparedStatement.setFloat(8, container.getMaxVolumePacked());
         saveContainerPreparedStatement.setString(9, container.getRepairRecommendation());
-        saveContainerPreparedStatement.setString(10,container.getCertificate());
+        saveContainerPreparedStatement.setString(10, container.getCertificate());
 
-        try{
+        try {
             saveContainerPreparedStatement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There was an error related to the container with the " + container.getNumber() + " code.");
             databaseConnection.registerError(e);
         } finally {
@@ -757,137 +762,4 @@ public class SendToDatabase implements Persistable {
         }
     }
 
-    //####################################### Cargo Manifest Related #################################
-
-    /**
-     * Method responsible for invoking the methods which will verify if a certain Cargo Manifest exists, update it or insert it.
-     *
-     * @param databaseConnection the database connection
-     * @param object the object that is going to be saved
-     */
-    public void saveCargoManifest(DatabaseConnection databaseConnection, Object object){
-//        CargoManifest cargoManifest = (CargoManifest) object;
-//
-//        try {
-//            saveCargoManifestToDatabase(databaseConnection, cargoManifest);
-//
-//        } catch (SQLException ex) {
-//            System.out.println("There was an error when importing a Cargo Manifest to the database.");
-//            databaseConnection.registerError(ex);
-//        }
-    }
-//
-//    /**
-//     * Method responsible for verifying if a certain Cargo Manifest exists, updates it or inserts it.
-//     *
-//     * @param databaseConnection to the database
-//     * @param cargoManifest that is related to the database
-//     * @throws SQLException in case an error with the database occurs
-//     */
-//    private void saveCargoManifestToDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest)
-//            throws SQLException {
-//
-//        if (isCargoManifestOnDatabase(databaseConnection, cargoManifest))
-//            updateCargoManifestOnDatabase(databaseConnection, cargoManifest);
-//        else
-//            insertCargoManifestOnDatabase(databaseConnection, cargoManifest);
-//    }
-//
-//    /**
-//     * Checks if a Cargo Manifest is registered on the Database by its MMSI.
-//     *
-//     * @param databaseConnection to the database
-//     * @param cargoManifest that is related to the database
-//     * @return True if the Cargo Manifest is registered, False if otherwise.
-//     * @throws SQLException in case an error with the database occurs
-//     */
-//    private boolean isCargoManifestOnDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest)
-//            throws SQLException {
-//
-//        Connection connection = databaseConnection.getConnection();
-//
-//        boolean isContainerOnDatabase;
-//
-//        String sqlCommand = "select * from Container where numberId = ?";
-//
-//        PreparedStatement getContainerPreparedStatement =
-//                connection.prepareStatement(sqlCommand);
-//
-//        getContainerPreparedStatement.setInt(1, Integer.parseInt(container.getNumber()));
-//
-//        try (ResultSet containerResultSet = getContainerPreparedStatement.executeQuery()) {
-//
-//            isContainerOnDatabase = containerResultSet.next();
-//            containerResultSet.close();
-//
-//        } finally {
-//            getContainerPreparedStatement.close();
-//        }
-//        return isContainerOnDatabase;
-//    }
-//
-//    /**
-//     * Updates an existing container record on the database.
-//     *
-//     * @param databaseConnection to the database
-//     * @param cargoManifest that is related to the database
-//     * @throws SQLException in case an error with the database occurs
-//     */
-//    private void updateCargoManifestOnDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest)
-//            throws SQLException {
-//        String sqlCommand =
-//                "update container set checkDigit = ?, isoCode = ?, maxWeight = ?, payload = ?, tare = ?, weight = ?, maxWeightPacked = ?, maxVolumePacked = ?, repairRecommendation = ?, certificate = ? where numberId = '" + container.getNumber() +"'";
-//
-//        executeContainerStatementOnDatabase(databaseConnection, container, sqlCommand);
-//    }
-//
-//    /**
-//     * Adds a new Cargo Manifest record to the database.
-//     *
-//     * @param databaseConnection to the database
-//     * @param cargoManifest that is related to the database
-//     * @throws SQLException in case an error with the database occurs
-//     */
-//    private void insertCargoManifestOnDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest)
-//            throws SQLException {
-//        String sqlCommand =
-//                "insert into container(numberId, checkDigit, isoCode, maxWeight, payload, tare, weight, maxWeightPacked, maxVolumePacked, repairRecommendation, certificate) values ('" + container.getNumber() +"', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//
-//        executeContainerStatementOnDatabase(databaseConnection, container, sqlCommand);
-//    }
-//
-//    /**
-//     * Executes the save Cargo Manifest Statement.
-//     *
-//     * @param databaseConnection to the database
-//     * @param cargoManifest that is related to the database
-//     * @throws SQLException in case an error with the database occurs
-//     */
-//    private void executeCargoManifestStatementOnDatabase(DatabaseConnection databaseConnection, CargoManifest cargoManifest, String sqlCommand)
-//            throws SQLException {
-//
-//        Connection connection = databaseConnection.getConnection();
-//
-//        PreparedStatement saveContainerPreparedStatement = connection.prepareStatement(sqlCommand);
-//
-//        saveContainerPreparedStatement.setInt(1,container.getCheckDigit());
-//        saveContainerPreparedStatement.setString(2, container.getIsoCode());
-//        saveContainerPreparedStatement.setFloat(3, container.getMaximumWeight());
-//        saveContainerPreparedStatement.setFloat(4, container.getPayload());
-//        saveContainerPreparedStatement.setFloat(5, container.getTare());
-//        saveContainerPreparedStatement.setFloat(6,container.getWeight());
-//        saveContainerPreparedStatement.setFloat(7,container.getMaxWeightPacked());
-//        saveContainerPreparedStatement.setFloat(8, container.getMaxVolumePacked());
-//        saveContainerPreparedStatement.setString(9, container.getRepairRecommendation());
-//        saveContainerPreparedStatement.setString(10,container.getCertificate());
-//
-//        try{
-//            saveContainerPreparedStatement.executeUpdate();
-//        } catch (SQLException e){
-//            System.out.println("There was an error related to the container with the " + container.getNumber() + " code.");
-//            databaseConnection.registerError(e);
-//        } finally {
-//            saveContainerPreparedStatement.close();
-//        }
-//    }
 }

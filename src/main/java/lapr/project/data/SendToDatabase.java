@@ -22,6 +22,8 @@ public class SendToDatabase implements Persistable {
      */
     public SendToDatabase() {
         this.databaseConnection = App.getInstance().getDatabaseConnection();
+        if(!databaseConnection.connectionWorking())
+            databaseConnection = null;
     }
 
     //################################# Object fetching RELATED #####################################
@@ -30,7 +32,7 @@ public class SendToDatabase implements Persistable {
      * Method responsible for sending the Ship and its locations to the database
      */
     public void sendShipsAndLocationsToDatabase() {
-        if (databaseConnection.connectionWorking()) {
+        if (databaseConnection != null) {
             for (Object objectShip : App.getInstance().getCompany().getBstShip().inOrder()) {
                 Ship ship = (Ship) objectShip;
                 saveShip(databaseConnection, ship);
@@ -48,7 +50,7 @@ public class SendToDatabase implements Persistable {
      * Method responsible for saving Ports, PlaceLocations and Countries to the database
      */
     public void sendPortsToDatabase() {
-        if (databaseConnection.connectionWorking()) {
+        if (databaseConnection != null) {
             //for(Object objectPort : App.getInstance().getCompany().getPortStr().getPorts2DTree().)
             Ports port = new Ports(new Country("Europa", "Portugal"), 325, "Porto de leixoes", new PlaceLocation(41.18322878077638, -8.703141533061505));
             savePort(databaseConnection, port);
@@ -61,7 +63,7 @@ public class SendToDatabase implements Persistable {
      * Method responsible for saving Containers to the database
      */
     public void sendContainersToDatabase() {
-        if (databaseConnection.connectionWorking()) {
+        if (databaseConnection != null) {
             Container container = new Container("748323899", 5033407, "justo", 2.4f, 1.5f, 181.7f, 118.5f, 89.9f, 1.1f, "#REPAIRRECOMMENDATION", "CERTIFICATE");
             saveContainer(databaseConnection, container);
 
@@ -610,7 +612,7 @@ public class SendToDatabase implements Persistable {
 
         Connection connection = databaseConnection.getConnection();
 
-        String sqlCommand = "insert into Country (countryName, continet) values (?, ?)";
+        String sqlCommand = "insert into Country (countryName, continent) values (?, ?)";
 
         PreparedStatement saveCountryPreparedStatement = connection.prepareStatement(sqlCommand);
 

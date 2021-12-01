@@ -150,7 +150,7 @@ public class SendToDatabase implements Persistable {
     private void updateShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
             throws SQLException {
         String sqlCommand =
-                "update ship set imoCode = ?, numberOfEnergyGenerators = ?, generatorOutput = ?, callSign = ?, draft = ?, shipName = ?, vesselTypeId = ?, shipLength = ?, width = ?, cargo = ? where mmsiCode = " + ship.getMMSI();
+                "update ship set imoCode = ?, numberEnergyGenerators = ?, generatorOutput = ?, callSign = ?, draft = ?, shipName = ?, vesselTypeId = ?, shipLength = ?, width = ?, cargo = ? where mmsiCode = " + ship.getMMSI();
 
         executeShipStatementOnDatabase(databaseConnection, ship, sqlCommand);
     }
@@ -165,7 +165,7 @@ public class SendToDatabase implements Persistable {
     private void insertShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
             throws SQLException {
         String sqlCommand =
-                "insert into ship(mmsiCode, imoCode, numberOfEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo) values (" + ship.getMMSI() + ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "insert into ship(mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo) values (" + ship.getMMSI() + ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         executeShipStatementOnDatabase(databaseConnection, ship, sqlCommand);
     }
@@ -410,7 +410,7 @@ public class SendToDatabase implements Persistable {
 
         boolean isPortOnDatabase;
 
-        String sqlCommand = "select * from port where id = ?";
+        String sqlCommand = "select * from ports where id = ?";
 
         PreparedStatement getPortsPreparedStatement =
                 connection.prepareStatement(sqlCommand);
@@ -438,7 +438,7 @@ public class SendToDatabase implements Persistable {
     private void updatePortOnDatabase(DatabaseConnection databaseConnection, Ports port)
             throws SQLException {
         String sqlCommand =
-                "update port set name = ?, placeLocationLatitude = ?, placeLocationLongitude = ? where id = " + port.getCode();
+                "update ports set name = ?, placeLocationLatitude = ?, placeLocationLongitude = ? where id = " + port.getCode();
 
         executePortStatementOnDatabase(databaseConnection, port, sqlCommand);
     }
@@ -453,7 +453,7 @@ public class SendToDatabase implements Persistable {
     private void insertPortOnDatabase(DatabaseConnection databaseConnection, Ports port)
             throws SQLException {
         String sqlCommand =
-                "insert into port(id, name, placeLocationLatitude, placeLocationLongitude) values (" + port.getCode() + ", ?, ?, ?)";
+                "insert into ports(id, name, placeLocationLatitude, placeLocationLongitude) values (" + port.getCode() + ", ?, ?, ?)";
 
         executePortStatementOnDatabase(databaseConnection, port, sqlCommand);
     }

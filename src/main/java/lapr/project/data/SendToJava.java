@@ -124,7 +124,7 @@ public class SendToJava {
 
         boolean isPortOnDatabase;
 
-        String sqlCommand = "select * from port";
+        String sqlCommand = "select * from ports";
 
         PreparedStatement getPortsPreparedStatement =
                 connection.prepareStatement(sqlCommand);

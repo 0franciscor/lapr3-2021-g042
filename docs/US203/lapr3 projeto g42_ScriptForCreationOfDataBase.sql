@@ -18,7 +18,7 @@ DROP TABLE Warehouse_Truck CASCADE CONSTRAINTS PURGE;
 CREATE TABLE Ship(
 mmsiCode VARCHAR(9),
 imoCode VARCHAR(10) NOT NULL UNIQUE,
-numberOfEnergyGenerators INTEGER,
+numberEnergyGenerators INTEGER,
 generatorOutput float(10),
 callSign VARCHAR(255) NOT NULL UNIQUE,
 draft FLOAT NOT NULL,
@@ -81,7 +81,7 @@ CONSTRAINT pk_PlaceLocation PRIMARY KEY(latitude, longitude),
 CONSTRAINT fk_PlaceLocation_Country FOREIGN KEY(countryName)references Country(countryName)
 
 );
-CREATE TABLE Port(
+CREATE TABLE Ports(
 id INTEGER,
 name VARCHAR(255) NOT NULL,
 placeLocationLatitude VARCHAR(255),
@@ -140,7 +140,7 @@ CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId,
 );
 
 
-CREATE TABLE CargoManifestContainer(
+CREATE TABLE CargoManifest_Container(
 containerNumberId INTEGER,
 cargoManifestId INTEGER,
 completedPhase INTEGER,

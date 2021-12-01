@@ -51,9 +51,8 @@ public class SendToDatabase implements Persistable {
      */
     public void sendPortsToDatabase() {
         if (databaseConnection != null) {
-            //for(Object objectPort : App.getInstance().getCompany().getPortStr().getPorts2DTree().)
-            Ports port = new Ports(new Country("Europa", "Portugal"), 325, "Porto de leixoes", new PlaceLocation(41.18322878077638, -8.703141533061505));
-            savePort(databaseConnection, port);
+            for(Ports port : App.getInstance().getCompany().getPortStr().getPortsLst())
+                savePort(databaseConnection, port);
 
         } else
             System.out.println("The connection is not operational. Ports were not imported.");

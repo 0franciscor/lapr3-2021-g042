@@ -46,6 +46,14 @@ public class PortStore {
         return new Ports(country,code,portName,coordinates);
     }
 
+    /**
+     * Returns the list of existing ports.
+     *
+     * @return the list of ports stored in the store.
+     */
+    public List<Ports> getPortsLst() {
+        return portsLst;
+    }
 
     public boolean savePort(Ports p) {
         if(!portsLst.contains(p)){

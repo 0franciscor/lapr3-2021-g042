@@ -4,7 +4,6 @@
 
 ![Macchiatto js](docs/Report_aux/Logo.jpg)
 
-
 -----------------------------
 
 #### Team Macchiato js _ Class DE:
@@ -14,7 +13,6 @@
 * 1201386 _ Rita Ariana Sobral
 
 #### Teachers/Advisors:
-
 * Nuno Bettencourt (NMB)
 * José Marinho (JSM)
 * António Silva Pereira (AMP)
@@ -22,11 +20,9 @@
 * Carlos Augusto Ramos (CAR)
 
 #### Client:
-
 * Nuno Bettencourt (NMB)
 
 #### Course Unit:
-
 * Laboratório/Projeto LAPR3
 
 -----------------------------
@@ -34,60 +30,31 @@
 
 This document is divided in different categories, being them:
 
-1. Software Engineering
-   1. Use Case Diagram
-   2. Domain Model
-   3. Class Diagram (CD) for the whole project.
-   For each US:
-      1. Requirements Engineering:
-         1. System Sequence Diagram (SSD).
-      2. Engineering Analysis:
-         1. Domain Model.
-      3. Engineering Design
-         1. Class Diagram (CD)
-         2. Sequence Diagram (SD)
-2. Report
+1. Report
    1. Problem Statement
    2. Project Division Organization
    3. Solution
-      1. Decision Making
-   4. Coverage
+   4. Software Engineering
+      1. Use Case Diagram
+      2. Domain Model
+      3. Class Diagram (CD) for the whole project.
+      4. For each US:
+         1. Requirements Engineering:
+            1. System Sequence Diagram (SSD).
+         2. Engineering Analysis:
+            1. Domain Model.
+         3. Engineering Design
+            1. Class Diagram (CD)
+            2. Sequence Diagram (SD)
+      5. Decision Making
+      6. Complexity Analysis
+   5. Coverage
       1. Project Coverage
       2. Pit Test Coverage Report
-   5. Team Performance
-3. README
+   6. Team Performance
+2. README
 
--------------
-
-# Software Engineering
-
-## Use case Diagram
-![UC_Diagram](docs/UCD.svg)
-
-## Domain Model (whole project)
-![DM_Global](docs/DM.svg)
-
-## Class Diagram (CD) for the whole project.
-![CD_Global](docs/CD.svg)
-
-##[US101](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US101/US101.md)
-
-##[US102](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US102/US102.md)
-
-##[US103](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US103/US103.md)
-
-##[US104](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US104/US104.md)
-
-##[US105](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US105/US105.md)
-
-##[US106](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US106/US106.md)
-
-##[US107](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US107/US107.md)
-
-
-
-
-----------------------
+-----------------------------
 
 # Report
 
@@ -145,6 +112,29 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 * Implementation, where code and test code were implemented.
 * Review, where it was possible to review the entire implementation.
 
+## Software 
+
+[Use Case Diagram](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/UCD.svg)
+
+[Domain Model](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/DM.svg)
+
+[Class Diagram](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/CD.svg)
+
+
+
+[US101](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US101/US101.md)
+
+[US102](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US102/US102.md)
+
+[US103](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US103/US103.md)
+
+[US104](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US104/US104.md)
+
+[US105](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US105/US105.md)
+
+[US106](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US106/US106.md)
+
+[US107](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US107/US107.md)
 
 
 #### Ship
@@ -200,7 +190,7 @@ If the value equals "511", it is set as "not available" and if the passes all co
 
 
 ## Pit Test Coverage Report
-![PitTestCoverage](report/pitTestCoverage.png)
+![PitTestCoverage](docs/Report_aux/pitTestCoverage.jpg)
 
 ## Team Performance
 The group agrees that all members of the group contributed equally to the project, althought some focused more on other parts given the division of the project.

@@ -75,15 +75,14 @@ public class ShipLocation implements Comparable<ShipLocation>{
      */
     public ShipLocation(String MMSI, Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String position, String transceiverClass){
         setMMSI(MMSI);
-        this.messageTime = messageTime;
+        setMessageTime(messageTime);
         setLatitude(latitude);
         setLongitude(longitude);
         setSOG(SOG);
         setCOG(COG);
         setHeading(heading);
-        this.position = position;
-        this.transceiverClass = transceiverClass;
-
+        setPosition(position);
+        setTransceiverClass(transceiverClass);
     }
 
     /**
@@ -100,14 +99,14 @@ public class ShipLocation implements Comparable<ShipLocation>{
      */
     public ShipLocation(String MMSI, Date messageTime, String latitude, String longitude, float SOG, float COG, String heading, String transceiverClass){
         setMMSI(MMSI);
-        this.messageTime = messageTime;
+        setMessageTime(messageTime);
         setLatitude(latitude);
         setLongitude(longitude);
         setSOG(SOG);
         setCOG(COG);
         setHeading(heading);
         this.position = "not defined";
-        this.transceiverClass = transceiverClass;
+        setTransceiverClass(transceiverClass);
     }
 
     /**
@@ -123,8 +122,9 @@ public class ShipLocation implements Comparable<ShipLocation>{
     }
 
     /**
+     * Sets the Ship's date.
      *
-     * @param date
+     * @param date that is going to be inserted.
      */
     public void setMessageTime(Date date){
         this.messageTime = date;
@@ -139,7 +139,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
         if(latitude == null || latitude.isEmpty())
             throw new IllegalArgumentException("Invalid Latitude.");
 
-        if(latitude.equals("91"))
+        if(latitude.equals("91") || latitude.equals("not available"))
             this.latitude = "not available";
         else if(Float.parseFloat(latitude) < -90 || Float.parseFloat(latitude)  > 90)
             throw new IllegalArgumentException("Invalid Latitude.");
@@ -156,7 +156,7 @@ public class ShipLocation implements Comparable<ShipLocation>{
         if(longitude == null || longitude.isEmpty())
             throw new IllegalArgumentException("Invalid Longitude.");
 
-        if(longitude.equals("181"))
+        if(longitude.equals("181") || longitude.equals("not available"))
             this.longitude = "not available";
         else if(Float.parseFloat(longitude) < -180 || Float.parseFloat(longitude)  > 180)
             throw new IllegalArgumentException("Invalid Longitude.");
@@ -199,12 +199,31 @@ public class ShipLocation implements Comparable<ShipLocation>{
         if(heading == null || heading.isEmpty())
             throw new IllegalArgumentException("Invalid Heading.");
 
-        if(heading.equals("511"))
+        if(heading.equals("511") || heading.equals("not available"))
             this.heading = "not available";
         else if(Integer.parseInt(heading) < 0 || Integer.parseInt(heading) > 359)
             throw new IllegalArgumentException("Invalid Heading.");
         else
             this.heading = heading;
+    }
+
+
+    /**
+     * The Ship Location's Position
+     *
+     * @param position of the Ship Location
+     */
+    public void setPosition(String position){
+        this.position = position;
+    }
+
+    /**
+     * The Ship Location's Transceiver Class
+     *
+     * @param transceiverClass of the Ship Location
+     */
+    public void setTransceiverClass(String transceiverClass){
+        this.transceiverClass = transceiverClass;
     }
 
     /**

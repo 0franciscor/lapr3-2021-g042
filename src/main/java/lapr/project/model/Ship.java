@@ -76,7 +76,9 @@ public class Ship implements Comparable<Ship> {
     /**
      * Empty Constructor
      */
-    public Ship(){}
+    public Ship(){
+        shipLocationBST = new ShipLocationAVL();
+    }
 
     /**
      * Ship Constructor
@@ -103,7 +105,7 @@ public class Ship implements Comparable<Ship> {
         setGeneratorOutput(generatorOutput);
         setCallSign(callSign);
         setCargo(cargo);
-        this.vesselType = vesselType;
+        setVesselType(vesselType);
         setLength(length);
         setWidth(width);
         setDraft(draft);
@@ -136,7 +138,7 @@ public class Ship implements Comparable<Ship> {
         setGeneratorOutput(generatorOutput);
         setCallSign(callSign);
         setCargo(cargo);
-        this.vesselType = vesselType;
+        setVesselType(vesselType);
         setLength(length);
         setWidth(width);
         setDraft(draft);
@@ -259,6 +261,15 @@ public class Ship implements Comparable<Ship> {
             throw new IllegalArgumentException("A ship cannot have a draft lower than 0. Otherwise, you will end up with a submarine.\n:)");
         else
             this.draft = draft;
+    }
+
+    /**
+     * Sets the Ship's vessel type
+     *
+     * @param vesselType ship's vessel type
+     */
+    public void setVesselType(int vesselType){
+        this.vesselType = vesselType;
     }
 
     /**

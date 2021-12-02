@@ -135,7 +135,7 @@ portId INTEGER NOT NULL,
 PhasesCargoManifestLoadId INTEGER NOT NULL,
 
 CONSTRAINT pk_CargoManifestUnload PRIMARY KEY (Id),
-CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId, phasesId) references Phases(cargoManifestLoadId, id),
+CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId, phasesId) references Phases(cargoManifestLoadId, id)
 );
 
 

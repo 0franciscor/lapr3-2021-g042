@@ -1,7 +1,7 @@
 DROP TABLE Ship CASCADE CONSTRAINTS PURGE;
 DROP TABLE ShipPosition CASCADE CONSTRAINTS PURGE;
 DROP TABLE Container CASCADE CONSTRAINTS PURGE;
-DROP TABLE Port CASCADE CONSTRAINTS PURGE;
+DROP TABLE Ports CASCADE CONSTRAINTS PURGE;
 DROP TABLE PlaceLocation CASCADE CONSTRAINTS PURGE;
 DROP TABLE Country CASCADE CONSTRAINTS PURGE;
 DROP TABLE Ship_Port CASCADE CONSTRAINTS PURGE;
@@ -11,8 +11,6 @@ DROP TABLE CargoManifestUnload CASCADE CONSTRAINTS PURGE;
 DROP TABLE CargoManifestContainer CASCADE CONSTRAINTS PURGE;
 DROP TABLE Warehouse CASCADE CONSTRAINTS PURGE;
 DROP TABLE Warehouse_Truck CASCADE CONSTRAINTS PURGE;
-
-
 
 
 CREATE TABLE Ship(
@@ -98,7 +96,7 @@ portId INTEGER,
 shipMmsiCode VARCHAR(255),
 
 CONSTRAINT pk_ShipPort PRIMARY KEY (portId, shipMmsiCode),
-CONSTRAINT fk_Port FOREIGN KEY (portId) references Port(id),
+CONSTRAINT fk_Port FOREIGN KEY (portId) references Ports(id),
 CONSTRAINT fk_Ship FOREIGN KEY (shipMmsiCode) references Ship(mmsiCode)
 
 );
@@ -112,7 +110,7 @@ isConcluded INTEGER,
 
 CONSTRAINT pk_CargoManifestLoad PRIMARY KEY (id),
 CONSTRAINT fk_CargoManifestLoad_Ship FOREIGN KEY (shipMmsiCode) references Ship(mmsiCode),
-CONSTRAINT fk_CargoManifestLoad_Port FOREIGN KEY (portId) references Port(id)
+CONSTRAINT fk_CargoManifestLoad_Port FOREIGN KEY (portId) references Ports(id)
 );
 
 CREATE TABLE Phases(
@@ -140,7 +138,7 @@ CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId,
 );
 
 
-CREATE TABLE CargoManifest_Container(
+CREATE TABLE CargoManifestContainer(
 containerNumberId INTEGER,
 cargoManifestId INTEGER,
 completedPhase INTEGER,
@@ -174,6 +172,3 @@ warehouseId INTEGER,
 CONSTRAINT pk_WarehouseTruck PRIMARY KEY (warehouseId),
 CONSTRAINT fk_WarehouseTruck_Warehouse FOREIGN KEY (warehouseId) references Warehouse(id)
 );
-
-
-

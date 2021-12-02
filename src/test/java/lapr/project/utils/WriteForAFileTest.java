@@ -15,28 +15,28 @@ class WriteForAFileTest {
     @Test
     void writeForAFile() throws IOException {
         writeForAFile = new WriteForAFile();
-        File file = new File("Summaries");
+        File file = new File(".\\outputs\\Summaries");
         assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640",file));
     }
 
     @Test
     void WriteForAFileTestingAppending() throws IOException {
         writeForAFile = new WriteForAFile();
-        File file = new File("Summaries");
+        File file = new File(".\\outputs\\Summaries");
         assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640", file));
     }
 
     @Test
     void WriteForAFilePassingANullStringByReference() throws IOException {
         writeForAFile = new WriteForAFile();
-        File file = new File("Summaries");
+        File file = new File(".\\outputs\\Summaries");
         assertFalse(writeForAFile.writeForAFile(null, "Summary_211331640", file));
     }
 
     @Test
     void WriteForAFileThatExist() throws IOException {
         writeForAFile = new WriteForAFile();
-        File file = new File("Summaries");
+        File file = new File(".\\outputs\\Summaries");
         writeForAFile.writeForAFile(null, "Summary_211331640", file);
         assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640",file));
     }

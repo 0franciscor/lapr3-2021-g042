@@ -36,7 +36,7 @@ public class US209 {
 
         this.occupancyRate = statement.getFloat(2);
 
-        writeForAFile.writeForAFile(toString(), "US209_" + cargoManifestId, new File("target\\generated-sources\\annotations\\US209"));
+        writeForAFile.writeForAFile(toString(), "US209_" + cargoManifestId, new File(".\\outputs\\US209"));
         statement.close();
         databaseConnection.close();
     }

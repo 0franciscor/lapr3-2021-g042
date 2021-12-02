@@ -35,7 +35,7 @@ public class US208 {
 
         this.ratio = statement.getFloat(2);
 
-        writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File("target\\generated-sources\\annotations\\US208"));
+        writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
         statement.close();
         databaseConnection.close();
     }

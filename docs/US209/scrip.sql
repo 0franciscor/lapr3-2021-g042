@@ -1,47 +1,58 @@
-CREATE OR REPLACE PROCEDURE US208 (idCargoManifest in INTEGER, actualDate in DATE, occupancyRate out FLOAT) IS
+CREATE OR REPLACE PROCEDURE US209 (mmsiCodeShip in VARCHAR(255), actualDate in DATE, occupancyRate out FLOAT) IS
 
     totalContainers INTEGER;
-    shipMmsiCode VARCHAR(255);
     capacityShip FLOAT;
-    idOfPhase CargoManifestContainer.phasesId%type;
+    cargoManifestsId CargoManifestLoad.Id%type;
     date1 DATE;
     cont INTEGER;
+    flag BOOLEAN;
 
-    CURSOR cmContainer
-    SELECT phasesId
-    FROM CargoManifestContainer
-    WHERE cargoManifestLoadId = idCargoManifest;
+    CURSOR cargoManifests
+    SELECT id
+    FROM CargoManifestLoad
+    WHERE shipMmsiCode = mmsiCodeShip;
 
 BEGIN
 
     occupancyRate:=0;
     totalContainers:=0;
-    OPEN cmContainer;
+    OPEN cargoManifests;
 
     LOOP
-        FETCH cmContainer INTO idOfPhase;
-        EXIT WHEN cmContainer%NOTFOUND;
+        FETCH cargoManifests INTO cargoManifestsId;
+        EXIT WHEN cargoManifests%NOTFOUND;
 
-        SELECT realDepartureDate INTO date1
+        SELECT COUNT (*) INTO contPhases
+
+
+        FOR phasesInCargoManifest IN
+        (SELECT Phases.id
         FROM Phases
-        WHERE Phases.id = idOfPhase;
+        WHERE Phases.cargoManifestLoadId = cargoManifestsId)
+        LOOP
+            SELECT realDepartureDate, realArrivalDate, id INTO date1, date2, idOfPhase
+            FROM Phases
+            WHERE Phases.id = phasesInCargoManifest.id
+            AND cargoManifestLoadId = cargoManifestsId;
 
-        SELECT realArrivalDate INTO date2
-        FROM Phases
-        WHERE Phases.id = idOfPhase;
+            IF (date1 < actualDate AND date2 > actualDate) THEN
+                SELECT COUNT (*) INTO totalContainers
+                FROM CargoManifestContainer
+                WHERE phasesId = idOfPhase
+                AND cargoManifestLoadId = cargoManifestsId;
+                flag := true;
+                EXIT;
+            END IF;
+        END LOOP;
 
-        IF (date1 < actualDate AND date2 = NULL) THEN
-            totalContainers := totalContainers + 1;
+        IF flag = true THEN
+        EXIT;
         END IF;
     END LOOP;
 
-    SELECT shipMmsiCode INTO shipMmsiCode
-    FROM CargoManifestLoad
-    WHERE CargoManifestLoad.id = idCargoManifest;
-
     SELECT capacity INTO capacityShip
     FROM Ship
-    WHERE Ship.mmsiCode = shipMmsiCode;
+    WHERE Ship.mmsiCode = mmsiCodeShip;
 
     occupancyRate:= (totalContainers/capacityShip)*100;
 

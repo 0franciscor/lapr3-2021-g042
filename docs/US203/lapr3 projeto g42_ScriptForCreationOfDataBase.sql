@@ -129,12 +129,13 @@ CONSTRAINT fk_Phases_CargoManifestLoad FOREIGN KEY (cargoManifestLoadId) referen
 );
 
 CREATE TABLE CargoManifestUnload(
-phasesCargoManifestLoadId INTEGER,
-phasesId INTEGER,
-portId INTEGER,
+Id INTEGER,
+phasesId INTEGER NOT NULL,
+portId INTEGER NOT NULL,
+PhasesCargoManifestLoadId INTEGER NOT NULL,
 
-CONSTRAINT pk_CargoManifestUnload PRIMARY KEY (phasesCargoManifestLoadId, phasesId),
-CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId, phasesId) references Phases(cargoManifestLoadId, id)
+CONSTRAINT pk_CargoManifestUnload PRIMARY KEY (Id),
+CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId, phasesId) references Phases(cargoManifestLoadId, id),
 );
 
 
@@ -146,13 +147,17 @@ xContainer INTEGER NOT NULL,
 yContainer INTEGER NOT NULL,
 zContainer INTEGER NOT NULL,
 grossContainer FLOAT NOT NULL,
+PhasesId INTEGER NOT NULL,
+PhasesCargoManifestLoadId INTEGER NOT NULL,
+CargoManifestUnloadId INTEGER,
 
 CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestId),
 
 CONSTRAINT fk_CargoManifest_Container FOREIGN KEY(containerNumberId) references Container(numberId),
 
-CONSTRAINT fk_Cargo_Manifest FOREIGN KEY(cargoManifestId) references CargoManifestLoad(id)
+CONSTRAINT fk_CargoManifest_Load FOREIGN KEY(PhasesCargoManifestLoadId) references CargoManifestLoad(id),
 
+CONSTRAINT fk_CargoManifest_Unload FOREIGN KEY(CargoManifestUnloadId) references CargoManifestUnload(Id)
 );
 
 CREATE TABLE Warehouse(

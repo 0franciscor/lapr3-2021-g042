@@ -8,14 +8,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Class responsible for converting the Database info into Java Domain Objects
+ *
+ * Francisco Redol <1201239@isep.ipp.pt>
+ */
 public class SendToJava {
 
+    /**
+     * The database connection
+     */
     DatabaseConnection databaseConnection;
 
+    /**
+     * The class Consctructor
+     */
     public SendToJava(){
         this.databaseConnection = App.getInstance().getDatabaseConnection();
     }
 
+    /**
+     * Invokes the methods responsible for the conversion of ships and ship Positions.
+     */
     public void importShips(){
         try {
             importShipFromDatabase(databaseConnection);
@@ -24,6 +38,9 @@ public class SendToJava {
         }
     }
 
+    /**
+     * Invokes the methods responsible for the conversion of Ports.
+     */
     public void importPorts(){
         try {
             importPortFromDatabase(databaseConnection);
@@ -80,6 +97,13 @@ public class SendToJava {
         }
     }
 
+    /**
+     * Imports all the positions from a certain ship from the database.
+     *
+     * @param databaseConnection connection to the database
+     * @param ship which contains the MMSI code which matches the Locations
+     * @throws SQLException that may occur from the database
+     */
     private void importPositionFromDatabase(DatabaseConnection databaseConnection, Ship ship)
             throws SQLException {
 
@@ -119,6 +143,12 @@ public class SendToJava {
         }
     }
 
+    /**
+     * Imports all rows within the Port table on the database
+     *
+     * @param databaseConnection to the database
+     * @throws SQLException that may occur within the database communication
+     */
     public void importPortFromDatabase(DatabaseConnection databaseConnection) throws SQLException{
         Connection connection = databaseConnection.getConnection();
 
@@ -154,6 +184,14 @@ public class SendToJava {
         }
     }
 
+    /**
+     * Method which has the responsibility of retrieving the matching Country of a port.
+     *
+     * @param databaseConnection to the database
+     * @param placeLocation of a port
+     * @return the country correspondent to a certain Port
+     * @throws SQLException that may occur within the database
+     */
     public Country importCountryFromDatabase(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException{
         Connection connection = databaseConnection.getConnection();
 

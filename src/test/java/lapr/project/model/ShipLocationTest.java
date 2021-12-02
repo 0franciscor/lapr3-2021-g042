@@ -292,6 +292,20 @@ class ShipLocationTest {
     }
 
     @Test
+    void setPosition(){
+        ShipLocation shipLocation = new ShipLocation();
+        shipLocation.setPosition("30");
+        assertEquals("30", shipLocation.getPosition());
+    }
+
+    @Test
+    void setTransceiverClass(){
+        ShipLocation shipLocation = new ShipLocation();
+        shipLocation.setTransceiverClass("A");
+        assertEquals("A", shipLocation.getTransceiverClass());
+    }
+
+    @Test
     void compareTo() {
         ShipLocation shipLocation1 = new ShipLocation();
         shipLocation1.setMessageTime(new Date());

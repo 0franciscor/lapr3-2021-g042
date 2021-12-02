@@ -1,1 +1,0 @@
-SELECT FROM CargoManifest_Container WHERE containerNumberId = ?

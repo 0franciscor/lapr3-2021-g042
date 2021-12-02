@@ -2,8 +2,7 @@
 
 -----------------------------
 
-![Macchiatto js](report/Logo.png)
-
+![Macchiatto js](docs/Report_aux/Logo.jpg)
 
 -----------------------------
 
@@ -14,7 +13,6 @@
 * 1201386 _ Rita Ariana Sobral
 
 #### Teachers/Advisors:
-
 * Nuno Bettencourt (NMB)
 * José Marinho (JSM)
 * António Silva Pereira (AMP)
@@ -22,11 +20,9 @@
 * Carlos Augusto Ramos (CAR)
 
 #### Client:
-
 * Nuno Bettencourt (NMB)
 
 #### Course Unit:
-
 * Laboratório/Projeto LAPR3
 
 -----------------------------
@@ -34,124 +30,31 @@
 
 This document is divided in different categories, being them:
 
-1. Software Engineering
-   1. Use Case Diagram
-   2. Domain Model
-   3. Class Diagram (CD) for the whole project.
-   For each US:
-      1. Requirements Engineering:
-         1. System Sequence Diagram (SSD).
-      2. Engineering Analysis:
-         1. Domain Model.
-      3. Engineering Design
-         1. Class Diagram (CD)
-         2. Sequence Diagram (SD)
-2. Report
+1. Report
    1. Problem Statement
    2. Project Division Organization
    3. Solution
-      1. Decision Making
-   4. Coverage
+   4. Software Engineering
+      1. Use Case Diagram
+      2. Domain Model
+      3. Class Diagram (CD) for the whole project.
+      4. For each US:
+         1. Requirements Engineering:
+            1. System Sequence Diagram (SSD).
+         2. Engineering Analysis:
+            1. Domain Model.
+         3. Engineering Design
+            1. Class Diagram (CD)
+            2. Sequence Diagram (SD)
+      5. Decision Making
+      6. Complexity Analysis
+   5. Coverage
       1. Project Coverage
       2. Pit Test Coverage Report
-   5. Team Performance
-3. README
+   6. Team Performance
+2. README
 
--------------
-
-# Software Engineering
-
-#### Use case Diagram
-![UC_Diagram](docs/UCD.svg)
-
-#### Domain Model (whole project)
-![DM_Global](docs/DM.svg)
-
-#### Class Diagram (CD) for the whole project.
-![CD_Global](docs/CD.svg)
-
-
-#### US101 - Requirements Engineering
-###### US101 - SSD
-![SSD_US101](docs/US101/US101_SSD.svg)
-######  US101 - DM
-![DM_US101](docs/US101/US101_DM.svg)
-###### US101 - CD
-![CD_US101](docs/US101/US101_CD.svg)
-###### US101 - SD
-![SD_US101](docs/US101/US101_SD.svg)
-
-
-#### US102 - Requirements Engineering
-###### US102 - SSD
-![SSD_US102](docs/US102/US102_SSD.svG)
-###### US102 - DM
-![DM_US102](docs/US102/US102_DM.svg)
-###### US102 - CD
-![CD_US102](docs/US102/US102_CD.svg)
-###### US102 - SD
-![SD_US102](docs/US102/US102_SD.svg)
-
-
-
-#### US103 - Requirements Engineering
-###### US103 - SSD
-![SSD_US103](docs/US103/US103_SSD.svg)
-###### US103 - DM
-![DM_US103](docs/US103/US103_DM.svg)
-###### US103 - CD
-![CD_US103](docs/US103/US103_CD.svg)
-###### US103 - SD
-![SD_US103](docs/US103/US103_SD.svg)
-
-
-#### US104 - Requirements Engineering
-###### US104 - SSD
-![SSD_US104](docs/US104/US104_SSD.svg)
-###### US104 - DM
-![DM_US104](docs/US104/US104-MD.svg)
-###### US104 - CD
-![CD_US104](docs/US104/US104_CD.svg)
-###### US104 - SD
-![SD_US104](docs/US104/US104_SD.svg)
-
-
-#### US105 - Requirements Engineering
-###### US105 - SSD
-![SSD_US105](docs/US105/US105_SSD.svg)
-###### US105 - DM
-![DM_US105](docs/US105/US105_DM.svg)
-###### US105 - CD
-![CD_US105](docs/US105/US105_CD.svg)
-###### US105 - SD
-![SD_US105](docs/US105/US105_SD.svg)
-
-
-#### US106 - Requirements Engineering
-###### US106 - SSD
-![SSD_US106](docs/US106/US106_SSD.svg)
-###### US106 - DM
-![DM_US106](docs/US106/US106_DM.svg)
-###### US106 - CD
-![CD_US106](docs/US106/US106_CD.svg)
-###### US106 - SD
-![SD_US106](docs/US106/US106_SD.svg)
-
-
-#### US107 - Requirements Engineering
-###### US107 - SSD
-![SSD_US107](docs/US107/US107_SSD.svg)
-###### US107 - DM
-![DM_US107](docs/US107/US107_DM.svg)
-###### US107 - CD
-![CD_US106](docs/US107/US107_CD.svg)
-###### US107 - SD
-![SD_US107](docs/US107/US107_SD.svg)
-
-
-
-
-----------------------
+-----------------------------
 
 # Report
 
@@ -209,38 +112,29 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 * Implementation, where code and test code were implemented.
 * Review, where it was possible to review the entire implementation.
 
-### Decision Making
-#### US101
-BST & AVL – These are data storage and organization structures that benefit from less time complexity in carrying out operations such as reading, searching, insertion and removal.
-The project statement allowed us to know in advance that the company we are developing software for would need to store a vast number of ships and their locations in a first phase, however, using information structures such as arrays and Arraylist, time performance of certain functions would be noticeably higher since these structures have a temporal complexity for the operations mentioned above.
-Thus, to maximize the efficiency of the system's functionalities, we use binary trees.
-The previously mentioned structures can be found in the storage of ships in the system as well as in the individual storage of each ship's positions.
+## Software 
 
-####US102
-With the knowledge we had to date, the group decided to not develop the three trees in order not to be tripling the system information, despite the search for the imo and the callsign not being the most efficient as if it existed in the trees. We do the efficient search by mmsi and then we choose to do it by inOrder () to run the whole tree looking for the ship.
+[Use Case Diagram](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/UCD.svg)
 
-####US103
-As the search, of the locations of a given ship, is required to be made between a period or between dates, 2 identical methods do the same thing, but for both situations. To search a range of dates, a recursive search was carried out between the range they define. When it was to search for a specific date, the BST find was used.
+[Domain Model](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/DM.svg)
 
-####US104
-In the calculation methods between two ship positions, the inOrder() method was used due to the need for ship locations to be in ascending order by their date so that the calculations could be performed correctly.
-
-####US105
-We chose to create a class that grouped the attributes necessary to satisfy the request in the US and to be able to implement the Interface comparator in this class for a better organization of the lists.
-
-####US106
-To obtain/interpret the ships contained in the ship tree, an iterator is used.
-This allows us to individually obtain all the ships contained in the tree.
-However, as requested by US, it is still necessary to group them according to their Vessel Type code. For this purpose, a Hashmap with Vessel Type keys – integers - was used, whose values correspond to a summary list of the displacement of the various ships that share the same Vessel Type.
-Thus, the set of values of this keyset present in the Hashmap will include summaries of all ships present in the binary tree.
-Therefore, this premature organization will allow the easy ordering of the various summaries present in each list belonging to the values.
-
-####US107
-The information structure used to organize and store the requested ship objects in the US was a List that stores objects of type Treemap <Double, String>.
-The Treemap organizes its objects by ascending criteria of the key, which in this case is the distance travelled, however, in the US it is requested in descending order, therefore, using Collection.reverseOrder().
-As the ships are stored in a BST, by the inOrder() method, we obtain an ordered list of them, in ascending order. When comparing each ship with the following ones, and adding the comparison information that meets the requirements to the respective Treemap, in the end, the Treemap is added to the list, this is organized in ascending order of the MMSI of the first ship.
+[Class Diagram](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/CD.svg)
 
 
+
+[US101](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US101/US101.md)
+
+[US102](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US102/US102.md)
+
+[US103](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US103/US103.md)
+
+[US104](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US104/US104.md)
+
+[US105](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US105/US105.md)
+
+[US106](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US106/US106.md)
+
+[US107](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US107/US107.md)
 
 
 #### Ship
@@ -285,18 +179,18 @@ If the value equals "511", it is set as "not available" and if the passes all co
 
 
 ## Project Coverage
-![Coverage1](report/coverage1.png)
-![Coverage2](report/coverage2.png)
-![Coverage3](report/coverage3.png)
-![Coverage4](report/coverage4.png)
-![Coverage5](report/coverage5.png)
-![Coverage6](report/coverage6.png)
-![Coverage7](report/coverage7.png)
-![Coverage8](report/coverage8.png)
+![Coverage1](docs/Report_aux/coverage1.jpg)
+![Coverage2](docs/Report_aux/coverage2.jpg)
+![Coverage3](docs/Report_aux/coverage3.jpg)
+![Coverage4](docs/Report_aux/coverage4.jpg)
+![Coverage5](docs/Report_aux/coverage5.jpg)
+![Coverage6](docs/Report_aux/coverage6.jpg)
+![Coverage7](docs/Report_aux/coverage7.jpg)
+![Coverage8](docs/Report_aux/coverage8.jpg)
 
 
 ## Pit Test Coverage Report
-![PitTestCoverage](report/pitTestCoverage.png)
+![PitTestCoverage](docs/Report_aux/pitTestCoverage.jpg)
 
 ## Team Performance
 The group agrees that all members of the group contributed equally to the project, althought some focused more on other parts given the division of the project.

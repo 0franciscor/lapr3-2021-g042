@@ -322,6 +322,12 @@ class ShipTest {
         assertTrue(exception);
     }
 
+    @Test
+    void setVesselType(){
+        Ship ship = new Ship();
+        ship.setVesselType(232);
+        assertEquals(232, ship.getVesselType());
+    }
 
     @Test
     void compareToEquals() {

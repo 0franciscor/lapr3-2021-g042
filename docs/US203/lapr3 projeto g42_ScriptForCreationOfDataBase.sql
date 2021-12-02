@@ -1,7 +1,7 @@
 DROP TABLE Ship CASCADE CONSTRAINTS PURGE;
 DROP TABLE ShipPosition CASCADE CONSTRAINTS PURGE;
 DROP TABLE Container CASCADE CONSTRAINTS PURGE;
-DROP TABLE Port CASCADE CONSTRAINTS PURGE;
+DROP TABLE Ports CASCADE CONSTRAINTS PURGE;
 DROP TABLE PlaceLocation CASCADE CONSTRAINTS PURGE;
 DROP TABLE Country CASCADE CONSTRAINTS PURGE;
 DROP TABLE Ship_Port CASCADE CONSTRAINTS PURGE;
@@ -13,12 +13,10 @@ DROP TABLE Warehouse CASCADE CONSTRAINTS PURGE;
 DROP TABLE Warehouse_Truck CASCADE CONSTRAINTS PURGE;
 
 
-
-
 CREATE TABLE Ship(
 mmsiCode VARCHAR(9),
 imoCode VARCHAR(10) NOT NULL UNIQUE,
-numberOfEnergyGenerators INTEGER,
+numberEnergyGenerators INTEGER,
 generatorOutput float(10),
 callSign VARCHAR(255) NOT NULL UNIQUE,
 draft FLOAT NOT NULL,
@@ -81,7 +79,7 @@ CONSTRAINT pk_PlaceLocation PRIMARY KEY(latitude, longitude),
 CONSTRAINT fk_PlaceLocation_Country FOREIGN KEY(countryName)references Country(countryName)
 
 );
-CREATE TABLE Port(
+CREATE TABLE Ports(
 id INTEGER,
 name VARCHAR(255) NOT NULL,
 placeLocationLatitude VARCHAR(255),
@@ -98,7 +96,7 @@ portId INTEGER,
 shipMmsiCode VARCHAR(255),
 
 CONSTRAINT pk_ShipPort PRIMARY KEY (portId, shipMmsiCode),
-CONSTRAINT fk_Port FOREIGN KEY (portId) references Port(id),
+CONSTRAINT fk_Port FOREIGN KEY (portId) references Ports(id),
 CONSTRAINT fk_Ship FOREIGN KEY (shipMmsiCode) references Ship(mmsiCode)
 
 );
@@ -112,7 +110,7 @@ isConcluded INTEGER,
 
 CONSTRAINT pk_CargoManifestLoad PRIMARY KEY (id),
 CONSTRAINT fk_CargoManifestLoad_Ship FOREIGN KEY (shipMmsiCode) references Ship(mmsiCode),
-CONSTRAINT fk_CargoManifestLoad_Port FOREIGN KEY (portId) references Port(id)
+CONSTRAINT fk_CargoManifestLoad_Port FOREIGN KEY (portId) references Ports(id)
 );
 
 CREATE TABLE Phases(
@@ -131,11 +129,12 @@ CONSTRAINT fk_Phases_CargoManifestLoad FOREIGN KEY (cargoManifestLoadId) referen
 );
 
 CREATE TABLE CargoManifestUnload(
-phasesCargoManifestLoadId INTEGER,
-phasesId INTEGER,
-portId INTEGER,
+Id INTEGER,
+phasesId INTEGER NOT NULL,
+portId INTEGER NOT NULL,
+PhasesCargoManifestLoadId INTEGER NOT NULL,
 
-CONSTRAINT pk_CargoManifestUnload PRIMARY KEY (phasesCargoManifestLoadId, phasesId),
+CONSTRAINT pk_CargoManifestUnload PRIMARY KEY (Id),
 CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId, phasesId) references Phases(cargoManifestLoadId, id)
 );
 
@@ -148,13 +147,17 @@ xContainer INTEGER NOT NULL,
 yContainer INTEGER NOT NULL,
 zContainer INTEGER NOT NULL,
 grossContainer FLOAT NOT NULL,
+PhasesId INTEGER NOT NULL,
+PhasesCargoManifestLoadId INTEGER NOT NULL,
+CargoManifestUnloadId INTEGER,
 
 CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestId),
 
 CONSTRAINT fk_CargoManifest_Container FOREIGN KEY(containerNumberId) references Container(numberId),
 
-CONSTRAINT fk_Cargo_Manifest FOREIGN KEY(cargoManifestId) references CargoManifestLoad(id)
+CONSTRAINT fk_CargoManifest_Load FOREIGN KEY(PhasesCargoManifestLoadId) references CargoManifestLoad(id),
 
+CONSTRAINT fk_CargoManifest_Unload FOREIGN KEY(CargoManifestUnloadId) references CargoManifestUnload(Id)
 );
 
 CREATE TABLE Warehouse(
@@ -174,6 +177,3 @@ warehouseId INTEGER,
 CONSTRAINT pk_WarehouseTruck PRIMARY KEY (warehouseId),
 CONSTRAINT fk_WarehouseTruck_Warehouse FOREIGN KEY (warehouseId) references Warehouse(id)
 );
-
-
-

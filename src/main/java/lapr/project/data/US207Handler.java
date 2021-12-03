@@ -13,7 +13,7 @@ import java.sql.Types;
 /**
  * @author Manuela Leite <1200720@isep.ipp.pt>
  */
-public class US207 {
+public class US207Handler {
 
     /**
      * Represents an instance of Connection
@@ -42,7 +42,7 @@ public class US207 {
      * @throws SQLException
      * @throws IOException
      */
-    public US207(String mmsiCode, int year) throws SQLException, IOException {
+    public US207Handler(String mmsiCode, int year) throws SQLException, IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(mmsiCode, year);

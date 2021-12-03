@@ -1,13 +1,16 @@
-CREATE OR REPLACE PROCEDURE US209 (mmsiCodeShip in VARCHAR(255), actualDate in DATE, occupancyRate out FLOAT) IS
+CREATE OR REPLACE PROCEDURE US209 (mmsiCodeShip in VARCHAR, actualDate in timestamp, occupancyRate out FLOAT) IS
 
     totalContainers INTEGER;
     capacityShip FLOAT;
     cargoManifestsId CargoManifestLoad.Id%type;
-    date1 DATE;
+    date1 timestamp;
+    date2 timestamp;
+    idOfPhase Integer;
+    finalContainer Integer:=0;
     cont INTEGER;
     flag BOOLEAN;
 
-    CURSOR cargoManifests
+    CURSOR cargoManifests IS
     SELECT id
     FROM CargoManifestLoad
     WHERE shipMmsiCode = mmsiCodeShip;
@@ -22,9 +25,6 @@ BEGIN
         FETCH cargoManifests INTO cargoManifestsId;
         EXIT WHEN cargoManifests%NOTFOUND;
 
-        SELECT COUNT (*) INTO contPhases
-
-
         FOR phasesInCargoManifest IN
         (SELECT Phases.id
         FROM Phases
@@ -35,25 +35,22 @@ BEGIN
             WHERE Phases.id = phasesInCargoManifest.id
             AND cargoManifestLoadId = cargoManifestsId;
 
-            IF (date1 < actualDate AND date2 > actualDate) THEN
+            IF (date1 <= actualDate AND date2 >= actualDate) THEN
+
                 SELECT COUNT (*) INTO totalContainers
                 FROM CargoManifestContainer
                 WHERE phasesId = idOfPhase
-                AND cargoManifestLoadId = cargoManifestsId;
+                AND cargoManifestId = cargoManifestsId;
                 flag := true;
-                EXIT;
+                finalContainer:= finalContainer + totalContainers;
             END IF;
         END LOOP;
-
-        IF flag = true THEN
-        EXIT;
-        END IF;
     END LOOP;
 
-    SELECT capacity INTO capacityShip
+    SELECT cargo INTO capacityShip
     FROM Ship
     WHERE Ship.mmsiCode = mmsiCodeShip;
 
-    occupancyRate:= (totalContainers/capacityShip)*100;
+    occupancyRate:= (finalContainer/capacityShip)*100;
 
 END;

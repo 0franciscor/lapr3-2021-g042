@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Date;
 
-public class US209 {
+public class US209Handler {
 
     private Connection databaseConnection;
     private float occupancyRate;
@@ -19,7 +19,7 @@ public class US209 {
 
     private WriteForAFile writeForAFile;
 
-    public US209(int cargoManifestId, Date actualDate) throws SQLException, IOException {
+    public US209Handler(int cargoManifestId, Date actualDate) throws SQLException, IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(cargoManifestId, actualDate);

@@ -1,11 +1,17 @@
 package lapr.project.presentation;
 
 import lapr.project.controller.*;
+import lapr.project.data.US207Handler;
+import lapr.project.data.US208Handler;
+import lapr.project.data.US209Handler;
+import lapr.project.data.US210Handler;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 class ScenarioTestTest {
 
@@ -23,7 +29,17 @@ class ScenarioTestTest {
 
     private ShowTopShipsController showTopShipsController;
 
-    public ScenarioTestTest(){
+    private US207Handler us207Handler;
+
+    private US208Handler us208Handler;
+
+    private US209Handler us209Handler;
+
+    private US210Handler us210Handler;
+
+
+
+    public ScenarioTestTest() throws SQLException, IOException {
         importShipController=new ImportShipController();
         showPositionalMessagesController=new ShowPositionalMessagesController();
         showPairsOfShipsController=new ShowPairsOfShipsController();
@@ -32,10 +48,15 @@ class ScenarioTestTest {
         listSomeShipDataController = new ListSomeShipDataController();
         showPairsOfShipsController = new ShowPairsOfShipsController();
         showTopShipsController = new ShowTopShipsController();
+        us207Handler = new US207Handler("210950000", 2020);
+        us208Handler = new US208Handler(2);
+        us209Handler = new US209Handler(2, new Date());
+        us210Handler = new US210Handler();
+
     }
 
     @Test
-    public void apresentacao() throws ParseException, IOException {
+    public void presentation() throws ParseException, IOException {
         importShipController.importFile("sships.csv");
         importShipController.importShips();
         importShipController.importFile("bships.csv");

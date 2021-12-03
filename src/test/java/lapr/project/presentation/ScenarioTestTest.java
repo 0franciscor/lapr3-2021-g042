@@ -26,13 +26,13 @@ class ScenarioTestTest {
 
     private ShowTopShipsController showTopShipsController;
 
-    private US207Handler us207Handler;
+    //private US207Handler us207Handler;
 
-    private US208Handler us208Handler;
+    //private US208Handler us208Handler;
 
-    private US209Handler us209Handler;
+    //private US209Handler us209Handler;
 
-    private US210Handler us210Handler;
+    //private US210Handler us210Handler;
 
     //private FindContainerSituationController findContainerSituationController;
 
@@ -52,13 +52,9 @@ class ScenarioTestTest {
         /*us207Handler = new US207Handler("210950000", 2020);
         us208Handler = new US208Handler(2);
         us209Handler = new US209Handler(2, new Date());
-<<<<<<< HEAD
         us210Handler = new US210Handler();*/
-=======
-        us210Handler = new US210Handler();
         //findContainerSituationController= new FindContainerSituationController();
         //sendToDatabase=new SendToDatabase();
->>>>>>> 071752f5fff91e2827ba29fc3f3f751a3acecc6a
 
     }
 

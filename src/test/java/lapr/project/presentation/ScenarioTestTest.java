@@ -1,10 +1,7 @@
 package lapr.project.presentation;
 
 import lapr.project.controller.*;
-import lapr.project.data.US207Handler;
-import lapr.project.data.US208Handler;
-import lapr.project.data.US209Handler;
-import lapr.project.data.US210Handler;
+import lapr.project.data.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -37,6 +34,10 @@ class ScenarioTestTest {
 
     private US210Handler us210Handler;
 
+    private FindContainerSituationController findContainerSituationController;
+
+    private SendToDatabase sendToDatabase;
+
 
 
     public ScenarioTestTest() throws SQLException, IOException {
@@ -52,6 +53,8 @@ class ScenarioTestTest {
         us208Handler = new US208Handler(2);
         us209Handler = new US209Handler(2, new Date());
         us210Handler = new US210Handler();
+        findContainerSituationController= new FindContainerSituationController();
+        sendToDatabase=new SendToDatabase();
 
     }
 
@@ -80,6 +83,8 @@ class ScenarioTestTest {
         listSomeShipDataController.organizeByDescendingOrder();
         showTopShipsController.getTopNShips(5,dateFormatter.parse(auxDatas[0]),dateFormatter.parse(auxDatas[1]));
         showPairsOfShipsController.getPairsOfShip();
+
+        findContainerSituationController.getContainerSituation("987650321");
     }
 
 

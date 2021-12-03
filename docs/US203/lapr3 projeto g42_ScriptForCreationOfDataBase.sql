@@ -25,6 +25,7 @@ vesselTypeId INTEGER NOT NULL,
 shipLength FLOAT NOT NULL,
 width FLOAT NOT NULL,
 cargo VARCHAR(255),
+capacity FLOAT(10),
 
 CONSTRAINT pk_Ship PRIMARY KEY(mmsiCode)
 );

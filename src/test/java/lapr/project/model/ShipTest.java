@@ -213,19 +213,6 @@ class ShipTest {
         assertTrue(exception);
     }
 
-    /*@Test
-    void setCargoLower0(){
-        boolean exception = false;
-        Ship ship = new Ship();
-
-        try{
-            ship.setCargo("-3");
-        } catch (Exception e){
-            exception = true;
-        }
-        assertTrue(exception);
-    }*/
-
     @Test
     void setCargo(){
         Ship ship = new Ship();
@@ -320,6 +307,26 @@ class ShipTest {
             exception = true;
         }
         assertTrue(exception);
+    }
+
+    @Test
+    void setCapacity(){
+        Ship ship = new Ship();
+        ship.setLength(5f);
+        ship.setWidth(2f);
+        ship.setCapacity();
+
+        assertEquals(10, ship.getCapacity(), 0);
+    }
+
+    @Test
+    void getCapacity(){
+        Ship ship = new Ship();
+        ship.setLength(5f);
+        ship.setWidth(2f);
+        ship.setCapacity();
+
+        assertEquals(10, ship.getCapacity(), 0);
     }
 
     @Test

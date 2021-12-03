@@ -6,12 +6,12 @@ participant "System" as SY
 activate SC
 SC -> SY : starts the requisition of the list \n of containers to be loaded in the next port
 activate SY
-SY --> SC : asks the ship
+SY --> SC : asks the mmsi code of the ship
 deactivate SY
-SC -> SY : type the ship
+SC -> SY : type the mmsi code
 
 activate SY
-SY-->SC : shows the list of containers
+SY-->SC : show the result
 deactivate SY
 deactivate SC
 @enduml

@@ -1,45 +1,44 @@
 @startuml
 'https://plantuml.com/class-diagram
+
 actor "Ship Captain" as SC
-participant "System" as SY
-participant "LoadUnloadController" as CTR
-participant ":Company" as CP
-participant "store : CargoManifestStore" as ST
+participant ":LoadUnloadUI" as UI
+participant ":LoadUnloadController" as CT
+participant ":US206" as US
+participant ": WriteForAFile" as WF
+
+
 
 activate SC
-SC -> SY : starts the requisition of the list \n of containers to be loaded in the next port
-activate SY
+SC -> UI : starts the requisition of the list \n of containers to be loaded in the next port
+activate UI
+UI --> SC : asks the mmsi code of the ship
+deactivate UI
+SC -> UI : type the mmsi code
 
 
+activate UI
+UI->CT : createUS206(mmsiCode)
+activate CT
 
-SY --> SC : asks the ship
-deactivate SY
-SC -> SY : type the ship
 
-activate SY
-SY -> CTR: findRespectiveShip(mmsi)
-activate CTR
-CTR -> CP : bstShip = getBstShip()
-activate CP
-deactivate CP
+CT -> US** : create(mmsiCode)
 
-CTR -> CTR: ship = shipExist(mmsiCode)
-activate CTR
-deactivate CTR
-CTR -> CTR : destination = findDestination()
-activate CTR
-deactivate CTR
-CTR ->CP : store = getCargoManifestStore()
-activate CP
-deactivate CP
-CTR -> ST :loadList = getShipCargoManifestsAccordingToDestination(ship,destination)
-activate ST
-deactivate ST
+US -> US: initialize(mmsiCode)
+activate US
 
-CTR --> SY : loadList
+US -> US : textualInformation = toString()
+activate US
+deactivate US
+US -> WF : writeForAFile(textualInformation)
 
-deactivate CTR
-SY --> SC : shows the list of containers
-deactivate SY
+activate WF
+deactivate WF
+
+deactivate US
+
+deactivate CT
+UI-->SC : show the result
+deactivate UI
 deactivate SC
 @enduml

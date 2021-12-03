@@ -147,7 +147,7 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 
 
 ## Project Coverage
-![Coverage1](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/Report_aux/coverageSprint1.md)
+![Sprint 1 Coverage](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/Report_aux/coverageSprint1.md)
 
 
 

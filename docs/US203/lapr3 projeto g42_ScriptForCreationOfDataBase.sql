@@ -141,7 +141,7 @@ CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId,
 
 CREATE TABLE CargoManifestContainer(
 containerNumberId INTEGER,
-cargoManifestId INTEGER,
+cargoManifestLoadId INTEGER,
 completedPhase INTEGER,
 xContainer INTEGER NOT NULL,
 yContainer INTEGER NOT NULL,

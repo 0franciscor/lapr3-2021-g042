@@ -3,27 +3,29 @@
 
 class RatioOfCargoManifestUI{}
 
+
 class RatioOfCargoManifestController{
--getTheRatioOfCargoManifest(id)
++ createUS208(idCargoManifest)
 }
 
-class Company{
--getCargoManifestStore()
+
+class US208 {
+- initialize(idCargoManifest)
++ toString()
+
 }
 
-class CargoManifestStore{
--getRatioOfACargoManifestById(id)
+class WriteForAFile{
++ writeForAFiLe(textualInformation)
+
 }
 
-class CargoManifest{
--getRatio()
-}
+
+
+RatioOfCargoManifestController -> US208
+US208 --> WriteForAFile : uses
 
 RatioOfCargoManifestUI ..> RatioOfCargoManifestController
 
-RatioOfCargoManifestController ..> Company
 
-Company -> CargoManifestStore : uses
-
-CargoManifestStore --* CargoManifest
 @enduml

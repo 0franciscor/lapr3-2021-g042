@@ -4,9 +4,9 @@
 actor "Ship Captain" as SC
 participant ":CargoManifestPerYearUI" as UI
 participant ":CargoManifestPerYearController" as CT
-participant ":Company" as CP
-participant "bstShip : BstShip" as BST
-participant "store : CargoManifestStore" as ST
+participant ":US207" as US
+participant ": WriteForAFile" as WF
+
 
 
 activate SC
@@ -16,38 +16,32 @@ UI --> SC : asks the mmsi code of the ship
 deactivate UI
 SC -> UI : type the mmsi code
 activate UI
-UI -> CT : shipExists(mmsiCode)
-activate CT
-CT -> CP : bstShip = getBstShip()
-activate CP
-deactivate CP
-
-CT -> CT: shipExist(mmsiCode)
-activate CT
-deactivate CT
-deactivate CT
-
 UI --> SC : ask the year of the cargo manifest
+
 deactivate UI
 SC->UI : type the year
+
 activate UI
-UI -> CT : getNumberOfContainerPerManifest(mmsiCode)
+UI->CT : createUS207(year, mmsiCode)
 activate CT
-CT ->CP : store = getCargoManifestStore()
-activate CP
-deactivate CP
-CT -> ST : numberOfContainerPerManifest = getNumberOfContainerPerManifest(mmsiCode)
-activate ST
-deactivate ST
-deactivate CT
-UI -> CT : getTheCargoManifestPerYear(mmsiCode, year)
-activate CT
-CT -> ST : cargoManifestPerYear = getTheCargoManifestPerYear(mmsiCode, year)
-activate ST
-deactivate ST
-deactivate CT
 
 
+CT -> US** : create(year, mmsiCode)
+
+US -> US: initialize(year, mmsiCode)
+activate US
+
+US -> US : textualInformation = toString()
+activate US
+deactivate US
+US -> WF : writeForAFile(textualInformation)
+
+activate WF
+deactivate WF
+
+deactivate US
+
+deactivate CT
 UI-->SC : show the result
 deactivate UI
 deactivate SC

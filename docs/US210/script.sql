@@ -92,13 +92,14 @@ BEGIN
                 IF isFirst = 1 THEN
                     maxDate := arrivalDate;
                     finalPosition := arrivalPosition;
-
+                END IF;
                 ELSE IF isFirst != 1 AND arrivalDate > maxDate THEN
 
                     maxDate := arrivalDate;
                     finalPosition := arrivalPosition;
                 END IF;
             END LOOP;
+
             CLOSE allCargoManifests;
 
              information:= information || idShip || '--> ' ||finalPosition|| chr(10);

@@ -6,24 +6,24 @@ class CargoManifestPerYearUI{
 }
 
 class CargoManifestPerYearController{
-- shipExists(mmsiCode : String) : boolean
-- getNumberOfContainerPerManifest(mmsiCode : String) : float
-- getTheCargoManifestPerYear(mmsiCode : String, year : int) : int
++ createUS207(year, mmsiCode)
 }
 
-class Company {
--getBstShip() : BstShip
--getCargoManifestStore() : CargoManifestStore
+
+class US207 {
+- initialize(year, mmsiCode)
++ toString()
+
 }
 
-class CargoManifestStore{
-- getNumberOfContainerPerManifest(mmsiCode : String) : float
-- getTheCargoManifestPerYear(mmsiCode : String, year : int) : int
+class WriteForAFile{
++ writeForAFiLe(textualInformation)
 
 }
 
 
 CargoManifestPerYearUI ..> CargoManifestPerYearController
-CargoManifestPerYearController ..> Company
-Company -> CargoManifestStore : uses
+CargoManifestPerYearController -> US207
+US207 --> WriteForAFile : uses
+
 @enduml

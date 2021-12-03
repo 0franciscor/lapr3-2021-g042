@@ -1,21 +1,21 @@
 CREATE OR REPLACE PROCEDURE US205 (mmsiCode in Varchar, outString out Varchar)
 IS
     cmunload Integer;
-    bool Boolean;
     phases Integer;
-    cmcode CargoManifestLoad.id%type;
-    nextLocation Phases.origin%type;
+    cmcode Integer;
     x Integer;
     y Integer;
     z Integer;
+    port_counter Integer :=0;
+    nextLocation varchar(255);
     iso_type varChar (255);
-    weight_load float;
     nextPort Varchar (255);
     proxLoc Varchar (255);
+    weight_load float;
 
 Cursor cm IS
     SELECT id
-    FROM cargomanifestload
+    FROM CargoManifestLoad
     WHERE Shipmmsicode=mmsiCode 
     ORDER BY id;
 
@@ -24,22 +24,21 @@ OPEN cm;
     LOOP 
         FETCH cm INTO cmcode;
         Exit WHEN cm%notfound;
-        dbms_output.put_line('Cargo Manifest id: ' ||cmcode);
+        dbms_output.put_line('Cargo Manifest id: ' || cmcode);
         
 
-        SELECT COUNT(Phases.CargoManifestLoadid) INTO phases 
+        SELECT COUNT(Phases.CargoManifestLoadId) INTO phases 
         FROM Phases
-        INNER JOIN CARGOMANIFESTLOAD
-        ON(CARGOMANIFESTLOAD.ID=Phases.CargoManifestLoadid)
+        INNER JOIN CargoManifestLoad
+        ON(CargoManifestLoad.id=Phases.CargoManifestLoadid)
         WHERE Phases.CargoManifestLoadid = cmcode;
-        
         dbms_output.put_line(phases);    
 
-        SELECT COUNT(CARGOMANIFESTUNLOAD.PHASESCARGOMANIFESTLOADID) INTO cmunload 
-        FROM CARGOMANIFESTUNLOAD
-        INNER JOIN CARGOMANIFESTLOAD
-        ON(CARGOMANIFESTUNLOAD.PHASESCARGOMANIFESTLOADID=CARGOMANIFESTLOAD.id)
-        WHERE CARGOMANIFESTUNLOAD.PHASESCARGOMANIFESTLOADID=cmcode;                                          
+        SELECT COUNT(CargoManifestUnload.PhasesCargoManifestLoadId) INTO cmunload 
+        FROM CargoManifestUnload
+        INNER JOIN CargoManifestLoad
+        ON(CargoManifestUnload.PhasesCargoManifestLoadId=CargoManifestLoad.id)
+        WHERE CargoManifestUnload.PhasesCargoManifestLoadId=cmcode;                                          
         dbms_output.put_line(cmunload);
 
         IF phases = cmunload THEN
@@ -49,27 +48,26 @@ OPEN cm;
             SELECT destination INTO proxLoc
             FROM phases                    
             WHERE id=cmunload+1
-            AND cargomanifestloadid= cargoscode;
+            AND CargoManifestLoadid= cmcode;
             dbms_output.put_line('Next Port: ' ||proxLoc);
             
-            contador:= contador + 1;
+            port_counter:= port_counter + 1;
             
-            IF contador=1 THEN
+            IF port_counter=1 THEN
                 nextPort:= proxLoc;
             End IF;
             
             IF proxLoc=nextPort THEN
-            
                 FOR containers_toExitInDestination 
-                IN(Select cargomanifest_container.containernumberid 
-                    FROM cargomanifest_container 
-                    INNER JOIN phases
-                    ON(cargomanifest_container.cargomanifestid = phases.cargomanifestloadid)
-                    WHERE cargomanifest_container.cargomanifestid=cargoscode 
-                    AND cargomanifest_container.completedphase= cmunload+1
-                    AND phases.destination= proxLoc)
+                IN(Select CargoManifestContainer.ContainerNumberId 
+                    FROM CargoManifestContainer 
+                    INNER JOIN Phases
+                    ON(CargoManifestContainer.CargoManifestLoadId = Phases.CargoManifestLoadId)
+                    WHERE CargoManifestContainer.CargoManifestLoadid=cmcode 
+                    AND CargoManifestContainer.Phases=cmunload+1
+                    AND Phases.destination=proxLoc)
                 LOOP
-                    SELECT xContainer, yContainer, zContainer INTO x, y, z FROM CargoManifestContainer WHERE numberId=containers_toExitInDestination.containerNumberId;
+                    SELECT xContainer, yContainer, zContainer INTO x, y, z FROM CargoManifestContainer WHERE ContainernumberId=containers_toExitInDestination.containerNumberId;
                     SELECT isoCode, weight INTO iso_type, weight_load FROM Container WHERE numberId=containers_toExitInDestination.containerNumberId;
                     dbms_output.put_line('Container Number Id: ' ||containers_toExitInDestination.containernumberid || 'Positions:' ||x ||y ||z ||'Type: ' ||iso_type ||'Load: ' ||weight_load);
                     outString:=outString || 'Container Number Id: ' ||containers_toExitInDestination.containernumberid || 'Positions:' ||x ||y ||z ||'Type: ' ||iso_type ||'Load: ' ||weight_load || chr(10);

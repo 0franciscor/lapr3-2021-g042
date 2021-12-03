@@ -97,7 +97,17 @@ It should allow the Traffic Manager to import ships, see Ships's different data 
 ####  US108 - Rita Ariana Sobral & Francisco Redol
 ####  US109 - Manuela Leite & Francisco Redol
 ####  US110 - Manuela Leite & Pedro Rocha
-####  US111 - Rita Ariana Sobral & Pedro Rocha
+####  US111 - Manuela Leite, Francisco Redol, Pedro Rocha & Rita Ariana Sobral
+####  US201 - Manuela Leite & Rita Ariana Sobral
+####  US202 - Francisco Redol e Pedro Rocha
+####  US203 - Manuela Leite, Francisco Redol, Pedro Rocha & Rita Ariana Sobral
+####  US204 - Rita Ariana Sobral
+####  US205 - Francisco Redol
+####  US206 - Pedro Rocha
+####  US207 - Manuela Leite
+####  US208 - Francisco Redol & Manuela Leite
+####  US209 - Pedro Rocha & Rita Ariana Sobral
+####  US210 - Manuela Leite, Francisco Redol, Pedro Rocha & Rita Ariana Sobral
 
 ## Solution
 
@@ -147,7 +157,7 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 
 
 ## Project Coverage
-![Sprint 1 Coverage](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/Report_aux/coverageSprint1.md)
+[Sprint 1 Coverage](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/Report_aux/coverageSprint1.md)
 
 
 

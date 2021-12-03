@@ -34,9 +34,9 @@ class ScenarioTestTest {
 
     private US210Handler us210Handler;
 
-    private FindContainerSituationController findContainerSituationController;
+    //private FindContainerSituationController findContainerSituationController;
 
-    private SendToDatabase sendToDatabase;
+    //private SendToDatabase sendToDatabase;
 
 
 
@@ -53,8 +53,8 @@ class ScenarioTestTest {
         us208Handler = new US208Handler(2);
         us209Handler = new US209Handler(2, new Date());
         us210Handler = new US210Handler();
-        findContainerSituationController= new FindContainerSituationController();
-        sendToDatabase=new SendToDatabase();
+        //findContainerSituationController= new FindContainerSituationController();
+        //sendToDatabase=new SendToDatabase();
 
     }
 
@@ -84,7 +84,7 @@ class ScenarioTestTest {
         showTopShipsController.getTopNShips(5,dateFormatter.parse(auxDatas[0]),dateFormatter.parse(auxDatas[1]));
         showPairsOfShipsController.getPairsOfShip();
 
-        findContainerSituationController.getContainerSituation("987650321");
+        //findContainerSituationController.getContainerSituation("987650321");
     }
 
 

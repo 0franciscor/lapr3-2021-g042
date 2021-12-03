@@ -29,15 +29,11 @@ OPEN cm;
 
         SELECT COUNT(Phases.CargoManifestLoadId) INTO phases 
         FROM Phases
-        INNER JOIN CargoManifestLoad
-        ON(CargoManifestLoad.id=Phases.CargoManifestLoadid)
         WHERE Phases.CargoManifestLoadid = cmcode;
         dbms_output.put_line(phases);    
 
         SELECT COUNT(CargoManifestUnload.PhasesCargoManifestLoadId) INTO cmunload 
         FROM CargoManifestUnload
-        INNER JOIN CargoManifestLoad
-        ON(CargoManifestUnload.PhasesCargoManifestLoadId=CargoManifestLoad.id)
         WHERE CargoManifestUnload.PhasesCargoManifestLoadId=cmcode;                                          
         dbms_output.put_line(cmunload);
 
@@ -70,7 +66,7 @@ OPEN cm;
                     SELECT xContainer, yContainer, zContainer INTO x, y, z FROM CargoManifestContainer WHERE ContainernumberId=containers_toExitInDestination.containerNumberId;
                     SELECT isoCode, weight INTO iso_type, weight_load FROM Container WHERE numberId=containers_toExitInDestination.containerNumberId;
                     dbms_output.put_line('Container Number Id: ' ||containers_toExitInDestination.containernumberid || 'Positions:' ||x ||y ||z ||'Type: ' ||iso_type ||'Load: ' ||weight_load);
-                    outString:=outString || 'Container Number Id: ' ||containers_toExitInDestination.containernumberid || 'Positions:' ||x ||y ||z ||'Type: ' ||iso_type ||'Load: ' ||weight_load || chr(10);
+                    outString:=outString||'Container Number Id: '||containers_toExitInDestination.containernumberid||'Positions:'||x||y||z||'Type: '||iso_type||'Load:'||weight_load||chr(10);
                 END LOOP;
             END IF;
         END IF;

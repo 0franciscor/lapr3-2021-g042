@@ -1,5 +1,11 @@
 package lapr.project.ui;
 
+import lapr.project.controller.App;
+import lapr.project.controller.ImportPortController;
+import lapr.project.controller.ImportShipController;
+import lapr.project.data.SendToDatabase;
+import lapr.project.model.ImportPort;
+
 /**
  * @author Nuno Bettencourt <nmb@isep.ipp.pt> on 24/05/16.
  */
@@ -20,7 +26,19 @@ class Main {
     public static void main(String[] args) {
         int option;
 
+        ImportPortController importPortController = new ImportPortController();
+        importPortController.importFile("sports.csv");
+        importPortController.importPorts();
+
+        System.out.println(App.getInstance().getCompany().getPortStr().getPortsLst());
+
+        SendToDatabase sendToDatabase = new SendToDatabase();
+
+
+        sendToDatabase.sendPortsToDatabase();
+
         do {
+
             System.out.println("Main Menu");
             System.out.println("0- Exit");
             option = Utils.readIntegerFromConsole("Type your option:");

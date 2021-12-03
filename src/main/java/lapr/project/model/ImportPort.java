@@ -95,6 +95,7 @@ public class ImportPort {
 
     public void convertPorts(){
         try {
+            read.nextLine();
             while(read.hasNext()){
                 String line = read.nextLine();
                 String[] portArray = line.split(",");

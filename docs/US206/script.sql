@@ -23,15 +23,11 @@ BEGIN
             
             SELECT COUNT(Phases.CargoManifestLoadId) INTO Phases 
             FROM Phases
-            INNER JOIN CargoManifestLoad
-            ON(CargoManifestLoad.id=Phases.CargoManifestLoadId)
             WHERE Phases.CargoManifestLoadId=cmcode;
             dbms_output.put_line(Phases); 
 
             SELECT COUNT(CargoManifestLoad.id) INTO cmload
             FROM CargoManifestLoad
-            INNER JOIN CargoManifestUnload
-            ON(CargoManifestLoad.id=CargoManifestUnload.id)
             WHERE CargoManifestLoad.id=cmcode;
             dbms_output.put_line(cmload);
 

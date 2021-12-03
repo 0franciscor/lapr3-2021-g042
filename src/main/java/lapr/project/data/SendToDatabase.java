@@ -59,7 +59,9 @@ public class SendToDatabase implements Persistable {
      * Method responsible for saving Ports, PlaceLocations and Countries to the database
      */
     public void sendPortsToDatabase() {
+        System.out.println("c");
         if (databaseConnection != null) {
+            System.out.println("b");
             for(Ports port : App.getInstance().getCompany().getPortStr().getPortsLst())
                 savePort(databaseConnection, port);
 
@@ -372,8 +374,9 @@ public class SendToDatabase implements Persistable {
     @Override
     public void savePort(DatabaseConnection databaseConnection, Object object) {
         Ports port = (Ports) object;
-
+        System.out.println("e");
         try {
+            System.out.println("d");
             savePortToDatabase(databaseConnection, port);
 
         } catch (SQLException ex) {
@@ -392,6 +395,7 @@ public class SendToDatabase implements Persistable {
      */
     private void savePortToDatabase(DatabaseConnection databaseConnection, Ports port)
             throws SQLException {
+        System.out.println("a");
 
         if (!isCountryOnDatabase(databaseConnection, port))
             insertCountryOnDatabase(databaseConnection, port);

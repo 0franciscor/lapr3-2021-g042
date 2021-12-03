@@ -109,6 +109,7 @@ public class Ship implements Comparable<Ship> {
         setLength(length);
         setWidth(width);
         setDraft(draft);
+        setCapacity();
         shipLocationBST = new ShipLocationAVL();
         shipLocationBST.insert(shipLocation);
     }
@@ -142,6 +143,7 @@ public class Ship implements Comparable<Ship> {
         setLength(length);
         setWidth(width);
         setDraft(draft);
+        setCapacity();
         this.shipLocationBST = shipLocationAVL;
     }
 
@@ -264,6 +266,13 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
+     * Set's the ship's Capacity
+     */
+    public void setCapacity(){
+        this.capacity = width * length;
+    }
+
+    /**
      * Sets the Ship's vessel type
      *
      * @param vesselType ship's vessel type
@@ -347,6 +356,13 @@ public class Ship implements Comparable<Ship> {
      */
     public float getDraft(){
         return draft;
+    }
+
+    /**
+     * @return the ship's capacity
+     */
+    public float getCapacity(){
+        return capacity;
     }
 
     /**

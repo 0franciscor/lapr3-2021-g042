@@ -30,9 +30,9 @@ capacity FLOAT(10),
 CONSTRAINT pk_Ship PRIMARY KEY(mmsiCode)
 );
 
-CREATE TABLE ShipPosition(
+CREATE TABLE ShipLocation(
 shipMmsiCode VARCHAR(9),
-baseDateTime TIMESTAMP NOT NULL,
+baseDateTime TIMESTAMP NOT NULL
 latitude VARCHAR(255) NOT NULL,
 longitude VARCHAR(255) NOT NULL,
 sog FLOAT NOT NULL,

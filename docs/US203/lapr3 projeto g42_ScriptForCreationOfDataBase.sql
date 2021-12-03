@@ -152,7 +152,7 @@ PhasesId INTEGER NOT NULL,
 PhasesCargoManifestLoadId INTEGER NOT NULL,
 CargoManifestUnloadId INTEGER,
 
-CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestId),
+CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestLoadId),
 
 CONSTRAINT fk_CargoManifest_Container FOREIGN KEY(containerNumberId) references Container(numberId),
 

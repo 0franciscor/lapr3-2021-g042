@@ -48,10 +48,10 @@ class ScenarioTestTest {
         listSomeShipDataController = new ListSomeShipDataController();
         showPairsOfShipsController = new ShowPairsOfShipsController();
         showTopShipsController = new ShowTopShipsController();
-        us207Handler = new US207Handler("210950000", 2020);
+        /*us207Handler = new US207Handler("210950000", 2020);
         us208Handler = new US208Handler(2);
         us209Handler = new US209Handler(2, new Date());
-        us210Handler = new US210Handler();
+        us210Handler = new US210Handler();*/
 
     }
 

@@ -10,13 +10,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class US206 {
+public class US206Handler {
 
     private Connection databaseConnection;
     private String listOfContainers;
     private WriteForAFile writeForAFile;
 
-    public US206(String mmsiCode) throws SQLException, IOException {
+    public US206Handler(String mmsiCode) throws SQLException, IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(mmsiCode);

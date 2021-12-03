@@ -170,7 +170,7 @@ public class SearchDetailsControllerTest {
                 "Draft: 13.0";
 
         ctr.shipExistByMMSI("211331640");
-        File file = new File("ShipDetails");
+        File file = new File(".\\outputs\\ShipDetails");
         writeForAFile.writeForAFile(ctr.getShipDetails(),"211331640",file);
 
         Assertions.assertEquals(expected, ctr.getShipDetails());
@@ -202,7 +202,7 @@ public class SearchDetailsControllerTest {
                 "Draft: 13.0";
 
         ctr.shipExistByIMO("IMO2113432");
-        File file = new File("ShipDetails");
+        File file = new File(".\\outputs\\ShipDetails");
         writeForAFile.writeForAFile(ctr.getShipDetails(),"IMO2113432",file);
 
         //ctr.shipExistByIMO("IMO2113432");
@@ -233,7 +233,7 @@ public class SearchDetailsControllerTest {
                 "Draft: 13.0";
 
         ctr.shipExistByCallSign("DHBN");
-        File file = new File("ShipDetails");
+        File file = new File(".\\outputs\\ShipDetails");
         writeForAFile.writeForAFile(ctr.getShipDetails(),"DHBN",file);
         Assertions.assertEquals(expected, ctr.getShipDetails());
     }

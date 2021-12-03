@@ -73,7 +73,7 @@ public class ShowPairsOfShipsController {
      */
     public List<TreeMap<Double,String>> getPairsOfShip() throws IOException {
         List<TreeMap<Double,String>> list = bstShip.getIntendedPairsOfShips();
-        File file = new File("target\\generated-sources\\annotations\\Pair Of Ships");
+        File file = new File(".\\outputs\\Pair Of Ships");
         writeForAFile.writeForAFile("Ship1 MMSI  Ship2 MMSI   TravelDistance difference\n" , "pairs_of_ships", file);
 
         for(TreeMap<Double,String> lista : list){

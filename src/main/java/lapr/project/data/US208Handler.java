@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 
-public class US208 {
+public class US208Handler {
 
     private Connection databaseConnection;
     private float ratio;
@@ -19,7 +19,7 @@ public class US208 {
 
     private WriteForAFile writeForAFile;
 
-    public US208(int cargoManifestId) throws SQLException, IOException {
+    public US208Handler(int cargoManifestId) throws SQLException, IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(cargoManifestId);
@@ -35,7 +35,7 @@ public class US208 {
 
         this.ratio = statement.getFloat(2);
 
-        writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File("target\\generated-sources\\annotations\\US208"));
+        writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
         statement.close();
         databaseConnection.close();
     }

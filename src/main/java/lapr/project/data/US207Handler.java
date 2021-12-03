@@ -10,19 +10,51 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class US207 {
+/**
+ * @author Manuela Leite <1200720@isep.ipp.pt>
+ */
+public class US207Handler {
 
+    /**
+     * Represents an instance of Connection
+     */
     private Connection databaseConnection;
+
+    /**
+     * Represents the Total of containers in a cargo manifest
+     */
     private int totalCargoManifestsPerYear;
+
+    /**
+     * Represents the mean Container per cargo manifest
+     */
     private float meanContainerPerCargoManifest;
+
+    /**
+     * Represents an instance of WriteForAFile
+     */
     private WriteForAFile writeForAFile;
 
-    public US207(String mmsiCode, int year) throws SQLException, IOException {
+    /**
+     * Constructor of the class
+     * @param mmsiCode
+     * @param year
+     * @throws SQLException
+     * @throws IOException
+     */
+    public US207Handler(String mmsiCode, int year) throws SQLException, IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(mmsiCode, year);
     }
 
+    /**
+     * Initialize the connection with the database and run the script
+     * @param mmsiCode
+     * @param year
+     * @throws SQLException
+     * @throws IOException
+     */
     private void initialize(String mmsiCode, int year) throws SQLException, IOException {
         CallableStatement statement = databaseConnection.prepareCall("{CALL US207(?, ?, ?, ?)}");
         statement.registerOutParameter(3, Types.INTEGER);
@@ -36,19 +68,31 @@ public class US207 {
         this.totalCargoManifestsPerYear = statement.getInt(3);
         this.meanContainerPerCargoManifest = statement.getFloat(4);
 
-        writeForAFile.writeForAFile(toString(), "US207_" + mmsiCode, new File("target\\generated-sources\\annotations\\US207"));
+        writeForAFile.writeForAFile(toString(), "US207_" + mmsiCode, new File(".\\outputs\\US207"));
         statement.close();
         databaseConnection.close();
     }
 
+    /**
+     * get the total container per cargo manifest
+     * @return the total container per cargo manifest
+     */
     public int getTotalCargoManifestsPerYear() {
         return totalCargoManifestsPerYear;
     }
 
+    /**
+     * get the mean container per cargo manifest
+     * @return the mean container per cargo manifest
+     */
     public float getMeanContainerPerCargoManifest() {
         return meanContainerPerCargoManifest;
     }
 
+    /**
+     * Textual information
+     * @return the textual information
+     */
     @Override
     public String toString() {
         return String.format("totalCargoManifestPerYear, meanContainerPerCargoManifest\n" +

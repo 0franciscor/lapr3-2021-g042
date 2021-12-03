@@ -3,7 +3,7 @@ CREATE OR REPLACE FUNCTION get_container_position (v_numberId int) return varcha
 IS
     
     v_idCargoManifest int;
-    v_cargoManifestUnloadPhasesCargoManifestLoadiId int;
+    v_CargoManifestUnloadId int;
     v_mmsi varchar(255);
     v_locationName varchar(255);
     v_locationNameAux varchar(255);
@@ -12,9 +12,9 @@ IS
     v_phases int;
 
     Cursor cargos IS
-        Select cargoManifesLoadtid
-        from CargoManifest_Container
-        where containernumberId=v_numberId;
+        Select CARGOMANIFESTID
+        from CargoManifestContainer
+        where CONTAINERNUMBERID=v_numberId;
         
 begin 
    open cargos;
@@ -22,16 +22,16 @@ begin
    fetch cargos into v_idCargoManifest;
    exit when cargos%notfound;
    
-   select cargoManifestUnloadPhasesCargoManifestLoadiId
-   into v_cargoManifestUnloadPhasesCargoManifestLoadiId
-   from CargoManifest_Container
-   where cargoManifesLoadtid=v_idCargoManifest; 
+   select CargoManifestUnloadId
+   into v_CargoManifestUnloadId
+   from CargoManifestContainer
+   where PhasesCargoManifestLoadId=v_idCargoManifest; 
    
-    if v_cargoManifestUnloadPhasesCargoManifestLoadiId IS NULL then
+    if v_CargoManifestUnloadId IS NULL then
     
-    Select ShipmmsiCode into v_mmsi
+    Select SHIPMMSICODE into v_mmsi
     from CargoManifestLoad
-    where id = v_idCargoManifest;
+    where ID = v_idCargoManifest;
     
     Select SHIPNAME into v_locationName
     from Ship
@@ -48,17 +48,17 @@ begin
    fetch cargos into v_idCargoManifest;
    exit when cargos%notfound;
    
-   Select Phasesid into v_phases
+   Select id into v_phases
    from CargoManifestLoad
-   where v_idCargoManifest=CargoManifestLoadiId ; 
+   where v_idCargoManifest=ID; 
    
    Select realArrivalDate into v_arrivalDate_aux
    from phases
-   where v_idCargoManifest=CargoManifestLoadiId and id=v_phases; 
+   where v_idCargoManifest=CargoManifestLoadId and id=v_phases; 
    
    Select destination into v_locationNameAux
    from phases
-   where v_idCargoManifest=CargoManifestLoadiId and id=v_phases; 
+   where v_idCargoManifest=CargoManifestLoadId and id=v_phases; 
    
    if v_arrivalDate IS NULL then
    v_arrivalDate:=v_arrivalDate_aux;

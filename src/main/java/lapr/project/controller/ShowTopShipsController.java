@@ -62,7 +62,7 @@ public class ShowTopShipsController {
             shipString.append("\n\n");
 
             try {
-                new WriteForAFile().writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), new File("target\\generated-sources\\annotations\\TopShips"));
+                new WriteForAFile().writeForAFile(shipString.toString(), String.format("Show_Top_%d_ships", numberShips), new File(".\\outputs\\TopShips"));
             } catch (Exception e){
 
             }

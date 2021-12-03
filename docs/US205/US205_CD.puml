@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class LoadUnloadUI{
+
+}
+
+class LoadUnloadController{
++ createUS205(mmsiCode)
+}
+
+
+class US205 {
+- initialize(mmsiCode)
++ toString()
+
+}
+
+class WriteForAFile{
++ writeForAFiLe(textualInformation)
+
+}
+
+
+LoadUnloadUI ..> LoadUnloadController
+LoadUnloadController -> US205
+US205 --> WriteForAFile : uses
+
+@enduml

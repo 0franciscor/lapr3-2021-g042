@@ -26,6 +26,15 @@ public class SendToDatabase implements Persistable {
             databaseConnection = null;
     }
 
+    /**
+     * Mocking Constructor
+     *
+     * @param databaseConnection for testing purposes
+     */
+    public SendToDatabase(DatabaseConnection databaseConnection) {
+        this.databaseConnection = databaseConnection;
+    }
+
     //################################# Object fetching RELATED #####################################
 
     /**
@@ -150,7 +159,7 @@ public class SendToDatabase implements Persistable {
     private void updateShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
             throws SQLException {
         String sqlCommand =
-                "update ship set imoCode = ?, numberEnergyGenerators = ?, generatorOutput = ?, callSign = ?, draft = ?, shipName = ?, vesselTypeId = ?, shipLength = ?, width = ?, cargo = ? where mmsiCode = " + ship.getMMSI();
+                "update ship set imoCode = ?, numberEnergyGenerators = ?, generatorOutput = ?, callSign = ?, draft = ?, shipName = ?, vesselTypeId = ?, shipLength = ?, width = ?, cargo = ?, capacity = ? where mmsiCode = " + ship.getMMSI();
 
         executeShipStatementOnDatabase(databaseConnection, ship, sqlCommand);
     }
@@ -165,7 +174,7 @@ public class SendToDatabase implements Persistable {
     private void insertShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
             throws SQLException {
         String sqlCommand =
-                "insert into ship(mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo) values (" + ship.getMMSI() + ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "insert into ship(mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values (" + ship.getMMSI() + ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         executeShipStatementOnDatabase(databaseConnection, ship, sqlCommand);
     }
@@ -194,6 +203,7 @@ public class SendToDatabase implements Persistable {
         saveShipPreparedStatement.setFloat(8, ship.getLength());
         saveShipPreparedStatement.setFloat(9, ship.getWidth());
         saveShipPreparedStatement.setString(10, ship.getCargo());
+        saveShipPreparedStatement.setFloat(11, ship.getCapacity());
 
         try {
             saveShipPreparedStatement.executeUpdate();

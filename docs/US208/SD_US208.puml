@@ -4,9 +4,8 @@
 actor "Ship Captain" as SC
 participant ": RatioOfCargoManifestUI" as UI
 participant ": RatioOfCargoManifestController" as CT
-participant ": Company" as CP
-participant "store : CargoManifestStore" as ST
-participant "cargoManifest : CargoManifest" as CM
+participant ":US208" as US
+participant ": WriteForAFile" as WF
 
 
 activate SC
@@ -16,17 +15,21 @@ UI --> SC : asks the id of the cargo manifest
 deactivate UI
 SC -> UI : type the id of the cargo manifest
 activate UI
-UI->CT : getTheRatioOfCargoManifest(id)
+UI->CT : createUS2084(idCargoManifest)
 activate CT
-CT-> CP : store = getCargoManifestStore()
-activate CP
-deactivate CP
-CT -> ST : getRatioOfACargoManifestById(id)
-activate ST
-ST -> CM : ratio = getRatio()
-activate CM
-deactivate CM
-deactivate ST
+CT -> US** : create(idCargoManifest)
+US -> US : initialize(idCargoManifest)
+activate US
+US -> US : textualInformation = toString()
+activate US
+deactivate US
+US -> WF : writeForAFile(textualInformation)
+
+activate WF
+deactivate WF
+deactivate US
+deactivate CT
+
 
 deactivate CT
 UI-->SC : show the ratio between the number \nof containers e the capacity of a ship

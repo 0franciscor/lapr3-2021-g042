@@ -4,13 +4,13 @@
 actor "Ship Captain" as SC
 participant ":LoadUnloadUI" as UI
 participant ":LoadUnloadController" as CT
-participant ":US206" as US
+participant ":US205" as US
 participant ": WriteForAFile" as WF
 
 
 
 activate SC
-SC -> UI : starts the requisition of the list \n of containers to be loaded in the next port
+SC -> UI : starts the requisition of the list \n of containers to be unloaded in the next port
 activate UI
 UI --> SC : asks the mmsi code of the ship
 deactivate UI
@@ -18,7 +18,7 @@ SC -> UI : type the mmsi code
 
 
 activate UI
-UI->CT : createUS206(mmsiCode)
+UI->CT : createUS205(mmsiCode)
 activate CT
 
 

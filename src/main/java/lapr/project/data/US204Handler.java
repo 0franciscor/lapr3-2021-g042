@@ -20,23 +20,26 @@ public class US204Handler {
 
     private String containerLocation;
 
-    public US204Handler(String containerNumber) throws SQLException, IOException {
+    public US204Handler() throws SQLException, IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
-        initialize(containerNumber);
     }
 
-    private void initialize(String containerNumber) throws SQLException, IOException {
-        CallableStatement callStmt = databaseConnection.prepareCall("{CALL US204(?)}");
+    public void getContainerLocation(String containerNumber) throws IOException {
 
-        callStmt.setString(1, containerNumber);
+        try(CallableStatement callStmt = databaseConnection.prepareCall("{CALL get_container_position (?)}")) {
 
-        callStmt.execute();
+            callStmt.setString(1, containerNumber);
 
-        this.containerLocation = callStmt.getString(1);
+            callStmt.execute();
 
-        writeForAFile.writeForAFile(containerLocation, "US204_" + containerNumber, new File("target\\generated-sources\\annotations\\US204"));
-        callStmt.close();
-        databaseConnection.close();
+            this.containerLocation = callStmt.getString(1);
+
+            writeForAFile.writeForAFile(containerLocation, "US204_" + containerNumber, new File("target\\generated-sources\\annotations\\US204"));
+            callStmt.close();
+            databaseConnection.close();
+        }catch (SQLException e){
+
+        }
     }
 }

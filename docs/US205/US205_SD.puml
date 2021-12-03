@@ -2,8 +2,8 @@
 'https://plantuml.com/class-diagram
 
 actor "Ship Captain" as SC
-participant ":LoadUnloadUI" as UI
-participant ":LoadUnloadController" as CT
+participant ":UnloadUI" as UI
+participant ":UnloadController" as CT
 participant ":US205" as US
 participant ": WriteForAFile" as WF
 

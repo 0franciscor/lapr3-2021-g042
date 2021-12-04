@@ -23,7 +23,7 @@ public class US204Handler {
         writeForAFile = new WriteForAFile();
     }
 
-    public void getContainerLocation(int containerNumber) throws IOException {
+    public String getContainerLocation(int containerNumber) throws IOException {
 
         try(CallableStatement callStmt = databaseConnection.prepareCall("{ ? = call get_container_position (?)}")) {
 
@@ -39,9 +39,10 @@ public class US204Handler {
 
             writeForAFile.writeForAFile(containerLocation, "US204_" + containerNumber, new File(".\\outputs\\US204"));
 
-
+            return containerLocation;
         }catch (SQLException e){
             e.printStackTrace();
         }
+        return null;
     }
 }

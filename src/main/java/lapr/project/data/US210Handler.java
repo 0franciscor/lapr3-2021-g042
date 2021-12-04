@@ -27,7 +27,7 @@ public class US210Handler {
 
     private void initialize() throws SQLException, IOException {
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{CALL US210(?)}");
+            CallableStatement statement = databaseConnection.prepareCall("{call US210(?)}");
             statement.registerOutParameter(1, Types.LONGNVARCHAR);
 
 

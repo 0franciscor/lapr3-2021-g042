@@ -57,7 +57,7 @@ public class US207Handler {
      */
     private void initialize(String mmsiCode, int year) throws IOException {
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{CALL US207(?, ?, ?, ?)}");
+            CallableStatement statement = databaseConnection.prepareCall("{call US207(?, ?, ?, ?)}");
             statement.registerOutParameter(3, Types.INTEGER);
             statement.registerOutParameter(4, Types.FLOAT);
 

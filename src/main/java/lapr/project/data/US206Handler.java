@@ -25,7 +25,7 @@ public class US206Handler {
     private void initialize(String mmsiCode) throws IOException {
 
         try{
-            CallableStatement statement = databaseConnection.prepareCall("{CALL US206(?, ?)}");
+            CallableStatement statement = databaseConnection.prepareCall("{call US206(?, ?)}");
 
             statement.registerOutParameter(2, Types.INTEGER);
 

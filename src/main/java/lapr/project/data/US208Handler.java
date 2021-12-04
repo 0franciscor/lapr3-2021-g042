@@ -28,7 +28,7 @@ public class US208Handler {
     private void initialize(int cargoManifestId) throws IOException {
 
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{CALL US208(?, ?)}");
+            CallableStatement statement = databaseConnection.prepareCall("{call US208(?, ?)}");
             statement.registerOutParameter(2, Types.FLOAT);
 
             statement.setInt(1, cargoManifestId);

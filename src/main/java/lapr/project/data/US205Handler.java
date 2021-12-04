@@ -24,7 +24,7 @@ public class US205Handler {
     private void initialize(String mmsiCode) throws  IOException {
 
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{CALL US205(?, ?)}");
+            CallableStatement statement = databaseConnection.prepareCall("{call US205(?, ?)}");
             statement.registerOutParameter(2, Types.INTEGER);
 
             statement.setString(1, mmsiCode);

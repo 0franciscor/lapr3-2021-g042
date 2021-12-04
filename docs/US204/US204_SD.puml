@@ -16,10 +16,10 @@ C -> UI : Introduce the requested data
 activate UI
 UI -> CTRL: getContainerLocation(containerNumber)
 activate CTRL
-CTRL --> handler**
+CTRL --> handler** : create()
 CTRL -> handler: getContainerLocation(containerNumber)
 activate handler
-handler->writer:writeForAFile(containerLocation, fileName, filePath))
+handler->writer:writeForAFile(containerLocation, fileName, filePath)
 activate writer
 writer --> handler: result
 deactivate writer

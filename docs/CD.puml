@@ -1,13 +1,74 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+class SendToDatabaseUI{
+
+}
+
+class SendToDatabaseController{
++importShips()
++importPorts()
+}
+
+class SendToDatabase{
++saveShip(DatabaseConnection databaseConnection, Object object)
++saveShipToDatabase(DatabaseConnection databaseConnection, Ship ship)
++isShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
++updateShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
++insertShipOnDatabase(DatabaseConnection databaseConnection, Ship ship
+
++saveLocation(DatabaseConnection databaseConnection, Object object)
++saveLocationToDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
++isLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
++updateLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
++insertLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
++executeShipLocationStatementOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation, String sqlCommand, boolean type)
+
++savePort(DatabaseConnection databaseConnection, Object object)
++savePortToDatabase(DatabaseConnection databaseConnection, Ports port)
++isPortOnDatabase(DatabaseConnection databaseConnection, Ports port)
++updatePortOnDatabase(DatabaseConnection databaseConnection, Ports port)
++insertPortOnDatabase(DatabaseConnection databaseConnection, Ports port)
++executePortStatementOnDatabase(DatabaseConnection databaseConnection, Ports port, String sqlCommand)
+
++isPlaceLocationOnDatabase(DatabaseConnection databaseConnection, Ports port)
++insertPlaceLocationOnDatabase(DatabaseConnection databaseConnection, Ports port)
++executePlaceLocationStatementOnDatabase(DatabaseConnection databaseConnection, Ports port, String sqlCommand)
+
++isCountryOnDatabase(DatabaseConnection databaseConnection, Ports port)
++insertCountryOnDatabase(DatabaseConnection databaseConnection, Ports port)
+
+}
+
+class ConnectionFactory{
++loadProperties()
++getDatabaseConnection()
+}
+
+class DatabaseConnection{
++DatabaseConnection(String url, String username, String password)
++getConnection()
++registerError(SQLException error)
++connectionWorking()
+
+}
+
+interface Persistable{
++saveShip(DatabaseConnection databaseConnection, Object object)
++saveLocation(DatabaseConnection databaseConnection, Object object)
++savePort(DatabaseConnection databaseConnection, Object object)
+}
+
+
 class Company{
 -designation
 -getBstShip()
 -getImportShip()
 -getTopNShips(numberShips, initialDate, finalDate)
++ getCountryStr()
++ getPortStr()
++ getBstShip() : BstShip
 }
-
 
 class ImportShip{
 -getFile()
@@ -44,6 +105,8 @@ class BstShip{
 -getShipByMmsiCode(MMSI)
 -insert(ship)
 -inOrder()
++getIntendedPairsOfShips()
++inOrder() : Iterable<ShipLocation>
 }
 
 class VesselType {
@@ -80,8 +143,8 @@ class Ship {
 -setMMSI()
 -getShipPosition()
 +getShipBTS()
++ getShipPosition() : ShipLocation
 }
-
 class SearchDetailsUI {}
 
 class SearchDetailsController {
@@ -194,6 +257,7 @@ class ShipLocationBST{
 +getArrivalLongitude()
 +getTravelledDistance()
 +getDeltaDistance()
++ calculateDistance(arrivalLat : double, arrivalLog : double, arrivalLat2 : double, arrivalLog2 : double)
 }
 
 class ListSomeShipDataUi{}
@@ -206,26 +270,132 @@ class ListSomeShipDataController{
 + orderTheListDescending()
 }
 
-
-
 class ShowTopShipsUI{}
 
 class ShowTopShipsController{
 -getTopNShips
 }
+class ImportPortUI {}
 
+class ImportPortController {
++importFile(fileName)
++importPorts()
+}
+
+class Ports {
+-identification
+-name
+}
+
+class PlaceLocation {
+-latitude
+-longitude
+}
+
+class Country {
+-name
+-continent
+}
+
+class ImportPort{
++ loadFile(nameOfTheFileToBeImported)
++ convertPorts()
+}
+
+class CountryStore {
++getCountryByName(name)
++createCountry( countryName,continent)
+}
+
+class PortStore {
++create(country,code,portName,placeLocation)
++savePort()
+}
+
+class Ports2DTree {
++create Node<Port> (Port,latitude,longitude)
++balanceTree(lst)
+}
+class ShowPairsOfShipsUI {}
+
+class ShowPairsOfShipsController {
++ getPairsOfShip()
+}
+
+
+class FindClosestPortUI {}
+
+class FindClosestPortController {
+-findClosestPort(callSign, date)
+
+}
+
+
+class BstShip {
+-getShipByCallSign(callSign)
+}
+
+class Ship {
+-getShipPosition()
+}
+
+class ShipLocationBST {
+-getShipLocation(date)
+}
+
+
+
+class PortStore {
+-getPorts2DTree()
+}
+
+class Ports2DTree {
+-findNearestNeighbour(latitude, longitude)
+}
+
+class PortsMapper {
+-toDto(port)
+}
+
+class PortsDto {
+}
+
+
+
+
+
+
+
+
+
+PortStore "1"--> "*" Ports : adopts
+
+Ports "1" -- "1" PlaceLocation : located at >
+PortStore "1"--> "*" Ports : adopts
+PortsMapper ..> PortsDto
+
+PlaceLocation "*" -- "1" Country : placed in >
+CountryStore "1"--> "*" Country : adopts
 
 ImportShipUI ..> ImportShipController
-
 ImportShipController ..> Company
 
+ImportPort ..> Company
+ImportPort ..> CountryStore
+ImportPort ..> PortStore
+ImportPort ..> Ports2DTree
+ImportPortUI ..> ImportPortController
+ImportPortController ..> Company
+ImportPortController ..> ImportPort
 ImportShip "1" -- "1" BstShip : uses >
 
+Company "1"--"1..*" Ports: have >
 Company "1" -- "1" BstShip : owns >
 Company "1" -- "1..*" VesselType : owns >
 Company "1" -- "1" ImportShip : uses >
 Company --> Ship : owns
 Company --> BstShip : uses
+Company "1"--"1..*" Ship: own >
 
 BstShip "1" -- "1..*" Ship : owns >
 
@@ -233,6 +403,8 @@ Ship "1" -- "1" ShipLocationBST : uses >
 Ship "1" -- "1" VesselType : has >
 Ship --> ShipLocationBST : has
 Ship ..> Summary
+Ship "0..*"--"1" Ports: dock >
+Ship "1" -- "1..*" ShipLocation : has >
 
 ShipLocationBST "1" -- "1..*" ShipLocation : has >
 ShipLocationBST --> Summary : generate
@@ -265,44 +437,39 @@ ShowTopShipsUI ..> ShowTopShipsController
 ShowTopShipsController ..> Company
 ShowTopShipsController ..> BstShip
 
-
 ShowPairsOfShipsUI .> ShowPairsOfShipsController
 ShowPairsOfShipsController ..> Company
 
+FindClosestPortUI ..> FindClosestPortController
+FindClosestPortController ..> Company
+FindClosestPortController ..> BstShip
+FindClosestPortController ..> Ship
+FindClosestPortController ..> ShipLocationBST
+FindClosestPortController ..> PortStore
+FindClosestPortController ..> Ports2DTree
+FindClosestPortController ..> PortsMapper
+
+SendToDatabaseUI ..> SendToDatabaseController
+
+SendToDatabaseController ..> SendToDatabase
+SendToDatabase ..> Company
+SendToDatabase ..> Ship
+SendToDatabase ..> ShipLocation
+SendToDatabase ..> Ports
+SendToDatabase ..> PlaceLocation
+SendToDatabase ..> Country
+Persistable <|-- SendToDatabase
+SendToDatabase ..> ConnectionFactory
+SendToDatabase ..> DatabaseConnection
 
 
 
-class ShowPairsOfShipsUI {}
 
-class ShowPairsOfShipsController {
-+ getPairsOfShip()
-}
 
-class Company{
-+ getBstShip() : BstShip
-}
 
-class BstShip {
-+ getIntendedPairsOfShips()
-+ inOrder() : Iterable<ShipLocation>
-}
 
-class Ship {
-+ getShipPosition() : ShipLocation
-}
 
-class ShipLocation {
 
-}
-
-class ShipLocationBST {
-+ getTravelledDistance() : double
-+ getArrivalLatitude() : String
-+ getArrivalLongitude() : String
-+ calculateDistance(arrivalLat : double, arrivalLog : double, arrivalLat2 : double, arrivalLog2 : double)
-+ getDepartureLatitude() : String
-+ getDepartureLongitude() : String
-}
 
 
 

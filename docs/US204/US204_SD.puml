@@ -1,0 +1,40 @@
+@startuml
+autonumber
+
+actor "Client" as C
+
+participant ":ContainerSituationUI" as CSUI
+participant ":ContainerSituationController" as COC
+participant ":US204" as US
+participant ":WriteToFile" as WT
+
+
+
+activate C
+
+C -> CSUI: want to know the current status of a specific container
+activate CSUI
+CSUI --> C: asks for container code (id)
+deactivate CSUI
+C -> CSUI:  type the requested data.
+
+activate CSUI
+CSUI -> COC: createUS204 (id)
+activate COC
+
+COC -> US: create (id)
+activate US
+
+
+US -> US:initialize (id)
+US -> WT: WriteToFile(info)
+activate WT
+deactivate WT
+
+
+deactivate COC
+CSUI --> C: shows the information.
+
+deactivate CSUI
+deactivate C
+@enduml

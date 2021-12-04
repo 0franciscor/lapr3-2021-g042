@@ -1,8 +1,5 @@
 package lapr.project.ui;
 
-import lapr.project.controller.ImportShipController;
-import lapr.project.data.SendToDatabase;
-
 /**
  * @author Nuno Bettencourt <nmb@isep.ipp.pt> on 24/05/16.
  */

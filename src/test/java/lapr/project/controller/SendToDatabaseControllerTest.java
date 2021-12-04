@@ -1,6 +1,7 @@
 package lapr.project.controller;
 
 import lapr.project.model.Company;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

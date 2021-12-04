@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class ScenarioTestBDDADTest {
@@ -25,16 +29,20 @@ public class ScenarioTestBDDADTest {
     private US210Handler us210Handler;
 
     @Test
-    public void presentationTest() throws SQLException, IOException {
+    public void presentationTest() throws SQLException, IOException, ParseException {
         findContainerSituationController = new FindContainerSituationController();
         findContainerSituationController.getContainerLocation(987650321);
         findContainerSituationController.getContainerLocation(695421863);
 
         us205Handler = new US205Handler("210950000");
-        us206Handler = new US206Handler("210950000");
-        us207Handler = new US207Handler("210950000", 2020);
-        us208Handler = new US208Handler(2);
-        us209Handler = new US209Handler(2, new Date());
+        us206Handler = new US206Handler("636092932");
+        us207Handler = new US207Handler("212180000", 2004);
+        us208Handler = new US208Handler(3);
+        String date ="14.10.21 18:44:33";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy hh:mm:ss");
+        Date parsedDate = dateFormat.parse(date);
+        Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+        us209Handler = new US209Handler("210950000", timestamp);
         us210Handler = new US210Handler();
     }
 }

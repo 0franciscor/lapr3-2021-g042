@@ -1,7 +1,7 @@
 CREATE OR REPLACE PROCEDURE US208 (idCargoManifest in INTEGER, occupancyRate out FLOAT) IS
 
     totalContainers INTEGER;
-    shipMmsiCode VARCHAR(255);
+    mmsiCode VARCHAR(255);
     capacityShip FLOAT;
 
 BEGIN
@@ -13,14 +13,15 @@ BEGIN
     FROM CargoManifestContainer
     WHERE CargoManifestContainer.cargoManifestLoadId = idCargoManifest;
 
-    SELECT shipMmsiCode INTO shipMmsiCode
+    SELECT shipMmsiCode INTO mmsiCode
     FROM CargoManifestLoad
     WHERE CargoManifestLoad.id = idCargoManifest;
 
     SELECT capacity INTO capacityShip
     FROM Ship
-    WHERE Ship.mmsiCode = shipMmsiCode;
+    WHERE Ship.mmsiCode = mmsiCode;
 
-    occupancyRate:= (totalContainers/capacityShip)*100;
-
+    IF totalContainers != 0 OR capacityShip != 0 THEN
+        occupancyRate:= (totalContainers/capacityShip)*100;
+    END IF;
 END;

@@ -30,6 +30,7 @@ public class SendToDatabase implements Persistable {
         this.databaseConnection = App.getInstance().getDatabaseConnection();
         if(!databaseConnection.connectionWorking())
             databaseConnection = null;
+        this.company = App.getInstance().getCompany();
     }
 
     /**
@@ -69,9 +70,7 @@ public class SendToDatabase implements Persistable {
      * Method responsible for saving Ports, PlaceLocations and Countries to the database
      */
     public void sendPortsToDatabase() {
-        System.out.println("c");
         if (databaseConnection != null) {
-            System.out.println("b");
             for(Ports port : company.getPortStr().getPortsLst())
                 savePort(databaseConnection, port);
 

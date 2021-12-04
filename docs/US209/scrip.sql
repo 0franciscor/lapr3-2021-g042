@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE US209 (mmsiCodeShip in VARCHAR, actualDate in timestamp, occupancyRate out FLOAT) IS
+CREATE OR REPLACE PROCEDURE US209 (mmsiCodeShip in VARCHAR, actualDate in TIMESTAMP, occupancyRate out FLOAT) IS
 
     totalContainers INTEGER;
     capacityShip FLOAT;
@@ -51,6 +51,7 @@ BEGIN
     FROM Ship
     WHERE Ship.mmsiCode = mmsiCodeShip;
 
-    occupancyRate:= (finalContainer/capacityShip)*100;
-
+    IF finalContainer != 0 OR capacityShip != 0 THEN
+        occupancyRate:= (finalContainer/capacityShip)*100;
+    END IF;
 END;

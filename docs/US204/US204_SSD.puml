@@ -11,7 +11,7 @@ deactivate SY
 C -> SY : Introduce the requested data
 
 activate SY
-SY-->C : Show the s current location
+SY-->C : Show the current location
 deactivate SY
 deactivate C
 @enduml

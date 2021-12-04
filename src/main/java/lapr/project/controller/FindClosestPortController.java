@@ -80,11 +80,13 @@ public class FindClosestPortController {
         if(ship!=null){
             ShipLocationBST shipLocationBST=ship.getShipPosition();
             ShipLocation shipLocation=shipLocationBST.getShipLocationByDate(date);
-            Ports port = portStore.getPorts2DTree().findNearestNeighbour(Double.parseDouble(shipLocation.getLatitude()),Double.parseDouble(shipLocation.getLongitude()));
-            File file = new File(".\\outputs\\US202");
-            PortsDto portsDto = portsMapper.toDto(port);
-            writeForAFile.writeForAFile(portsDto.toString(), callSign, file);
-            return portsDto;
+            if(shipLocation!=null) {
+                Ports port = portStore.getPorts2DTree().findNearestNeighbour(Double.parseDouble(shipLocation.getLatitude()), Double.parseDouble(shipLocation.getLongitude()));
+                File file = new File(".\\outputs\\US202");
+                PortsDto portsDto = portsMapper.toDto(port);
+                writeForAFile.writeForAFile(portsDto.toString(), callSign, file);
+                return portsDto;
+            }
         }
         return null;
     }

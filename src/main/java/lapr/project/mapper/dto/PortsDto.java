@@ -81,7 +81,7 @@ public class PortsDto {
 
     @Override
     public String toString(){
-        return String.format("Port: %s\nCode: %d\nCountry Name: %s\n",portName,code,countryName);
+        return String.format("Port: %s Code: %d Country Name: %s",portName,code,countryName);
     }
 
 }

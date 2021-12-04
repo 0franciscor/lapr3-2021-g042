@@ -4,7 +4,10 @@ import lapr.project.mapper.PortsMapper;
 import lapr.project.mapper.dto.PortsDto;
 import lapr.project.model.*;
 import lapr.project.model.store.PortStore;
+import lapr.project.utils.WriteForAFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -39,6 +42,11 @@ public class FindClosestPortController {
     private final PortsMapper portsMapper;
 
     /**
+     * Represents an instance of WriteForFile
+     */
+    private final WriteForAFile writeForAFile;
+
+    /**
      * Initialize the controller
      */
     public FindClosestPortController(){
@@ -47,6 +55,7 @@ public class FindClosestPortController {
         this.bstShip=company.getBstShip();
         this.portStore=company.getPortStr();
         this.portsMapper= new PortsMapper();
+        this.writeForAFile = new WriteForAFile();
     }
 
     /**
@@ -58,6 +67,7 @@ public class FindClosestPortController {
         this.bstShip=company.getBstShip();
         this.portStore=company.getPortStr();
         this.portsMapper= new PortsMapper();
+        this.writeForAFile = new WriteForAFile();
     }
 
     /**
@@ -65,13 +75,16 @@ public class FindClosestPortController {
      * @param callSign The ship's Call sign
      * @param date the date for search
      */
-    public PortsDto findClosestPort(String callSign, Date date){
+    public PortsDto findClosestPort(String callSign, Date date) throws IOException {
         Ship ship= bstShip.getShipByCallSign(callSign);
         if(ship!=null){
             ShipLocationBST shipLocationBST=ship.getShipPosition();
             ShipLocation shipLocation=shipLocationBST.getShipLocationByDate(date);
             Ports port = portStore.getPorts2DTree().findNearestNeighbour(Double.parseDouble(shipLocation.getLatitude()),Double.parseDouble(shipLocation.getLongitude()));
-            return portsMapper.toDto(port);
+            File file = new File(".\\outputs\\US202");
+            PortsDto portsDto = portsMapper.toDto(port);
+            writeForAFile.writeForAFile(portsDto.toString(), callSign, file);
+            return portsDto;
         }
         return null;
     }

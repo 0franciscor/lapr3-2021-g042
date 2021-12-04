@@ -6,6 +6,7 @@ import lapr.project.model.Country;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FindClosestPortControllerTest {
 
     @Test
-    void findClosestPort() throws ParseException {
+    void findClosestPort() throws ParseException, IOException {
         Company company = new Company();
         ImportShipController importShipController = new ImportShipController(company);
         importShipController.importFile("sships.csv");

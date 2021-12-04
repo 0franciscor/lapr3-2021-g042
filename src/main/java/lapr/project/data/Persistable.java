@@ -13,12 +13,12 @@ public interface Persistable {
     void saveShip(DatabaseConnection databaseConnection, Object object);
 
     /**
-     * Save a Position to the database.
+     * Save a ShipLocation to the database.
      *
      * @param databaseConnection the database connection
      * @param object the object that is going to be saved
      */
-    void savePosition(DatabaseConnection databaseConnection, Object object);
+    void saveLocation(DatabaseConnection databaseConnection, Object object);
 
     /**
      * Save a port to the database

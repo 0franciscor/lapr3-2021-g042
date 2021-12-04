@@ -1,14 +1,13 @@
 package lapr.project.presentation;
 
 import lapr.project.controller.*;
-import lapr.project.data.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 class ScenarioTestTest {
 
@@ -26,25 +25,9 @@ class ScenarioTestTest {
 
     private ShowTopShipsController showTopShipsController;
 
-    private US204Handler us204Handler;
+    private ImportPortController importPortController;
 
-    private US205Handler us205Handler;
-
-    private US206Handler us206Handler;
-
-    private US207Handler us207Handler;
-
-    private US208Handler us208Handler;
-
-    private US209Handler us209Handler;
-
-    private US210Handler us210Handler;
-
-    //private FindContainerSituationController findContainerSituationController;
-
-    //private SendToDatabase sendToDatabase;
-
-
+    private FindClosestPortController findClosestPortController;
 
     public ScenarioTestTest() throws SQLException, IOException {
         importShipController=new ImportShipController();
@@ -55,22 +38,8 @@ class ScenarioTestTest {
         listSomeShipDataController = new ListSomeShipDataController();
         showPairsOfShipsController = new ShowPairsOfShipsController();
         showTopShipsController = new ShowTopShipsController();
-
-
-        us204Handler = new US204Handler();
-        us204Handler.getContainerLocation(987650321);
-        us205Handler = new US205Handler("210950000");
-        us206Handler = new US206Handler("210950000");
-        us207Handler = new US207Handler("210950000", 2020);
-        us208Handler = new US208Handler(2);
-        us209Handler = new US209Handler(2, new Date());
-        us210Handler = new US210Handler();
-
-
-
-        //findContainerSituationController= new FindContainerSituationController();
-        //sendToDatabase=new SendToDatabase();
-
+        importPortController = new ImportPortController();
+        findClosestPortController = new FindClosestPortController();
     }
 
     @Test
@@ -99,8 +68,28 @@ class ScenarioTestTest {
         showTopShipsController.getTopNShips(5,dateFormatter.parse(auxDatas[0]),dateFormatter.parse(auxDatas[1]));
         showPairsOfShipsController.getPairsOfShip();
 
-        //findContainerSituationController.getContainerSituation("987650321");
     }
 
+    @Test
+    public void presentation2() throws ParseException, IOException {
 
+        importPortController.importFile("portsTest.csv");
+        importPortController.importPorts();
+
+        importShipController.importFile("sships.csv");
+        importShipController.importShips();
+
+
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+
+        findClosestPortController.findClosestPort("WNGW", dateFormatter.parse("31-12-2020 23:26"));
+
+
+        importPortController.importFile("sports.csv");
+        importPortController.importPorts();
+
+        importPortController.importFile("bports.csv");
+        importPortController.importPorts();
+
+    }
 }

@@ -3,6 +3,7 @@ package lapr.project.data;
 import lapr.project.controller.App;
 import lapr.project.model.*;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 
 /**
@@ -18,6 +19,11 @@ public class SendToDatabase implements Persistable {
     DatabaseConnection databaseConnection;
 
     /**
+     * The database Company
+     */
+    Company company;
+
+    /**
      * Send to Database Connection
      */
     public SendToDatabase() {
@@ -27,12 +33,16 @@ public class SendToDatabase implements Persistable {
     }
 
     /**
-     * Mocking Constructor
+     * Company inserted constructor
      *
-     * @param databaseConnection for testing purposes
+     * @param company for testing purposes
      */
-    public SendToDatabase(DatabaseConnection databaseConnection) {
-        this.databaseConnection = databaseConnection;
+    public SendToDatabase(Company company) {
+        this.databaseConnection = App.getInstance().getDatabaseConnection();
+        if(!databaseConnection.connectionWorking())
+            databaseConnection = null;
+
+        this.company = company;
     }
 
     //################################# Object fetching RELATED #####################################
@@ -42,7 +52,7 @@ public class SendToDatabase implements Persistable {
      */
     public void sendShipsAndLocationsToDatabase() {
         if (databaseConnection != null) {
-            for (Object objectShip : App.getInstance().getCompany().getBstShip().inOrder()) {
+            for (Object objectShip : company.getBstShip().inOrder()) {
                 Ship ship = (Ship) objectShip;
                 saveShip(databaseConnection, ship);
 
@@ -62,7 +72,7 @@ public class SendToDatabase implements Persistable {
         System.out.println("c");
         if (databaseConnection != null) {
             System.out.println("b");
-            for(Ports port : App.getInstance().getCompany().getPortStr().getPortsLst())
+            for(Ports port : company.getPortStr().getPortsLst())
                 savePort(databaseConnection, port);
 
         } else

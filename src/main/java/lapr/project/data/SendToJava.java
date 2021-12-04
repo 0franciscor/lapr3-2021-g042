@@ -84,6 +84,7 @@ public class SendToJava {
                 newShip.setLength(shipsResultSet.getFloat(9));
                 newShip.setWidth(shipsResultSet.getFloat(10));
                 newShip.setCargo(shipsResultSet.getNString(11));
+                newShip.setCapacity();
 
                 importPositionFromDatabase(databaseConnection, newShip);
 
@@ -111,7 +112,7 @@ public class SendToJava {
 
         boolean isPositionOnDatabase;
 
-        String sqlCommand = "select * from shipPosition where shipMmsiCode = ?";
+        String sqlCommand = "select * from shipLocation where shipMmsiCode = ?";
 
         PreparedStatement getPositionPreparedStatement =
                 connection.prepareStatement(sqlCommand);

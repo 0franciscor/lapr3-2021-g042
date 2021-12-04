@@ -4,23 +4,26 @@
 class FindClosestPortUI {}
 
 class FindClosestPortController {
+-findClosestPort(callSign, date)
 
 }
 
 class Company {
 -designation
+-getBstShip()
+-getPortStr()
 }
 
 class BstShip {
-
+-getShipByCallSign(callSign)
 }
 
 class Ship {
-
+-getShipPosition()
 }
 
 class ShipLocationBST {
-
+-getShipLocation(date)
 }
 
 class ShipLocation {
@@ -28,19 +31,20 @@ class ShipLocation {
 }
 
 class Ports {
--identification
--name
+
 }
 
 
 class PortStore {
+-getPorts2DTree()
 }
 
 class Ports2DTree {
-
+-findNearestNeighbour(latitude, longitude)
 }
 
 class PortsMapper {
+-toDto(port)
 }
 
 class PortsDto {

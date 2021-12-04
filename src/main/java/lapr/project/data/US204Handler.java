@@ -25,7 +25,7 @@ public class US204Handler {
 
     public void getContainerLocation(int containerNumber) throws IOException {
 
-        try(CallableStatement callStmt = databaseConnection.prepareCall("{ ? = CALL get_container_position (?)}")) {
+        try(CallableStatement callStmt = databaseConnection.prepareCall("{ ? = call get_container_position (?)}")) {
 
             callStmt.setInt(2, containerNumber);
 
@@ -41,6 +41,7 @@ public class US204Handler {
 
 
         }catch (SQLException e){
+            e.printStackTrace();
         }
     }
 }

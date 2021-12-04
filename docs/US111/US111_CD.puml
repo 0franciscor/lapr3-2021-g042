@@ -17,12 +17,12 @@ class SendToDatabase{
 +updateShipOnDatabase(DatabaseConnection databaseConnection, Ship ship)
 +insertShipOnDatabase(DatabaseConnection databaseConnection, Ship ship
 
-+savePosition(DatabaseConnection databaseConnection, Object object)
-+savePositionToDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
-+isPositionOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
-+updatePositionOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
-+insertPositionOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
-+executeShipPositionStatementOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation, String sqlCommand, boolean type)
++saveLocation(DatabaseConnection databaseConnection, Object object)
++saveLocationToDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
++isLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
++updateLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
++insertLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
++executeShipLocationStatementOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation, String sqlCommand, boolean type)
 
 +savePort(DatabaseConnection databaseConnection, Object object)
 +savePortToDatabase(DatabaseConnection databaseConnection, Ports port)
@@ -55,7 +55,7 @@ class DatabaseConnection{
 
 interface Persistable{
 +saveShip(DatabaseConnection databaseConnection, Object object)
-+savePosition(DatabaseConnection databaseConnection, Object object)
++saveLocation(DatabaseConnection databaseConnection, Object object)
 +savePort(DatabaseConnection databaseConnection, Object object)
 }
 

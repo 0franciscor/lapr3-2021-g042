@@ -156,11 +156,17 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 | **[US210](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US210/US210.md)** | **As Traffic manager, I need to know which ships will be available on Monday next week and their location.** | Monday next week is properly identified. Only available ships are returned. All available ships are returned.|
 
 ## Project Coverage
+#### Sprint 1
 [Sprint 1 Coverage](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/Report_aux/coverageSprint1.md)
+#### Sprint 2
+[Sprint 2 Coverage](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/Report_aux/coverageSprint2.md)
 
 
 ## Pit Test Coverage Report
+#### Sprint 1
 ![PitTestCoverage](docs/Report_aux/pitTestCoverage.jpg)
+#### Sprint 2
+![PitTestCoverage](docs/Report_aux/pitTestCoverageS2.jpg)
 
 ## Team Performance
 The group agrees that all members of the group contributed equally to the project, althought some focused more on other parts given the division of the project.

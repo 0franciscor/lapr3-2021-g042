@@ -1,5 +1,9 @@
 package lapr.project.ui;
 
+import lapr.project.controller.ImportPortController;
+import lapr.project.controller.ImportShipController;
+import lapr.project.data.SendToDatabase;
+
 /**
  * @author Nuno Bettencourt <nmb@isep.ipp.pt> on 24/05/16.
  */
@@ -19,7 +23,6 @@ class Main {
      */
     public static void main(String[] args) {
         int option;
-
         do {
             System.out.println("Main Menu");
             System.out.println("0- Exit");

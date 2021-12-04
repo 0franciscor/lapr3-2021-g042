@@ -1,202 +1,272 @@
 -- Bootstrap of Ships
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('303221000', 'IMO7819216', 174, 568.41, 'WDG5171', 3, 'ARCTIC SEA', 30, 37, 9, 'NA', 125.27);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('303267000', 'IMO6421086', 281, 601.18, 'WNGW', 4.4, 'TUSTUMENA', 60, 89, 18, 'NA', 278.36);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('256888000', 'IMO9473028', 110, 615.46, '9HA2954', 14.7, 'CMA CGM MELISANDE', 70, 334, 42, '70', 275.43);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('229857000', 'IMO9224726', 187, 98.78, '9HA3667', 7.8, 'CARNIVAL LEGEND', 60, 292, 38, 'NA', 54.02);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('210950000', 'IMO9395044', 300, 296.83, 'C4SQ2', 9.5, 'VARAMO', 70, 166, 25, 'NA', 112.2);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('256304000', 'IMO9344564', 8, 628.1, '9HA3880', 11.4, 'OREGON TRADER', 70, 211, 29, 'NA', 210.33);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('212180000', 'IMO9643544', 415, 70.05, '5BBA4', 14.4, 'SAITA I', 70, 228, 32, 'NA', 178.56);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('305776000', 'IMO9506758', 142, 494.25, 'V2FR9', 8.5, 'INDUSTRIAL FAITH', 70, 153, 23, 'NA', 257.37);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('228339600', 'IMO9450648', 490, 325.74, 'FLSU', 15, 'CMA CGM ALMAVIVA', 70, 334, 42, '79', 75.39);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('636092932', 'IMO9225641', 447, 241.1, 'D5VK6', 11.8, 'MSC ILONA', 79, 299, 40, '79', 44.66);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('235092459', 'IMO9517575', 157, 390.62, '2FMJ5', 12, 'STENA ICEMAX', 90, 227, 42, 'NA', 202.86);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('636019825', 'IMO9222285', 253, 225.63, 'D5WI6', 9.2, 'CONTI LYON', 79, 300, 40, '79', 214.64);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('249047000', 'IMO9192387', 116, 552.35, '9HJC9', 8, 'CELEBRITY SUMMIT', 60, 294, 32, 'NA', 89.23);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('305176000', 'IMO9344394', 59, 66.27, 'V2DD5', 5.6, 'CELIA', 70, 100, 15, '70', 172.36);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('257881000', 'IMO9701920', 228, 601.04, 'LATO7', 13.3, 'SPAR ARIES', 70, 199, 32, 'NA', 63.23);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('309416000', 'IMO9417086', 203, 211.8, 'C6XC6', 6.4, 'SEABOURN ODYSSEY', 60, 198, 26, 'NA', 4.78);
-insert into Ship (mmsiCode, imoCode, numberEnergyGenerators, generatorOutput, callSign, draft, shipName, vesselTypeId, shipLength, width, cargo, capacity) values ('229961000', 'IMO9700122', 72, 387.9, '9HA3752', 13.3, 'ARABELLA', 70, 199, 32, 'NA', 67.21);
-
---Bootstrap ShipLocation
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/11/2021', '42.97875', '-66.97001', 12.9, 13.1, '355', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/4/2021', '42.92236', '-66.97243', 12.5, 2.4, '358', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/11/2021', '42.7698', '-66.9759', 13.3, 3.7, '356', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/11/2021', '42.96912', '-66.97061', '12.7', '-55.4', '358', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/8/2021', '42.95969', '-66.97106', 12.9, 8.1, '358', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/12/2021', '42.82021', '-66.9758', 13, -55, '356', '0', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/14/2021', '42.84366', '-66.97571', 13, -49.7, '356', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/3/2021', '42.69577', '-66.97808', 13.7, -54.8, '357', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/15/2021', '42.93874', '-66.97208', 13.1, 2.6, '359', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/4/2021', '42.73879', '-66.97726', 13.4, 3.4, '357', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/13/2021', '42.96527', '-66.97082', 12.8, -58.6, '358', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/3/2021', '42.77682', '-66.9756', 13.2, -53.3, '358', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/9/2021', '42.94963', '-66.97151', 13.4, 16.3, '358', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/13/2021', '42.81133', '-66.97587', 13.4, 10, '356', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/4/2021', '42.75527', '-66.97665', 13.7, -50.5, '357', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/6/2021', '42.71055', '-66.97776', 13.5, 1.4, '358', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/13/2021', '43.02665', '-66.97076', 12.5, 3.6, '354', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/3/2021', '42.9442', '-66.97192', 13.3, 4.2, '358', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/10/2021', '42.90195', '-66.97326', 12.8, 5.9, '357', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/14/2021', '43.22513', '-66.96725', 11.7, 5.5, '355', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/3/2021', '42.75007', '-66.97689', 13.6, 3, '357', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/5/2021', '42.8839', '-66.97409', 12.7, 2.5, '359', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/16/2021', '42.82527', '-66.97577', 13.1, -50.9, '356', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/5/2021', '42.7969', '-66.97547', 13, 4.2, '356', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('210950000', '12/8/2021', '42.98271', '-66.97009', 12.4, -52, '354', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('212180000', '12/5/2021', '24.34573', '-85.12394', 11.7, 119.9, '117', '3', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('212180000', '12/12/2021', '24.14301', '-84.72268', 11.7, 116.6, '114', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('212180000', '12/6/2021', '24.28016', '-85.00316', 11.3, 120.8, '118', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('212180000', '12/6/2021', '24.20221', '-84.85411', 11.3, 116.8, '117', '0', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('212180000', '12/15/2021', '24.11445', '-84.65529', 11.6, 113.3, '110', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('212351000', '12/11/2021', '55.09307', '-167.63625', 3.5, -61.6, '232', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/8/2021', '28.30354', '-88.78563', 11.7, 129.9, '131', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/5/2021', '28.08366', '-88.50578', 11.5, 131, '131', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/7/2021', '28.32168', '-88.81035', 11.7, 128.3, '130', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/7/2021', '28.33263', '-88.82491', 11.8, 129.5, '131', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/16/2021', '28.19854', '-88.65058', 11.7, 130.3, '131', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/6/2021', '27.89788', '-88.25001', 11.7, 128.4, '129', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/10/2021', '28.19528', '-88.64645', 11.7, 130.8, '131', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/3/2021', '28.34134', '-88.83706', 11.9, 126.9, '129', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/5/2021', '27.95776', '-88.33859', 11.3, 128.2, '128', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/7/2021', '28.3484', '-88.84688', 12, 129, '130', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/3/2021', '28.34412', '-88.84108', 12, 128.3, '129', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/7/2021', '28.35085', '-88.85024', 12, 127.3, '130', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/3/2021', '28.26076', '-88.7299', 11.8, 131, '131', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/8/2021', '28.33618', '-88.82967', 11.9, 127.8, '131', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/4/2021', '28.05221', '-88.46678', 11.6, 130.9, '131', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/11/2021', '28.10335', '-88.53051', 11.6, 130.5, '131', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/7/2021', '28.37458', '-88.88584', 11.8, 124.6, '128', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/16/2021', '27.87869', '-88.22321', 11.7, 127.9, '128', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('228339600', '12/15/2021', '28.05475', '-88.46992', 11.5, 131.1, '131', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229767000', '12/14/2021', '26.45021', '-91.84957', 19.4, -111.4, '297', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229767000', '12/6/2021', '26.44508', '-91.83885', 19.4, -111.7, '296', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229767000', '12/5/2021', '26.12391', '-91.18216', 20.1, -109.7, '299', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229767000', '12/8/2021', '26.12964', '-91.19356', 20.1, -110.9, '299', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229857000', '12/7/2021', '17.9662', '-63.14557', 1.3, 155.3, '88', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229857000', '12/8/2021', '17.94857', '-63.14243', 0.9, 145.9, '88', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229857000', '12/8/2021', '17.96995', '-63.14873', 1.4, 131.9, '78', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229857000', '12/16/2021', '17.96373', '-63.14453', 1.2, 155, '85', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229857000', '12/11/2021', '17.95542', '-63.142', 0.9, 194.5, '78', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229961000', '12/13/2021', '54.23188', '-130.33667', 0.1, 82.8, '0', '0', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('229961000', '12/7/2021', '54.23184', '-130.33702', 0.1, 34.6, '0', '1', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('235092459', '12/6/2021', '23.27468', '-79.12974', 0.2, 143.9, '111', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('249047000', '12/16/2021', '25.74779', '-78.29992', 0, -100.1, '139', '3', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('249047000', '12/10/2021', '25.74787', '-78.29997', 0.1, 173.9, '142', '0', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('249047000', '12/12/2021', '25.74754', '-78.29966', 0.1, -170.3, '123', '2', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('249047000', '12/5/2021', '25.74774', '-78.29988', 0, 30, '138', '1', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('249047000', '12/3/2021', '25.74784', '-78.29996', 0, 165.3, '142', '2', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('249047000', '12/16/2021', '25.74774', '-78.29988', 0.1, -58, '139', '0', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('249047000', '12/12/2021', '25.74763', '-78.29975', 0, -91.7, '130', '1', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('249047000', '12/6/2021', '25.74757', '-78.29971', 0.1, -62.3, '124', '2', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('256304000', '12/10/2021', '24.0902', '-84.93642', 4.8, -145.4, '259', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('256888000', '12/13/2021', '27.0003', '-91.62468', 14.8, -93.6, '314', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('256888000', '12/14/2021', '27.00352', '-91.62823', 14.7, -95.6, '314', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('256888000', '12/6/2021', '26.99882', '-91.62308', 14.7, -94.6, '315', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('256888000', '12/10/2021', '27.01087', '-91.63685', 14.7, -95.6, '314', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('256888000', '12/4/2021', '26.9937', '-91.61775', 14.8, -91.6, '316', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('256888000', '12/15/2021', '26.92217', '-91.5435', 15, -93.6, '314', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('256888000', '12/5/2021', '27.00748', '-91.63287', 14.7, -96.6, '313', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('257881000', '12/10/2021', '23.90519', '-84.15083', 13.2, 118.1, '117', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('257881000', '12/16/2021', '24.2153', '-84.80182', 12.2, 117.7, '113', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('257881000', '12/15/2021', '23.94399', '-84.23724', 13.2, 116.6, '113', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('257881000', '12/4/2021', '24.20834', '-84.78753', 12.2, 118.3, '113', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('257881000', '12/4/2021', '24.23369', '-84.84026', 12, 117.2, '113', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('257881000', '12/7/2021', '24.16206', '-84.69464', 12.1, 117.5, '112', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/10/2021', '27.86118', '-78.01013', 10.4, 73, '77', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/14/2021', '27.80105', '-78.239', 10.3, 72, '78', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/10/2021', '27.78238', '-78.30668', 10.4, 72, '78', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/10/2021', '27.79408', '-78.26433', 10.3, 72, '78', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/9/2021', '27.79903', '-78.24627', 10.3, 73, '78', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/12/2021', '27.83305', '-78.12255', 10.2, 74, '80', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/7/2021', '27.79535', '-78.25963', 10.3, 73, '78', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/10/2021', '27.85187', '-78.04922', 10.5, 74, '80', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/12/2021', '27.83512', '-78.1149', 10.3, 73, '80', '2', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/4/2021', '27.78335', '-78.30307', 10.4, 73, '78', '3', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/7/2021', '27.85623', '-78.03073', 10.5, 76, '80', '0', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/7/2021', '27.82815', '-78.13885', 10.3, 71, '77', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/10/2021', '27.80468', '-78.22573', 10.2, 72, '78', '1', 'B');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('258692000', '12/10/2021', '27.77507', '-78.33393', 10.4, 74, '78', '3', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('303221000', '12/13/2021', '53.87876', '-166.55202', 0, -188.8, '511', '2', 'A');
-insert into ShipLocation (shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values ('303221000', '12/11/2021', '53.87878', '-166.55203', 0, -197.3, '511', '2', 'A');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('210950000','IMO9395044','0','0','C4SQ2','9,5','VARAMO','70','166','25','NA','4150');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('212180000','IMO9643544','0','0','5BBA4','14,4','SAITA I','70','228','32','NA','7296');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('212351000','IMO9305685','0','0','5BZP3','14,5','HYUNDAI SINGAPORE','70','303','40','79','12120');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('228339600','IMO9450648','0','0','FLSU','15','CMA CGM ALMAVIVA','70','334','42','79','14030');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('229767000','IMO9645970','0','0','9HA3589','12,5','ARCTIC AURORA','80','288','44','NA','12670');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('229857000','IMO9224726','0','0','9HA3667','7,8','CARNIVAL LEGEND','60','292','38','NA','11100');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('229961000','IMO9700122','0','0','9HA3752','13,3','ARABELLA','70','199','32','NA','6368');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('235092459','IMO9517575','0','0','2FMJ5','12','STENA ICEMAX','90','227','42','NA','9534');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('249047000','IMO9192387','0','0','9HJC9','8','CELEBRITY SUMMIT','60','294','32','NA','9408');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('256304000','IMO9344564','0','0','9HA3880','11,4','OREGON TRADER','70','211','29','NA','6119');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('256888000','IMO9473028','0','0','9HA2954','14,7','CMA CGM MELISANDE','70','334','42','70','14030');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('257881000','IMO9701920','0','0','LATO7','13,3','SPAR ARIES','70','199','32','NA','6368');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('258692000','IMO9321677','0','0','LAJB6','14,9','KRONVIKEN','80','248','43','NA','10660');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('303221000','IMO7819216','0','0','WDG5171','3','ARCTIC SEA','30','37','9','NA','333');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('303267000','IMO6421086','0','0','WNGW','4,4','TUSTUMENA','60','89','18','NA','1602');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('305176000','IMO9344394','0','0','V2DD5','5,6','CELIA','70','100','15','70','1500');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('305373000','IMO9488645','0','0','V2EB3','7','BOREAS','70','116','18','NA','2088');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('305776000','IMO9506758','0','0','V2FR9','8,5','INDUSTRIAL FAITH','70','153','23','NA','3519');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('309416000','IMO9417086','0','0','C6XC6','6,4','SEABOURN ODYSSEY','60','198','26','NA','5148');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('636019825','IMO9222285','0','0','D5WI6','9,2','CONTI LYON','79','300','40','79','12000');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('636091400','IMO9373486','0','0','A8ND5','10,9','RHL AGILITAS','70','176','27','71','4752');
+Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('636092932','IMO9225641','0','0','D5VK6','11,8','MSC ILONA','79','299','40','79','11960');
 
 -- Bootstrap Countries
-Insert into Country (COUNTRYNAME,CONTINENT) values ('United Kingdom','Europe');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('United States','America');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('Brazil','America');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('Canada','America');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('Chile','America');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('Colombia','America');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('France','Europe');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('Portugal','Europe');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('Spain','Europe');
-Insert into Country (COUNTRYNAME,CONTINENT) values ('Peru','America');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('United Kingdom','Europe');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('United States','America');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Brazil','America');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Canada','America');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Chile','America');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Colombia','America');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('France','Europe');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Portugal','Europe');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Spain','Europe');
+Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Peru','America');
 
 --Bootstrap PlaceLocations
-
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('53.46666667','-3.033333333','United Kingdom');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('33.71666667','-118.2666667','United States');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('40.66666667','-74.16666667','United States');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('-32.06666667','-52.06666667','Brazil');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('-12.96666667','-38.51666667','Brazil');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('-23.93333333','-46.31666667','Brazil');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('44.65','-63.56666667','Canada');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('49.28333333','-123.1166667','Canada');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('-36.73333333','-73.15','Chile');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('-33.01666667','-71.63333333','Chile');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('3.916666667','-77.05','Colombia');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('10.41666667','-75.53333333','Colombia');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('48.4','-4.5','France');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('51.05','2.366666667','France');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('37.73333333','-25.66666667','Portugal');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('32.65','-16.91666667','Portugal');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('41.18333333','-8.7','Portugal');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('38.5','-8.916666667','Portugal');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('41.33333333','2.166666667','Spain');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('39.45','-0.3','Spain');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('-12.05','-77.16666667','Peru');
-Insert into PlaceLocation (LATITUDE,LONGITUDE,COUNTRYNAME) values ('-17','-72.1','Peru');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('United Kingdom','53,47','-3,03');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('United States','33,72','-118,27');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('United States','40,67','-74,17');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Brazil','-32,07','-52,07');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Brazil','-12,97','-38,52');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Brazil','-23,93','-46,32');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Canada','44,65','-63,57');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Canada','49,28','-123,12');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Chile','-36,73','-73,15');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Chile','-33,02','-71,63');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Colombia','3,92','-77,05');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Colombia','10,42','-75,53');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('France','48,40','-4,50');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('France','51,05','2,37');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Portugal','37,73','-25,67');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Portugal','32,65','-16,92');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Portugal','41,18','-8,70');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Portugal','38,50','-8,92');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Spain','41,33','2,17');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Spain','39,45','-0,30');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Peru','-12,05','-77,17');
+Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Peru','-17,00','-72,10');
 
 -- Bootstrap Ports
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('29002','Liverpool','53.46666667','-3.033333333');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('14635','Los Angeles','33.71666667','-118.2666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('25007','New Jersey','40.66666667','-74.16666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('20301','Rio Grande','-32.06666667','-52.06666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('20351','Salvador','-12.96666667','-38.51666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('27248','Santos','-23.93333333','-46.31666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('22226','Halifax','44.65','-63.56666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('25350','Vancouver','49.28333333','-123.1166667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('27792','San Vicente','-36.73333333','-73.15');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('28082','Valparaiso','-33.01666667','-71.63333333');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('28261','Buenaventura','3.916666667','-77.05');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('28313','Cartagena','10.41666667','-75.53333333');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18012','Brest','48.4','-4.5');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18326','Dunkirk','51.05','2.366666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18476','Ponta Delgada','37.73333333','-25.66666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('23428','Funchal','32.65','-16.91666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('13012','Leixoes','41.18333333','-8.7');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('13390','Setubal','38.5','-8.916666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('17386','Barcelona','41.33333333','2.166666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18937','Valencia','39.45','-0.3');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('30045','Callao','-12.05','-77.16666667');
-Insert into Ports (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('10860','Matarani','-17','-72.1');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('29002','Liverpool','53,47','-3,03');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('14635','Los Angeles','33,72','-118,27');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('25007','New Jersey','40,67','-74,17');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('20301','Rio Grande','-32,07','-52,07');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('20351','Salvador','-12,97','-38,52');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('27248','Santos','-23,93','-46,32');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('22226','Halifax','44,65','-63,57');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('25350','Vancouver','49,28','-123,12');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('27792','San Vicente','-36,73','-73,15');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('28082','Valparaiso','-33,02','-71,63');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('28261','Buenaventura','3,92','-77,05');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('28313','Cartagena','10,42','-75,53');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18012','Brest','48,40','-4,50');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18326','Dunkirk','51,05','2,37');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18476','Ponta Delgada','37,73','-25,67');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('23428','Funchal','32,65','-16,92');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('13012','Leixoes','41,18','-8,70');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('13390','Setubal','38,50','-8,92');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('17386','Barcelona','41,33','2,17');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18937','Valencia','39,45','-0,30');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('30045','Callao','-12,05','-77,17');
+Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('10860','Matarani','-17,00','-72,10');
 
---Bootstrap CargoManifestLoad
 
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (1,'210950000', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (2,'636092932', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (3,'258692000', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (4,'229961000', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (5,'212180000', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (6,'229857000', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (7,'636019825', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (8,'636092932', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (9,'210950000', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (10,'636092932', '29002');
-insert into CARGOMANIFESTLOAD(id,shipmmsiCode,portid) values (11,'210950000', '29002');
-
+--Bootstrap ShipLocation
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:00:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.69577','-66.97808','13,7','305,2','357','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:04:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.71055','-66.97776','13,5','1,4','358','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:12:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.73879','-66.97726','13,4','3,4','357','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:15:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.75007','-66.97689','13,6','3','357','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:16:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.75527','-66.97665','13,7','309,5','357','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:20:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.7698','-66.9759','13,3','3,7','356','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:22:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.77682','-66.9756','13,2','306,7','358','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:28:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.7969','-66.97547','13','4,2','356','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:32:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.81133','-66.97587','13,4','10','356','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:34:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.82021','-66.9758','13','305','356','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:35:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.82527','-66.97577','13,1','309,1','356','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:40:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.84366','-66.97571','13','310,3','356','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:52:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.8839','-66.97409','12,7','2,5','359','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 16:57:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.90195','-66.97326','12,8','5,9','357','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:03:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.92236','-66.97243','12,5','2,4','358','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:07:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.93874','-66.97208','13,1','2,6','359','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:09:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.9442','-66.97192','13,3','4,2','358','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:10:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.94963','-66.97151','13,4','16,3','358','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:13:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.95969','-66.97106','12,9','8,1','358','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:15:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.96527','-66.97082','12,8','301,4','358','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:16:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.96912','-66.97061','12,7','304,6','358','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:19:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.97875','-66.97001','12,9','13,1','355','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:20:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'42.98271','-66.97009','12,4','308','354','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 17:33:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'43.02665','-66.97076','12,5','3,6','354','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('210950000',to_timestamp('20.12.31 18:31:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'43.22513','-66.96725','11,7','5,5','355','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('212180000',to_timestamp('20.12.31 19:37:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.34573','-85.12394','11,7','119,9','117','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('212180000',to_timestamp('20.12.31 20:17:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.28016','-85.00316','11,3','120,8','118','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('212180000',to_timestamp('20.12.31 21:07:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.20221','-84.85411','11,3','116,8','117','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('212180000',to_timestamp('20.12.31 21:49:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.14301','-84.72268','11,7','116,6','114','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('212180000',to_timestamp('20.12.31 22:10:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.11445','-84.65529','11,6','113,3','110','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('212351000',to_timestamp('20.12.31 23:03:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'55.09307','-167.63625','3,5','298,4','232','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:00:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.37458','-88.88584','11,8','124,6','128','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:11:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.35085','-88.85024','12','127,3','130','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:13:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.3484','-88.84688','12','129','130','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:15:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.34412','-88.84108','12','128,3','129','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:16:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.34134','-88.83706','11,9','126,9','129','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:18:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.33618','-88.82967','11,9','127,8','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:20:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.33263','-88.82491','11,8','129,5','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:25:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.32168','-88.81035','11,7','128,3','130','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:34:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.30354','-88.78563','11,7','129,9','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 00:54:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.26076','-88.7299','11,8','131','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 01:22:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.19854','-88.65058','11,7','130,3','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 01:24:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.19528','-88.64645','11,7','130,8','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 02:06:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.10335','-88.53051','11,6','130,5','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 02:15:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.08366','-88.50578','11,5','131','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 02:29:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.05475','-88.46992','11,5','131,1','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 02:30:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'28.05221','-88.46678','11,6','130,9','131','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 03:16:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.95776','-88.33859','11,3','128,2','128','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 03:47:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.89788','-88.25001','11,7','128,4','129','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('228339600',to_timestamp('20.12.31 03:56:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.87869','-88.22321','11,7','127,9','128','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229767000',to_timestamp('20.12.31 20:00:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.12391','-91.18216','20,1','250,3','299','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229767000',to_timestamp('20.12.31 20:02:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.12964','-91.19356','20,1','249,1','299','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229767000',to_timestamp('20.12.31 22:01:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.44508','-91.83885','19,4','248,3','296','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229767000',to_timestamp('20.12.31 22:03:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.45021','-91.84957','19,4','248,6','297','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229857000',to_timestamp('20.12.31 16:47:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'17.96995','-63.14873','1,4','131,9','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229857000',to_timestamp('20.12.31 17:02:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'17.9662','-63.14557','1,3','155,3','88','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229857000',to_timestamp('20.12.31 17:08:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'17.96373','-63.14453','1,2','155','85','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229857000',to_timestamp('20.12.31 17:39:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'17.95542','-63.142','0,9','194,5','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229857000',to_timestamp('20.12.31 21:17:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'17.94857','-63.14243','0,9','145,9','88','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229961000',to_timestamp('20.12.31 23:28:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.23184','-130.33702','0,1','34,6','0','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('229961000',to_timestamp('20.12.31 23:31:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.23188','-130.33667','0,1','82,8','0','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('235092459',to_timestamp('20.12.31 21:29:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'23.27468','-79.12974','0,2','143,9','111','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('249047000',to_timestamp('20.12.31 09:05:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.74763','-78.29975','0','268,3','130','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('249047000',to_timestamp('20.12.31 09:38:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.74757','-78.29971','0,1','297,7','124','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('249047000',to_timestamp('20.12.31 10:20:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.74754','-78.29966','0,1','189,7','123','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('249047000',to_timestamp('20.12.31 17:32:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.74787','-78.29997','0,1','173,9','142','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('249047000',to_timestamp('20.12.31 17:50:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.74784','-78.29996','0','165,3','142','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('249047000',to_timestamp('20.12.31 18:35:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.74774','-78.29988','0','30','138','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('249047000',to_timestamp('20.12.31 18:50:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.74779','-78.29992','0','259,9','139','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('249047000',to_timestamp('20.12.31 18:59:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.74774','-78.29988','0,1','302','139','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('256304000',to_timestamp('20.12.31 15:44:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.0902','-84.93642','4,8','214,6','259','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('256888000',to_timestamp('20.12.31 21:34:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.92217','-91.5435','15','266,4','314','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('256888000',to_timestamp('20.12.31 21:57:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.9937','-91.61775','14,8','268,4','316','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('256888000',to_timestamp('20.12.31 21:59:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.99882','-91.62308','14,7','265,4','315','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('256888000',to_timestamp('20.12.31 22:00:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.0003','-91.62468','14,8','266,4','314','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('256888000',to_timestamp('20.12.31 22:01:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.00352','-91.62823','14,7','264,4','314','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('256888000',to_timestamp('20.12.31 22:02:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.00748','-91.63287','14,7','263,4','313','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('256888000',to_timestamp('20.12.31 22:03:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.01087','-91.63685','14,7','264,4','314','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('257881000',to_timestamp('20.12.31 18:38:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.23369','-84.84026','12','117,2','113','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('257881000',to_timestamp('20.12.31 18:50:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.2153','-84.80182','12,2','117,7','113','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('257881000',to_timestamp('20.12.31 18:54:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.20834','-84.78753','12,2','118,3','113','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('257881000',to_timestamp('20.12.31 19:23:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'24.16206','-84.69464','12,1','117,5','112','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('257881000',to_timestamp('20.12.31 21:37:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'23.94399','-84.23724','13,2','116,6','113','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('257881000',to_timestamp('20.12.31 22:01:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'23.90519','-84.15083','13,2','118,1','117','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 02:09:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.77507','-78.33393','10,4','74','78','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 02:18:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.78238','-78.30668','10,4','72','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 02:19:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.78335','-78.30307','10,4','73','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 02:32:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.79408','-78.26433','10,3','72','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 02:33:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.79535','-78.25963','10,3','73','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 02:37:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.79903','-78.24627','10,3','73','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 02:40:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.80105','-78.239','10,3','72','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 02:44:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.80468','-78.22573','10,2','72','78','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 03:12:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.82815','-78.13885','10,3','71','77','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 03:17:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.83305','-78.12255','10,2','74','80','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 03:20:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.83512','-78.1149','10,3','73','80','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 03:41:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.85187','-78.04922','10,5','74','80','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 03:47:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.85623','-78.03073','10,5','76','80','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('258692000',to_timestamp('20.12.31 03:53:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.86118','-78.01013','10,4','73','77','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:00:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87876','-166.55202','0','171,2','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:03:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87877','-166.55202','0','213,6','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:06:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87877','-166.55203','0','196,8','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:09:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87878','-166.55199','0','237,3','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:15:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87877','-166.55205','0','257,3','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:18:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87879','-166.55205','0','204,5','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:21:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87878','-166.55199','0','186,6','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:24:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.8788','-166.55203','0','193,4','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:27:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87877','-166.552','0','159','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:30:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87876','-166.55202','0','195','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:33:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87875','-166.55201','0','197,5','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:36:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87876','-166.55202','0','161,1','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:39:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87879','-166.55203','0','192,8','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:42:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87874','-166.552','0','164,7','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:45:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87878','-166.55198','0','193,2','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:48:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87876','-166.55199','0','168,6','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:51:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87878','-166.55203','0','162,7','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:54:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87876','-166.55196','0','185','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303221000',to_timestamp('20.12.31 23:57:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'53.87877','-166.552','0','194,9','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:02:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','105,5','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:05:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','227,6','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:08:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','210,7','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:11:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','274,7','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:14:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','232,9','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:17:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','244,1','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:20:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','259,7','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:23:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','228,7','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:26:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08477','-149.34998','0','208,1','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:29:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34997','0','230,5','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:32:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34997','0','220,8','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:35:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34998','0','236,9','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:38:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34998','0','266,5','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:41:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34998','0','197,1','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:44:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34998','0','82,9','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:47:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34998','0','109,9','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:50:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34998','0','277,3','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:53:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34998','0','130,3','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:56:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34998','0','123,6','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('303267000',to_timestamp('20.12.31 23:59:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'60.08476','-149.34997','0','71,4','not available','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305176000',to_timestamp('20.12.31 14:29:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.54012','-77.64705','7,4','140,1','134','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305176000',to_timestamp('20.12.31 14:31:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.53741','-77.64431','7,2','139,8','135','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305176000',to_timestamp('20.12.31 14:34:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.53309','-77.64001','7,1','139,6','136','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305176000',to_timestamp('20.12.31 14:36:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.52983','-77.6368','7','139,3','134','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305373000',to_timestamp('20.12.31 08:16:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'23.15489','-82.36574','7,8','284,4','344','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305373000',to_timestamp('20.12.31 16:45:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'23.37555','-81.03043','7,8','82,1','88','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305776000',to_timestamp('20.12.31 09:16:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.23129','-127.83372','15,3','65,1','65','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305776000',to_timestamp('20.12.31 09:18:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.23593','-127.82214','14,6','64,8','66','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305776000',to_timestamp('20.12.31 09:29:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.25354','-127.77908','15,3','66','64','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('305776000',to_timestamp('20.12.31 09:30:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'27.25594','-127.77363','15,1','65,7','64','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('309416000',to_timestamp('20.12.31 16:53:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.83657','-78.50441','0,8','216,1','146','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('309416000',to_timestamp('20.12.31 18:56:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'25.83611','-78.50491','1,1','34,1','83','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:16:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.2674','-164.02421','9,5','230,6','276','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:21:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.26959','-164.04323','9,3','225,7','276','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:22:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27031','-164.04899','9,6','234,5','277','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:25:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27169','-164.06092','9,7','236,5','276','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:27:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27307','-164.07348','9,5','231,2','276','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:29:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27402','-164.08163','9,5','227,6','276','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:31:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27459','-164.08679','9,4','227,2','275','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:32:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27531','-164.09338','9,5','224,7','275','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:35:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27664','-164.10602','9,3','227','276','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:36:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27718','-164.11121','9,7','230,9','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:37:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27767','-164.11569','9,8','231,2','275','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:38:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27817','-164.12098','9,7','230,1','275','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:39:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27873','-164.12635','9,6','224,8','275','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:41:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.27934','-164.13242','9,8','232,4','275','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:42:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28012','-164.13995','9,9','234,9','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:43:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28062','-164.14533','10,1','231,8','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:45:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28124','-164.15213','9,8','235','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:48:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28232','-164.1642','9,8','237,3','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:49:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28279','-164.16935','9,4','230,5','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:50:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28322','-164.17438','9,3','220,3','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:51:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28372','-164.17881','9,5','237,8','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:52:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28424','-164.18409','9,7','233,4','273','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:53:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28473','-164.18922','9,3','227,4','274','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:55:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28548','-164.19712','9','227,4','272','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:56:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28601','-164.20205','9,2','231,5','273','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636019825',to_timestamp('20.12.31 23:58:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'54.28661','-164.20854','9,2','224,8','273','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636091400',to_timestamp('20.12.31 18:26:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'23.07187','-83.53367','15,9','66,2','68','not defined','B');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636092932',to_timestamp('20.12.31 12:06:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.52605','-78.76731','0','170,4','220','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636092932',to_timestamp('20.12.31 14:32:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.526','-78.76736','0','169,4','219','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636092932',to_timestamp('20.12.31 18:49:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.52601','-78.76733','0','169,4','219','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636092932',to_timestamp('20.12.31 19:01:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.52603','-78.76731','0','169,4','219','not defined','A');
+Insert into SHIPLOCATION (SHIPMMSICODE,BASEDATETIME,LATITUDE,LONGITUDE,SOG,COG,HEADING,POSITION,TRANSCEIVER) values ('636092932',to_timestamp('20.12.31 21:20:00,000000000','RR.MM.DD HH24:MI:SSXFF'),'26.52601','-78.76737','0','169,4','219','not defined','A');
 
 --Bootstrap Ship_Port
-
 INSERT INTO Ship_Port(portid, SHIPMMSICode)
 values('29002','210950000');
 INSERT INTO Ship_Port(portid, SHIPMMSICode)
@@ -243,131 +313,102 @@ INSERT INTO Ship_Port(portid, SHIPMMSICode)
 values('29002','636092932');
 
 
+--Bootstrap CargoManifestLoad
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('1','29002','210950000',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('3','29002','258692000','1');
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('9','29002','210950000',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('11','29002','210950000',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('2','29002','636092932',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('8','29002','636092932',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('10','29002','636092932',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('4','29002','229961000',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('7','29002','636019825',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('5','29002','212180000','1');
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('6','29002','229857000',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('12','29002','636092932',null);
+Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('13','29002','636092932',null);
+
+
 --Bootstrap Phases
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (11,1,'Liverpool','Los Angeles','2021-11-04 18:44:33','2021-12-30 18:44:33','2021-11-04 18:44:33','2021-12-30 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (10,1,'New Jersey','Liverpool','2021-11-04 18:44:33','2021-12-30 18:44:33','2021-11-04 18:44:33','2021-12-30 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (1,1,'Valencia','Callao','2021-10-02 18:44:33','2021-10-15 18:44:33','2021-10-02 18:44:33','2021-10-15 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (1,2,'Callao','Matarani','2021-10-17 18:44:33','2021-10-30 18:44:33','2021-10-17 18:44:33','2021-10-30 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (1,3,'Matarani','New Jersey','2021-11-01 18:44:33','2021-11-03 18:44:33','2021-11-01 18:44:33','2021-11-03 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (1,4,'New Jersey','Liverpool','2021-11-04 18:44:33','2021-12-30 18:44:33','2021-11-04 18:44:33','2021-12-30 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (9,1,'New Jersey','Liverpool','2021-11-04 18:44:33','2021-12-30 18:44:33','2021-11-04 18:44:33','2021-12-30 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (7,1,'Los Angeles','Liverpool','2021-11-04 18:44:33','2021-12-30 18:44:33','2021-11-04 18:44:33','2021-12-30 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (8,1,'Rio Grande','Liverpool','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (8,2,'Liverpool','Los Angeles','2021-11-04 18:44:33','2021-12-30 18:44:33','2021-11-04 18:44:33','2021-12-30 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (3,1,'Rio Grande','Liverpool','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (3,2,'Liverpool','Salvador','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (3,3,'Salvador','Santos','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (4,1,'Halifax','Vancouver','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (4,2,'Vancouver','San Vicente','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (4,3,'San Vicente','Valparaiso','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (5,1,'Buenaventura','Cartagena','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (5,2,'Cartagena','Brest','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (6,1,'Brest','Los Angeles','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (2,1,'Barcelona','Setubal','2004-11-03 18:44:33','2004-11-04 18:44:33','2004-11-03 18:44:33','2004-11-04 18:44:33');
-INSERT INTO Phases(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (2,2,'Setubal','Leixoes','2004-11-07 18:44:33','2004-11-09 18:44:33','2004-11-07 18:44:33','2004-11-09 18:44:33');
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('11','1','Liverpool','Los Angeles',to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('10','1','New Jersey','Liverpool',to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('1','4','New Jersey','Liverpool',to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('9','1','New Jersey','Liverpool',to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('7','1','Los Angeles','Liverpool',to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('8','1','Rio Grande','Liverpool',to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('8','2','Liverpool','Los Angeles',to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('3','1','Rio Grande','Liverpool',to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('3','2','Liverpool','Salvador',to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('3','3','Salvador','Santos',to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.06 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.06 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('4','1','Halifax','Vancouver',to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('4','2','Vancouver','San Vicente',to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('4','3','San Vicente','Valparaiso',to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.06 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.06 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('5','1','Buenaventura','Cartagena',to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('5','2','Cartagena','Brest',to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.05 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('6','1','Brest','Los Angeles',to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('1','1','Valencia','Callao',to_timestamp('21.10.02 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.10.15 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.10.02 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.10.15 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('1','2','Callao','Matarani',to_timestamp('21.10.17 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.10.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.10.17 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.10.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('1','3','Matarani','New Jersey',to_timestamp('21.11.01 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.01 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('2','1','Barcelona','Setubal',to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.03 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('2','2','Setubal','Leixoes',to_timestamp('04.11.07 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.09 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.07 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('04.11.09 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('12','1','Setubal','New Jersey',to_timestamp('21.11.02 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.02 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
+Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('13','1','Liverpool','Matarani',to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.31 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.31 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
 
 --Bootstrap CargoManifestUnload
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (2,3,1,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (3,3,2,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (4,3,3,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (5,4,1,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (6,4,2,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (7,5,1,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (8,5,2,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (1,1,3,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (10,1,2,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (11,1,1,'29002');
-INSERT INTO cargomanifestunload(id,Phasescargomanifestloadid,Phasesid,portid)
-VALUES (9,8,1,'29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('2','1','3','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('3','2','3','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('4','3','3','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('5','1','4','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('6','2','4','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('7','1','5','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESIDPHASES,CARGOMANIFESTLOADID,PORTID) values ('8','2','5','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('9','1','8','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('1','3','1','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('10','2','1','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('11','1','1','29002');
 
 
 -- Bootstrap Containers
-
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (748323899, 5033407, 'justo', 2.4, 1.5, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.9, 1.1, 181.7, 118.5);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (223364868, 8150283, 'sagittis', 92.3, 179.3, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.6, 20.7, 128.5, 72.1);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (633494223, 9081623, 'pellentesque', 26.0, 137.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 58.6, 38.5, 195.2, 35.4);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (920807949, 2862767, 'tempus', 161.3, 53.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 33.1, 88.4, 131.3, 147.8);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (149378835, 5033407, 'justo', 2.4, 1.5, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.9, 1.1, 181.7, 118.5);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (748163149, 8150283, 'sagittis', 92.3, 179.3, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.6, 20.7, 128.5, 72.1);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (694899744, 9081623, 'pellentesque', 26.0, 137.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 58.6, 38.5, 195.2, 35.4);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (628015754, 2862767, 'tempus', 161.3, 53.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 33.1, 88.4, 131.3, 147.8);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (916849354, 5033407, 'justo', 2.4, 1.5, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.9, 1.1, 181.7, 118.5);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (385553229, 8150283, 'sagittis', 92.3, 179.3, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.6, 20.7, 128.5, 72.1);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (198620709, 9081623, 'pellentesque', 26.0, 137.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 58.6, 38.5, 195.2, 35.4);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (205492538, 9081623, 'pellentesque', 26.0, 137.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 58.6, 38.5, 195.2, 35.4);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (456789423, 9081623, 'pellentesque', 26.0, 137.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 58.6, 38.5, 195.2, 35.4);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (789546125, 9081623, 'pellentesque', 26.0, 137.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 58.6, 38.5, 195.2, 35.4);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (213456782, 9081623, 'pellentesque', 26.0, 137.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 58.6, 38.5, 195.2, 35.4);
-insert into Container (Numberid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (612538123, 9081623, 'pellentesque', 26.0, 137.9, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 58.6, 38.5, 195.2, 35.4);
-
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('748323899','justo','5033407','2,4','181,7','118,5','1,5','#REPAIRRECOMMENDATION','CERTIFICATE','89,9','1,1');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('223364868','sagittis','8150283','92,3','128,5','72,1','179,3','#REPAIRRECOMMENDATION','CERTIFICATE','89,6','20,7');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('633494223','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('920807949','tempus','2862767','161,3','131,3','147,8','53,9','#REPAIRRECOMMENDATION','CERTIFICATE','33,1','88,4');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('149378835','justo','5033407','2,4','181,7','118,5','1,5','#REPAIRRECOMMENDATION','CERTIFICATE','89,9','1,1');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('748163149','sagittis','8150283','92,3','128,5','72,1','179,3','#REPAIRRECOMMENDATION','CERTIFICATE','89,6','20,7');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('694899744','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('628015754','tempus','2862767','161,3','131,3','147,8','53,9','#REPAIRRECOMMENDATION','CERTIFICATE','33,1','88,4');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('916849354','justo','5033407','2,4','181,7','118,5','1,5','#REPAIRRECOMMENDATION','CERTIFICATE','89,9','1,1');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('385553229','sagittis','8150283','92,3','128,5','72,1','179,3','#REPAIRRECOMMENDATION','CERTIFICATE','89,6','20,7');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('198620709','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('205492538','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('456789423','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('789546125','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('213456782','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('134564237','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('534636241','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('635635775','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
 
 --Bootstrap CargoManifestContainer
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('1','456789423','1','1','1','1','12,6','3','11');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('1','789546125','1','1','1','1','12,6','3','11');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('1','213456782','2','1','1','1','12,6','3','10');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('1','748323899','3','1','1','1','12,6','3','1');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('3','748323899','1','1','1','1','12,6','3','2');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('3','223364868','2','1','3','1','12,6','3','3');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('3','633494223','3','1','2','1','12,6','3','4');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('4','920807949','1','1','6','1','12,6','4','5');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('4','149378835','2','1','4','1','12,6','4','6');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('5','694899744','1','1','2','1','12,6','5','7');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('5','628015754','2','1','1','1','12,6','5',null);
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('8','385553229','1','1','1','1','12,6','8','9');
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('4','748163149','3','1','3','1','12,6','4',null);
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('6','916849354','1','1','1','1','12,6','6',null);
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('10','198620709','1','1','1','1','12,6','10',null);
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('11','205492538','1','1','1','1','12,6','11',null);
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('9','134564237','1','1','1','1','12,6','9',null);
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('12','534636241','1','1','1','1','12,6','12',null);
+Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('13','635635775','1','1','1','1','12,6','9',null);
 
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (1,456789423,1,12.6,1,1,1,3,2);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (1,789546125,1,12.6,1,1,1,3,2);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (1,213456782,2,12.6,1,1,1,3,2);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (1,748323899,3,12.6,1,1,1,3,2);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (3,748323899,1,12.6,1,1,1,3,2);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (3,223364868,2,12.6,1,3,1,3,3);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (3,633494223,3,12.6,1,2,1,3,4);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (4,920807949,1,12.6,1,6,1,4,5);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (4,149378835,2,12.6,1,4,1,4,6);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid)
-VALUES (4,748163149,3,12.6,1,3,1,4);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (5,694899744,1,12.6,1,2,1,5,7);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid, cargomanifestunloadid)
-VALUES (5,628015754,2,12.6,1,1,1,5,8);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid)
-VALUES (6,916849354,1,12.6,1,1,1,6);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid,cargomanifestunloadid)
-VALUES (8,385553229,1,12.6,1,1,1,8,9);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid )
-VALUES (10,198620709,1,12.6,1,1,1,10);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid )
-VALUES (11,205492538,1,12.6,1,1,1,11);
-INSERT INTO CargoManifestContainer(cargomanifestloadid,containerNumberId,Phasesid,grosscontainer,xcontainer,ycontainer,zcontainer, Phasescargomanifestloadid)
-VALUES (9,612538123,1,12.6,1,1,1,9);
 
 insert into Container (NUMBERid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (987650321, 1569483, 'justo', 2.4, 1.5, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.9, 1.1, 181.7, 118.5);
 insert into Container (NUMBERid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (695421863, 8150283, 'sagittis', 92.3, 179.3, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.6, 20.7, 128.5, 72.1);

@@ -15,17 +15,17 @@ public class US205Handler {
     private String listOfContainers;
     private WriteForAFile writeForAFile;
 
-    public US205Handler(String mmsiCode) throws SQLException, IOException {
+    public US205Handler(String mmsiCode) throws IOException ,IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(mmsiCode);
     }
 
-    private void initialize(String mmsiCode) throws  IOException {
+    private void initialize(String mmsiCode) throws IOException {
 
         try {
             CallableStatement statement = databaseConnection.prepareCall("{call US205(?, ?)}");
-            statement.registerOutParameter(2, Types.INTEGER);
+            statement.registerOutParameter(2, Types.VARCHAR);
 
             statement.setString(1, mmsiCode);
 
@@ -43,8 +43,6 @@ public class US205Handler {
 
     @Override
     public String toString() {
-        return "US205{" +
-                "listOfContainers='" + listOfContainers + '\'' +
-                '}';
+        return String.format("ContainerNumberId, Positions, Type, Load\n%s", listOfContainers);
     }
 }

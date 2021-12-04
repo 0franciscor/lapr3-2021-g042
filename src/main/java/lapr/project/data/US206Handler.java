@@ -27,7 +27,7 @@ public class US206Handler {
         try{
             CallableStatement statement = databaseConnection.prepareCall("{call US206(?, ?)}");
 
-            statement.registerOutParameter(2, Types.INTEGER);
+            statement.registerOutParameter(2, Types.VARCHAR);
 
             statement.setString(1, mmsiCode);
 
@@ -48,8 +48,6 @@ public class US206Handler {
 
     @Override
     public String toString() {
-        return "US206{" +
-                "listOfContainers='" + listOfContainers + '\'' +
-                '}';
+        return String.format("CargoManifest, Type, Load\n%s", listOfContainers);
     }
 }

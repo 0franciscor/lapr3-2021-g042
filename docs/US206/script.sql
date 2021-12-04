@@ -1,8 +1,8 @@
 
 CREATE OR REPLACE PROCEDURE US206 (mmsiCode in Varchar, outString out Varchar)
 IS
-    cmload Integer;
-    Phases Integer;
+    cmUnload Integer;
+    countPhases Integer;
     cmcode Integer;
     cargoId Integer;
     cmGeneratedLoad Integer;
@@ -23,20 +23,21 @@ BEGIN
             Exit When cm%notfound;
 
 
-            SELECT COUNT(Phases.cargoManifestLoadId) INTO Phases
+            SELECT COUNT(cargoManifestLoadId) INTO countPhases
             FROM Phases
-            WHERE Phases.cargoManifestLoadId=cmcode;
+            WHERE cargoManifestLoadId=cmcode;
+            dbms_output.put_line(countPhases);
 
 
-            SELECT COUNT(CargoManifestLoad.id) INTO cmload
-            FROM CargoManifestLoad
-            WHERE CargoManifestLoad.id=cmcode;
+            SELECT COUNT(PhasesCargoManifestLoadId) INTO cmUnload
+            FROM CargoManifestUnload
+            WHERE PhasesCargoManifestLoadId=cmcode;
 
 
-            IF Phases!=cmload THEN
+            IF countPhases!=cmUnload THEN
                 SELECT destination INTO nextLocation
                 FROM Phases
-                WHERE id=cmload+1
+                WHERE id=cmUnload+1
                 AND cargoManifestLoadId=cmcode;
 
 
@@ -51,7 +52,7 @@ BEGIN
                 IN(select containerNumberId FROM CargoManifestContainer WHERE cargoManifestLoadId=cmGeneratedLoad)
                 LOOP
                     SELECT isoCode, weight INTO iso_type, weight_load FROM Container WHERE numberId=containers_from_cm_generatedLoad.ContainerNumberId;
-                    outString:=outString || ',' ||cmGeneratedLoad ||',' ||iso_type ||',' ||weight_load || chr(10);
+                    outString:=outString ||containers_from_cm_generatedLoad.containerNumberId ||',' ||iso_type ||',' ||weight_load || chr(10);
                 END LOOP;
                 EXIT;
             END IF;

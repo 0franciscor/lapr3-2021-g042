@@ -14,6 +14,7 @@ CREATE OR REPLACE PROCEDURE US210 (information out VARCHAR2) IS
     maxDate DATE;
     finalPosition VARCHAR(255);
     cont INTEGER;
+    maxBaseDateTime TIMESTAMP;
 
     CURSOR allShips IS
     SELECT mmsiCode FROM Ship;
@@ -62,60 +63,68 @@ BEGIN
             END IF;
         END LOOP;
         CLOSE allCargoManifests;
-
-        SELECT COUNT (*) INTO totalCargoManifests
-        FROM CargoManifestLoad
-        WHERE shipMmsiCode = idShip;
-
-        IF cont = totalCargoManifests THEN
-
-            OPEN allCargoManifests;
-            isFirst := 0;
-
-            LOOP
-
-                FETCH allCargoManifests into idCargoManifest;
-                EXIT WHEN allCargoManifests%NOTFOUND;
-
-                SELECT COUNT (*) INTO totalPhases
-                FROM Phases
-                WHERE cargoManifestLoadId = idCargoManifest;
-
-
-                SELECT expectedArrivalDate, destination INTO arrivalDate, arrivalPosition
-                FROM Phases
-                WHERE id = totalPhases
-                AND cargoManifestLoadId = idCargoManifest;
-
-                isFirst := isFirst + 1;
-
-
-                IF isFirst = 1 THEN
-                    maxDate := arrivalDate;
-                    finalPosition := arrivalPosition;
-                END IF;
-
-                IF isFirst != 1 AND arrivalDate > maxDate THEN
-                    maxDate := arrivalDate;
-                    finalPosition := arrivalPosition;
-                END IF;
-            END LOOP;
-
-            CLOSE allCargoManifests;
-
-             information:= information || idShip || '--> ' ||finalPosition|| chr(10);
-
+        
+        IF flag = false THEN 
+            SELECT COUNT (*) INTO totalCargoManifests
+            FROM CargoManifestLoad
+            WHERE shipMmsiCode = idShip;
+    
+            IF cont = totalCargoManifests THEN
+    
+                OPEN allCargoManifests;
+                isFirst := 0;
+    
+                LOOP
+    
+                    FETCH allCargoManifests into idCargoManifest;
+                    EXIT WHEN allCargoManifests%NOTFOUND;
+    
+                    SELECT COUNT (*) INTO totalPhases
+                    FROM Phases
+                    WHERE cargoManifestLoadId = idCargoManifest;
+    
+    
+                    SELECT expectedArrivalDate, destination INTO arrivalDate, arrivalPosition
+                    FROM Phases
+                    WHERE id = totalPhases
+                    AND cargoManifestLoadId = idCargoManifest;
+    
+                    isFirst := isFirst + 1;
+    
+    
+                    IF isFirst = 1 THEN
+                        maxDate := arrivalDate;
+                        finalPosition := arrivalPosition;
+                    END IF;
+    
+                    IF isFirst != 1 AND arrivalDate > maxDate THEN
+                        maxDate := arrivalDate;
+                        finalPosition := arrivalPosition;
+                    END IF;
+                END LOOP;
+    
+                CLOSE allCargoManifests;
+    
+                 information:= information || idShip || '--> ' ||finalPosition|| chr(10);
+    
+            END IF;
         END IF;
 
 
         IF flag = true THEN
-
-            SELECT latitude, longitude INTO latitudeShip, longitudeShip
+        
+            SELECT MAX (baseDateTime) INTO maxBaseDateTime
             FROM ShipLocation
             WHERE shipMmsiCode = idShip;
 
-            information := information || idShip || '--> Latitude: ' || latitudeShip || ' Longitude: ' || longitudeShip || chr(10);
+            SELECT latitude, longitude INTO latitudeShip, longitudeShip
+            FROM ShipLocation
+            WHERE shipMmsiCode = idShip
+            AND baseDateTime = maxBaseDateTime;
+            
+            information := information || idShip || '--> Latitude: ' || latitudeShip || '--> Longitude: ' || longitudeShip || chr(10);
         END IF;
+        
     END LOOP;
     CLOSE allShips;
 END;

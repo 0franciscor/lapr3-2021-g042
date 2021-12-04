@@ -26,19 +26,24 @@ public class US209Handler {
     }
 
     private void initialize(int cargoManifestId, Date actualDate) throws SQLException, IOException {
-        CallableStatement statement = databaseConnection.prepareCall("{CALL US208(?, ?, ?)}");
-        statement.registerOutParameter(2, Types.FLOAT);
 
-        statement.setInt(1, cargoManifestId);
-        statement.setDate(2, (java.sql.Date) actualDate);
+        try {
+            CallableStatement statement = databaseConnection.prepareCall("{CALL US208(?, ?, ?)}");
+            statement.registerOutParameter(2, Types.FLOAT);
 
-        statement.execute();
+            statement.setInt(1, cargoManifestId);
+            statement.setDate(2, (java.sql.Date) actualDate);
 
-        this.occupancyRate = statement.getFloat(2);
+            statement.execute();
 
-        writeForAFile.writeForAFile(toString(), "US209_" + cargoManifestId, new File(".\\outputs\\US209"));
-        statement.close();
-        databaseConnection.close();
+            this.occupancyRate = statement.getFloat(2);
+
+            writeForAFile.writeForAFile(toString(), "US209_" + cargoManifestId, new File(".\\outputs\\US209"));
+            statement.close();
+        }catch (Exception e){
+            writeForAFile.writeForAFile("Something went wrong", "US209_" + cargoManifestId, new File(".\\outputs\\US209"));
+        }
+
     }
 
     public float getOccupancyRate() {

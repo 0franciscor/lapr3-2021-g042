@@ -25,19 +25,24 @@ public class US208Handler {
         initialize(cargoManifestId);
     }
 
-    private void initialize(int cargoManifestId) throws SQLException, IOException {
-        CallableStatement statement = databaseConnection.prepareCall("{CALL US208(?, ?)}");
-        statement.registerOutParameter(2, Types.FLOAT);
+    private void initialize(int cargoManifestId) throws IOException {
 
-        statement.setInt(1, cargoManifestId);
+        try {
+            CallableStatement statement = databaseConnection.prepareCall("{CALL US208(?, ?)}");
+            statement.registerOutParameter(2, Types.FLOAT);
 
-        statement.execute();
+            statement.setInt(1, cargoManifestId);
 
-        this.ratio = statement.getFloat(2);
+            statement.execute();
 
-        writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
-        statement.close();
-        databaseConnection.close();
+            this.ratio = statement.getFloat(2);
+
+            writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
+            statement.close();
+        }catch (Exception e){
+            writeForAFile.writeForAFile("Something went wrong", "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
+        }
+
     }
 
     public float getRatio() {

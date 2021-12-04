@@ -40,7 +40,7 @@ BEGIN
                 SELECT COUNT (*) INTO totalContainers
                 FROM CargoManifestContainer
                 WHERE phasesId = idOfPhase
-                AND cargoManifestId = cargoManifestsId;
+                AND cargoManifestLoadId = cargoManifestsId;
                 flag := true;
                 finalContainer:= finalContainer + totalContainers;
             END IF;

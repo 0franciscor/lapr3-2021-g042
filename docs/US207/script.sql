@@ -4,6 +4,8 @@ CREATE OR REPLACE PROCEDURE US207 (compareYear in INTEGER, mmsiCode in VARCHAR, 
     actualYear INTEGER;
     containerPerCargoManifest INTEGER := 0;
     totalContainers INTEGER := 0;
+    idCargoManifest INTEGER;
+    finalDate DATE;
 
     CURSOR cargoManifests IS
     SELECT id

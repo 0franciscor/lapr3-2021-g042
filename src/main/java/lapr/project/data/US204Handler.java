@@ -8,10 +8,8 @@ import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Types;
 
-/**
- * Classe responsável pela operações com a base de dados que envolvam Farmacia
- */
 public class US204Handler {
 
     private Connection databaseConnection;
@@ -25,21 +23,24 @@ public class US204Handler {
         writeForAFile = new WriteForAFile();
     }
 
-    public void getContainerLocation(String containerNumber) throws IOException {
+    public void getContainerLocation(int containerNumber) throws IOException {
 
-        try(CallableStatement callStmt = databaseConnection.prepareCall("{CALL get_container_position (?)}")) {
+        try(CallableStatement callStmt = databaseConnection.prepareCall("{ ? = CALL get_container_position (?)}")) {
 
-            callStmt.setString(1, containerNumber);
+            callStmt.setInt(2, containerNumber);
+
+
+            callStmt.registerOutParameter(1, Types.LONGNVARCHAR);
 
             callStmt.execute();
 
             this.containerLocation = callStmt.getString(1);
 
-            writeForAFile.writeForAFile(containerLocation, "US204_" + containerNumber, new File("target\\generated-sources\\annotations\\US204"));
-            callStmt.close();
-            databaseConnection.close();
-        }catch (SQLException e){
 
+            writeForAFile.writeForAFile(containerLocation, "US204_" + containerNumber, new File(".\\outputs\\US204"));
+
+
+        }catch (SQLException e){
         }
     }
 }

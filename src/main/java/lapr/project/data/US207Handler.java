@@ -55,22 +55,27 @@ public class US207Handler {
      * @throws SQLException
      * @throws IOException
      */
-    private void initialize(String mmsiCode, int year) throws SQLException, IOException {
-        CallableStatement statement = databaseConnection.prepareCall("{CALL US207(?, ?, ?, ?)}");
-        statement.registerOutParameter(3, Types.INTEGER);
-        statement.registerOutParameter(4, Types.FLOAT);
+    private void initialize(String mmsiCode, int year) throws IOException {
+        try {
+            CallableStatement statement = databaseConnection.prepareCall("{CALL US207(?, ?, ?, ?)}");
+            statement.registerOutParameter(3, Types.INTEGER);
+            statement.registerOutParameter(4, Types.FLOAT);
 
-        statement.setInt(1, year);
-        statement.setString(2, mmsiCode);
+            statement.setInt(1, year);
+            statement.setString(2, mmsiCode);
 
-        statement.execute();
+            statement.execute();
 
-        this.totalCargoManifestsPerYear = statement.getInt(3);
-        this.meanContainerPerCargoManifest = statement.getFloat(4);
+            this.totalCargoManifestsPerYear = statement.getInt(3);
+            this.meanContainerPerCargoManifest = statement.getFloat(4);
 
-        writeForAFile.writeForAFile(toString(), "US207_" + mmsiCode, new File(".\\outputs\\US207"));
-        statement.close();
-        databaseConnection.close();
+            writeForAFile.writeForAFile(toString(), "US207_" + mmsiCode, new File(".\\outputs\\US207"));
+            statement.close();
+        }catch (Exception e){
+            writeForAFile.writeForAFile("Something went wrong", "US207_" + mmsiCode, new File(".\\outputs\\US207"));
+
+        }
+
     }
 
     /**

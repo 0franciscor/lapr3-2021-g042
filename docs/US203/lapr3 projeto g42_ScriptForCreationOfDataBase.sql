@@ -1,5 +1,5 @@
 DROP TABLE Ship CASCADE CONSTRAINTS PURGE;
-DROP TABLE ShipPosition CASCADE CONSTRAINTS PURGE;
+DROP TABLE ShipLocation CASCADE CONSTRAINTS PURGE;
 DROP TABLE Container CASCADE CONSTRAINTS PURGE;
 DROP TABLE Ports CASCADE CONSTRAINTS PURGE;
 DROP TABLE PlaceLocation CASCADE CONSTRAINTS PURGE;
@@ -30,7 +30,7 @@ capacity FLOAT(10),
 CONSTRAINT pk_Ship PRIMARY KEY(mmsiCode)
 );
 
-CREATE TABLE ShipPosition(
+CREATE TABLE ShipLocation(
 shipMmsiCode VARCHAR(9),
 baseDateTime TIMESTAMP NOT NULL,
 latitude VARCHAR(255) NOT NULL,
@@ -94,7 +94,7 @@ CONSTRAINT fk_Port_PlaceLocation FOREIGN KEY (placeLocationLatitude, placeLocati
 
 CREATE TABLE Ship_Port(
 portId INTEGER,
-shipMmsiCode VARCHAR(255),
+shipMmsiCode VARCHAR(9),
 
 CONSTRAINT pk_ShipPort PRIMARY KEY (portId, shipMmsiCode),
 CONSTRAINT fk_Port FOREIGN KEY (portId) references Ports(id),

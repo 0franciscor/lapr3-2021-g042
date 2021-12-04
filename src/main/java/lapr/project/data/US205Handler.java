@@ -21,19 +21,24 @@ public class US205Handler {
         initialize(mmsiCode);
     }
 
-    private void initialize(String mmsiCode) throws SQLException, IOException {
-        CallableStatement statement = databaseConnection.prepareCall("{CALL US205(?, ?)}");
-        statement.registerOutParameter(2, Types.INTEGER);
+    private void initialize(String mmsiCode) throws  IOException {
 
-        statement.setString(1, mmsiCode);
+        try {
+            CallableStatement statement = databaseConnection.prepareCall("{CALL US205(?, ?)}");
+            statement.registerOutParameter(2, Types.INTEGER);
 
-        statement.execute();
+            statement.setString(1, mmsiCode);
 
-        this.listOfContainers=statement.getString(2);
+            statement.execute();
 
-        writeForAFile.writeForAFile(toString(), "US205_" + mmsiCode, new File("target\\generated-sources\\annotations\\US205"));
-        statement.close();
-        databaseConnection.close();
+            this.listOfContainers=statement.getString(2);
+
+            writeForAFile.writeForAFile(toString(), "US205_" + mmsiCode, new File(".\\outputs\\US205"));
+            statement.close();
+        }catch (Exception e){
+            writeForAFile.writeForAFile("Something went wrong", "US205_" + mmsiCode, new File(".\\outputs\\US205"));
+        }
+
     }
 
     @Override

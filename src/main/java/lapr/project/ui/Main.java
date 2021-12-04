@@ -26,6 +26,13 @@ class Main {
     public static void main(String[] args) {
         int option;
 
+        ImportShipController importShipController = new ImportShipController();
+
+        importShipController.importFile("sships.csv");
+        importShipController.importShips();
+
+
+
         ImportPortController importPortController = new ImportPortController();
         importPortController.importFile("sports.csv");
         importPortController.importPorts();
@@ -34,7 +41,7 @@ class Main {
 
         SendToDatabase sendToDatabase = new SendToDatabase();
 
-
+        sendToDatabase.sendShipsAndLocationsToDatabase();
         sendToDatabase.sendPortsToDatabase();
 
         do {

@@ -26,17 +26,22 @@ public class US210Handler {
     }
 
     private void initialize() throws SQLException, IOException {
-        CallableStatement statement = databaseConnection.prepareCall("{CALL US210(?)}");
-        statement.registerOutParameter(1, Types.LONGNVARCHAR);
+        try {
+            CallableStatement statement = databaseConnection.prepareCall("{CALL US210(?)}");
+            statement.registerOutParameter(1, Types.LONGNVARCHAR);
 
 
-        statement.execute();
+            statement.execute();
 
-        this.information= statement.getString(1);
+            this.information= statement.getString(1);
 
-        writeForAFile.writeForAFile(toString(), "US210" , new File(".\\outputs\\US210"));
-        statement.close();
-        databaseConnection.close();
+            writeForAFile.writeForAFile(information, "US210" , new File(".\\outputs\\US210"));
+            statement.close();
+        }catch (Exception e){
+            writeForAFile.writeForAFile("Something went wrong", "US210" , new File(".\\outputs\\US210"));
+        }
+
+
     }
 
 

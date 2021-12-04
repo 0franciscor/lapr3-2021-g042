@@ -13,6 +13,7 @@ CREATE OR REPLACE PROCEDURE US210 (information out VARCHAR2) IS
     isFirst INTEGER;
     maxDate DATE;
     finalPosition VARCHAR(255);
+    cont INTEGER;
 
     CURSOR allShips IS
     SELECT mmsiCode FROM Ship;
@@ -20,7 +21,7 @@ CREATE OR REPLACE PROCEDURE US210 (information out VARCHAR2) IS
     CURSOR allCargoManifests IS
     SELECT id FROM CargoManifestLoad
     WHERE shipMmsiCode = idShip;
-    ORDER BY id;
+
 
 BEGIN
 
@@ -93,8 +94,8 @@ BEGIN
                     maxDate := arrivalDate;
                     finalPosition := arrivalPosition;
                 END IF;
-                ELSE IF isFirst != 1 AND arrivalDate > maxDate THEN
 
+                IF isFirst != 1 AND arrivalDate > maxDate THEN
                     maxDate := arrivalDate;
                     finalPosition := arrivalPosition;
                 END IF;

@@ -1,6 +1,6 @@
 package lapr.project.data;
 
-import lapr.project.controller.App;
+import oracle.ucp.proxy.annotation.Pre;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,6 +21,7 @@ class SendToDatabaseTest {
     @BeforeEach
     public void setUp() throws SQLException {
         databaseConnection = Mockito.mock(databaseConnection.getClass());
+
     }
 
 

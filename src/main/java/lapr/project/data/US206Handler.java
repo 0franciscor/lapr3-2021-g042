@@ -22,19 +22,28 @@ public class US206Handler {
         initialize(mmsiCode);
     }
 
-    private void initialize(String mmsiCode) throws SQLException, IOException {
-        CallableStatement statement = databaseConnection.prepareCall("{CALL US206(?, ?)}");
-        statement.registerOutParameter(2, Types.INTEGER);
+    private void initialize(String mmsiCode) throws IOException {
 
-        statement.setString(1, mmsiCode);
+        try{
+            CallableStatement statement = databaseConnection.prepareCall("{CALL US206(?, ?)}");
 
-        statement.execute();
+            statement.registerOutParameter(2, Types.INTEGER);
 
-        this.listOfContainers=statement.getString(2);
+            statement.setString(1, mmsiCode);
 
-        writeForAFile.writeForAFile(toString(), "US206_" + mmsiCode, new File("target\\generated-sources\\annotations\\US206"));
-        statement.close();
-        databaseConnection.close();
+
+            statement.execute();
+
+            this.listOfContainers=statement.getString(2);
+
+            writeForAFile.writeForAFile(toString(), "US206_" + mmsiCode, new File(".\\outputs\\US206"));
+            statement.close();
+
+        }catch (Exception e){
+            writeForAFile.writeForAFile("Something went wrong", "US206_" + mmsiCode, new File(".\\outputs\\US206"));
+        }
+
+
     }
 
     @Override

@@ -3,6 +3,7 @@ package lapr.project.data;
 import lapr.project.controller.App;
 import lapr.project.model.*;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 
 /**
@@ -18,6 +19,11 @@ public class SendToDatabase implements Persistable {
     DatabaseConnection databaseConnection;
 
     /**
+     * The database Company
+     */
+    Company company;
+
+    /**
      * Send to Database Connection
      */
     public SendToDatabase() {
@@ -27,12 +33,16 @@ public class SendToDatabase implements Persistable {
     }
 
     /**
-     * Mocking Constructor
+     * Company inserted constructor
      *
-     * @param databaseConnection for testing purposes
+     * @param company for testing purposes
      */
-    public SendToDatabase(DatabaseConnection databaseConnection) {
-        this.databaseConnection = databaseConnection;
+    public SendToDatabase(Company company) {
+        this.databaseConnection = App.getInstance().getDatabaseConnection();
+        if(!databaseConnection.connectionWorking())
+            databaseConnection = null;
+
+        this.company = company;
     }
 
     //################################# Object fetching RELATED #####################################
@@ -42,13 +52,13 @@ public class SendToDatabase implements Persistable {
      */
     public void sendShipsAndLocationsToDatabase() {
         if (databaseConnection != null) {
-            for (Object objectShip : App.getInstance().getCompany().getBstShip().inOrder()) {
+            for (Object objectShip : company.getBstShip().inOrder()) {
                 Ship ship = (Ship) objectShip;
                 saveShip(databaseConnection, ship);
 
                 for (Object objectLocation : ship.getShipPosition().inOrder()) {
                     ShipLocation shipLocation = (ShipLocation) objectLocation;
-                    savePosition(databaseConnection, shipLocation);
+                    saveLocation(databaseConnection, shipLocation);
                 }
             }
         } else
@@ -62,7 +72,7 @@ public class SendToDatabase implements Persistable {
         System.out.println("c");
         if (databaseConnection != null) {
             System.out.println("b");
-            for(Ports port : App.getInstance().getCompany().getPortStr().getPortsLst())
+            for(Ports port : company.getPortStr().getPortsLst())
                 savePort(databaseConnection, port);
 
         } else
@@ -226,11 +236,11 @@ public class SendToDatabase implements Persistable {
      * @param object             that is going to be saved
      */
     @Override
-    public void savePosition(DatabaseConnection databaseConnection, Object object) {
+    public void saveLocation(DatabaseConnection databaseConnection, Object object) {
         ShipLocation shipLocation = (ShipLocation) object;
 
         try {
-            savePositionToDatabase(databaseConnection, shipLocation);
+            saveLocationToDatabase(databaseConnection, shipLocation);
 
         } catch (SQLException e) {
             System.out.println("There was an error when importing a Ship Location to the database.");
@@ -246,12 +256,12 @@ public class SendToDatabase implements Persistable {
      * @param shipLocation       that contains the location of a ship
      * @throws SQLException in case an error with the database occurs
      */
-    private void savePositionToDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
+    private void saveLocationToDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
             throws SQLException {
-        if (isPositionOnDatabase(databaseConnection, shipLocation))
-            updatePositionOnDatabase(databaseConnection, shipLocation);
+        if (isLocationOnDatabase(databaseConnection, shipLocation))
+            updateLocationOnDatabase(databaseConnection, shipLocation);
         else
-            insertPositionOnDatabase(databaseConnection, shipLocation);
+            insertLocationOnDatabase(databaseConnection, shipLocation);
     }
 
     /**
@@ -262,14 +272,14 @@ public class SendToDatabase implements Persistable {
      * @return if a location exists on the database
      * @throws SQLException in case an error with the database occurs
      */
-    private boolean isPositionOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
+    private boolean isLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
             throws SQLException {
 
         Connection connection = databaseConnection.getConnection();
 
         boolean isShipOnDatabase;
 
-        String sqlCommand = "select * from ShipPosition where shipMmsiCode = ? and baseDateTime = ?";
+        String sqlCommand = "select * from ShipLocation where shipMmsiCode = ? and baseDateTime = ?";
 
         PreparedStatement getShipLocationPreparedStatement = connection.prepareStatement(sqlCommand);
 
@@ -294,12 +304,12 @@ public class SendToDatabase implements Persistable {
      * @param shipLocation       that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
-    private void updatePositionOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
+    private void updateLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
             throws SQLException {
         String sqlCommand =
-                "update ShipPosition set latitude = ?, longitude = ?, sog = ?, cog = ?, heading = ?, position = ?, transceiver = ? where shipMmsiCode = ? and baseDateTime = ?";
+                "update ShipLocation set latitude = ?, longitude = ?, sog = ?, cog = ?, heading = ?, position = ?, transceiver = ? where shipMmsiCode = ? and baseDateTime = ?";
 
-        executeShipPositionStatementOnDatabase(databaseConnection, shipLocation, sqlCommand, false);
+        executeShipLocationStatementOnDatabase(databaseConnection, shipLocation, sqlCommand, false);
     }
 
     /**
@@ -309,12 +319,12 @@ public class SendToDatabase implements Persistable {
      * @param shipLocation       that is related to the database
      * @throws SQLException in case an error with the database occurs
      */
-    private void insertPositionOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
+    private void insertLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
             throws SQLException {
 
-        String sqlCommand = "insert into ShipPosition(shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlCommand = "insert into ShipLocation(shipMmsiCode, baseDateTime, latitude, longitude, sog, cog, heading, position, transceiver) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        executeShipPositionStatementOnDatabase(databaseConnection, shipLocation, sqlCommand, true);
+        executeShipLocationStatementOnDatabase(databaseConnection, shipLocation, sqlCommand, true);
     }
 
     /**
@@ -325,7 +335,7 @@ public class SendToDatabase implements Persistable {
      * @param type               of insert that is being made
      * @throws SQLException in case an error with the database occurs
      */
-    private void executeShipPositionStatementOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation, String sqlCommand, boolean type)
+    private void executeShipLocationStatementOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation, String sqlCommand, boolean type)
             throws SQLException {
 
         Connection connection = databaseConnection.getConnection();

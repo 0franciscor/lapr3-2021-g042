@@ -1,11 +1,11 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class LoadUnloadUI{
+class UnloadUI{
 
 }
 
-class LoadUnloadController{
+class UnloadController{
 + createUS205(mmsiCode)
 }
 
@@ -22,8 +22,8 @@ class WriteForAFile{
 }
 
 
-LoadUnloadUI ..> LoadUnloadController
-LoadUnloadController -> US205
+UnloadUI ..> UnloadController
+UnloadController -> US205
 US205 --> WriteForAFile : uses
 
 @enduml

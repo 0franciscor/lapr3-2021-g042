@@ -1,11 +1,5 @@
 package lapr.project.ui;
 
-import lapr.project.controller.App;
-import lapr.project.controller.ImportPortController;
-import lapr.project.controller.ImportShipController;
-import lapr.project.data.SendToDatabase;
-import lapr.project.model.ImportPort;
-
 /**
  * @author Nuno Bettencourt <nmb@isep.ipp.pt> on 24/05/16.
  */
@@ -26,6 +20,7 @@ class Main {
     public static void main(String[] args) {
         int option;
 
+<<<<<<< HEAD
         ImportShipController importShipController = new ImportShipController();
 
         importShipController.importFile("sships.csv");
@@ -44,6 +39,8 @@ class Main {
         sendToDatabase.sendShipsAndLocationsToDatabase();
         sendToDatabase.sendPortsToDatabase();
 
+=======
+>>>>>>> 1703cd71642c66f498c33c9d67fa19cb43695a78
         do {
 
             System.out.println("Main Menu");

@@ -79,5 +79,9 @@ public class PortsDto {
         return longitude;
     }
 
+    @Override
+    public String toString(){
+        return String.format("Port: %s\nCode: %d\nCountry Name: %s\n",portName,code,countryName);
+    }
 
 }

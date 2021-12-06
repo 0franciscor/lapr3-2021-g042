@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class KnowRouteUI{
+}
+
+class KnowRouteController{
++ createUS205(registration code)
+}
+
+
+class US305 {
+- initialize(registration code)
++ toString()
+
+}
+
+class WriteForAFile{
++ writeForAFiLe(textualInformation)
+
+}
+
+
+KnowRouteUI ..> KnowRouteController
+KnowRouteController -> US305
+US305 --> WriteForAFile : uses
+
+@enduml

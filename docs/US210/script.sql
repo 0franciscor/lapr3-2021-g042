@@ -1,3 +1,4 @@
+
 CREATE OR REPLACE PROCEDURE US210 (information out VARCHAR2) IS
 
     idShip VARCHAR(255);
@@ -49,9 +50,13 @@ BEGIN
             flag := false;
 
 
+
+
             SELECT COUNT (*) INTO totalPhases
             FROM Phases
             WHERE cargoManifestLoadId = idCargoManifest;
+            dbms_output.put_line(totalPhases);
+
 
             SELECT expectedArrivalDate INTO arrivalDate
             FROM Phases
@@ -63,46 +68,44 @@ BEGIN
             END IF;
         END LOOP;
         CLOSE allCargoManifests;
-        
-        IF flag = false THEN 
+
+        IF flag = false THEN
             SELECT COUNT (*) INTO totalCargoManifests
             FROM CargoManifestLoad
             WHERE shipMmsiCode = idShip;
-    
+
             IF cont = totalCargoManifests THEN
-    
-                OPEN allCargoManifests;
                 isFirst := 0;
-    
+
+                OPEN allCargoManifests;
                 LOOP
-    
+
                     FETCH allCargoManifests into idCargoManifest;
                     EXIT WHEN allCargoManifests%NOTFOUND;
-    
+
                     SELECT COUNT (*) INTO totalPhases
                     FROM Phases
                     WHERE cargoManifestLoadId = idCargoManifest;
-    
-    
+
+
                     SELECT expectedArrivalDate, destination INTO arrivalDate, arrivalPosition
                     FROM Phases
                     WHERE id = totalPhases
                     AND cargoManifestLoadId = idCargoManifest;
-    
+
                     isFirst := isFirst + 1;
-    
-    
+
+
                     IF isFirst = 1 THEN
                         maxDate := arrivalDate;
                         finalPosition := arrivalPosition;
                     END IF;
-    
+
                     IF isFirst != 1 AND arrivalDate > maxDate THEN
                         maxDate := arrivalDate;
                         finalPosition := arrivalPosition;
                     END IF;
                 END LOOP;
-    
                 CLOSE allCargoManifests;
     
                  information:= information || idShip || '--> ' ||finalPosition|| chr(10);

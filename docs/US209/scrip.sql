@@ -1,14 +1,14 @@
+
 CREATE OR REPLACE PROCEDURE US209 (mmsiCodeShip in VARCHAR, actualDate in TIMESTAMP, occupancyRate out FLOAT) IS
 
     totalContainers INTEGER;
     capacityShip FLOAT;
     cargoManifestsId CargoManifestLoad.Id%type;
-    date1 timestamp;
-    date2 timestamp;
-    idOfPhase Integer;
-    finalContainer Integer:=0;
+    date1 TIMESTAMP;
+    date2 TIMESTAMP;
+    idOfPhase INTEGER;
+    finalContainer INTEGER:=0;
     cont INTEGER;
-    flag BOOLEAN;
 
     CURSOR cargoManifests IS
     SELECT id
@@ -39,15 +39,14 @@ BEGIN
 
                 SELECT COUNT (*) INTO totalContainers
                 FROM CargoManifestContainer
-                WHERE phasesId = idOfPhase
+                WHERE phasesId >= idOfPhase
                 AND cargoManifestLoadId = cargoManifestsId;
-                flag := true;
                 finalContainer:= finalContainer + totalContainers;
             END IF;
         END LOOP;
     END LOOP;
 
-    SELECT cargo INTO capacityShip
+    SELECT capacity INTO capacityShip
     FROM Ship
     WHERE Ship.mmsiCode = mmsiCodeShip;
 

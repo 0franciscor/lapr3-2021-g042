@@ -15,9 +15,8 @@ public class US210Handler {
 
     private Connection databaseConnection;
     private String information;
-
-
     private WriteForAFile writeForAFile;
+
 
     public US210Handler() throws SQLException, IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
@@ -40,7 +39,6 @@ public class US210Handler {
         }catch (Exception e){
             writeForAFile.writeForAFile("Something went wrong", "US210" , new File(".\\outputs\\US210"));
         }
-
 
     }
 

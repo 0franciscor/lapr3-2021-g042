@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+actor "Client" as C
+participant "System" as SY
+
+activate C
+C -> SY : Requests to know the route of a specific container \nhe's leasing
+activate SY
+SY --> C : Asks for the container identifier
+deactivate SY
+C -> SY : types the container identifier (registration code)
+
+activate SY
+SY-->C : shows the result
+deactivate SY
+deactivate C
+@enduml

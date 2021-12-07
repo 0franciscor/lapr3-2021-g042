@@ -21,6 +21,9 @@ Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSI
 Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('636019825','IMO9222285','0','0','D5WI6','9,2','CONTI LYON','79','300','40','79','12000');
 Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('636091400','IMO9373486','0','0','A8ND5','10,9','RHL AGILITAS','70','176','27','71','4752');
 Insert into SHIP (MMSICODE,IMOCODE,NUMBERENERGYGENERATORS,GENERATOROUTPUT,CALLSIGN,DRAFT,SHIPNAME,VESSELTYPEID,SHIPLENGTH,WIDTH,CARGO,CAPACITY) values ('636092932','IMO9225641','0','0','D5VK6','11,8','MSC ILONA','79','299','40','79','11960');
+insert into Ship (mmsicode, imocode, NUMBERENERGYGENERATORS, generatoroutput, callsign, draft, shipname, vesseltypeid, shiplength, width, cargo) values ('529467097', 'IMO4419462', 82, 16.8, 'sit', 39.1, 'consequat', 100, 72.2, 61.5, 'in');
+insert into Ship (mmsicode, imocode, NUMBERENERGYGENERATORS, generatoroutput, callsign, draft, shipname, vesseltypeid, shiplength, width, cargo) values ('696134988', 'IMO8583481', 57, 20.4, 'abc', 85.6, 'a', 17, 30.5, 16.9, 'magna');
+
 
 -- Bootstrap Countries
 Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('United Kingdom','Europe');
@@ -33,6 +36,10 @@ Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('France','Europe');
 Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Portugal','Europe');
 Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Spain','Europe');
 Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('Peru','America');
+insert into Country (countryname, continent) values ('Indonesia', 'Continent');
+insert into Country (countryname, continent) values ('Libya', 'Continent');
+insert into Country (countryname, continent) values ('China', 'Continent');
+insert into Country (countryname, continent) values ('Montenegro', 'Continent');
 
 --Bootstrap PlaceLocations
 Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('United Kingdom','53,47','-3,03');
@@ -57,6 +64,10 @@ Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Spain','41,3
 Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Spain','39,45','-0,30');
 Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Peru','-12,05','-77,17');
 Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('Peru','-17,00','-72,10');
+insert into PlaceLocation (countryname, latitude, longitude) values ('Indonesia', '70', '-93');
+insert into PlaceLocation (countryname, latitude, longitude) values ('Libya', '61', '41');
+insert into PlaceLocation (countryname, latitude, longitude) values ('China', '62', '145');
+insert into PlaceLocation (countryname, latitude, longitude) values ('Montenegro', '-16', '-99');
 
 -- Bootstrap Ports
 Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('29002','Liverpool','53,47','-3,03');
@@ -81,6 +92,9 @@ Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values 
 Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('18937','Valencia','39,45','-0,30');
 Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('30045','Callao','-12,05','-77,17');
 Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('10860','Matarani','-17,00','-72,10');
+insert into PORTS (id, name, PLACELOCATIONLATITUDE, PLACELOCATIONlongitude) values (117638542, 'sapien', '70', '-93');
+insert into PORTS (id, name, PLACELOCATIONLATITUDE, PLACELOCATIONlongitude) values (29536752, 'eget', '61', '41');
+insert into PORTS (id, name, PLACELOCATIONLATITUDE, PLACELOCATIONlongitude) values (937194604, 'nec', '62', '145');
 
 
 --Bootstrap ShipLocation
@@ -327,6 +341,8 @@ Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('5','
 Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('6','29002','229857000',null);
 Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('12','29002','636092932',null);
 Insert into CARGOMANIFESTLOAD (ID,PORTID,SHIPMMSICODE,ISCONCLUDED) values ('13','29002','636092932',null);
+insert into CARGOMANIFESTLOAD(id,shipmmsicode,portid) values (10000,'529467097', 117638542);
+insert into CARGOMANIFESTLOAD(id,shipmmsicode,portid) values (20000,'696134988', 29536752);
 
 
 --Bootstrap Phases
@@ -354,7 +370,8 @@ Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTURED
 Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('12','1','Setubal','New Jersey',to_timestamp('21.11.02 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.02 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
 Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('13','1','Liverpool','Matarani',to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.31 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.31 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
 Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('10000','1','Liverpool','Matarani',to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.31 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.31 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
-
+INSERT INTO PHASES(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
+VALUES (20000,1,'eget','nec','2021-11-04 18:44:33','2021-12-30 18:44:33','2021-11-04 18:44:33','2021-12-30 18:44:33');
 
 --Bootstrap CargoManifestUnload
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('2','1','3','29002');
@@ -363,11 +380,13 @@ Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) v
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('5','1','4','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('6','2','4','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('7','1','5','29002');
-Insert into CARGOMANIFESTUNLOAD (ID,PHASESIDPHASES,CARGOMANIFESTLOADID,PORTID) values ('8','2','5','29002');
+Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('8','2','5','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('9','1','8','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('1','3','1','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('10','2','1','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('11','1','1','29002');
+INSERT INTO cargomanifestunload(id,phasescargomanifestloadid,phasesid,portid)
+VALUES (951245368,20000,1,937194604);
 
 
 -- Bootstrap Containers
@@ -389,6 +408,9 @@ Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPAC
 Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('134564237','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
 Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('534636241','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
 Insert into CONTAINER (NUMBERID,ISOCODE,CHECKDIGIT,MAXWEIGHT,WEIGHT,MAXWEIGHTPACKED,MAXVOLUMEPACKED,REPAIRRECOMMENDATION,CERTIFICATE,PAYLOAD,TARE) values ('635635775','pellentesque','9081623','26','195,2','35,4','137,9','#REPAIRRECOMMENDATION','CERTIFICATE','58,6','38,5');
+insert into Container (NUMBERid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (987650321, 1569483, 'justo', 2.4, 1.5, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.9, 1.1, 181.7, 118.5);
+insert into Container (NUMBERid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (695421863, 8150283, 'sagittis', 92.3, 179.3, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.6, 20.7, 128.5, 72.1);
+
 
 --Bootstrap CargoManifestContainer
 Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('1','456789423','1','1','1','1','12,6','3','11');
@@ -410,39 +432,17 @@ Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASES
 Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('9','134564237','1','1','1','1','12,6','9',null);
 Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('12','534636241','1','1','1','1','12,6','12',null);
 Insert into CARGOMANIFESTCONTAINER (CARGOMANIFESTLOADID,CONTAINERNUMBERID,PHASESID,XCONTAINER,YCONTAINER,ZCONTAINER,GROSSCONTAINER,PHASESCARGOMANIFESTLOADID,CARGOMANIFESTUNLOADID) values ('13','635635775','1','1','1','1','12,6','9',null);
-
-
-insert into Container (NUMBERid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (987650321, 1569483, 'justo', 2.4, 1.5, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.9, 1.1, 181.7, 118.5);
-insert into Container (NUMBERid, CHECKDIGIT, ISOCODE, MaxWeight, MAXVOLUMEPACKED, REPAIRRECOMMENDATION, CERTIFICATE, payload, tare, weight, maxweightpacked) values (695421863, 8150283, 'sagittis', 92.3, 179.3, '#REPAIRRECOMMENDATION', 'CERTIFICATE', 89.6, 20.7, 128.5, 72.1);
-
-insert into Ship (mmsicode, imocode, NUMBERENERGYGENERATORS, generatoroutput, callsign, draft, shipname, vesseltypeid, shiplength, width, cargo) values ('529467097', 'IMO4419462', 82, 16.8, 'sit', 39.1, 'consequat', 100, 72.2, 61.5, 'in');
-insert into Ship (mmsicode, imocode, NUMBERENERGYGENERATORS, generatoroutput, callsign, draft, shipname, vesseltypeid, shiplength, width, cargo) values ('696134988', 'IMO8583481', 57, 20.4, 'abc', 85.6, 'a', 17, 30.5, 16.9, 'magna');
-
-insert into Country (countryname, continent) values ('Indonesia', 'Continent');
-insert into Country (countryname, continent) values ('Libya', 'Continent');
-insert into Country (countryname, continent) values ('China', 'Continent');
-insert into Country (countryname, continent) values ('Montenegro', 'Continent');
-
-insert into PlaceLocation (countryname, latitude, longitude) values ('Indonesia', '70', '-93');
-insert into PlaceLocation (countryname, latitude, longitude) values ('Libya', '61', '41');
-insert into PlaceLocation (countryname, latitude, longitude) values ('China', '62', '145');
-insert into PlaceLocation (countryname, latitude, longitude) values ('Montenegro', '-16', '-99');
-
-insert into PORTS (id, name, PLACELOCATIONLATITUDE, PLACELOCATIONlongitude) values (117638542, 'sapien', '70', '-93');
-insert into PORTS (id, name, PLACELOCATIONLATITUDE, PLACELOCATIONlongitude) values (29536752, 'eget', '61', '41');
-insert into PORTS (id, name, PLACELOCATIONLATITUDE, PLACELOCATIONlongitude) values (937194604, 'nec', '62', '145');
-
-insert into CARGOMANIFESTLOAD(id,shipmmsicode,portid) values (10000,'529467097', 117638542);
-insert into CARGOMANIFESTLOAD(id,shipmmsicode,portid) values (20000,'696134988', 29536752);
-
-INSERT INTO PHASES(cargomanifestloadid,id,origin,destination,expecteddeparturedate,expectedarrivaldate,realdeparturedate,realarrivaldate)
-VALUES (20000,1,'eget','nec','2021-11-04 18:44:33','2021-12-30 18:44:33','2021-11-04 18:44:33','2021-12-30 18:44:33');
-
-INSERT INTO cargomanifestunload(id,phasescargomanifestloadid,phasesid,portid)
-VALUES (951245368,20000,1,937194604);
-
 INSERT INTO cargoManifestContainer(cargomanifestloadid,containernumberid,grosscontainer,xcontainer,ycontainer,zcontainer,PhasesId,PhasesCargoManifestLoadId )
 VALUES (10000,987650321,12.6,1,1,1,1,10000);
-
 INSERT INTO cargoManifestContainer(cargomanifestloadid,containernumberid,grosscontainer,xcontainer,ycontainer,zcontainer,PhasesId,PhasesCargoManifestLoadId,CargoManifestUnloadId)
 VALUES (20000,695421863,12.6,1,3,1,1,20000,951245368);
+
+
+
+
+
+
+
+
+
+

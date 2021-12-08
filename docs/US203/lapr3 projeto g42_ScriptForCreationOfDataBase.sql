@@ -11,6 +11,49 @@ DROP TABLE CargoManifestUnload CASCADE CONSTRAINTS PURGE;
 DROP TABLE CargoManifestContainer CASCADE CONSTRAINTS PURGE;
 DROP TABLE Warehouse CASCADE CONSTRAINTS PURGE;
 DROP TABLE Warehouse_Truck CASCADE CONSTRAINTS PURGE;
+DROP TABLE Role CASCADE CONSTRAINTS PURGE;
+DROP TABLE User CASCADE CONSTRAINTS PURGE;
+DROP TABLE AudioTrails CASCADE CONSTRAINTS PURGE;
+
+
+CREATE TABLE Role(
+id INTEGER,
+designation VARCHAR(255) UNIQUE,
+
+CONSTRAINT pk_Role PRIMARY KEY (id)
+);
+
+CREATE TABLE User(
+username VARCHAR(255),
+password VARCHAR(255),
+roleId INTEGER,
+
+CONSTRAINT pk_User PRIMARY KEY (username),
+CONSTRAINT fk_User_Role FOREIGN KEY (roleId) references Role(id)
+
+);
+
+CREATE TABLE Operations(
+id INTEGER,
+operationName VARCHAR(6) UNIQUE,
+
+CONSTRAINT pk_Operations PRIMARY KEY (id)
+
+);
+
+CREATE TABLE AuditTrails(
+userUserName VARCHAR(255),
+operationsId INTEGER,
+cargoManifestContainerNumberId INTEGER,
+cargoManifestContainerCargoManifestLoadId INTEGER,
+id INTEGER,
+
+CONSTRAINT pk_AuditTrails PRIMARY KEY (id),
+CONSTRAINT fk_AuditTrails_CargoManifestContainer FOREIGN KEY (cargoManifestContainerNumberId, cargoManifestContainerCargoManifestLoadId) REFERENCES CargoManifestContainer(containerNumberId, cargoManifestLoadId),
+CONSTRAINT fk_AuditTrails_Operations FOREIGN KEY (operationsId) REFERENCES Operations(id),
+CONSTRAINT fk_AuditTrails_User FOREIGN KEY (userUserName) REFERENCES User(username)
+
+);
 
 
 CREATE TABLE Ship(

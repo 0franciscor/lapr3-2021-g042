@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import lapr.project.data.login.AuthFacade;
+import lapr.project.data.login.UserSession;
 import lapr.project.model.store.CargoManifestStore;
 import lapr.project.model.store.CountryStore;
 import lapr.project.model.store.PortStore;
@@ -35,6 +37,8 @@ public class Company {
      */
     private final CargoManifestStore cargoManifestStore;
 
+    private AuthFacade authFacade;
+
     /**
      * Creates an instance of Company
      */
@@ -43,6 +47,7 @@ public class Company {
         countryStr = new CountryStore();
         portStr = new PortStore();
         cargoManifestStore = new CargoManifestStore();
+        authFacade=new AuthFacade();
     }
 
     /**
@@ -53,6 +58,7 @@ public class Company {
         return cargoManifestStore;
     }
 
+    public AuthFacade getAuthFacade(){return authFacade;}
     /**
      * Get the instance of BstShip
      * @return the bstShip

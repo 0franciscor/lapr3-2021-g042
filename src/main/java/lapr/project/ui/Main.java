@@ -22,15 +22,16 @@ class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int option;
-        do {
-            System.out.println("Main Menu");
-            System.out.println("0- Exit");
-            option = Utils.readIntegerFromConsole("Type your option:");
-            if (option == 0) System.exit(0);
+        try
+        {
+            MainMenuUI menu = new MainMenuUI();
 
-        }while (option != 1);
-
+            menu.run();
+        }
+        catch( Exception e )
+        {
+            e.printStackTrace();
+        }
 
     }
 }

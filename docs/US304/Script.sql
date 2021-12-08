@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION US304(idCargoManifest INTEGER, idContainer INTEGER, i
         WHERE cargoManifestContainerNumberId = idCargoManifest
         Order by id;
     END;
-
+#trigger so insere em uma tabela o utilizador e depois vamos buscar nessa tabela o utilizador que alterou um dos determinados atributos de container ou cargoManifest
 CREATE OR REPLACE TRIGGER audit_trail_trigger
     AFTER
     UPDATE OR DELETE OR INSERT

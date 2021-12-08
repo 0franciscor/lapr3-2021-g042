@@ -2,9 +2,13 @@ package lapr.project.controller;
 
 import lapr.project.data.ConnectionFactory;
 import lapr.project.data.DatabaseConnection;
+import lapr.project.data.login.AuthController;
+import lapr.project.data.login.AuthFacade;
+import lapr.project.data.login.UserSession;
 import lapr.project.model.Company;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * Class that represents a app.
@@ -19,14 +23,19 @@ public class App {
      */
     private final Company company;
 
+    private  AuthFacade authFacade;
+
     /**
      * Represents the App's connection to the database
      */
     private final DatabaseConnection databaseConnection;
 
     private App(){
-        company = new Company();
+
+
         this.databaseConnection = initializeConnection();
+        company = new Company();
+        authFacade = company.getAuthFacade();
     }
 
     /**
@@ -42,7 +51,9 @@ public class App {
     private static App singleton = null;
 
     public static App getInstance() {
+
         if (singleton == null) {
+
             synchronized (App.class) {
                 singleton = new App();
             }
@@ -72,5 +83,20 @@ public class App {
      */
     public DatabaseConnection getDatabaseConnection(){
         return databaseConnection;
+    }
+
+
+    public UserSession getCurrentUserSession()
+    {
+        return this.authFacade.getCurrentUserSession();
+    }
+
+    public boolean doLogin(String username, String pwd) throws SQLException {
+        return this.authFacade.doLogin(username,pwd).isLoggedIn();
+    }
+
+    public void doLogout()
+    {
+        this.authFacade.doLogout();
     }
 }

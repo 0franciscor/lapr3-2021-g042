@@ -28,6 +28,8 @@ public class ScenarioTestBDDADTest {
 
     private US210Handler us210Handler;
 
+    private US305Handler us305Handler;
+
     @Test
     public void presentationTest() throws SQLException, IOException, ParseException {
         findContainerSituationController = new FindContainerSituationController();
@@ -44,5 +46,6 @@ public class ScenarioTestBDDADTest {
         Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
         us209Handler = new US209Handler("210950000", timestamp);
         us210Handler = new US210Handler();
+        //us305Handler = new US305Handler("213456782");
     }
 }

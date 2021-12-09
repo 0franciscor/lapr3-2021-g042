@@ -19,12 +19,11 @@ public class US204Handler {
     private String containerLocation;
 
     public US204Handler() throws SQLException, IOException {
-        databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
     }
 
     public String getContainerLocation(int containerNumber) throws IOException {
-
+        databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         try(CallableStatement callStmt = databaseConnection.prepareCall("{ ? = call get_container_position (?)}")) {
 
             callStmt.setInt(2, containerNumber);

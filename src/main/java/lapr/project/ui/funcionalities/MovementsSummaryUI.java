@@ -1,8 +1,9 @@
-package lapr.project.ui;
+package lapr.project.ui.funcionalities;
 
 import lapr.project.controller.MovementsSummaryController;
 import lapr.project.mapper.dto.SummaryDto;
 import lapr.project.model.Ship;
+import lapr.project.ui.Utils;
 import lapr.project.utils.WriteForAFile;
 
 import java.io.File;

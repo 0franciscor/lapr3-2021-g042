@@ -1,9 +1,9 @@
-package lapr.project.ui;
+package lapr.project.ui.employees;
 
-import lapr.project.data.US207Handler;
+import lapr.project.ui.MenuItem;
+import lapr.project.ui.funcionalities.US207Ui;
+import lapr.project.ui.Utils;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

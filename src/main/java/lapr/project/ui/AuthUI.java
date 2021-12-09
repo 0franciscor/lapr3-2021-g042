@@ -2,6 +2,7 @@ package lapr.project.ui;
 
 import lapr.project.data.login.AuthController;
 import lapr.project.data.login.Role;
+import lapr.project.ui.employees.ShipCaptainUi;
 
 import java.util.ArrayList;
 import java.util.Iterator;

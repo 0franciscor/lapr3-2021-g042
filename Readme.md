@@ -154,6 +154,9 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 | **[US208](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US208/US208.md)** | **As Ship Captain, I want to know the occupancy rate (percentage) of a given ship for a given cargo manifest. Occupancy rate is the ratio between total number of containers in the ship coming from a given manifest and the total capacity of the ship, i.e., the maximum number of containers the ship can load.** | Ship and cargo manifest are correctly identified. Occupancy rate is properly computed.|
 | **[US209](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US209/US209.md)** | **As Ship Captain, I want to know the occupancy rate of a given ship at a given moment.** | Ship is properly identified. Reuses US208. Occupancy rate is properly computed |
 | **[US210](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US210/US210.md)** | **As Traffic manager, I need to know which ships will be available on Monday next week and their location.** | Monday next week is properly identified. Only available ships are returned. All available ships are returned.|
+| **[US305](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US305/US305.md)** | **As Client, I want to know the route of a specific container I am leasing.**| Users provide their registration code, the container identifier and get its path, from source to current location indicating time of arrival and departure at each location and mean of transport (ship or truck) between each pair of locations. When the provided identifier is not valid or, being valid, is not leased by the client, a warning is returned.
+
+
 
 ## Project Coverage
 #### Sprint 1

@@ -1,12 +1,12 @@
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Belize','Mexico');
-INSERT INTO Border(Countryname,Countryname2) VALUES ('Canada','United States of America');
+INSERT INTO Border(Countryname,Countryname2) VALUES ('Canada','United States');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Costa Rica','Nicaragua');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Costa Rica','Panama');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Guatemala','Mexico');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Guatemala','El Salvador');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Honduras','El Salvador');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Honduras','Nicaragua');
-INSERT INTO Border(Countryname,Countryname2) VALUES ('Mexico','United States of America');
+INSERT INTO Border(Countryname,Countryname2) VALUES ('Mexico','United States');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Panama','Colombia');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Argentina','Bolivia');
 INSERT INTO Border(Countryname,Countryname2) VALUES ('Argentina','Brazil');

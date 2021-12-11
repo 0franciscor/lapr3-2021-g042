@@ -68,7 +68,6 @@ CONSTRAINT pk_Container PRIMARY KEY(numberId)
 CREATE TABLE Country(
 countryName VARCHAR(255),
 continent VARCHAR(255),
-capital VARCHAR (255),
 population FLOAT(10),
 alpha2_code VARCHAR (255),
 alpha3_code VARCHAR (255),
@@ -95,7 +94,7 @@ PlaceLocationlongitude VARCHAR(255),
 
 CONSTRAINT pk_Capital PRIMARY KEY(name),
 
-CONSTRAINT fk_CapitalLatitude FOREIGN KEY(Countryname) references Country(countryName),
+CONSTRAINT fk_CapitalOrigin FOREIGN KEY(Countryname) references Country(countryName),
 
 CONSTRAINT fk_LatitudeAndLongitude FOREIGN KEY(PlaceLocationlatitude, PlaceLocationlongitude) references PlaceLocation(latitude, longitude)
 

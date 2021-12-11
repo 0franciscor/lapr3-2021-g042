@@ -18,13 +18,13 @@ public class US210Handler {
     private WriteForAFile writeForAFile;
 
 
-    public US210Handler() throws SQLException, IOException {
+    public US210Handler() throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize();
     }
 
-    private void initialize() throws SQLException, IOException {
+    private void initialize() throws IOException {
         try {
             CallableStatement statement = databaseConnection.prepareCall("{call US210(?)}");
             statement.registerOutParameter(1, Types.LONGNVARCHAR);

@@ -15,7 +15,7 @@ public class US305Handler {
     private String containerPathInfo;
     private WriteForAFile writeForAFile;
 
-    public US305Handler(String registerCode) throws IOException ,IOException {
+    public US305Handler(String registerCode) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(registerCode);

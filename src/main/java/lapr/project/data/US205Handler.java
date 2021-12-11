@@ -15,7 +15,7 @@ public class US205Handler {
     private String listOfContainers;
     private WriteForAFile writeForAFile;
 
-    public US205Handler(String mmsiCode) throws IOException ,IOException {
+    public US205Handler(String mmsiCode) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(mmsiCode);

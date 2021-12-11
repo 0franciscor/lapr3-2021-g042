@@ -16,13 +16,13 @@ public class US209Handler {
 
     private WriteForAFile writeForAFile;
 
-    public US209Handler(String mmsiCode, Timestamp actualDate) throws SQLException, IOException {
+    public US209Handler(String mmsiCode, Timestamp actualDate) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(mmsiCode, actualDate);
     }
 
-    private void initialize(String mmsiCode, Timestamp actualDate) throws SQLException, IOException {
+    private void initialize(String mmsiCode, Timestamp actualDate) throws IOException {
 
         try {
             CallableStatement statement = databaseConnection.prepareCall("{CALL US209(?, ?, ?)}");

@@ -46,6 +46,6 @@ public class ScenarioTestBDDADTest {
         Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
         us209Handler = new US209Handler("210950000", timestamp);
         us210Handler = new US210Handler();
-        //us305Handler = new US305Handler("213456782");
+        us305Handler = new US305Handler("213456782");
     }
 }

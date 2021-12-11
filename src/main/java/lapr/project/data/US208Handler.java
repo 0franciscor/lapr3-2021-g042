@@ -19,7 +19,7 @@ public class US208Handler {
 
     private WriteForAFile writeForAFile;
 
-    public US208Handler(int cargoManifestId) throws SQLException, IOException {
+    public US208Handler(int cargoManifestId) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(cargoManifestId);

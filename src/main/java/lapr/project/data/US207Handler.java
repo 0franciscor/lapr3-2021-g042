@@ -42,7 +42,7 @@ public class US207Handler {
      * @throws SQLException
      * @throws IOException
      */
-    public US207Handler(String mmsiCode, int year) throws SQLException, IOException {
+    public US207Handler(String mmsiCode, int year) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(mmsiCode, year);

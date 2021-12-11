@@ -2,7 +2,7 @@ package lapr.project.ui;
 
 import lapr.project.data.login.AuthController;
 import lapr.project.data.login.Role;
-import lapr.project.ui.employees.ShipCaptainUi;
+import lapr.project.ui.employees.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -54,18 +54,16 @@ public class AuthUI implements Runnable{
     private List<MenuItem> getMenuItemForRoles()
     {
         List<MenuItem> rolesUI = new ArrayList<>();
-        rolesUI.add(new MenuItem("Client", new ShipCaptainUi()));
-        rolesUI.add(new MenuItem("Fleet Manager", new ShipCaptainUi()));
-        rolesUI.add(new MenuItem("Traffic manager", new ShipCaptainUi()));
-        rolesUI.add(new MenuItem("Warehouse staff", new ShipCaptainUi()));
-        rolesUI.add(new MenuItem("Warehouse manager", new ShipCaptainUi()));
-        rolesUI.add(new MenuItem("Port staff", new ShipCaptainUi()));
-        rolesUI.add(new MenuItem("Port manager", new ShipCaptainUi()));
+        rolesUI.add(new MenuItem("Client", new ClientUi()));
+        rolesUI.add(new MenuItem("Fleet Manager", new FleetManagerUi()));
+        rolesUI.add(new MenuItem("Traffic manager", new TrafficManagerUi()));
+        rolesUI.add(new MenuItem("Warehouse staff", new WareHouseStaffUi()));
+        rolesUI.add(new MenuItem("Warehouse manager", new WarehouseManagerUi()));
+        rolesUI.add(new MenuItem("Port staff", new PortStaffUi()));
+        rolesUI.add(new MenuItem("Port manager", new PortManagerUi()));
         rolesUI.add(new MenuItem("Ship captain", new ShipCaptainUi()));
-        rolesUI.add(new MenuItem("Ship chief electrical engineer", new ShipCaptainUi()));
-        rolesUI.add(new MenuItem("Truck driver", new ShipCaptainUi()));
-
-
+        rolesUI.add(new MenuItem("Ship chief electrical engineer", new ShipChiefElectricalEngineerUi()));
+        rolesUI.add(new MenuItem("Truck driver", new TruckDriverUi()));
 
         return rolesUI;
     }

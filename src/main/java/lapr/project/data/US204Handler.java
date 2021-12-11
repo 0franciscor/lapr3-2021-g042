@@ -18,7 +18,7 @@ public class US204Handler {
 
     private String containerLocation;
 
-    public US204Handler() throws SQLException, IOException {
+    public US204Handler(){
         writeForAFile = new WriteForAFile();
     }
 

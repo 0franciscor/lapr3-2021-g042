@@ -1,4 +1,4 @@
-package lapr.project.ui;
+package lapr.project.ui.funcionalities;
 
 import lapr.project.controller.ListSomeShipDataController;
 import lapr.project.model.BriefSummary;

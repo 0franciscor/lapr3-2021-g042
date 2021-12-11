@@ -16,7 +16,7 @@ public class US206Handler {
     private String listOfContainers;
     private WriteForAFile writeForAFile;
 
-    public US206Handler(String mmsiCode) throws SQLException, IOException {
+    public US206Handler(String mmsiCode) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         initialize(mmsiCode);

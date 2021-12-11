@@ -237,6 +237,7 @@ grossContainer FLOAT NOT NULL,
 PhasesId INTEGER NOT NULL,
 PhasesCargoManifestLoadId INTEGER NOT NULL,
 CargoManifestUnloadId INTEGER,
+userResponsibleForChanges VARCHAR
 
 CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestLoadId),
 

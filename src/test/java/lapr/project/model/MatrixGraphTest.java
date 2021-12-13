@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author DEI-ISEP
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  *
+ *
  */
 public class MatrixGraphTest {
     final ArrayList<String> co = new ArrayList<>(Arrays.asList( "A", "A", "B", "C", "C", "D", "E", "E"));
@@ -27,6 +28,7 @@ public class MatrixGraphTest {
 
     final ArrayList <String> ov = new ArrayList<>(Arrays.asList( "A",  "B",  "C" ,  "D" ,  "E" ));
     AdjacencyMatrixGraph<String, Integer> instance = null;
+
 
     @BeforeEach
     public void initializeGraph() {

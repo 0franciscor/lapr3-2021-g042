@@ -74,21 +74,23 @@ public class Edge<V,E> {
 
     @Override
     public String toString() {
-        return String.format("%s -> %s\nWeight: %s", vOrig, vDest, weight);
+        return String.format("%s -> %s \nWeight: %s", vOrig, vDest, weight);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Edge<V, E> edge = (Edge<V, E>) o;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Edge<V, E> edge = (Edge<V, E>) obj;
         return  vOrig.equals(edge.vOrig) &&
                 vDest.equals(edge.vDest);
     }
 
     @Override
     public int hashCode() {
+
         return Objects.hash(vOrig, vDest);
+
     }
 
 }

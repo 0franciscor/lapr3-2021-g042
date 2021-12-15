@@ -1,5 +1,8 @@
-mainCompiled: importFile.o main.o fillArray.o
-	gcc -g -Wall importFile.o main.o fillArray.o -o main
+mainCompiled: importFile.o main.o fillArray.o cleanArray.o
+	gcc -g -Wall importFile.o main.o fillArray.o cleanArray.o -o main
+
+cleanArray.o: cleanArray.c
+	gcc -g -Wall -c cleanArray.c -o cleanArray.o
 
 fillArray.o: fillArray.c
 	gcc -g -Wall -c fillArray.c -o fillArray.o

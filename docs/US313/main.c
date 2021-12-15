@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include "importFile.h"
 
+char shipAllocation [18][26][10][255];
+
 int main(){
 
-    importFile("cargoManifestShort.csv");
+    //zeroArray();
+    importFile("cargoManifest.csv");
 
-    
     return 0;
 }

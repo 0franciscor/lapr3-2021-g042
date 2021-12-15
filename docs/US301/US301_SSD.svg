@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="432px" preserveAspectRatio="none" style="width:552px;height:432px;" version="1.1" viewBox="0 0 552 432" width="552px" zoomAndPan="magnify"><defs><filter height="300%" id="fg29ccd301jkn" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="3.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="6.0" dy="6.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#fg29ccd301jkn)" height="128.1094" style="stroke:#A80036;stroke-width:1.5;" width="15" x="79.5" y="149.4141"/><rect fill="#FFFFFF" filter="url(#fg29ccd301jkn)" height="45.5273" style="stroke:#A80036;stroke-width:1.5;" width="15" x="478.5" y="231.9961"/><line style="stroke:#A80036;stroke-width:1.5;stroke-dasharray:5.0,5.0;" x1="87" x2="87" y1="134.4141" y2="304.5234"/><line style="stroke:#A80036;stroke-width:1.5;stroke-dasharray:5.0,5.0;" x1="486" x2="486" y1="134.4141" y2="304.5234"/><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="150" x="7.5" y="129.7998">Traffic Manager</text><ellipse cx="87" cy="22.5" fill="#FEFECE" filter="url(#fg29ccd301jkn)" rx="12" ry="12" style="stroke:#A80036;stroke-width:3.0;"/><path d="M87,34.5 L87,75 M67.5,46.5 L106.5,46.5 M87,75 L67.5,97.5 M87,75 L106.5,97.5 " fill="none" filter="url(#fg29ccd301jkn)" style="stroke:#A80036;stroke-width:3.0;"/><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="150" x="7.5" y="324.8232">Traffic Manager</text><ellipse cx="87" cy="344.4375" fill="#FEFECE" filter="url(#fg29ccd301jkn)" rx="12" ry="12" style="stroke:#A80036;stroke-width:3.0;"/><path d="M87,356.4375 L87,396.9375 M67.5,368.4375 L106.5,368.4375 M87,396.9375 L67.5,419.4375 M87,396.9375 L106.5,419.4375 " fill="none" filter="url(#fg29ccd301jkn)" style="stroke:#A80036;stroke-width:3.0;"/><rect fill="#FEFECE" filter="url(#fg29ccd301jkn)" height="47.4141" style="stroke:#A80036;stroke-width:2.25;" width="96" x="435" y="79.5"/><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="75" x="445.5" y="111.7998">:System</text><rect fill="#FEFECE" filter="url(#fg29ccd301jkn)" height="47.4141" style="stroke:#A80036;stroke-width:2.25;" width="96" x="435" y="303.0234"/><text fill="#000000" font-family="sans-serif" font-size="21" lengthAdjust="spacing" textLength="75" x="445.5" y="335.3232">:System</text><rect fill="#FFFFFF" filter="url(#fg29ccd301jkn)" height="128.1094" style="stroke:#A80036;stroke-width:1.5;" width="15" x="79.5" y="149.4141"/><rect fill="#FFFFFF" filter="url(#fg29ccd301jkn)" height="45.5273" style="stroke:#A80036;stroke-width:1.5;" width="15" x="478.5" y="231.9961"/><polygon fill="#A80036" points="460.5,225.9961,475.5,231.9961,460.5,237.9961,466.5,231.9961" style="stroke:#A80036;stroke-width:1.5;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="94.5" x2="469.5" y1="231.9961" y2="231.9961"/><text fill="#000000" font-family="sans-serif" font-size="19.5" font-weight="bold" lengthAdjust="spacing" textLength="10.5" x="105" y="200.1841">1</text><text fill="#000000" font-family="sans-serif" font-size="19.5" lengthAdjust="spacing" textLength="333" x="121.5" y="175.6567">Initiates the process to create a freight</text><text fill="#000000" font-family="sans-serif" font-size="19.5" lengthAdjust="spacing" textLength="300" x="127.5" y="200.1841">network importing ports, countries,</text><text fill="#000000" font-family="sans-serif" font-size="19.5" lengthAdjust="spacing" textLength="310.5" x="127.5" y="224.7114">borders and seadists from database</text><polygon fill="#A80036" points="103.5,271.5234,88.5,277.5234,103.5,283.5234,97.5,277.5234" style="stroke:#A80036;stroke-width:1.5;"/><line style="stroke:#A80036;stroke-width:1.5;stroke-dasharray:2.0,2.0;" x1="94.5" x2="484.5" y1="277.5234" y2="277.5234"/><text fill="#000000" font-family="sans-serif" font-size="19.5" font-weight="bold" lengthAdjust="spacing" textLength="10.5" x="112.5" y="270.2388">2</text><text fill="#000000" font-family="sans-serif" font-size="19.5" lengthAdjust="spacing" textLength="249" x="129" y="270.2388">Informs of operation success</text><!--MD5=[f5556808105896c6ad7193eadbb3b23a]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Traffic Manager" as TM
+
+
+activate TM
+TM -> ":System" : Initiates the process to create a freight \n network importing ports, countries,\n borders and seadists from database
+activate ":System"
+
+":System" - -> TM : Informs of operation success
+deactivate ":System"
+
+deactivate TM
+
+@enduml
+
+@startuml
+
+autonumber
+actor "Traffic Manager" as TM
+
+
+activate TM
+TM -> ":System" : Initiates the process to create a freight \n network importing ports, countries,\n borders and seadists from database
+activate ":System"
+
+":System" - -> TM : Informs of operation success
+deactivate ":System"
+
+deactivate TM
+
+@enduml
+
+PlantUML version 1.2021.5(Sun Apr 25 12:20:28 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

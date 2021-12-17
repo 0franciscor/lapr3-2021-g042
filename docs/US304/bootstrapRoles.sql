@@ -8,8 +8,10 @@ insert into role(id,designation) values(7,'Port manager');
 insert into role(id,designation) values(8,'Ship captain');
 insert into role(id,designation) values(9,'Ship chief electrical engineer');
 insert into role(id,designation) values(10,'Truck driver');
+insert into role(id,designation) values(11,'Administrator');
 
+insert into UserSystem(username, password, roleId) values ('Administrator', '12345', 11);
 
-insert into operations(id,operationName) values(1 ,'SELECT');
+insert into operations(id,operationName) values(1 ,'INSERT');
 insert into operations(id,operationName) values(2 ,'UPDATE');
 insert into operations(id,operationName) values(3 ,'DELETE');

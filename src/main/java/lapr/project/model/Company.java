@@ -1,6 +1,5 @@
 package lapr.project.model;
 
-import lapr.project.data.TransferFromDataBase;
 import lapr.project.data.login.AuthFacade;
 import lapr.project.data.login.UserSession;
 import lapr.project.model.store.CargoManifestStore;
@@ -38,11 +37,6 @@ public class Company {
      */
     private final CargoManifestStore cargoManifestStore;
 
-    /**
-     * TransferFromDataBase Object which allows the user to transfer data from the database.
-     */
-    private final TransferFromDataBase transferFromDataBase;
-
     private AuthFacade authFacade;
 
     /**
@@ -54,7 +48,6 @@ public class Company {
         portStr = new PortStore();
         cargoManifestStore = new CargoManifestStore();
         authFacade=new AuthFacade();
-        transferFromDataBase = new TransferFromDataBase();
     }
 
     /**
@@ -85,13 +78,5 @@ public class Company {
      * @return The store containing all ports existing in the Company.
      */
     public PortStore getPortStr() { return portStr; }
-
-    /**
-     * Returns the TransferFromDataBase Instance so that rows can be imported from the DataBase.
-     * @return The TransferFromDataBase object instance
-     */
-    public TransferFromDataBase getTransferFromDataBase(){
-        return this.transferFromDataBase;
-    }
 
 }

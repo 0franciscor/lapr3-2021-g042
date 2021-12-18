@@ -1,32 +1,29 @@
 package lapr.project.data;
 
 import lapr.project.controller.App;
-import lapr.project.controller.SearchDetailsController;
 import lapr.project.model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class responsible for converting the Database info into Java Domain Objects
  *
  * Francisco Redol <1201239@isep.ipp.pt>
  */
-public class TransferFromDataBase {
+public class SendToJava {
 
     /**
      * The database connection
      */
-    private DatabaseConnection databaseConnection;
+    DatabaseConnection databaseConnection;
 
     /**
      * The class Consctructor
      */
-    public TransferFromDataBase(){
+    public SendToJava(){
         this.databaseConnection = App.getInstance().getDatabaseConnection();
     }
 
@@ -50,22 +47,6 @@ public class TransferFromDataBase {
         } catch (Exception e){
             System.out.println("Error when importing data from the database.");
         }
-    }
-
-    /**
-     * Fetches the existent seadists from the database
-     *
-     * @return a list of seadists from the database
-     */
-    public List<Seadist> importSeadist(){
-        List<Seadist> seadistlst = new ArrayList<>();
-        try {
-            seadistlst = importSeadistsFromDataBase(databaseConnection);
-        } catch (Exception e){
-            System.out.println("Error when importing data from the database.");
-        }
-
-        return seadistlst;
     }
     /**
      * Retrieves a ship from the database to the ship tree.
@@ -169,7 +150,7 @@ public class TransferFromDataBase {
      * @param databaseConnection to the database
      * @throws SQLException that may occur within the database communication
      */
-    private void importPortFromDatabase(DatabaseConnection databaseConnection) throws SQLException{
+    public void importPortFromDatabase(DatabaseConnection databaseConnection) throws SQLException{
         Connection connection = databaseConnection.getConnection();
 
         boolean isPortOnDatabase;
@@ -212,7 +193,7 @@ public class TransferFromDataBase {
      * @return the country correspondent to a certain Port
      * @throws SQLException that may occur within the database
      */
-    private Country importCountryFromDatabase(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException{
+    public Country importCountryFromDatabase(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException{
         Connection connection = databaseConnection.getConnection();
 
         Country country;
@@ -246,39 +227,5 @@ public class TransferFromDataBase {
             getCountriesPreparedStatement.close();
         }
         return country;
-    }
-
-    private List<Seadist> importSeadistsFromDataBase(DatabaseConnection databaseConnection)
-            throws SQLException {
-        List<Seadist> seadistsLst = new ArrayList<>();
-
-        boolean isThereSeadistonDataBase;
-
-        String sqlCommand = "select * from Seadist";
-
-        PreparedStatement getSeadistPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
-
-        try(ResultSet seadistResultSet = getSeadistPreparedStatement.executeQuery()){
-            isThereSeadistonDataBase = seadistResultSet.next();
-
-            while(isThereSeadistonDataBase){
-                int portsid1 = seadistResultSet.getInt(1);
-                int portsid2 = seadistResultSet.getInt(2);
-                float seaDistance = seadistResultSet.getFloat(3);
-                String portName1 = seadistResultSet.getNString(4);
-                String portName2 = seadistResultSet.getNString(5);
-                String countryName1 = seadistResultSet.getNString(6);
-                String countryName2 = seadistResultSet.getNString(7);
-
-                Seadist seadist = new Seadist(portsid1, portsid2, seaDistance, portName1, portName2, countryName1, countryName2);
-                seadistsLst.add(seadist);
-
-                isThereSeadistonDataBase = seadistResultSet.next();
-            }
-            seadistResultSet.close();
-        } finally {
-            getSeadistPreparedStatement.close();
-        }
-        return seadistsLst;
     }
 }

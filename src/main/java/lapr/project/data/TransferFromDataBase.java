@@ -22,7 +22,7 @@ public class TransferFromDataBase {
     DatabaseConnection databaseConnection;
 
     /**
-     * The class Consctructor
+     * The class Constructor
      */
     public TransferFromDataBase() {
         this.databaseConnection = App.getInstance().getDatabaseConnection();
@@ -65,6 +65,19 @@ public class TransferFromDataBase {
 
         return seadistlst;
     }
+
+    public List<Border> importBorder(){
+        List<Border> borderLst = new ArrayList<>();
+        try {
+            borderLst = importBordersFromDataBase(databaseConnection);
+        } catch (Exception e) {
+            System.out.println("Error when importing data from the database.");
+        }
+
+        return borderLst;
+    }
+
+    
 
     /**
      * Retrieves a ship from the database to the ship tree.
@@ -247,6 +260,13 @@ public class TransferFromDataBase {
         return country;
     }
 
+    /**
+     * Method responsible for returning a list of seadists from the database.
+     *
+     * @param databaseConnection to the database
+     * @return a list of seadists to be used on US301
+     * @throws SQLException that may occur within the connection to the database
+     */
     private List<Seadist> importSeadistsFromDataBase(DatabaseConnection databaseConnection)
             throws SQLException {
         List<Seadist> seadistsLst = new ArrayList<>();
@@ -280,4 +300,75 @@ public class TransferFromDataBase {
         }
         return seadistsLst;
     }
+
+    /**
+     * Method responsible for returning a list of Borders from the database.
+     *
+     * @param databaseConnection to the database
+     * @return a list of Borders to be used on US301
+     * @throws SQLException that may occur within the connection to the database
+     */
+    private List<Border> importBordersFromDataBase(DatabaseConnection databaseConnection)
+            throws SQLException {
+        List<Border> bordersLst = new ArrayList<>();
+
+        boolean isThereBorderonDataBase;
+
+        String sqlCommand = "select * from Border";
+
+        PreparedStatement getBorderPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
+
+        try (ResultSet borderResultSet = getBorderPreparedStatement.executeQuery()) {
+            isThereBorderonDataBase = borderResultSet.next();
+
+            while (isThereBorderonDataBase) {
+                String countryName1 = borderResultSet.getNString(1);
+                String countryName2 = borderResultSet.getNString(2);
+
+                bordersLst.add(new Border(countryName1, countryName2));
+
+                isThereBorderonDataBase = borderResultSet.next();
+            }
+            borderResultSet.close();
+        } finally {
+            getBorderPreparedStatement.close();
+        }
+        return bordersLst;
+    }
+
+    /**
+     * Method responsible for returning a list of Borders from the database.
+     *
+     * @param databaseConnection to the database
+     * @return a list of Borders to be used on US301
+     * @throws SQLException that may occur within the connection to the database
+     */
+    private List<Border> importBordersFromDataBase(DatabaseConnection databaseConnection)
+            throws SQLException {
+        List<Border> bordersLst = new ArrayList<>();
+
+        boolean isThereBorderonDataBase;
+
+        String sqlCommand = "select * from Border";
+
+        PreparedStatement getBorderPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
+
+        try (ResultSet borderResultSet = getBorderPreparedStatement.executeQuery()) {
+            isThereBorderonDataBase = borderResultSet.next();
+
+            while (isThereBorderonDataBase) {
+                String countryName1 = borderResultSet.getNString(1);
+                String countryName2 = borderResultSet.getNString(2);
+
+                bordersLst.add(new Border(countryName1, countryName2));
+
+                isThereBorderonDataBase = borderResultSet.next();
+            }
+            borderResultSet.close();
+        } finally {
+            getBorderPreparedStatement.close();
+        }
+        return bordersLst;
+    }
+
 }

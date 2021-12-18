@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * Francisco Redol <1201239@isep.ipp.pt>
  */
-public class SendToJava {
+public class TransferFromDataBase {
 
     /**
      * The database connection
@@ -23,7 +23,7 @@ public class SendToJava {
     /**
      * The class Consctructor
      */
-    public SendToJava(){
+    public TransferFromDataBase(){
         this.databaseConnection = App.getInstance().getDatabaseConnection();
     }
 

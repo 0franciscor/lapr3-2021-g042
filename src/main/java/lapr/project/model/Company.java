@@ -1,13 +1,10 @@
 package lapr.project.model;
 
+import lapr.project.data.TransferFromDataBase;
 import lapr.project.data.login.AuthFacade;
-import lapr.project.data.login.UserSession;
 import lapr.project.model.store.CargoManifestStore;
 import lapr.project.model.store.CountryStore;
 import lapr.project.model.store.PortStore;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class that represents a company.
@@ -38,6 +35,11 @@ public class Company {
     private final CargoManifestStore cargoManifestStore;
 
     private AuthFacade authFacade;
+
+    /**
+     * Represents an instance of the TransferFromDataBase object
+     */
+    private TransferFromDataBase transferFromDataBase;
 
     /**
      * Creates an instance of Company
@@ -78,5 +80,17 @@ public class Company {
      * @return The store containing all ports existing in the Company.
      */
     public PortStore getPortStr() { return portStr; }
+
+    /**
+     * Returns an instance of the object which allows the Java system to import data from the database
+     *
+     * @return an instance of the GetTransferFromDatabase Object
+     */
+    public TransferFromDataBase getTransferFromDatabase(){
+        if(transferFromDataBase == null)
+            this.transferFromDataBase = new TransferFromDataBase();
+
+        return transferFromDataBase;
+    }
 
 }

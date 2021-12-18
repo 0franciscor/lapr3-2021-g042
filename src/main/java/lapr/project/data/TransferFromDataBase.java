@@ -66,6 +66,11 @@ public class TransferFromDataBase {
         return seadistlst;
     }
 
+    /**
+     * Fetches the existent Borders from the database
+     *
+     * @return a list of borders from the database
+     */
     public List<Border> importBorder(){
         List<Border> borderLst = new ArrayList<>();
         try {
@@ -77,7 +82,22 @@ public class TransferFromDataBase {
         return borderLst;
     }
 
-    
+    /**
+     * Fetches the existent Capitals from the database
+     *
+     * @return a list of Capitals from the database
+     */
+    public List<Capital> importCapital(){
+        List<Capital> capitalLst = new ArrayList<>();
+        try {
+            capitalLst = importCapitalsFromDataBase(databaseConnection);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error when importing data from the database.");
+        }
+
+        return capitalLst;
+    }
 
     /**
      * Retrieves a ship from the database to the ship tree.
@@ -337,38 +357,41 @@ public class TransferFromDataBase {
     }
 
     /**
-     * Method responsible for returning a list of Borders from the database.
+     * Method responsible for returning a list of Capitals from the database.
      *
      * @param databaseConnection to the database
-     * @return a list of Borders to be used on US301
+     * @return a list of Capitals to be used on US301
      * @throws SQLException that may occur within the connection to the database
      */
-    private List<Border> importBordersFromDataBase(DatabaseConnection databaseConnection)
+    private List<Capital> importCapitalsFromDataBase(DatabaseConnection databaseConnection)
             throws SQLException {
-        List<Border> bordersLst = new ArrayList<>();
+        List<Capital> capitalLst = new ArrayList<>();
 
-        boolean isThereBorderonDataBase;
+        boolean isThereCapitalonDataBase;
 
-        String sqlCommand = "select * from Border";
+        String sqlCommand = "select * from Capital";
 
-        PreparedStatement getBorderPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
+        PreparedStatement getCapitalPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
 
-        try (ResultSet borderResultSet = getBorderPreparedStatement.executeQuery()) {
-            isThereBorderonDataBase = borderResultSet.next();
+        try (ResultSet capitalResultSet = getCapitalPreparedStatement.executeQuery()) {
+            isThereCapitalonDataBase = capitalResultSet.next();
 
-            while (isThereBorderonDataBase) {
-                String countryName1 = borderResultSet.getNString(1);
-                String countryName2 = borderResultSet.getNString(2);
+            while (isThereCapitalonDataBase) {
+                String name = capitalResultSet.getNString(1);
+                String countryName = capitalResultSet.getNString(2);
+                String latitude = capitalResultSet.getNString(3).replace(",", ".");
+                String longitude = capitalResultSet.getNString(4).replace(",", ".");
 
-                bordersLst.add(new Border(countryName1, countryName2));
+                capitalLst.add(new Capital(name, countryName, latitude, longitude));
 
-                isThereBorderonDataBase = borderResultSet.next();
+                isThereCapitalonDataBase = capitalResultSet.next();
             }
-            borderResultSet.close();
+            capitalResultSet.close();
         } finally {
-            getBorderPreparedStatement.close();
+
+            getCapitalPreparedStatement.close();
         }
-        return bordersLst;
+        return capitalLst;
     }
 
 }

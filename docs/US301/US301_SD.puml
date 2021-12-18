@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Traffic Manager" as TM
+
+
+activate TM
+TM -> ":System" : Initiates the process to create a freight \n network importing ports, countries,\n borders and seadists from database
+activate ":System"
+
+":System" --> TM : Informs of operation success
+deactivate ":System"
+
+deactivate TM
+
+@enduml

@@ -129,7 +129,7 @@ tripAux integer;
             dbms_output.put_line('cap ' ||cap);
             dbms_output.put_line('total ' ||total);
 
-            -- +1 por ser before, entao precisamos acrescentar o atual--
+
             ocRate:=((numerator+total+1)/cap)*100;
 
 

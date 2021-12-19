@@ -50,8 +50,6 @@ BEGIN
             flag := false;
 
 
-
-
             SELECT COUNT (*) INTO totalPhases
             FROM Phases
             WHERE cargoManifestLoadId = idCargoManifest;

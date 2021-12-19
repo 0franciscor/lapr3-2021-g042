@@ -51,5 +51,5 @@ public class ScenarioTestBDDADTest {
         us304Handler = new US304Handler(1, 456789423);
         us305Handler = new US305Handler("213456782");
     }
-    
+
 }

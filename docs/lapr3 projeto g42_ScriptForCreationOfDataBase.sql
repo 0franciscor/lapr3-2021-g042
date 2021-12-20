@@ -15,7 +15,7 @@ DROP TABLE CargoManifestContainer CASCADE CONSTRAINTS PURGE;
 DROP TABLE Warehouse CASCADE CONSTRAINTS PURGE;
 DROP TABLE Warehouse_Truck CASCADE CONSTRAINTS PURGE;
 DROP TABLE UserSystem CASCADE CONSTRAINTS PURGE;
-DROP TABLE AudioTrails CASCADE CONSTRAINTS PURGE;
+DROP TABLE AuditTrails CASCADE CONSTRAINTS PURGE;
 DROP TABLE Operations CASCADE CONSTRAINTS PURGE;
 DROP TABLE Role CASCADE CONSTRAINTS PURGE;
 
@@ -44,19 +44,7 @@ CONSTRAINT pk_Operations PRIMARY KEY (id)
 
 );
 
-CREATE TABLE AuditTrails(
-userUserName VARCHAR(255),
-operationsId INTEGER,
-cargoManifestContainerNumberId INTEGER,
-cargoManifestContainerCargoManifestLoadId INTEGER,
-id INTEGER,
 
-CONSTRAINT pk_AuditTrails PRIMARY KEY (id),
-CONSTRAINT fk_AuditTrails_CargoManifestContainer FOREIGN KEY (cargoManifestContainerNumberId, cargoManifestContainerCargoManifestLoadId) REFERENCES CargoManifestContainer(containerNumberId, cargoManifestLoadId),
-CONSTRAINT fk_AuditTrails_Operations FOREIGN KEY (operationsId) REFERENCES Operations(id),
-CONSTRAINT fk_AuditTrails_User FOREIGN KEY (userUserName) REFERENCES UserSystem(username)
-
-);
 
 CREATE TABLE Ship(
 mmsiCode VARCHAR(9),
@@ -187,7 +175,18 @@ CONSTRAINT fk_Port FOREIGN KEY (portId) references Ports(id),
 CONSTRAINT fk_Ship FOREIGN KEY (shipMmsiCode) references Ship(mmsiCode)
 
 );
+CREATE TABLE Warehouse(
+id INTEGER,
+name VARCHAR(255),
+placeLocationLatitude VARCHAR(255),
+placeLocationLongitude VARCHAR(255),
+capacity INTEGER,
+occupancy FLOAT,
 
+
+CONSTRAINT pk_Warehouse PRIMARY KEY (id),
+CONSTRAINT fk_Warehouse_PlaceLocation FOREIGN KEY (placeLocationLatitude, placeLocationLongitude) references PlaceLocation(latitude, longitude)
+);
 
 CREATE TABLE CargoManifestLoad(
 id INTEGER,
@@ -218,11 +217,14 @@ CONSTRAINT fk_Phases_CargoManifestLoad FOREIGN KEY (cargoManifestLoadId) referen
 CREATE TABLE CargoManifestUnload(
 Id INTEGER,
 phasesId INTEGER NOT NULL,
-portId INTEGER NOT NULL,
-PhasesCargoManifestLoadId INTEGER NOT NULL,
+portId INTEGER,
+phasesCargoManifestLoadId INTEGER NOT NULL,
+warehouseId INTEGER,
+
 
 CONSTRAINT pk_CargoManifestUnload PRIMARY KEY (Id),
-CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId, phasesId) references Phases(cargoManifestLoadId, id)
+CONSTRAINT fk_CargoManifestUnload_Phases FOREIGN KEY (phasesCargoManifestLoadId, phasesId) references Phases(cargoManifestLoadId, id),
+CONSTRAINT fk_CargoManifestUnload_Warehouse FOREIGN KEY (warehouseId) references Warehouse(Id)
 );
 
 
@@ -237,7 +239,9 @@ grossContainer FLOAT NOT NULL,
 PhasesId INTEGER NOT NULL,
 PhasesCargoManifestLoadId INTEGER NOT NULL,
 CargoManifestUnloadId INTEGER,
-userResponsibleForChanges VARCHAR
+userResponsibleForChanges VARCHAR(255) DEFAULT 'Administrator',
+clientOwner VARCHAR(255),
+warehouseId INTEGER,
 
 CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestLoadId),
 
@@ -246,22 +250,30 @@ CONSTRAINT fk_CargoManifest_Container FOREIGN KEY(containerNumberId) references 
 CONSTRAINT fk_CargoManifest_Load FOREIGN KEY(PhasesCargoManifestLoadId) references CargoManifestLoad(id),
 
 CONSTRAINT fk_CargoManifest_Unload FOREIGN KEY(CargoManifestUnloadId) references CargoManifestUnload(Id)
-);
-
-CREATE TABLE Warehouse(
-id INTEGER,
-name VARCHAR(255),
-placeLocationLatitude VARCHAR(255),
-placeLocationLongitude VARCHAR(255),
-
-CONSTRAINT pk_Warehouse PRIMARY KEY (id),
-CONSTRAINT fk_Warehouse_PlaceLocation FOREIGN KEY (placeLocationLatitude, placeLocationLongitude) references PlaceLocation(latitude, longitude)
 
 );
+
+
+
 
 CREATE TABLE Warehouse_Truck(
 warehouseId INTEGER,
 
 CONSTRAINT pk_WarehouseTruck PRIMARY KEY (warehouseId),
 CONSTRAINT fk_WarehouseTruck_Warehouse FOREIGN KEY (warehouseId) references Warehouse(id)
+);
+
+CREATE TABLE AuditTrails(
+userUserName VARCHAR(255),
+operationsId INTEGER NOT NULL,
+cargoManifestContainerNumberId INTEGER NOT NULL,
+cargoManifestContainerCargoManifestLoadId INTEGER NOT NULL,
+id INTEGER,
+dateOfChange TIMESTAMP NOT NULL,
+
+CONSTRAINT pk_AuditTrails PRIMARY KEY (id),
+CONSTRAINT fk_AuditTrails_CargoManifestContainer FOREIGN KEY (cargoManifestContainerNumberId, cargoManifestContainerCargoManifestLoadId) REFERENCES CargoManifestContainer(containerNumberId, cargoManifestLoadId),
+CONSTRAINT fk_AuditTrails_Operations FOREIGN KEY (operationsId) REFERENCES Operations(id),
+CONSTRAINT fk_AuditTrails_User FOREIGN KEY (userUserName) REFERENCES UserSystem(username)
+
 );

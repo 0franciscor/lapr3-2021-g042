@@ -49,7 +49,7 @@ END;
 
 
 
-SET serveroutput on;
+set serveroutput on;
 DECLARE
 
 output Varchar2(2550);

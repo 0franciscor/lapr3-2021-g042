@@ -44,15 +44,15 @@ INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitud
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Oslo','Norway',59.91666667,10.75);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Helsinki','Finland',60.16666667,24.933333);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Reykjavik','Iceland',64.15,-21.95);
-INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Mexico City','Mexico',19.43333333,-99.133333);
+INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Mexico Capital','Mexico',19.43333333,-99.133333);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Ottawa','Canada',45.41666667,-75.7);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Washington','United States',38.89511,-77.03637);
-INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Panama City','Panama',8.966666667,-79.533333);
+INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Panama Capital','Panama',8.966666667,-79.533333);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('San Jose','Costa Rica',9.933333333,-84.083333);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Managua','Nicaragua',12.13333333,-86.25);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('San Salvador','El Salvador',13.7,-89.2);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Tegucigalpa','Honduras',14.1,-87.216667);
-INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Guatemala City','Guatemala',14.61666667,-90.516667);
+INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Guatemala Capital','Guatemala',14.61666667,-90.516667);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Belmopan','Belize',17.25,-88.766667);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Montevideo','Uruguay',-34.85,-56.166667);
 INSERT INTO Capital(name,Countryname,PlaceLocationLatitude,PlaceLocationLongitude) VALUES ('Buenos Aires','Argentina',-34.58333333,-58.666667);

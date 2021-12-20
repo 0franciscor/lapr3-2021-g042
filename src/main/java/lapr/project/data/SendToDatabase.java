@@ -383,9 +383,7 @@ public class SendToDatabase implements Persistable {
     @Override
     public void savePort(DatabaseConnection databaseConnection, Object object) {
         Ports port = (Ports) object;
-        System.out.println("e");
         try {
-            System.out.println("d");
             savePortToDatabase(databaseConnection, port);
 
         } catch (SQLException ex) {
@@ -404,7 +402,6 @@ public class SendToDatabase implements Persistable {
      */
     private void savePortToDatabase(DatabaseConnection databaseConnection, Ports port)
             throws SQLException {
-        System.out.println("a");
 
         if (!isCountryOnDatabase(databaseConnection, port))
             insertCountryOnDatabase(databaseConnection, port);

@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE US305 (registrationCode in Varchar, outString out Varchar)
+CREATE OR REPLACE PROCEDURE US305 (registrationCode in Varchar, containerId in Varchar, outString out Varchar)
 IS
     cmcode Integer;
     exitPhase Integer;
@@ -9,7 +9,7 @@ CURSOR cm IS
     FROM CargoManifestLoad
     INNER JOIN CargoManifestContainer
     ON (CargoManifestContainer.CargoManifestLoadId=CargoManifestLoad.id)
-    WHERE CargoManifestContainer.ContainernumberId=registrationCode
+    WHERE CargoManifestContainer.ContainernumberId=containerId AND clientOwner=registrationCode
     ORDER BY id;
 
 BEGIN
@@ -17,13 +17,12 @@ BEGIN
     LOOP   
         fetch cm INTO cmcode;
         Exit WHEN cm%notfound;
-        
-                dbms_output.put_line(cmcode);
+        dbms_output.put_line(cmcode);
 
 
         SELECT PhasesId INTO exitPhase
         FROM CargoManifestContainer
-        WHERE cargoManifestLoadId=cmcode AND containerNumberId=registrationCode;
+        WHERE cargoManifestLoadId=cmcode AND containerNumberId=containerId AND clientOwner=registrationCode;
         dbms_output.put_line(exitPhase);
 
         SELECT portId INTO meanOfTransport
@@ -55,7 +54,7 @@ DECLARE
 
 output Varchar2(2550);
 BEGIN
-    US305(213456782,output );
+    US305(xxxxxxxxxxx,213456782,output );
     dbms_output.put_line(output);
 END;
 

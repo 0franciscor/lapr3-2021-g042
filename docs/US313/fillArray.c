@@ -1,9 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void fillArray(char (*lineSplit)[25]){
-    printf("\n\nComeça aqui o print\n\n");
-    for(int i = 0; i < 4; i++){
-        printf("%s\n", lineSplit[i]);
-        //printf("\n");
-    }
+void fillArray(char (*lineSplit)[25], char (*shipAllocation)[26][10][25]){
+
+    char *shipCode = lineSplit[0];    
+    int x = atoi(lineSplit[1]);
+    int y = atoi(lineSplit[2]);
+    int z = atoi(lineSplit[3]);
+    
+    printf("%d %d %d %s\n", x, y, z, shipCode);
+
+    
+
+    //shipAllocation[x][y][z] = 
+
 }

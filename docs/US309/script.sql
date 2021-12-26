@@ -6,7 +6,7 @@ FOR EACH ROW
 
 DECLARE
 
-cmcode INTEGER;
+cmCode INTEGER;
 realDepDate DATE;
 realArrDate DATE;
 
@@ -19,10 +19,10 @@ WHERE CargoManifestLoad.isConcluded IS NULL AND shipMmsiCode = (SELECT shipMmsiC
 BEGIN
     OPEN cm;
     LOOP
-    FETCH cm INTO cmcode;
+    FETCH cm INTO cmCode;
     EXIT WHEN cm%notfound;
         FOR seeDatePhases
-        IN ( SELECT realDepartureDate, realArrivalDate FROM Phases WHERE CargoManifestLoadId = cmcode )
+        IN (SELECT realDepartureDate, realArrivalDate FROM Phases WHERE CargoManifestLoadId = cmCode)
         LOOP        
         IF SYSDATE >= seeDatePhases.realDepartureDate OR SYSDATE <= seeDatePhases.realArrivalDate THEN
             raise_application_error( -21000, 'Cargo Manifest registration ERROR');

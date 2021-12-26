@@ -7,13 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class responsible for converting the Database info into Java Domain Objects
- *
  * Francisco Redol <1201239@isep.ipp.pt>
  */
-public class SendToJava {
+public class TransferFromDataBase {
 
     /**
      * The database connection
@@ -21,19 +22,19 @@ public class SendToJava {
     DatabaseConnection databaseConnection;
 
     /**
-     * The class Consctructor
+     * The class Constructor
      */
-    public SendToJava(){
+    public TransferFromDataBase() {
         this.databaseConnection = App.getInstance().getDatabaseConnection();
     }
 
     /**
      * Invokes the methods responsible for the conversion of ships and ship Positions.
      */
-    public void importShips(){
+    public void importShips() {
         try {
             importShipFromDatabase(databaseConnection);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error when importing data from the database.");
         }
     }
@@ -41,13 +42,63 @@ public class SendToJava {
     /**
      * Invokes the methods responsible for the conversion of Ports.
      */
-    public void importPorts(){
+    public void importPorts() {
         try {
             importPortFromDatabase(databaseConnection);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error when importing data from the database.");
         }
     }
+
+    /**
+     * Fetches the existent seadists from the database
+     *
+     * @return a list of seadists from the database
+     */
+    public List<Seadist> importSeadist() {
+        List<Seadist> seadistlst = new ArrayList<>();
+        try {
+            seadistlst = importSeadistsFromDataBase(databaseConnection);
+        } catch (Exception e) {
+            System.out.println("Error when importing data from the database.");
+        }
+
+        return seadistlst;
+    }
+
+    /**
+     * Fetches the existent Borders from the database
+     *
+     * @return a list of borders from the database
+     */
+    public List<Border> importBorder(){
+        List<Border> borderLst = new ArrayList<>();
+        try {
+            borderLst = importBordersFromDataBase(databaseConnection);
+        } catch (Exception e) {
+            System.out.println("Error when importing data from the database.");
+        }
+
+        return borderLst;
+    }
+
+    /**
+     * Fetches the existent Capitals from the database
+     *
+     * @return a list of Capitals from the database
+     */
+    public List<Capital> importCapital(){
+        List<Capital> capitalLst = new ArrayList<>();
+        try {
+            capitalLst = importCapitalsFromDataBase(databaseConnection);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error when importing data from the database.");
+        }
+
+        return capitalLst;
+    }
+
     /**
      * Retrieves a ship from the database to the ship tree.
      *
@@ -70,7 +121,7 @@ public class SendToJava {
 
             isShipOnDatabase = shipsResultSet.next();
 
-            while(isShipOnDatabase){
+            while (isShipOnDatabase) {
                 Ship newShip = new Ship();
 
                 newShip.setMMSI(shipsResultSet.getNString(1));
@@ -102,7 +153,7 @@ public class SendToJava {
      * Imports all the positions from a certain ship from the database.
      *
      * @param databaseConnection connection to the database
-     * @param ship which contains the MMSI code which matches the Locations
+     * @param ship               which contains the MMSI code which matches the Locations
      * @throws SQLException that may occur from the database
      */
     private void importPositionFromDatabase(DatabaseConnection databaseConnection, Ship ship)
@@ -121,7 +172,7 @@ public class SendToJava {
 
         try (ResultSet positionResultSet = getPositionPreparedStatement.executeQuery()) {
             isPositionOnDatabase = positionResultSet.next();
-            while(isPositionOnDatabase){
+            while (isPositionOnDatabase) {
                 ShipLocation shipLocation = new ShipLocation();
 
                 shipLocation.setMMSI(positionResultSet.getNString(1));
@@ -150,7 +201,7 @@ public class SendToJava {
      * @param databaseConnection to the database
      * @throws SQLException that may occur within the database communication
      */
-    public void importPortFromDatabase(DatabaseConnection databaseConnection) throws SQLException{
+    private void importPortFromDatabase(DatabaseConnection databaseConnection) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
         boolean isPortOnDatabase;
@@ -164,7 +215,7 @@ public class SendToJava {
 
             isPortOnDatabase = shipsResultSet.next();
 
-            while(isPortOnDatabase){
+            while (isPortOnDatabase) {
                 int code = shipsResultSet.getInt(1);
                 String portName = shipsResultSet.getNString(2);
                 double latitude = Double.parseDouble(shipsResultSet.getNString(3));
@@ -189,11 +240,11 @@ public class SendToJava {
      * Method which has the responsibility of retrieving the matching Country of a port.
      *
      * @param databaseConnection to the database
-     * @param placeLocation of a port
+     * @param placeLocation      of a port
      * @return the country correspondent to a certain Port
      * @throws SQLException that may occur within the database
      */
-    public Country importCountryFromDatabase(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException{
+    private Country importCountryFromDatabase(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
         Country country;
@@ -215,7 +266,7 @@ public class SendToJava {
             getCountriesPreparedStatement.setString(1, countryName);
 
 
-            try(ResultSet countryResultSet = getCountriesPreparedStatement.executeQuery()){
+            try (ResultSet countryResultSet = getCountriesPreparedStatement.executeQuery()) {
                 countryResultSet.next();
                 String continent = countryResultSet.getNString(2);
                 country = new Country(continent, countryName);
@@ -228,4 +279,119 @@ public class SendToJava {
         }
         return country;
     }
+
+    /**
+     * Method responsible for returning a list of seadists from the database.
+     *
+     * @param databaseConnection to the database
+     * @return a list of seadists to be used on US301
+     * @throws SQLException that may occur within the connection to the database
+     */
+    private List<Seadist> importSeadistsFromDataBase(DatabaseConnection databaseConnection)
+            throws SQLException {
+        List<Seadist> seadistsLst = new ArrayList<>();
+
+        boolean isThereSeadistonDataBase;
+
+        String sqlCommand = "select * from Seadist";
+
+        PreparedStatement getSeadistPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
+
+        try (ResultSet seadistResultSet = getSeadistPreparedStatement.executeQuery()) {
+            isThereSeadistonDataBase = seadistResultSet.next();
+
+            while (isThereSeadistonDataBase) {
+                int portsid1 = seadistResultSet.getInt(1);
+                int portsid2 = seadistResultSet.getInt(2);
+                float seaDistance = seadistResultSet.getFloat(3);
+                String portName1 = seadistResultSet.getNString(4);
+                String portName2 = seadistResultSet.getNString(5);
+                String countryName1 = seadistResultSet.getNString(6);
+                String countryName2 = seadistResultSet.getNString(7);
+
+                Seadist seadist = new Seadist(portsid1, portsid2, seaDistance, portName1, portName2, countryName1, countryName2);
+                seadistsLst.add(seadist);
+
+                isThereSeadistonDataBase = seadistResultSet.next();
+            }
+            seadistResultSet.close();
+        } finally {
+            getSeadistPreparedStatement.close();
+        }
+        return seadistsLst;
+    }
+
+    /**
+     * Method responsible for returning a list of Borders from the database.
+     *
+     * @param databaseConnection to the database
+     * @return a list of Borders to be used on US301
+     * @throws SQLException that may occur within the connection to the database
+     */
+    private List<Border> importBordersFromDataBase(DatabaseConnection databaseConnection)
+            throws SQLException {
+        List<Border> bordersLst = new ArrayList<>();
+
+        boolean isThereBorderonDataBase;
+
+        String sqlCommand = "select * from Border";
+
+        PreparedStatement getBorderPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
+
+        try (ResultSet borderResultSet = getBorderPreparedStatement.executeQuery()) {
+            isThereBorderonDataBase = borderResultSet.next();
+
+            while (isThereBorderonDataBase) {
+                String countryName1 = borderResultSet.getNString(1);
+                String countryName2 = borderResultSet.getNString(2);
+
+                bordersLst.add(new Border(countryName1, countryName2));
+
+                isThereBorderonDataBase = borderResultSet.next();
+            }
+            borderResultSet.close();
+        } finally {
+            getBorderPreparedStatement.close();
+        }
+        return bordersLst;
+    }
+
+    /**
+     * Method responsible for returning a list of Capitals from the database.
+     *
+     * @param databaseConnection to the database
+     * @return a list of Capitals to be used on US301
+     * @throws SQLException that may occur within the connection to the database
+     */
+    private List<Capital> importCapitalsFromDataBase(DatabaseConnection databaseConnection)
+            throws SQLException {
+        List<Capital> capitalLst = new ArrayList<>();
+
+        boolean isThereCapitalonDataBase;
+
+        String sqlCommand = "select * from Capital";
+
+        PreparedStatement getCapitalPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
+
+        try (ResultSet capitalResultSet = getCapitalPreparedStatement.executeQuery()) {
+            isThereCapitalonDataBase = capitalResultSet.next();
+
+            while (isThereCapitalonDataBase) {
+                String name = capitalResultSet.getNString(1);
+                String countryName = capitalResultSet.getNString(2);
+                String latitude = capitalResultSet.getNString(3).replace(",", ".");
+                String longitude = capitalResultSet.getNString(4).replace(",", ".");
+
+                capitalLst.add(new Capital(name, countryName, latitude, longitude));
+
+                isThereCapitalonDataBase = capitalResultSet.next();
+            }
+            capitalResultSet.close();
+        } finally {
+
+            getCapitalPreparedStatement.close();
+        }
+        return capitalLst;
+    }
+
 }

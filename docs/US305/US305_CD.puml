@@ -5,12 +5,12 @@ class KnowRouteUI{
 }
 
 class KnowRouteController{
-+ createUS205(registration code)
++ createUS205(registrationCode, containerId)
 }
 
 
 class US305 {
-- initialize(registration code)
+- initialize(registrationCode, containerId)
 + toString()
 
 }

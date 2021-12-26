@@ -5,9 +5,7 @@
 #include "fillArray.h"
 #include "cleanArray.h"
 
-void cleanArray(char (*lineSplit)[25]);
-
-void importFile(char *fileName){
+void importFile(char *fileName, char (*shipAllocation)[26][10][25]){
 
     int maxSize = 25;
     char string[maxSize];
@@ -38,7 +36,7 @@ void importFile(char *fileName){
                 token = strtok(NULL, ",");
                 index++;
             }
-            fillArray(lineSplit);
+            fillArray(lineSplit, shipAllocation);
         }
         line++;
     }

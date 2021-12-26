@@ -1,79 +1,86 @@
-CREATE OR REPLACE TRIGGER WarehouseOccupancy
+create or replace Trigger WarehouseOccupancy
 
-BEFORE INSERT OR DELETE
+Before Insert OR DELETE
 ON CargoManifestContainer
 FOR EACH ROW
 
 DECLARE
 
-destinations INTEGER;
+dest INTEGER;
 numerator INTEGER := 0;
 lastDesiredCml INTEGER;
 cmLoad INTEGER;
-cmuCode INTEGER;
-ocRate FLOAT;
-cap INTEGER;
-destinationAux VARCHAR(255);
-contAux INTEGER;
-flag INTEGER;
+cmuCode Integer;
+ocRate Float;
+cap Integer;
+destAux Varchar(255);
+contAux integer;
+flag Integer;
+total Integer :=0;
+tripAux integer;
 
 
-CURSOR cmu IS
+    CURSOR cmu IS
     SELECT id
     FROM CargoManifestUnload
-    WHERE CargoManifestUnload.warehouseId=destinations;
+    WHERE CargoManifestUnload.WarehouseId=dest;
 
     BEGIN
 
-    
     IF INSERTING THEN
 
-        SELECT destination INTO destinationAux
-        FROM Phases
-        WHERE id=:NEW.PhasesId AND cargoManifestLoadId=:NEW.CargoManifestLoadId;
+        Select destination into destAux
+        from Trip
+        where id=:NEW.PhasesId AND cargoManifestLoadId=:NEW.cargoManifestLoadId;
 
 
-       
     ELSE
 
-        SELECT destination INTO destinationAux
-        FROM Phases
-        WHERE id=:OLD.PhasesId AND cargoManifestLoadId=:OLD.cargoManifestLoadId;
+        Select destination into destAux
+        from Phases
+        where id=:OLD.PhasesId AND cargoManifestLoadId=:OLD.cargoManifestLoadId;
 
 
     END IF;
-    
-    SELECT COUNT(*) INTO flag
-        FROM Warehouse
-        WHERE name=destinationAux;
-        
-        
-    IF flag !=0 THEN
-    
-    SELECT id INTO destinations
-        FROM Warehouse
-        WHERE name=destinationAux;
-    dbms_output.put_line('entrou' );
+
+    Select COUNT(*) into flag
+        from Warehouse
+        where name=destAux;
+
+    IF flag!=0 THEN
+
+        Select id into dest
+        from Warehouse
+        where name=destAux;
     OPEN cmu;
     LOOP
             FETCH cmu INTO cmuCode;
             EXIT WHEN cmu%notfound;
 
+            dbms_output.put_line('cmu ' ||cmuCode);
 
-            SELECT phasesCargoManifestLoadId INTO cmLoad
+
+            SELECT CargoManifestLoadId, PhasesId INTO cmLoad,tripAux
             FROM CargoManifestUnload
-            WHERE warehouseId=destinations AND id=cmuCode;
+            WHERE warehouseId=dest AND id=cmuCode;
 
-            FOR containers
+            dbms_output.put_line('cml ' ||cmLoad);
+
+
+            For containers
             IN(SELECT ContainerNumberId, cargoManifestLoadId
             FROM CargoManifestContainer
-            WHERE CargoManifestUnloadId=cmuCode AND CargoManifestLoadId=cmLoad)
+            WHERE CargoManifestUnloadId=cmuCode AND CargoManifestLoadId=cmLoad AND PhasesId=tripAux)
             LOOP
+
                 SELECT MAX(CargoManifestLoad.Id) INTO lastDesiredCml
                 FROM CargoManifestContainer
                 INNER JOIN CargoManifestLoad
                 ON (CargoManifestLoad.id=CargoManifestContainer.cargoManifestLoadId)
-                WHERE ContainerNumberId=containers.ContainerNumberId AND CargoManifestLoad.isConcluded=1;
+                WHERE ContainerNumberId=containers.ContainerNumberId;
+
+                dbms_output.put_line('ldcml ' ||lastDesiredcml);
+
 
                 IF containers.CargoManifestLoadId=lastDesiredCml THEN
                     numerator:=numerator+1;
@@ -82,32 +89,56 @@ CURSOR cmu IS
                 END LOOP;
             END LOOP;
 
-            SELECT capacity INTO cap
-            FROM warehouse
-            WHERE id=destinations;
+            select capacity into cap
+            from warehouse
+            where id=dest;
 
 
-            SELECT COUNT(*) INTO contAux
-            FROM cargoManifestContainer
-            WHERE cargoManifestLoadId=:new.cargoManifestLoadId
+            /*select COUNT(*) into contAux
+            from cargoManifest_Container
+            where cargoManifestLoadId=:new.cargoManifestLoadId
             AND PhasesId=:new.PhasesId;
 
-            dbms_output.put_line('ocr ' ||cap);
-            dbms_output.put_line('ocr ' ||numerator);
-            dbms_output.put_line('contAux ' ||contAux);
+            total := total + contAux;*/
 
 
-            -- +1 por ser before, entao precisamos acrescentar o atual--
-            ocRate:=((numerator+contAux+1)/cap)*100;
+            FOR cml
+            IN(SELECT id
+            from cargoManifestLoad
+            where isConcluded is null)
+            LOOP
+                FOR trips
+                IN(SELECT id
+                from Phases
+                where cargoManifestLoadId=cml.id
+                and destination=destAux)
+                LOOP
+                    SELECT COUNT(containerNumberId) INTO contAux
+                    from cargoManifestContainer
+                    where cargoManifestLoadId=cml.id
+                    and PhasesId=Phases.Id;
+
+                    total:=total+contAux;
+
+                END LOOP;
+
+            END LOOP;
+
+
+            dbms_output.put_line('unloaded ' ||numerator);
+            dbms_output.put_line('cap ' ||cap);
+            dbms_output.put_line('total ' ||total);
+
+
+            ocRate:=((numerator+total+1)/cap)*100;
 
 
             dbms_output.put_line('ocr ' ||ocRate);
 
 
             UPDATE Warehouse
-            SET occupancy = ocRate
-            WHERE id = destinations;
-
+            SET occupancy= ocRate
+            where id=dest;
         END IF;
 
- END;
+    END;

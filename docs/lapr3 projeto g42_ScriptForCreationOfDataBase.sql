@@ -245,12 +245,11 @@ warehouseId INTEGER,
 
 CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestLoadId),
 
-CONSTRAINT fk_CargoManifest_Container FOREIGN KEY(containerNumberId) references Container(numberId),
+CONSTRAINT fk_CargoManifest_Container FOREIGN KEY(containerNumberId) REFERENCES Container(numberId),
 
-CONSTRAINT fk_CargoManifest_Load FOREIGN KEY(PhasesCargoManifestLoadId) references CargoManifestLoad(id),
+CONSTRAINT fk_CargoManifest_Load FOREIGN KEY(PhasesCargoManifestLoadId) REFERENCES CargoManifestLoad(id),
 
-CONSTRAINT fk_CargoManifest_Unload FOREIGN KEY(CargoManifestUnloadId) references CargoManifestUnload(Id)
-
+CONSTRAINT fk_CargoManifest_Unload FOREIGN KEY(CargoManifestUnloadId) REFERENCES CargoManifestUnload(Id)
 );
 
 
@@ -272,8 +271,10 @@ id INTEGER,
 dateOfChange TIMESTAMP NOT NULL,
 
 CONSTRAINT pk_AuditTrails PRIMARY KEY (id),
-CONSTRAINT fk_AuditTrails_CargoManifestContainer FOREIGN KEY (cargoManifestContainerNumberId, cargoManifestContainerCargoManifestLoadId) REFERENCES CargoManifestContainer(containerNumberId, cargoManifestLoadId),
+CONSTRAINT fk_AuditTrails_CargoManifestContainer
+FOREIGN KEY (cargoManifestContainerNumberId, cargoManifestContainerCargoManifestLoadId) REFERENCES CargoManifestContainer(containerNumberId, cargoManifestLoadId),
 CONSTRAINT fk_AuditTrails_Operations FOREIGN KEY (operationsId) REFERENCES Operations(id),
 CONSTRAINT fk_AuditTrails_User FOREIGN KEY (userUserName) REFERENCES UserSystem(username)
 
 );
+

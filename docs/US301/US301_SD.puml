@@ -3,14 +3,20 @@
 
 autonumber
 actor "Traffic Manager" as TM
+participant ":CreateFreightNetworkUI  " as UI
+participant ":CreateFreightNetworkController" as CTRL
+participant ":Company" as CMP
 
 
 activate TM
-TM -> ":System" : Initiates the process to create a freight \n network importing ports, countries,\n borders and seadists from database
-activate ":System"
+TM -> UI: Initiates the process to create a freight \n network importing ports, countries,\n borders and seadists from database
+activate UI
+UI -> CTRL : createFreightNetwork()
+activate CTRL
+deactivate CTRL
 
-":System" --> TM : Informs of operation success
-deactivate ":System"
+UI --> TM : Informs of operation success
+deactivate UI
 
 deactivate TM
 

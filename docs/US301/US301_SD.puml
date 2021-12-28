@@ -68,6 +68,13 @@ deactivate CMP
 CTRL-> bStore : bordersList = getBordersLst()
 activate bStore
 deactivate bStore
+CTRL -> CMP : getFreightNetwork()
+activate CMP
+deactivate CMP
+CTRL->network : addNewInformation(portsList,seadistsList,countriesList,capitalsList,bordersList)
+activate network
+deactivate network
+CTRL --> UI: result
 deactivate CTRL
 
 UI --> TM : Informs of operation success

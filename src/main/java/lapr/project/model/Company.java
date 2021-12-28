@@ -38,6 +38,11 @@ public class Company {
     private final SeadistStore seadistStr;
 
     /**
+     * List containing all Borders existing in the Company.
+     */
+    private final BorderStore borderStr;
+
+    /**
      * Represents an instance of Cargo Manifest Store
      */
     private final CargoManifestStore cargoManifestStore;
@@ -59,6 +64,7 @@ public class Company {
         cargoManifestStore = new CargoManifestStore();
         capitalStr = new CapitalStore();
         seadistStr = new SeadistStore();
+        borderStr = new BorderStore();
         authFacade=new AuthFacade();
     }
 
@@ -102,6 +108,14 @@ public class Company {
      * @return The store containing all Seadists existent in the Company.
      */
     public SeadistStore getSeadistStr() { return seadistStr; }
+
+    /**
+     * Get the store containing all Borders existent in the Company.
+     * @return The store containing all Borders existent in the Company.
+     */
+    public BorderStore getBorderStr(){
+        return borderStr;
+    }
 
     /**
      * Returns an instance of the object which allows the Java system to import data from the database

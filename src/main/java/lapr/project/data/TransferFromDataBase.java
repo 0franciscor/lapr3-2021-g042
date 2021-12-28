@@ -2,21 +2,16 @@ package lapr.project.data;
 
 import lapr.project.controller.App;
 import lapr.project.model.*;
-import lapr.project.model.store.CapitalStore;
-import lapr.project.model.store.CountryStore;
-import lapr.project.model.store.PortStore;
-import lapr.project.model.store.SeadistStore;
+import lapr.project.model.store.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class responsible for converting the Database info into Java Domain Objects
- * Francisco Redol <1201239@isep.ipp.pt>
+ * @author Francisco Redol <1201239@isep.ipp.pt>
  */
 public class TransferFromDataBase {
 
@@ -37,7 +32,7 @@ public class TransferFromDataBase {
      */
     public void importShips() {
         try {
-            importShipFromDatabase(databaseConnection);
+            importShipsFromDatabase(databaseConnection);
         } catch (Exception e) {
             System.out.println("Error when importing data from the database.");
         }
@@ -48,16 +43,16 @@ public class TransferFromDataBase {
      */
     public void importPorts() {
         try {
-            importPortFromDatabase(databaseConnection);
+            importPortsFromDatabase(databaseConnection);
         } catch (Exception e) {
             System.out.println("Error when importing data from the database.");
         }
     }
 
     /**
-     * Fetches the existent seadists from the database
+     * Fetches the existent seadists from the database to the SeadistStore
      */
-    public void importSeadist() {
+    public void importSeadists() {
         try{
             importSeadistsFromDataBase(databaseConnection);
         } catch (Exception e) {
@@ -66,19 +61,14 @@ public class TransferFromDataBase {
     }
 
     /**
-     * Fetches the existent Borders from the database
-     *
-     * @return a list of borders from the database
+     * Fetches the existent Borders from the database to the BorderStore
      */
-    public List<Border> importBorder(){
-        List<Border> borderLst = new ArrayList<>();
+    public void importBorders(){
         try {
-            borderLst = importBordersFromDataBase(databaseConnection);
+            importBordersFromDataBase(databaseConnection);
         } catch (Exception e) {
             System.out.println("Error when importing data from the database.");
         }
-
-        return borderLst;
     }
 
     /**
@@ -88,7 +78,18 @@ public class TransferFromDataBase {
         try{
             importCapitalsFromDataBase(databaseConnection);
         } catch (Exception e){
-            System.out.println("There was an eror ");
+            System.out.println("Error when importing data from the database.");
+        }
+    }
+
+    /**
+     * Fetches the existent Countries from the database to the CountryStore
+     */
+    public void importCountries(){
+        try{
+            importCountriesFromDatabase(databaseConnection);
+        } catch (Exception e) {
+            System.out.println("Error when importing data from the database.");
         }
     }
 
@@ -98,7 +99,7 @@ public class TransferFromDataBase {
      * @param databaseConnection to the database
      * @throws SQLException in case an error with the database occurs
      */
-    private void importShipFromDatabase(DatabaseConnection databaseConnection)
+    private void importShipsFromDatabase(DatabaseConnection databaseConnection)
             throws SQLException {
 
         Connection connection = databaseConnection.getConnection();
@@ -194,7 +195,7 @@ public class TransferFromDataBase {
      * @param databaseConnection to the database
      * @throws SQLException that may occur within the database communication
      */
-    private void importPortFromDatabase(DatabaseConnection databaseConnection) throws SQLException {
+    private void importPortsFromDatabase(DatabaseConnection databaseConnection) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
         boolean isPortOnDatabase;
@@ -254,9 +255,9 @@ public class TransferFromDataBase {
         getCountriesPreparedStatement.setString(1, String.format("%.2f", placeLocation.getLatitude()));
         getCountriesPreparedStatement.setString(2, String.format("%.2f", placeLocation.getLongitude()));
 
-        try (ResultSet shipsResultSet = getCountriesPreparedStatement.executeQuery()) {
+        try (ResultSet countriesResultSet = getCountriesPreparedStatement.executeQuery()) {
 
-            String countryName = shipsResultSet.getNString(1);
+            String countryName = countriesResultSet.getNString(1);
 
             sqlCommand = "select * from Country where countryName = ?";
             getCountriesPreparedStatement = connection.prepareStatement(sqlCommand);
@@ -270,12 +271,46 @@ public class TransferFromDataBase {
                 countryStore.saveCountry(country);
                 countryResultSet.close();
             }
-            shipsResultSet.close();
+            countriesResultSet.close();
 
         } finally {
             getCountriesPreparedStatement.close();
         }
         return country;
+    }
+
+    /**
+     * Method which has the responsibility of retrieving all the countries available on the database.
+     *
+     * @param databaseConnection to the database
+     * @throws SQLException that may occur within the database
+     */
+    private void importCountriesFromDatabase(DatabaseConnection databaseConnection)
+            throws SQLException {
+        CountryStore countryStr = App.getInstance().getCompany().getCountryStr();
+
+        boolean isCountryOnDatabase;
+
+        String sqlCommand = "select * from Country";
+
+        PreparedStatement getCountriesPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
+
+        try (ResultSet countriesResultSet = getCountriesPreparedStatement.executeQuery()) {
+            isCountryOnDatabase = countriesResultSet.next();
+
+            while (isCountryOnDatabase) {
+                String countryName1 = countriesResultSet.getNString(1);
+                String countryName2 = countriesResultSet.getNString(2);
+
+                Country country = countryStr.createCountry(countryName1, countryName2);
+                countryStr.saveCountry(country);
+
+                isCountryOnDatabase = countriesResultSet.next();
+            }
+            countriesResultSet.close();
+        } finally {
+            getCountriesPreparedStatement.close();
+        }
     }
 
     /**
@@ -318,51 +353,47 @@ public class TransferFromDataBase {
     }
 
     /**
-     * Method responsible for returning a list of Borders from the database.
+     * Method responsible for filling the Stores with Borders
      *
      * @param databaseConnection to the database
-     * @return a list of Borders to be used on US301
      * @throws SQLException that may occur within the connection to the database
      */
-    private List<Border> importBordersFromDataBase(DatabaseConnection databaseConnection)
+    private void importBordersFromDataBase(DatabaseConnection databaseConnection)
             throws SQLException {
-        List<Border> bordersLst = new ArrayList<>();
+        BorderStore borderStr = App.getInstance().getCompany().getBorderStr();
 
-        boolean isThereBorderonDataBase;
+        boolean isThereBorderOnDataBase;
 
         String sqlCommand = "select * from Border";
 
         PreparedStatement getBorderPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
 
         try (ResultSet borderResultSet = getBorderPreparedStatement.executeQuery()) {
-            isThereBorderonDataBase = borderResultSet.next();
+            isThereBorderOnDataBase = borderResultSet.next();
 
-            while (isThereBorderonDataBase) {
+            while (isThereBorderOnDataBase) {
                 String countryName1 = borderResultSet.getNString(1);
                 String countryName2 = borderResultSet.getNString(2);
 
-                bordersLst.add(new Border(countryName1, countryName2));
+                Border border = borderStr.createBorder(countryName1, countryName2);
+                borderStr.saveBorder(border);
 
-                isThereBorderonDataBase = borderResultSet.next();
+                isThereBorderOnDataBase = borderResultSet.next();
             }
             borderResultSet.close();
         } finally {
             getBorderPreparedStatement.close();
         }
-        return bordersLst;
     }
 
     /**
      * Method responsible for returning a list of Capitals from the database.
      *
      * @param databaseConnection to the database
-     * @return a list of Capitals to be used on US301
      * @throws SQLException that may occur within the connection to the database
      */
     private void importCapitalsFromDataBase(DatabaseConnection databaseConnection)
             throws SQLException {
-        List<Capital> capitalLst = new ArrayList<>();
-
         CapitalStore capitalStr = App.getInstance().getCompany().getCapitalStr();
 
         boolean isThereCapitalonDataBase;
@@ -376,18 +407,18 @@ public class TransferFromDataBase {
 
             while (isThereCapitalonDataBase) {
                 String name = capitalResultSet.getNString(1);
-                String countryName = capitalResultSet.getNString(2);
+
                 String latitude = capitalResultSet.getNString(3).replace(",", ".");
                 String longitude = capitalResultSet.getNString(4).replace(",", ".");
+                Country country = importCountryFromDatabase(databaseConnection, new PlaceLocation(Double.parseDouble(latitude), Double.parseDouble(longitude)));
 
-                Capital capital = capitalStr.createCapital(name, countryName, latitude, longitude);
+                Capital capital = capitalStr.createCapital(name, country, latitude, longitude);
                 capitalStr.saveCapital(capital);
 
                 isThereCapitalonDataBase = capitalResultSet.next();
             }
             capitalResultSet.close();
         } finally {
-
             getCapitalPreparedStatement.close();
         }
     }

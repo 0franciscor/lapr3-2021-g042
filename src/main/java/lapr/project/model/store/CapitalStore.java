@@ -13,7 +13,7 @@ public class CapitalStore {
     /**
      * List containing all Capitals in the company
      */
-    private List<Capital> capitalLst;
+    private final List<Capital> capitalLst;
 
     /**
      * Instantiates a new Country Store
@@ -58,7 +58,7 @@ public class CapitalStore {
      */
     public Capital getCapitalByName(String name){
         for (Capital capital : capitalLst) {
-            if (capital.getName().equalsIgnoreCase(name)) {
+            if (capital.getName().equals(name)) {
                 return capital;
             }
         }

@@ -2,10 +2,7 @@ package lapr.project.model;
 
 import lapr.project.data.TransferFromDataBase;
 import lapr.project.data.login.AuthFacade;
-import lapr.project.model.store.CapitalStore;
-import lapr.project.model.store.CargoManifestStore;
-import lapr.project.model.store.CountryStore;
-import lapr.project.model.store.PortStore;
+import lapr.project.model.store.*;
 
 /**
  * Class that represents a company.
@@ -36,11 +33,16 @@ public class Company {
     private final CapitalStore capitalStr;
 
     /**
+     * List containing all Seadists existing in the Company.
+     */
+    private final SeadistStore seadistStr;
+
+    /**
      * Represents an instance of Cargo Manifest Store
      */
     private final CargoManifestStore cargoManifestStore;
 
-    private AuthFacade authFacade;
+    private final AuthFacade authFacade;
 
     /**
      * Represents an instance of the TransferFromDataBase object
@@ -56,6 +58,7 @@ public class Company {
         portStr = new PortStore();
         cargoManifestStore = new CargoManifestStore();
         capitalStr = new CapitalStore();
+        seadistStr = new SeadistStore();
         authFacade=new AuthFacade();
     }
 
@@ -93,6 +96,12 @@ public class Company {
      * @return The store containing all Capitals existent in the Company.
      */
     public CapitalStore getCapitalStr() { return capitalStr; }
+
+    /**
+     * Get the store containing all Seadists existent in the Company.
+     * @return The store containing all Seadists existent in the Company.
+     */
+    public SeadistStore getSeadistStr() { return seadistStr; }
 
     /**
      * Returns an instance of the object which allows the Java system to import data from the database

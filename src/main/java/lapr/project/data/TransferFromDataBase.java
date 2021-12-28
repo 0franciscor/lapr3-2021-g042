@@ -5,6 +5,7 @@ import lapr.project.model.*;
 import lapr.project.model.store.CapitalStore;
 import lapr.project.model.store.CountryStore;
 import lapr.project.model.store.PortStore;
+import lapr.project.model.store.SeadistStore;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,18 +56,13 @@ public class TransferFromDataBase {
 
     /**
      * Fetches the existent seadists from the database
-     *
-     * @return a list of seadists from the database
      */
-    public List<Seadist> importSeadist() {
-        List<Seadist> seadistlst = new ArrayList<>();
-        try {
-            seadistlst = importSeadistsFromDataBase(databaseConnection);
+    public void importSeadist() {
+        try{
+            importSeadistsFromDataBase(databaseConnection);
         } catch (Exception e) {
             System.out.println("Error when importing data from the database.");
         }
-
-        return seadistlst;
     }
 
     /**
@@ -283,15 +279,14 @@ public class TransferFromDataBase {
     }
 
     /**
-     * Method responsible for returning a list of seadists from the database.
+     * Method responsible for filling the SeadistStore with seadists from the database.
      *
      * @param databaseConnection to the database
-     * @return a list of seadists to be used on US301
      * @throws SQLException that may occur within the connection to the database
      */
-    private List<Seadist> importSeadistsFromDataBase(DatabaseConnection databaseConnection)
+    private void importSeadistsFromDataBase(DatabaseConnection databaseConnection)
             throws SQLException {
-        List<Seadist> seadistsLst = new ArrayList<>();
+        SeadistStore seadistStr = App.getInstance().getCompany().getSeadistStr();
 
         boolean isThereSeadistonDataBase;
 
@@ -311,8 +306,8 @@ public class TransferFromDataBase {
                 String countryName1 = seadistResultSet.getNString(6);
                 String countryName2 = seadistResultSet.getNString(7);
 
-                Seadist seadist = new Seadist(portsid1, portsid2, seaDistance, portName1, portName2, countryName1, countryName2);
-                seadistsLst.add(seadist);
+                Seadist seadist = seadistStr.createSeadist(portsid1, portsid2, seaDistance, portName1, portName2, countryName1, countryName2);
+                seadistStr.saveSeadist(seadist);
 
                 isThereSeadistonDataBase = seadistResultSet.next();
             }
@@ -320,7 +315,6 @@ public class TransferFromDataBase {
         } finally {
             getSeadistPreparedStatement.close();
         }
-        return seadistsLst;
     }
 
     /**

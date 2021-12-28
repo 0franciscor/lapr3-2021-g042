@@ -3,6 +3,8 @@ package lapr.project.model.store;
 import lapr.project.model.Seadist;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SeadistStoreTest {
@@ -54,26 +56,30 @@ class SeadistStoreTest {
     void getSeadistByID() {
         SeadistStore seadistStr = new SeadistStore();
         Seadist seadist = seadistStr.createSeadist(12345, 12346, 23f, "Leixoes", "Oriente", "Portugal", "Portugal");
-        Seadist seadist2 = seadistStr.createSeadist(12344, 12346, 23f, "Leixoes", "Oriente", "Portugal", "Portugal");
+        Seadist seadist2 = seadistStr.createSeadist(12344, 12345, 23f, "Leixoes", "Oriente", "Portugal", "Portugal");
+        Seadist seadist3 = seadistStr.createSeadist(11111, 22222, 23f, "Leixoes", "Oriente", "Portugal", "Portugal");
+        seadistStr.saveSeadist(seadist3);
         seadistStr.saveSeadist(seadist2);
         seadistStr.saveSeadist(seadist);
 
-        Seadist seadistToBefound = seadistStr.getSeadistByID(12345, 123456);
+        List<Seadist> seadistToBeFoundLst = seadistStr.getSeadistsByID(12345);
 
-        boolean seadistExists = seadistToBefound != null;
+        boolean seadistExists = seadistToBeFoundLst != null;
 
-        assertFalse(seadistExists);
+        assertTrue(seadistExists);
     }
 
     @Test
     void getSeadistByIDNull() {
         SeadistStore seadistStr = new SeadistStore();
         Seadist seadist = seadistStr.createSeadist(12345, 12346, 23f, "Leixoes", "Oriente", "Portugal", "Portugal");
+        Seadist seadist2 = seadistStr.createSeadist(12344, 12346, 23f, "Leixoes", "Oriente", "Portugal", "Portugal");
+        seadistStr.saveSeadist(seadist2);
         seadistStr.saveSeadist(seadist);
 
-        Seadist seadistToBefound = seadistStr.getSeadistByID(54321, 12345);
+        List<Seadist> seadistToBeFoundLst = seadistStr.getSeadistsByID(00000);
 
-        boolean seadistExists = seadistToBefound != null;
+        boolean seadistExists = seadistToBeFoundLst != null;
 
         assertFalse(seadistExists);
     }

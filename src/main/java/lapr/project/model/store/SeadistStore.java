@@ -14,13 +14,13 @@ public class SeadistStore {
     /**
      * List containing all Seadists in the company
      */
-    private List<Seadist> seadistLst;
+    private final List<Seadist> seadistLst;
 
     /**
      * Instantiates a new Seadist Store
      */
     public SeadistStore(){
-        seadistLst=new ArrayList();
+        seadistLst=new ArrayList<>();
     }
 
     /**
@@ -58,16 +58,18 @@ public class SeadistStore {
 
     /**
      * Gets Seadist through ID's.
-     * @param portId1 of the first port
-     * @param portId2 of the second port
+     * @param portId of the first port
      * @return the country associated with the name
      */
-    public Seadist getSeadistByID(Integer portId1, Integer portId2){
+    public List<Seadist> getSeadistsByID(Integer portId){
+        List<Seadist> seadistReturnLst = new ArrayList<>();
         for (Seadist seadist : seadistLst) {
-            if (seadist.getPortId1() == portId1 && seadist.getPortId2() == portId2) {
-                return seadist;
+            if (seadist.getPortId1() == portId || seadist.getPortId2() == portId) {
+                seadistReturnLst.add(seadist);
             }
         }
-        return null;
+        if(seadistReturnLst.isEmpty())
+            return null;
+        return seadistReturnLst;
     }
 }

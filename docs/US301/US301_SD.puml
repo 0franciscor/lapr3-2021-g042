@@ -6,13 +6,32 @@ actor "Traffic Manager" as TM
 participant ":CreateFreightNetworkUI  " as UI
 participant ":CreateFreightNetworkController" as CTRL
 participant ":Company" as CMP
+participant ":TransferFromDataBase" as transfer
 
 
 activate TM
-TM -> UI: Initiates the process to create a freight \n network importing ports, countries,\n borders and seadists from database
+TM -> UI: Initiates the process to create a freight \n network importing ports, countries,\n capitals, borders and seadists from database
 activate UI
 UI -> CTRL : createFreightNetwork()
 activate CTRL
+CTRL -> CMP : getTransferFromDatabase()
+activate CMP
+deactivate CMP
+CTRL -> transfer : importPorts()
+activate transfer
+deactivate transfer
+CTRL -> transfer : importSeadist()
+activate transfer
+deactivate transfer
+CTRL -> transfer : importCountries()
+activate transfer
+deactivate transfer
+CTRL -> transfer : importCapital()
+activate transfer
+deactivate transfer
+CTRL -> transfer : importBorder()
+activate transfer
+deactivate transfer
 deactivate CTRL
 
 UI --> TM : Informs of operation success

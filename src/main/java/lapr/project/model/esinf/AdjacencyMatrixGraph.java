@@ -12,7 +12,7 @@ import java.util.Collection;
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  * @author 1201239 Francisco Redol
  */
-public class AdjacencyMatrixGraph<V, E> extends CommonGraph<V,E> {
+public class  AdjacencyMatrixGraph<V, E> extends CommonGraph<V, E> {
 
     public static final int INITIAL_CAPACITY = 10;
     public static final float RESIZE_FACTOR = 1.5F;

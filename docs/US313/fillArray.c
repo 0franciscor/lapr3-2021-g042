@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 
 void fillArray(char (*lineSplit)[25], char (*shipAllocation)[26][10][25]){
@@ -7,11 +6,10 @@ void fillArray(char (*lineSplit)[25], char (*shipAllocation)[26][10][25]){
     int x = atoi(lineSplit[1]);
     int y = atoi(lineSplit[2]);
     int z = atoi(lineSplit[3]);
-    
-    printf("%d %d %d %s\n", x, y, z, shipCode);
 
-    
-
-    //shipAllocation[x][y][z] = 
-
+    int indiceString = 0;
+    while(*(shipCode + indiceString) != '\0'){
+        shipAllocation[x][y][z][indiceString] = *(shipCode + indiceString);
+        indiceString++;
+    }
 }

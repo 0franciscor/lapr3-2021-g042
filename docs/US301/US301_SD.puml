@@ -6,13 +6,75 @@ actor "Traffic Manager" as TM
 participant ":CreateFreightNetworkUI  " as UI
 participant ":CreateFreightNetworkController" as CTRL
 participant ":Company" as CMP
+participant ":TransferFromDataBase" as transfer
+participant ":PortStore" as pStore
+participant ":SeadistStore" as sStore
+participant ":CountryStore" as cStore
+participant ":CapitalStore" as capitals
+participant ":BorderStore" as bStore
+participant ":FreightNetwork" as network
 
 
 activate TM
-TM -> UI: Initiates the process to create a freight \n network importing ports, countries,\n borders and seadists from database
+TM -> UI: Initiates the process to create a freight \n network importing ports, countries,\n capitals, borders and seadists from database
 activate UI
 UI -> CTRL : createFreightNetwork()
 activate CTRL
+CTRL -> CMP : getTransferFromDatabase()
+activate CMP
+deactivate CMP
+CTRL -> transfer : importPorts()
+activate transfer
+deactivate transfer
+CTRL -> transfer : importSeadist()
+activate transfer
+deactivate transfer
+CTRL -> transfer : importCountries()
+activate transfer
+deactivate transfer
+CTRL -> transfer : importCapitals()
+activate transfer
+deactivate transfer
+CTRL -> transfer : importBorder()
+activate transfer
+deactivate transfer
+CTRL -> CMP: getPortStr()
+activate CMP
+deactivate CMP
+CTRL-> pStore : portsList = getPortsLst()
+activate pStore
+deactivate pStore
+CTRL -> CMP: getSeadistStr()
+activate CMP
+deactivate CMP
+CTRL-> sStore : seadistsList = getSeadistLst()
+activate sStore
+deactivate sStore
+CTRL -> CMP: getCountryStr()
+activate CMP
+deactivate CMP
+CTRL-> cStore : countriesList = getCountryLst()
+activate cStore
+deactivate cStore
+CTRL -> CMP: getCapitalsStr()
+activate CMP
+deactivate CMP
+CTRL-> capitals : capitalsList = getCapitalsLst()
+activate capitals
+deactivate capitals
+CTRL -> CMP: getBordersStr()
+activate CMP
+deactivate CMP
+CTRL-> bStore : bordersList = getBordersLst()
+activate bStore
+deactivate bStore
+CTRL -> CMP : getFreightNetwork()
+activate CMP
+deactivate CMP
+CTRL->network : addNewInformation(portsList,seadistsList,countriesList,capitalsList,bordersList)
+activate network
+deactivate network
+CTRL --> UI: result
 deactivate CTRL
 
 UI --> TM : Informs of operation success

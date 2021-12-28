@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import lapr.project.data.TransferFromDataBase;
 import lapr.project.data.login.AuthFacade;
+import lapr.project.model.store.CapitalStore;
 import lapr.project.model.store.CargoManifestStore;
 import lapr.project.model.store.CountryStore;
 import lapr.project.model.store.PortStore;
@@ -30,6 +31,11 @@ public class Company {
     private final PortStore portStr;
 
     /**
+     * List containing all Capitals existing in the Company.
+     */
+    private final CapitalStore capitalStr;
+
+    /**
      * Represents an instance of Cargo Manifest Store
      */
     private final CargoManifestStore cargoManifestStore;
@@ -49,6 +55,7 @@ public class Company {
         countryStr = new CountryStore();
         portStr = new PortStore();
         cargoManifestStore = new CargoManifestStore();
+        capitalStr = new CapitalStore();
         authFacade=new AuthFacade();
     }
 
@@ -80,6 +87,12 @@ public class Company {
      * @return The store containing all ports existing in the Company.
      */
     public PortStore getPortStr() { return portStr; }
+
+    /**
+     * Get the store containing all Capitals existent in the Company.
+     * @return The store containing all Capitals existent in the Company.
+     */
+    public CapitalStore getCapitalStr() { return capitalStr; }
 
     /**
      * Returns an instance of the object which allows the Java system to import data from the database

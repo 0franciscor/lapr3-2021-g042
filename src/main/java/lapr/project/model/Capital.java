@@ -13,9 +13,9 @@ public class Capital {
     private final String name;
 
     /**
-     * The country capital.
+     * The capital's Country.
      */
-    private final String countryName;
+    private final Country country;
 
     /**
      * The Coordinates of the capital.
@@ -26,13 +26,13 @@ public class Capital {
      * The Capital Constructor
      *
      * @param name of the capital
-     * @param countryName of the country
+     * @param country of the capital
      * @param latitude of the capital
      * @param longitude of the capital
      */
-    public Capital(String name, String countryName, String latitude, String longitude){
+    public Capital(String name, Country country, String latitude, String longitude){
         this.name = name;
-        this.countryName = countryName;
+        this.country = country;
         this.placeLocation = new PlaceLocation(Double.parseDouble(latitude), Double.parseDouble(longitude));
     }
 
@@ -47,7 +47,14 @@ public class Capital {
      * @return the capital's country
      */
     public String getCountryName(){
-        return countryName;
+        return country.getCountryName();
+    }
+
+    /**
+     * @return the capital's Continent
+     */
+    public String getContinent(){
+        return country.getContinent();
     }
 
     /**

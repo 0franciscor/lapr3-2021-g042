@@ -1,5 +1,6 @@
 package lapr.project.model.store;
 import lapr.project.model.Capital;
+import lapr.project.model.Country;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class CapitalStore {
      * Instantiates a new Country Store
      */
     public CapitalStore(){
-        capitalLst=new ArrayList();
+        capitalLst=new ArrayList<>();
     }
 
     /**
@@ -34,13 +35,13 @@ public class CapitalStore {
     /**
      * Creates a new Capital
      * @param name of the Capital
-     * @param countryName of the Capital
+     * @param country of the Capital
      * @param latitude of the Capital
      * @param longitude of the Capital
      * @return The created capital
      */
-    public Capital createCapital(String name, String countryName, String latitude, String longitude){
-        return new Capital(name, countryName, latitude, longitude);
+    public Capital createCapital(String name, Country country, String latitude, String longitude){
+        return new Capital(name, country, latitude, longitude);
     }
 
     /**

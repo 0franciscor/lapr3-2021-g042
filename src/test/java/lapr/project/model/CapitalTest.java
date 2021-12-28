@@ -11,7 +11,7 @@ class CapitalTest {
 
     @BeforeEach
     void setUp() {
-        capitalTest = new Capital("Lisboa", "Portugal", "38.72", "-9.14");
+        capitalTest = new Capital("Lisboa", new Country("Europe", "Portugal"), "38.72", "-9.14");
     }
 
     @Test
@@ -24,6 +24,12 @@ class CapitalTest {
     void getCountryName() {
         String result = capitalTest.getCountryName();
         assertEquals("Portugal", result);
+    }
+
+    @Test
+    void getContinent() {
+        String result = capitalTest.getContinent();
+        assertEquals("Europe", result);
     }
 
     @Test

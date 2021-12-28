@@ -1,37 +1,57 @@
-CREATE OR REPLACE FUNCTION getOccupancyOfWarehouse() RETURN VARCHAR2
-IS
-    outString VARCHAR2(2555);
-    finalDate DATE;
 
-    BEGIN
+    CREATE OR REPLACE PROCEDURE getOccupancyOfWarehouse(outString OUT VARCHAR2) IS
+    
+        finalDate DATE;
+        ocp FLOAT;
+        storeHouse VARCHAR(255);
 
-        finalDate:=sysdate+30;
 
-        FOR loop
-        IN (SELECT id, occupancy
-        FROM Warehouse)
+        CURSOR warehouses IS
+        SELECT name
+        FROM Warehouse;
 
-        LOOP
-            outString := outString || 'Warehouse ID - ' || loop.id || ', Occupancy - ' || loop.occupancy || '% ' || chr(10)
+        BEGIN
 
-        END LOOP;
+            finalDate:=sysdate+30;
+            OPEN warehouses;
 
-        FOR LOOP2
-        IN(SELECT cargoManifestLoadId, Id, expectedDepartureDate
-        FROM Phases
-        WHERE Phases.origin=storehouse
-        AND Phases.expectedDepartureDate >= sysdate
-        AND Phases.expectedDepartureDate <= finalDate)
-        LOOP2
+            LOOP
+                FETCH warehouses INTO storehouse;
+                EXIT WHEN warehouses%notfound;
 
-            FOR containers
-            IN(SELECT ContainerNumberId
-            FROM CargoManifestContainer
-            WHERE CargoManifestLoadId=LOOP2.cargoManifestLoadId AND PhasesId=LOOP2.id)
+                SELECT occupancy INTO ocp
+                FROM warehouse
+                WHERE name = storehouse;
 
-            outString:=outString || 'Container - ' || containers.ContainerId || ', Expected Departure Date - ' || LOOP2.expectedDepartureDate || chr(10);
+                outString := outString || 'Warehouse Name - ' || storehouse || ', Occupancy - ' || ocp || '% ' || chr(10);
 
-        END LOOP2;
+                FOR LOOP2
+                IN(SELECT cargoManifestLoadId, Id, expectedDepartureDate
+                FROM Phases
+                WHERE Phases.origin = storehouse
+                AND Phases.expectedDepartureDate >= sysdate
+                AND Phases.expectedDepartureDate <= finalDate)
+                LOOP
 
-        return outString;
-    END;
+                    FOR containersLoop
+                    IN(SELECT ContainerNumberId
+                    FROM CargoManifestContainer
+                    WHERE CargoManifestLoadId=LOOP2.cargoManifestLoadId AND PhasesId=LOOP2.id)
+                    LOOP
+                        outString:=outString || 'Container - ' || containersLoop.ContainerNumberId || ', Expected Departure Date - ' || LOOP2.expectedDepartureDate || chr(10);
+                    END LOOP;
+                    
+                END LOOP;
+            END LOOP;
+
+        END;
+        
+        
+DECLARE
+    output VARCHAR2(2555);
+BEGIN
+    output := getOccupancyOfWarehouses();
+    DBMS_OUTPUT.PUT_LINE(output);
+END;
+
+

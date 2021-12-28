@@ -18,6 +18,7 @@ DROP TABLE UserSystem CASCADE CONSTRAINTS PURGE;
 DROP TABLE AuditTrails CASCADE CONSTRAINTS PURGE;
 DROP TABLE Operations CASCADE CONSTRAINTS PURGE;
 DROP TABLE Role CASCADE CONSTRAINTS PURGE;
+DROP TABLE Truck CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE Role(
 id INTEGER,
@@ -188,15 +189,24 @@ CONSTRAINT pk_Warehouse PRIMARY KEY (id),
 CONSTRAINT fk_Warehouse_PlaceLocation FOREIGN KEY (placeLocationLatitude, placeLocationLongitude) references PlaceLocation(latitude, longitude)
 );
 
+CREATE TABLE Truck(
+licensePlate INTEGER,
+CONSTRAINT pk_Truck PRIMARY KEY (licensePlate)
+);
+
 CREATE TABLE CargoManifestLoad(
 id INTEGER,
-shipMmsiCode VARCHAR(9) NOT NULL,
+shipMmsiCode VARCHAR(9),
 portId INTEGER,
 isConcluded INTEGER,
+warehouseId INTEGER,
+truckLicensePlate INTEGER,
 
 CONSTRAINT pk_CargoManifestLoad PRIMARY KEY (id),
 CONSTRAINT fk_CargoManifestLoad_Ship FOREIGN KEY (shipMmsiCode) references Ship(mmsiCode),
-CONSTRAINT fk_CargoManifestLoad_Port FOREIGN KEY (portId) references Ports(id)
+CONSTRAINT fk_CargoManifestLoad_Port FOREIGN KEY (portId) references Ports(id),
+CONSTRAINT fk_CargoManifestLoad_Warehouse FOREIGN KEY (warehouseId) references Warehouse(id),
+CONSTRAINT fk_CargoManifestLoad_Truck FOREIGN KEY (truckLicensePlate) references Truck(licensePlate)
 );
 
 CREATE TABLE Phases(
@@ -206,8 +216,8 @@ origin VARCHAR(255) NOT NULL,
 destination VARCHAR(255) NOT NULL,
 expectedDepartureDate TIMESTAMP NOT NULL,
 expectedArrivalDate TIMESTAMP NOT NULL,
-realDepartureDate TIMESTAMP NOT NULL,
-realArrivalDate TIMESTAMP NOT NULL,
+realDepartureDate TIMESTAMP,
+realArrivalDate TIMESTAMP,
 
 CONSTRAINT pk_Phases PRIMARY KEY (cargoManifestLoadId, id),
 CONSTRAINT fk_Phases_CargoManifestLoad FOREIGN KEY (cargoManifestLoadId) references CargoManifestLoad(id)
@@ -257,9 +267,11 @@ CONSTRAINT fk_CargoManifest_Unload FOREIGN KEY(CargoManifestUnloadId) REFERENCES
 
 CREATE TABLE Warehouse_Truck(
 warehouseId INTEGER,
+truckLicensePlate INTEGER,
 
 CONSTRAINT pk_WarehouseTruck PRIMARY KEY (warehouseId),
-CONSTRAINT fk_WarehouseTruck_Warehouse FOREIGN KEY (warehouseId) references Warehouse(id)
+CONSTRAINT fk_WarehouseTruck_Warehouse FOREIGN KEY (warehouseId) references Warehouse(id),
+CONSTRAINT fk_WarehouseTruck_Truck FOREIGN KEY (truckLicensePlate) references Truck(licensePlate)
 );
 
 CREATE TABLE AuditTrails(

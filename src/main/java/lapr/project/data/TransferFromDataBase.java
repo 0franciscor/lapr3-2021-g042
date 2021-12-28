@@ -2,6 +2,9 @@ package lapr.project.data;
 
 import lapr.project.controller.App;
 import lapr.project.model.*;
+import lapr.project.model.store.CapitalStore;
+import lapr.project.model.store.CountryStore;
+import lapr.project.model.store.PortStore;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -83,20 +86,14 @@ public class TransferFromDataBase {
     }
 
     /**
-     * Fetches the existent Capitals from the database
-     *
-     * @return a list of Capitals from the database
+     * Fetches the existent Capitals from the database to the CapitalStore
      */
-    public List<Capital> importCapital(){
-        List<Capital> capitalLst = new ArrayList<>();
-        try {
-            capitalLst = importCapitalsFromDataBase(databaseConnection);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error when importing data from the database.");
+    public void importCapitals(){
+        try{
+            importCapitalsFromDataBase(databaseConnection);
+        } catch (Exception e){
+            System.out.println("There was an eror ");
         }
-
-        return capitalLst;
     }
 
     /**
@@ -206,6 +203,8 @@ public class TransferFromDataBase {
 
         boolean isPortOnDatabase;
 
+        PortStore portStore = App.getInstance().getCompany().getPortStr();
+
         String sqlCommand = "select * from ports";
 
         PreparedStatement getPortsPreparedStatement =
@@ -224,9 +223,9 @@ public class TransferFromDataBase {
 
                 Country country = importCountryFromDatabase(databaseConnection, placeLocation);
 
-                Ports port = new Ports(country, code, portName, placeLocation);
+                Ports port = portStore.createPort(country, code, portName, placeLocation);
 
-                App.getInstance().getCompany().getPortStr().getPortsLst().add(port);
+                portStore.savePort(port);
                 isPortOnDatabase = shipsResultSet.next();
             }
             shipsResultSet.close();
@@ -241,13 +240,15 @@ public class TransferFromDataBase {
      *
      * @param databaseConnection to the database
      * @param placeLocation      of a port
-     * @return the country correspondent to a certain Port
+     * @return country that identifies a port
      * @throws SQLException that may occur within the database
      */
     private Country importCountryFromDatabase(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
         Country country;
+
+        CountryStore countryStore = App.getInstance().getCompany().getCountryStr();
 
         String sqlCommand = "select countryName from PlaceLocation where latitude = ? and longitude = ?";
 
@@ -269,7 +270,8 @@ public class TransferFromDataBase {
             try (ResultSet countryResultSet = getCountriesPreparedStatement.executeQuery()) {
                 countryResultSet.next();
                 String continent = countryResultSet.getNString(2);
-                country = new Country(continent, countryName);
+                country = countryStore.createCountry(continent, countryName);
+                countryStore.saveCountry(country);
                 countryResultSet.close();
             }
             shipsResultSet.close();
@@ -363,9 +365,11 @@ public class TransferFromDataBase {
      * @return a list of Capitals to be used on US301
      * @throws SQLException that may occur within the connection to the database
      */
-    private List<Capital> importCapitalsFromDataBase(DatabaseConnection databaseConnection)
+    private void importCapitalsFromDataBase(DatabaseConnection databaseConnection)
             throws SQLException {
         List<Capital> capitalLst = new ArrayList<>();
+
+        CapitalStore capitalStr = App.getInstance().getCompany().getCapitalStr();
 
         boolean isThereCapitalonDataBase;
 
@@ -382,7 +386,8 @@ public class TransferFromDataBase {
                 String latitude = capitalResultSet.getNString(3).replace(",", ".");
                 String longitude = capitalResultSet.getNString(4).replace(",", ".");
 
-                capitalLst.add(new Capital(name, countryName, latitude, longitude));
+                Capital capital = capitalStr.createCapital(name, countryName, latitude, longitude);
+                capitalStr.saveCapital(capital);
 
                 isThereCapitalonDataBase = capitalResultSet.next();
             }
@@ -391,7 +396,6 @@ public class TransferFromDataBase {
 
             getCapitalPreparedStatement.close();
         }
-        return capitalLst;
     }
 
 }

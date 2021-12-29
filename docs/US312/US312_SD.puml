@@ -2,9 +2,9 @@
 autonumber
 
 actor "Client" as C
-participant "FindContainerSituationUi" as UI
-participant "FindContainerSituationController" as CTRL
-participant "US204Handler" as handler
+participant ":FindContainerSituation312Ui" as UI
+participant ":FindContainerSituation312Controller" as CTRL
+participant "US312Handler" as handler
 participant "WriteForAFile" as writer
 
 activate C
@@ -14,10 +14,10 @@ UI --> C : Request the e container identifier
 deactivate UI
 C -> UI : Introduce the requested data
 activate UI
-UI -> CTRL: getContainerLocation(containerNumber)
+UI -> CTRL: getContainerLocation(containerNumber, clientId)
 activate CTRL
 CTRL --> handler** : create()
-CTRL -> handler: getContainerLocation(containerNumber)
+CTRL -> handler: getContainerLocation(containerNumber, clientId)
 activate handler
 handler->writer:writeForAFile(containerLocation, fileName, filePath)
 activate writer

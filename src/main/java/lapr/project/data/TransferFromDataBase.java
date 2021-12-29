@@ -34,7 +34,7 @@ public class TransferFromDataBase {
         try {
             importShipsFromDatabase(databaseConnection);
         } catch (Exception e) {
-            System.out.println("Error when importing data from the database.");
+            System.out.println("Error when importing Ships from the database.");
         }
     }
 
@@ -45,7 +45,7 @@ public class TransferFromDataBase {
         try {
             importPortsFromDatabase(databaseConnection);
         } catch (Exception e) {
-            System.out.println("Error when importing data from the database.");
+            System.out.println("Error when importing Ports from the database.");
         }
     }
 
@@ -56,7 +56,7 @@ public class TransferFromDataBase {
         try{
             importSeadistsFromDataBase(databaseConnection);
         } catch (Exception e) {
-            System.out.println("Error when importing data from the database.");
+            System.out.println("Error when importing Seadists from the database.");
         }
     }
 
@@ -67,7 +67,7 @@ public class TransferFromDataBase {
         try {
             importBordersFromDataBase(databaseConnection);
         } catch (Exception e) {
-            System.out.println("Error when importing data from the database.");
+            System.out.println("Error when importing Borders from the database.");
         }
     }
 
@@ -78,7 +78,7 @@ public class TransferFromDataBase {
         try{
             importCapitalsFromDataBase(databaseConnection);
         } catch (Exception e){
-            System.out.println("Error when importing data from the database.");
+            System.out.println("Error when importing Capitals from the database.");
         }
     }
 
@@ -89,7 +89,7 @@ public class TransferFromDataBase {
         try{
             importCountriesFromDatabase(databaseConnection);
         } catch (Exception e) {
-            System.out.println("Error when importing data from the database.");
+            System.out.println("Error when importing Countries from the database.");
         }
     }
 
@@ -218,7 +218,7 @@ public class TransferFromDataBase {
                 double longitude = Double.parseDouble(shipsResultSet.getNString(4));
                 PlaceLocation placeLocation = new PlaceLocation(latitude, longitude);
 
-                Country country = importCountryFromDatabase(databaseConnection, placeLocation);
+                Country country = importCountryForPort(databaseConnection, placeLocation);
 
                 Ports port = portStore.createPort(country, code, portName, placeLocation);
 
@@ -240,7 +240,7 @@ public class TransferFromDataBase {
      * @return country that identifies a port
      * @throws SQLException that may occur within the database
      */
-    private Country importCountryFromDatabase(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException {
+    private Country importCountryForPort(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
         Country country;
@@ -256,7 +256,7 @@ public class TransferFromDataBase {
         getCountriesPreparedStatement.setString(2, String.format("%.2f", placeLocation.getLongitude()));
 
         try (ResultSet countriesResultSet = getCountriesPreparedStatement.executeQuery()) {
-
+            countriesResultSet.next();
             String countryName = countriesResultSet.getNString(1);
 
             sqlCommand = "select * from Country where countryName = ?";
@@ -275,6 +275,40 @@ public class TransferFromDataBase {
 
         } finally {
             getCountriesPreparedStatement.close();
+        }
+        return country;
+    }
+
+    /**
+     * Method which has the responsibility of retrieving the matching Country of a Capital.
+     *
+     * @param databaseConnection to the database
+     * @param countryName of a country
+     * @return country that identifies a Capital
+     * @throws SQLException that may occur within the database
+     */
+    private Country importCountryForCapital(DatabaseConnection databaseConnection, String countryName)
+            throws SQLException {
+
+        Country country;
+
+        PreparedStatement getCountryPreparedStatement =
+                databaseConnection.getConnection().prepareStatement("select * from Country where countryName = ?");
+
+        getCountryPreparedStatement.setString(1, countryName);
+
+        try (ResultSet countryResultSet = getCountryPreparedStatement.executeQuery()) {
+            countryResultSet.next();
+
+            String name = countryResultSet.getNString(1);
+            String continent = countryResultSet.getNString(2);
+            country = new Country(name, continent);
+
+            App.getInstance().getCompany().getCountryStr().saveCountry(country);
+
+            countryResultSet.close();
+        } finally {
+            getCountryPreparedStatement.close();
         }
         return country;
     }
@@ -407,10 +441,10 @@ public class TransferFromDataBase {
 
             while (isThereCapitalonDataBase) {
                 String name = capitalResultSet.getNString(1);
-
+                String countryName = capitalResultSet.getNString(2);
                 String latitude = capitalResultSet.getNString(3).replace(",", ".");
                 String longitude = capitalResultSet.getNString(4).replace(",", ".");
-                Country country = importCountryFromDatabase(databaseConnection, new PlaceLocation(Double.parseDouble(latitude), Double.parseDouble(longitude)));
+                Country country = importCountryForCapital(databaseConnection, countryName);
 
                 Capital capital = capitalStr.createCapital(name, country, latitude, longitude);
                 capitalStr.saveCapital(capital);
@@ -422,5 +456,4 @@ public class TransferFromDataBase {
             getCapitalPreparedStatement.close();
         }
     }
-
 }

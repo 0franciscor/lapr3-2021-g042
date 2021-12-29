@@ -35,7 +35,7 @@ public class US304Handler {
             statement.setInt(3, containerId);
             statement.execute();
 
-            this.informationOutput = statement.getNString(1);
+            this.informationOutput = statement.getString(1);
 
             writeForAFile.writeForAFile(informationOutput, "US304_" + containerId, new File(".\\outputs\\US304"));
 
@@ -43,6 +43,7 @@ public class US304Handler {
             e.printStackTrace();
             writeForAFile.writeForAFile("Something went wrong", "US304_" + containerId, new File(".\\outputs\\US304"));
         }finally {
+            assert statement != null;
             statement.close();
         }
 

@@ -15,3 +15,7 @@ insert into UserSystem(username, password, roleId) values ('Administrator', '123
 insert into operations(id,operationName) values(1 ,'INSERT');
 insert into operations(id,operationName) values(2 ,'UPDATE');
 insert into operations(id,operationName) values(3 ,'DELETE');
+
+
+insert into USERSYSTEM (username, password, roleid)
+values('manuela_1200720', '123456', 7);

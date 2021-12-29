@@ -43,6 +43,7 @@ public class US305Handler {
         }catch (Exception e){
             writeForAFile.writeForAFile("Something went wrong", "US305_" + registerCode, new File(".\\outputs\\US305"));
         }finally {
+            assert statement != null;
             statement.close();
         }
 

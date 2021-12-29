@@ -25,10 +25,3 @@ set serveroutput on;
     END;
 
 
-DECLARE 
-outString VARCHAR2(2555);
-BEGIN
-outString := getInformationAboutAuditTrails(1, 456789423);
-dbms_output.put_line(outString);
-END;
-

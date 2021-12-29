@@ -29,11 +29,11 @@ public class US306Handler {
     private void initialize() throws IOException, SQLException {
         CallableStatement statement = null;
         try {
-            statement = databaseConnection.prepareCall("{call getInformationAboutAuditTrails(?) }");
+            statement = databaseConnection.prepareCall("{call getOccupancyOfWarehouse(?) }");
             statement.registerOutParameter(1, Types.LONGNVARCHAR);
             statement.execute();
 
-            this.informationOutput = statement.getNString(1);
+            this.informationOutput = statement.getString(1);
 
             writeForAFile.writeForAFile(informationOutput, "US306_Containers_Warehouses", new File(".\\outputs\\US306"));
 
@@ -41,6 +41,7 @@ public class US306Handler {
             e.printStackTrace();
             writeForAFile.writeForAFile("Something went wrong", "US306_Containers_Warehouses", new File(".\\outputs\\US306"));
         }finally {
+            assert statement != null;
             statement.close();
         }
 

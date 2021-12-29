@@ -32,8 +32,13 @@ public class ScenarioTestBDDADTest {
 
     private US304Handler us304Handler;
 
+    private US306Handler us306Handler;
+
+    private US307Handler us307Handler;
+
+
     @Test
-    public void presentationTest() throws SQLException, IOException, ParseException {
+    public void presentationTest1() throws SQLException, IOException, ParseException {
         findContainerSituationController = new FindContainerSituationController();
         findContainerSituationController.getContainerLocation(987650321);
         findContainerSituationController.getContainerLocation(695421863);
@@ -48,8 +53,19 @@ public class ScenarioTestBDDADTest {
         Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
         us209Handler = new US209Handler("210950000", timestamp);
         us210Handler = new US210Handler();
-        us304Handler = new US304Handler(1, 456789423);
-        us305Handler = new US305Handler("213456782");
+
     }
 
+    @Test
+    public void presentationTest2() throws IOException {
+        new UpdateCargoManifest(456789423, 33.4f, "manuela_1200720");
+        new UpdateCargoManifest(456789423, 15.2f, "francisco2");
+        us304Handler = new US304Handler(1, 456789423);
+        us305Handler = new US305Handler("213456782");
+        us306Handler = new US306Handler();
+        us307Handler = new US307Handler();
+
+
+
+    }
 }

@@ -13,7 +13,6 @@ import java.sql.Types;
 public class US307Handler {
 
     private Connection databaseConnection;
-    private String informationOutput;
     private WriteForAFile writeForAFile;
 
     public US307Handler() throws IOException {

@@ -5,22 +5,12 @@ package lapr.project.model;
  *
  * @author Francisco Redol <1201239@isep.ipp.pt>
  */
-public class Capital {
+public class Capital extends Place{
 
     /**
      * The capital name.
      */
     private final String name;
-
-    /**
-     * The capital's Country.
-     */
-    private final Country country;
-
-    /**
-     * The Coordinates of the capital.
-     */
-    private final PlaceLocation placeLocation;
 
     /**
      * The Capital Constructor
@@ -31,9 +21,8 @@ public class Capital {
      * @param longitude of the capital
      */
     public Capital(String name, Country country, String latitude, String longitude){
+        super(Double.parseDouble(latitude),Double.parseDouble(longitude), country.getCountryName(), country.getContinent());
         this.name = name;
-        this.country = country;
-        this.placeLocation = new PlaceLocation(Double.parseDouble(latitude), Double.parseDouble(longitude));
     }
 
     /**
@@ -41,33 +30,5 @@ public class Capital {
      */
     public String getName(){
         return name;
-    }
-
-    /**
-     * @return the capital's country
-     */
-    public String getCountryName(){
-        return country.getCountryName();
-    }
-
-    /**
-     * @return the capital's Continent
-     */
-    public String getContinent(){
-        return country.getContinent();
-    }
-
-    /**
-     * @return the Capital Latitude
-     */
-    public double getLatitude(){
-        return placeLocation.getLatitude();
-    }
-
-    /**
-     * @return the Capital Longitude
-     */
-    public double getLongitude(){
-        return placeLocation.getLongitude();
     }
 }

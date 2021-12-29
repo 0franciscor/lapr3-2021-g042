@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import lapr.project.ui.Utils;
 import lapr.project.utils.BSTInterface;
 
 import java.util.*;
@@ -216,7 +217,7 @@ public abstract class BstShip<E> implements BSTInterface<Ship> {
                         if (arrivalLat.equals("not defined") || arrivalLog.equals("not defined") || arrivalLat2.equals("not defined") || arrivalLog2.equals("not defined")) {
 
                         } else {
-                            Double arrivalDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
+                            Double arrivalDistance = Utils.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
                             if (arrivalDistance < 5) {
                                 String depLat = shipLocationBST.getLatitudeDeparture();
                                 String depLog = shipLocationBST.getLongitudeDeparture();
@@ -225,7 +226,7 @@ public abstract class BstShip<E> implements BSTInterface<Ship> {
                                 if (depLat.equals("not defined") || depLog.equals("not defined") || depLat2.equals("not defined") || depLog2.equals("not defined")) {
 
                                 } else {
-                                    Double depDistance = shipLocationBST.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
+                                    Double depDistance = Utils.calculateDistance(Double.parseDouble(arrivalLat), Double.parseDouble(arrivalLog), Double.parseDouble(arrivalLat2), Double.parseDouble(arrivalLog2));
                                     if (depDistance < 5) {
                                         Double travelDistanceDifference = Math.abs(travelledDistance2 - travelledDistance);
                                         String stringWithAllInfo = String.format(" %s  %s", ship1.getMMSI(), bstInOrder.get(j).getMMSI());

@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import lapr.project.ui.Utils;
 import lapr.project.utils.BSTInterface;
 
 import java.text.DecimalFormat;
@@ -449,7 +450,7 @@ public abstract class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
             }
             else
             {
-                sum += calculateDistance(Double.parseDouble(firstLocation.getLatitude()), Double.parseDouble(firstLocation.getLongitude()), Double.parseDouble(secondLocation.getLatitude()), Double.parseDouble(secondLocation.getLongitude()));
+                sum += Utils.calculateDistance(Double.parseDouble(firstLocation.getLatitude()), Double.parseDouble(firstLocation.getLongitude()), Double.parseDouble(secondLocation.getLatitude()), Double.parseDouble(secondLocation.getLongitude()));
             }
 
             firstLocation = secondLocation;
@@ -465,17 +466,10 @@ public abstract class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
         if (getArrivalLongitude().equals("not available") || getArrivalLatitude().equals("not available") || getLongitudeDeparture().equals("not available") || getLatitudeDeparture().equals("not available") || size() < 2){
             return 0;
         }
-       else return calculateDistance(Double.parseDouble(getLatitudeDeparture()), Double.parseDouble(getLongitudeDeparture()), Double.parseDouble(getArrivalLatitude()), Double.parseDouble(getArrivalLongitude()));
+       else return Utils.calculateDistance(Double.parseDouble(getLatitudeDeparture()), Double.parseDouble(getLongitudeDeparture()), Double.parseDouble(getArrivalLatitude()), Double.parseDouble(getArrivalLongitude()));
     }
 
-    /**
-     * calculates the distance between two points, given their geographic coordinates
-     * @param departureLatitude the departure latitude
-     * @param departureLongitude the departure longitude
-     * @param arrivalLatitude the arrival latitude
-     * @param arrivalLongitude the arrival longitude
-     * @return the distance between the two coordinates
-     */
+    /*
     public double calculateDistance(double departureLatitude, double departureLongitude, double arrivalLatitude, double arrivalLongitude){
 
         int earthRadius = 6371;
@@ -495,6 +489,8 @@ public abstract class ShipLocationBST<E> implements BSTInterface<ShipLocation> {
 
         return (earthRadius*b);
     }
+    */
+
 
 
 } //----------- end of BST class -----------

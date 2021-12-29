@@ -4,7 +4,7 @@ package lapr.project.model;
  * Represents a Port.
  * @author Rita Ariana Sobral <1201386@isep.ipp.pt>
  */
-public class Ports {
+public class Ports extends Place{
 
     /**
      * The port code
@@ -16,15 +16,6 @@ public class Ports {
      */
     private final String portName;
 
-    /**
-     * The port location
-     */
-    private final PlaceLocation coordinates;
-
-    /**
-     * The port country
-     */
-    private final Country country;
 
     /**
      * Build an instance of {@code Ports} by receiving the country, the code, the name and the coordinates
@@ -34,10 +25,9 @@ public class Ports {
      * @param coordinates The port location
      */
     public Ports(Country country, int code, String portName, PlaceLocation coordinates){
-        this.country=country;
+        super(coordinates.getLatitude(),coordinates.getLongitude(),country.getCountryName(),country.getContinent());
         this.code=code;
         this.portName=portName;
-        this.coordinates=coordinates;
     }
 
     /**
@@ -56,38 +46,6 @@ public class Ports {
         return code;
     }
 
-    /**
-     * Get the latitude of the port
-     * @return  The latitude of the port
-     */
-    public double getLatitude(){
-        return coordinates.getLatitude();
-    }
-
-    /**
-     * Get the longitude of the port
-     * @return  The longitude of the port
-     */
-    public double getLongitude(){
-        return coordinates.getLongitude();
-    }
-
-    /**
-     * Get the country name to which the port belongs
-     * @return The country name to which the port belongs
-     */
-    public String getCountryName(){
-        return country.getCountryName();
-    }
-
-    /**
-     * Get the continent to which the port belongs
-     * @return The continent to which the port belongs
-     */
-    public String getContinent(){
-        return country.getContinent();
-    }
-
     @Override
     public boolean equals(Object o){
         if (this == o) return true;
@@ -95,7 +53,4 @@ public class Ports {
         Ports ports = (Ports) o;
         return ports.getCode() == this.getCode() && ports.getLatitude() == this.getLatitude() && ports.getLongitude() == this.getLongitude();
     }
-
-
-
 }

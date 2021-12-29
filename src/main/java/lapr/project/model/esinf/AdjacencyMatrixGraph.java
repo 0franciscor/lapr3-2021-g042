@@ -19,40 +19,24 @@ public class  AdjacencyMatrixGraph<V, E> extends CommonGraph<V, E> {
 
     Edge<V,E> [][] edgeMatrix;
 
-
-    /**
-     *
-     * @param directed Designates whether the graph is directed
-     * @param initialCapacity
-     */
     public AdjacencyMatrixGraph(boolean directed, int initialCapacity) {
         super(directed);
         edgeMatrix = (Edge <V,E> [][])( new Edge<?, ?>[initialCapacity][initialCapacity]);
     }
 
-    /**
-     *
-     * @param directed
-     */
+
     public AdjacencyMatrixGraph(boolean directed) {
         this(directed, INITIAL_CAPACITY);
     }
 
-    /**
-     *
-     * @param g
-     */
+
     public AdjacencyMatrixGraph(Graph <V,E> g) {
         this(g.isDirected(), g.numVertices());
         copy(g, this);
     }
 
-    /**
-     *
-     * @param directed
-     * @param vs
-     * @param m
-     */
+
+    /*
     public AdjacencyMatrixGraph(boolean directed, ArrayList <V> vs, E [][] m) {
         this(directed, vs.size());
         numVerts = vs.size();
@@ -62,6 +46,8 @@ public class  AdjacencyMatrixGraph<V, E> extends CommonGraph<V, E> {
                 if (j != i && m[i][j] != null)
                     addEdge(vertices.get(i), vertices.get(j),m[i][j]);
     }
+
+     */
 
     @Override
     public Collection<V> adjVertices(V vert) {
@@ -281,7 +267,7 @@ public class  AdjacencyMatrixGraph<V, E> extends CommonGraph<V, E> {
     }
 
 
-    /*
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -321,5 +307,5 @@ public class  AdjacencyMatrixGraph<V, E> extends CommonGraph<V, E> {
 
         return sb.toString();
     }
-    */
+
 }

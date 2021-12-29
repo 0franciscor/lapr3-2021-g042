@@ -63,5 +63,14 @@ public class PortStore {
         return false;
     }
 
+    public Ports getPortByName(String name){
+        for (Ports p : portsLst) {
+            if (p.getPortName().equals(name)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
 
 }

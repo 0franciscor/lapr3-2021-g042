@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import lapr.project.data.TransferFromDataBase;
 import lapr.project.data.login.AuthFacade;
+import lapr.project.model.esinf.FreightNetwork;
 import lapr.project.model.store.*;
 
 /**
@@ -54,6 +55,8 @@ public class Company {
      */
     private TransferFromDataBase transferFromDataBase;
 
+    private FreightNetwork freightNetwork;
+
     /**
      * Creates an instance of Company
      */
@@ -66,6 +69,7 @@ public class Company {
         seadistStr = new SeadistStore();
         borderStr = new BorderStore();
         authFacade=new AuthFacade();
+        freightNetwork = new FreightNetwork();
     }
 
     /**
@@ -127,6 +131,10 @@ public class Company {
             this.transferFromDataBase = new TransferFromDataBase();
 
         return transferFromDataBase;
+    }
+
+    public FreightNetwork getFreightNetwork(){
+        return freightNetwork;
     }
 
 }

@@ -41,37 +41,19 @@ deactivate transfer
 CTRL -> CMP: getPortStr()
 activate CMP
 deactivate CMP
-CTRL-> pStore : portsList = getPortsLst()
-activate pStore
-deactivate pStore
 CTRL -> CMP: getSeadistStr()
 activate CMP
 deactivate CMP
-CTRL-> sStore : seadistsList = getSeadistLst()
-activate sStore
-deactivate sStore
-CTRL -> CMP: getCountryStr()
-activate CMP
-deactivate CMP
-CTRL-> cStore : countriesList = getCountryLst()
-activate cStore
-deactivate cStore
 CTRL -> CMP: getCapitalsStr()
 activate CMP
 deactivate CMP
-CTRL-> capitals : capitalsList = getCapitalsLst()
-activate capitals
-deactivate capitals
 CTRL -> CMP: getBordersStr()
 activate CMP
 deactivate CMP
-CTRL-> bStore : bordersList = getBordersLst()
-activate bStore
-deactivate bStore
 CTRL -> CMP : getFreightNetwork()
 activate CMP
 deactivate CMP
-CTRL->network : addNewInformation(portsList,seadistsList,countriesList,capitalsList,bordersList)
+CTRL->network : addNewInformation(portsStore,seadistsStore,capitalsStore,bordersStore)
 activate network
 deactivate network
 CTRL --> UI: result

@@ -54,7 +54,7 @@ class CapitalStoreTest {
         capitalStr.saveCapital(capital2);
         capitalStr.saveCapital(capital);
 
-        Capital toBeFound = capitalStr.getCapitalByName("Lisboa");
+        Capital toBeFound = capitalStr.getCapitalByCountryName("Portugal");
 
         boolean exists = toBeFound != null;
 
@@ -67,7 +67,7 @@ class CapitalStoreTest {
         Capital capital = new Capital("Lisboa", new Country("Europa", "Portugal"), "33.4", "38.3");
         capitalStr.saveCapital(capital);
 
-        Capital toBeFound = capitalStr.getCapitalByName("Luxemburgo");
+        Capital toBeFound = capitalStr.getCapitalByCountryName("Luxemburgo");
 
         boolean exists = toBeFound != null;
 

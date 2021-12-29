@@ -153,4 +153,32 @@ public class Utils {
 
         return value - 1;
     }
+
+    /**
+     * calculates the distance between two points, given their geographic coordinates
+     * @param firstLatitude the departure latitude
+     * @param firstLongitude the departure longitude
+     * @param secondLatitude the arrival latitude
+     * @param secondLongitude the arrival longitude
+     * @return the distance between the two coordinates
+     */
+    public static double calculateDistance(double firstLatitude, double firstLongitude, double secondLatitude, double secondLongitude){
+
+        int earthRadius = 6371;
+
+        double initialLatitude= firstLatitude * Math.PI/180;
+        double initialLongitude= secondLatitude * Math.PI/180;
+
+
+        double variationOfLatitude = Math.abs(secondLatitude - firstLatitude) * Math.PI/180;
+
+        double variationOfLongitude = Math.abs(secondLongitude - firstLongitude) * Math.PI/180;
+
+        double a = Math.sin(variationOfLatitude/2) * Math.sin(variationOfLatitude/2) + Math.cos(initialLatitude)* Math.cos(initialLongitude) * Math.sin(variationOfLongitude/2) * Math.sin(variationOfLongitude/2);
+
+        double b = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+
+        return (earthRadius*b);
+    }
 }

@@ -174,7 +174,7 @@ public class SummaryDto {
      * @return the date of start of a journey
      */
     public Date getStartBaseDateDto() {
-        return startBaseDateDto;
+        return new Date(String.valueOf(startBaseDateDto));
     }
 
     /**
@@ -182,7 +182,8 @@ public class SummaryDto {
      * @return the date of arrival in port
      */
     public Date getEndBaseDateDto() {
-        return endBaseDateDto;
+
+        return new Date(String.valueOf(endBaseDateDto));
     }
 
     /**

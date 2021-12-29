@@ -1,3 +1,4 @@
+set serveroutput on;
 
     CREATE OR REPLACE PROCEDURE getOccupancyOfWarehouse(outString OUT VARCHAR2) IS
     
@@ -48,10 +49,11 @@
         
         
 DECLARE
-    output VARCHAR2(2555);
+    stringOut VARCHAR2(2555);
 BEGIN
-    output := getOccupancyOfWarehouses();
-    DBMS_OUTPUT.PUT_LINE(output);
+    
+    getOccupancyOfWarehouse(stringOut);
+    dbms_output.put_line(stringOut); 
 END;
 
 

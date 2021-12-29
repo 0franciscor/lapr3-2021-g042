@@ -9,57 +9,57 @@ public class Container {
     /**
      * The number that identify the container
      */
-    private String number;
+    private final String number;
 
     /**
      * The check digit that identify the container
      */
-    private int checkDigit;
+    private final int checkDigit;
 
     /**
      * The isoCode that identify the container
      */
-    private String isoCode;
+    private final String isoCode;
 
     /**
      * The maximum weight a container can carry
      */
-    private float maximumWeight;
+    private final float maximumWeight;
 
     /**
      * The payload of a container
      */
-    private float payload;
+    private final float payload;
 
     /**
      * The tare of a container
      */
-    private float tare;
+    private final float tare;
 
     /**
      * The weight of a container
      */
-    private float weight;
+    private final float weight;
 
     /**
      * The maximum weight that a container can pack
      */
-    private float maxWeightPacked;
+    private final float maxWeightPacked;
 
     /**
      * The maximum volume that a container can pack
      */
-    private float maxVolumePacked;
+    private final float maxVolumePacked;
 
     /**
      * The repair recommendation of a container
      */
-    private String repairRecommendation;
+    private final String repairRecommendation;
 
     /**
      * The certificate of a container
      */
-    private String certificate;
+    private final String certificate;
 
     /**
      * Creates an instance of Container

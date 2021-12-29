@@ -18,7 +18,7 @@ public class US207Handler {
     /**
      * Represents an instance of Connection
      */
-    private Connection databaseConnection;
+    private final Connection databaseConnection;
 
     /**
      * Represents the Total of containers in a cargo manifest
@@ -33,7 +33,7 @@ public class US207Handler {
     /**
      * Represents an instance of WriteForAFile
      */
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     /**
      * Constructor of the class
@@ -45,7 +45,11 @@ public class US207Handler {
     public US207Handler(String mmsiCode, int year) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
-        initialize(mmsiCode, year);
+        try {
+            initialize(mmsiCode, year);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -55,9 +59,10 @@ public class US207Handler {
      * @throws SQLException
      * @throws IOException
      */
-    private void initialize(String mmsiCode, int year) throws IOException {
+    private void initialize(String mmsiCode, int year) throws IOException, SQLException {
+        CallableStatement statement = null;
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{call US207(?, ?, ?, ?)}");
+            statement = databaseConnection.prepareCall("{call US207(?, ?, ?, ?)}");
             statement.registerOutParameter(3, Types.INTEGER);
             statement.registerOutParameter(4, Types.FLOAT);
 
@@ -70,10 +75,12 @@ public class US207Handler {
             this.meanContainerPerCargoManifest = statement.getFloat(4);
 
             writeForAFile.writeForAFile(toString(), "US207_" + mmsiCode, new File(".\\outputs\\US207"));
-            statement.close();
+
         }catch (Exception e){
             writeForAFile.writeForAFile("Something went wrong", "US207_" + mmsiCode, new File(".\\outputs\\US207"));
 
+        }finally {
+            statement.close();
         }
 
     }

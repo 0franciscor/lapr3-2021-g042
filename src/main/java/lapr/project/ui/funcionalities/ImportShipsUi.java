@@ -5,7 +5,7 @@ import lapr.project.ui.Utils;
 
 public class ImportShipsUi implements Runnable{
 
-    private ImportShipController importShipController;
+    private final ImportShipController importShipController;
 
     public ImportShipsUi(){
         importShipController = new ImportShipController();

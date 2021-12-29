@@ -2,30 +2,30 @@ package lapr.project.data;
 
 import lapr.project.controller.App;
 import lapr.project.utils.WriteForAFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-import java.util.Date;
 
 public class US209Handler {
 
-    private Connection databaseConnection;
+    private final Connection databaseConnection;
     private float occupancyRate;
-
-
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     public US209Handler(String mmsiCode, Timestamp actualDate) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
-        initialize(mmsiCode, actualDate);
+        try {
+            initialize(mmsiCode, actualDate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void initialize(String mmsiCode, Timestamp actualDate) throws IOException {
-
+    private void initialize(String mmsiCode, Timestamp actualDate) throws IOException, SQLException {
+        CallableStatement statement = null;
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{CALL US209(?, ?, ?)}");
+            statement = databaseConnection.prepareCall("{CALL US209(?, ?, ?)}");
             statement.registerOutParameter(3, Types.FLOAT);
 
             statement.setString(1, mmsiCode);
@@ -36,9 +36,11 @@ public class US209Handler {
             this.occupancyRate = statement.getFloat(3);
 
             writeForAFile.writeForAFile(toString(), "US209_" + mmsiCode, new File(".\\outputs\\US209"));
-            statement.close();
+
         }catch (Exception e){
             writeForAFile.writeForAFile("Something went wrong", "US209_" + mmsiCode, new File(".\\outputs\\US209"));
+        }finally {
+            statement.close();
         }
 
     }

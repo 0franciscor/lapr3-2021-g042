@@ -24,23 +24,24 @@ public class UserStore {
     public boolean createUser(String username, String password, String roleName) throws SQLException {
         if (userExist(username,password)) return false;
         else{
-            connectionDatabase= App.getInstance().getDatabaseConnection().getConnection();
-            String sqlCommand = "insert into UserSystem(username, password, roleId) values(?, ?, ?)";
+            PreparedStatement preparedStatement = null;
+            try {
+                connectionDatabase= App.getInstance().getDatabaseConnection().getConnection();
+                String sqlCommand = "insert into UserSystem(username, password, roleId) values(?, ?, ?)";
 
-            PreparedStatement preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
+                preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
 
-            String hashedPassword= hashPassword(password);
+                String hashedPassword= hashPassword(password);
 
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, hashedPassword);
-            preparedStatement.setInt(3, roleStore.getRoleId(roleName));
+                preparedStatement.setString(1, username);
+                preparedStatement.setString(2, hashedPassword);
+                preparedStatement.setInt(3, roleStore.getRoleId(roleName));
 
-            try{
-                preparedStatement.executeUpdate();
-            }catch (SQLException e){
+            } catch (SQLException e){
                 e.printStackTrace();
             }
             finally {
+                assert preparedStatement != null;
                 preparedStatement.close();
             }
 
@@ -49,34 +50,42 @@ public class UserStore {
     }
 
     private boolean userExist(String userName, String password) throws SQLException {
-
-
-        connectionDatabase= App.getInstance().getDatabaseConnection().getConnection();
         boolean isUserOnDatabase;
-        String hashedPassword="";
-        String sqlCommand = "select password from userSystem where username = ?";
+        PreparedStatement preparedStatement = null;
+        ResultSet userResultSet = null;
+        try {
+            connectionDatabase= App.getInstance().getDatabaseConnection().getConnection();
 
-        PreparedStatement preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
+            String hashedPassword="";
+            String sqlCommand = "select password from userSystem where username = ?";
 
-        preparedStatement.setString(1, userName);
+            preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
 
-        try (ResultSet userResultSet = preparedStatement.executeQuery()) {
-            userResultSet.next();
+            preparedStatement.setString(1, userName);
 
-            hashedPassword= userResultSet.getString("password");
+            try {
+                userResultSet = preparedStatement.executeQuery();
+                userResultSet.next();
+
+                hashedPassword= userResultSet.getString("password");
+
+                isUserOnDatabase = checkPass(password,hashedPassword);
 
 
-            isUserOnDatabase = checkPass(password,hashedPassword);
+            }catch (Exception e){
+                isUserOnDatabase=false;
+                e.printStackTrace();
+            }
+            finally {
+                assert userResultSet != null;
+                userResultSet.close();
 
-
-            userResultSet.close();
-        }catch (Exception e){
-            isUserOnDatabase=false;
-            e.printStackTrace();
-        }
-        finally {
+            }
+        }finally {
+            assert preparedStatement != null;
             preparedStatement.close();
         }
+
         return isUserOnDatabase;
     }
 
@@ -85,31 +94,40 @@ public class UserStore {
 
 
         if(userExist(username,password)) {
-            connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
+
             String userNames;
             String passwords;
             int roleId;
+            PreparedStatement preparedStatement = null;
+            ResultSet userResultSet = null;
 
+            try {
+                connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
 
-            String sqlCommand = "select username,password,roleId from usersystem where username = ?";
+                String sqlCommand = "select username,password,roleId from usersystem where username = ?";
 
-            PreparedStatement preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
+                preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
 
-            preparedStatement.setString(1, username);
+                preparedStatement.setString(1, username);
 
-            try (ResultSet userResultSet = preparedStatement.executeQuery()) {
-                userResultSet.next();
-                userNames = userResultSet.getString("username");
-                passwords = userResultSet.getString("password");
-                roleId = userResultSet.getInt("roleId");
+                try {
+                    userResultSet = preparedStatement.executeQuery();
+                    userResultSet.next();
+                    userNames = userResultSet.getString("username");
+                    passwords = userResultSet.getString("password");
+                    roleId = userResultSet.getInt("roleId");
 
+                } catch (SQLException e) {
+                    System.out.println(e.getErrorCode());
+                    e.printStackTrace();
+                    return null;
+                } finally {
+                    assert userResultSet != null;
+                    userResultSet.close();
 
-                userResultSet.close();
-            } catch (SQLException e) {
-                System.out.println(e.getErrorCode());
-                e.printStackTrace();
-                return null;
-            } finally {
+                }
+            }finally {
+                assert preparedStatement != null;
                 preparedStatement.close();
             }
 

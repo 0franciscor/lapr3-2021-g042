@@ -23,7 +23,7 @@ public class App {
      */
     private final Company company;
 
-    private  AuthFacade authFacade;
+    private  final AuthFacade authFacade;
 
     /**
      * Represents the App's connection to the database
@@ -67,14 +67,14 @@ public class App {
      * @return the database connection
      */
     private DatabaseConnection initializeConnection(){
-        DatabaseConnection databaseConnection = null;
+        DatabaseConnection databaseConnection1 = null;
         try {
-            databaseConnection = ConnectionFactory.getInstance()
+            databaseConnection1 = ConnectionFactory.getInstance()
                     .getDatabaseConnection();
         } catch (IOException exception) {
-            System.out.println("There was an error when initializing the database connection.");
+            exception.printStackTrace();
         }
-        return databaseConnection;
+        return databaseConnection1;
     }
 
     /**

@@ -144,19 +144,18 @@ public class SendToDatabase implements Persistable {
 
         String sqlCommand = "select * from ship where mmsiCode = ?";
 
-        PreparedStatement getShipsPreparedStatement =
-                connection.prepareStatement(sqlCommand);
+        PreparedStatement getShipsPreparedStatement = null;
 
-        getShipsPreparedStatement.setString(1, ship.getMMSI());
-
-        try (ResultSet shipsResultSet = getShipsPreparedStatement.executeQuery()) {
-
+        try {
+            getShipsPreparedStatement = connection.prepareStatement(sqlCommand);
+            getShipsPreparedStatement.setString(1, ship.getMMSI());
+            ResultSet shipsResultSet = getShipsPreparedStatement.executeQuery();
             isShipOnDatabase = shipsResultSet.next();
-            shipsResultSet.close();
-
-        } finally {
+        }finally {
+            assert !(null == getShipsPreparedStatement);
             getShipsPreparedStatement.close();
         }
+
         return isShipOnDatabase;
     }
 
@@ -199,31 +198,34 @@ public class SendToDatabase implements Persistable {
      */
     private void executeShipStatementOnDatabase(DatabaseConnection databaseConnection, Ship ship, String sqlCommand)
             throws SQLException {
-
-        Connection connection = databaseConnection.getConnection();
-
-        PreparedStatement saveShipPreparedStatement = connection.prepareStatement(sqlCommand);
-
-        saveShipPreparedStatement.setString(1, ship.getShipID());
-        saveShipPreparedStatement.setInt(2, ship.getEnergyGenerators());
-        saveShipPreparedStatement.setFloat(3, ship.getGeneratorOutput());
-        saveShipPreparedStatement.setString(4, ship.getCallSign());
-        saveShipPreparedStatement.setFloat(5, ship.getDraft());
-        saveShipPreparedStatement.setString(6, ship.getName());
-        saveShipPreparedStatement.setInt(7, ship.getVesselType());
-        saveShipPreparedStatement.setFloat(8, ship.getLength());
-        saveShipPreparedStatement.setFloat(9, ship.getWidth());
-        saveShipPreparedStatement.setString(10, ship.getCargo());
-        saveShipPreparedStatement.setFloat(11, ship.getCapacity());
-
+        PreparedStatement saveShipPreparedStatement = null;
         try {
+            Connection connection = databaseConnection.getConnection();
+
+             saveShipPreparedStatement = connection.prepareStatement(sqlCommand);
+
+            saveShipPreparedStatement.setString(1, ship.getShipID());
+            saveShipPreparedStatement.setInt(2, ship.getEnergyGenerators());
+            saveShipPreparedStatement.setFloat(3, ship.getGeneratorOutput());
+            saveShipPreparedStatement.setString(4, ship.getCallSign());
+            saveShipPreparedStatement.setFloat(5, ship.getDraft());
+            saveShipPreparedStatement.setString(6, ship.getName());
+            saveShipPreparedStatement.setInt(7, ship.getVesselType());
+            saveShipPreparedStatement.setFloat(8, ship.getLength());
+            saveShipPreparedStatement.setFloat(9, ship.getWidth());
+            saveShipPreparedStatement.setString(10, ship.getCargo());
+            saveShipPreparedStatement.setFloat(11, ship.getCapacity());
             saveShipPreparedStatement.executeUpdate();
-        } catch (SQLException e) {
+
+        }catch (SQLException e){
             System.out.println("There was an error when importing the Ship with the " + ship.getMMSI() + " MMSI code.");
             databaseConnection.registerError(e);
-        } finally {
+        }finally {
+            assert saveShipPreparedStatement != null;
             saveShipPreparedStatement.close();
         }
+
+
     }
 
     //################################# POSITION RELATED #####################################
@@ -273,24 +275,22 @@ public class SendToDatabase implements Persistable {
      */
     private boolean isLocationOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation)
             throws SQLException {
-
-        Connection connection = databaseConnection.getConnection();
-
+        PreparedStatement getShipLocationPreparedStatement = null;
         boolean isShipOnDatabase;
+        try {
+            Connection connection = databaseConnection.getConnection();
 
-        String sqlCommand = "select * from ShipLocation where shipMmsiCode = ? and baseDateTime = ?";
+            String sqlCommand = "select * from ShipLocation where shipMmsiCode = ? and baseDateTime = ?";
 
-        PreparedStatement getShipLocationPreparedStatement = connection.prepareStatement(sqlCommand);
+            getShipLocationPreparedStatement = connection.prepareStatement(sqlCommand);
 
-        getShipLocationPreparedStatement.setString(1, shipLocation.getMMSI());
-        getShipLocationPreparedStatement.setTimestamp(2, new Timestamp(shipLocation.getMessageTime().getTime()));
-
-        try (ResultSet shipLocationResultSet = getShipLocationPreparedStatement.executeQuery()) {
-
+            getShipLocationPreparedStatement.setString(1, shipLocation.getMMSI());
+            getShipLocationPreparedStatement.setTimestamp(2, new Timestamp(shipLocation.getMessageTime().getTime()));
+            ResultSet shipLocationResultSet = getShipLocationPreparedStatement.executeQuery();
             isShipOnDatabase = shipLocationResultSet.next();
-            shipLocationResultSet.close();
 
         } finally {
+            assert getShipLocationPreparedStatement != null;
             getShipLocationPreparedStatement.close();
         }
         return isShipOnDatabase;
@@ -336,40 +336,43 @@ public class SendToDatabase implements Persistable {
      */
     private void executeShipLocationStatementOnDatabase(DatabaseConnection databaseConnection, ShipLocation shipLocation, String sqlCommand, boolean type)
             throws SQLException {
-
-        Connection connection = databaseConnection.getConnection();
-        PreparedStatement getShipLocationPreparedStatement = connection.prepareStatement(sqlCommand);
-
-        if (type) {
-            getShipLocationPreparedStatement.setString(1, shipLocation.getMMSI());
-            getShipLocationPreparedStatement.setTimestamp(2, new Timestamp(shipLocation.getMessageTime().getTime()));
-            getShipLocationPreparedStatement.setString(3, shipLocation.getLatitude());
-            getShipLocationPreparedStatement.setString(4, shipLocation.getLongitude());
-            getShipLocationPreparedStatement.setFloat(5, shipLocation.getSOG());
-            getShipLocationPreparedStatement.setFloat(6, shipLocation.getCOG());
-            getShipLocationPreparedStatement.setString(7, shipLocation.getHeading());
-            getShipLocationPreparedStatement.setString(8, shipLocation.getPosition());
-            getShipLocationPreparedStatement.setString(9, shipLocation.getTransceiverClass());
-        } else {
-            getShipLocationPreparedStatement.setString(1, shipLocation.getLatitude());
-            getShipLocationPreparedStatement.setString(2, shipLocation.getLongitude());
-            getShipLocationPreparedStatement.setFloat(3, shipLocation.getSOG());
-            getShipLocationPreparedStatement.setFloat(4, shipLocation.getCOG());
-            getShipLocationPreparedStatement.setString(5, shipLocation.getHeading());
-            getShipLocationPreparedStatement.setString(6, shipLocation.getPosition());
-            getShipLocationPreparedStatement.setString(7, shipLocation.getTransceiverClass());
-            getShipLocationPreparedStatement.setString(8, shipLocation.getMMSI());
-            getShipLocationPreparedStatement.setTimestamp(9, new Timestamp(shipLocation.getMessageTime().getTime()));
-        }
-
+        PreparedStatement getShipLocationPreparedStatement = null;
         try {
+            Connection connection = databaseConnection.getConnection();
+            getShipLocationPreparedStatement = connection.prepareStatement(sqlCommand);
+
+            if (type) {
+                getShipLocationPreparedStatement.setString(1, shipLocation.getMMSI());
+                getShipLocationPreparedStatement.setTimestamp(2, new Timestamp(shipLocation.getMessageTime().getTime()));
+                getShipLocationPreparedStatement.setString(3, shipLocation.getLatitude());
+                getShipLocationPreparedStatement.setString(4, shipLocation.getLongitude());
+                getShipLocationPreparedStatement.setFloat(5, shipLocation.getSOG());
+                getShipLocationPreparedStatement.setFloat(6, shipLocation.getCOG());
+                getShipLocationPreparedStatement.setString(7, shipLocation.getHeading());
+                getShipLocationPreparedStatement.setString(8, shipLocation.getPosition());
+                getShipLocationPreparedStatement.setString(9, shipLocation.getTransceiverClass());
+            } else {
+                getShipLocationPreparedStatement.setString(1, shipLocation.getLatitude());
+                getShipLocationPreparedStatement.setString(2, shipLocation.getLongitude());
+                getShipLocationPreparedStatement.setFloat(3, shipLocation.getSOG());
+                getShipLocationPreparedStatement.setFloat(4, shipLocation.getCOG());
+                getShipLocationPreparedStatement.setString(5, shipLocation.getHeading());
+                getShipLocationPreparedStatement.setString(6, shipLocation.getPosition());
+                getShipLocationPreparedStatement.setString(7, shipLocation.getTransceiverClass());
+                getShipLocationPreparedStatement.setString(8, shipLocation.getMMSI());
+                getShipLocationPreparedStatement.setTimestamp(9, new Timestamp(shipLocation.getMessageTime().getTime()));
+
+            }
             getShipLocationPreparedStatement.executeUpdate();
-        } catch (SQLException e) {
+
+        }catch (SQLException e){
             System.out.println("There was an error related to the ShipLocation with the " + shipLocation.getMMSI() + " MMSI code.");
             databaseConnection.registerError(e);
         } finally {
+            assert getShipLocationPreparedStatement != null;
             getShipLocationPreparedStatement.close();
         }
+
     }
 
     //################################# Port Related ###########################################
@@ -426,25 +429,30 @@ public class SendToDatabase implements Persistable {
     private boolean isPortOnDatabase(DatabaseConnection databaseConnection, Ports port)
             throws SQLException {
 
-        Connection connection = databaseConnection.getConnection();
-
         boolean isPortOnDatabase;
+        PreparedStatement getPortsPreparedStatement = null;
+        ResultSet portsResultSet = null;
 
-        String sqlCommand = "select * from ports where id = ?";
+        try {
+            Connection connection = databaseConnection.getConnection();
 
-        PreparedStatement getPortsPreparedStatement =
-                connection.prepareStatement(sqlCommand);
+            String sqlCommand = "select * from ports where id = ?";
 
-        getPortsPreparedStatement.setInt(1, port.getCode());
+            getPortsPreparedStatement = connection.prepareStatement(sqlCommand);
 
-        try (ResultSet portsResultSet = getPortsPreparedStatement.executeQuery()) {
+            getPortsPreparedStatement.setInt(1, port.getCode());
 
+            portsResultSet = getPortsPreparedStatement.executeQuery();
             isPortOnDatabase = portsResultSet.next();
-            portsResultSet.close();
 
-        } finally {
+
+
+        }finally {
+            assert portsResultSet != null;
+            portsResultSet.close();
             getPortsPreparedStatement.close();
         }
+
         return isPortOnDatabase;
     }
 

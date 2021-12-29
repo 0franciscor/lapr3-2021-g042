@@ -11,20 +11,25 @@ import java.sql.Types;
 
 public class US205Handler {
 
-    private Connection databaseConnection;
+    private final Connection databaseConnection;
     private String listOfContainers;
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
-    public US205Handler(String mmsiCode) throws IOException {
+    public US205Handler(String mmsiCode) throws IOException{
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
-        initialize(mmsiCode);
+        try {
+            initialize(mmsiCode);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void initialize(String mmsiCode) throws IOException {
-
+    private void initialize(String mmsiCode) throws IOException, SQLException {
+        CallableStatement statement = null;
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{call US205(?, ?)}");
+            statement = databaseConnection.prepareCall("{call US205(?, ?)}");
+
             statement.registerOutParameter(2, Types.VARCHAR);
 
             statement.setString(1, mmsiCode);
@@ -37,6 +42,8 @@ public class US205Handler {
             statement.close();
         }catch (Exception e){
             writeForAFile.writeForAFile("Something went wrong", "US205_" + mmsiCode, new File(".\\outputs\\US205"));
+        }finally {
+            statement.close();
         }
 
     }

@@ -19,65 +19,97 @@ public class RoleStore {
     }
 
     public boolean roleExist(int id, String description) throws SQLException {
-        connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
 
-        boolean isRoleOnDatabase;
+        boolean isRoleOnDatabase = false;
+        ResultSet userResultSet = null;
+        PreparedStatement preparedStatement = null;
 
-        String sqlCommand = "select id from Role where id = ? and designation = ?";
+        try {
+            connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
 
-        PreparedStatement preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
+            String sqlCommand = "select id from Role where id = ? and designation = ?";
 
-        preparedStatement.setInt(1, id);
-        preparedStatement.setString(2, description);
+            preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
 
-        try (ResultSet userResultSet = preparedStatement.executeQuery()) {
-            isRoleOnDatabase = userResultSet.next();
-            userResultSet.close();
-        } finally {
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, description);
+
+            try {
+                userResultSet = preparedStatement.executeQuery();
+                isRoleOnDatabase = userResultSet.next();
+            }catch (SQLException e){
+                e.printStackTrace();
+            } finally {
+                assert userResultSet != null;
+                userResultSet.close();
+            }
+        }finally {
+            assert preparedStatement != null;
             preparedStatement.close();
         }
+
         return isRoleOnDatabase;
     }
 
     public int getRoleId(String roleName) throws SQLException {
-        connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
-
+        PreparedStatement preparedStatement = null;
+        ResultSet userResultSet = null;
         int roleId;
+        try {
+            connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
 
-        String sqlCommand = "select id from Role where designation = ?";
+            String sqlCommand = "select id from Role where designation = ?";
 
-        PreparedStatement preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
+            preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
 
-        preparedStatement.setString(1, roleName);
+            preparedStatement.setString(1, roleName);
 
-        try (ResultSet userResultSet = preparedStatement.executeQuery()) {
-            userResultSet.next();
-            roleId = userResultSet.getInt(1);
-            userResultSet.close();
-        } finally {
+            try {
+                userResultSet = preparedStatement.executeQuery();
+                userResultSet.next();
+                roleId = userResultSet.getInt(1);
+
+            } finally {
+                assert userResultSet != null;
+                userResultSet.close();
+            }
+        }finally {
+            assert preparedStatement != null;
             preparedStatement.close();
         }
+
         return roleId;
     }
 
     public String getRoleName(int id) throws SQLException {
-        connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
+        String roleName = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet userResultSet = null;
 
-        String roleName;
+        try {
+            connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
 
-        String sqlCommand = "select designation from Role where id = ?";
+            String sqlCommand = "select designation from Role where id = ?";
 
-        PreparedStatement preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
+            preparedStatement = connectionDatabase.prepareStatement(sqlCommand);
 
-        preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1,id);
 
-        try (ResultSet userResultSet = preparedStatement.executeQuery()) {
-            userResultSet.next();
-            roleName = userResultSet.getString("designation");
-            userResultSet.close();
-        } finally {
+            try {
+                userResultSet = preparedStatement.executeQuery();
+                userResultSet.next();
+                roleName = userResultSet.getString("designation");
+
+            } finally {
+                assert userResultSet != null;
+                userResultSet.close();
+
+            }
+        }finally {
+            assert preparedStatement != null;
             preparedStatement.close();
         }
+
         return roleName;
     }
 

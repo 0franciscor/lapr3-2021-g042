@@ -13,22 +13,24 @@ import java.sql.Types;
 
 public class US208Handler {
 
-    private Connection databaseConnection;
+    private final Connection databaseConnection;
     private float ratio;
-
-
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     public US208Handler(int cargoManifestId) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
-        initialize(cargoManifestId);
+        try {
+            initialize(cargoManifestId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void initialize(int cargoManifestId) throws IOException {
-
+    private void initialize(int cargoManifestId) throws IOException, SQLException {
+        CallableStatement statement = null;
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{call US208(?, ?)}");
+             statement = databaseConnection.prepareCall("{call US208(?, ?)}");
             statement.registerOutParameter(2, Types.FLOAT);
 
             statement.setInt(1, cargoManifestId);
@@ -38,9 +40,11 @@ public class US208Handler {
             this.ratio = statement.getFloat(2);
 
             writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
-            statement.close();
         }catch (Exception e){
             writeForAFile.writeForAFile("Something went wrong", "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
+        }finally {
+            statement.close();
+
         }
 
     }

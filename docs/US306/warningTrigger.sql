@@ -111,11 +111,15 @@ FOR EACH ROW
         WHERE id=dest;
 
         ocRate:=((numerator+total+1)/cap)*100;
-
-        UPDATE Warehouse
-        SET occupancy = ocRate
-        WHERE id = dest;
-
+        
+        IF ocRate <= 100 THEN 
+            UPDATE Warehouse
+            SET occupancy = ocRate
+            WHERE id = dest;
+        ELSE
+               raise_application_error(-20000, 'The warehouse with ID ' || dest ||' it is fully occupy' );
+        END IF;
+        
     END IF;
 
 END;

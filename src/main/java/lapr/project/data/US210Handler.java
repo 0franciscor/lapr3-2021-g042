@@ -13,20 +13,25 @@ import java.util.Date;
 
 public class US210Handler {
 
-    private Connection databaseConnection;
+    private final Connection databaseConnection;
     private String information;
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
 
     public US210Handler() throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
-        initialize();
+        try {
+            initialize();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void initialize() throws IOException {
+    private void initialize() throws IOException, SQLException {
+        CallableStatement statement = null;
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{call US210(?)}");
+            statement = databaseConnection.prepareCall("{call US210(?)}");
             statement.registerOutParameter(1, Types.LONGNVARCHAR);
 
 
@@ -35,9 +40,11 @@ public class US210Handler {
             this.information= statement.getString(1);
 
             writeForAFile.writeForAFile(information, "US210" , new File(".\\outputs\\US210"));
-            statement.close();
+
         }catch (Exception e){
             writeForAFile.writeForAFile("Something went wrong", "US210" , new File(".\\outputs\\US210"));
+        }finally {
+            statement.close();
         }
 
     }

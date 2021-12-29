@@ -14,7 +14,7 @@ public class US204Handler {
 
     private Connection databaseConnection;
 
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     private String containerLocation;
 

@@ -12,30 +12,36 @@ import java.sql.Types;
 
 public class US306Handler {
 
-    private Connection databaseConnection;
+    private final Connection databaseConnection;
     private String informationOutput;
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     public US306Handler() throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
-        initialize();
+        try {
+            initialize();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void initialize() throws IOException {
-
+    private void initialize() throws IOException, SQLException {
+        CallableStatement statement = null;
         try {
-            CallableStatement statement = databaseConnection.prepareCall("{ ? = call getInformationAboutAuditTrails() }");
+            statement = databaseConnection.prepareCall("{call getInformationAboutAuditTrails(?) }");
             statement.registerOutParameter(1, Types.LONGNVARCHAR);
             statement.execute();
 
             this.informationOutput = statement.getNString(1);
 
             writeForAFile.writeForAFile(informationOutput, "US306_Containers_Warehouses", new File(".\\outputs\\US306"));
-            statement.close();
+
         }catch (SQLException e){
             e.printStackTrace();
             writeForAFile.writeForAFile("Something went wrong", "US306_Containers_Warehouses", new File(".\\outputs\\US306"));
+        }finally {
+            statement.close();
         }
 
     }

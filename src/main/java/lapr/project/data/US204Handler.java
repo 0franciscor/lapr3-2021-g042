@@ -2,7 +2,6 @@ package lapr.project.data;
 
 import lapr.project.controller.App;
 import lapr.project.utils.WriteForAFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.CallableStatement;

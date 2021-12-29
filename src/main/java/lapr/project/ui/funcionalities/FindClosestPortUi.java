@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 
 public class FindClosestPortUi implements Runnable {
 
-    private FindClosestPortController findClosestPortController;
+    private final FindClosestPortController findClosestPortController;
 
     public FindClosestPortUi(){
         findClosestPortController = new FindClosestPortController();

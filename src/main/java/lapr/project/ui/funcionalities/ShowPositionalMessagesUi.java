@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 
 public class ShowPositionalMessagesUi implements Runnable {
 
-    private ShowPositionalMessagesController showPositionalMessagesController;
+    private final ShowPositionalMessagesController showPositionalMessagesController;
 
     public ShowPositionalMessagesUi(){
 

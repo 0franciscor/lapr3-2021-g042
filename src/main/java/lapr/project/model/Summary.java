@@ -174,7 +174,7 @@ public class Summary {
      * @return the date of start of a journey
      */
     public Date getStartBaseDate() {
-        return startBaseDate;
+        return new Date(String.valueOf(startBaseDate));
     }
 
     /**
@@ -182,7 +182,7 @@ public class Summary {
      * @return the date of arrival in port
      */
     public Date getEndBaseDate() {
-        return endBaseDate;
+        return new Date(String.valueOf(endBaseDate));
     }
 
     /**

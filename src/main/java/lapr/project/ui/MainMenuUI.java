@@ -11,13 +11,9 @@ import java.util.List;
  */
 public class MainMenuUI {
 
-    public MainMenuUI()
-    {
-    }
-
     public void run() throws IOException
     {
-        List<MenuItem> options = new ArrayList<MenuItem>();
+        List<MenuItem> options = new ArrayList<>();
         options.add(new MenuItem("Do Login", new AuthUI()));
 
         int option = 0;

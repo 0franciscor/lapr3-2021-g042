@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class US204Ui implements Runnable {
 
-    private US204Handler us204Handler;
+    private final US204Handler us204Handler;
 
     public US204Ui(){
         us204Handler = new US204Handler();

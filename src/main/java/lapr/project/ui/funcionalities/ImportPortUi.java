@@ -5,7 +5,7 @@ import lapr.project.ui.Utils;
 
 public class ImportPortUi implements Runnable {
 
-    private ImportPortController importPortController;
+    private final ImportPortController importPortController;
 
     public ImportPortUi(){
         importPortController = new ImportPortController();

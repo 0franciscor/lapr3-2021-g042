@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchDetailsUi implements Runnable{
-    private SearchDetailsController searchDetailsController;
+    private final SearchDetailsController searchDetailsController;
 
     public SearchDetailsUi(){
         searchDetailsController = new SearchDetailsController();

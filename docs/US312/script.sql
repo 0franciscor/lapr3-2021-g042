@@ -12,13 +12,15 @@ IS
     v_arrivalDate_aux timestamp;
     v_phases int;
     v_OwnerNumber int;
+    idContainer int;
 
     Cursor cargos IS
         Select CARGOMANIFESTLOADID
         from CargoManifestContainer
         where CONTAINERNUMBERID=v_numberId;
         
-begin 
+begin
+
    open cargos;
    LOOP 
    fetch cargos into v_idCargoManifest;
@@ -96,7 +98,7 @@ begin
    end if;
    close cargos;
     
-exception
-    when no_data_found then
-        return('Error 10: The id = ' ||(v_numberId)||  ' of the container is not valid.');
-end;
+    exception
+        when no_data_found then
+            return('Error 10: The id = ' ||(v_numberId)||  ' of the container is not valid.');
+    end;

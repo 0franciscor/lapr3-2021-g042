@@ -1,14 +1,8 @@
-mainCompiled: importFile.o main.o fillArray.o cleanArray.o
-	gcc -g -Wall importFile.o main.o fillArray.o cleanArray.o -o main
+mainCompiled: main.o zeroArray.o
+	gcc -g -Wall  main.o zeroArray.o -o main
 
-cleanArray.o: cleanArray.c
-	gcc -g -Wall -c cleanArray.c -o cleanArray.o
-
-fillArray.o: fillArray.c
-	gcc -g -Wall -c fillArray.c -o fillArray.o
-
-importFile.o: importFile.c
-	gcc -g -Wall -c importFile.c -o importFile.o
+zeroArray.o: zeroArray.c
+	gcc -g -c -Wall zeroArray.c -o zeroArray.o
 
 main.o: main.c
 	gcc -g -Wall -c main.c -o main.o
@@ -18,3 +12,6 @@ clean:
 
 run: mainCompiled
 	./main
+
+debug: main
+	gdb -tui main

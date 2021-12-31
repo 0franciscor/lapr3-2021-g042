@@ -53,11 +53,4 @@ public class Ports extends Place{
         Ports ports = (Ports) o;
         return ports.getCode() == this.getCode() && ports.getLatitude() == this.getLatitude() && ports.getLongitude() == this.getLongitude();
     }
-
-    /**
-     * @return a String representing the Port
-     */
-    public String toString(){
-        return String.format("Port %s with code: %d", portName, code);
-    }
 }

@@ -65,3 +65,4 @@ INSERT INTO PlaceLocation(latitude,longitude) VALUES (-0.216666667,-78.5);
 INSERT INTO PlaceLocation(latitude,longitude) VALUES (4.6,-74.083333);
 INSERT INTO PlaceLocation(latitude,longitude) VALUES (5.833333333,-55.166667);
 INSERT INTO PlaceLocation(latitude,longitude) VALUES (6.8,-58.15);
+INSERT INTO PlaceLocation(latitude,longitude) VALUES (10.48333333,-66.866667);

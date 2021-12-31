@@ -43,4 +43,12 @@ class CapitalTest {
         double longitude = capitalTest.getLongitude();
         assertEquals(-9.14, longitude, 0);
     }
+
+    @Test
+    void toStringTest(){
+        Capital capital = new Capital("Lisboa", new Country("Europe", "Portugal"), "53", "53");
+        String result = capital.toString();
+
+        assertEquals("Capital Lisboa belongs to Portugal.", result);
+    }
 }

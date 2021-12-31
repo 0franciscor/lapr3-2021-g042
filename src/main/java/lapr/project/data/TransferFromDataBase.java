@@ -45,6 +45,7 @@ public class TransferFromDataBase {
         try {
             importPortsFromDatabase(databaseConnection);
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Error when importing Ports from the database.");
         }
     }
@@ -207,6 +208,8 @@ public class TransferFromDataBase {
         PreparedStatement getPortsPreparedStatement =
                 connection.prepareStatement(sqlCommand);
 
+        Country country = null;
+
         try (ResultSet shipsResultSet = getPortsPreparedStatement.executeQuery()) {
 
             isPortOnDatabase = shipsResultSet.next();
@@ -214,11 +217,15 @@ public class TransferFromDataBase {
             while (isPortOnDatabase) {
                 int code = shipsResultSet.getInt(1);
                 String portName = shipsResultSet.getNString(2);
-                double latitude = Double.parseDouble(shipsResultSet.getNString(3));
-                double longitude = Double.parseDouble(shipsResultSet.getNString(4));
+
+                String latitudeString = shipsResultSet.getNString(3);
+                String longitudeString = shipsResultSet.getNString(4);
+                double latitude = Double.parseDouble(latitudeString.replace(",", "."));
+                double longitude = Double.parseDouble(longitudeString.replace(",", "."));
+
                 PlaceLocation placeLocation = new PlaceLocation(latitude, longitude);
 
-                Country country = importCountryForPort(databaseConnection, placeLocation);
+                country = importCountryForPort(databaseConnection, latitudeString, longitudeString);
 
                 Ports port = portStore.createPort(country, code, portName, placeLocation);
 
@@ -226,7 +233,6 @@ public class TransferFromDataBase {
                 isPortOnDatabase = shipsResultSet.next();
             }
             shipsResultSet.close();
-
         } finally {
             getPortsPreparedStatement.close();
         }
@@ -236,14 +242,15 @@ public class TransferFromDataBase {
      * Method which has the responsibility of retrieving the matching Country of a port.
      *
      * @param databaseConnection to the database
-     * @param placeLocation      of a port
+     * @param latitude of a port
+     * @param longitude of a port
      * @return country that identifies a port
      * @throws SQLException that may occur within the database
      */
-    private Country importCountryForPort(DatabaseConnection databaseConnection, PlaceLocation placeLocation) throws SQLException {
+    private Country importCountryForPort(DatabaseConnection databaseConnection, String latitude, String longitude) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
-        Country country;
+        Country country = null;
 
         CountryStore countryStore = App.getInstance().getCompany().getCountryStr();
 
@@ -252,26 +259,27 @@ public class TransferFromDataBase {
         PreparedStatement getCountriesPreparedStatement =
                 connection.prepareStatement(sqlCommand);
 
-        getCountriesPreparedStatement.setString(1, String.format("%.2f", placeLocation.getLatitude()));
-        getCountriesPreparedStatement.setString(2, String.format("%.2f", placeLocation.getLongitude()));
+        getCountriesPreparedStatement.setString(1, latitude);
+        getCountriesPreparedStatement.setString(2, longitude);
 
         try (ResultSet countriesResultSet = getCountriesPreparedStatement.executeQuery()) {
-            countriesResultSet.next();
-            String countryName = countriesResultSet.getNString(1);
+            boolean existsCountry = countriesResultSet.next();
+            if(existsCountry) {
+                String countryName = countriesResultSet.getNString(1);
 
-            sqlCommand = "select * from Country where countryName = ?";
-            getCountriesPreparedStatement = connection.prepareStatement(sqlCommand);
-            getCountriesPreparedStatement.setString(1, countryName);
+                sqlCommand = "select * from Country where countryName = ?";
+                getCountriesPreparedStatement = connection.prepareStatement(sqlCommand);
+                getCountriesPreparedStatement.setString(1, countryName);
 
-
-            try (ResultSet countryResultSet = getCountriesPreparedStatement.executeQuery()) {
-                countryResultSet.next();
-                String continent = countryResultSet.getNString(2);
-                country = countryStore.createCountry(continent, countryName);
-                countryStore.saveCountry(country);
-                countryResultSet.close();
+                try (ResultSet countryResultSet = getCountriesPreparedStatement.executeQuery()) {
+                    countryResultSet.next();
+                    String continent = countryResultSet.getNString(2);
+                    country = countryStore.createCountry(continent, countryName);
+                    countryStore.saveCountry(country);
+                    countryResultSet.close();
+                }
+                countriesResultSet.close();
             }
-            countriesResultSet.close();
 
         } finally {
             getCountriesPreparedStatement.close();

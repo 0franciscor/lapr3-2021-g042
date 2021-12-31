@@ -76,4 +76,13 @@ class PortsTest {
         Ports port3 = new Ports(country3,10355,"Aarhus",placeLocation3);
         assertNotEquals(port,port3);
     }
+
+    @Test
+    void toStringTest(){
+       Ports ports = new Ports(new Country("Europe", "Portugal"),12345, "Leixoes", new PlaceLocation(53, 53));
+       String result = ports.toString();
+
+       assertEquals("Port Leixoes with code: 12345", result);
+
+    }
 }

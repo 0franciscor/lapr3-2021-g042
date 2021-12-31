@@ -31,4 +31,11 @@ public class Capital extends Place{
     public String getName(){
         return name;
     }
+
+    /**
+     * @return String representing the Capital Object
+     */
+    public String toString(){
+        return String.format("Capital %s belongs to %s.", name, getCountryName());
+    }
 }

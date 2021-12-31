@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "zeroArray.h"
+#include "printArray.h"
 
 int main(){
 
@@ -31,10 +32,7 @@ int main(){
 
     fclose(containerFile);
 
-    for(int i = 0; i < 18; i++)
-        for(int j = 0; j < 26; j++)
-            for(int k = 0; k < 10; k++)
-                printf("x: %d y: %d z: %d tem contentor: %d\n", i, j, k, shipAllocation[i][j][k]);
+    printArray(maxX,maxY,maxZ, shipAllocation);
             
     return 0;
 }

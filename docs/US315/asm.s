@@ -22,7 +22,7 @@ isContainerThere:
     jg noContainer
 
     movl maxZ(%rip), %r8d
-    cmpl %eax, %edx
+    cmpl %r8d, %edx
     jg noContainer
 
 
@@ -38,11 +38,12 @@ isContainerThere:
 
     imull $4, %edi # bytes a adicionar
     
-    addq %rdi, %rcx
+    movq %rcx, %rax
+    addq %rdi, %rax
 
     # Comparacao
 
-    cmpl $0, (%rcx)
+    cmpl $0, (%rax)
     je noContainer
     jne hasContainer
 

@@ -8,7 +8,7 @@ int maxX, maxY, maxZ;
 
 int main(){
 
-    char *fileName = "containers2.csv";
+    char *fileName = "containers.csv";
 
     FILE *containerFile = fopen(fileName, "r");
     

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "zeroArray.h"
+#include "printResult.h"
 #include "asm.h"
 
 int maxX, maxY, maxZ;
@@ -9,7 +10,6 @@ int maxX, maxY, maxZ;
 int main(){
 
     char *fileName = "containers.csv";
-
     FILE *containerFile = fopen(fileName, "r");
     
     if (!containerFile){ // Verifica se o ficheiro existe
@@ -33,9 +33,8 @@ int main(){
     fclose(containerFile);
 
     int desiredX = 11, desiredY = 2, desiredZ = 1;
-
     char resultado = isContainerThere(desiredX, desiredY, desiredZ, containerLocation);
-    printf("Resultado: %d\n", resultado);
+    printResult(resultado, desiredX, desiredY, desiredZ);
     
     return 0;
 }

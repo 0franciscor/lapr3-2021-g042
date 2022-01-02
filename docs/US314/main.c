@@ -8,7 +8,6 @@
 int main(){
 
     char *fileName = "containers.csv";
-
     FILE *containerFile = fopen(fileName, "r");
     
     if (!containerFile){ // Verifica se o ficheiro existe

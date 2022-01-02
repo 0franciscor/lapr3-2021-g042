@@ -2,24 +2,23 @@
     .global checkArray
 
 checkArray:
-    movl $0, %ecx # numIteracoes
+    movl $0, %eax # numIteracoes
     movl $0, %r8d # numero de lugares livres
     movl $0, %r9d # numero de lugares ocupados
 
     jmp loop
 
 loop:
-    cmpl %ecx, %esi
+    cmpl %eax, %esi
     je end
 
     cmpl $0, (%rdi)
-    jne slotOccupied
     je slotNotOccupied
-    
+    jne slotOccupied
 
 nextIteration:
     addq $4, %rdi
-    incl %ecx
+    incl %eax
     jmp loop
 
 slotOccupied:

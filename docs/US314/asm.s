@@ -32,7 +32,7 @@ slotNotOccupied:
 
 end:
     movl %r8d, %eax
-    movb $32, %cl
-    shlq %cl, %rax
+    # movb $32, %cl
+    shlq $32, %rax
     movl %r9d, %eax
     ret

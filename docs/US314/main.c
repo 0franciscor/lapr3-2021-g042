@@ -35,7 +35,7 @@ int main(){
 
     int *numPointer = &resultado;
 
-    printf("Resultado %ld\n", resultado);
+    //printf("Resultado %ld\n", resultado);
     printf("Resultado %ld\n", *numPointer);
     numPointer++;
     printf("Resultado %ld\n", *numPointer);

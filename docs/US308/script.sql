@@ -1,3 +1,4 @@
+SET SERVEROUTPUT ON;
 CREATE OR REPLACE Trigger US308 
 
 Before Insert
@@ -31,9 +32,10 @@ SELECT COUNT(*) INTO cmNumberOfContainers
 FROM CargoManifestContainer
 WHERE cargoManifestLoadId = cmcode;
 
-totalContainers:=totalContainers+cmNumberOfContainers+1;
+totalContainers:=totalContainers+cmNumberOfContainers;
 
-        IF totalContainers > shipCap THEN
+dbms_output.put_line('teste ' || cmNumberOfContainers);
+        IF totalContainers+1 > shipCap THEN
             raise_application_error( -20000, 'Insufficient capacity');
 END IF;
 END LOOP;

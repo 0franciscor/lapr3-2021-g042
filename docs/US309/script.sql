@@ -32,7 +32,7 @@ BEGIN
         IN (SELECT realDepartureDate, realArrivalDate FROM Phases WHERE CargoManifestLoadId = cmCode)
         LOOP        
         IF expDepDate >= seeDatePhases.realDepartureDate OR expDepDate <= seeDatePhases.realArrivalDate THEN
-            raise_application_error( -21000, 'Cargo Manifest registration ERROR');
+            raise_application_error( -20000, 'Cargo Manifest registration ERROR');
         END IF;
         END LOOP;
     END LOOP;

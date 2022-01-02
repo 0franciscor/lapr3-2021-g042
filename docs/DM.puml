@@ -98,6 +98,22 @@ class Role{
 -designation
 }
 
+class Capital{
+-name
+}
+
+class Place {
+
+}
+
+class Border {
+-countryName1
+-countryName2
+}
+
+class FreightNetwork {
+}
+
 CargoManifest "*" -- "1" Ports : delivered at >
 CargoManifest "*" -- "1" Warehouse : delivered at >
 
@@ -106,14 +122,20 @@ Company "1" - "1..*" System : has >
 Company "1"--"1..*" Employee: have >
 Company "1"--"1..*" Truck: own >
 Company "1"--"1..*" Ports: have >
+Company "1"--"1" FreightNetwork: have >
 
 Containers "1..*"--"1..*" CargoManifest: related to >
 Containers "0..*"--"1" Ports: store >
 Containers "0..*"--"1" Warehouse: store >
 
+Country "2" -- "*" Border : has a >
+
+Place <|-- Ports
+Place <|-- Capital
+
 PlaceLocation "*" -- "1" Country : placed in >
 
-Ports "1" -- "1" PlaceLocation : located at >
+Place "1" -- "1" PlaceLocation : located at >
 
 Ship "1"---"1..*" Containers : transport >
 Ship "0..*"--"1" Ports: dock >
@@ -130,7 +152,7 @@ User "1..*" -- "1" System : uses >
 User "1" -- "1..*" Role : has >
 
 Warehouse "1" -- "1" PlaceLocation : located at >
-
+FreightNetwork "1" -- "1..*" Place : related with
 
 
 

@@ -23,7 +23,7 @@ public class US204Handler {
 
     public String getContainerLocation(int containerNumber) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
-        try(CallableStatement callStmt = databaseConnection.prepareCall("{ ? = call get_container_position (?)}")) {
+        try(CallableStatement callStmt = databaseConnection.prepareCall("{ ? = call get_container_position_US204 (?)}")) {
 
             callStmt.setInt(2, containerNumber);
 

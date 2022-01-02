@@ -38,6 +38,8 @@ public class ScenarioTestBDDADTest {
 
     private US312Handler us312Handler;
 
+    private US310Handler us310Handler;
+
     @Test
     public void presentationTest1() throws SQLException, IOException, ParseException {
         findContainerSituationController = new FindContainerSituationController();
@@ -66,6 +68,7 @@ public class ScenarioTestBDDADTest {
         us306Handler = new US306Handler();
         us307Handler = new US307Handler();
         us312Handler = new US312Handler();
+        //us310Handler = new US310Handler();
 
         us312Handler.getContainerLocation(987650321, 1);
 

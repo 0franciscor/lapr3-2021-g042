@@ -58,7 +58,6 @@ values ('529467097', 'IMO4419462', 82, 16.8, 'sit', 39.1, 'consequat', 100, 72.2
 
 insert into Ship (mmsicode, imocode, NUMBERENERGYGENERATORS, generatoroutput, callsign, draft, shipname, vesseltypeid, shiplength, width, cargo) values ('696134988', 'IMO8583481', 57, 20.4, 'abc', 85.6, 'a', 17, 30.5, 16.9, 'magna');
 
-
 -- Bootstrap Countries
 Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('United Kingdom','Europe');
 Insert into COUNTRY (COUNTRYNAME,CONTINENT) values ('United States','America');
@@ -74,6 +73,7 @@ insert into Country (countryname, continent) values ('Indonesia', 'Continent');
 insert into Country (countryname, continent) values ('Libya', 'Continent');
 insert into Country (countryname, continent) values ('China', 'Continent');
 insert into Country (countryname, continent) values ('Montenegro', 'Continent');
+
 
 --Bootstrap PlaceLocations
 Insert into PLACELOCATION (COUNTRYNAME,LATITUDE,LONGITUDE) values ('United Kingdom','53,47','-3,03');
@@ -102,6 +102,7 @@ insert into PlaceLocation (countryname, latitude, longitude) values ('Indonesia'
 insert into PlaceLocation (countryname, latitude, longitude) values ('Libya', '61', '41');
 insert into PlaceLocation (countryname, latitude, longitude) values ('China', '62', '145');
 insert into PlaceLocation (countryname, latitude, longitude) values ('Montenegro', '-16', '-99');
+
 
 -- Bootstrap Ports
 Insert into PORTS (ID,NAME,PLACELOCATIONLATITUDE,PLACELOCATIONLONGITUDE) values ('29002','Liverpool','53,47','-3,03');
@@ -360,6 +361,7 @@ values('29002','636091400');
 INSERT INTO Ship_Port(portid, SHIPMMSICode)
 values('29002','636092932');
 
+
 --bootstrap truck
 INSERT INTO TRUCK (LICENSEPLATE) VALUES(1);
 
@@ -403,6 +405,8 @@ Insert into CARGOMANIFESTLOAD (ID,WAREHOUSEID,TRUCKLICENSEPLATE,ISCONCLUDED) val
 Insert into CARGOMANIFESTLOAD (ID,WAREHOUSEID,TRUCKLICENSEPLATE,ISCONCLUDED) values ('16','3','1',null);
 
 
+
+
 --Bootstrap Phases
 Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('11','1','Liverpool','Los Angeles',to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
 Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE) values ('10','1','New Jersey','Liverpool',to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.11.04 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('21.12.30 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
@@ -443,7 +447,6 @@ values ('16','1','warehouse1','warehouse2',to_timestamp('21.12.30 18:44:33,00000
 Insert into PHASES (CARGOMANIFESTLOADID,ID,ORIGIN,DESTINATION,EXPECTEDDEPARTUREDATE,EXPECTEDARRIVALDATE,REALDEPARTUREDATE,REALARRIVALDATE)
 values ('15','1','warehouse2','warehouse1',to_timestamp('22.01.01 18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('22.01.01  18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('22.01.01  18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'),to_timestamp('22.01.01  18:44:33,000000000','RR.MM.DD HH24:MI:SSXFF'));
 
-
 --Bootstrap CargoManifestUnload
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('2','1','3','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('3','2','3','29002');
@@ -456,6 +459,7 @@ Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) v
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('1','3','1','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('10','2','1','29002');
 Insert into CARGOMANIFESTUNLOAD (ID,PHASESID,PHASESCARGOMANIFESTLOADID,PORTID) values ('11','1','1','29002');
+
 
 
 INSERT INTO cargomanifestunload(id,phasescargomanifestloadid,phasesid,portid) VALUES (951245368,20000,1,937194604);

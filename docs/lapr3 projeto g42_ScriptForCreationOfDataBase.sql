@@ -146,6 +146,9 @@ id INTEGER,
 name VARCHAR(255) NOT NULL,
 placeLocationLatitude VARCHAR(255),
 placeLocationLongitude VARCHAR(255),
+capacity INTEGER,
+maximumShip INTEGER,
+occupancy INTEGER,
 
 CONSTRAINT pk_Port PRIMARY KEY (id),
 
@@ -183,10 +186,12 @@ placeLocationLatitude VARCHAR(255),
 placeLocationLongitude VARCHAR(255),
 capacity INTEGER,
 occupancy FLOAT,
+portId INTEGER,
 
 
 CONSTRAINT pk_Warehouse PRIMARY KEY (id),
-CONSTRAINT fk_Warehouse_PlaceLocation FOREIGN KEY (placeLocationLatitude, placeLocationLongitude) references PlaceLocation(latitude, longitude)
+CONSTRAINT fk_Warehouse_PlaceLocation FOREIGN KEY (placeLocationLatitude, placeLocationLongitude) references PlaceLocation(latitude, longitude),
+CONSTRAINT fk_Port_Warehouse FOREIGN KEY (portId) references Ports(id)
 );
 
 CREATE TABLE Truck(

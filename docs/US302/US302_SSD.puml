@@ -9,7 +9,7 @@ activate TM
 TM -> ":System" : Initiates the process to colour the map \n using as few colours as possible.
 activate ":System"
 
-":System" --> TM : Informs of operation success and indicates\n the colors assigned to each country
+":System" --> TM : Informs of operation success and indicates\n the colors assigned to each country.
 deactivate ":System"
 
 deactivate TM

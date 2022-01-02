@@ -31,8 +31,7 @@ slotNotOccupied:
     jmp nextIteration
 
 end:
-    movl %r8d, %eax
-    # movb $32, %cl
+    movq %r8, %rax
     shlq $32, %rax
-    movl %r9d, %eax
+    addq %r9, %rax
     ret

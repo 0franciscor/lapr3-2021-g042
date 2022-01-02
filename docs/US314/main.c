@@ -29,16 +29,15 @@ int main(){
 
     fclose(containerFile);
 
-    int *pointerArray = shipAllocation;
+    int *pointerArray = &shipAllocation[0][0][0];
     int totalSlots = maxX*maxY*maxZ;
     long resultado = checkArray(pointerArray, totalSlots);
 
-    int *numPointer = &resultado;
+    int *numPointer = (int*) &resultado;
 
-    //printf("Resultado %ld\n", resultado);
-    printf("Resultado %ld\n", *numPointer);
+    printf("Número de lugares livres: %d\n", *numPointer);
     numPointer++;
-    printf("Resultado %ld\n", *numPointer);
+    printf("Número de lugares ocupados: %d\n", *numPointer);
     
     
     return 0;

@@ -39,9 +39,9 @@ public class US208Handler {
 
             this.ratio = statement.getFloat(2);
 
-            writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
+            writeForAFile.writeForAFile(toString(), "US208_" + cargoManifestId, new File(".\\outputs\\US208"), false);
         }catch (Exception e){
-            writeForAFile.writeForAFile("Something went wrong", "US208_" + cargoManifestId, new File(".\\outputs\\US208"));
+            writeForAFile.writeForAFile("Something went wrong", "US208_" + cargoManifestId, new File(".\\outputs\\US208"), false);
         }finally {
             statement.close();
 

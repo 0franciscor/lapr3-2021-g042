@@ -38,10 +38,10 @@ public class US305Handler {
 
             this.containerPathInfo=statement.getString(2);
 
-            writeForAFile.writeForAFile(toString(), "US305_" + registerCode, new File(".\\outputs\\US305"));
+            writeForAFile.writeForAFile(toString(), "US305_" + registerCode, new File(".\\outputs\\US305"), false);
 
         }catch (Exception e){
-            writeForAFile.writeForAFile("Something went wrong", "US305_" + registerCode, new File(".\\outputs\\US305"));
+            writeForAFile.writeForAFile("Something went wrong", "US305_" + registerCode, new File(".\\outputs\\US305"), false);
         }finally {
             assert statement != null;
             statement.close();

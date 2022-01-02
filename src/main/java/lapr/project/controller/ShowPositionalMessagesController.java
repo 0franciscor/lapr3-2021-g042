@@ -93,7 +93,7 @@ public class ShowPositionalMessagesController {
         File file = new File(".\\outputs\\Positional Messages");
         List<String> positionalMessages = shipLocationBst.getPositionalMessages(initialDate,finalDate);
         for(String lista : positionalMessages){
-            writeForAFile.writeForAFile(lista.toString(), ship.getMMSI(), file);
+            writeForAFile.writeForAFile(lista.toString(), ship.getMMSI(), file, false);
         }
         return positionalMessages;
 
@@ -108,7 +108,7 @@ public class ShowPositionalMessagesController {
         ShipLocationBST shipLocationBst = ship.getShipPosition();
         File file = new File(".\\outputs\\Positional Messages");
         String positionalMessage = shipLocationBst.getPositionalMessages(date);
-        writeForAFile.writeForAFile(positionalMessage, ship.getMMSI(), file);
+        writeForAFile.writeForAFile(positionalMessage, ship.getMMSI(), file, false);
 
         return positionalMessage;
     }

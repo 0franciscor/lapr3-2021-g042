@@ -40,12 +40,13 @@ public class US206Handler {
 
             this.listOfContainers=statement.getString(2);
 
-            writeForAFile.writeForAFile(toString(), "US206_" + mmsiCode, new File(".\\outputs\\US206"));
+            writeForAFile.writeForAFile(toString(), "US206_" + mmsiCode, new File(".\\outputs\\US206"), false);
             statement.close();
 
         }catch (Exception e){
-            writeForAFile.writeForAFile("Something went wrong", "US206_" + mmsiCode, new File(".\\outputs\\US206"));
+            writeForAFile.writeForAFile("Something went wrong", "US206_" + mmsiCode, new File(".\\outputs\\US206"), false);
         }finally {
+            assert statement != null;
             statement.close();
         }
 

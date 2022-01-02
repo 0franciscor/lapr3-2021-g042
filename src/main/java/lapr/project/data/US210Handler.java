@@ -39,10 +39,10 @@ public class US210Handler {
 
             this.information= statement.getString(1);
 
-            writeForAFile.writeForAFile(information, "US210" , new File(".\\outputs\\US210"));
+            writeForAFile.writeForAFile(information, "US210" , new File(".\\outputs\\US210"), false);
 
         }catch (Exception e){
-            writeForAFile.writeForAFile("Something went wrong", "US210" , new File(".\\outputs\\US210"));
+            writeForAFile.writeForAFile("Something went wrong", "US210" , new File(".\\outputs\\US210"), false);
         }finally {
             statement.close();
         }

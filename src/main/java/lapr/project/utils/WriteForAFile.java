@@ -12,8 +12,9 @@ public class WriteForAFile {
      * @return false if the operation fail, true otherwise
      * @throws IOException if some exception occur
      */
-    public boolean writeForAFile(String string, String fileName, File file) throws IOException {
+    public boolean writeForAFile(String string, String fileName, File file, boolean append) throws IOException {
         boolean flag = true;
+
 
         if (!file.exists()) {
             file.mkdirs();
@@ -21,7 +22,7 @@ public class WriteForAFile {
 
         if (string != null){
             File arch = new File(file + "\\" + fileName +".csv");
-            if (arch.exists()) arch.delete();
+            if (arch.exists() && !append) arch.delete();
             arch.setWritable(true);
             FileWriter fw = new FileWriter(arch, true);
 

@@ -16,29 +16,29 @@ class WriteForAFileTest {
     void writeForAFile() throws IOException {
         writeForAFile = new WriteForAFile();
         File file = new File(".\\outputs\\Summaries");
-        assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640",file));
+        assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640",file, false));
     }
 
     @Test
     void WriteForAFileTestingAppending() throws IOException {
         writeForAFile = new WriteForAFile();
         File file = new File(".\\outputs\\Summaries");
-        assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640", file));
+        assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640", file, false));
     }
 
     @Test
     void WriteForAFilePassingANullStringByReference() throws IOException {
         writeForAFile = new WriteForAFile();
         File file = new File(".\\outputs\\Summaries");
-        assertFalse(writeForAFile.writeForAFile(null, "Summary_211331640", file));
+        assertFalse(writeForAFile.writeForAFile(null, "Summary_211331640", file, false));
     }
 
     @Test
     void WriteForAFileThatExist() throws IOException {
         writeForAFile = new WriteForAFile();
         File file = new File(".\\outputs\\Summaries");
-        writeForAFile.writeForAFile(null, "Summary_211331640", file);
-        assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640",file));
+        writeForAFile.writeForAFile(null, "Summary_211331640", file, false);
+        assertTrue(writeForAFile.writeForAFile("testing\n", "Summary_211331640",file, false));
     }
 
 

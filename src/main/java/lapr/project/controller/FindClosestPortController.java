@@ -84,7 +84,7 @@ public class FindClosestPortController {
                 Ports port = portStore.getPorts2DTree().findNearestNeighbour(Double.parseDouble(shipLocation.getLatitude()), Double.parseDouble(shipLocation.getLongitude()));
                 File file = new File(".\\outputs\\US202");
                 PortsDto portsDto = portsMapper.toDto(port);
-                writeForAFile.writeForAFile(portsDto.toString(), callSign, file);
+                writeForAFile.writeForAFile(portsDto.toString(), callSign, file, false);
                 return portsDto;
             }
         }

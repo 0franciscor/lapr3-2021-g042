@@ -82,7 +82,7 @@ public class ListSomeShipDataController {
                 else return 0;
             }
         });
-        writeForAFile.writeForAFile(briefSummaries.toString(), "OrderedByDescendingOrder", file);
+        writeForAFile.writeForAFile(briefSummaries.toString(), "OrderedByDescendingOrder", file, false);
         return briefSummaries;
     }
 
@@ -100,7 +100,7 @@ public class ListSomeShipDataController {
                 else  return 0;
             }
         });
-        writeForAFile.writeForAFile(briefSummaries.toString(), "OrderedByAscendingOrder", file);
+        writeForAFile.writeForAFile(briefSummaries.toString(), "OrderedByAscendingOrder", file, false);
         return briefSummaries;
     }
 

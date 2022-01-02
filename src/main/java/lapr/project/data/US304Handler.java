@@ -5,15 +5,13 @@ import lapr.project.utils.WriteForAFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.io.Reader;
+import java.sql.*;
 
 public class US304Handler {
 
     private final Connection databaseConnection;
-    private String informationOutput;
+    private Clob informationOutput;
     private final WriteForAFile writeForAFile;
 
     public US304Handler(int cargoManifestId, int containerId) throws IOException {
@@ -29,19 +27,28 @@ public class US304Handler {
     private void initialize(int cargoManifestId, int containerId) throws IOException, SQLException {
         CallableStatement statement = null;
         try {
-            statement = databaseConnection.prepareCall("{ ? = call getInformationAboutAuditTrails(?,?) }");
-            statement.registerOutParameter(1, Types.LONGNVARCHAR);
-            statement.setInt(2, cargoManifestId);
-            statement.setInt(3, containerId);
+            statement = databaseConnection.prepareCall("{ call getInformationAboutAuditTrails(?, ?, ?) }");
+            statement.registerOutParameter(3, Types.CLOB);
+            statement.setInt(1, cargoManifestId);
+            statement.setInt(2, containerId);
             statement.execute();
 
-            this.informationOutput = statement.getString(1);
+            this.informationOutput = statement.getClob(3);
 
-            writeForAFile.writeForAFile(informationOutput, "US304_" + containerId, new File(".\\outputs\\US304"));
+            Reader reader = informationOutput.getCharacterStream();
+
+            StringBuffer buffer = new StringBuffer();
+
+            int ch;
+            while ((ch = reader.read()) != -1){
+                buffer.append(""+(char)ch);
+            }
+
+            writeForAFile.writeForAFile(buffer.toString(), "US304_" + containerId, new File(".\\outputs\\US304"), false);
 
         }catch (SQLException e){
             e.printStackTrace();
-            writeForAFile.writeForAFile("Something went wrong", "US304_" + containerId, new File(".\\outputs\\US304"));
+            writeForAFile.writeForAFile("Something went wrong", "US304_" + containerId, new File(".\\outputs\\US304"), false);
         }finally {
             assert statement != null;
             statement.close();

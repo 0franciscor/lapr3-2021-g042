@@ -38,10 +38,10 @@ public class US205Handler {
 
             this.listOfContainers=statement.getString(2);
 
-            writeForAFile.writeForAFile(toString(), "US205_" + mmsiCode, new File(".\\outputs\\US205"));
+            writeForAFile.writeForAFile(toString(), "US205_" + mmsiCode, new File(".\\outputs\\US205"), false);
             statement.close();
         }catch (Exception e){
-            writeForAFile.writeForAFile("Something went wrong", "US205_" + mmsiCode, new File(".\\outputs\\US205"));
+            writeForAFile.writeForAFile("Something went wrong", "US205_" + mmsiCode, new File(".\\outputs\\US205"), false);
         }finally {
             statement.close();
         }

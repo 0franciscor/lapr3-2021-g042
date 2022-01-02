@@ -68,7 +68,7 @@ public class ScenarioTestBDDADTest {
         us306Handler = new US306Handler();
         us307Handler = new US307Handler();
         us312Handler = new US312Handler();
-        //us310Handler = new US310Handler();
+        us310Handler = new US310Handler(12, 2021);
 
         us312Handler.getContainerLocation(987650321, 1);
 

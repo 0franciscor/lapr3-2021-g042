@@ -106,7 +106,7 @@ public class SearchDetailsController {
      */
     public void getShipDetailsByMMSI() throws IOException {
         File file = new File(".\\outputs\\ShipDetails");
-        writeForAFile.writeForAFile(getShipDetails(),"211331640",file);
+        writeForAFile.writeForAFile(getShipDetails(),"211331640",file, false);
 
     }
 
@@ -115,7 +115,7 @@ public class SearchDetailsController {
      */
     public void writeDataSearchedByIMO() throws IOException {
         File file = new File(".\\outputs\\ShipDetails");
-        writeForAFile.writeForAFile(getShipDetails(),"IMO2113432",file);
+        writeForAFile.writeForAFile(getShipDetails(),"IMO2113432",file, false);
     }
 
     /**
@@ -123,7 +123,7 @@ public class SearchDetailsController {
      */
     public void writeDataSearchedByCallsign() throws IOException {
             File file = new File(".\\outputs\\ShipDetails");
-            writeForAFile.writeForAFile(getShipDetails(),"DHBN",file);
+            writeForAFile.writeForAFile(getShipDetails(),"DHBN",file, false);
     }
 
 

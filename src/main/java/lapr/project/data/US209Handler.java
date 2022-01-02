@@ -35,10 +35,10 @@ public class US209Handler {
 
             this.occupancyRate = statement.getFloat(3);
 
-            writeForAFile.writeForAFile(toString(), "US209_" + mmsiCode, new File(".\\outputs\\US209"));
+            writeForAFile.writeForAFile(toString(), "US209_" + mmsiCode, new File(".\\outputs\\US209"), false);
 
         }catch (Exception e){
-            writeForAFile.writeForAFile("Something went wrong", "US209_" + mmsiCode, new File(".\\outputs\\US209"));
+            writeForAFile.writeForAFile("Something went wrong", "US209_" + mmsiCode, new File(".\\outputs\\US209"), false);
         }finally {
             statement.close();
         }

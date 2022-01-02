@@ -21,7 +21,7 @@ public class US307Handler {
         }
         catch(Exception e){
             writeForAFile = new WriteForAFile();
-            writeForAFile.writeForAFile(e.getMessage(), "US307_Warning", new File(".\\outputs\\US307"));
+            writeForAFile.writeForAFile(e.getMessage(), "US307_Warning", new File(".\\outputs\\US307"), false);
         }
     }
 

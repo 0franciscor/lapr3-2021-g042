@@ -2,7 +2,6 @@ package lapr.project.data;
 
 import lapr.project.controller.App;
 import lapr.project.utils.WriteForAFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.CallableStatement;
@@ -36,7 +35,7 @@ public class US312Handler {
             this.containerLocation = callStmt.getString(1);
 
 
-            writeForAFile.writeForAFile(containerLocation, "US312_" + containerNumber, new File(".\\outputs\\US312"));
+            writeForAFile.writeForAFile(containerLocation, "US312_" + containerNumber, new File(".\\outputs\\US312"), false);
 
             return containerLocation;
         }catch (SQLException e){

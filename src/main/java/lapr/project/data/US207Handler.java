@@ -74,10 +74,10 @@ public class US207Handler {
             this.totalCargoManifestsPerYear = statement.getInt(3);
             this.meanContainerPerCargoManifest = statement.getFloat(4);
 
-            writeForAFile.writeForAFile(toString(), "US207_" + mmsiCode, new File(".\\outputs\\US207"));
+            writeForAFile.writeForAFile(toString(), "US207_" + mmsiCode, new File(".\\outputs\\US207"), false);
 
         }catch (Exception e){
-            writeForAFile.writeForAFile("Something went wrong", "US207_" + mmsiCode, new File(".\\outputs\\US207"));
+            writeForAFile.writeForAFile("Something went wrong", "US207_" + mmsiCode, new File(".\\outputs\\US207"), false);
 
         }finally {
             statement.close();

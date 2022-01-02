@@ -59,7 +59,7 @@ public class MovementsSummaryUI implements Runnable{
                 System.out.println();
                 try {
                     File file = new File("targe\\generated-sources\\annotations\\Summaries");
-                    if (writeForAFile.writeForAFile(summaryDto.toString(), "Summary_" + summaryDto.getMmsiCodeDto(),file))
+                    if (writeForAFile.writeForAFile(summaryDto.toString(), "Summary_" + summaryDto.getMmsiCodeDto(),file, false))
                         System.out.println("Your summary was saved in the file named: Summary_" + summaryDto.getMmsiCodeDto() + ".txt");
                 } catch (IOException e) {
                     e.printStackTrace();

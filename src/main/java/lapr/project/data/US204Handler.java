@@ -35,7 +35,7 @@ public class US204Handler {
             this.containerLocation = callStmt.getString(1);
 
 
-            writeForAFile.writeForAFile(containerLocation, "US204_" + containerNumber, new File(".\\outputs\\US204"));
+            writeForAFile.writeForAFile(containerLocation, "US204_" + containerNumber, new File(".\\outputs\\US204"), false);
 
             return containerLocation;
         }catch (SQLException e){

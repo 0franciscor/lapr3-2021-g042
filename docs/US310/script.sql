@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
+CREATE OR REPLACE PROCEDURE PortsInformation (month INTEGER, year INTEGER, outString OUT CLOB) IS
 
     p INTEGER;
     ships INTEGER;
@@ -16,6 +16,7 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
     ocR FLOAT;
     cap INTEGER;
     Lastdesiredcml INTEGER;
+    output VARCHAR2(30000);
 
 
 
@@ -24,6 +25,8 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
     FROM Ports;
 
     BEGIN
+
+        dbms_lob.createTemporary(outString, true);
 
         OPEN PortsAux;
         LOOP
@@ -34,13 +37,14 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
         FROM Ports
         WHERE id = p;
 
-        outString:= outString || 'Ports: ' || pName || chr(10);
+        output:= 'Ports: ' || pName || chr(10);
+        dbms_lob.append(outString, output);
 
         SELECT maximumShip,capacity into ships,cap
         FROM Ports
         WHERE id=p;
 
-        SELECT EXTRACT(DAY FROM LAST_DAY(SYSDATE))into num_of_days FROM DUAL;
+        SELECT EXTRACT(DAY FROM LAST_DAY(to_date('01.'||month||'.'||year||'','DD.MM.YYYY')))into num_of_days FROM DUAL;
 
         FOR var2 IN 1..num_of_days
             LOOP
@@ -64,7 +68,7 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
                     AND cargomanifestloadid = LOOP.cargomanifestloadid;
 
                     IF auxC = LOOP.id THEN
-                        IF LOOP.destination = pName AND var2>=EXTRACT(Day FROM (LOOP.expectedArrivalDate)) AND EXTRACT(MONTH FROM sysdate) = EXTRACT(MONTH From LOOP.expectedArrivalDate) THEN
+                        IF LOOP.destination = pName AND var2>=EXTRACT(Day FROM (LOOP.expectedArrivalDate)) AND month = EXTRACT(MONTH From LOOP.expectedArrivalDate) THEN
 
                             SELECT COUNT(*) INTO auxContador
                             FROM Phases
@@ -78,18 +82,18 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
                                 contador := contador + 1;
                             END IF;
 
-                        ELSIF LOOP.origin = pName AND LOOP.origin = aux AND var2 >= EXTRACT(Day FROM (auxDate)) AND var2 <= EXTRACT(Day FROM (LOOP.expectedDepartureDate))AND EXTRACT(MONTH FROM sysdate) = EXTRACT(MONTH From LOOP.expectedArrivalDate) THEN
+                        ELSIF LOOP.origin = pName AND LOOP.origin = aux AND var2 >= EXTRACT(Day FROM (auxDate)) AND var2 <= EXTRACT(Day FROM (LOOP.expectedDepartureDate))AND month = EXTRACT(MONTH From LOOP.expectedArrivalDate) AND EXTRACT(Year from loop.expectedArrivalDate) <= year THEN
                             contador := contador + 1;
                         END IF;
 
-                        ELSIF LOOP.origin = pName AND LOOP.origin = aux AND var2 > EXTRACT(Day FROM (auxDate)) AND var2 <= EXTRACT(Day FROM (LOOP.expectedDepartureDate))AND EXTRACT(MONTH FROM sysdate) = EXTRACT(MONTH From LOOP.expectedArrivalDate) THEN
+                        ELSIF LOOP.origin = pName AND LOOP.origin = aux AND var2 > EXTRACT(Day FROM (auxDate)) AND var2 <= EXTRACT(Day FROM (LOOP.expectedDepartureDate))AND month = EXTRACT(MONTH From LOOP.expectedArrivalDate) AND EXTRACT(Year from loop.expectedArrivalDate) <= year THEN
                             contador:=contador+1;
 
                         END IF;
 
                     ELSE
                         IF auxC = 1 THEN
-                            IF LOOP.destination = pName AND var2 >= EXTRACT(Day FROM (LOOP.expectedArrivalDate)) AND EXTRACT(MONTH FROM sysdate) = EXTRACT(MONTH FROM LOOP.expectedArrivalDate) THEN
+                            IF LOOP.destination = pName AND var2 >= EXTRACT(Day FROM (LOOP.expectedArrivalDate)) AND month = EXTRACT(MONTH FROM LOOP.expectedArrivalDate) AND EXTRACT(Year from loop.expectedArrivalDate) <= year THEN
 
                             SELECT COUNT(*) INTO auxContador
                             FROM Phases
@@ -104,7 +108,7 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
                             END IF;
                         END IF;
                         ELSE
-                            IF LOOP.destination = pName AND var2 = EXTRACT(Day FROM (LOOP.expectedArrivalDate)) AND EXTRACT(MONTH FROM sysdate) = EXTRACT(MONTH FROM LOOP.expectedArrivalDate) THEN
+                            IF LOOP.destination = pName AND var2 = EXTRACT(Day FROM (LOOP.expectedArrivalDate)) AND month = EXTRACT(MONTH FROM LOOP.expectedArrivalDate) AND EXTRACT(Year from loop.expectedArrivalDate) <= year THEN
                                 contador := contador + 1;
                             END IF;
 
@@ -113,10 +117,10 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
 
             END LOOP;
 
-            outString:= outString || 'Number of ships docked: ' ||contador ||chr(10);
-
-            outString:= outString || 'Occupancy of ships docked: ' ||contador/ships||' in day: ' || var2 || chr(10);
-
+            output:= 'Number of ships docked: ' ||contador ||chr(10);
+            dbms_lob.append(outString, output);
+            output:= 'Occupancy of ships docked: ' ||contador/ships||' in day: ' || var2 || chr(10);
+            dbms_lob.append(outString, output);
 
             FOR PortsAuxOc
             IN (SELECT cargoManifestUnload.id , cargoManifestUnload.phasescargoManifestLoadId, phasesId
@@ -125,7 +129,7 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
             ON (cargoManifestUnload.phasescargoManifestLoadId = Phases.cargoManifestLoadId AND cargoManifestUnload.phasesId = Phases.id)
             WHERE PortId = p
             AND EXTRACT(Day FROM Phases.expectedArrivalDate) <= VAR2
-            AND EXTRACT(Month FROM Phases.expectedArrivalDate) <= EXTRACT(MONTH FROM sysdate))
+            AND EXTRACT(Month FROM Phases.expectedArrivalDate) <= month AND EXTRACT(Year from phases.expectedArrivalDate) = year OR EXTRACT(Year from phases.expectedArrivalDate) < year)
             LOOP
 
                 FOR containers
@@ -140,7 +144,7 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
                     ON (CargoManifestContainer.phasescargoManifestLoadId = Phases.cargoManifestLoadId)
                     WHERE ContainerNumberId = containers.ContainerNumberId
                     AND EXTRACT(Day FROM Phases.expectedDepartureDate) <= VAR2
-                    AND EXTRACT(Month FROM Phases.expectedDepartureDate) <= EXTRACT(MONTH FROM sysdate);
+                    AND EXTRACT(Month FROM Phases.expectedDepartureDate) <= month AND EXTRACT(Year from phases.expectedarrivaldate) = year OR EXTRACT(Year from phases.expectedarrivaldate) < year;
 
                         IF PortsAuxOC.phasesCargoManifestLoadId = lastDesiredcml THEN
                             numerator := numerator + 1;
@@ -148,17 +152,17 @@ CREATE OR REPLACE PROCEDURE PortsInformation (outString OUT VARCHAR2) IS
                     END LOOP;
                 END LOOP;
 
-                ocR:=numerator/cap;
+                ocR:=(numerator/cap)*100;
 
-                outString:= outString || 'Occupancy of Ports ' || pName || ':' || ocR ||' in day ' || var2 || chr(10);
-
+                output:='Occupancy of Ports ' || pName || ':' || ocR ||' in day ' || var2 || chr(10);
+                dbms_lob.append(outString, output);
             END LOOP;
 
             SELECT COUNT(*) INTO cWare
             FROM Warehouse
             WHERE portId = p;
 
-            outString := outString ||'Number of warehouses: ' || cWare || chr(10);
-
+            output := 'Number of warehouses: ' || cWare || chr(10);
+            dbms_lob.append(outString, output);
         END LOOP;
     END;

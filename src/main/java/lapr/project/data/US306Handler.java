@@ -35,11 +35,11 @@ public class US306Handler {
 
             this.informationOutput = statement.getString(1);
 
-            writeForAFile.writeForAFile(informationOutput, "US306_Containers_Warehouses", new File(".\\outputs\\US306"));
+            writeForAFile.writeForAFile(informationOutput, "US306_Containers_Warehouses", new File(".\\outputs\\US306"), false);
 
         }catch (SQLException e){
             e.printStackTrace();
-            writeForAFile.writeForAFile("Something went wrong", "US306_Containers_Warehouses", new File(".\\outputs\\US306"));
+            writeForAFile.writeForAFile("Something went wrong", "US306_Containers_Warehouses", new File(".\\outputs\\US306"), false);
         }finally {
             assert statement != null;
             statement.close();

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "zeroArray.h"
+#include "printResult.h"
 #include "asm.h"
 
 int main(){
@@ -33,12 +34,7 @@ int main(){
     int totalSlots = maxX*maxY*maxZ;
     long resultado = checkArray(pointerArray, totalSlots);
 
-    int *numPointer = (int*) &resultado;
+    printResult(resultado);
 
-    printf("Número de lugares livres: %d\n", *numPointer);
-    numPointer++;
-    printf("Número de lugares ocupados: %d\n", *numPointer);
-    
-    
     return 0;
 }

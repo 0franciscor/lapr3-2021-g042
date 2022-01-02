@@ -8,9 +8,8 @@ int maxX, maxY, maxZ;
 
 int main(){
 
-    char *fileName = "containers.csv";
-
-    FILE *containerFile = fopen(fileName, "r");
+    char *containerFileName = "containers.csv";
+    FILE *containerFile = fopen(containerFileName, "r");
     
     if (!containerFile){ // Verifica se o ficheiro existe
         printf("No file found\n"); 

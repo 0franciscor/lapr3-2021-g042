@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+
+
+
+class ColorFreightNetworkUI {}
+
+class ColorFreightNetworkController {
+-colorNetwork()
+}
+
+class Company {
+-designation
+-getFreightNetwork()
+}
+
+class FreightNetwork {
+-colorNetwork()
+-isFullyColored()
+}
+
+
+
+ColorFreightNetworkUI ..> ColorFreightNetworkController
+
+ColorFreightNetworkController ..> Company
+ColorFreightNetworkController ..> FreightNetwork
+
+Company "1"--"1" FreightNetwork: have >
+
+
+@enduml

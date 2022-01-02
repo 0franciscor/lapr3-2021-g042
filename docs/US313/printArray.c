@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+
 void printArray(int x, int y, int z, int (*shipAllocation)[y][z]){
     
     char *outputFileName = "US313.csv";

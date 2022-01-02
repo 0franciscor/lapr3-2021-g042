@@ -4,6 +4,8 @@
 #include "zeroArray.h"
 #include "printArray.h"
 
+int maxX, maxY, maxZ;
+
 int main(){
 
     char *fileName = "containers.csv";
@@ -15,14 +17,12 @@ int main(){
         exit(-1); 
     } 
 
-    int maxX, maxY, maxZ;
     fscanf(containerFile, "%d,%d,%d", &maxX, &maxY, &maxZ);
     int shipAllocation[maxX][maxY][maxZ];
 
     zeroArray(maxX, maxY, maxZ, shipAllocation);
 
     while(!feof(containerFile)){ //leitura de cada linha do ficheiro
-
         int x, y, z, containerID;
 
         fscanf(containerFile, "%d,%d,%d,%d", &containerID, &x, &y, &z);

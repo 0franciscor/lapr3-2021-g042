@@ -5,7 +5,6 @@
 #include "asm.h"
 
 int maxX, maxY, maxZ;
-int *containerLocation;
 
 int main(){
 
@@ -21,7 +20,7 @@ int main(){
     fscanf(containerFile, "%d,%d,%d", &maxX, &maxY, &maxZ);
 
     int shipAllocation[maxX][maxY][maxZ];
-    containerLocation = &shipAllocation[0][0][0];
+    int *containerLocation = &shipAllocation[0][0][0];
 
     zeroArray(maxX, maxY, maxZ, shipAllocation);
     
@@ -35,7 +34,7 @@ int main(){
 
     int desiredX = 11, desiredY = 2, desiredZ = 1;
 
-    char resultado = isContainerThere(desiredX, desiredY, desiredZ);
+    char resultado = isContainerThere(desiredX, desiredY, desiredZ, containerLocation);
     printf("Resultado: %d\n", resultado);
     
     return 0;

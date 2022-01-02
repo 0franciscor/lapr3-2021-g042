@@ -2,7 +2,6 @@
     .global maxX
     .global maxY
     .global maxZ
-    .global containerLocation
 
 .section .text
     .global isContainerThere
@@ -22,16 +21,16 @@ isContainerThere:
     cmpl %eax, %esi
     jg noContainer
 
-    movl maxZ(%rip), %ecx
+    movl maxZ(%rip), %r8d
     cmpl %eax, %edx
     jg noContainer
 
 
     # Memory Address
     imull %eax, %edi # x*maxY
-    imull %ecx, %edi # x*maxY*maxZ
+    imull %r8d, %edi # x*maxY*maxZ
 
-    imull %ecx, %esi # y*maxZ
+    imull %r8d, %esi # y*maxZ
 
     addl %edx, %esi # y*maxZ + z
 
@@ -39,12 +38,11 @@ isContainerThere:
 
     imull $4, %edi # bytes a adicionar
     
-    movq containerLocation(%rip), %rax
-    addq %rdi, %rax
+    addq %rdi, %rcx
 
     # Comparacao
 
-    cmpl $0, (%rax)
+    cmpl $0, (%rcx)
     je noContainer
     jne hasContainer
 

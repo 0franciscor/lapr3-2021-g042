@@ -97,6 +97,19 @@ public class TransferFromDataBase {
     }
 
     /**
+     * Fetches the existent Containers from the database.
+     */
+    public List<Container> importContainers(int code){
+        List<Container> containerLst = new ArrayList<>();
+        try{
+            containerLst = importContainersFromDataBase(databaseConnection, code);
+        } catch (Exception e) {
+            System.out.println("Error when importing Containers from the database.");
+        }
+        return containerLst;
+    }
+
+    /**
      * Retrieves a ship from the database to the ship tree.
      *
      * @param databaseConnection to the database

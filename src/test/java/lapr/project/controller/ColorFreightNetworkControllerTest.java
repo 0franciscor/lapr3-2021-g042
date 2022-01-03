@@ -93,6 +93,7 @@ class ColorFreightNetworkControllerTest {
 
 
 
+    /*
 
     @Test
     void colorNetworkProject() throws IOException {
@@ -101,6 +102,8 @@ class ColorFreightNetworkControllerTest {
         Assertions.assertEquals(5,colorFreightNetworkController.getFreightNetwork().getCoresUtilizadas());
     }
 
+
+     */
 
 
     @Test

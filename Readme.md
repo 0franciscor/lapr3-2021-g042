@@ -183,7 +183,7 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 | **[US308](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US308/US308.md)** | **As Traffic manager, I want to have a system that ensures that the number of containers in a manifest does not exceed the ship's available capacity.**| The destination ship is properly identified. Ship’s available capacity is properly computed. The warning is triggered when required. |
 | **[US309](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US309/US309.md)** | **As Traffic manager, I do not allow a cargo manifest for a particular ship to be registered in the system on a date when the ship is already occupied.**| The ship is properly identified. Ship’s availability is properly computed. A warning or an exception is triggered when required. |
 | **[US310](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US310/US310.md)** | **As Port manager, I intend to have a map of the occupation of the existing resources in the port during a given month.**| Occupation of resources is restricted to the month provided. The reported occupation respects actual port capacity. |
-| **[US311](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US311/US311.md)** | **As Ship Captain, I want to provide a database access account, with login “crew” and password “bd7wd5aF”, which gives access exclusively to the information of the containers that are loaded on my ship. The information about each container to be made available is: identifier, type, position and load.**| The user account is created. Only the required permissions are granted. Only the containers loaded at the Captain’s ship are available for consultation. Only the described data is publicly available through this “crew” account. |
+| **[US311]()** | **As Ship Captain, I want to provide a database access account, with login “crew” and password “bd7wd5aF”, which gives access exclusively to the information of the containers that are loaded on my ship. The information about each container to be made available is: identifier, type, position and load.**| The user account is created. Only the required permissions are granted. Only the containers loaded at the Captain’s ship are available for consultation. Only the described data is publicly available through this “crew” account. |
 | **[US312](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US312/US312.md)** | **As Client, I want to know the current situation of a specific container being used to transport my goods – US204.**| When the provided identifier is not valid or, being valid, is not leased by the client, a warning is returned. This warning has two elements, the error code and the identifier of the container. The error code will be: 10 – invalid container id or 11 – container is not leased by client. |
 | **[US313](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US313/US313.md)** | **As a Port staff, given a Cargo Manifest, I wish to fill a statically reserved matrix in memory with each container's ID in its respective place.**| The matrix should be statically reserved in C, considering the maximum capacity of the ship, with all positions set to zero. The function should be developed in C. |
 | **[US314](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/US314/US314.md)** | **As a Port staff, I wish to know the total number of free/occupied slots in the transport vehicle.**| The number of free/occupied slots should be determined by an Assembly function that traverses the matrix filled with the container's IDs. The function should return an eight-byte value, where the number of free slots is placed in the four most significant bytes and the number of occupied slots in the four least significant bytes. |
@@ -196,18 +196,13 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 
 
 
-## Project Coverage
-[Sprint 1 Coverage](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/Report_aux/coverageSprint1.md)
-
-[Sprint 2 Coverage](https://bitbucket.org/lei-isep/lapr3-2021-g042/src/master/docs/Report_aux/coverageSprint2.md)
-
-
-
-## Pit Test Coverage Report
+## Coverage - Pit Test Coverage Report
 #### Sprint 1
 ![PitTestCoverage](docs/Report_aux/pitTestCoverage.jpg)
 #### Sprint 2
 ![PitTestCoverage](docs/Report_aux/pitTestCoverageS2.jpg)
+#### Sprint 3
+![PitTestCoverage](docs/Report_aux/pitTestCoverageS3.jpg)
 
 ## Team Performance
 The group agrees that all members of the group contributed equally to the project, althought some focused more on other parts given the division of the project.

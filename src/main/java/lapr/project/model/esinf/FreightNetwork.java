@@ -211,34 +211,13 @@ public class FreightNetwork {
         }
 
         AdjacencyMatrixGraph<Place, Double> matrixGraph = GraphAlgorithms.minDistGraph(graph,Double::compare, Double::sum);
-        System.out.println(matrixGraph.toString());
 
-        for (Place p : centeredPlaces){
-            System.out.println(p);
-            System.out.println(mediaDist(p,matrixGraph));
-            System.out.println("-----");
-        }
         // ordenar os locais de ordem crescente de centralidade
         centeredPlaces.sort(new Comparator<Place>() {
             @Override
             public int compare(Place c1, Place c2) {
                 double a = mediaDist(c1,matrixGraph);
                 double b = mediaDist(c2,matrixGraph);
-                if(c1 instanceof Ports){
-                    System.out.println(((Ports) c1).getPortName());
-                    System.out.println(a);
-                } else if (c1 instanceof Capital) {
-                    System.out.println(((Capital) c1).getName());
-                    System.out.println(a);
-                }
-
-                if(c2 instanceof Ports){
-                    System.out.println(((Ports) c2).getPortName());
-                    System.out.println(b);
-                } else if (c2 instanceof Capital) {
-                    System.out.println(((Capital) c2).getName());
-                    System.out.println(b);
-                }
 
                 return Double.compare(a, b);
             }

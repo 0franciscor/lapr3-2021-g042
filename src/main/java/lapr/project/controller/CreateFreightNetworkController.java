@@ -59,6 +59,7 @@ public class CreateFreightNetworkController {
         CapitalStore capitalStore = company.getCapitalStr();
         BorderStore borderStore = company.getBorderStr();
         freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,n);
+        System.out.println(freightNetwork.adjacencyMatrixGraph.toString());
     }
 
 

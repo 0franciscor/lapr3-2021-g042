@@ -36,7 +36,7 @@ public class  AdjacencyMatrixGraph<V, E> extends CommonGraph<V, E> {
     }
 
 
-    /*
+
     public AdjacencyMatrixGraph(boolean directed, ArrayList <V> vs, E [][] m) {
         this(directed, vs.size());
         numVerts = vs.size();
@@ -47,7 +47,7 @@ public class  AdjacencyMatrixGraph<V, E> extends CommonGraph<V, E> {
                     addEdge(vertices.get(i), vertices.get(j),m[i][j]);
     }
 
-     */
+
 
     @Override
     public Collection<V> adjVertices(V vert) {

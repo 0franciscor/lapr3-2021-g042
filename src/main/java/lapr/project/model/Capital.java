@@ -5,7 +5,7 @@ package lapr.project.model;
  *
  * @author Francisco Redol <1201239@isep.ipp.pt>
  */
-public class Capital extends Place{
+public class Capital extends Place implements Comparable<Capital>{
 
     /**
      * The capital name.
@@ -37,5 +37,18 @@ public class Capital extends Place{
      */
     public String toString(){
         return String.format("Capital %s belongs to %s.", name, getCountryName());
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (!(o instanceof Capital)) return false;
+        Capital capital = (Capital) o;
+        return capital.getName().equals(this.getName());
+    }
+
+    @Override
+    public int compareTo(Capital o) {
+        return this.getName().compareTo(o.getName());
     }
 }

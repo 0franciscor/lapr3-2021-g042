@@ -58,65 +58,6 @@ class MatrixAlgorithmsTest {
     }
 
     /**
-     * Test of BreadthFirstSearch method, of class Algorithms.
-     */
-    @Test
-    public void testBreadthFirstSearch() {
-        System.out.println("Test BreadthFirstSearch");
-
-        Assertions.assertNull(GraphAlgorithms.BreadthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");
-
-        LinkedList<String> path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Faro");
-
-        assertEquals(1, path.size(), "Should be just one");
-
-        assertEquals("Faro", path.peekFirst());
-
-        path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Porto");
-        assertEquals(7, path.size(), "Should give seven vertices");
-
-        assertEquals("Porto", path.removeFirst(), "BreathFirst Porto");
-
-        LinkedList<String> expected = new LinkedList<>(Arrays.asList("Aveiro", "Braga", "Vila Real"));
-        checkContentEquals(expected, path.subList(0, 3), "BreathFirst Porto");
-
-        expected = new LinkedList<>(Arrays.asList("Coimbra", "Leiria"));
-        checkContentEquals(expected, path.subList(3, 5), "BreathFirst Porto");
-
-        expected = new LinkedList<>(Arrays.asList("Lisboa"));
-        checkContentEquals(expected, path.subList(5, 6), "BreathFirst Porto");
-
-        path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Viseu");
-        expected = new LinkedList<>(Arrays.asList("Viseu", "Guarda", "Castelo Branco"));
-        assertEquals(expected, path, "BreathFirst Viseu");
-    }
-
-    /**
-     * Test of DepthFirstSearch method, of class Algorithms.
-     */
-    @Test
-    public void testDepthFirstSearch() {
-        System.out.println("Test of DepthFirstSearch");
-
-        assertNull(GraphAlgorithms.DepthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");
-
-        LinkedList<String> path = GraphAlgorithms.DepthFirstSearch(incompleteMap, "Faro");
-        assertEquals(1, path.size(), "Should be just one");
-
-        assertEquals("Faro", path.peekFirst());
-
-        path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Porto");
-        assertEquals(7, path.size(), "Should give seven vertices");
-
-        assertEquals("Porto", path.removeFirst(), "DepthFirst Porto");
-        assertTrue(new LinkedList<>(Arrays.asList("Aveiro", "Braga", "Vila Real")).contains(path.removeFirst()), "DepthFirst Porto");
-
-        path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Viseu");
-        List<String> expected = new LinkedList<>(Arrays.asList("Viseu", "Guarda", "Castelo Branco"));
-        assertEquals(expected, path, "DepthFirst Viseu");
-    }
-
-    /**
      * Test of shortestPath method, of class Algorithms.
      */
     @Test
@@ -197,4 +138,12 @@ class MatrixAlgorithmsTest {
         assertEquals(Arrays.asList("Braga", "Porto", "Aveiro", "Leiria"), paths.get(completeMap.key("Leiria")), "Path to Leiria");
     }
 
+
+    /**
+     * Test minimum distance graph using Floyd-Warshall.
+     */
+    @Test
+    public void testMinDistGraph() {
+        AdjacencyMatrixGraph adjacencyMatrixGraph = GraphAlgorithms.minDistGraph(completeMap, Integer::compare, Integer::sum);
+    }
 }

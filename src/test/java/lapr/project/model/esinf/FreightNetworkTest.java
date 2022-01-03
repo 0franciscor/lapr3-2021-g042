@@ -1,5 +1,8 @@
 package lapr.project.model.esinf;
 
+import lapr.project.controller.App;
+import lapr.project.controller.ColorFreightNetworkController;
+import lapr.project.controller.CreateFreightNetworkController;
 import lapr.project.model.*;
 import lapr.project.model.store.BorderStore;
 import lapr.project.model.store.CapitalStore;
@@ -8,7 +11,9 @@ import lapr.project.model.store.SeadistStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FreightNetworkTest {
     PortStore portStore;
@@ -84,7 +89,7 @@ class FreightNetworkTest {
     void addNewInformation() {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,1);
-        assertEquals(18,freightNetwork.getAdjacencyMatrixGraph().edges().size());
+        assertEquals(17,freightNetwork.getAdjacencyMatrixGraph().edges().size());
         System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
@@ -116,7 +121,44 @@ class FreightNetworkTest {
     void connectionBetweenThePortAndTheNearestNPortsOfAnotherCountry() {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.connectionBetweenThePortAndTheNearestNPortsOfAnotherCountry(seadistStore,1,portStore);
-        assertEquals(4,freightNetwork.getAdjacencyMatrixGraph().edges().size());
+        assertEquals(3,freightNetwork.getAdjacencyMatrixGraph().edges().size());
         System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
+
+    @Test
+    void colorNetwork(){
+        FreightNetwork freightNetwork = new FreightNetwork();
+        freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,1);
+        freightNetwork.colorNetwork();
+    }
+
+    /*
+    @Test
+    void geral(){
+        CreateFreightNetworkController controller = new CreateFreightNetworkController();
+        controller.createFreightNetwork(1);
+        ColorFreightNetworkController colorFreightNetworkController = new ColorFreightNetworkController();
+        colorFreightNetworkController.colorNetwork();
+        assertEquals(5, App.getInstance().getCompany().getFreightNetwork().getCoresUtilizadas());
+    }
+
+     */
+
+    @Test
+    void mostCenteredCities(){
+        FreightNetwork freightNetwork = new FreightNetwork();
+        freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,1);
+        freightNetwork.mostCenteredCities(1);
+    }
+
+
+    @Test
+    void mostCenteredCitiesgeral(){
+        CreateFreightNetworkController controller = new CreateFreightNetworkController();
+        controller.createFreightNetwork(5);
+        System.out.println( App.getInstance().getCompany().getFreightNetwork().mostCenteredCities(5));
+
+    }
+
+
 }

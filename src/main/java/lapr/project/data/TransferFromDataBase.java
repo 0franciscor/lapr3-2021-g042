@@ -274,7 +274,7 @@ public class TransferFromDataBase {
                 try (ResultSet countryResultSet = getCountriesPreparedStatement.executeQuery()) {
                     countryResultSet.next();
                     String continent = countryResultSet.getNString(2);
-                    country = countryStore.createCountry(continent, countryName);
+                    country = countryStore.createCountry(countryName,continent);
                     countryStore.saveCountry(country);
                     countryResultSet.close();
                 }
@@ -310,7 +310,7 @@ public class TransferFromDataBase {
 
             String name = countryResultSet.getNString(1);
             String continent = countryResultSet.getNString(2);
-            country = new Country(name, continent);
+            country = new Country(continent, name);
 
             App.getInstance().getCompany().getCountryStr().saveCountry(country);
 
@@ -341,10 +341,10 @@ public class TransferFromDataBase {
             isCountryOnDatabase = countriesResultSet.next();
 
             while (isCountryOnDatabase) {
-                String countryName1 = countriesResultSet.getNString(1);
-                String countryName2 = countriesResultSet.getNString(2);
+                String countryName = countriesResultSet.getNString(1);
+                String continentName = countriesResultSet.getNString(2);
 
-                Country country = countryStr.createCountry(countryName1, countryName2);
+                Country country = countryStr.createCountry(continentName, countryName);
                 countryStr.saveCountry(country);
 
                 isCountryOnDatabase = countriesResultSet.next();

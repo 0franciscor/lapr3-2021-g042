@@ -152,11 +152,9 @@ public class FreightNetwork {
                 if (!resultado.containsKey(map.getKey())) {
                     boolean flag = true;
                     for (Place place : adjacencyMatrixGraph.adjVertices(map.getKey())) {
-                        if (place instanceof Capital) {
-                            if (resultado.containsKey(place) && resultado.get(place) == corAtual) {
-                                flag = false;
-                                break;
-                            }
+                        if (place instanceof Capital && resultado.containsKey(place) && resultado.get(place) == corAtual) {
+                            flag = false;
+                            break;
                         }
                     }
                     if (flag) {

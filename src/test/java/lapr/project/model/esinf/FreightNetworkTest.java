@@ -173,7 +173,7 @@ class FreightNetworkTest {
         closenessLocalsController.closenessLocals(5);
         Assertions.assertEquals(2,closenessLocalsController.closenessLocals(5).size());
     }
-    
+
      */
 
 

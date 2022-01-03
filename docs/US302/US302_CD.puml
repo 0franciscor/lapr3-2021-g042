@@ -29,6 +29,39 @@ class AdjacencyMatrixGraph {
 
 
 
+
+class Country {
+-name
+-continent
+}
+
+class PlaceLocation {
+-latitude
+-longitude
+}
+
+class Capital{
+-name
+-country
+-latitude
+-longitude
+}
+
+class Place {
+
+}
+
+class Border {
+-countryName1
+-countryName2
+}
+
+
+class Edge {
+
+}
+
+
 ColorFreightNetworkUI ..> ColorFreightNetworkController
 
 ColorFreightNetworkController ..> Company

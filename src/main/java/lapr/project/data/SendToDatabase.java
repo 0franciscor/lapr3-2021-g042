@@ -3,7 +3,6 @@ package lapr.project.data;
 import lapr.project.controller.App;
 import lapr.project.model.*;
 
-import javax.xml.crypto.Data;
 import java.sql.*;
 
 /**
@@ -83,7 +82,7 @@ public class SendToDatabase implements Persistable {
      */
     public void sendContainersToDatabase() {
         if (databaseConnection != null) {
-            Container container = new Container("748323899", 5033407, "justo", 2.4f, 1.5f, 181.7f, 118.5f, 89.9f, 1.1f, "#REPAIRRECOMMENDATION", "CERTIFICATE");
+            Container container = new Container("748323899",1,2,3, 5033407, "justo", 2.4f, 1.5f, 181.7f, 118.5f, 89.9f, 1.1f, "#REPAIRRECOMMENDATION", "CERTIFICATE");
             saveContainer(databaseConnection, container);
 
         } else

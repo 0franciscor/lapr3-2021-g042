@@ -11,7 +11,7 @@ class ContainerTest {
 
     @BeforeEach
     void setUp() {
-        container = new Container("CT342", 5, "ISO234", 200f, 100f, 30f, 356f, 123f, 35f, "Recommended", "Sustainable certificate");
+        container = new Container("CT342",1,2,3, 5, "ISO234", 200f, 100f, 30f, 356f, 123f, 35f, "Recommended", "Sustainable certificate");
     }
 
     @Test
@@ -67,5 +67,20 @@ class ContainerTest {
     @Test
     void getCertificate() {
         assertEquals(container.getCertificate(), "Sustainable certificate");
+    }
+
+    @Test
+    void getX(){
+        assertEquals(1, container.getX());
+    }
+
+    @Test
+    void getY(){
+        assertEquals(2, container.getY());
+    }
+
+    @Test
+    void getZ(){
+        assertEquals(3, container.getZ());
     }
 }

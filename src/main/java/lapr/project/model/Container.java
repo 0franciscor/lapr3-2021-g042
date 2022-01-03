@@ -12,6 +12,21 @@ public class Container {
     private final String number;
 
     /**
+     * The x coordinate of the container
+     */
+    private final int x;
+
+    /**
+     * The y coordinate of the container
+     */
+    private final int y;
+
+    /**
+     * The z coordinate of the container
+     */
+    private final int z;
+
+    /**
      * The check digit that identify the container
      */
     private final int checkDigit;
@@ -64,6 +79,9 @@ public class Container {
     /**
      * Creates an instance of Container
      * @param number
+     * @param x
+     * @param y
+     * @param z
      * @param checkDigit
      * @param isoCode
      * @param maximumWeight
@@ -75,8 +93,11 @@ public class Container {
      * @param repairRecommendation
      * @param certificate
      */
-    public Container(String number, int checkDigit, String isoCode, float maximumWeight, float payload, float tare, float weight, float maxWeightPacked, float maxVolumePacked, String repairRecommendation, String certificate) {
+    public Container(String number, int x, int y, int z, int checkDigit, String isoCode, float maximumWeight, float payload, float tare, float weight, float maxWeightPacked, float maxVolumePacked, String repairRecommendation, String certificate) {
         this.number = number;
+        this.x = x;
+        this.y = y;
+        this.z = z;
         this.checkDigit = checkDigit;
         this.isoCode = isoCode;
         this.maximumWeight = maximumWeight;
@@ -95,6 +116,9 @@ public class Container {
      */
     public Container(Container container) {
         this.number = container.getNumber();
+        this.x = container.getX();
+        this.y = container.getY();
+        this.z = container.getZ();
         this.checkDigit = container.getCheckDigit();
         this.isoCode = container.getIsoCode();
         this.maximumWeight = container.getMaximumWeight();
@@ -113,6 +137,27 @@ public class Container {
      */
     public String getNumber() {
         return number;
+    }
+
+    /**
+     * @return the x coordinate of a container
+     */
+    public int getX(){
+        return x;
+    }
+
+    /**
+     * @return the y coordinate of a container
+     */
+    public int getY(){
+        return y;
+    }
+
+    /**
+     * @return the z coordinate of a container
+     */
+    public int getZ(){
+        return z;
     }
 
     /**

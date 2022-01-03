@@ -114,6 +114,16 @@ class Border {
 class FreightNetwork {
 }
 
+class Seadist {
+-portId1
+-portId2
+-seaDistance
+-portName1
+-portName2
+-countryName1
+-countryName2
+}
+
 CargoManifest "*" -- "1" Ports : delivered at >
 CargoManifest "*" -- "1" Warehouse : delivered at >
 
@@ -154,7 +164,7 @@ User "1" -- "1..*" Role : has >
 Warehouse "1" -- "1" PlaceLocation : located at >
 FreightNetwork "1" -- "1..*" Place : related with
 
-
+Ports "2"--"*" Seadist: has a
 
 
 @enduml

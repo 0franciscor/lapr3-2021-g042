@@ -5,22 +5,11 @@ import lapr.project.utils.Graph;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.function.BinaryOperator;
 
 public class GraphAlgorithms {
 
-    /**
-     * Computes shortest-path distance from a source vertex to all reachable
-     * vertices of a graph g with non-negative edge weights
-     * This implementation uses Dijkstra's algorithm
-     *
-     * @param g        Graph instance
-     * @param vOrig    Vertex that will be the source of the path
-     * @param visited  set of previously visited vertices
-     * @param pathKeys minimum path vertices keys
-     * @param dist     minimum distances
-     */
+    /*
     private static <V, E> void shortestPathDijkstra(Graph<V, E> g, V vOrig,
                                                     Comparator<E> ce, BinaryOperator<E> sum, E zero,
                                                     boolean[] visited, V[] pathKeys, E[] dist) {
@@ -55,18 +44,10 @@ public class GraphAlgorithms {
         }
     }
 
-
-    /** Shortest-path between two vertices
-     *
-     * @param g graph
-     * @param vOrig origin vertex
-     * @param vDest destination vertex
-     * @param ce comparator between elements of type E
-     * @param sum sum two elements of type E
-     * @param zero neutral element of the sum in elements of type E
-     * @param shortPath returns the vertices which make the shortest path
-     * @return if vertices exist in the graph and are connected, true, false otherwise
      */
+
+
+    /*
     public static <V, E> E shortestPath(Graph<V, E> g, V vOrig, V vDest,
                                         Comparator<E> ce, BinaryOperator<E> sum, E zero,
                                         LinkedList<V> shortPath) {
@@ -103,17 +84,9 @@ public class GraphAlgorithms {
         return lengthPath;
     }
 
-    /** Shortest-path between a vertex and all other vertices
-     *
-     * @param g graph
-     * @param vOrig start vertex
-     * @param ce comparator between elements of type E
-     * @param sum sum two elements of type E
-     * @param zero neutral element of the sum in elements of type E
-     * @param paths returns all the minimum paths
-     * @param dists returns the corresponding minimum distances
-     * @return if vOrig exists in the graph true, false otherwise
      */
+
+    /*
     public static <V, E> boolean shortestPaths(Graph<V, E> g, V vOrig,
                                                Comparator<E> ce, BinaryOperator<E> sum, E zero,
                                                ArrayList<LinkedList<V>> paths, ArrayList<E> dists) {
@@ -157,16 +130,9 @@ public class GraphAlgorithms {
         return true;
     }
 
-    /**
-     * Extracts from pathKeys the minimum path between voInf and vdInf
-     * The path is constructed from the end to the beginning
-     *
-     * @param g        Graph instance
-     * @param vOrig    information of the Vertex origin
-     * @param vDest    information of the Vertex destination
-     * @param pathKeys minimum path vertices keys
-     * @param path     stack with the minimum path (correct order)
      */
+
+    /*
     private static <V, E> void getPath(Graph<V, E> g, V vOrig, V vDest,
                                        V [] pathKeys, LinkedList<V> path) {
 
@@ -181,6 +147,8 @@ public class GraphAlgorithms {
             getPath(g,vOrig,vDest,pathKeys,path);
         }
     }
+
+     */
 
     /** Calculates the minimum distance graph using Floyd-Warshall
      *

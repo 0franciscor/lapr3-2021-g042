@@ -164,6 +164,7 @@ class FreightNetworkTest {
 
 
 
+    /*
     @Test
     void mostCenteredCitiesgeral() throws IOException {
         CreateFreightNetworkController controller = new CreateFreightNetworkController();
@@ -172,6 +173,10 @@ class FreightNetworkTest {
         closenessLocalsController.closenessLocals(5);
         Assertions.assertEquals(2,closenessLocalsController.closenessLocals(5).size());
     }
+    
+     */
+
+
     
 
 

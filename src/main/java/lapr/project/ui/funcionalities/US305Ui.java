@@ -10,9 +10,10 @@ public class US305Ui implements Runnable {
     @Override
     public void run() {
 
-        String registrationCode = Utils.readLineFromConsole("Type the registration code:\n->");
+        int registrationCode = Utils.readIntegerFromConsole("Type the registration code:\n->");
+        int containerId = Utils.readIntegerFromConsole("Type the container number id:\n->");
         try {
-            new US305Handler(registrationCode);
+            new US305Handler(registrationCode, containerId);
         } catch (IOException e) {
             e.printStackTrace();
         }

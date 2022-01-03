@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class responsible for converting the Database info into Java Domain Objects
@@ -344,7 +346,7 @@ public class TransferFromDataBase {
                 String countryName = countriesResultSet.getNString(1);
                 String continentName = countriesResultSet.getNString(2);
 
-                Country country = countryStr.createCountry(continentName, countryName);
+                Country country = countryStr.createCountry(countryName,continentName);
                 countryStr.saveCountry(country);
 
                 isCountryOnDatabase = countriesResultSet.next();
@@ -463,6 +465,46 @@ public class TransferFromDataBase {
         } finally {
             getCapitalPreparedStatement.close();
         }
+    }
+
+    /**
+     * Method responsible for retrieving a list of Containers from the database.
+     *
+     * @param databaseConnection to the database
+     * @param code of the cargo Manifest
+     * @throws SQLException that may occur within the connection to the database
+     */
+    private List<Container> importContainersFromDataBase(DatabaseConnection databaseConnection, Integer code)
+            throws SQLException {
+        List<Container> containerLst = new ArrayList<>();
+
+        boolean isThereContainersOnDataBase;
+
+        String sqlCommand = "select * from CargoManifestContainer where cargoManifestLoadId = ?";
+
+        PreparedStatement getContinentalPreparedStatement = databaseConnection.getConnection().prepareStatement(sqlCommand);
+
+        getContinentalPreparedStatement.setInt(1,code);
+
+        try (ResultSet containerResultSet = getContinentalPreparedStatement.executeQuery()) {
+            isThereContainersOnDataBase = containerResultSet.next();
+
+            while (isThereContainersOnDataBase) {
+                int containerNumberID = containerResultSet.getInt(1);
+                int x = containerResultSet.getInt(4);
+                int y = containerResultSet.getInt(5);
+                int z = containerResultSet.getInt(6);
+
+                Container container = new Container(String.valueOf(containerNumberID), x, y, z, 0, "a", 1f, 2f, 3f, 4f, 5f, 6f, "b", "c");
+                containerLst.add(container);
+
+                isThereContainersOnDataBase = containerResultSet.next();
+            }
+            containerResultSet.close();
+        } finally {
+            getContinentalPreparedStatement.close();
+        }
+        return containerLst;
     }
 
 }

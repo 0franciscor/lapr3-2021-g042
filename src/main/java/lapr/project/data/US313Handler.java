@@ -25,7 +25,7 @@ public class US313Handler {
 
         stringBuilder.append("18,26,10\n");
         for(Container container : containerLst){
-            stringBuilder.append(String.format("%d,%d,%d", container.getX(), container.getY(), container.getZ()) + "\n");
+            stringBuilder.append(String.format("%s,%d,%d,%d", container.getNumber(), container.getX(), container.getY(), container.getZ()) + "\n");
         }
 
         String finalString = stringBuilder.toString();

@@ -6,59 +6,62 @@ actor "Traffic Manager" as TM
 participant ":CreateFreightNetworkUI  " as UI
 participant ":CreateFreightNetworkController" as CTRL
 participant ":Company" as CMP
-participant ":TransferFromDataBase" as transfer
-participant ":PortStore" as pStore
-participant ":SeadistStore" as sStore
-participant ":CountryStore" as cStore
-participant ":CapitalStore" as capitals
-participant ":BorderStore" as bStore
+participant ":TransferFromDataBase" as Transfer
+participant ":CountryStore" as STORE
 participant ":FreightNetwork" as network
+participant ":PortStore" as portStore
+participant ":SeadistStore" as seadistStore
+participant ":CapitalStore" as capitalStore
+participant ":BorderStore" as borderStore
+
+
 
 
 activate TM
-TM -> UI: Initiates the process to create a freight \n network importing ports, countries,\n capitals, borders and seadists from database
+TM -> UI: Initiates the process to create a freight network importing ports, countries,\n capitals, borders and seadists from database
 activate UI
-UI -> CTRL : createFreightNetwork()
+UI --> TM : Asks how many closest ports of any other country
+deactivate UI
+TM -> UI : Enter the requested information
+activate UI
+UI -> CTRL : createFreightNetwork(n)
 activate CTRL
-CTRL -> CMP : getTransferFromDatabase()
+CTRL->CMP : getTransferFromDatabase()
 activate CMP
 deactivate CMP
-CTRL -> transfer : importPorts()
-activate transfer
-deactivate transfer
-CTRL -> transfer : importSeadist()
-activate transfer
-deactivate transfer
-CTRL -> transfer : importCountries()
-activate transfer
-deactivate transfer
-CTRL -> transfer : importCapitals()
-activate transfer
-deactivate transfer
-CTRL -> transfer : importBorder()
-activate transfer
-deactivate transfer
-CTRL -> CMP: getPortStr()
+CTRL->Transfer: importPorts()
+activate Transfer
+deactivate Transfer
+CTRL->Transfer: importSeadists()
+activate Transfer
+deactivate Transfer
+CTRL->Transfer: importCountries()
+activate Transfer
+deactivate Transfer
+CTRL->Transfer: importCapitals();
+activate Transfer
+deactivate Transfer
+CTRL->Transfer: importBorders()
+activate Transfer
+deactivate Transfer
+CTRL->CMP : getPortStr()
 activate CMP
 deactivate CMP
-CTRL -> CMP: getSeadistStr()
+CTRL->CMP : getSeadistStr()
 activate CMP
 deactivate CMP
-CTRL -> CMP: getCapitalsStr()
+CTRL->CMP : getCapitalStr()
 activate CMP
 deactivate CMP
-CTRL -> CMP: getBordersStr()
+CTRL->CMP : getBorderStr()
 activate CMP
 deactivate CMP
-CTRL -> CMP : getFreightNetwork()
-activate CMP
-deactivate CMP
-CTRL->network : addNewInformation(portsStore,seadistsStore,capitalsStore,bordersStore)
+CTRL-> network : addNewInformation(capitalStore,portStore,seadistStore,borderStore,n)
 activate network
-deactivate network
-CTRL --> UI: result
-deactivate CTRL
 
+deactivate network
+
+deactivate CTRL
 UI --> TM : Informs of operation success
 deactivate UI
 

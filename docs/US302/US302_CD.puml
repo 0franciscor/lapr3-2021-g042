@@ -21,6 +21,12 @@ class FreightNetwork {
 -isFullyColored()
 }
 
+class AdjacencyMatrixGraph {
+-vertices()
+-adjVertices()
+
+}
+
 
 
 ColorFreightNetworkUI ..> ColorFreightNetworkController
@@ -30,5 +36,12 @@ ColorFreightNetworkController ..> FreightNetwork
 
 Company "1"--"1" FreightNetwork: have >
 
+FreightNetwork ..> AdjacencyMatrixGraph
+FreightNetwork "1" -- "1..*" Place : related with
+Place <|-- Capital
+Place "1" -- "1" PlaceLocation : located at >
+PlaceLocation "*" -- "1" Country : placed in >
+Country "2" -- "*" Border : has a
+AdjacencyMatrixGraph ..> Edge
 
 @enduml

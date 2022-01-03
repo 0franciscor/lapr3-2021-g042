@@ -129,4 +129,8 @@ PlaceLocation "*" -- "1" Country : placed in >
 Place "1" -- "1" PlaceLocation : located at >
 CreateFreightNetworkController ..> CapitalStore
 CapitalStore "1"--> "*" Capital : adopts
+Company..> PortStore
+Company..>CapitalStore
+Company..>BorderStore
+Company..> SeadistStore
 @enduml

@@ -1,6 +1,8 @@
 package lapr.project.model.esinf;
 
+import lapr.project.controller.App;
 import lapr.project.controller.ClosenessLocalsController;
+import lapr.project.controller.ColorFreightNetworkController;
 import lapr.project.controller.CreateFreightNetworkController;
 import lapr.project.model.*;
 import lapr.project.model.store.*;
@@ -141,9 +143,9 @@ class FreightNetworkTest {
         freightNetwork.colorNetwork();
     }
 
-    /*
+
     @Test
-    void geral(){
+    void geral() throws IOException {
         CreateFreightNetworkController controller = new CreateFreightNetworkController();
         controller.createFreightNetwork(1);
         ColorFreightNetworkController colorFreightNetworkController = new ColorFreightNetworkController();
@@ -151,7 +153,7 @@ class FreightNetworkTest {
         assertEquals(5, App.getInstance().getCompany().getFreightNetwork().getCoresUtilizadas());
     }
 
-     */
+
 
     @Test
     void mostCenteredCities(){

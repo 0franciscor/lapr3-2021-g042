@@ -19,7 +19,9 @@ public class GraphAlgorithms {
      */
     public static <V,E> AdjacencyMatrixGraph <V,E> minDistGraph(Graph <V,E> g, Comparator<E> ce, BinaryOperator<E> sum) {
         int nV = g.numVertices();
-        int i, j, k;
+        int i;
+        int j;
+        int k;
 
         if (nV == 0) {
             return null;
@@ -54,7 +56,7 @@ public class GraphAlgorithms {
             }
         }
 
-        return new AdjacencyMatrixGraph<V,E>(g.isDirected(), g.vertices(), mat);
+        return new AdjacencyMatrixGraph<>(g.isDirected(), g.vertices(), mat);
     }
 
 

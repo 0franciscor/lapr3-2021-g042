@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="744px" preserveAspectRatio="none" style="width:442px;height:744px;" version="1.1" viewBox="0 0 442 744" width="442.5px" zoomAndPan="magnify"><defs><filter height="300%" id="f69jsihq8kp35" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="3.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="6.0" dy="6.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[8a180c720bdcaca249d12af2455579af]
+class ClosenessLocalsUI--><rect codeLine="7" fill="#FEFECE" filter="url(#f69jsihq8kp35)" height="72" id="ClosenessLocalsUI" style="stroke:#A80036;stroke-width:2.25;" width="213" x="109.5" y="10.5"/><ellipse cx="132" cy="34.5" fill="#ADD1B2" rx="16.5" ry="16.5" style="stroke:#A80036;stroke-width:1.5;"/><path d="M135,29.25 Q135.3047,28.5 135.6563,28.125 Q136.0078,27.75 136.4063,27.75 Q137.1094,27.75 137.5547,28.1719 Q138,28.5938 138,29.5781 L138,31.9219 Q138,32.9063 137.5781,33.3281 Q137.1563,33.75 136.5,33.75 Q135.9141,33.75 135.5391,33.4922 Q135.1641,33.2344 135,32.5547 Q134.9297,32.0859 134.6719,31.8281 Q134.2031,31.3359 133.3594,31.0547 Q132.5156,30.75 131.6719,30.75 Q130.6172,30.75 129.7266,31.1719 Q128.8594,31.5938 128.1797,32.5313 Q127.5,33.4688 127.5,34.7578 L127.5,36.1406 Q127.5,37.6875 128.7656,38.7188 Q130.0313,39.75 132.2813,39.75 Q133.6172,39.75 134.5547,39.4453 Q135.0938,39.2813 135.7031,38.7422 Q136.1016,38.4375 136.3125,38.3438 Q136.5234,38.25 136.7813,38.25 Q137.2734,38.25 137.625,38.6484 Q138,39.0234 138,39.5625 Q138,40.0781 137.4844,40.6875 Q136.7344,41.5781 135.5391,42.0703 Q133.9688,42.75 132.0469,42.75 Q129.7969,42.75 127.9922,41.8594 Q126.5391,41.1563 125.5078,39.6328 Q124.5,38.1094 124.5,36.3047 L124.5,34.6641 Q124.5,32.7891 125.3906,31.1484 Q126.3047,29.5078 127.875,28.6406 Q129.4688,27.75 131.25,27.75 Q132.3281,27.75 133.2656,28.125 Q134.2031,28.5 135,29.25 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="165" x="153" y="41.8652">ClosenessLocalsUI</text><line style="stroke:#A80036;stroke-width:2.25;" x1="111" x2="321" y1="58.5" y2="58.5"/><line style="stroke:#A80036;stroke-width:2.25;" x1="111" x2="321" y1="70.5" y2="70.5"/><!--MD5=[22a78233309a5450205136e28968c438]
+class ClosenessLocalsController--><rect codeLine="9" fill="#FEFECE" filter="url(#f69jsihq8kp35)" height="92.7539" id="ClosenessLocalsController" style="stroke:#A80036;stroke-width:2.25;" width="276" x="78" y="174"/><ellipse cx="100.5" cy="198" fill="#ADD1B2" rx="16.5" ry="16.5" style="stroke:#A80036;stroke-width:1.5;"/><path d="M103.5,192.75 Q103.8047,192 104.1563,191.625 Q104.5078,191.25 104.9063,191.25 Q105.6094,191.25 106.0547,191.6719 Q106.5,192.0938 106.5,193.0781 L106.5,195.4219 Q106.5,196.4063 106.0781,196.8281 Q105.6563,197.25 105,197.25 Q104.4141,197.25 104.0391,196.9922 Q103.6641,196.7344 103.5,196.0547 Q103.4297,195.5859 103.1719,195.3281 Q102.7031,194.8359 101.8594,194.5547 Q101.0156,194.25 100.1719,194.25 Q99.1172,194.25 98.2266,194.6719 Q97.3594,195.0938 96.6797,196.0313 Q96,196.9688 96,198.2578 L96,199.6406 Q96,201.1875 97.2656,202.2188 Q98.5313,203.25 100.7813,203.25 Q102.1172,203.25 103.0547,202.9453 Q103.5938,202.7813 104.2031,202.2422 Q104.6016,201.9375 104.8125,201.8438 Q105.0234,201.75 105.2813,201.75 Q105.7734,201.75 106.125,202.1484 Q106.5,202.5234 106.5,203.0625 Q106.5,203.5781 105.9844,204.1875 Q105.2344,205.0781 104.0391,205.5703 Q102.4688,206.25 100.5469,206.25 Q98.2969,206.25 96.4922,205.3594 Q95.0391,204.6563 94.0078,203.1328 Q93,201.6094 93,199.8047 L93,198.1641 Q93,196.2891 93.8906,194.6484 Q94.8047,193.0078 96.375,192.1406 Q97.9688,191.25 99.75,191.25 Q100.8281,191.25 101.7656,191.625 Q102.7031,192 103.5,192.75 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="228" x="121.5" y="205.3652">ClosenessLocalsController</text><line style="stroke:#A80036;stroke-width:2.25;" x1="79.5" x2="352.5" y1="222" y2="222"/><line style="stroke:#A80036;stroke-width:2.25;" x1="79.5" x2="352.5" y1="234" y2="234"/><text fill="#000000" font-family="sans-serif" font-size="16.5" lengthAdjust="spacing" textLength="150" x="87" y="257.1284">-closenessLocals(n)</text><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><rect codeLine="13" fill="#FEFECE" filter="url(#f69jsihq8kp35)" height="134.2617" id="Company" style="stroke:#A80036;stroke-width:2.25;" width="169.5" x="48.75" y="358.5"/><ellipse cx="90.15" cy="382.5" fill="#ADD1B2" rx="16.5" ry="16.5" style="stroke:#A80036;stroke-width:1.5;"/><path d="M93.15,377.25 Q93.4547,376.5 93.8063,376.125 Q94.1578,375.75 94.5563,375.75 Q95.2594,375.75 95.7047,376.1719 Q96.15,376.5938 96.15,377.5781 L96.15,379.9219 Q96.15,380.9063 95.7281,381.3281 Q95.3063,381.75 94.65,381.75 Q94.0641,381.75 93.6891,381.4922 Q93.3141,381.2344 93.15,380.5547 Q93.0797,380.0859 92.8219,379.8281 Q92.3531,379.3359 91.5094,379.0547 Q90.6656,378.75 89.8219,378.75 Q88.7672,378.75 87.8766,379.1719 Q87.0094,379.5938 86.3297,380.5313 Q85.65,381.4688 85.65,382.7578 L85.65,384.1406 Q85.65,385.6875 86.9156,386.7188 Q88.1813,387.75 90.4313,387.75 Q91.7672,387.75 92.7047,387.4453 Q93.2438,387.2813 93.8531,386.7422 Q94.2516,386.4375 94.4625,386.3438 Q94.6734,386.25 94.9313,386.25 Q95.4234,386.25 95.775,386.6484 Q96.15,387.0234 96.15,387.5625 Q96.15,388.0781 95.6344,388.6875 Q94.8844,389.5781 93.6891,390.0703 Q92.1188,390.75 90.1969,390.75 Q87.9469,390.75 86.1422,389.8594 Q84.6891,389.1563 83.6578,387.6328 Q82.65,386.1094 82.65,384.3047 L82.65,382.6641 Q82.65,380.7891 83.5406,379.1484 Q84.4547,377.5078 86.025,376.6406 Q87.6188,375.75 89.4,375.75 Q90.4781,375.75 91.4156,376.125 Q92.3531,376.5 93.15,377.25 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="79.5" x="115.35" y="389.8652">Company</text><line style="stroke:#A80036;stroke-width:2.25;" x1="50.25" x2="216.75" y1="406.5" y2="406.5"/><text fill="#000000" font-family="sans-serif" font-size="16.5" lengthAdjust="spacing" textLength="88.5" x="57.75" y="429.6284">-designation</text><line style="stroke:#A80036;stroke-width:2.25;" x1="50.25" x2="216.75" y1="439.2539" y2="439.2539"/><text fill="#000000" font-family="sans-serif" font-size="16.5" lengthAdjust="spacing" textLength="151.5" x="57.75" y="462.3823">-getFreightNetwork()</text><text fill="#000000" font-family="sans-serif" font-size="16.5" lengthAdjust="spacing" textLength="136.5" x="57.75" y="483.1362">-getCountryStore()</text><!--MD5=[074ba6ad47b234bd73d65012320c1634]
+class FreightNetwork--><rect codeLine="19" fill="#FEFECE" filter="url(#f69jsihq8kp35)" height="113.5078" id="FreightNetwork" style="stroke:#A80036;stroke-width:2.25;" width="411" x="10.5" y="610.5"/><ellipse cx="147.375" cy="634.5" fill="#ADD1B2" rx="16.5" ry="16.5" style="stroke:#A80036;stroke-width:1.5;"/><path d="M150.375,629.25 Q150.6797,628.5 151.0313,628.125 Q151.3828,627.75 151.7813,627.75 Q152.4844,627.75 152.9297,628.1719 Q153.375,628.5938 153.375,629.5781 L153.375,631.9219 Q153.375,632.9063 152.9531,633.3281 Q152.5313,633.75 151.875,633.75 Q151.2891,633.75 150.9141,633.4922 Q150.5391,633.2344 150.375,632.5547 Q150.3047,632.0859 150.0469,631.8281 Q149.5781,631.3359 148.7344,631.0547 Q147.8906,630.75 147.0469,630.75 Q145.9922,630.75 145.1016,631.1719 Q144.2344,631.5938 143.5547,632.5313 Q142.875,633.4688 142.875,634.7578 L142.875,636.1406 Q142.875,637.6875 144.1406,638.7188 Q145.4063,639.75 147.6563,639.75 Q148.9922,639.75 149.9297,639.4453 Q150.4688,639.2813 151.0781,638.7422 Q151.4766,638.4375 151.6875,638.3438 Q151.8984,638.25 152.1563,638.25 Q152.6484,638.25 153,638.6484 Q153.375,639.0234 153.375,639.5625 Q153.375,640.0781 152.8594,640.6875 Q152.1094,641.5781 150.9141,642.0703 Q149.3438,642.75 147.4219,642.75 Q145.1719,642.75 143.3672,641.8594 Q141.9141,641.1563 140.8828,639.6328 Q139.875,638.1094 139.875,636.3047 L139.875,634.6641 Q139.875,632.7891 140.7656,631.1484 Q141.6797,629.5078 143.25,628.6406 Q144.8438,627.75 146.625,627.75 Q147.7031,627.75 148.6406,628.125 Q149.5781,628.5 150.375,629.25 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="124.5" x="178.125" y="641.8652">FreightNetwork</text><line style="stroke:#A80036;stroke-width:2.25;" x1="12" x2="420" y1="658.5" y2="658.5"/><line style="stroke:#A80036;stroke-width:2.25;" x1="12" x2="420" y1="670.5" y2="670.5"/><text fill="#000000" font-family="sans-serif" font-size="16.5" lengthAdjust="spacing" textLength="265.5" x="19.5" y="693.6284">-mostCenteredCities(n,countryStore)</text><text fill="#000000" font-family="sans-serif" font-size="16.5" lengthAdjust="spacing" textLength="393" x="19.5" y="714.3823">-mostCenteredCitiesOnTheContinent(n,continentName)</text><!--MD5=[d48b8808f8edaa9fa6bd2125360397d7]
+link ClosenessLocalsUI to ClosenessLocalsController--><path codeLine="26" d="M216,82.605 C216,106.515 216,138.765 216,165.9 " fill="none" id="ClosenessLocalsUI-to-ClosenessLocalsController" style="stroke:#A80036;stroke-width:1.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="216,173.415,222,159.915,216,165.915,210,159.915,216,173.415" style="stroke:#A80036;stroke-width:1.5;"/><!--MD5=[8f0926b26f2ed8030e9af986a8bc4ce7]
+link ClosenessLocalsController to Company--><path codeLine="28" d="M197.49,267.45 C187.41,292.17 174.705,323.355 163.275,351.405 " fill="none" id="ClosenessLocalsController-to-Company" style="stroke:#A80036;stroke-width:1.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="160.41,358.455,171.0601,348.2165,163.2397,351.5093,159.947,343.689,160.41,358.455" style="stroke:#A80036;stroke-width:1.5;"/><!--MD5=[75f54beb738ccf17ff58a3473a0212cd]
+link ClosenessLocalsController to FreightNetwork--><path codeLine="29" d="M229.17,267.3 C246.495,333.285 272.625,459.525 253.5,565.5 C251.28,577.8 247.65,590.55 243.495,602.67 " fill="none" id="ClosenessLocalsController-to-FreightNetwork" style="stroke:#A80036;stroke-width:1.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="240.855,610.125,251.0213,599.406,243.3612,603.0561,239.7111,595.3961,240.855,610.125" style="stroke:#A80036;stroke-width:1.5;"/><!--MD5=[e359b474b5bea3d5e0a05d5f38acf6c5]
+link Company to FreightNetwork--><path codeLine="31" d="M156.48,493.935 C169.17,530.595 184.74,575.61 196.77,610.395 " fill="none" id="Company-FreightNetwork" style="stroke:#A80036;stroke-width:1.5;"/><polygon fill="#000000" points="189.9521,559.3515,189.6824,545.0882,181.3501,547.9708,189.9521,559.3515" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="19.5" lengthAdjust="spacing" textLength="39" x="201" y="560.2427">have</text><text fill="#000000" font-family="sans-serif" font-size="19.5" lengthAdjust="spacing" textLength="10.5" x="148.3625" y="525.004">1</text><text fill="#000000" font-family="sans-serif" font-size="19.5" lengthAdjust="spacing" textLength="10.5" x="181.9095" y="594.4191">1</text><!--MD5=[952db7f8d06d3c11354b84508ff2a79c]
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+
+
+
+class ClosenessLocalsUI {}
+
+class ClosenessLocalsController {
+-closenessLocals(n)
+}
+
+class Company {
+-designation
+-getFreightNetwork()
+-getCountryStore()
+}
+
+class FreightNetwork {
+-mostCenteredCities(n,countryStore)
+-mostCenteredCitiesOnTheContinent(n,continentName)
+}
+
+
+
+ClosenessLocalsUI ..> ClosenessLocalsController
+
+ClosenessLocalsController ..> Company
+ClosenessLocalsController ..> FreightNetwork
+
+Company "1"- -"1" FreightNetwork: have >
+
+
+@enduml
+
+@startuml
+
+skinparam classAttributeIconSize 0
+
+
+
+class ClosenessLocalsUI {}
+
+class ClosenessLocalsController {
+-closenessLocals(n)
+}
+
+class Company {
+-designation
+-getFreightNetwork()
+-getCountryStore()
+}
+
+class FreightNetwork {
+-mostCenteredCities(n,countryStore)
+-mostCenteredCitiesOnTheContinent(n,continentName)
+}
+
+
+
+ClosenessLocalsUI ..> ClosenessLocalsController
+
+ClosenessLocalsController ..> Company
+ClosenessLocalsController ..> FreightNetwork
+
+Company "1"- -"1" FreightNetwork: have >
+
+
+@enduml
+
+PlantUML version 1.2021.5(Sun Apr 25 12:20:28 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+
+
+
+class ClosenessLocalsUI {}
+
+class ClosenessLocalsController {
+-closenessLocals(n)
+}
+
+class Company {
+-designation
+-getFreightNetwork()
+-getCountryStore()
+}
+
+class FreightNetwork {
+-mostCenteredCities(n,countryStore)
+-mostCenteredCitiesOnTheContinent(n,continentName)
+}
+
+
+
+ClosenessLocalsUI ..> ClosenessLocalsController
+
+ClosenessLocalsController ..> Company
+ClosenessLocalsController ..> FreightNetwork
+
+Company "1"--"1" FreightNetwork: have >
+
+
+@enduml

@@ -101,7 +101,6 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,1);
         assertEquals(17,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -109,7 +108,6 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.linkBetweenCapitalsOfNeighboringCountries(capitalStore,borderStore);
         assertEquals(8,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -117,7 +115,6 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.connectionBetweenPortsOfTheSameCountry(portStore,seadistStore);
         assertEquals(4,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -125,7 +122,6 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.connectionBetweenTheCapitalAndTheNearestPort(capitalStore,portStore);
         assertEquals(2,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -133,14 +129,6 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.connectionBetweenThePortAndTheNearestNPortsOfAnotherCountry(seadistStore,1,portStore);
         assertEquals(3,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
-    }
-
-    @Test
-    void colorNetwork(){
-        FreightNetwork freightNetwork = new FreightNetwork();
-        freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,1);
-        freightNetwork.colorNetwork();
     }
 
 
@@ -152,34 +140,5 @@ class FreightNetworkTest {
         colorFreightNetworkController.colorNetwork();
         assertEquals(5, App.getInstance().getCompany().getFreightNetwork().getCoresUtilizadas());
     }
-
-
-
-    @Test
-    void mostCenteredCities(){
-        FreightNetwork freightNetwork = new FreightNetwork();
-        freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,1);
-        freightNetwork.mostCenteredCities(1,countryStore);
-    }
-
-
-
-    /*
-    @Test
-    void mostCenteredCitiesgeral() throws IOException {
-        CreateFreightNetworkController controller = new CreateFreightNetworkController();
-        controller.createFreightNetwork(5);
-        ClosenessLocalsController closenessLocalsController = new ClosenessLocalsController();
-        closenessLocalsController.closenessLocals(5);
-        Assertions.assertEquals(2,closenessLocalsController.closenessLocals(5).size());
-    }
-
-     */
-
-
-    
-
-
-
 
 }

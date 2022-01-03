@@ -11,6 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -139,6 +141,14 @@ class FreightNetworkTest {
         ColorFreightNetworkController colorFreightNetworkController = new ColorFreightNetworkController();
         colorFreightNetworkController.colorNetwork();
         assertEquals(5, App.getInstance().getCompany().getFreightNetwork().getCoresUtilizadas());
+    }
+
+    @Test
+    void centeredCitties (){
+        FreightNetwork freightNetwork = new FreightNetwork();
+        freightNetwork.linkBetweenCapitalsOfNeighboringCountries(capitalStore,borderStore);
+        Map<String, List<Place>> result = freightNetwork.mostCenteredCities(1,countryStore);
+        Assertions.assertEquals("France",result.get("Europe").get(0).getCountryName());
     }
 
 }

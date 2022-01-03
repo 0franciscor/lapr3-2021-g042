@@ -96,7 +96,7 @@ class ColorFreightNetworkControllerTest {
 
     @Test
     void colorNetworkProject() throws IOException {
-        createFreightNetworkController.createFreightNetwork(50);
+        createFreightNetworkController.createFreightNetwork(5);
         colorFreightNetworkController.colorNetwork();
         Assertions.assertEquals(5,colorFreightNetworkController.getFreightNetwork().getCoresUtilizadas());
     }

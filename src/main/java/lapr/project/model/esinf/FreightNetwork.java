@@ -1,10 +1,7 @@
 package lapr.project.model.esinf;
 
 import lapr.project.model.*;
-import lapr.project.model.store.BorderStore;
-import lapr.project.model.store.CapitalStore;
-import lapr.project.model.store.PortStore;
-import lapr.project.model.store.SeadistStore;
+import lapr.project.model.store.*;
 import lapr.project.ui.Utils;
 import lapr.project.utils.Graph;
 
@@ -186,13 +183,23 @@ public class FreightNetwork {
         return coresUtilizadas;
     }
 
-    public List<Place> mostCenteredCities(int n){
-        List<List<Place>>  places = new ArrayList<>();
+    public Map<String,List<Place>> mostCenteredCities(int n, CountryStore countryStore){
+        // obter os continentes existentes
+        List<String> continents = new ArrayList<>();
+        for (Country country: countryStore.getCountryLst()){
+            if(!continents.contains(country.getContinent())){
+                continents.add(country.getContinent());
 
+            }
+        }
 
-        places.add(mostCenteredCitiesOnTheContinent(n,"Europe"));
+        Map<String,List<Place>> places = new TreeMap();
+        for (String continent : continents){
+            places.put(continent,mostCenteredCitiesOnTheContinent(n,continent));
 
-        return mostCenteredCitiesOnTheContinent(n,"Europe");
+        }
+
+        return places;
     }
 
     public List<Place> mostCenteredCitiesOnTheContinent(int n, String continentName){

@@ -344,7 +344,7 @@ public class TransferFromDataBase {
                 String countryName = countriesResultSet.getNString(1);
                 String continentName = countriesResultSet.getNString(2);
 
-                Country country = countryStr.createCountry(continentName, countryName);
+                Country country = countryStr.createCountry(countryName,continentName);
                 countryStr.saveCountry(country);
 
                 isCountryOnDatabase = countriesResultSet.next();

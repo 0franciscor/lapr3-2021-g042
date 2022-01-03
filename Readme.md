@@ -108,7 +108,25 @@ It should allow the Traffic Manager to import ships, see Ships's different data 
 ####  US208 - Francisco Redol & Manuela Leite
 ####  US209 - Pedro Rocha & Rita Ariana Sobral
 ####  US210 - Manuela Leite, Francisco Redol, Pedro Rocha & Rita Ariana Sobral
-
+####  US301 - Rita Ariana Sobral & Francisco Redol
+####  US302 - Manuela Leite
+####  US303 - Rita Ariana Sobral & Pedro Rocha
+####  US304 - Manuela Leite & Rita Ariana Sobral
+####  US305 - Pedro Rocha & Francisco Redol
+####  US306 - Manuela Leite & Pedro Rocha
+####  US307 - Rita Ariana Sobral & Francisco Redol
+####  US308 - Pedro Rocha & Francisco Redol
+####  US309 - Pedro Rocha & Manuela Leite
+####  US310 - Manuela Leite, Francisco Redol, Pedro Rocha & Rita Ariana Sobral
+####  US312 - Rita Ariana Sobral
+####  US313 - Manuela Leite
+####  US314 - Pedro Rocha
+####  US315 - Francisco Redol
+####  US316 - Rita Ariana Sobral
+####  US317 - Manuela Leite
+####  US318 - Francisco Redol
+####  US319 - Rita Ariana Sobral
+####  US320 - Pedro Rocha
 
 ## Solution
 

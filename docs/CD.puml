@@ -405,6 +405,7 @@ class FreightNetwork {
 -isFullyColored()
 -mostCenteredCities(n,countryStore)
 -mostCenteredCitiesOnTheContinent(n,continentName)
+-mediaDist(place, matrixGraph)
 }
 
 
@@ -422,20 +423,64 @@ class ClosenessLocalsController {
 
 
 
+class SeadistStore {
+}
+
+class CapitalStore {
+}
+
+class BorderStore {
+}
+
+class Capital{
+-name
+-country
+-latitude
+-longitude
+}
+
+class Place {
+}
+
+class Border {
+-countryName1
+-countryName2
+}
+
+class Seadist {
+-portId1
+-portId2
+-seaDistance
+-portName1
+-portName2
+-countryName1
+-countryName2
+}
+
+class AdjacencyMatrixGraph {
+-addEdge()
+-vertices()
+-adjVertices()
+-edge()
+}
+
+class Edge {
+}
 
 
+FreightNetwork ..> AdjacencyMatrixGraph
+FreightNetwork "1" -- "1..*" Place : related with
 
+AdjacencyMatrixGraph ..> Edge
 
-
-
-
-
-
+SeadistStore "1"--> "*" Seadist : adopts
+BorderStore "1"--> "*" Border : adopts
 
 ClosenessLocalsUI ..> ClosenessLocalsController
 
 ClosenessLocalsController ..> Company
 ClosenessLocalsController ..> FreightNetwork
+ClosenessLocalsController..> CountryStore
 
 
 ColorFreightNetworkUI ..> ColorFreightNetworkController
@@ -444,20 +489,30 @@ ColorFreightNetworkController ..> Company
 ColorFreightNetworkController ..> FreightNetwork
 
 
+
 CreateFreightNetworkUI ..> CreateFreightNetworkController
 
 CreateFreightNetworkController ..> Company
 CreateFreightNetworkController ..> FreightNetwork
+CreateFreightNetworkController ..> PortStore
+CreateFreightNetworkController ..> SeadistStore
+CreateFreightNetworkController ..> BorderStore
+CreateFreightNetworkController ..> CapitalStore
 
+CapitalStore "1"--> "*" Capital : adopts
 
 FindContainerSituationUi ..> FindContainerSituationController
 FindContainerSituationController ..> US204Handler
 FindContainerSituationController ..> Company
 US204Handler ..> WriteForAFile
 
+Place <|-- Capital
+Place <|-- Ports
+Place "1" -- "1" PlaceLocation : located at >
 
 PortStore "1"--> "*" Ports : adopts
 
+Ports "2"--"*" Seadist: has a
 Ports "1" -- "1" PlaceLocation : located at >
 PortStore "1"--> "*" Ports : adopts
 PortsMapper ..> PortsDto
@@ -486,6 +541,13 @@ Company --> BstShip : uses
 Company "1"--"1..*" Ship: own >
 Company "1"--"1" FreightNetwork: have >
 Company ..> TransferFromDataBase
+Company..> PortStore
+Company..>CapitalStore
+Company..>BorderStore
+Company..> SeadistStore
+Company..> CountryStore
+
+Country "2" -- "*" Border : has a
 
 BstShip "1" -- "1..*" Ship : owns >
 

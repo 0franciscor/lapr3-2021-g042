@@ -24,7 +24,6 @@ class FreightNetwork {
 class AdjacencyMatrixGraph {
 -vertices()
 -adjVertices()
-
 }
 
 

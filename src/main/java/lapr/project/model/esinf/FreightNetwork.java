@@ -240,13 +240,15 @@ public class FreightNetwork {
 
     public double mediaDist(Place p, AdjacencyMatrixGraph<Place, Double> matrixGraph) {
         double contador = 0;
+        int aux=0;
         int key = matrixGraph.key(p);
         for(int i=0; i<matrixGraph.numVertices(); i++){
             if(i!=key){
                 if(matrixGraph.edge(p,matrixGraph.vertex(i)) != null) {
                     contador += matrixGraph.edge(p, matrixGraph.vertex(i)).getWeight();
+                    aux++;
 
-                } else if (matrixGraph.edge(matrixGraph.vertex(i),p) != null){
+                } else if (matrixGraph.edge(matrixGraph.vertex(i),p) != null && aux == 0){
                     contador += matrixGraph.edge(matrixGraph.vertex(i),p).getWeight();
 
                 }

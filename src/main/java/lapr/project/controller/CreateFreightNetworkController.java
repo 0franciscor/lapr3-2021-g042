@@ -27,6 +27,14 @@ public class CreateFreightNetworkController {
 
     private final FreightNetwork freightNetwork;
 
+    private PortStore portStore;
+
+    private  SeadistStore seadistStore;
+
+    private CapitalStore capitalStore;
+
+    private  BorderStore borderStore;
+
 
     public CreateFreightNetworkController(){
         this.app=App.getInstance();
@@ -54,12 +62,29 @@ public class CreateFreightNetworkController {
         transferFromDataBase.importCountries();
         transferFromDataBase.importCapitals();
         transferFromDataBase.importBorders();
-        PortStore portStore = company.getPortStr();
-        SeadistStore seadistStore = company.getSeadistStr();
-        CapitalStore capitalStore = company.getCapitalStr();
-        BorderStore borderStore = company.getBorderStr();
+        this.portStore = company.getPortStr();
+        this.seadistStore = company.getSeadistStr();
+        this.capitalStore = company.getCapitalStr();
+        this.borderStore = company.getBorderStr();
         freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,n);
     }
+
+    public PortStore getPortStore(){
+        return portStore;
+    }
+
+    public SeadistStore getSeadistStore(){
+        return seadistStore;
+    }
+
+    public CapitalStore getCapitalStore(){
+        return capitalStore;
+    }
+
+    public BorderStore getBorderStore(){
+        return borderStore;
+    }
+
 
 
 }

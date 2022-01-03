@@ -26,6 +26,9 @@ TM -> UI : Enter the requested information
 activate UI
 UI -> CTRL : createFreightNetwork(n)
 activate CTRL
+CTRL->CMP : getFreightNetwork()
+activate CMP
+deactivate CMP
 CTRL->CMP : getTransferFromDatabase()
 activate CMP
 deactivate CMP

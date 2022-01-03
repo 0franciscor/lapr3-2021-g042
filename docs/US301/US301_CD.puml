@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+
+
+
+class CreateFreightNetworkUI {}
+
+class CreateFreightNetworkController {
+-createFreightNetwork(n)
+}
+
+class Company {
+-designation
+-getTransferFromDatabase()
+-getPortStr()
+-getSeadistStr()
+-getCapitalStr()
+-getBorderStr()
+-getFreightNetwork()
+}
+
+class TransferFromDataBase {
+-importPorts()
+-importSeadists()
+-importCountries()
+-importBorders()
+}
+
+class FreightNetwork {
+-addNewInformation(capitalStore,portStore,seadistStore,borderStore,n)
+-linkBetweenCapitalsOfNeighboringCountries(capitalStore,borderStore);
+-connectionBetweenPortsOfTheSameCountry(portStore,seadistStore);
+-connectionBetweenTheCapitalAndTheNearestPort(capitalStore,portStore);
+-connectionBetweenThePortAndTheNearestNPortsOfAnotherCountry(seadistStore,n,portStore);
+}
+
+
+
+CreateFreightNetworkUI ..> CreateFreightNetworkController
+
+CreateFreightNetworkController ..> Company
+CreateFreightNetworkController ..> FreightNetwork
+
+Company "1"--"1" FreightNetwork: have >
+Company ..> TransferFromDataBase
+@enduml

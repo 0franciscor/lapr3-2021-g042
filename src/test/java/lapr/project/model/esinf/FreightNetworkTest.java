@@ -90,7 +90,7 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.addNewInformation(capitalStore,portStore,seadistStore,borderStore,1);
         assertEquals(17,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        System.out.println(freightNetwork.getAdjacencyMatrixGraph());
+        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -98,7 +98,7 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.linkBetweenCapitalsOfNeighboringCountries(capitalStore,borderStore);
         assertEquals(8,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        System.out.println(freightNetwork.getAdjacencyMatrixGraph());
+        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -106,7 +106,7 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.connectionBetweenPortsOfTheSameCountry(portStore,seadistStore);
         assertEquals(4,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        System.out.println(freightNetwork.getAdjacencyMatrixGraph());
+        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -114,7 +114,7 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.connectionBetweenTheCapitalAndTheNearestPort(capitalStore,portStore);
         assertEquals(2,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        System.out.println(freightNetwork.getAdjacencyMatrixGraph());
+        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -122,7 +122,7 @@ class FreightNetworkTest {
         FreightNetwork freightNetwork = new FreightNetwork();
         freightNetwork.connectionBetweenThePortAndTheNearestNPortsOfAnotherCountry(seadistStore,1,portStore);
         assertEquals(3,freightNetwork.getAdjacencyMatrixGraph().edges().size());
-        System.out.println(freightNetwork.getAdjacencyMatrixGraph());
+        //System.out.println(freightNetwork.getAdjacencyMatrixGraph());
     }
 
     @Test
@@ -151,14 +151,16 @@ class FreightNetworkTest {
         freightNetwork.mostCenteredCities(1);
     }
 
-
+/*
     @Test
     void mostCenteredCitiesgeral(){
         CreateFreightNetworkController controller = new CreateFreightNetworkController();
         controller.createFreightNetwork(5);
-        System.out.println( App.getInstance().getCompany().getFreightNetwork().mostCenteredCities(5));
+        //System.out.println( App.getInstance().getCompany().getFreightNetwork().mostCenteredCities(5));
 
     }
 
+
+ */
 
 }

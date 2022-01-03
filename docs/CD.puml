@@ -68,6 +68,12 @@ class Company{
 + getCountryStr()
 + getPortStr()
 + getBstShip() : BstShip
+-getTransferFromDatabase()
+-getSeadistStr()
+-getCapitalStr()
+-getBorderStr()
+-getFreightNetwork()
+-getCountryStore()
 }
 
 class ImportShip{
@@ -376,6 +382,74 @@ class WriteForAFile{
 }
 
 
+class CreateFreightNetworkUI {}
+
+class CreateFreightNetworkController {
+-createFreightNetwork(n)
+}
+
+class TransferFromDataBase {
+-importPorts()
+-importSeadists()
+-importCountries()
+-importBorders()
+}
+
+class FreightNetwork {
+-addNewInformation(capitalStore,portStore,seadistStore,borderStore,n)
+-linkBetweenCapitalsOfNeighboringCountries(capitalStore,borderStore);
+-connectionBetweenPortsOfTheSameCountry(portStore,seadistStore);
+-connectionBetweenTheCapitalAndTheNearestPort(capitalStore,portStore);
+-connectionBetweenThePortAndTheNearestNPortsOfAnotherCountry(seadistStore,n,portStore);
+-colorNetwork()
+-isFullyColored()
+-mostCenteredCities(n,countryStore)
+-mostCenteredCitiesOnTheContinent(n,continentName)
+}
+
+
+class ColorFreightNetworkUI {}
+
+class ColorFreightNetworkController {
+-colorNetwork()
+}
+
+class ClosenessLocalsUI {}
+
+class ClosenessLocalsController {
+-closenessLocals(n)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ClosenessLocalsUI ..> ClosenessLocalsController
+
+ClosenessLocalsController ..> Company
+ClosenessLocalsController ..> FreightNetwork
+
+
+ColorFreightNetworkUI ..> ColorFreightNetworkController
+
+ColorFreightNetworkController ..> Company
+ColorFreightNetworkController ..> FreightNetwork
+
+
+CreateFreightNetworkUI ..> CreateFreightNetworkController
+
+CreateFreightNetworkController ..> Company
+CreateFreightNetworkController ..> FreightNetwork
+
+
 FindContainerSituationUi ..> FindContainerSituationController
 FindContainerSituationController ..> US204Handler
 FindContainerSituationController ..> Company
@@ -410,6 +484,8 @@ Company "1" -- "1" ImportShip : uses >
 Company --> Ship : owns
 Company --> BstShip : uses
 Company "1"--"1..*" Ship: own >
+Company "1"--"1" FreightNetwork: have >
+Company ..> TransferFromDataBase
 
 BstShip "1" -- "1..*" Ship : owns >
 

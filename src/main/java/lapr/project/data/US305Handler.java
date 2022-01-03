@@ -16,31 +16,33 @@ public class US305Handler {
     private String containerPathInfo;
     private final WriteForAFile writeForAFile;
 
-    public US305Handler(String registerCode) throws IOException {
+    public US305Handler(int registerCode, int containerId) throws IOException {
         databaseConnection = App.getInstance().getDatabaseConnection().getConnection();
         writeForAFile = new WriteForAFile();
         try {
-            initialize(registerCode);
+            initialize(registerCode, containerId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void initialize(String registerCode) throws IOException, SQLException {
+    private void initialize(int registerCode, int containerId) throws IOException, SQLException {
         CallableStatement statement = null;
         try {
-            statement = databaseConnection.prepareCall("{call US305(?, ?)}");
-            statement.registerOutParameter(2, Types.VARCHAR);
+            statement = databaseConnection.prepareCall("{call US305(?, ?, ?)}");
+            statement.registerOutParameter(3, Types.VARCHAR);
 
-            statement.setString(1, registerCode);
+            statement.setInt(1, registerCode);
+            statement.setInt(2, containerId);
 
             statement.execute();
 
-            this.containerPathInfo=statement.getString(2);
+            this.containerPathInfo=statement.getString(3);
 
             writeForAFile.writeForAFile(toString(), "US305_" + registerCode, new File(".\\outputs\\US305"), false);
 
         }catch (Exception e){
+            e.printStackTrace();
             writeForAFile.writeForAFile("Something went wrong", "US305_" + registerCode, new File(".\\outputs\\US305"), false);
         }finally {
             assert statement != null;

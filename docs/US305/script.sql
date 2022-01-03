@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE US305 (registrationCode in Varchar, containerId in Varchar, outString out Varchar)
+CREATE OR REPLACE PROCEDURE US305 (registrationCode in integer, containerId in Varchar, outString out Varchar)
 IS
     cmcode Integer;
     exitPhase Integer;

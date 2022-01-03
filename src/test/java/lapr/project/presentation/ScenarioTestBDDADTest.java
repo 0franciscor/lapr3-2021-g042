@@ -64,7 +64,7 @@ public class ScenarioTestBDDADTest {
         new UpdateCargoManifest(456789423, 33.4f, "manuela_1200720");
         new UpdateCargoManifest(456789423, 15.2f, "francisco2");
         us304Handler = new US304Handler(1, 456789423);
-        us305Handler = new US305Handler("213456782");
+        us305Handler = new US305Handler(1, 987650321);
         us306Handler = new US306Handler();
         us307Handler = new US307Handler();
         us312Handler = new US312Handler();

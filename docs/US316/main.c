@@ -37,7 +37,7 @@ int main(){
     int numPositions = 3;
     int arraySize = numPositions * COORDINATES_PER_POSITION;
     int positionArray[arraySize];
-    positionArray[0] = 11; positionArray[1] = 2; positionArray[2] = 1;
+    positionArray[0] = 10; positionArray[1] = 20; positionArray[2] = 5;
     positionArray[3] = 0; positionArray[4] = 18; positionArray[5] = 9;
     positionArray[6] = 5; positionArray[7] = 20; positionArray[8] = 4;
 

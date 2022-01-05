@@ -34,7 +34,17 @@ class Ports {
 -name
 }
 
+class CargoManifest {
+-listOfContainers
+-ratio
+-date
+-mmsiCode
+-id
+-numberOfContainers
+-destination
+}
 
+CargoManifest "*" -- "1" Ports : delivered at >
 Ship "1" -- "1..*" ShipLocation : has >
 Ship "0..*"--"1" Ports: dock >
 

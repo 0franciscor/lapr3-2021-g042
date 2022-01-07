@@ -8,6 +8,8 @@ actor "Client" as C
 actor "Ship Captain" as SC
 actor "Port Staff" as PS
 actor "Ship Chief Electrical Engineer" as SCEE
+actor "Fleet Manager" as FM
+actor "ship's master" as SM
 
 rectangle Company{
 
@@ -56,7 +58,26 @@ usecase "UC318: I want to know what set of materials to use in a container, to o
 usecase "UC319: I want to know the thermal resistance, for each operating temperature, \nof each container that must contain at \nleast three different materials in its walls. One for the outer wall, one for the intermediate material, and one for the inner wall. " as UC319
 usecase "UC320:  I intend to present in a summary document, the choice of materials considered for the two types of containers considered, and their thermal resistances." as UC320
 
-
+usecase "UC401: I wish to know which ports are more critical (have greater centrality) in this freight network." as UC401
+usecase "UC402: I wish to know the shortest path between two locals (city and/or port)." as UC402
+usecase "UC403: I wish to know the most efficient circuit that starts from a \n source location and visits the greatest number of other locations once, returning to the \n starting location and with the shortest total distance." as UC403
+usecase "UC404: I want to know the number of days each ship has been idle since the beginning of the current year." as UC404
+usecase "UC405: I want to know the average occupancy rate per manifest of a given ship during a given period." as UC405
+usecase "UC406: I want to know which ship voyages – place and date of origin \n and destination – had an occupancy rate below a certain threshold; by default, consider an \n occupancy rate threshold of 66%. Only the trips already concluded are to be considered." as UC406
+usecase "UC407: I intend to generate, a week in advance, the loading and \n unloading map based on ships and trucks load manifests and corresponding travel plans, \n to anticipate the level of sufficient and necessary resources (loading and unloading staff, \n warehouse staff, ...)." as UC407
+usecase "UC408: I intend to develop a data model to build a Data Warehouse to \n analyse the volume of maritime traffic between any two ports. The fact to be analysed is \n the traffic volume measured by the indicators “number of containers”, “accumulated \n number of containers” and “target number of containers”. These indicators refer to the \n number of containers that are in transit between two ports/locations on the first day of \n each month. The dimensions to consider are Time, Port of origin and Port of destination. \nThe Time dimension has a hierarchy with the following levels: Year, Month. The \n location/Port is subject to the following hierarchy: Continent, Country, Port. An estimate \n of the upper cardinality of the dimension and fact tables must be indicated" as UC408
+usecase "UC409: I wish to fill a dynamically reserved matrix array in memory with all the container's information in its respective place." as UC409
+usecase "UC410: I want to know the amount of needed energy to keep the container at its required temperature, given the position of a container" as UC410
+usecase "UC411: I want to receive an alert when the current energy generation units are not enough to provide energy to all refrigerated containers at once." as UC411
+usecase "UC412: We intend to know how much energy to supply, for each container, in a determined trip, with an exterior temperature of 20 ºC, and a travel time of 2h30. " as UC412
+usecase "UC413: The objective is to know the total energy to be supplied to the set of containers in a certain established trip, assuming that all the \n containers have the same behaviour." as UC413
+usecase "UC414: You want to know how much energy to supply \n to the container cargo, in a voyage (or route), depending on the position of the containers \n on the ship. Admitting that the interior containers, or the sides not exposed directly to the \n"sun", maintain the initial temperature, or of departure. However, the exposed sides may \npresent temperature variations during the trip." as UC414
+usecase "UC415: I need to know how many auxiliary power equipment are needed for the voyage, knowing that each one supplies a maximum of 75 KW." as UC415
+usecase "UC416: I intend to submit a summary document, with the following items" as UC416
+usecase "UC417: I want the technical team to search for at least three types of \n ship/vessels that are better suited to the task (e.g., depending on the type of cargo), in \n which the “control” bridge can assume three positions, one in the bow, one in the stern, \n and finally in the midship" as UC417
+usecase "UC418: I want the determine the unladen center of mass for each \n vessel (if different) according to its characteristics. For calculation purposes, consider \nknown geometric figures." as UC418
+usecase "UC419: I want to know where to position, for example, one hundred \n (100) containers on the vessel, such that the center of mass remains at xx and yy, \n determined in the previous point. " as UC419
+usecase "UC420: I want to know for a specific vessel, how much did the \n vessel sink, assuming that each container has half a ton of mass. " as UC420
 }
 
 TM-----UC101
@@ -104,7 +125,26 @@ UC318 ---- SCEE
 UC319 ---- SCEE
 UC320 ---- SCEE
 
-
+TM-----UC401
+TM----UC402
+TM----UC403
+FM----UC404
+FM----UC405
+FM----UC406
+PM----UC407
+PM----UC408
+PM----UC409
+UC410 ---- SCEE
+UC411 ---- SCEE
+UC412 ---- SCEE
+UC413 ---- SCEE
+UC414 ---- SCEE
+UC415 ---- SC
+UC416 ---- SM
+UC417 ---- SC
+UC418 ---- SC
+UC419 ---- SC
+UC420 ---- SC
 
 
 @enduml

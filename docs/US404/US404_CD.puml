@@ -9,7 +9,7 @@ class ShipsIdleController{
 }
 
 
-class ShipsIdle {
+class ShipsIdleHandler{
 - initialize()
 + toString()
 }
@@ -19,6 +19,6 @@ class WriteForAFile{
 }
 
 ShipsIdleUI ..> ShipsIdleController
-ShipsIdleController-> ShipsIdle
-ShipsIdle --> WriteForAFile : uses
+ShipsIdleController-> ShipsIdleHandler
+ShipsIdleHandler --> WriteForAFile : uses
 @enduml

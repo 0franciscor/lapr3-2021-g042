@@ -74,8 +74,10 @@ public class ScenarioTestBDDADTest {
 
 
         us312Handler.getContainerLocation(695421863, 2);
+    }
 
-
-
+    @Test
+    public void presentationTest3() throws IOException{
+        new  ShipsIdleHandler();
     }
 }

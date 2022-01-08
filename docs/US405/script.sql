@@ -45,6 +45,7 @@ BEGIN
                 
                 operation := totalContainers/denominator;
                 dbms_output.put_line('CargoManifest: ' || cmlid || ' Occupancy rate:' || operation); 
+                outString:=outString || 'CargoManifest: ' || cmlid || chr(10) || ' Occupancy rate:' || operation || chr(10);
                 totalContainers:=0;
             CLOSE p;
         END LOOP;

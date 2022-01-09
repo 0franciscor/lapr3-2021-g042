@@ -154,6 +154,8 @@ Ship "1" -- "1..*" ShipLocation : has >
 Employee "1" --- "1..*" ShipLocation : controls >
 Employee "1" -- "1" User : relates to >
 Employee "1" --- "1..*" Ports : controls >
+Employee "1..*" ------ "1" Warehouse : works >
+Employee "1..*" -- "1" Ship : works >
 
 Truck "1"--"1..*" Containers : transport >
 Truck "0..*"--"1" Warehouse: park >

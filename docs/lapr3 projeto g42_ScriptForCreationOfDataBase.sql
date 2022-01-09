@@ -28,11 +28,12 @@ CONSTRAINT pk_Role PRIMARY KEY (id)
 );
 
 CREATE TABLE UserSystem(
-username VARCHAR(255),
+username VARCHAR(255) UNIQUE,
+id INTEGER,
 password VARCHAR(255),
 roleId INTEGER,
 
-CONSTRAINT pk_User PRIMARY KEY (username),
+CONSTRAINT pk_Id PRIMARY KEY (Id),
 CONSTRAINT fk_User_Role FOREIGN KEY (roleId) references Role(id)
 
 );
@@ -264,7 +265,9 @@ CONSTRAINT fk_CargoManifest_Container FOREIGN KEY(containerNumberId) REFERENCES 
 
 CONSTRAINT fk_CargoManifest_Load FOREIGN KEY(PhasesCargoManifestLoadId) REFERENCES CargoManifestLoad(id),
 
-CONSTRAINT fk_CargoManifest_Unload FOREIGN KEY(CargoManifestUnloadId) REFERENCES CargoManifestUnload(Id)
+CONSTRAINT fk_CargoManifest_Unload FOREIGN KEY(CargoManifestUnloadId) REFERENCES CargoManifestUnload(Id),
+
+CONSTRAINT fk_ClientOwner FOREIGN KEY (clientOwner) REFERENCES UserSystem(Id)
 );
 
 
@@ -295,3 +298,15 @@ CONSTRAINT fk_AuditTrails_User FOREIGN KEY (userUserName) REFERENCES UserSystem(
 
 );
 
+CREATE TABLE Employee(
+id INTEGER,
+name VARCHAR(255) NOT NULL,
+roleId INTEGER NOT NULL,
+portId INTEGER,
+warehouseId INTEGER,
+
+CONSTRAINT pk_IdEmployee PRIMARY KEY (id),
+CONSTRAINT fk_RoleId FOREIGN KEY (roleId) REFERENCES Role(id),
+CONSTRAINT fk_PortId FOREIGN KEY (portId) REFERENCES Ports(id),
+CONSTRAINT fk_WarehouseId FOREIGN KEY (warehouseId) REFERENCES Warehouse(id)
+);

@@ -43,9 +43,9 @@ BEGIN
                     totalContainers:=totalContainers+numerator;
                 END LOOP;
                 
-                operation := totalContainers/denominator;
+                operation := (totalContainers/denominator)*100;
                 dbms_output.put_line('CargoManifest: ' || cmlid || ' Occupancy rate:' || operation); 
-                outString:=outString || 'CargoManifest: ' || cmlid || chr(10) || ' Occupancy rate:' || operation || chr(10);
+                outString:=outString || 'CargoManifest: ' || cmlid || ' ' || ' Occupancy rate:' || operation || '%' || chr(10);
                 totalContainers:=0;
             CLOSE p;
         END LOOP;
@@ -57,6 +57,7 @@ DECLARE
 output Varchar2(2550);
 BEGIN
     US405(to_timestamp('21.10.02 18:44:33,000000000'),to_timestamp('21.12.30 18:44:33,000000000'),'210950000', output);
+     dbms_output.put_line('-');
     dbms_output.put_line(output);
 END;
 

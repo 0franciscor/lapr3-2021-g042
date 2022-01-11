@@ -1,22 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "zeroArray.h"
-#include "printArray.h"
+//#include "zeroArray.h"
+//#include "printArray.h"
+#include "struct.h"
+#include "allocateMemory.h"
 
-typedef struct { //define-se a estrutura cMContainer
-    int cMLoadId;
-    int containerId;
-    int phasesId;
-    int x;
-    int y;
-    int z;
-    float grossContainer;
-    int phases_cMLoadId;
-    int cMUnloadI;
-} cMContainer;
-
-struct cmContainer ***containerArray;
+cMContainer ***containerArray;
 
 int main(){
 
@@ -31,32 +21,10 @@ int main(){
     int maxX, maxY, maxZ;
     fscanf(containerFile, "%d,%d,%d", &maxX, &maxY, &maxZ);
 
-    containerArray = (struct cmContainer ***) calloc(maxX, sizeof(struct cmContainer***));
+    printf("Tamanho: %ld\n", sizeof(cMContainer));
+
     
-    if(containerArray == NULL){
-        printf("Error reserving memory(x).\n");
-        exit (1);
-    }
-
-    for (int i = 0; i < maxY; i++){
-        containerArray[i] = (struct cmContainer **) calloc(maxY , sizeof(struct cmContainer**)); 
-        
-        if(containerArray[i] == NULL){
-            printf("Error reserving memory(y).\n");
-            exit (1);
-        }
-
-        for(int k = 0; k < maxZ; k++){
-            containerArray[i][k] = (struct cmContainer *) calloc (maxZ , sizeof(struct cmContainer*)); 
-
-            if(containerArray[i][k] == NULL){
-                printf("Error reserving memory(z).\n");
-                exit (1);
-            }
-        }
-    }
-
-    zeroArray(maxX, maxY, maxZ, containerArray);
+    //zeroArray(maxX, maxY, maxZ, containerArray);
 
     /*while(!feof(containerFile)){ //leitura de cada linha do ficheiro
         int x, y, z, containerID;

@@ -1,11 +1,14 @@
 CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString OUT VARCHAR2) IS
 
     nextSunday DATE;
-    nextMonday DATE;
+    nextSaturday DATE;
     cml INTEGER;
     portName VARCHAR(255);
     containersDeparting INTEGER;
     containersArriving INTEGER;
+    containersDepartingAux INTEGER := 0;
+    containersArrivingAux INTEGER := 0;
+
 
     CURSOR cargoManifestsLoad IS
     SELECT id
@@ -16,12 +19,11 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
     AND expectedArrivalDate >= nextMonday;
 
     BEGIN
-         SELECT NEXT_DAY(sysdate,'Segunda') INTO nextMonday FROM DUAL;
-         SELECT NEXT_DAY(nextMonday,'Domingo') INTO nextSunday FROM DUAL;
-
-
+         SELECT NEXT_DAY(sysdate,'Domingo') INTO nextSunday FROM DUAL;
+         SELECT NEXT_DAY(nextSunday,'Sábado') INTO nextSaturday FROM DUAL;
 
         OPEN cargoManifestsLoad;
+
         LOOP
             FETCH cargoManifestsLoad INTO cml;
             EXIT WHEN cargoManifestsLoad%notFound;
@@ -29,53 +31,62 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
             SELECT name INTO portName FROM Ports WHERE id = idOfAPort;
 
             outString := outString || 'In the port with the name ' || portName || ' in the week of ' || nextMonday || ' until ' || nextSunday || ': ' || chr(10);
-
-            FOR phasesInACargoManifest IN
-            (SELECT origin, destination, id
-            FROM Phases
-            WHERE cargoManifestLoadId = cml)
+            FOR loopAux IN EXTRACT DAY FROM (nextSunday)...EXTRACT DAY FROM (nextSaturday)
             LOOP
-                IF phasesInACargoManifest.destination = portName THEN
+                FOR phasesInACargoManifest IN
+                (SELECT origin, destination, id, expectedArrivalDate, expectedDepartureDate
+                FROM Phases
+                WHERE cargoManifestLoadId = cml
+                AND (EXTRACT DAY FROM (expectedArrivalDate) = loopAux
+                OR EXTRACT DAY FROM (expectedDepartureDateDate) = loopAux))
+                LOOP
+                    IF phasesInACargoManifest.destination = portName THEN
 
-                    SELECT COUNT(*) INTO containersArriving
-                    FROM CargoManifestContainer
-                    WHERE cargoManifestLoadId = cml
-                    AND phasesId = phasesInACargoManifest.id;
+                        SELECT COUNT(*) INTO containersArriving
+                        FROM CargoManifestContainer
+                        WHERE cargoManifestLoadId = cml
+                        AND phasesId = phasesInACargoManifest.id;
 
-                    outString := outString || containersArriving || 'containers arrived.' || chr(10);
-                    outString := outString || 'the containers are as follows: ' || chr(10);
+                        containersArrivingAux := containersArrivingAux + containersArriving;
 
-                    FOR allContainersArriving IN
-                    (SELECT containerNumberId
-                    FROM CargoManifestContainer
-                    WHERE cargoManifestLoadId = cml
-                    AND phasesId = phasesInACargoManifest.id)
-                    LOOP
-                        outString := outString || 'Container number id: ' || allContainersArriving.id || chr(10);
-                    END LOOP;
-                END IF;
+                        outString := outString || 'The containers who arrived was in the day ' || loopAux || ' was:' || chr(10);
 
-                IF phasesInACargoManifest.origin = portName THEN
+                        FOR allContainersArriving IN
+                        (SELECT containerNumberId
+                        FROM CargoManifestContainer
+                        WHERE cargoManifestLoadId = cml
+                        AND phasesId = phasesInACargoManifest.id)
+                        LOOP
+                            outString := outString || 'Container number id: ' || allContainersArriving.id || chr(10);
+                        END LOOP;
+                    END IF;
 
-                    SELECT COUNT(*) INTO containersDeparting
-                    FROM CargoManifestContainer
-                    WHERE cargoManifestLoadId = cml
-                    AND phasesId = phasesInACargoManifest.id;
+                    IF phasesInACargoManifest.origin = portName THEN
 
-                    outString := outString || containersDeparting || 'containers left.' || chr(10);
-                    outString := outString || 'the containers are as follows: ' || chr(10);
+                        SELECT COUNT(*) INTO containersDeparting
+                        FROM CargoManifestContainer
+                        WHERE cargoManifestLoadId = cml
+                        AND phasesId = phasesInACargoManifest.id;
 
-                    FOR allContainersDeparting IN
-                    (SELECT containerNumberId
-                    FROM CargoManifestContainer
-                    WHERE cargoManifestLoadId = cml
-                    AND phasesId = phasesInACargoManifest.id)
-                    LOOP
-                        outString := outString || 'Container number id: ' || allContainersDeparting.id || chr(10);
-                    END LOOP;
-                END IF;
+                        containersDepartingAux := containersDepartingAux + containersDeparting;
 
+                        outString := outString || 'The containers who departure in the day ' || loopAux || ' was:' || chr(10);
+
+                        FOR allContainersDeparting IN
+                        (SELECT containerNumberId
+                        FROM CargoManifestContainer
+                        WHERE cargoManifestLoadId = cml
+                        AND phasesId = phasesInACargoManifest.id)
+                        LOOP
+                            outString := outString || 'Container number id: ' || allContainersDeparting.id || chr(10);
+                        END LOOP;
+                    END IF;
+
+                END LOOP;
+                outString := outString || 'The total containers who arrived was: '|| containersArrivingAux || chr(10);
+                outString := outString || 'The total containers who left was: ' || containersDepartingAux || chr(10);
             END LOOP;
+
 
         END LOOP;
 

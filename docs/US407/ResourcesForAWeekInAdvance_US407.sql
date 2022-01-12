@@ -11,34 +11,34 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
 
 
     CURSOR cargoManifestsLoad IS
-    SELECT id
+    SELECT cargoManifestLoad.id
     FROM CargoManifestLoad
     INNER JOIN Phases
     ON (cargoManifestLoad.Id = Phases.CargoManifestLoadId)
-    WHERE expectedArrivalDate <= nextSunday
-    AND expectedArrivalDate >= nextMonday;
+    WHERE expectedArrivalDate <= nextSaturday
+    AND expectedArrivalDate >= nextSunday;
 
     BEGIN
-         SELECT NEXT_DAY(sysdate,'Domingo') INTO nextSunday FROM DUAL;
-         SELECT NEXT_DAY(nextSunday,'Sábado') INTO nextSaturday FROM DUAL;
+        SELECT NEXT_DAY(sysdate,'Domingo') INTO nextSunday FROM DUAL;
+        SELECT NEXT_DAY(nextSunday,'Sábado') INTO nextSaturday FROM DUAL;
 
-        OPEN cargoManifestsLoad;
+        SELECT name INTO portName FROM Ports WHERE id = idOfAPort;
+        outString := outString || 'In the port with the name ' || portName || ' in the week of ' || nextsunday || ' until ' || nextsaturday || ': ' || chr(10);
 
+        FOR loopAux IN (EXTRACT (DAY FROM nextSunday))..(EXTRACT (DAY FROM nextSaturday))
         LOOP
-            FETCH cargoManifestsLoad INTO cml;
-            EXIT WHEN cargoManifestsLoad%notFound;
 
-            SELECT name INTO portName FROM Ports WHERE id = idOfAPort;
-
-            outString := outString || 'In the port with the name ' || portName || ' in the week of ' || nextMonday || ' until ' || nextSunday || ': ' || chr(10);
-            FOR loopAux IN EXTRACT DAY FROM (nextSunday)...EXTRACT DAY FROM (nextSaturday)
+            OPEN cargoManifestsLoad;
             LOOP
+                FETCH cargoManifestsLoad INTO cml;
+                EXIT WHEN cargoManifestsLoad%notFound;
+
                 FOR phasesInACargoManifest IN
                 (SELECT origin, destination, id, expectedArrivalDate, expectedDepartureDate
                 FROM Phases
                 WHERE cargoManifestLoadId = cml
-                AND (EXTRACT DAY FROM (expectedArrivalDate) = loopAux
-                OR EXTRACT DAY FROM (expectedDepartureDateDate) = loopAux))
+                AND (EXTRACT (DAY FROM expectedArrivalDate) = loopAux
+                OR EXTRACT (DAY FROM expectedDepartureDate) = loopAux))
                 LOOP
                     IF phasesInACargoManifest.destination = portName THEN
 
@@ -49,15 +49,13 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
 
                         containersArrivingAux := containersArrivingAux + containersArriving;
 
-                        outString := outString || 'The containers who arrived was in the day ' || loopAux || ' was:' || chr(10);
-
                         FOR allContainersArriving IN
                         (SELECT containerNumberId
                         FROM CargoManifestContainer
                         WHERE cargoManifestLoadId = cml
                         AND phasesId = phasesInACargoManifest.id)
                         LOOP
-                            outString := outString || 'Container number id: ' || allContainersArriving.id || chr(10);
+                            outString := outString || 'Container number id: ' || allContainersArriving.containerNumberId || ' (Arrival)' || chr(10);
                         END LOOP;
                     END IF;
 
@@ -70,26 +68,27 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
 
                         containersDepartingAux := containersDepartingAux + containersDeparting;
 
-                        outString := outString || 'The containers who departure in the day ' || loopAux || ' was:' || chr(10);
-
                         FOR allContainersDeparting IN
                         (SELECT containerNumberId
                         FROM CargoManifestContainer
                         WHERE cargoManifestLoadId = cml
                         AND phasesId = phasesInACargoManifest.id)
                         LOOP
-                            outString := outString || 'Container number id: ' || allContainersDeparting.id || chr(10);
+                            outString := outString || 'Container number id: ' || allContainersDeparting.containerNumberid || ' (Departure)' || chr(10);
                         END LOOP;
                     END IF;
 
                 END LOOP;
-                outString := outString || 'The total containers who arrived was: '|| containersArrivingAux || chr(10);
-                outString := outString || 'The total containers who left was: ' || containersDepartingAux || chr(10);
-            END LOOP;
 
+            END LOOP;
+            containersDepartingAux := 0;
+            containersArrivingAux := 0;
+            outString := outString || 'The total containers who arrived was: '|| containersArrivingAux || chr(10);
+            outString := outString || 'The total containers who left was: ' || containersDepartingAux || chr(10);
 
         END LOOP;
 
+    END;
 
 
 

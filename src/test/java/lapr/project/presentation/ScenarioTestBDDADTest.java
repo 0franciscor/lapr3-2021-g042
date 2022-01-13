@@ -42,6 +42,8 @@ public class ScenarioTestBDDADTest {
 
     private US405Handler us405Handler;
 
+    private US406Handler us406Handler;
+
     @Test
     public void presentationTest1() throws SQLException, IOException, ParseException {
         findContainerSituationController = new FindContainerSituationController();
@@ -82,5 +84,6 @@ public class ScenarioTestBDDADTest {
     public void presentationTest3() throws IOException{
         // new  ShipsIdleHandler();
         us405Handler = new US405Handler("21.10.02 18:44:33","21.12.30 18:44:33","210950000");
+        us406Handler = new US406Handler("21.10.01 18:44:33","21.12.01 18:44:33","121212121");
     }
 }

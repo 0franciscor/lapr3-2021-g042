@@ -19,6 +19,7 @@ DROP TABLE AuditTrails CASCADE CONSTRAINTS PURGE;
 DROP TABLE Operations CASCADE CONSTRAINTS PURGE;
 DROP TABLE Role CASCADE CONSTRAINTS PURGE;
 DROP TABLE Truck CASCADE CONSTRAINTS PURGE;
+DROP TABLE Employee CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE Role(
 id INTEGER,
@@ -26,6 +27,8 @@ designation VARCHAR(255) UNIQUE,
 
 CONSTRAINT pk_Role PRIMARY KEY (id)
 );
+
+
 
 CREATE TABLE UserSystem(
 username VARCHAR(255) UNIQUE,
@@ -195,6 +198,19 @@ CONSTRAINT fk_Warehouse_PlaceLocation FOREIGN KEY (placeLocationLatitude, placeL
 CONSTRAINT fk_Port_Warehouse FOREIGN KEY (portId) references Ports(id)
 );
 
+CREATE TABLE Employee(
+id INTEGER,
+name VARCHAR(255) NOT NULL,
+roleId INTEGER NOT NULL,
+portId INTEGER,
+warehouseId INTEGER,
+
+CONSTRAINT pk_IdEmployee PRIMARY KEY (id),
+CONSTRAINT fk_RoleId FOREIGN KEY (roleId) REFERENCES Role(id),
+CONSTRAINT fk_PortId FOREIGN KEY (portId) REFERENCES Ports(id),
+CONSTRAINT fk_WarehouseId FOREIGN KEY (warehouseId) REFERENCES Warehouse(id)
+);
+
 CREATE TABLE Truck(
 licensePlate INTEGER,
 CONSTRAINT pk_Truck PRIMARY KEY (licensePlate)
@@ -256,7 +272,7 @@ PhasesId INTEGER NOT NULL,
 PhasesCargoManifestLoadId INTEGER NOT NULL,
 CargoManifestUnloadId INTEGER,
 userResponsibleForChanges VARCHAR(255) DEFAULT 'Administrator',
-clientOwner VARCHAR(255),
+clientOwner INTEGER,
 warehouseId INTEGER,
 
 CONSTRAINT pk_CargoManifest_Container PRIMARY KEY (containerNumberId, cargoManifestLoadId),
@@ -298,15 +314,4 @@ CONSTRAINT fk_AuditTrails_User FOREIGN KEY (userUserName) REFERENCES UserSystem(
 
 );
 
-CREATE TABLE Employee(
-id INTEGER,
-name VARCHAR(255) NOT NULL,
-roleId INTEGER NOT NULL,
-portId INTEGER,
-warehouseId INTEGER,
 
-CONSTRAINT pk_IdEmployee PRIMARY KEY (id),
-CONSTRAINT fk_RoleId FOREIGN KEY (roleId) REFERENCES Role(id),
-CONSTRAINT fk_PortId FOREIGN KEY (portId) REFERENCES Ports(id),
-CONSTRAINT fk_WarehouseId FOREIGN KEY (warehouseId) REFERENCES Warehouse(id)
-);

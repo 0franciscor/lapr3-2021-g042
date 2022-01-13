@@ -1,48 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "zeroArray.h"
+#include "containerStruct.h"
 #include "printArray.h"
-
-typedef struct { //define-se a estrutura cMContainer
-    int cMLoadId;
-    int containerId;
-    int phasesId;
-    int x;
-    int y;
-    int z;
-    int grossContainer;
-    int phases_cMLoadId;
-    int cMUnloadI
-} cMContainer;
+#include "readStructs.h"
+#include "lineNumber.h"
 
 int main(){
+
+    cMContainer *containerArray;
 
     char *containerFileName = "cMContainer.csv";
     FILE *containerFile = fopen(containerFileName, "r");
     
-    if (!containerFile){ // Verifica se o ficheiro existe
+    if (!containerFile){
         printf("No file found\n"); 
         exit(-1); 
     } 
 
-    int maxX, maxY, maxZ;
-    fscanf(containerFile, "%d,%d,%d", &maxX, &maxY, &maxZ);
-    int shipAllocation[maxX][maxY][maxZ];
+    short maxX, maxY, maxZ, totalSlots;
+    fscanf(containerFile, "%hd,%hd,%hd", &maxX, &maxY, &maxZ);
+    totalSlots = getNumberOfContainers(containerFileName);
 
-    zeroArray(maxX, maxY, maxZ, shipAllocation);
+    containerArray = (cMContainer *) calloc((totalSlots + 1), sizeof(cMContainer));
 
-    while(!feof(containerFile)){ //leitura de cada linha do ficheiro
-        int x, y, z, containerID;
-
-        fscanf(containerFile, "%d,%d,%d,%d", &containerID, &x, &y, &z);
-
-        shipAllocation[x][y][z] = containerID;
-    }
+    readStructs(containerFile, containerArray);
 
     fclose(containerFile);
 
-    printArray(maxX,maxY,maxZ, shipAllocation);
+    printArray(totalSlots, containerArray);
+
+    free(containerArray);
             
     return 0;
 }

@@ -61,8 +61,7 @@ public class SendToDatabase implements Persistable {
                     saveLocation(databaseConnection, shipLocation);
                 }
             }
-        } else
-            System.out.println("The connection is not operational. Ships and its locations' were not imported.");
+        }
     }
 
     /**
@@ -73,8 +72,7 @@ public class SendToDatabase implements Persistable {
             for(Ports port : company.getPortStr().getPortsLst())
                 savePort(databaseConnection, port);
 
-        } else
-            System.out.println("The connection is not operational. Ports were not imported.");
+        }
     }
 
     /**
@@ -85,8 +83,7 @@ public class SendToDatabase implements Persistable {
             Container container = new Container("748323899",1,2,3, 5033407, "justo", 2.4f, 1.5f, 181.7f, 118.5f, 89.9f, 1.1f, "#REPAIRRECOMMENDATION", "CERTIFICATE");
             saveContainer(databaseConnection, container);
 
-        } else
-            System.out.println("The connection is not operational. Containers were not imported.");
+        }
     }
 
     //################################# SHIP RELATED #####################################
@@ -105,7 +102,6 @@ public class SendToDatabase implements Persistable {
             saveShipToDatabase(databaseConnection, ship);
 
         } catch (SQLException ex) {
-            System.out.println("There was an error when importing a ship to the database.");
             databaseConnection.registerError(ex);
         }
     }
@@ -217,7 +213,6 @@ public class SendToDatabase implements Persistable {
             saveShipPreparedStatement.executeUpdate();
 
         }catch (SQLException e){
-            System.out.println("There was an error when importing the Ship with the " + ship.getMMSI() + " MMSI code.");
             databaseConnection.registerError(e);
         }finally {
             assert saveShipPreparedStatement != null;
@@ -243,7 +238,6 @@ public class SendToDatabase implements Persistable {
             saveLocationToDatabase(databaseConnection, shipLocation);
 
         } catch (SQLException e) {
-            System.out.println("There was an error when importing a Ship Location to the database.");
             databaseConnection.registerError(e);
         }
     }
@@ -365,7 +359,6 @@ public class SendToDatabase implements Persistable {
             getShipLocationPreparedStatement.executeUpdate();
 
         }catch (SQLException e){
-            System.out.println("There was an error related to the ShipLocation with the " + shipLocation.getMMSI() + " MMSI code.");
             databaseConnection.registerError(e);
         } finally {
             assert getShipLocationPreparedStatement != null;
@@ -389,7 +382,6 @@ public class SendToDatabase implements Persistable {
             savePortToDatabase(databaseConnection, port);
 
         } catch (SQLException ex) {
-            System.out.println("There was an error when importing a port to the database.");
             databaseConnection.registerError(ex);
         }
     }
@@ -506,7 +498,6 @@ public class SendToDatabase implements Persistable {
         try {
             savePortPreparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("There was an error when importing the Port with the " + port.getCode() + " code.");
             databaseConnection.registerError(e);
         } finally {
             savePortPreparedStatement.close();
@@ -585,7 +576,6 @@ public class SendToDatabase implements Persistable {
         try {
             savePlaceLocationPreparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("There was an error when importing the PlaceLocation with " + port.getLatitude() + " latitude and " + port.getLongitude() + " longitude.");
             databaseConnection.registerError(e);
         } finally {
             savePlaceLocationPreparedStatement.close();
@@ -671,7 +661,6 @@ public class SendToDatabase implements Persistable {
             saveContainerToDatabase(databaseConnection, container);
 
         } catch (SQLException ex) {
-            System.out.println("There was an error when importing a container to the database.");
             databaseConnection.registerError(ex);
         }
     }
@@ -783,7 +772,6 @@ public class SendToDatabase implements Persistable {
         try {
             saveContainerPreparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("There was an error related to the container with the " + container.getNumber() + " code.");
             databaseConnection.registerError(e);
         } finally {
             saveContainerPreparedStatement.close();

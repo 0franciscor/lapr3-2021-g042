@@ -35,9 +35,7 @@ public class TransferFromDataBase {
     public void importShips() {
         try {
             importShipsFromDatabase(databaseConnection);
-        } catch (Exception e) {
-            System.out.println("Error when importing Ships from the database.");
-        }
+        } catch (Exception ignored){}
     }
 
     /**
@@ -46,10 +44,7 @@ public class TransferFromDataBase {
     public void importPorts() {
         try {
             importPortsFromDatabase(databaseConnection);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error when importing Ports from the database.");
-        }
+        } catch (Exception ignored) {}
     }
 
     /**
@@ -58,9 +53,7 @@ public class TransferFromDataBase {
     public void importSeadists() {
         try{
             importSeadistsFromDataBase(databaseConnection);
-        } catch (Exception e) {
-            System.out.println("Error when importing Seadists from the database.");
-        }
+        } catch (Exception ignored){}
     }
 
     /**
@@ -69,9 +62,7 @@ public class TransferFromDataBase {
     public void importBorders(){
         try {
             importBordersFromDataBase(databaseConnection);
-        } catch (Exception e) {
-            System.out.println("Error when importing Borders from the database.");
-        }
+        } catch (Exception ignored) {}
     }
 
     /**
@@ -80,9 +71,7 @@ public class TransferFromDataBase {
     public void importCapitals(){
         try{
             importCapitalsFromDataBase(databaseConnection);
-        } catch (Exception e){
-            System.out.println("Error when importing Capitals from the database.");
-        }
+        } catch (Exception ignored) {}
     }
 
     /**
@@ -91,9 +80,7 @@ public class TransferFromDataBase {
     public void importCountries(){
         try{
             importCountriesFromDatabase(databaseConnection);
-        } catch (Exception e) {
-            System.out.println("Error when importing Countries from the database.");
-        }
+        } catch (Exception ignored) {}
     }
 
     /**
@@ -103,9 +90,7 @@ public class TransferFromDataBase {
         List<Container> containerLst = new ArrayList<>();
         try{
             containerLst = importContainersFromDataBase(databaseConnection, code);
-        } catch (Exception e) {
-            System.out.println("Error when importing Containers from the database.");
-        }
+        } catch (Exception ignored){}
         return containerLst;
     }
 
@@ -223,7 +208,7 @@ public class TransferFromDataBase {
         PreparedStatement getPortsPreparedStatement =
                 connection.prepareStatement(sqlCommand);
 
-        Country country = null;
+        Country country;
 
         try (ResultSet shipsResultSet = getPortsPreparedStatement.executeQuery()) {
 

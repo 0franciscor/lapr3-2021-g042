@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#include "zeroArray.h"
-//#include "printArray.h"
-#include "struct.h"
-#include "allocateMemory.h"
+#include "containerStruct.h"
+#include "printArray.h"
+#include "readStructs.h"
 
-cMContainer ***containerArray;
+cMContainer *containerArray;
 
 int main(){
 
@@ -18,25 +17,19 @@ int main(){
         exit(-1); 
     } 
 
-    int maxX, maxY, maxZ;
+    int maxX, maxY, maxZ, totalSlots;
     fscanf(containerFile, "%d,%d,%d", &maxX, &maxY, &maxZ);
 
-    printf("Tamanho: %ld\n", sizeof(cMContainer));
+    totalSlots = maxX * maxY * maxZ;
+    containerArray = (cMContainer *) calloc(totalSlots, sizeof(cMContainer));
 
-    
-    //zeroArray(maxX, maxY, maxZ, containerArray);
-
-    /*while(!feof(containerFile)){ //leitura de cada linha do ficheiro
-        int x, y, z, containerID;
-
-        fscanf(containerFile, "%d,%d,%d,%d", &containerID, &x, &y, &z);
-
-        shipAllocation[x][y][z] = containerID;
-    }*/
+    readStructs(containerFile, containerArray);
 
     fclose(containerFile);
 
-    //printArray(maxX,maxY,maxZ, containerArray);
+    printArray(totalSlots, containerArray);
+
+    free(containerArray);
             
     return 0;
 }

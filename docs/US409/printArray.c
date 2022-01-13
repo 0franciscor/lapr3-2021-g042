@@ -3,7 +3,7 @@
 
 #include "containerStruct.h"
 
-void printArray(int totalSlots, cMContainer *containerArray){
+void printArray(short totalSlots, cMContainer *containerArray){
     
     char *outputFileName = "US409.csv";
     FILE *outputFile = fopen(outputFileName, "a");

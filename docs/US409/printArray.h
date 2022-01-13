@@ -1,1 +1,1 @@
-void printArray(int totalSlots, cMContainer *containerArray);
+void printArray(short totalSlots, cMContainer *containerArray);

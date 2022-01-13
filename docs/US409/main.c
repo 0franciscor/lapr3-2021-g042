@@ -4,24 +4,25 @@
 #include "containerStruct.h"
 #include "printArray.h"
 #include "readStructs.h"
-
-cMContainer *containerArray;
+#include "lineNumber.h"
 
 int main(){
+
+    cMContainer *containerArray;
 
     char *containerFileName = "cMContainer.csv";
     FILE *containerFile = fopen(containerFileName, "r");
     
-    if (!containerFile){ // Verifica se o ficheiro existe
+    if (!containerFile){
         printf("No file found\n"); 
         exit(-1); 
     } 
 
-    int maxX, maxY, maxZ, totalSlots;
-    fscanf(containerFile, "%d,%d,%d", &maxX, &maxY, &maxZ);
+    short maxX, maxY, maxZ, totalSlots;
+    fscanf(containerFile, "%hd,%hd,%hd", &maxX, &maxY, &maxZ);
+    totalSlots = getNumberOfContainers(containerFileName);
 
-    totalSlots = maxX * maxY * maxZ;
-    containerArray = (cMContainer *) calloc(totalSlots, sizeof(cMContainer));
+    containerArray = (cMContainer *) calloc((totalSlots + 1), sizeof(cMContainer));
 
     readStructs(containerFile, containerArray);
 

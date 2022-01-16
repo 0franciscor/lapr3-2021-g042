@@ -65,4 +65,18 @@ public class CapitalStore {
         }
         return null;
     }
+
+    /**
+     * Gets country through name.
+     * @param name the name associated with the country that we want to get
+     * @return the country associated with the name
+     */
+    public Capital getCapitalByName(String name){
+        for (Capital capital : capitalLst) {
+            if (capital.getName().equals(name)) {
+                return capital;
+            }
+        }
+        return null;
+    }
 }

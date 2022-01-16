@@ -11,6 +11,10 @@ public class FreightNetwork {
 
     private int coresUtilizadas;
 
+    private PortStore portStore;
+
+    private CapitalStore capitalStore;
+
     public AdjacencyMatrixGraph<Place, Double> adjacencyMatrixGraph;
 
 
@@ -23,7 +27,10 @@ public class FreightNetwork {
         return adjacencyMatrixGraph;
     }
 
+
     public void addNewInformation(CapitalStore capitalStore, PortStore portStore, SeadistStore seadistStore, BorderStore borderStore, int n){
+        this.portStore=portStore;
+        this.capitalStore=capitalStore;
         linkBetweenCapitalsOfNeighboringCountries(capitalStore,borderStore);
         connectionBetweenPortsOfTheSameCountry(portStore,seadistStore);
         connectionBetweenTheCapitalAndTheNearestPort(capitalStore,portStore);
@@ -256,5 +263,211 @@ public class FreightNetwork {
         }
         return contador / (matrixGraph.numVertices() - 1);
     }
+
+
+    public  List<String> getsPortsMoreCritical(int n) {
+        List<String> resultado = new ArrayList<>();
+
+            Integer[] result = new Integer[adjacencyMatrixGraph.numVertices()];
+            String[] places = new String[adjacencyMatrixGraph.numVertices()];
+            Double[] distances = new Double[adjacencyMatrixGraph.numVertices()];
+            for (int i = 0; i < adjacencyMatrixGraph.numVertices(); i++) {
+                result[i] = 0;
+                distances[i] = 0.0;
+                if (adjacencyMatrixGraph.vertex(i) instanceof Ports) {
+                    places[i] = (((Ports) adjacencyMatrixGraph.vertex(i)).getPortName());
+                } else if (adjacencyMatrixGraph.vertex(i) instanceof Capital) {
+                    places[i] = (((Capital) adjacencyMatrixGraph.vertex(i)).getName());
+                }
+            }
+
+            //obter quantos caminhos curtos passam por cada vértice
+            for (int i = 0; i < adjacencyMatrixGraph.numVertices(); i++) {
+                Place origem = adjacencyMatrixGraph.vertex(i);
+                ArrayList<LinkedList<Place>> paths = new ArrayList<>();
+                ArrayList<Double> dists = new ArrayList<>();
+                GraphAlgorithms.shortestPaths(adjacencyMatrixGraph, origem, Double::compare, Double::sum, 0.0, paths, dists);
+                double total = 0.0;
+                for (int j = 0; j < adjacencyMatrixGraph.numVertices(); j++) {
+                    if (dists.get(j) != null && dists.get(j) != 0.0) {
+                        total += dists.get(j);
+                        for (Place place : paths.get(j)) {
+                            if (place instanceof Ports) {
+                                int key = adjacencyMatrixGraph.key(place);
+                                result[key] += 1;
+                            }
+                        }
+                    }
+                }
+                distances[i] = total;
+            }
+
+            //ordenar
+            int size = result.length;
+            int temp;
+            String aux;
+            double tmp;
+            for (int i = 0; i < size; i++) {
+                for (int j = 1; j < (size - i); j++) {
+                    if (result[j - 1] > result[j] || (result[j - 1].equals(result[j]) && distances[j - 1] < distances[j])) {
+                        //trocar elementos
+                        temp = result[j - 1];
+                        result[j - 1] = result[j];
+                        result[j] = temp;
+                        aux = places[j - 1];
+                        places[j - 1] = places[j];
+                        places[j] = aux;
+                        tmp = distances[j - 1];
+                        distances[j - 1] = distances[j];
+                        distances[j] = tmp;
+                    }
+
+                }
+            }
+
+            // retornar os n locais de centralidade de proximidade do continente
+            if (places.length < n) {
+                n = places.length;
+            }
+
+            for (int i = places.length - 1; i > places.length - 1 - n; i--) {
+                resultado.add(places[i]);
+            }
+
+
+        return resultado;
+
+    }
+
+    /*
+    public  void getShortestPaths(String origem, String destino) {
+        Place sourcePlace=null;
+        if(portStore.getPortByName(origem) != null ){
+            sourcePlace = portStore.getPortByName(origem);
+        } else if (capitalStore.getCapitalByName(origem) != null){
+            sourcePlace = capitalStore.getCapitalByName(origem);
+        } else {
+            //return null;
+        }
+
+        Place destination=null;
+        if(portStore.getPortByName(destino) != null ){
+            destination = portStore.getPortByName(destino);
+        } else if (capitalStore.getCapitalByName(destino) != null){
+            destination = capitalStore.getCapitalByName(destino);
+        } else {
+            //return null;
+        }
+
+        getLandPath(sourcePlace,destination);
+        getMaritimePath(sourcePlace,destination);
+        LinkedList<Place> shortPath = new LinkedList<>();
+        GraphAlgorithms.shortestPath(adjacencyMatrixGraph,sourcePlace,destination,Double::compare,Double::sum,0.0,shortPath);
+
+
+    }
+
+    public LinkedList<Place> getLandPath(Place origem, Place destino){
+        Graph<Place, Double> graph = adjacencyMatrixGraph.clone();
+
+        LinkedList<Place> shortPath = new LinkedList<>();
+
+        // obter só os locais de determinado continente
+        for (Place p : adjacencyMatrixGraph.vertices()) {
+            if (p instanceof Ports && (!p.equals(origem) || !p.equals(destino))) {
+                graph.removeVertex(p);
+            }
+        }
+
+        GraphAlgorithms.shortestPath(graph,origem,destino,Double::compare,Double::sum,0.0,shortPath);
+
+        return shortPath;
+    }
+
+    public LinkedList<Place> getMaritimePath(Place origem, Place destino){
+        Graph<Place, Double> graph = adjacencyMatrixGraph.clone();
+
+        LinkedList<Place> shortPath = new LinkedList<>();
+
+        if(origem instanceof Capital || destino instanceof Capital){
+            return null;
+        }
+
+        // obter só os locais de determinado continente
+        for (Place p : adjacencyMatrixGraph.vertices()) {
+            if (p instanceof Capital) {
+                graph.removeVertex(p);
+            }
+        }
+
+        GraphAlgorithms.shortestPath(graph,origem,destino,Double::compare,Double::sum,0.0,shortPath);
+
+        return shortPath;
+    }
+
+    public void getShortPathPassingThroughNIndicatedPlaces(){
+
+    }
+
+
+
+
+    public LinkedList<Place> mostEfficientCircuit (String locationName){
+        //obter o local de início e fim
+        Place sourcePlace;
+        if(portStore.getPortByName(locationName) != null ){
+            sourcePlace = portStore.getPortByName(locationName);
+        } else if (capitalStore.getCapitalByName(locationName) != null){
+            sourcePlace = capitalStore.getCapitalByName(locationName);
+        } else {
+            return null;
+        }
+
+        LinkedList<Place> result = new LinkedList<>();
+        LinkedList<Place> visitedLocations = new LinkedList<>();
+
+        Place adjacentLocation = null;
+        Place localAtual = sourcePlace;
+
+        result.add(sourcePlace);
+        visitedLocations.add(sourcePlace);
+
+        boolean temp = true;
+        while (temp){
+            double min = Double.MAX_VALUE;
+            //obter caminho de menor distância
+            for (Place location : adjacencyMatrixGraph.adjVertices(localAtual)){
+                if((adjacencyMatrixGraph.edge(localAtual,location).getWeight() < min && !visitedLocations.contains(location) )|| (location.equals(sourcePlace) && visitedLocations.size()>2 && result.size()>1)){
+                    min=adjacencyMatrixGraph.edge(localAtual,location).getWeight();
+                    adjacentLocation=location;
+                }
+            }
+
+            if (min != Double.MAX_VALUE){
+                result.add(adjacentLocation);
+                visitedLocations.add(adjacentLocation);
+                localAtual = adjacentLocation;
+            } else {
+                if (visitedLocations.indexOf(localAtual) == 0){
+                    return null;
+                }
+                localAtual=visitedLocations.get(visitedLocations.indexOf(localAtual)-1);
+                if (result.size()>1){
+                    result.remove(result.size()-1);
+                }
+            }
+
+            if (localAtual.equals(sourcePlace)){
+                temp = false;
+            }
+        }
+
+
+        return result;
+    }
+
+     */
+
+
 
 }

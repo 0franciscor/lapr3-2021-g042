@@ -1,7 +1,6 @@
 package lapr.project.model.esinf;
 
 import lapr.project.utils.Graph;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -51,12 +50,11 @@ class MatrixAlgorithmsTest {
         completeMap.addEdge("Lisboa", "Faro", 280);
     }
 
-
-   /*
+    /**
+     * Test of shortestPath method, of class Algorithms.
+     */
     @Test
     public void testShortestPath() {
-        System.out.println("Test of shortest path");
-
         LinkedList<String> shortPath = new LinkedList<>();
 
         Integer lenPath = GraphAlgorithms.shortestPath(completeMap, "Porto", "LX", Integer::compare, Integer::sum, 0, shortPath);
@@ -94,13 +92,11 @@ class MatrixAlgorithmsTest {
         assertEquals(Arrays.asList("Porto", "Aveiro", "Leiria", "Castelo Branco"), shortPath, "Shortest Path Porto - Castelo Branco");
     }
 
-    */
-
-    /*
+    /**
+     * Test of shortestPaths method, of class Algorithms.
+     */
     @Test
     public void testShortestPaths() {
-        System.out.println("Test of shortest path");
-
         ArrayList<LinkedList<String>> paths = new ArrayList<>();
         ArrayList<Integer> dists = new ArrayList<>();
 
@@ -131,13 +127,4 @@ class MatrixAlgorithmsTest {
         assertEquals(Arrays.asList("Braga", "Porto", "Aveiro", "Leiria"), paths.get(completeMap.key("Leiria")), "Path to Leiria");
     }
 
-     */
-
-    /**
-     * Test minimum distance graph using Floyd-Warshall.
-     */
-    @Test
-    public void testMinDistGraph() {
-        AdjacencyMatrixGraph adjacencyMatrixGraph = GraphAlgorithms.minDistGraph(completeMap, Integer::compare, Integer::sum);
-    }
 }

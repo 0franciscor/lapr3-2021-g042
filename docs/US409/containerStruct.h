@@ -1,10 +1,10 @@
 typedef struct { //cMContainer struct
     int containerId;                       
-    char isRefrigerated;
-    int isoCode;
     int x;
     int y;
     int z;
+    char isRefrigerated;
+    int isoCode;
     float grossContainer;
     float maxWeight;
     float weight;

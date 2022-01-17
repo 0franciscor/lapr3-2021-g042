@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString OUT VARCHAR2) IS
+CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString OUT CLOB) IS
 
     nextSunday DATE;
     nextSaturday DATE;
@@ -8,6 +8,7 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
     containersArriving INTEGER;
     containersDepartingAux INTEGER := 0;
     containersArrivingAux INTEGER := 0;
+    output VARCHAR2(5000);
 
 
     CURSOR cargoManifestsLoad IS
@@ -16,20 +17,25 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
     INNER JOIN Phases
     ON (cargoManifestLoad.Id = Phases.CargoManifestLoadId)
     WHERE expectedArrivalDate <= nextSaturday
-    AND expectedArrivalDate >= nextSunday;
+    AND expectedArrivalDate >= nextSunday
+    Group by cargoManifestLoad.id;
 
     BEGIN
+        dbms_lob.createTemporary(outString, true);
         SELECT NEXT_DAY(sysdate,'Domingo') INTO nextSunday FROM DUAL;
-        SELECT NEXT_DAY(nextSunday,'Sábado') INTO nextSaturday FROM DUAL;
+        SELECT NEXT_DAY(nextSunday,'S�bado') INTO nextSaturday FROM DUAL;
 
         SELECT name INTO portName FROM Ports WHERE id = idOfAPort;
-        outString := outString || 'In the port with the name ' || portName || ' in the week of ' || nextsunday || ' until ' || nextsaturday || ': ' || chr(10);
+        output := 'In the port with the name ' || portName || ' in the week of ' || nextsunday || ' until ' || nextsaturday || ': ' || chr(10);
+        dbms_lob.append(outString, output);
 
         FOR loopAux IN (EXTRACT (DAY FROM nextSunday))..(EXTRACT (DAY FROM nextSaturday))
         LOOP
+        outString := outString || 'Day: ' || loopAux || chr(10);
 
             OPEN cargoManifestsLoad;
             LOOP
+            
                 FETCH cargoManifestsLoad INTO cml;
                 EXIT WHEN cargoManifestsLoad%notFound;
 
@@ -37,9 +43,9 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
                 (SELECT origin, destination, id, expectedArrivalDate, expectedDepartureDate
                 FROM Phases
                 WHERE cargoManifestLoadId = cml
-                AND (EXTRACT (DAY FROM expectedArrivalDate) = loopAux
-                OR EXTRACT (DAY FROM expectedDepartureDate) = loopAux))
+                AND EXTRACT (DAY FROM expectedArrivalDate) = loopAux)
                 LOOP
+
                     IF phasesInACargoManifest.destination = portName THEN
 
                         SELECT COUNT(*) INTO containersArriving
@@ -55,16 +61,24 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
                         WHERE cargoManifestLoadId = cml
                         AND phasesId = phasesInACargoManifest.id)
                         LOOP
-                            outString := outString || 'Container number id: ' || allContainersArriving.containerNumberId || ' (Arrival)' || chr(10);
+                            output := 'Container number id: ' || allContainersArriving.containerNumberId || ' (Arrival)' || chr(10);
+                            dbms_lob.append(outString, output);
                         END LOOP;
                     END IF;
-
-                    IF phasesInACargoManifest.origin = portName THEN
+                END LOOP;
+                    
+                FOR phasesInACargoManifest2 IN
+                (SELECT origin, destination, id, expectedArrivalDate, expectedDepartureDate
+                FROM Phases
+                WHERE cargoManifestLoadId = cml
+                AND EXTRACT (DAY FROM expectedDepartureDate) = loopAux)
+                LOOP
+                    IF phasesInACargoManifest2.origin = portName THEN
 
                         SELECT COUNT(*) INTO containersDeparting
                         FROM CargoManifestContainer
                         WHERE cargoManifestLoadId = cml
-                        AND phasesId = phasesInACargoManifest.id;
+                        AND phasesId = phasesInACargoManifest2.id;
 
                         containersDepartingAux := containersDepartingAux + containersDeparting;
 
@@ -72,23 +86,30 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
                         (SELECT containerNumberId
                         FROM CargoManifestContainer
                         WHERE cargoManifestLoadId = cml
-                        AND phasesId = phasesInACargoManifest.id)
+                        AND phasesId = phasesInACargoManifest2.id)
                         LOOP
-                            outString := outString || 'Container number id: ' || allContainersDeparting.containerNumberid || ' (Departure)' || chr(10);
+                            output := 'Container number id: ' || allContainersDeparting.containerNumberId || ', Departure with destination: ' || phasesInACargoManifest2.destination || chr(10);
+                            dbms_lob.append(outString, output);
                         END LOOP;
                     END IF;
-
                 END LOOP;
 
+
             END LOOP;
+            
+            output := 'The total containers who arrived was: '|| containersArrivingAux || chr(10);
+            dbms_lob.append(outString, output);
+            output := 'The total containers who left was: ' || containersDepartingAux || chr(10);
+            dbms_lob.append(outString, output);
             containersDepartingAux := 0;
             containersArrivingAux := 0;
-            outString := outString || 'The total containers who arrived was: '|| containersArrivingAux || chr(10);
-            outString := outString || 'The total containers who left was: ' || containersDepartingAux || chr(10);
+            CLOSE cargoManifestsLoad;
 
         END LOOP;
 
     END;
+    
+    
 
 
 

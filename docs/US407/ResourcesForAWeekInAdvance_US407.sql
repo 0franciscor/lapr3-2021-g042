@@ -23,7 +23,7 @@ CREATE OR REPLACE PROCEDURE resourcesForNextWeek(idOfAPort IN INTEGER, outString
     BEGIN
         dbms_lob.createTemporary(outString, true);
         SELECT NEXT_DAY(sysdate,'Domingo') INTO nextSunday FROM DUAL;
-        SELECT NEXT_DAY(nextSunday,'Sï¿½bado') INTO nextSaturday FROM DUAL;
+        SELECT NEXT_DAY(nextSunday,'Sábado') INTO nextSaturday FROM DUAL;
 
         SELECT name INTO portName FROM Ports WHERE id = idOfAPort;
         output := 'In the port with the name ' || portName || ' in the week of ' || nextsunday || ' until ' || nextsaturday || ': ' || chr(10);

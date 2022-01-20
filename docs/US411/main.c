@@ -7,8 +7,6 @@
 #include "calculateEnergy.h"
 #include "printResult.h"
 
-#define GENERATOR_OUTPUT 500000
-
 int main(int argc,char *argv[]){
 
     cMContainer *containerArray;
@@ -36,15 +34,18 @@ int main(int argc,char *argv[]){
     fclose(containerFile1);
     fclose(containerFile2);
 
-    float generatorOutput = GENERATOR_OUTPUT;
-
     float externalTemp = atoi(argv[1]); 
     float desiredTemp = atoi(argv[2]);
 
     float requiredOutput = calculateEnergy(containerArray, totalSlots, externalTemp, desiredTemp);
 
-    if(generatorOutput < requiredOutput){
-        float energyMissing = requiredOutput - generatorOutput;
+    int numGenerators = atoi(argv[3]);
+    float generatorOutput = atoi(argv[4]);
+
+    float totalOutput = numGenerators * generatorOutput;
+
+    if(totalOutput < requiredOutput){
+        float energyMissing = requiredOutput - totalOutput;
         printResult(energyMissing);
     } else
         printResult(0);

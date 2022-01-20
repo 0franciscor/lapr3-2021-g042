@@ -10,23 +10,28 @@ int main(){
 
     cMContainer *containerArray;
 
-    char *containerFileName = "cMContainer.csv";
-    FILE *containerFile = fopen(containerFileName, "r");
-    
-    if (!containerFile){
+    char *containerFileName1 = "cMContainer1.csv";
+    FILE *containerFile1 = fopen(containerFileName1, "r");
+
+    char *containerFileName2 = "cMContainer2.csv";
+    FILE *containerFile2 = fopen(containerFileName2, "r");
+
+    if (!containerFile1 || !containerFile2){
         printf("No file found\n"); 
-        exit(-1); 
+        exit(0); 
     } 
 
     short maxX, maxY, maxZ, totalSlots;
-    fscanf(containerFile, "%hd,%hd,%hd", &maxX, &maxY, &maxZ);
-    totalSlots = getNumberOfContainers(containerFileName);
+    fscanf(containerFile1, "%hd,%hd,%hd", &maxX, &maxY, &maxZ);
+    totalSlots = getNumberOfContainers(containerFileName1);
 
-    containerArray = (cMContainer *) calloc((totalSlots + 1), sizeof(cMContainer));
+    containerArray = (cMContainer *) calloc(totalSlots, sizeof(cMContainer));
 
-    readStructs(containerFile, containerArray);
+    readStructs(containerFile1, containerArray, 1);
+    readStructs(containerFile2, containerArray, 2);
 
-    fclose(containerFile);
+    fclose(containerFile1);
+    fclose(containerFile2);
 
     printArray(totalSlots, containerArray);
 

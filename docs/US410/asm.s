@@ -21,11 +21,11 @@ loop:
     jmp containerFound
 incorrectCoordinates:
     incw %r9w
-    addq $44, %rdi
+    addq $68, %rdi
     jmp loop
 
 containerFound:
-    cmpb $49, 16(%rdi)
+    cmpb $1, 16(%rdi)
     jne end
 
     movl $1, %eax

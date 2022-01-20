@@ -26,4 +26,4 @@ debug: mainCompiled
 	gdb -tui main
 
 vg: run
-	valgrind ./main 
+	valgrind ./main 20 5 50 500000

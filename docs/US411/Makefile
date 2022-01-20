@@ -20,7 +20,7 @@ clean:
 	rm -f *.o main US411.csv
 
 run: mainCompiled
-	./main
+	./main 20 5
 
 debug: mainCompiled
 	gdb -tui main

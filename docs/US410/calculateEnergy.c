@@ -12,7 +12,7 @@ void calculateEnergy(cMContainer *containerArray, short totalSlots, float extern
         
     cMContainer container = *containerArray;
 
-    float area = 1, totalResistivity = 0;
+    float area = 72.5, totalResistivity = 0;
 
     float outerThickness = container.outerThickness, outerCapacity = container.outerCapacity;
     float middleThickness = container.middleThickness, middleCapacity = container.middleCapacity;

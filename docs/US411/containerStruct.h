@@ -10,4 +10,10 @@ typedef struct { //cMContainer struct
     float weight;
     float tare;
     float maxVolume;
+    float outerThickness;
+    float middleThickness;
+    float innerThickness;
+    float outerCapacity;
+    float middleCapacity;
+    float innerCapacity;
 } cMContainer;

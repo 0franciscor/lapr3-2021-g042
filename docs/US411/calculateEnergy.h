@@ -1,1 +1,1 @@
-float calculateEnergy(cMContainer *containerArray, short totalSlots);
+float calculateEnergy(cMContainer *containerArray, short totalSlots, float externalTemp, float desiredTemp);

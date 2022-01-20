@@ -1,32 +1,28 @@
 #include "containerStruct.h"
 #include "printResult.h"
 
-float calculateEnergy(cMContainer *containerArray, short totalSlots){
+float calculateEnergy(cMContainer *containerArray, short totalSlots, float externalTemp, float desiredTemp){
 
-    float requiredTemp = 7, externalTemp = 20;
-    float area = 1;
-
-    float outerThickness = 0.05, outerCapacity = 15;
-    float middleThickness = 0.1, middleCapacity = 0.035;
-    float innerThickness = 0.05, innerCapacity = 0.3;
-    
-    float requiredEnergy = 0;
+    float requiredEnergy = 0, area = 72.5;
     
     for(short i = 0; i<totalSlots; i++){
         cMContainer container = *(containerArray + i);
 
         char isRefrigerated = container.isRefrigerated;
 
-        if(isRefrigerated == 49){
+        if(isRefrigerated == 1){
+
             float totalResistivity = 0;
+            float outerThickness = container.outerThickness, outerCapacity = container.outerCapacity;
+            float middleThickness = container.middleThickness, middleCapacity = container.middleCapacity;
+            float innerThickness = container.innerThickness, innerCapacity = container.innerCapacity;
 
             totalResistivity += (outerThickness/(outerCapacity*area));
             totalResistivity += (middleThickness/(middleCapacity*area));
             totalResistivity += (innerThickness/(innerCapacity*area));
 
-            requiredEnergy += (((externalTemp - requiredTemp)/totalResistivity) * 3600);
+            requiredEnergy += (((externalTemp - desiredTemp)/totalResistivity) * 3600);
         }
     }
-    
     return requiredEnergy;
 }

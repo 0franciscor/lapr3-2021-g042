@@ -21,7 +21,7 @@ class ShipSankTest {
 
         double result = shipSank.pressureExertedByVesselOnWater(ship1, 152 * Math.pow(10, 6), 20000);
         System.out.println(result);
-        double expected = 110526.31578947368;
+        double expected = 102868.20599307946;
         assertEquals(result, expected);
     }
 
@@ -45,7 +45,7 @@ class ShipSankTest {
         Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
 
         double result = shipSank.calculatePressure(ship1, shipSank.calculateWeightForce(152 * Math.pow(10, 6)));
-        double expected = 103703.70370370371;
+        double expected = 96518.31673424739;
         assertEquals(result, expected);
     }
 

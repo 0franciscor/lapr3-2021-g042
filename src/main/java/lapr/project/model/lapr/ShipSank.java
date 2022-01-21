@@ -20,7 +20,7 @@ public class ShipSank {
         this.weightForce = 0;
     }
 
-    
+
     public double shipMass(double vesselMass, int containers){
         return (vesselMass + (containers * CONTAINER_MASS));
     }
@@ -61,7 +61,6 @@ public class ShipSank {
         return pressure;
     }
 
-
     public double calculateWeightForce(double vesselMass){
         double weightForce = ((vesselMass * GRAVITY));
         this.weightForce = weightForce;
@@ -69,11 +68,14 @@ public class ShipSank {
     }
 
     public double calculatePressure(Ship ship, double weightForce){
-        double pressure = (weightForce / (ship.getLength()*ship.getWidth()));
+        double pressure = (weightForce / immersedArea(ship) );
         return pressure;
     }
 
-
+    public double immersedArea(Ship ship){
+        double draft = calculateDraft(ship,20000);
+        return ((2 * ship.getLength() * draft ) + (2 * ship.getWidth() * draft ) + (ship.getLength() * ship.getWidth()));
+    }
     public double getShipSankHeight() {
         return shipSankHeight;
     }

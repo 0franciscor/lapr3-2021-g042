@@ -23,10 +23,10 @@ clean:
 	rm -f *.o main US410.csv
 
 run: mainCompiled
-	./main
+	./main 20 5
 
 debug: mainCompiled
 	gdb -tui main
 
 vg: run
-	valgrind ./main 
+	valgrind ./main 20 5

@@ -2,28 +2,27 @@
 #include "asm.h"
 #include "printResult.h"
 
-void calculateEnergy(cMContainer *containerArray, short totalSlots){
+void calculateEnergy(cMContainer *containerArray, short totalSlots, float externalTemp, float desiredTemp){
 
-    int x = 8, y = 17, z = 3;
+    int x = 5, y = 11, z = 7;
     short refrigeration = isRefrigerated(containerArray, x, y, z, totalSlots);
 
     if(refrigeration == 0)
         return;
+        
+    cMContainer container = *containerArray;
 
-    float requiredTemp = 7, externalTemp = 20;
-    float area = 1;
+    float area = 72.5, totalResistivity = 0;
 
-    float outerThickness = 0.05, outerCapacity = 15;
-    float middleThickness = 0.1, middleCapacity = 0.035;
-    float innerThickness = 0.05, innerCapacity = 0.3;
-
-    float totalResistivity = 0;
+    float outerThickness = container.outerThickness, outerCapacity = container.outerCapacity;
+    float middleThickness = container.middleThickness, middleCapacity = container.middleCapacity;
+    float innerThickness = container.innerThickness, innerCapacity = container.innerCapacity;
 
     totalResistivity += (outerThickness/(outerCapacity*area));
     totalResistivity += (middleThickness/(middleCapacity*area));
     totalResistivity += (innerThickness/(innerCapacity*area));
 
-    float requiredEnergy = (((externalTemp - requiredTemp)/totalResistivity) * 3600);
+    float requiredEnergy = (((externalTemp - desiredTemp)/totalResistivity) * 3600);
 
     printResult(x, y, z, requiredEnergy);
 }

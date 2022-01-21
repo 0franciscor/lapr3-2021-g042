@@ -1,1 +1,1 @@
-void readStructs(FILE *containerFile, cMContainer *containerArray);
+void readStructs(FILE *containerFile, cMContainer *containerArray, char fileNum);

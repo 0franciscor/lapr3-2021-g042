@@ -3,17 +3,14 @@ package lapr.project.controller;
 import lapr.project.model.Company;
 import lapr.project.model.Place;
 import lapr.project.model.esinf.FreightNetwork;
-import lapr.project.model.store.CountryStore;
 import lapr.project.utils.WriteForAFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-public class GetTheMostEfficientCircuitController {
-
+public class GetShortestPathsController {
     /**
      * Represents an instance of app.
      */
@@ -31,21 +28,20 @@ public class GetTheMostEfficientCircuitController {
      */
     private final WriteForAFile writeForAFile;
 
-    public GetTheMostEfficientCircuitController(){
+    public GetShortestPathsController(){
         this.app=App.getInstance();
         this.company=app.getCompany();
         this.freightNetwork=company.getFreightNetwork();
         this.writeForAFile = new WriteForAFile();
     }
 
-    public LinkedList<Place> getTheMostEfficientCircuit(String origem) throws IOException {
-        LinkedList<Place> result =freightNetwork.mostEfficientCircuit(origem);
-        File file = new File(".\\outputs\\Efficient Circuit");
-        writeForAFile.writeForAFile("", "Efficient Circuit",file,false);
-        for (Place place : result){
-            writeForAFile.writeForAFile(place +"\n" , "Efficient Circuit",file,true);
+    public ArrayList<List<Place>> getShortestPaths(String origem, String destino,List<String> passagensObrigatorias) throws IOException {
+        ArrayList<List<Place>> result =freightNetwork.getShortestPaths(origem,destino,passagensObrigatorias);
+        File file = new File(".\\outputs\\Shortest Paths");
+        writeForAFile.writeForAFile("", "Shortest Paths",file,false);
+        for (List<Place> place : result){
+            writeForAFile.writeForAFile(place +"\n" , "Shortest Paths",file,true);
         }
         return result;
     }
-
 }

@@ -1,6 +1,7 @@
 package lapr.project.model.esinf;
 
 import lapr.project.utils.Graph;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -125,6 +126,71 @@ class MatrixAlgorithmsTest {
         GraphAlgorithms.shortestPaths(incompleteMap, "Braga", Integer::compare, Integer::sum, 0, paths, dists);
         assertEquals(255, dists.get(completeMap.key("Leiria")), "Path between Braga and Leiria should be 255 Km");
         assertEquals(Arrays.asList("Braga", "Porto", "Aveiro", "Leiria"), paths.get(completeMap.key("Leiria")), "Path to Leiria");
+    }
+
+    /**
+     * Test of DepthFirstSearch method, of class Algorithms.
+     */
+    @Test
+    public void testDepthFirstSearch() {
+        System.out.println("Test of DepthFirstSearch");
+
+        assertNull(GraphAlgorithms.DepthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");
+
+        LinkedList<String> path = GraphAlgorithms.DepthFirstSearch(incompleteMap, "Faro");
+        assertEquals(1, path.size(), "Should be just one");
+
+        assertEquals("Faro", path.peekFirst());
+
+        path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Porto");
+        assertEquals(7, path.size(), "Should give seven vertices");
+
+        assertEquals("Porto", path.removeFirst(), "DepthFirst Porto");
+        assertTrue(new LinkedList<>(Arrays.asList("Aveiro", "Braga", "Vila Real")).contains(path.removeFirst()), "DepthFirst Porto");
+
+        path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Viseu");
+        List<String> expected = new LinkedList<>(Arrays.asList("Viseu", "Guarda", "Castelo Branco"));
+        assertEquals(expected, path, "DepthFirst Viseu");
+    }
+
+    /**
+     * Test of BreadthFirstSearch method, of class Algorithms.
+     */
+    @Test
+    public void testBreadthFirstSearch() {
+        System.out.println("Test BreadthFirstSearch");
+
+        assertNull(GraphAlgorithms.BreadthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");
+
+        LinkedList<String> path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Faro");
+
+        assertEquals(1, path.size(), "Should be just one");
+
+        assertEquals("Faro", path.peekFirst());
+
+        path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Porto");
+        assertEquals(7, path.size(), "Should give seven vertices");
+
+        assertEquals("Porto", path.removeFirst(), "BreathFirst Porto");
+
+        LinkedList<String> expected = new LinkedList<>(Arrays.asList("Aveiro", "Braga", "Vila Real"));
+        checkContentEquals(expected, path.subList(0, 3), "BreathFirst Porto");
+
+        expected = new LinkedList<>(Arrays.asList("Coimbra", "Leiria"));
+        checkContentEquals(expected, path.subList(3, 5), "BreathFirst Porto");
+
+        expected = new LinkedList<>(Arrays.asList("Lisboa"));
+        checkContentEquals(expected, path.subList(5, 6), "BreathFirst Porto");
+
+        path = GraphAlgorithms.BreadthFirstSearch(incompleteMap, "Viseu");
+        expected = new LinkedList<>(Arrays.asList("Viseu", "Guarda", "Castelo Branco"));
+        assertEquals(expected, path, "BreathFirst Viseu");
+    }
+
+    private void checkContentEquals(List<String> l1, List<String> l2, String msg) {
+        Collections.sort(l1);
+        Collections.sort(l2);
+        assertEquals(l1, l2, msg);
     }
 
 }

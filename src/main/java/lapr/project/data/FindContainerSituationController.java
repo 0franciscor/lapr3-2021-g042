@@ -1,5 +1,6 @@
-package lapr.project.controller;
+package lapr.project.data;
 
+import lapr.project.controller.App;
 import lapr.project.data.US204Handler;
 import lapr.project.model.Company;
 
@@ -11,7 +12,7 @@ public class FindContainerSituationController {
     private final Company company;
 
     public FindContainerSituationController(){
-        this.company=App.getInstance().getCompany();
+        this.company= App.getInstance().getCompany();
 
     }
 

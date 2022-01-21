@@ -234,6 +234,71 @@ public class GraphAlgorithms {
         }
     }
 
+    /** Performs depth-first search starting in a vertex
+     *
+     * @param g Graph instance
+     * @param vOrig vertex of graph g that will be the source of the search
+     * @param visited set of previously visited vertices
+     * @param qdfs return LinkedList with vertices of depth-first search
+     */
+    private static <V, E> void DepthFirstSearch(Graph<V, E> g, V vOrig, boolean[] visited, LinkedList<V> qdfs) {
+        visited[g.key(vOrig)] = true;
+
+        for (V vertex : g.adjVertices(vOrig)) {
+            if (! visited[g.key(vertex)]) {
+                qdfs.add(vertex);
+                DepthFirstSearch(g, vertex, visited, qdfs);
+            }
+        }
+    }
+
+    /** Performs depth-first search starting in a vertex
+     *
+     * @param g Graph instance
+     * @param vert vertex of graph g that will be the source of the search
+
+     * @return a LinkedList with the vertices of depth-first search
+     */
+    public static <V, E> LinkedList<V> DepthFirstSearch(Graph<V, E> g, V vert) {
+        if (!g.validVertex(vert)) {
+            return null;
+        }
+
+        LinkedList<V> resultQueue = new LinkedList<>();
+        resultQueue.add(vert);
+        boolean[] knownVertices = new boolean[g.numVertices()];
+
+        DepthFirstSearch(g, vert, knownVertices, resultQueue);
+
+        return resultQueue;
+    }
+
+    public static <V, E> LinkedList<V> BreadthFirstSearch(Graph<V, E> g, V vert) {
+        if(!g.validVertex(vert))
+            return null;
+
+        LinkedList<V> quaux = new LinkedList<>();
+        LinkedList<V> qbls = new LinkedList<>();
+        boolean[] visited = new boolean[g.numVertices()];
+        quaux.add(vert); qbls.add(vert);
+        int vkey = g.key(vert);
+        visited[vkey] = true;
+
+        while(!quaux.isEmpty()) {
+            vert = quaux.remove();
+            for(V vAdj : g.adjVertices(vert)) {
+                vkey = g.key(vAdj);
+                if(!visited[vkey]) {
+                    quaux.add(vAdj);
+                    visited[vkey] = true;
+                    qbls.add(vAdj);
+                }
+            }
+        }
+        return qbls;
+    }
+
+
 
 
 }

@@ -339,31 +339,50 @@ public class FreightNetwork {
 
     }
 
-    /*
-    public  void getShortestPaths(String origem, String destino) {
+
+    public  ArrayList<List<Place>> getShortestPaths(String origem, String destino, List<String> obligatoryPassage) {
+        ArrayList<List<Place>> paths = new ArrayList<>();
         Place sourcePlace=null;
         if(portStore.getPortByName(origem) != null ){
             sourcePlace = portStore.getPortByName(origem);
         } else if (capitalStore.getCapitalByName(origem) != null){
             sourcePlace = capitalStore.getCapitalByName(origem);
         } else {
-            //return null;
+            return null;
         }
 
-        Place destination=null;
+        Place destination;
         if(portStore.getPortByName(destino) != null ){
             destination = portStore.getPortByName(destino);
         } else if (capitalStore.getCapitalByName(destino) != null){
             destination = capitalStore.getCapitalByName(destino);
         } else {
-            //return null;
+            return null;
         }
 
-        getLandPath(sourcePlace,destination);
-        getMaritimePath(sourcePlace,destination);
+        paths.add(getLandPath(sourcePlace,destination));
+        paths.add(getMaritimePath(sourcePlace,destination));
         LinkedList<Place> shortPath = new LinkedList<>();
         GraphAlgorithms.shortestPath(adjacencyMatrixGraph,sourcePlace,destination,Double::compare,Double::sum,0.0,shortPath);
+        paths.add(shortPath);
 
+        List<Place> placesToVisite = new ArrayList<>();
+        for (String place : obligatoryPassage){
+            Place aux;
+            if(portStore.getPortByName(place) != null ){
+                aux = portStore.getPortByName(place);
+                placesToVisite.add(aux);
+            } else if (capitalStore.getCapitalByName(place) != null){
+                aux = capitalStore.getCapitalByName(place);
+                placesToVisite.add(aux);
+            } else {
+                return null;
+            }
+        }
+
+        paths.add(getShortPathPassingThroughNIndicatedPlaces(placesToVisite,sourcePlace,destination));
+
+        return paths;
 
     }
 
@@ -372,7 +391,6 @@ public class FreightNetwork {
 
         LinkedList<Place> shortPath = new LinkedList<>();
 
-        // obter só os locais de determinado continente
         for (Place p : adjacencyMatrixGraph.vertices()) {
             if (p instanceof Ports && (!p.equals(origem) || !p.equals(destino))) {
                 graph.removeVertex(p);
@@ -405,8 +423,61 @@ public class FreightNetwork {
         return shortPath;
     }
 
-    public void getShortPathPassingThroughNIndicatedPlaces(){
+    private List<Place> getShortPathPassingThroughNIndicatedPlaces(List<Place> obligatoryPassage, Place p1, Place p2) {
+        List<Place> intermediaryCitiesOrdered = new ArrayList<>();
+        List<Place> checkedCities = new ArrayList<>();
 
+        int n = obligatoryPassage.size();
+        intermediaryCitiesOrdered.add(p1);
+
+        for (int i = 0; i < n; i++) {
+            List<Place> citiesChecked = searchNextCities(obligatoryPassage, p1, p2, checkedCities);
+            if (citiesChecked == null) {
+                continue;
+            } else {
+                citiesChecked.remove(citiesChecked.get(0));
+                for (Place s : citiesChecked) {
+                    intermediaryCitiesOrdered.add(s);
+                    checkedCities.add(s);
+                    obligatoryPassage.remove(s);
+                }
+
+                p1 = citiesChecked.get(citiesChecked.size() - 1);
+
+            }
+        }
+        obligatoryPassage.add(p2);
+        List<Place> finalPath = searchNextCities(obligatoryPassage, p1, p2, checkedCities);
+        finalPath.remove(0);
+        intermediaryCitiesOrdered.addAll(finalPath);
+        return intermediaryCitiesOrdered;
+    }
+
+    private List<Place> searchNextCities (List<Place> obligatoryPassage, Place p1, Place p2, List<Place> citesAlreadyInPath) {
+        double minDist;
+        ArrayList<LinkedList<Place>> shortPaths = new ArrayList<>();
+        ArrayList<Double> dists = new ArrayList<>();
+        for (int i = 0; i < obligatoryPassage.size(); i++) {
+            LinkedList<Place> path = new LinkedList<>();
+            double dist = GraphAlgorithms.shortestPath(adjacencyMatrixGraph, p1, obligatoryPassage.get(i),Double::compare,Double::sum,0.0, path);
+            shortPaths.add(path);
+            dists.add(dist);
+        }
+        for (int i=0; i<shortPaths.size(); i++) {
+            if (shortPaths.get(i).size() == 1) {
+                shortPaths.remove(shortPaths.get(i));
+                dists.remove(dists.get(i));
+            }
+        }
+        List<Place> aPath;
+        if (dists.size() == 0) {
+            aPath = null;
+        } else {
+            minDist = Collections.min(dists);
+            int i = dists.indexOf(minDist);
+            aPath = shortPaths.get(i);
+        }
+        return aPath;
     }
 
 
@@ -466,7 +537,7 @@ public class FreightNetwork {
         return result;
     }
 
-     */
+
 
 
 

@@ -38,7 +38,7 @@ public class ShipSank {
         return draft;
     }
 
-    public void shipSankHeight (Ship ship, double vesselMass, int containers) {
+    public double shipSankHeight (Ship ship, double vesselMass, int containers) {
         double vesselImmersedVolume, vesselImmersedVolumeLoaded, emptyDraft, loadedDraft;
 
         vesselImmersedVolume = vesselImmersedVolume(vesselMass,0);
@@ -50,6 +50,7 @@ public class ShipSank {
         loadedDraft = calculateDraft(ship,vesselImmersedVolumeLoaded);
 
         this.shipSankHeight = loadedDraft - emptyDraft;
+        return  shipSankHeight;
     }
 
     public double pressureExertedByVesselOnWater(Ship ship, double vesselMass, int containers){

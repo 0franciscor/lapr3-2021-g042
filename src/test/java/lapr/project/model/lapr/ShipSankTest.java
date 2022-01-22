@@ -17,7 +17,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double result = shipSank.pressureExertedByVesselOnWater(ship1, 152 * Math.pow(10, 6), 20000);
         System.out.println(result);
@@ -30,7 +30,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double result = shipSank.calculateWeightForce(152 * Math.pow(10, 6));
         double expected = 1.4896E9;
@@ -42,7 +42,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double result = shipSank.calculatePressure(ship1, shipSank.calculateWeightForce(152 * Math.pow(10, 6)));
         double expected = 96518.31673424739;
@@ -54,7 +54,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double result = shipSank.shipMass(152 * Math.pow(10, 6),20000);
         double expected = 1.62E8;
@@ -66,7 +66,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double result = shipSank.vesselImmersedVolume(152 * Math.pow(10, 6),0);
         double expected = 147572.81553398058;
@@ -78,7 +78,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double result = shipSank.vesselImmersedVolume(152 * Math.pow(10, 6),20000);
         double expected = 157281.55339805825;
@@ -90,7 +90,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double immersedVolume = shipSank.vesselImmersedVolume(152 * Math.pow(10, 6),0);
         double result = shipSank.calculateDraft(ship1,immersedVolume);
@@ -103,7 +103,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double immersedVolume = shipSank.vesselImmersedVolume(152 * Math.pow(10, 6),20000);
         double result = shipSank.calculateDraft(ship1,immersedVolume);
@@ -116,7 +116,7 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
 
         double immersedVolumeEmpty = shipSank.vesselImmersedVolume(152 * Math.pow(10, 6),0);
         double immersedVolumeLoaded = shipSank.vesselImmersedVolume(152 * Math.pow(10, 6),20000);
@@ -132,10 +132,22 @@ class ShipSankTest {
         Date dateToUse = new Date();
         ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
         shipSank = new ShipSank();
-        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 24f, shipl);
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
         shipSank.shipSankHeight(ship1,152 * Math.pow(10, 6),20000);
         double result = shipSank.getShipSankHeight();
         double expected = 0.675907676418662;
+        assertEquals(result, expected);
+    }
+
+    @Test
+    public void immersedArea(){
+        Date dateToUse = new Date();
+        ShipLocation shipl = new ShipLocation("111111111", dateToUse, "56", "88", 32f, 44f, "330", "B");
+        shipSank = new ShipSank();
+        Ship ship1 = new Ship("111111111", "SHIP1", "IMO1111111", 4, 200.0f, "REEFER", 70, 342f, 42f, "ASD", 10.27f, shipl);
+
+        double result = shipSank.immersedArea(ship1);
+        double expected = 15433.340016708438;
         assertEquals(result, expected);
     }
 }

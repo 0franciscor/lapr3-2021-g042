@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculadoraTest {
+class CentroMassaTest {
 
     @Test
     void getCenterMass() throws IOException {
@@ -33,8 +33,12 @@ class CalculadoraTest {
         formasGeometricas[0]="Retangulo";
         formasGeometricas[1]="Retangulo";
         formasGeometricas[2]="Retangulo";
-        List<Double> resultado = Calculadora.getCenterMass(numeroPartes,massaTotal,xInicial,xFinal,yInicial,yFinal,formasGeometricas);
+        List<Double> resultado = CentroMassa.getCenterMass(numeroPartes,massaTotal,xInicial,xFinal,yInicial,yFinal,formasGeometricas);
         assertEquals(165.88697524219592,resultado.get(0));
         assertEquals(21.0,resultado.get(1));
+        double x = CentroMassa.adicionarContentoresSemAlterarCentroMassaX(numeroPartes,massaTotal,xInicial,xFinal,yInicial,yFinal,formasGeometricas,50000,resultado.get(0));
+        double y = CentroMassa.adicionarContentoresSemAlterarCentroMassaY(numeroPartes,massaTotal,xInicial,xFinal,yInicial,yFinal,formasGeometricas,50000,resultado.get(1));
+        assertEquals(165.88697524223326,x);
+        assertEquals(21.0,y);
     }
 }

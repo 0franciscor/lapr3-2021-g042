@@ -24,5 +24,8 @@ void calculateEnergy(cMContainer *containerArray, short totalSlots, float extern
 
     float requiredEnergy = (((externalTemp - desiredTemp)/totalResistivity) * 3600);
 
+    if(requiredEnergy < 0)
+        requiredEnergy = -requiredEnergy;
+
     printResult(x, y, z, requiredEnergy);
 }

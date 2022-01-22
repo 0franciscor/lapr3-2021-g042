@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class US405Handler {

@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import lapr.project.data.ContainerStore;
 import lapr.project.data.TransferFromDataBase;
 import lapr.project.data.login.AuthFacade;
 import lapr.project.model.esinf.FreightNetwork;
@@ -57,6 +58,8 @@ public class Company {
 
     private FreightNetwork freightNetwork;
 
+    private ContainerStore containerStore;
+
     /**
      * Creates an instance of Company
      */
@@ -70,6 +73,7 @@ public class Company {
         borderStr = new BorderStore();
         authFacade=new AuthFacade();
         freightNetwork = new FreightNetwork();
+        containerStore = new ContainerStore();
     }
 
     /**
@@ -137,4 +141,7 @@ public class Company {
         return freightNetwork;
     }
 
+    public ContainerStore getContainerStore() {
+        return containerStore;
+    }
 }

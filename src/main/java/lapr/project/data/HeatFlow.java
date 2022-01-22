@@ -118,7 +118,7 @@ public class HeatFlow {
     public void calculateArea(double length, double height, double width){
         this.area = (4 * length * height) + (2 * height * width);
     }
-    
+
     public double getArea() {
         return area;
     }

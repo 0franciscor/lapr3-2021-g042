@@ -11,6 +11,7 @@
 * 1201239 _ Francisco Redol
 * 1201382 _ Pedro Rocha
 * 1201386 _ Rita Ariana Sobral
+* 1171887 _ Duarte Paulo
 
 #### Teachers/Advisors:
 * Nuno Bettencourt (NMB)
@@ -118,7 +119,7 @@ It should allow the Traffic Manager to import ships, see Ships's different data 
 ####  US308 - Pedro Rocha & Francisco Redol
 ####  US309 - Pedro Rocha & Manuela Leite
 ####  US310 - Manuela Leite, Francisco Redol, Pedro Rocha & Rita Ariana Sobral
-####  US311 - CANCELADA
+####  US311 - CANCELED
 ####  US312 - Rita Ariana Sobral
 ####  US313 - Manuela Leite
 ####  US314 - Pedro Rocha
@@ -136,7 +137,7 @@ It should allow the Traffic Manager to import ships, see Ships's different data 
 ####  US405 - Pedro Rocha 
 ####  US406 - Pedro Rocha e Rita Ariana Sobral
 ####  US407 - Manuela Leite e Francisco Redol
-####  US408 - CANCELADA
+####  US408 - CANCELED
 ####  US409 - Francisco Redol 
 ####  US410 - Manuela Leite e Pedro Rocha
 ####  US411 - Duarte Paulo e Rita Ariana Sobral

@@ -36,9 +36,4 @@ public class US313Handler {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        US313Handler us313Handler = new US313Handler();
-        us313Handler.importContainers();
-    }
 }

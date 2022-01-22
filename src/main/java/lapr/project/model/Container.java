@@ -75,6 +75,38 @@ public class Container {
      * The certificate of a container
      */
     private final String certificate;
+    /**
+     * The temperature of a container
+     */
+    private final double temperature;
+
+    private final double length;
+
+    private final double width;
+
+    private final double height;
+
+
+    public Container(String number, int x, int y, int z, int checkDigit, String isoCode, float maximumWeight, float payload, float tare, float weight, float maxWeightPacked, float maxVolumePacked, String repairRecommendation, String certificate, double temperature, double length, double width, double height) {
+        this.number = number;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.checkDigit = checkDigit;
+        this.isoCode = isoCode;
+        this.maximumWeight = maximumWeight;
+        this.payload = payload;
+        this.tare = tare;
+        this.weight = weight;
+        this.maxWeightPacked = maxWeightPacked;
+        this.maxVolumePacked = maxVolumePacked;
+        this.repairRecommendation = repairRecommendation;
+        this.certificate = certificate;
+        this.temperature = temperature;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
 
     /**
      * Creates an instance of Container
@@ -108,13 +140,18 @@ public class Container {
         this.maxVolumePacked = maxVolumePacked;
         this.repairRecommendation = repairRecommendation;
         this.certificate = certificate;
+        this.temperature = 10;
+        this.length = 6;
+        this.width = 2.5;
+        this.height = 2.5;
     }
 
     /**
      * Creates an instance of Container
      * @param container
+     * @param temperature
      */
-    public Container(Container container) {
+    public Container(Container container, double temperature) {
         this.number = container.getNumber();
         this.x = container.getX();
         this.y = container.getY();
@@ -129,6 +166,10 @@ public class Container {
         this.maxVolumePacked = container.getMaxVolumePacked();
         this.repairRecommendation = container.getRepairRecommendation();
         this.certificate = container.getCertificate();
+        this.temperature = temperature;
+        this.length = 6;
+        this.width = 2.5;
+        this.height = 2.5;
     }
 
     /**
@@ -238,5 +279,48 @@ public class Container {
      */
     public String getCertificate() {
         return certificate;
+    }
+
+    /**
+     * get the temperature of a container
+     * @return the temperatures of a container
+     */
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    @Override
+    public String toString() {
+        return "----------* Container Selected *----------\n" +
+                "->Number: " + number + "\n" +
+                "->x: " + x + "\n" +
+                "->y: " + y + "\n" +
+                "->z: " + z + "\n" +
+                "->Check Digit: " + checkDigit + "\n" +
+                "->IsoCode: " + isoCode + "\n" +
+                "->Maximum Weight: " + maximumWeight + "Kg\n" +
+                "->Payload: " + payload + "Kg\n" +
+                "->Tare: " + tare + "Kg\n" +
+                "->Weight: " + weight + "Kg\n" +
+                "->Maximum Weight Packed: " + maxWeightPacked + "Kg\n" +
+                "->Maximum Volume Packed: " + maxVolumePacked + "Kg\n" +
+                "->Repair Recommendation: " + repairRecommendation + "\n" +
+                "->Certificate: " + certificate + "\n" +
+                "->Temperature: " + temperature + "ºC\n" +
+                "->Length: " + length + "m\n" +
+                "->Width: " + width + "m\n" +
+                "->Height: " + height + "m";
     }
 }

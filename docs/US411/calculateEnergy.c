@@ -21,7 +21,12 @@ float calculateEnergy(cMContainer *containerArray, short totalSlots, float exter
             totalResistivity += (middleThickness/(middleCapacity*area));
             totalResistivity += (innerThickness/(innerCapacity*area));
 
-            requiredEnergy += (((externalTemp - desiredTemp)/totalResistivity) * 3600);
+            float temp = (((externalTemp - desiredTemp)/totalResistivity) * 3600);
+
+            if(temp < 0)
+                temp = -temp;
+
+            requiredEnergy += temp;
         }
     }
     return requiredEnergy;

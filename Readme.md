@@ -130,9 +130,9 @@ It should allow the Traffic Manager to import ships, see Ships's different data 
 ####  US319 - Rita Ariana Sobral
 ####  US320 - Pedro Rocha
 
-####  US401 - Pedro Rocha e Francisco Redol
-####  US402 - Manuela Leite e Duarte Paulo
-####  US403 - Rita Ariana Sobral 
+####  US401 - Manuela Leite e Pedro Rocha
+####  US402 - Rita Ariana Sobral 
+####  US403 - Francisco Redol e Duarte Paulo
 ####  US404 - Francisco Redol
 ####  US405 - Pedro Rocha 
 ####  US406 - Pedro Rocha e Rita Ariana Sobral
@@ -247,6 +247,8 @@ Jira was used to create issues and tasks, aswell as dividing them and planning e
 ![PitTestCoverage](docs/Report_aux/pitTestCoverageS2.jpg)
 #### Sprint 3
 ![PitTestCoverage](docs/Report_aux/pitTestCoverageS3.jpg)
+#### Sprint 4 
+![PitTestCoverage](docs/Report_aux/coverageSprint4.jpg)
 
 ## Team Performance
 The group agrees that all members of the group contributed equally to the project, althought some focused more on other parts given the division of the project.

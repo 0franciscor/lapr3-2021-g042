@@ -41,12 +41,12 @@ public class ListSomeShipDataController {
     /**
      * Represents an instance of Write for a file
      */
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     /**
      * Represents an instance of file
      */
-    private File file;
+    private final File file;
 
     /**
      * Initialize the controller

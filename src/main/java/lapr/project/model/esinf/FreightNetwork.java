@@ -342,8 +342,8 @@ public class FreightNetwork {
     }
 
 
-    public  ArrayList<List<Place>> getShortestPaths(String origem, String destino, List<String> obligatoryPassage) {
-        ArrayList<List<Place>> paths = new ArrayList<>();
+    public  List<List<Place>> getShortestPaths(String origem, String destino, List<String> obligatoryPassage) {
+        List<List<Place>> paths = new ArrayList<>();
         Place sourcePlace=null;
         if(portStore.getPortByName(origem) != null ){
             sourcePlace = portStore.getPortByName(origem);

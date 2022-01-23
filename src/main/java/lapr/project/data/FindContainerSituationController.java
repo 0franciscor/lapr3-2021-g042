@@ -1,7 +1,6 @@
 package lapr.project.data;
 
 import lapr.project.controller.App;
-import lapr.project.data.US204Handler;
 import lapr.project.model.Company;
 
 import java.io.IOException;

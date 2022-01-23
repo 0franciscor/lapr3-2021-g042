@@ -2,7 +2,6 @@ package lapr.project.controller;
 
 import lapr.project.data.ConnectionFactory;
 import lapr.project.data.DatabaseConnection;
-import lapr.project.data.login.AuthController;
 import lapr.project.data.login.AuthFacade;
 import lapr.project.data.login.UserSession;
 import lapr.project.model.Company;

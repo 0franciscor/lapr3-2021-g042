@@ -37,8 +37,8 @@ public class GetShortestPathsController {
         this.writeForAFile = new WriteForAFile();
     }
 
-    public ArrayList<List<Place>> getShortestPaths(String origem, String destino,List<String> passagensObrigatorias) throws IOException {
-        ArrayList<List<Place>> result =freightNetwork.getShortestPaths(origem,destino,passagensObrigatorias);
+    public List<List<Place>> getShortestPaths(String origem, String destino,List<String> passagensObrigatorias) throws IOException {
+        List<List<Place>> result =freightNetwork.getShortestPaths(origem,destino,passagensObrigatorias);
         File file = new File(".\\outputs\\Shortest Paths");
         writeForAFile.writeForAFile("", "Shortest Paths",file,false);
         for (List<Place> place : result){

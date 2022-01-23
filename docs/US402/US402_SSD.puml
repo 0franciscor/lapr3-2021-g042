@@ -27,7 +27,7 @@ deactivate ":System"
 TM -> ":System" : Enter the requested information
 activate ":System"
 
-":System" --> TM : Informs of operation success and indicates\n  the shortest path between two locals
+":System" --> TM : Informs of operation success and indicates\n  the shortest paths between two locals
 deactivate ":System"
 
 deactivate TM

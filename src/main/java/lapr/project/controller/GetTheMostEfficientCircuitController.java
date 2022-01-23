@@ -1,7 +1,9 @@
 package lapr.project.controller;
 
+import lapr.project.model.Capital;
 import lapr.project.model.Company;
 import lapr.project.model.Place;
+import lapr.project.model.Ports;
 import lapr.project.model.esinf.FreightNetwork;
 import lapr.project.model.store.CountryStore;
 import lapr.project.utils.WriteForAFile;
@@ -42,8 +44,14 @@ public class GetTheMostEfficientCircuitController {
         LinkedList<Place> result =freightNetwork.mostEfficientCircuit(origem);
         File file = new File(".\\outputs\\Efficient Circuit");
         writeForAFile.writeForAFile("", "Efficient Circuit",file,false);
-        for (Place place : result){
-            writeForAFile.writeForAFile(place +"\n" , "Efficient Circuit",file,true);
+        writeForAFile.writeForAFile("--- Circuito ---\n" , "Efficient Circuit",file,true);
+        for (Place place1: result){
+            if (place1 instanceof Ports){
+                writeForAFile.writeForAFile("Porto "+((Ports) place1).getPortName() +"\n" , "Efficient Circuit",file,true);
+            } else if (place1 instanceof Capital){
+                writeForAFile.writeForAFile("Capital "+((Capital) place1).getName() +"\n" , "Efficient Circuit",file,true);
+            }
+
         }
         return result;
     }

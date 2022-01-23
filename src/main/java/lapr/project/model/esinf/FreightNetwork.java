@@ -118,9 +118,11 @@ public class FreightNetwork {
             }
 
             for(int i=0; i<temp;i++){
-                double dist = new Vector<>(distanceList.keySet()).get(i);
-                Ports aux = new Vector<>(distanceList.values()).get(i);
-                adjacencyMatrixGraph.addEdge(ports,aux,dist);
+                if(i<( distanceList.keySet()).size()){
+                    double dist = new Vector<>(distanceList.keySet()).get(i);
+                    Ports aux = new Vector<>(distanceList.values()).get(i);
+                    adjacencyMatrixGraph.addEdge(ports,aux,dist);
+                }
             }
 
 

@@ -1,7 +1,9 @@
 package lapr.project.controller;
 
+import lapr.project.model.Capital;
 import lapr.project.model.Company;
 import lapr.project.model.Place;
+import lapr.project.model.Ports;
 import lapr.project.model.esinf.FreightNetwork;
 import lapr.project.utils.WriteForAFile;
 
@@ -40,7 +42,21 @@ public class GetShortestPathsController {
         File file = new File(".\\outputs\\Shortest Paths");
         writeForAFile.writeForAFile("", "Shortest Paths",file,false);
         for (List<Place> place : result){
-            writeForAFile.writeForAFile(place +"\n" , "Shortest Paths",file,true);
+            writeForAFile.writeForAFile("--- Caminho ---\n" , "Shortest Paths",file,true);
+            if (place == null){
+                writeForAFile.writeForAFile("Não foi possível determinar este caminho.\n" , "Shortest Paths",file,true);
+            } else {
+                for (Place place1: place){
+                    if (place1 instanceof Ports){
+                        writeForAFile.writeForAFile("Porto "+((Ports) place1).getPortName() +"\n" , "Shortest Paths",file,true);
+                    } else if (place1 instanceof Capital){
+                        writeForAFile.writeForAFile("Capital "+((Capital) place1).getName() +"\n" , "Shortest Paths",file,true);
+                    }
+
+                }
+            }
+
+
         }
         return result;
     }

@@ -15,7 +15,7 @@ class GetTheMostEfficientCircuitControllerTest {
     @Test
     void getTheMostEfficientCircuit() throws IOException {
         CreateFreightNetworkController createFreightNetworkController = new CreateFreightNetworkController();
-        createFreightNetworkController.createFreightNetwork(1);
+        createFreightNetworkController.createFreightNetwork(4);
         GetTheMostEfficientCircuitController circuitController = new GetTheMostEfficientCircuitController();
         circuitController.getTheMostEfficientCircuit("Lisbon");
     }

@@ -138,7 +138,7 @@ public class CentroMassa {
         double temp = aux - valorAuxCentroMassaY;
 
         return temp/massaAcrescentar;
-        
+
     }
 
 

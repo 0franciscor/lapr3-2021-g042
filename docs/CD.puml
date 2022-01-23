@@ -316,6 +316,7 @@ class CountryStore {
 class PortStore {
 +create(country,code,portName,placeLocation)
 +savePort()
+-getPorts2DTree()
 }
 
 class Ports2DTree {
@@ -351,9 +352,6 @@ class ShipLocationBST {
 
 
 
-class PortStore {
--getPorts2DTree()
-}
 
 class Ports2DTree {
 -findNearestNeighbour(latitude, longitude)
@@ -406,8 +404,14 @@ class FreightNetwork {
 -mostCenteredCities(n,countryStore)
 -mostCenteredCitiesOnTheContinent(n,continentName)
 -mediaDist(place, matrixGraph)
+-getsPortsMoreCritical(n)
+-getShortestPaths(origem,destino,passagensObrigatorias);
+-getLandPath(sourcePlace,destination);
+-getMaritimePath(sourcePlace,destination);
+-getShortPathPassingThroughNIndicatedPlaces(placesToVisite,sourcePlace,destination);
+-searchNextCities(obligatoryPassage, p1, p2, checkedCities);
+-mostEfficientCircuit(locationName);
 }
-
 
 class ColorFreightNetworkUI {}
 
@@ -464,12 +468,83 @@ class AdjacencyMatrixGraph {
 -edge()
 }
 
+
 class Edge {
+-getWeight();
 }
+
+
+class GetsPortsMoreCriticalUI {}
+
+class GetsPortsMoreCriticalController {
+-getsPortsMoreCritical(n)
+}
+
+
+class AdjacencyMatrixGraph {
+-numVertices();
+-vertex(i);
+-key(i)
+-adjVertices(i);
+-edge(localAtual,location);
+}
+
+
+
+class GraphAlgorithms {
+-shortestPaths(adjacencyMatrixGraph, origem, Double::compare, Double::sum, 0.0, paths, dists)
+-shortestPathDijkstra(g, vOrig, ce, sum, zero, visited, pathKeys, dist)
+-getPath(g, vOrig, vDest, pathKeys, shortPath)
+}
+
+
+
+class GetShortestPathsUI {}
+
+
+class GetShortestPathsController {
+-getShortestPaths(origem,destino,passagensObrigatorias);
+}
+
+
+
+class GetTheMostEfficientCircuitUI  {}
+
+class GetTheMostEfficientCircuitController {
+-getTheMostEfficientCircuit(origem);
+}
+
+
+
+
+
+
+
+
+
+GetTheMostEfficientCircuitUI  ..> GetTheMostEfficientCircuitController
+
+GetTheMostEfficientCircuitController ..> Company
+GetTheMostEfficientCircuitController ..> FreightNetwork
+
+GetShortestPathsUI ..> GetShortestPathsController
+
+GetShortestPathsController ..> Company
+GetShortestPathsController ..> FreightNetwork
+
+
+
+GetsPortsMoreCriticalUI ..> GetsPortsMoreCriticalController
+
+GetsPortsMoreCriticalController ..> Company
+GetsPortsMoreCriticalController ..> FreightNetwork
+
 
 
 FreightNetwork ..> AdjacencyMatrixGraph
 FreightNetwork "1" -- "1..*" Place : related with
+FreightNetwork ..> GraphAlgorithms
+
 
 AdjacencyMatrixGraph ..> Edge
 

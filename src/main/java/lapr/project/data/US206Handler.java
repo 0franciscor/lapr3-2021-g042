@@ -55,6 +55,6 @@ public class US206Handler {
 
     @Override
     public String toString() {
-        return String.format("ContainerNumberId, Type, Load\n%s", listOfContainers);
+        return String.format("ContainerNumberId, Type, Load%n%s", listOfContainers);
     }
 }

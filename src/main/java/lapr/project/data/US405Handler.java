@@ -38,12 +38,10 @@ public class US405Handler {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yy.MM.dd hh:mm:ss");
             java.util.Date parsedDate = dateFormat.parse(initialTime);
             Timestamp init = new java.sql.Timestamp(parsedDate.getTime());
-            System.out.println(init);
 
             java.util.Date parsedDate1 = dateFormat.parse(endTime);
             Timestamp endt = new java.sql.Timestamp(parsedDate1.getTime());
 
-            System.out.println(endt);
             statement.setTimestamp(1,init);
             statement.setTimestamp(2,endt);
             statement.setString(3, mmsi);
@@ -69,6 +67,6 @@ public class US405Handler {
 
     @Override
     public String toString() {
-        return String.format("Average occupancy rate per manifest of the ship %s during %s to %s:\n\n%s", mmsi, initialTime, endTime, outputInfo);
+        return String.format("Average occupancy rate per manifest of the ship %s during %s to %s:%n%n%s", mmsi, initialTime, endTime, outputInfo);
     }
 }

@@ -7,7 +7,7 @@ public class HeatFlow {
 
     private double denominator;
     private double numerator;
-    private double heatFlow;
+    private double heatFlowValue;
     private double totalEnergy;
     private int totalTimeTraveled;
     private double area;
@@ -15,7 +15,7 @@ public class HeatFlow {
     public HeatFlow() {
         this.denominator = 0;
         this.numerator = 0;
-        this.heatFlow = 0;
+        this.heatFlowValue = 0;
         this.totalEnergy = 0;
         this.totalTimeTraveled = 0;
         this.area = 0;
@@ -90,18 +90,18 @@ public class HeatFlow {
 
     }
 
-    public double getHeatFlow() {
-        return heatFlow;
+    public double getHeatFlowValue() {
+        return heatFlowValue;
     }
 
     public void calculateHeatFlow(){
 
-        this.heatFlow = (numerator/denominator);
+        this.heatFlowValue = (numerator/denominator);
     }
 
 
     public void totalEnergy(int time){
-        this.totalEnergy = (heatFlow * time);
+        this.totalEnergy = (heatFlowValue * time);
     }
 
     public double getTotalEnergy() {
@@ -110,7 +110,7 @@ public class HeatFlow {
 
     public void calculateHeatFlowForContainers(int numberOfContainers){
         calculateHeatFlow();
-        this.heatFlow = (heatFlow * numberOfContainers);
+        this.heatFlowValue = (heatFlowValue * numberOfContainers);
 
     }
 

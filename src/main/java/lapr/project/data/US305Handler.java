@@ -53,6 +53,6 @@ public class US305Handler {
 
     @Override
     public String toString() {
-        return String.format("Origin, Departure Date, Destination, Arrival Date\n%s", containerPathInfo);
+        return String.format("Origin, Departure Date, Destination, Arrival Date%n%s", containerPathInfo);
     }
 }

@@ -38,12 +38,10 @@ public class US406Handler {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yy.MM.dd hh:mm:ss");
             java.util.Date parsedDate = dateFormat.parse(initialTime);
             Timestamp init = new Timestamp(parsedDate.getTime());
-            System.out.println(init);
 
             java.util.Date parsedDate1 = dateFormat.parse(endTime);
             Timestamp endt = new Timestamp(parsedDate1.getTime());
 
-            System.out.println(endt);
             statement.setTimestamp(1,init);
             statement.setTimestamp(2,endt);
             statement.setString(3, mmsi);
@@ -54,7 +52,6 @@ public class US406Handler {
             this.endTime=endTime;
             this.mmsi=mmsi;
             this.outputInfo=statement.getString(4);
-            System.out.println(outputInfo);
 
             writeForAFile.writeForAFile(toString(), "US406_" + mmsi, new File(".\\outputs\\US406"), false);
 
@@ -70,6 +67,6 @@ public class US406Handler {
 
     @Override
     public String toString() {
-        return String.format("Manifests of the ship %s with an occupancy rate above 66 during %s to %s:\n\n%s", mmsi, initialTime, endTime, outputInfo);
+        return String.format("Manifests of the ship %s with an occupancy rate above 66 during %s to %s:%n%n%s", mmsi, initialTime, endTime, outputInfo);
     }
 }

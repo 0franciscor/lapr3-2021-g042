@@ -7,9 +7,9 @@ import java.util.Objects;
  */
 public class User {
 
-    private String username;
-    private String password;
-    private Role userRole;
+    private final String username;
+    private final String password;
+    private final Role userRole;
 
     public User(String username, String password, Role userRole) {
 

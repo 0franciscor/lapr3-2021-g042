@@ -7,8 +7,8 @@ import java.util.Objects;
  */
 public class Role {
 
-    private int id;
-    private String description;
+    private final int id;
+    private final String description;
 
     public Role(int id, String description) {
         this.id = id;

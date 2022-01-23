@@ -11,7 +11,7 @@ public class US313Handler {
 
     private final WriteForAFile writeForAFile;
 
-    private TransferFromDataBase transferFromDataBase;
+    private final TransferFromDataBase transferFromDataBase;
 
     public US313Handler(){
         transferFromDataBase = App.getInstance().getCompany().getTransferFromDatabase();

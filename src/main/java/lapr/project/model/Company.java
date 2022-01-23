@@ -56,9 +56,9 @@ public class Company {
      */
     private TransferFromDataBase transferFromDataBase;
 
-    private FreightNetwork freightNetwork;
+    private final FreightNetwork freightNetwork;
 
-    private ContainerStore containerStore;
+    private final ContainerStore containerStore;
 
     /**
      * Creates an instance of Company

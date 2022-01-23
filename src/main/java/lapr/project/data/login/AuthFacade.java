@@ -10,7 +10,7 @@ import java.util.Optional;
  */
 public class AuthFacade {
     private UserSession userSession;
-    private UserStore userStore;
+    private final UserStore userStore;
 
     public AuthFacade()
     {

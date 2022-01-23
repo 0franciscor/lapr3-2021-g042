@@ -13,10 +13,7 @@ import java.sql.SQLException;
 public class RoleStore {
 
     private Connection connectionDatabase;
-
-    public RoleStore(){
-        //connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
-    }
+    
 
     public boolean roleExist(int id, String description) throws SQLException {
 

@@ -23,7 +23,7 @@ public class VesselSankController {
     /**
      * The controller's writeForAFile Object
      */
-    private WriteForAFile writeForAFile;
+    private final WriteForAFile writeForAFile;
 
     /**
      * Instance of Ship

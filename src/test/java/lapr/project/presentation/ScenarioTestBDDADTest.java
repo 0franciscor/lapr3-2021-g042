@@ -33,8 +33,6 @@ public class ScenarioTestBDDADTest {
 
     private US306Handler us306Handler;
 
-    private US307Handler us307Handler;
-
     private US312Handler us312Handler;
 
     private US310Handler us310Handler;
@@ -69,7 +67,6 @@ public class ScenarioTestBDDADTest {
         us304Handler = new US304Handler(1, 456789423);
         us305Handler = new US305Handler(1, 987650321);
         us306Handler = new US306Handler();
-        us307Handler = new US307Handler();
         us312Handler = new US312Handler();
         us310Handler = new US310Handler(12, 2021);
 
@@ -81,7 +78,7 @@ public class ScenarioTestBDDADTest {
 
     @Test
     public void presentationTest3() throws IOException{
-        // new  ShipsIdleHandler();
+        new  ShipsIdleHandler();
         us405Handler = new US405Handler("21.10.02 18:44:33","21.12.30 18:44:33","210950000");
         us406Handler = new US406Handler("21.10.01 18:44:33","21.12.01 18:44:33","121212121");
         new US407Handler(29002);

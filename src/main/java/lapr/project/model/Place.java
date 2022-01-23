@@ -6,12 +6,12 @@ public abstract class Place {
     /**
      * The port location
      */
-    private PlaceLocation coordinates;
+    private final PlaceLocation coordinates;
 
     /**
      * The port country
      */
-    private Country country;
+    private final Country country;
 
     /**
      * Constructs an instance of Location receiving the following parameters:

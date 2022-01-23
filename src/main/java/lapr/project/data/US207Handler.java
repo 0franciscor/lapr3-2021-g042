@@ -107,7 +107,7 @@ public class US207Handler {
      */
     @Override
     public String toString() {
-        return String.format("totalCargoManifestPerYear, meanContainerPerCargoManifest\n" +
-                "%d, %.2f\n", totalCargoManifestsPerYear, meanContainerPerCargoManifest);
+        return String.format("totalCargoManifestPerYear, meanContainerPerCargoManifest%n" +
+                "%d, %.2f%n", totalCargoManifestsPerYear, meanContainerPerCargoManifest);
     }
 }

@@ -14,10 +14,9 @@ import java.sql.SQLException;
 public class UserStore {
 
     private Connection connectionDatabase;
-    private RoleStore roleStore;
+    private final RoleStore roleStore;
 
     public UserStore(){
-       // connectionDatabase = App.getInstance().getDatabaseConnection().getConnection();
         roleStore = new RoleStore();
     }
 
@@ -118,7 +117,6 @@ public class UserStore {
                     roleId = userResultSet.getInt("roleId");
 
                 } catch (SQLException e) {
-                    System.out.println(e.getErrorCode());
                     e.printStackTrace();
                     return null;
                 } finally {

@@ -5,10 +5,11 @@ skinparam classAttributeIconSize 0
 
 
 
-class GetsPortsMoreCriticalUI {}
+class GetShortestPathsUI {}
 
-class GetsPortsMoreCriticalController {
--getsPortsMoreCritical(n)
+
+class GetShortestPathsController {
+-getShortestPaths(origem,destino,passagensObrigatorias);
 }
 
 class Company {
@@ -19,7 +20,11 @@ class Company {
 
 
 class FreightNetwork {
--getsPortsMoreCritical(n)
+-getShortestPaths(origem,destino,passagensObrigatorias);
+-getLandPath(sourcePlace,destination);
+-getMaritimePath(sourcePlace,destination);
+-getShortPathPassingThroughNIndicatedPlaces(placesToVisite,sourcePlace,destination);
+-searchNextCities(obligatoryPassage, p1, p2, checkedCities);
 }
 
 class Ports {
@@ -75,15 +80,15 @@ class Edge {
 }
 
 class GraphAlgorithms {
--shortestPaths(adjacencyMatrixGraph, origem, Double::compare, Double::sum, 0.0, paths, dists)
--shortestPathDijkstra(g, vOrig, ce, sum, zero, visited, pathKeys, dist)
--getPath(g, vOrig, vDest, pathKeys, shortPath)
+-shortestPath(adjacencyMatrixGraph,sourcePlace,destination,Double::compare,Double::sum,0.0,shortPath);
+-shortestPathDijkstra(g, vOrig, ce, sum, zero, visited, pathKeys, dist);
+-getPath(g, vOrig, vDest, pathKeys, shortPath);
 }
 
-GetsPortsMoreCriticalUI ..> GetsPortsMoreCriticalController
+GetShortestPathsUI ..> GetShortestPathsController
 
-GetsPortsMoreCriticalController ..> Company
-GetsPortsMoreCriticalController ..> FreightNetwork
+GetShortestPathsController ..> Company
+GetShortestPathsController ..> FreightNetwork
 
 Company "1"--"1" FreightNetwork: have >
 FreightNetwork ..> AdjacencyMatrixGraph

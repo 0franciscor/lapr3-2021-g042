@@ -47,7 +47,7 @@ public class US209Handler {
 
     @Override
     public String toString() {
-        return String.format("Occupancy Rate\n" +
+        return String.format("Occupancy Rate%n" +
                             "%.2f", occupancyRate);
     }
 }

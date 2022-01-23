@@ -5,10 +5,10 @@ skinparam classAttributeIconSize 0
 
 
 
-class GetsPortsMoreCriticalUI {}
+class GetTheMostEfficientCircuitUI  {}
 
-class GetsPortsMoreCriticalController {
--getsPortsMoreCritical(n)
+class GetTheMostEfficientCircuitController {
+-getTheMostEfficientCircuit(origem);
 }
 
 class Company {
@@ -19,7 +19,7 @@ class Company {
 
 
 class FreightNetwork {
--getsPortsMoreCritical(n)
+-mostEfficientCircuit(locationName);
 }
 
 class Ports {
@@ -65,25 +65,19 @@ class Seadist {
 }
 
 class AdjacencyMatrixGraph {
--numVertices();
--vertex(i);
--key(i)
+-adjVertices(i);
+-edge(localAtual,location);
 }
 
 class Edge {
-
+-getWeight();
 }
 
-class GraphAlgorithms {
--shortestPaths(adjacencyMatrixGraph, origem, Double::compare, Double::sum, 0.0, paths, dists)
--shortestPathDijkstra(g, vOrig, ce, sum, zero, visited, pathKeys, dist)
--getPath(g, vOrig, vDest, pathKeys, shortPath)
-}
 
-GetsPortsMoreCriticalUI ..> GetsPortsMoreCriticalController
+GetTheMostEfficientCircuitUI  ..> GetTheMostEfficientCircuitController
 
-GetsPortsMoreCriticalController ..> Company
-GetsPortsMoreCriticalController ..> FreightNetwork
+GetTheMostEfficientCircuitController ..> Company
+GetTheMostEfficientCircuitController ..> FreightNetwork
 
 Company "1"--"1" FreightNetwork: have >
 FreightNetwork ..> AdjacencyMatrixGraph
@@ -97,6 +91,6 @@ Place <|-- Ports
 Country "2" -- "*" Border : has a
 PlaceLocation "*" -- "1" Country : placed in >
 Place "1" -- "1" PlaceLocation : located at >
-FreightNetwork ..> GraphAlgorithms
+
 
 @enduml

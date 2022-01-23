@@ -55,7 +55,7 @@ public class US208Handler {
 
     @Override
     public String toString() {
-        return String.format("ratio\n" +
-                "%.2f\n", ratio);
+        return String.format("ratio%n" +
+                "%.2f%n", ratio);
     }
 }

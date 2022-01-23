@@ -35,7 +35,7 @@ public class ShipsIdleHandler {
 
             Reader reader = informationOutput.getCharacterStream();
 
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
 
             int ch;
             while ((ch = reader.read()) != -1){

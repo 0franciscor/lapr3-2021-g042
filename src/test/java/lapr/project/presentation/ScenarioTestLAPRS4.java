@@ -1,6 +1,5 @@
 package lapr.project.presentation;
-
-import lapr.project.controller.*;
+import lapr.project.data.VesselSankController;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipLocation;
 import lapr.project.model.lapr.ShipSank;

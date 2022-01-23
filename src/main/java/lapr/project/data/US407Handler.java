@@ -35,7 +35,7 @@ public class US407Handler {
 
             Reader reader = information.getCharacterStream();
 
-            StringBuilder buffer = new StringBuilder();
+            StringBuffer buffer = new StringBuffer();
 
             int ch;
             while ((ch = reader.read()) != -1){

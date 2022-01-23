@@ -1,0 +1,2 @@
+MMSI Code, Ship name, Start Base Date, End Base Date, Total Movements Time, Total Movements, Maximum Speed Over Ground, Mean Speed Over Ground, Maximum Course Over Ground, Mean Course Over Ground, Departure Latitude, Departure Longitude, Arrival Latitude, Arrival Longitude, Travelled Distance, Delta Distance
+229961000, ARABELLA, Thu Dec 31 23:28:00 WET 2020, Thu Dec 31 23:31:00 WET 2020, 00:00:00, 1, 0,10, 0,10, 82,80, 58,70, 54.23184, -130.33702, 54.23188, -130.33667, 0,02, 0,02 

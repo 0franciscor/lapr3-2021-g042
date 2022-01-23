@@ -71,8 +71,6 @@ public class ScenarioTestBDDADTest {
         us310Handler = new US310Handler(12, 2021);
 
         us312Handler.getContainerLocation(987650321, 1);
-
-
         us312Handler.getContainerLocation(695421863, 2);
     }
 

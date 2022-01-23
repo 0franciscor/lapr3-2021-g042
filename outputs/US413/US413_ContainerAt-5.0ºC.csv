@@ -1,0 +1,32 @@
+----------* Container Selected *----------
+->Number: 633792065
+->x: 1
+->y: 5
+->z: 0
+->Check Digit: 1
+->IsoCode: 0919-5:ZI
+->Maximum Weight: 187.0Kg
+->Payload: 230.0Kg
+->Tare: 225.0Kg
+->Weight: 390.0Kg
+->Maximum Weight Packed: 153.0Kg
+->Maximum Volume Packed: 87.0Kg
+->Repair Recommendation: not recommended
+->Certificate: je516yz
+->Temperature: -5.0ºC
+->Length: 6.0m
+->Width: 2.5m
+->Height: 2.5m
+->Area of container: 72.5
+->Average external temperature:  22.666666666666664ºC
+->Outer layer material: stainless steel
+->Outer layer thickness: 0.05m
+->Outer layer thermal conductivity: 15.0K/W
+->Middle layer material: polyurethane
+->Middle layer thickness: 0.1m
+->Middle layer thermal conductivity: 0.02K/W
+->Middle layer material: PVC
+->Inner layer thickness: 0.05m
+->Inner layer thermal conductivity: 0.21K/W
+->Time traveled: 18000s (5h)
+->Energy necessary: 1.3776778413736713E8J

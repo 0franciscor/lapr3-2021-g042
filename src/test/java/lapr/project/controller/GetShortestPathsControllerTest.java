@@ -17,7 +17,7 @@ class GetShortestPathsControllerTest {
         createFreightNetworkController.createFreightNetwork(1);
         GetShortestPathsController getShortestPathsController = new GetShortestPathsController();
         List<String> passagens = new ArrayList<>();
-        passagens.add("Madrid");
+        passagens.add("Amsterdam");
         getShortestPathsController.getShortestPaths("Lisbon","Rome",passagens);
     }
 
